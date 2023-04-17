@@ -14,27 +14,689 @@ format:
     theme: slides.scss
 editor: source
 execute: 
-  echo: false
-  eval: true
+  echo: true
+  eval: false
 from: markdown+emoji
 ---
 
-## Introduction of this lecture series
+## Who am I?
 
-- 
-- Me: Scientific programmer
-- This lecture series: Idea
-- 
+- Me: Ecologist, PhD student for some years and now scientific programmer
 
----
+![](images/2023_04_20_what_they_forgot_to_teach_you/01_my_R_journey.png)
+
+## Scientific workflows: Tools and Tips :hammer::bulb:
+
+#### What?
+
+- Once a month (every 3rd Thursday) for 1 h: One topic from the world of scientific workflows
+- Topics range from R programming over notetaking and literature management tools and more
+
+#### When and Where?
+
+- Every 3rd Thursday from 4-5 p.m. on Webex
+
+#### How
+
+- ~45-50 min talk, then discussion
+- questions in the chat
+- Slides provided here
+
+- Drop in whenever you find the topic interesting
+- For topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
+- [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips) so you don't miss a lecture
+
+# What they forgot to teach you about R
+
+It's [a book](https://rstats.wtf/) by J. Bryan and J. Hesters
+
+## Chaotic projects and workflows ...
+
+... can make even small changes frustrating and difficult.
+  
+![Artwork by [Allsion Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/02_kitchen_chaos.png){fig-alt="A frustrated looking little monster in front of a very disorganized cooking area, with smoke and fire coming from a pot surrounded by a mess of bowls, utensils, and scattered ingredients."}
+
+## Clean projects and workflows ...
+
+... allow you and others to work productively.
+
+![Artwork by [Allsion Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/03_kitchen_clean.png){fig-alt="An organized kitchen with sections labeled \"tools\", \"report\" and \"files\", while a monster in a chef's hat stirs in a bowl labeled \"code.\""}
+
+## What they forgot to teach you about R
+
+- **Reproducibility** :arrows_counterclockwise: 
+  - Can someone else reproduce my results?
+- **Reliability** 🏋 
+  - Will my code work in the future?
+- **Reusability** :gear: 
+  - Can someone else actually use my code?
+  
+## First things first: Project setup and structure
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Everything in one project folder
+- Separate data, documents, analysis scripts, etc.
+- Always add a README file
+
+:::
+
+::: {.column width="50%"}
 
 
-# About today
+![](images/2023_04_20_what_they_forgot_to_teach_you/04_folder_structures.png)
 
-# Further material
+<!-- ``` -->
+<!-- exampleProject -->
+<!-- | -->
+<!-- |- data -->
+<!-- |   |-data-raw/ -->
+<!-- | -->
+<!-- |- documents    -->
+<!-- |   |- notes    -->
+<!-- |   |- reports -->
+<!-- | -->
+<!-- |- analysis   -->
+<!-- |   |- 01_clean_data.R -->
+<!-- |   |- 02_PCA.R -->
+<!-- | -->
+<!-- |- README.md -->
+<!-- ``` -->
+:::
+
+:::
+
+## First things first: Project setup and structure
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Work with R Studio Project
+- An R Studio Project is just a normal directory with an `*.Rproj` file
+- Advantages of using R Studio Projects:
+
+  - Easy to navigate in R Studio (find an access scripts etc)
+  - Project root is the working directory
+  - Open multiple projects in separate R Studio instances
+:::
+
+::: {.column width="50%"}
+
+
+![](images/2023_04_20_what_they_forgot_to_teach_you/04_folder_structures_rstudio.png)
+
+<!-- ``` -->
+<!-- exampleProject -->
+<!-- | -->
+<!-- |- data -->
+<!-- |   |-data-raw/ -->
+<!-- | -->
+<!-- |- documents    -->
+<!-- |   |- notes    -->
+<!-- |   |- reports -->
+<!-- | -->
+<!-- |- analysis   -->
+<!-- |   |- 01_clean_data.R -->
+<!-- |   |- 02_PCA.R -->
+<!-- | -->
+<!-- |- README.md -->
+<!-- ``` -->
+:::
+
+:::
+
+## How to create an R Studio Project
+#### From scratch:
+
+1. `File -> New Project -> New Directory -> New Project`
+2. Enter a directory name (this will be the name of your project)
+3. Choose the directory where the project should be initiated
+4. `Create Project`
+
+#### Associate an existing folder with an R Studio Project:
+
+1. `File -> New Project -> Existing Directory`
+2. Choose your project folder
+3. `Create Project`
+
+## Navigate an R Studio Project
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Navigate and open files
+- Create files and folders
+- Rename and delete
+
+:::
+
+::: {.column width="50%"}
+
+![](images/2023_04_20_what_they_forgot_to_teach_you/06_RStudio_project_navigation.png)
+:::
+
+:::
+
+## File naming
+
+- Follow a convention and stick to it
+- Principles
+  1. Machine readable
+  2. Human readable
+  3. Works with default file ordering
+
+## 1. Machine readable file names
+
+Names should allow for easy **searching**, **grouping** and **extracting information** 
+from file names (if needed).
+
+Some general rules:
+
+- No whitespace & special characters
+- Separate metadata to work with regular expressions (e.g. `_` to separate metadata and `-` to make it readable)
+
+#### Bad examples :x:
+
+:page_facing_up: `2023-04-20 temperature göttingen.csv ` <br>
+:page_facing_up: `2023-04-20 rainfall göttingen.csv ` <br>
+:page_facing_up: `fig 1 climate diagram.png`
+
+#### Good examples :heavy_check_mark: 
+
+:page_facing_up: `2023-04-20_temperature_goettingen.csv ` <br>
+:page_facing_up: `2023-04-20_rainfall_göttingen.csv ` <br>
+:page_facing_up: `fig1_climate-diagram.png`
+
+## 2. Human readable filenames
+
+- Which filenames would you like to read at 4 a.m. in the morning?
+
+Rules
+- File names should reveal the content
+- Use separators to make it readable
+
+#### Bad examples :x:
+
+:page_facing_up: `2023-04-20_temperaturegoettingen.csv ` <br>
+:page_facing_up: `01preparedataforanalysis.R` <br>
+:page_facing_up: `01firstscript.R` <br>
+
+#### Good examples :heavy_check_mark: 
+
+:page_facing_up: `2023-04-20_temperature_goettingen.csv ` <br>
+:page_facing_up: `01_prepare-data-for-analysis.R` <br>
+:page_facing_up: `01_lm-temperature-trend.R` <br>
+
+## 3. Default ordering
+
+If you order your files by name, the ordering should make sense:
+
+- Put numeric numbers before file names
+  - Left-pad numbers with zero
+- Use `YYYY-MM-DD` standard for dates
+
+#### Chronological order
+
+:page_facing_up: `2023-04-20_temperature_goettingen.csv ` <br>
+:page_facing_up: `2023-04-20_temperature_berlin.csv` <br>
+:page_facing_up: `2023-04-21_temperature_goettingen.csv ` <br>
+:page_facing_up: `2023-04-21_temperature_berlin.csv` <br>
+
+#### Logical order
+
+:page_facing_up: `01_prepare-data.R` <br>
+:page_facing_up: `02_lm-temperature-trend.R` <br>
+:page_facing_up: `helper01_load-data.R` <br>
+:page_facing_up: `helper02_clean-data.R` <br>
+
+
+# Let's start coding
+
+## Code structure
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+Follow a standard structure in all your files:
+
+1. General comment with purpose of the script, author, ...
+2. `library()` calls on top
+3. Hard coded values for the script
+4. The actual code
+
+:::
+
+::: {.column width="50%"}
+
+```{r example-structure-1}
+# This code replicates figure 2 from the
+# Baldauf et al. 2022 Journal of Ecology paper.
+# Authors: Selina Baldauf, Jane Doe, Jon Doe
+
+library(tidyverse)
+library(vegan)
+
+input_file <- "data/results.csv"
+
+# read input
+input_data <- read_csv(input_file)
+```
+
+:::
+
+:::
+
+## Code structure
+
+- Use comments to break up your file into sections
+
+```{r code-section}
+# Load data ---------------------------------------------------------------
+
+input_data <- read_csv(input_file)
+
+# Plot data ---------------------------------------------------------------
+
+ggplot(input_data, aes(x = x, y = y)) +
+  geom_point()
+```
+
+- Insert a section label with `Ctrl/Cmd + Shift`
+
+## Code structure
+
+- Navigate sections in the file outline
+
+![](images/2023_04_20_what_they_forgot_to_teach_you/07_document_outline.png)
+
+
+## Split your workflow
+
+- Split into multiple files
+- Write functions
+- Use `source` to load your files
+- Have main workflow files that manage your workflow
+
+## Things to avoid
+
+![](images/2023_04_20_what_they_forgot_to_teach_you/14_computer_fire.png)
+
+## Coding style
+
+- Every programming language has one/many
+  - [Google](https://google.github.io/styleguide/Rguide.html) and 
+  [tidyverse](https://style.tidyverse.org/index.html) R style guides 
+  (they are very similar)
+- Style guides define 
+  - File names and code organization
+  - Syntax standards (naming convention, spacing, ...)
+  - How to write functions (naming conventions, ...)
+  - ...
+
+
+## Coding style - Object names
+
+- Variables and function names should only have lowercase letters, numbers, and `_`
+- Use `snake_case` for longer variable names
+
+```{r object-names-snake}
+# Good
+day_one
+day_1
+
+# Bad
+DayOne
+dayone
+```
+
+
+## Coding style - Object names
+
+:::{.nonincremental}
+
+- Variables and function names should only have lowercase letters, numbers, and `_`
+- Use `snake_case` for longer variable names
+- Try to use concise but meaningful names
+
+:::
+
+```{r object-names-concise}
+# Good
+day_one
+
+# Bad
+first_day_of_the_month
+dm1
+```
+
+## Coding style - Object names
+
+:::{.nonincremental}
+
+- Variables and function names should only have lowercase letters, numbers, and `_`
+- Use `snake_case` for longer variable names
+- Try to use concise but meaningful names
+- Avoid re-using names of common functions and variables
+
+:::
+
+```{r object-names}
+# Bad
+T <- data.frame(temperature = 1:10)
+c <- 10
+data_frame <- data.frame(temperature = 1:10)
+sum <- function(x) mean(x)
+```
+
+## Coding style - Spacing
+
+- Always put spaces after a comma
+
+```{r spaces-comma}
+#| eval: false
+
+# Good
+x[, 1]
+
+# Bad
+x[ , 1]
+x[,1]
+x[ ,1]
+```
+
+## Coding style - Spacing
+
+::: {.nonincremental}
+
+- Always put spaces after a comma
+- No spaces around parentheses for normal function calls
+
+:::
+
+```{r spaces-parenthesis}
+# Good
+mean(x, na.rm = TRUE)
+
+# Bad
+mean (x, na.rm = TRUE)
+mean ( x, na.rm = TRUE )
+```
+
+## Coding style - Spacing
+
+::: {.nonincremental}
+
+- Always put spaces after a comma
+- No spaces around parentheses for normal function calls
+- Spacesbefore and after `()` in `if` or `for`
+
+:::
+
+```{r spaces-loops}
+# Good
+if (debug) {
+  show(x)
+}
+
+# Bad
+if(debug){
+  show(x)
+}
+```
+
+
+## Coding style - Spacing
+
+::: {.nonincremental}
+
+- Always put spaces after a comma
+- No spaces around parentheses for normal function calls
+- Spaces before and after `()` in `if` or `for`
+- Spaces around most operators (`<-`, `==`, `+`, etc.)
+
+:::
+
+```{r spaces-operators}
+# Good
+height <- (feet * 12) + inches
+mean(x, na.rm = TRUE)
+
+# Bad
+height<-feet*12+inches
+mean(x, na.rm=TRUE)
+```
+
+## Coding style - Spacing
+
+If you are using pipes, you should
+
+- Put whitespace before the `%>%` and follow with a new line
+  - Exception can be very short pipes
+
+```{r pipe-space}
+# Good
+iris %>%
+  group_by(Species) %>%
+  summarize_if(is.numeric, mean) %>%
+  ungroup() %>%
+  gather(measure, value, -Species) %>%
+  arrange(value)
+
+iris %>% arrange(Species)
+
+# Bad
+iris %>% group_by(Species) %>% summarize_all(mean) %>%
+ungroup %>% gather(measure, value, -Species) %>%
+arrange(value)
+```
+
+
+## Coding style - Pipes
+
+If you are using pipes, you should
+
+::: {.nonincremental} 
+
+- Put whitespace before the `%>%` and follow with a new line
+- Separate arguments into multiple lines if too long
+
+:::
+
+```{r pipe-long-lines}
+iris %>%
+  group_by(Species) %>%
+  summarise(
+    Sepal.Length = mean(Sepal.Length),
+    Sepal.Width = mean(Sepal.Width),
+    Species = n_distinct(Species)
+  )
+```
+
+## Coding style - ggplot
+
+- Put whitespace before the `+` and follow with a new line
+  - Indent each new line
+  
+```{r ggplot-space}
+# Good
+iris %>%
+  filter(Species == "setosa") %>%
+  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +
+  geom_point()
+
+# Bad
+iris %>%
+  filter(Species == "setosa") %>%
+  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +
+    geom_point()
+
+# Bad
+iris %>%
+  filter(Species == "setosa") %>%
+  ggplot(aes(x = Sepal.Width, y = Sepal.Length)) + geom_point()
+```
+
+## Coding style - ggplot
+
+
+::: {.nonincremental}
+
+- Put whitespace before the `+` and follow with a new line
+  - Indent each new line
+- Separate arguments into multiple lines if too long
+
+:::
+  
+```{r ggplot-long-lines}
+# Good
+ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+  geom_point() +
+  labs(
+    x = "Sepal width, in cm",
+    y = "Sepal length, in cm",
+    title = "Sepal length vs. width of irises"
+  ) 
+
+# Bad
+ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+  geom_point() +
+  labs(x = "Sepal width, in cm", y = "Sepal length, in cm", title = "Sepal length vs. width of irises") 
+```
+
+
+## Coding style
+
+This is too much to remember!!!
+
+R and R Studio can help you a lot with this
+
+  - R Studio has a setting that tells you where you have to change something
+  - [styler](http://styler.r-lib.org/): can automatically style your files or projects
+  - [lintr](https://github.com/jimhester/lintr): performs automated checks on your code and tells you
+  where you have to change something
+
+## Coding style - R Studio global settings
+
+- Turn on R style diagnostics
+  - `Tools -> Gloabl Options -> Code -> Diagnostics`
+
+::: {.columns}
+
+::: {.column width="65%"}
+
+![](images/2023_04_20_what_they_forgot_to_teach_you/08_global_options_style.png)
+
+:::
+
+::: {.column width="35%"}
+![](images/2023_04_20_what_they_forgot_to_teach_you/09_style_warning.png)
+:::
+
+:::
+
+## Coding style - R Studio global settings
+
+- Show margin to help you with long lines
+  - `Tools -> Gloabl Options -> Code -> Display`
+
+::: {.columns}
+
+::: {.column width="65%"}
+
+![](images/2023_04_20_what_they_forgot_to_teach_you/10_global_option_margin.png)
+
+:::
+
+::: {.column width="35%"}
+![](images/2023_04_20_what_they_forgot_to_teach_you/11_margin_line.png)
+:::
+:::
+
+## Coding style - The `{styler}` package
+
+- Styles your code automatically
+- Install with
+
+```{r}
+# install from CRAN
+install.packages("styler")
+```
+
+- Use the R Studio `Addins` that were added:
+
+![](images/2023_04_20_what_they_forgot_to_teach_you/12_styler_options.png)
+
+
+## Coding style - The `{styler}` package
+
+- Styles your code automatically
+- Install with
+
+```{r}
+# install from CRAN
+install.packages("styler")
+```
+
+- Use the R Studio `Addins` that were added:
+
+![](images/2023_04_20_what_they_forgot_to_teach_you/12_styler_options.png)
+
+## Coding style - The `{styler}` package
+
+- Pro-Tip: Add a custom keyboard short cut to style your files
+  - `Tools -> Modify Keyboard Shortcuts`
+  
+![](images/2023_04_20_what_they_forgot_to_teach_you/13_styler_shortcut.png)
+
+## Coding style - The `{lintr}` package
+
+- Highlights places in your code that do not match good practice
+
+```{r}
+install.packages("lintr")
+
+# lint specific file
+lintr::lint(filename = "analysis/01_prepare_data.R")
+# lint a directory (by default the whole project)
+lintr::lint_dir()
+```
+
+## Reproducible environments with `{renv}`
+
+- Dependency management for R projects
+  - Goal: increase reproducibility
+  - Helps e.g. when your could breaks with newer package versions
+  
+
+```{r}
+install.packages("renv")
+```
+
+- Check out the [renv website](https://rstudio.github.io/renv/articles/renv.html)
+
+## Reproducible environments with `{renv}`
+
+- Very simple to use and integrate into your project workflow:
+
+```{r}
+# initialize a project level R library
+renv::init()
+# save the current status of your library to a lock file
+renv::snapshot()
+# restore state of your project from renv.lock
+renv::restore()
+```
+
+
+
+
+
 
 # References
 
 - Theme adapted from Rladies
-
-
