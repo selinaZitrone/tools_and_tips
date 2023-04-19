@@ -2,16 +2,44 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Scientific workflows: Tools and Tips :hammer_and_wrench:",
+    "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "This site is work in progres :construction_worker:"
+    "text": "🚧🚧🚧 This site is still under construction 🚧🚧🚧\nEarly-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\nLecture topics\n\n2023-04-20: What they forgot to teach you about R"
+  },
+  {
+    "objectID": "sessions/01_what_they_forgot.html",
+    "href": "sessions/01_what_they_forgot.html",
+    "title": "What they forgot to teach you about R",
+    "section": "",
+    "text": "Do you use R in your daily work and research but you still feel your workflow isn’t as smooth as it could be? In this lecture, I will share with you my best tips from 8 years experience with R. We will cover those concepts and tricks that are often overlooked but can make a big difference. Whether you’re a beginner or more experienced R programmer, this lecture will enhance your workflow and help you write clean, reproducible and reusable code in R.\nSlides in full screen\nDownload PDF slides"
+  },
+  {
+    "objectID": "sessions/01_what_they_forgot.html#summary",
+    "href": "sessions/01_what_they_forgot.html#summary",
+    "title": "What they forgot to teach you about R",
+    "section": "Summary",
+    "text": "Summary\nA summary of the topic (Coming soon…)"
+  },
+  {
+    "objectID": "sessions/01_what_they_forgot.html#exercises",
+    "href": "sessions/01_what_they_forgot.html#exercises",
+    "title": "What they forgot to teach you about R",
+    "section": "Exercises",
+    "text": "Exercises"
+  },
+  {
+    "objectID": "sessions/01_what_they_forgot.html#further-links",
+    "href": "sessions/01_what_they_forgot.html#further-links",
+    "title": "What they forgot to teach you about R",
+    "section": "Further links",
+    "text": "Further links\n\nWhat they forgot to teach you about R book by Jenny Bryan and Jim Hester\nBlogpost by Jenny Bryan on good project-oriented workflows\nR best practice blogpost by Krista L. DeStasio\nBook about coding style for R: The tidyverse style guide\nThe Turing way book General concepts and things to think about regarding reproducible research\nrenv package website\nstyler package website\nlintr package website"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#who-am-i",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#who-am-i",
     "title": "What they forgot to teach you about R",
     "section": "Who am I?",
-    "text": "Who am I?\n\nEcologist, PhD student for some years and now scientific programmer\n\n\n\n\n\n\n\nArtwork by Allsion Horst, CC BY 4.0"
+    "text": "Who am I?\n\nEcologist, PhD student for some years and now scientific programmer\n\n\n\n\n\n\n\n\nArtwork by Allsion Horst, CC BY 4.0"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#what-is-this-lecture-series",
@@ -67,7 +95,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#create-an-r-studio-project",
     "title": "What they forgot to teach you about R",
     "section": "Create an R Studio Project",
-    "text": "Create an R Studio Project\n\nFrom scratch:\n\n\nFile -> New Project -> New Directory -> New Project\nEnter a directory name (this will be the name of your project)\nChoose the directory where the project should be initiated\nCreate Project\n\n\nAssociate an existing folder with an R Studio Project:\n\n\nFile -> New Project -> Existing Directory\nChoose your project folder\nCreate Project"
+    "text": "Create an R Studio Project\n\n\n\nFrom scratch:\n\n\nFile -> New Project -> New Directory -> New Project\nEnter a directory name (this will be the name of your project)\nChoose the directory where the project should be initiated\nCreate Project\n\n\n\n\n\nAssociate an existing folder with an R Studio Project:\n\n\nFile -> New Project -> Existing Directory\nChoose your project folder\nCreate Project"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#navigate-an-r-studio-project",
@@ -81,14 +109,14 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#set-up-your-project",
     "title": "What they forgot to teach you about R",
     "section": "Set up your project",
-    "text": "Set up your project\nR Studio offers a lot of settings and options.\nSo have a ☕ and check out Tools -> Global Options and all the other buttons.\n\nR Studio cheat sheet that explains all the buttons\nUpdate R Studio from time to time to get new settings (Help -> Check for Updates)"
+    "text": "Set up your project\n\nR Studio offers a lot of settings and options.\nSo have a ☕ and check out Tools -> Global Options and all the other buttons.\n\nR Studio cheat sheet that explains all the buttons\nUpdate R Studio from time to time to get new settings (Help -> Check for Updates)"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#set-up-your-project-1",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#set-up-your-project-1",
     "title": "What they forgot to teach you about R",
     "section": "Set up your project",
-    "text": "Set up your project\nR Studio offers a lot of settings and options.\n\n\nMost important setting:\n\nNever save or restore your workspace as .Rdata -> You always want to start working with a clean slate\n\nOther nice settings:\n\nCode display settings (Code -> Display), e.g. highlight colors or rainbow parentheses"
+    "text": "Set up your project\nR Studio offers a lot of settings and options.\n\n\nMost important setting:\n\nNever save or restore your workspace as .Rdata -> You always want to start working with a clean slate\n\n\n\n\n\n\n\n\nOther nice settings:\n\nCode display settings (Code -> Display), e.g. highlight colors or rainbow parentheses"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#name-your-files-properly",
@@ -102,21 +130,21 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#machine-readable-file-names",
     "title": "What they forgot to teach you about R",
     "section": "1. Machine readable file names",
-    "text": "1. Machine readable file names\nNames should allow for easy searching, grouping and extracting information from file names (if needed).\n\n\nNo whitespace & special characters\nSeparate metadata to work with regular expressions (e.g. _ to separate metadata and - to make it readable)\n\n\n\nBad examples ❌\n📄 2023-04-20 temperature göttingen.csv  📄 2023-04-20 rainfall göttingen.csv \nGood examples ✔️\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-20_rainfall_goettingen.csv"
+    "text": "1. Machine readable file names\nNames should allow for easy searching, grouping and extracting information from file names (if needed).\n\n\nNo whitespace & special characters\nSeparate metadata to work with regular expressions (e.g. _ to separate metadata and - to make it readable)\n\n\n\nBad examples ❌\n📄 2023-04-20 temperature göttingen.csv  📄 2023-04-20 rainfall göttingen.csv \n\n\nGood examples ✔️\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-20_rainfall_goettingen.csv"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#human-readable-file-names",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#human-readable-file-names",
     "title": "What they forgot to teach you about R",
     "section": "2. Human readable file names",
-    "text": "2. Human readable file names\nWhich file names would you like to read at 4 a.m. in the morning?\n\nFile names should reveal the file content\nUse separators to make it readable\n\n\nBad examples ❌\n📄 01preparedataforanalysis.R  📄 01firstscript.R \nGood examples ✔️\n📄 01_prepare-data-for-analysis.R  📄 01_lm-temperature-trend.R"
+    "text": "2. Human readable file names\nWhich file names would you like to read at 4 a.m. in the morning?\n\nFile names should reveal the file content\nUse separators to make it readable\n\n\nBad examples ❌\n📄 01preparedataforanalysis.R  📄 01firstscript.R \n\n\nGood examples ✔️\n📄 01_prepare-data-for-analysis.R  📄 01_lm-temperature-trend.R"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#default-ordering",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#default-ordering",
     "title": "What they forgot to teach you about R",
     "section": "3. Default ordering",
-    "text": "3. Default ordering\nIf you order your files by name, the ordering should make sense:\n\n(Almost) always put something numeric first\n\nLeft-padded numbers (01, 02, …)\nDates in YYYY-MM-DD format\n\n\n\nChronological order\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-21_temperature_goettingen.csv \nLogical order\n📄 01_prepare-data.R  📄 02_lm-temperature-trend.R  📄 helper01_load-data.R"
+    "text": "3. Default ordering\nIf you order your files by name, the ordering should make sense:\n\n(Almost) always put something numeric first\n\nLeft-padded numbers (01, 02, …)\nDates in YYYY-MM-DD format\n\n\n\nChronological order\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-21_temperature_goettingen.csv \n\n\nLogical order\n📄 01_prepare-data.R  📄 02_lm-temperature-trend.R  📄 helper01_load-data.R"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#follow-coding-guidelines",
@@ -130,7 +158,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#standard-code-structure",
     "title": "What they forgot to teach you about R",
     "section": "Standard code structure",
-    "text": "Standard code structure\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology paper.\n# Authors: Selina Baldauf, Jane Doe, Jon Doe\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file <- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data <- read_csv(input_file)"
+    "text": "Standard code structure\n\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology paper.\n# Authors: Selina Baldauf, Jane Doe, Jon Doe\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file <- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data <- read_csv(input_file)"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#mark-sections",
@@ -200,14 +228,14 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---object-names-1",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Object names",
-    "text": "Coding style - Object names\n\n\nVariables and function names should only have lowercase letters, numbers, and _\nUse snake_case for longer variable names\nTry to use concise but meaningful names\nAvoid re-using names of common functions and variables\n\n\n\n\n# Bad\nT <- data.frame(temperature = 1:10)\nc <- 10\ndata_frame <- data.frame(temperature = 1:10)\nsum <- function(x) mean(x)"
+    "text": "Coding style - Object names\n\n\nVariables and function names should only have lowercase letters, numbers, and _\nUse snake_case for longer variable names\nTry to use concise but meaningful names\nAvoid re-using names of common functions and variables\n\n\n\n# Bad\nT <- data.frame(temperature = 1:10)\nc <- 10\ndata_frame <- data.frame(temperature = 1:10)\nsum <- function(x) mean(x)"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\n\n\n\n# Good\nx[, 1]\n\n# Bad\nx[ , 1]\nx[,1]\nx[ ,1]"
+    "text": "Coding style - Spacing\n\n\n\nAlways put spaces after a comma\n\n\n\n# Good\nx[, 1]\n\n# Bad\nx[ , 1]\nx[,1]\nx[ ,1]"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-1",
@@ -340,7 +368,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#next-lecture",
     "title": "What they forgot to teach you about R",
     "section": "Next lecture",
-    "text": "Next lecture\nGit and Github / Research compendia with R 👷\nSome short description\n\n📅 11th May 🕓 4-5 p.m. 📍 Webex\n\nFor topic suggestions and/or feedback send me an email\nSlides provided on Github\nSubscribe to the mailing list"
+    "text": "Next lecture\n\nPackage your research in an R 📦\nA research compendium is a collection of all the digital parts of your research projects (data, code, documents). R packages have a similar structure and therefore can be used to publish a fully reproducible version of your project.\nPaper: Packaging data analytical work reproducibly using R (and friends) by Ben Marwick\n\n📅 11th May 🕓 4-5 p.m. 📍 Webex\n\nFor topic suggestions and/or feedback send me an email\nSubscribe to the mailing list"
   },
   {
     "objectID": "slides/zzz_template.html#introduction-of-this-lecture-series",
@@ -352,8 +380,8 @@
   {
     "objectID": "todo_list.html",
     "href": "todo_list.html",
-    "title": "Scientific workflows: Tools and Tips :hammer_and_wrench:",
+    "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "logo for the lecture series on the slides\nAdd link to slides on Github\nMake project folder figures nicer\nFilenames: Reference to Jenny Bryan\nGood examples of project structures (template package etc.) -> Links\nUse these nice boxes for tips and exclamation things\nFootnotes instead of links on the slides -> For package websites\nMake Github website for the slides in pdf and html format\nlintr results in full screen with code and liner output\n2: Figures same size and columns appear after one another\n9: Make figure nice and appear after text\n10: Make figure nice and appear after text\n11: Not incremental yet\n14: Not incremental yet\n16: Not incremental bad and good examples\n17: Not incremental bad and good examples\n18: Not incremental yet\n22: Figure is too large\n27: Something is wrong here\n29: Styling\n52: Define next topic"
+    "text": "logo for the lecture series on the slides\nAdd link to slides on Github\nUse these nice boxes for tips and exclamation things\nMake Github website for the slides in pdf and html format"
   }
 ]
