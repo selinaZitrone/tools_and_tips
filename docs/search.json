@@ -151,14 +151,14 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#follow-coding-guidelines",
     "title": "What they forgot to teach you about R",
     "section": "Follow coding guidelines",
-    "text": "Follow coding guidelines\n\n“It’s harder to read code than to write it.”  — Joel Spolsky\n\n\nTry to write code that others (i.e. future you) can understand\nFollow standard style guides for readable and maintainable code\n\nI recommend tidyverse styleguide"
+    "text": "Follow coding guidelines\n\n“It’s harder to read code than to write it.”  — Joel Spolsky\n\n\nTry to write code that others (i.e. future you) can understand\nFollow standards for readable and maintainable code"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#standard-code-structure",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#standard-code-structure",
     "title": "What they forgot to teach you about R",
     "section": "Standard code structure",
-    "text": "Standard code structure\n\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology paper.\n# Authors: Selina Baldauf, Jane Doe, Jon Doe\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file <- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data <- read_csv(input_file)"
+    "text": "Standard code structure\n\n\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology paper.\n# Authors: Selina Baldauf, Jane Doe, Jon Doe\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file <- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data <- read_csv(input_file)"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#mark-sections",
@@ -200,7 +200,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#avoid-setwd",
     "title": "What they forgot to teach you about R",
     "section": "Avoid setwd()",
-    "text": "Avoid setwd()\n\nUse R Studio projects\n\nProject root is automatically the working directory\nGive your project to a friend at it will work on their machine as well\n\n\n\nInstead of\n\n# my unique path from hell with Windows delimiters, white space and special characters \nsetwd(\"C:\\Users\\Selina's PC\\My Projects\\Göttingen Temperatures\\temperatures\")\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")\n\n\n\nYou just need\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")"
+    "text": "Avoid setwd()\n\nUse R Studio projects\n\nProject root is automatically the working directory\nGive your project to a friend at it will work on their machine as well\n\n\n\nInstead of\n\n# my unique path from hell with white space and special characters \nsetwd(\"C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures\")\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")\n\n\n\nYou just need\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#avoid-setwd-1",
@@ -270,7 +270,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-5",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces before and after () in if or for\nSpaces around most operators (<-, ==, +, etc.)\nSpaces before pipes (%>%, |>) followed by new line\nSpaces before in ggplot + followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces before and after () in if or for\nSpaces around most operators (<-, ==, +, etc.)\nSpaces before pipes (%>%, |>) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---line-width",
@@ -291,14 +291,14 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---r-studio",
     "title": "What they forgot to teach you about R",
     "section": "Coding style helpers - R Studio",
-    "text": "Coding style helpers - R Studio\nR Studio has style diagnostics that tells you where something is wrong\n\nTools -> Gloabl Options -> Code -> Diagnostics"
+    "text": "Coding style helpers - R Studio\nR Studio has style diagnostics that tell you where something is wrong\n\nTools -> Gloabl Options -> Code -> Diagnostics"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---r-studio-1",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---r-studio-1",
     "title": "What they forgot to teach you about R",
     "section": "Coding style helpers - R Studio",
-    "text": "Coding style helpers - R Studio\nYou can show a margin line to help you keep 80 characters line width\n\nTools -> Gloabl Options -> Code -> Display"
+    "text": "Coding style helpers - R Studio\nYou can show a margin line to help you keep 80 characters line width\n\nTools -> Global Options -> Code -> Display"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---lintr",
