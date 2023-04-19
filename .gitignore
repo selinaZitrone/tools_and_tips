@@ -1,3 +1,4 @@
 *.html
 slides/*_files/
 .Rproj.user/
+/.quarto/

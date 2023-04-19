@@ -1,0 +1,23 @@
+- logo for the lecture series on the slides
+- Add link to slides on Github
+- Make project folder figures nicer
+- Filenames: Reference to Jenny Bryan
+- Good examples of project structures (template package etc.) -> Links
+- Use these nice boxes for tips and exclamation things
+- Footnotes instead of links on the slides -> For package websites
+- Make Github website for the slides in pdf and html format
+- lintr results in full screen with code and liner output
+
+
+- 2: Figures same size and columns appear after one another
+- 9: Make figure nice and appear after text
+- 10: Make figure nice and appear after text
+- 11: Not incremental yet
+- 14: Not incremental yet
+- 16: Not incremental bad and good examples
+- 17: Not incremental bad and good examples
+- 18: Not incremental yet
+- 22: Figure is too large
+- 27: Something is wrong here
+- 29: Styling
+- 52: Define next topic
