@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - "slides/*.pdf"
+
+website:
+  title: "Scientific workflows: Tools and Tips :hammer_and_wrench:"
+  description: "A lecture series by Selina Baldauf"
+
+  page-footer:
+    left: "The footer on the left"
+    right: "The footer on the right"
+
+  navbar:
+    # logo: "img/Rlogo.png"
+    pinned: true
+    right:
+      - text: Downloads
+        menu:
+          - text: Course material
+      - text: Sessions
+        menu:
+          - text: First session
+            href: slides/2023_04_20_what_they_forgot_to_teach_you.qmd
+      - icon: github
+        href: https://github.com/selinaZitrone/workshop_template
+
+
+format:
+  html:
+    embed-resources: true
+    theme:
+      light: [flatly, style/theme.scss]
+      dark: [darkly, style/theme.scss]
+    css: style/styles.css
+    toc: true
+    code-copy: true
+    code-overflow: wrap
+
+
+

@@ -1,0 +1,359 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Scientific workflows: Tools and Tips :hammer_and_wrench:",
+    "section": "",
+    "text": "This site is work in progres :construction_worker:"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#who-am-i",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#who-am-i",
+    "title": "What they forgot to teach you about R",
+    "section": "Who am I?",
+    "text": "Who am I?\n\nEcologist, PhD student for some years and now scientific programmer\n\n\n\n\n\n\n\nArtwork by Allsion Horst, CC BY 4.0"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#what-is-this-lecture-series",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#what-is-this-lecture-series",
+    "title": "What they forgot to teach you about R",
+    "section": "What is this lecture series?",
+    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nTopics range from R programming over notetaking, literature management tools and more\nFor topic suggestions send me an email\nIf you don’t want to miss a lecture\n\nCheck out the lecture website\nSubscribe to the mailing list\n\nSlides provided on Github"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#what-they-forgot-to-teach-you-about-r",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#what-they-forgot-to-teach-you-about-r",
+    "title": "What they forgot to teach you about R",
+    "section": "What they forgot to teach you about R",
+    "text": "What they forgot to teach you about R\nIt’s a book by J. Bryan and J. Hesters\n\nArtwork by Allsion Horst, CC BY 4.0"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#background",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#background",
+    "title": "What they forgot to teach you about R",
+    "section": "Background",
+    "text": "Background\n\nReproducibility 🔄\n\nCan someone else reproduce my results?\n\nReliability 🏋\n\nWill my code work in the future?\n\nReusability ⚙️\n\nCan someone else actually use my code?\n\n\n\nBasis: Follow best practices to write clean, clear and maintainable code."
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#chaotic-projects-and-workflows",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#chaotic-projects-and-workflows",
+    "title": "What they forgot to teach you about R",
+    "section": "Chaotic projects and workflows …",
+    "text": "Chaotic projects and workflows …\n… can make even small changes frustrating and difficult.\n\nArtwork by Allsion Horst, CC BY 4.0"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#clean-projects-and-workflows",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#clean-projects-and-workflows",
+    "title": "What they forgot to teach you about R",
+    "section": "Clean projects and workflows …",
+    "text": "Clean projects and workflows …\n… allow you and others to work productively.\n\nArtwork by Allsion Horst, CC BY 4.0"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#keep-your-files-togehter",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#keep-your-files-togehter",
+    "title": "What they forgot to teach you about R",
+    "section": "Keep your files togehter",
+    "text": "Keep your files togehter\n\n\n\nEverything in one project folder\nAdd a README file\n\nExplain content of the project, where and how to start, whom to ask questions, …\n\nSeparate folders for data/, documents/, analysis/, R/ etc.\nBest structure depends on your type of project"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#use-r-studio-projects",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#use-r-studio-projects",
+    "title": "What they forgot to teach you about R",
+    "section": "Use R Studio projects",
+    "text": "Use R Studio projects\nAlways make your project an R Studio Project (if possible)!\n\n\n\nAn R Studio Project is just a normal directory with an *.Rproj file\n\ndouble-click this file to open your project in R Studio\n\nAdvantages:\n\nEasy to navigate in R Studio\nProject root is the working directory\nOpen multiple projects in separate R Studio instances"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#create-an-r-studio-project",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#create-an-r-studio-project",
+    "title": "What they forgot to teach you about R",
+    "section": "Create an R Studio Project",
+    "text": "Create an R Studio Project\n\nFrom scratch:\n\n\nFile -> New Project -> New Directory -> New Project\nEnter a directory name (this will be the name of your project)\nChoose the directory where the project should be initiated\nCreate Project\n\n\nAssociate an existing folder with an R Studio Project:\n\n\nFile -> New Project -> Existing Directory\nChoose your project folder\nCreate Project"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#navigate-an-r-studio-project",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#navigate-an-r-studio-project",
+    "title": "What they forgot to teach you about R",
+    "section": "Navigate an R Studio Project",
+    "text": "Navigate an R Studio Project\nYou can use the Files pane in R Studio to interact with your project folder:\n\n\n\nNavigate and open files\nCreate files and folders\nRename and delete\n…"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#set-up-your-project",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#set-up-your-project",
+    "title": "What they forgot to teach you about R",
+    "section": "Set up your project",
+    "text": "Set up your project\nR Studio offers a lot of settings and options.\nSo have a ☕ and check out Tools -> Global Options and all the other buttons.\n\nR Studio cheat sheet that explains all the buttons\nUpdate R Studio from time to time to get new settings (Help -> Check for Updates)"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#set-up-your-project-1",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#set-up-your-project-1",
+    "title": "What they forgot to teach you about R",
+    "section": "Set up your project",
+    "text": "Set up your project\nR Studio offers a lot of settings and options.\n\n\nMost important setting:\n\nNever save or restore your workspace as .Rdata -> You always want to start working with a clean slate\n\nOther nice settings:\n\nCode display settings (Code -> Display), e.g. highlight colors or rainbow parentheses"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#name-your-files-properly",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#name-your-files-properly",
+    "title": "What they forgot to teach you about R",
+    "section": "Name your files properly",
+    "text": "Name your files properly\nYour collaborators and your future self will love you for this.\n\nPrinciples 1\nFile names should be\n\nMachine readable\nHuman readable\nWorking with default file ordering\n\n\nFrom this talk by J. Bryan"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#machine-readable-file-names",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#machine-readable-file-names",
+    "title": "What they forgot to teach you about R",
+    "section": "1. Machine readable file names",
+    "text": "1. Machine readable file names\nNames should allow for easy searching, grouping and extracting information from file names (if needed).\n\n\nNo whitespace & special characters\nSeparate metadata to work with regular expressions (e.g. _ to separate metadata and - to make it readable)\n\n\n\nBad examples ❌\n📄 2023-04-20 temperature göttingen.csv  📄 2023-04-20 rainfall göttingen.csv \nGood examples ✔️\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-20_rainfall_goettingen.csv"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#human-readable-file-names",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#human-readable-file-names",
+    "title": "What they forgot to teach you about R",
+    "section": "2. Human readable file names",
+    "text": "2. Human readable file names\nWhich file names would you like to read at 4 a.m. in the morning?\n\nFile names should reveal the file content\nUse separators to make it readable\n\n\nBad examples ❌\n📄 01preparedataforanalysis.R  📄 01firstscript.R \nGood examples ✔️\n📄 01_prepare-data-for-analysis.R  📄 01_lm-temperature-trend.R"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#default-ordering",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#default-ordering",
+    "title": "What they forgot to teach you about R",
+    "section": "3. Default ordering",
+    "text": "3. Default ordering\nIf you order your files by name, the ordering should make sense:\n\n(Almost) always put something numeric first\n\nLeft-padded numbers (01, 02, …)\nDates in YYYY-MM-DD format\n\n\n\nChronological order\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-21_temperature_goettingen.csv \nLogical order\n📄 01_prepare-data.R  📄 02_lm-temperature-trend.R  📄 helper01_load-data.R"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#follow-coding-guidelines",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#follow-coding-guidelines",
+    "title": "What they forgot to teach you about R",
+    "section": "Follow coding guidelines",
+    "text": "Follow coding guidelines\n\n“It’s harder to read code than to write it.”  — Joel Spolsky\n\n\nTry to write code that others (i.e. future you) can understand\nFollow standard style guides for readable and maintainable code\n\nI recommend tidyverse styleguide"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#standard-code-structure",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#standard-code-structure",
+    "title": "What they forgot to teach you about R",
+    "section": "Standard code structure",
+    "text": "Standard code structure\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology paper.\n# Authors: Selina Baldauf, Jane Doe, Jon Doe\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file <- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data <- read_csv(input_file)"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#mark-sections",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#mark-sections",
+    "title": "What they forgot to teach you about R",
+    "section": "Mark sections",
+    "text": "Mark sections\n\nUse comments to break up your file into sections\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data <- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift\nNavigate sections in the file outline"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow",
+    "title": "What they forgot to teach you about R",
+    "section": "Split your workflow",
+    "text": "Split your workflow\n\nDon’t put all analysis into one long file\n\nWrite multiple files that can be called sequentially\n\nStore results as .Rdata if you don’t want always run the script\n\nWrite functions that can be called in other scripts\n\nUse the source() function to source these files\nHave main workflow files that manage your workflow"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow-1",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow-1",
+    "title": "What they forgot to teach you about R",
+    "section": "Split your workflow",
+    "text": "Split your workflow\n01_prepare-data.R\n\n# Purpose: Calculate daily mean temperature and store in data/\n# Authors: Selina Baldauf\nlibrary(data.table)\n\n# read raw data\ntemperatures <- data.table::fread(\"data/huge_temperature_dataset.csv\")\n\n# calculate daily mean temperature\ntemperature_mean <- temperatures[, mean := mean(temperature), by = c(\"city\", \"date\")]\n\n# save as .Rdata file\nsave(temperature_mean, file = \"data/temperature_mean.Rdata\")\n\n\n02_linear-model-analysis.R\n\n# Purpose: Conduct linear model analysis of daily mean temperature in cities\n# Authors: Selina Baldauf\n\nload(file = \"data/temperature_mean.Rdata\")\n\n# linear model\ntemp_lm <- lm(temperature ~ date, data = temperature_mean)"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow-2",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow-2",
+    "title": "What they forgot to teach you about R",
+    "section": "Split your workflow",
+    "text": "Split your workflow\nR/helper01_prepare-data.R\n\n# Purpose: Function to read and prepare data for analysis\n# Authors: Selina Baldauf\nprepare_data <- function(path) {\n  the_data <- readr::read_csv(file = path)\n  the_data <- the_data %>%\n    group_by(city) %>%\n    summarize(temperature = mean(temperature))\n}\n\n\nanalysis/01_linear-model-analysis.R\n\n# Purpose: Conduct linear model analysis of daily mean temperature in cities\n# Authors: Selina Baldauf\n\ninput_file <- \"data/huge_temperature_dataset.csv\"\n\nsource(\"R/helper01_prepare-data.R\")\n\n# read and prepare the data\ntemperature <- prepare_data(path = input_file)"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#use-save-paths",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#use-save-paths",
+    "title": "What they forgot to teach you about R",
+    "section": "Use save paths",
+    "text": "Use save paths\nTo read and write files, you need to tell R where to find them.\n\nCommon workflow: set working directory with setwd(), then read files from there. But to this Jenny Bryan said:\n\n\n\nIf the first line of your R script is  setwd(\"C:\\Users\\jenny\\path\\that\\only\\I\\have\")  I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.\n\n\n\nWhy?\nThis is 100% not reproducible: Your computer at exactly this time is (probably) the only one in the world that has this working directory\n\nAvoid setwd() if it is possible in any way!"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#avoid-setwd",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#avoid-setwd",
+    "title": "What they forgot to teach you about R",
+    "section": "Avoid setwd()",
+    "text": "Avoid setwd()\n\nUse R Studio projects\n\nProject root is automatically the working directory\nGive your project to a friend at it will work on their machine as well\n\n\n\nInstead of\n\n# my unique path from hell with Windows delimiters, white space and special characters \nsetwd(\"C:\\Users\\Selina's PC\\My Projects\\Göttingen Temperatures\\temperatures\")\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")\n\n\n\nYou just need\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#avoid-setwd-1",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#avoid-setwd-1",
+    "title": "What they forgot to teach you about R",
+    "section": "Avoid setwd()",
+    "text": "Avoid setwd()\nUse the {here} package for reproducible paths\n\nDefine the location of your scripts relative to a project root\nhere will automatically determine the project root based on this\n\nhere will also recognize an .Rproj file as a project root\n\nBuild your paths with the here() function relative to the project root\n\n\n\n# Check where my here project root is\nhere::dr_here()\n\n# set a path relative to the project root and read file\nreadr::read_csv(here::here(\"data/2023-04-20_temperature_goettingen.csv\"))"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#write-beautiful-code",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#write-beautiful-code",
+    "title": "What they forgot to teach you about R",
+    "section": "Write beautiful code",
+    "text": "Write beautiful code\n\nArtwork by Allsion Horst, CC BY 4.0\nEvery programming language has one/many styleguides\n\nFor R: tidyverse style guide\n\nStyle guides define\n\nFile names and code organization\nSyntax standards (naming convention, spacing, …)\n…"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---object-names",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---object-names",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style - Object names",
+    "text": "Coding style - Object names\n\nVariables and function names should only have lowercase letters, numbers, and _\nUse snake_case for longer variable names\nTry to use concise but meaningful names\n\n\n\n# Good\nday_one\nday_1\n\n# Bad\nDayOne\ndayone\nfirst_day_of_the_month\ndm1"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---object-names-1",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---object-names-1",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style - Object names",
+    "text": "Coding style - Object names\n\n\nVariables and function names should only have lowercase letters, numbers, and _\nUse snake_case for longer variable names\nTry to use concise but meaningful names\nAvoid re-using names of common functions and variables\n\n\n\n\n# Bad\nT <- data.frame(temperature = 1:10)\nc <- 10\ndata_frame <- data.frame(temperature = 1:10)\nsum <- function(x) mean(x)"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style - Spacing",
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\n\n\n\n# Good\nx[, 1]\n\n# Bad\nx[ , 1]\nx[,1]\nx[ ,1]"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-1",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-1",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style - Spacing",
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\n\n\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean (x, na.rm = TRUE)\nmean ( x, na.rm = TRUE )"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-2",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-2",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style - Spacing",
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces before and after () in if or for\n\n\n\n# Good\nif (debug) {\n  show(x)\n}\n\n# Bad\nif(debug){\n  show(x)\n}"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-3",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-3",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style - Spacing",
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces before and after () in if or for\nSpaces around most operators (<-, ==, +, etc.)\n\n\n\n# Good\nheight <- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight<-feet*12+inches\nmean(x, na.rm=TRUE)"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-4",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-4",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style - Spacing",
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces before and after () in if or for\nSpaces around most operators (<-, ==, +, etc.)\nSpaces before pipes (%>%, |>) followed by new line\n\n\n\n# Good\niris %>%\n  group_by(Species) %>%\n  summarize_if(is.numeric, mean) %>%\n  ungroup()\n\n# Bad\niris %>% group_by(Species) %>% summarize_all(mean) %>% ungroup()"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-5",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-5",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style - Spacing",
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces before and after () in if or for\nSpaces around most operators (<-, ==, +, etc.)\nSpaces before pipes (%>%, |>) followed by new line\nSpaces before in ggplot + followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---line-width",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---line-width",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style - Line width",
+    "text": "Coding style - Line width\nTry to limit your line width to 80 characters.\n\nYou don’t want to scroll to the right to read all code\n80 characters can be displayed on most displays and programs\nSplit your code into multiple lines if it is too long\n\n\n\n# Bad\niris %>%\n  group_by(Species) %>%\n  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))\n\n# Good\niris %>%\n  group_by(Species) %>%\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    Species = n_distinct(Species)\n  )"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style",
+    "text": "Coding style\nDo I really have to remember all of this?\n\nLuckily, no! R and R Studio provide some nice helpers"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---r-studio",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---r-studio",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style helpers - R Studio",
+    "text": "Coding style helpers - R Studio\nR Studio has style diagnostics that tells you where something is wrong\n\nTools -> Gloabl Options -> Code -> Diagnostics"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---r-studio-1",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---r-studio-1",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style helpers - R Studio",
+    "text": "Coding style helpers - R Studio\nYou can show a margin line to help you keep 80 characters line width\n\nTools -> Gloabl Options -> Code -> Display"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---lintr",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---lintr",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style helpers - {lintr}",
+    "text": "Coding style helpers - {lintr}\nThe lintr package analyses your code files or entire project and tells you what to fix.\n\n\n# install the package before you can use it\ninstall.packages(\"lintr\")\n# lint specific file\nlintr::lint(filename = \"analysis/01_prepare_data.R\")\n# lint a directory (by default the whole project)\nlintr::lint_dir()"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---lintr-1",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---lintr-1",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style helpers - {lintr}",
+    "text": "Coding style helpers - {lintr}"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---styler",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---styler",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style helpers - {styler}",
+    "text": "Coding style helpers - {styler}\nThe styler package package automatically styles your files and projects according to the tidyverse style guide.\n\n\n# install from CRAN\ninstall.packages(\"styler\")\n\n\nUse the R Studio Addins for styler:"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---styler-1",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---styler-1",
+    "title": "What they forgot to teach you about R",
+    "section": "Coding style helpers - {styler}",
+    "text": "Coding style helpers - {styler}\n\nPro-Tip: Add a custom keyboard short cut to style your files\n\nTools -> Modify Keyboard Shortcuts"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#manage-dependencies-with-renv",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#manage-dependencies-with-renv",
+    "title": "What they forgot to teach you about R",
+    "section": "Manage dependencies with {renv}",
+    "text": "Manage dependencies with {renv}\n\n\nIdea: Have a project-local environment with all packages needed by the project\n\nKeep log of the packages and versions you use\nRestore the local project library on other machines\n\n\n\n\n\n\n\n\n\n\nWhy this is useful?\n\nCode will still work even if packages upgrade\nCollaborators can recreate your local project library with one function\nExplicit dependency file states all dependencies\n\n\n\nCheck out the renv website for more information"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#manage-dependencies-with-renv-1",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#manage-dependencies-with-renv-1",
+    "title": "What they forgot to teach you about R",
+    "section": "Manage dependencies with {renv}",
+    "text": "Manage dependencies with {renv}\n\n# Get started\ninstall.packages(\"renv\")\n\n\nVery simple to use and integrate into your project workflow:\n\n# Step 1: initialize a project level R library\nrenv::init()\n# Step 2: save the current status of your library to a lock file\nrenv::snapshot()\n# Step 3: restore state of your project from renv.lock\nrenv::restore()\n\n\nYour collaborators only need to install the renv package, then they can also call renv::restore()\nWhen you create an R Studio project there is a check mark to initialize with renv"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#take-aways",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#take-aways",
+    "title": "What they forgot to teach you about R",
+    "section": "Take aways",
+    "text": "Take aways\nThere are a lot of things that require minimal effort and that you can start to implement into your workflow NOW\n\nUse R Studio projects -> Avoid setwd()!\nKeep your projects clean\n\n\nSort your files into folders\nGive your files meaningful names\n\n\nUse styler to style your code automatically\nUse lintr and let R analyse your project\nConsider renv for project local environments"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#clean-projects-and-workflows-1",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#clean-projects-and-workflows-1",
+    "title": "What they forgot to teach you about R",
+    "section": "Clean projects and workflows…",
+    "text": "Clean projects and workflows…\n\n\n… increase\n\n\nReproducibility 🔄\nReliability 🏋\nReusability ⚙️\n\n\n\n\n\n\nArtwork by Allsion Horst, CC BY 4.0"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#outlook",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#outlook",
+    "title": "What they forgot to teach you about R",
+    "section": "Outlook",
+    "text": "Outlook\nOf course there is much more:\n\nVersion control with Git\nUsing R packages to build a research compendium\nDocker containers for full reproducibility\n…\n\n\nBut this is for another time"
+  },
+  {
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#next-lecture",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#next-lecture",
+    "title": "What they forgot to teach you about R",
+    "section": "Next lecture",
+    "text": "Next lecture\nGit and Github / Research compendia with R 👷\nSome short description\n\n📅 11th May 🕓 4-5 p.m. 📍 Webex\n\nFor topic suggestions and/or feedback send me an email\nSlides provided on Github\nSubscribe to the mailing list"
+  },
+  {
+    "objectID": "slides/zzz_template.html#introduction-of-this-lecture-series",
+    "href": "slides/zzz_template.html#introduction-of-this-lecture-series",
+    "title": "The title of the current lecture",
+    "section": "Introduction of this lecture series",
+    "text": "Introduction of this lecture series\n\n\nMe: Scientific programmer\nThis lecture series: Idea"
+  },
+  {
+    "objectID": "todo_list.html",
+    "href": "todo_list.html",
+    "title": "Scientific workflows: Tools and Tips :hammer_and_wrench:",
+    "section": "",
+    "text": "logo for the lecture series on the slides\nAdd link to slides on Github\nMake project folder figures nicer\nFilenames: Reference to Jenny Bryan\nGood examples of project structures (template package etc.) -> Links\nUse these nice boxes for tips and exclamation things\nFootnotes instead of links on the slides -> For package websites\nMake Github website for the slides in pdf and html format\nlintr results in full screen with code and liner output\n2: Figures same size and columns appear after one another\n9: Make figure nice and appear after text\n10: Make figure nice and appear after text\n11: Not incremental yet\n14: Not incremental yet\n16: Not incremental bad and good examples\n17: Not incremental bad and good examples\n18: Not incremental yet\n22: Figure is too large\n27: Something is wrong here\n29: Styling\n52: Define next topic"
+  }
+]
