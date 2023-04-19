@@ -1,1 +1,15 @@
-This site is work in progres :construction_worker:
+🚧🚧🚧 This site is still under construction 🚧🚧🚧
+
+Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You'll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.
+
+📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex
+
+If you don't want to miss a lecture:<br>
+Check out the [official lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html) and [subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+For any questions, feedback or topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+# Lecture topics
+
+- 2023-04-20: [What they forgot to teach you about R](sessions/01_what_they_forgot.html)
+

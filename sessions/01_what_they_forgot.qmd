@@ -1,0 +1,34 @@
+---
+title: "What they forgot to teach you about R"
+subtitle: "2023-04-20"
+callout-appearance: default
+---
+
+Do you use R in your daily work and research but you still feel your workflow isn't as smooth as it could be? In this lecture, I will share with you my best tips from 8 years experience with R. We will cover those concepts and tricks that are often overlooked but can make a big difference. Whether you're a beginner or more experienced R programmer, this lecture will enhance your workflow and help you write clean, reproducible and reusable code in R.
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2023_04_20_what_they_forgot_to_teach_you.html"></iframe>
+```
+
+[Slides in full screen](../slides/2023_04_20_what_they_forgot_to_teach_you.html){target="_blank"}
+
+<a href="../slides/2023_04_20_what_they_forgot_to_teach_you.pdf" download>Download PDF slides</a>
+
+## Summary
+
+A summary of the topic (Coming soon...)
+
+## Exercises
+
+
+## Further links
+
+- [What they forgot to teach you about R book](https://rstats.wtf/) by Jenny Bryan and Jim Hester
+- [Blogpost](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) by Jenny Bryan on good project-oriented workflows
+- [R best practice blogpost](https://kdestasio.github.io/post/r_best_practices/) by Krista L. DeStasio
+- [Book about coding style for R](https://style.tidyverse.org/): The tidyverse style guide
+- [The Turing way book](https://the-turing-way.netlify.app/index.html) General concepts and things to think about regarding reproducible research
+
+- [renv package website](https://rstudio.github.io/renv/articles/renv.html)
+- [styler package website](https://styler.r-lib.org/)
+- [lintr package website](https://lintr.r-lib.org/)

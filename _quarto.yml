@@ -3,9 +3,10 @@ project:
   output-dir: docs
   resources:
     - "slides/*.pdf"
+    - "slides/*.html"
 
 website:
-  title: "Scientific workflows: Tools and Tips :hammer_and_wrench:"
+  title: "Scientific workflows: Tools and Tips 🛠️"
   description: "A lecture series by Selina Baldauf"
 
   page-footer:
@@ -13,18 +14,14 @@ website:
     right: "The footer on the right"
 
   navbar:
-    # logo: "img/Rlogo.png"
     pinned: true
     right:
-      - text: Downloads
-        menu:
-          - text: Course material
       - text: Sessions
         menu:
-          - text: First session
-            href: slides/2023_04_20_what_they_forgot_to_teach_you.qmd
+          - text: 01 - What they forgot to teach you about R
+            href: sessions/01_what_they_forgot.qmd
       - icon: github
-        href: https://github.com/selinaZitrone/workshop_template
+        href: https://github.com/selinaZitrone/lecture_series
 
 
 format:
@@ -33,7 +30,7 @@ format:
     theme:
       light: [flatly, style/theme.scss]
       dark: [darkly, style/theme.scss]
-    css: style/styles.css
+    css: style/style.css
     toc: true
     code-copy: true
     code-overflow: wrap

@@ -8,6 +8,7 @@ format:
     highlight-style: printing
     mainfont: Cabinet Grotesk
     slide-number: true
+    self-contained: true
     show-slide-number: all
     incremental: true
     code-line-numbers: false
@@ -27,17 +28,20 @@ from: markdown+emoji
 
 ::: {.columns}
 
+
 ::: {.column width="50%"}
+:::{.fragement}
 ![Artwork by [Allsion Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/R_rain.gif){fig-alt="Animated gif of the R logo under a dark rain cloud, with pelting rain coming down."}
+:::
 :::
 
 ::: {.column width="50%"}
+::: {.fragment}
 
 ![](images/2023_04_20_what_they_forgot_to_teach_you/R_love.gif){fig-alt="Animated gif of the R logo with magenta and red hearts moving upward in a loop to the left of the \"R.\""}
 
 :::
-
-
+:::
 :::
 
 ## What is this lecture series?
@@ -53,7 +57,7 @@ from: markdown+emoji
 - If you don't want to miss a lecture
   - Check out the [lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html)
   - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
-- Slides provided on Github
+- Slides provided [on Github](https://selinazitrone.github.io/lecture_series/)
 
 ## What they forgot to teach you about R
 
@@ -105,10 +109,10 @@ Project setup and structure
 :::
 
 ::: {.column width="35%"}
-
+::: {.fragment}
 
 ![](images/2023_04_20_what_they_forgot_to_teach_you/04_folder_structures.png){fig-align="center"}
-
+:::
 <!-- ``` -->
 <!-- exampleProject -->
 <!-- | -->
@@ -149,32 +153,18 @@ Project setup and structure
 
 ::: {.column width="35%"}
 
+::: {.fragment}
 
 ![](images/2023_04_20_what_they_forgot_to_teach_you/04_folder_structures_rstudio.png)
-
-<!-- ``` -->
-<!-- exampleProject -->
-<!-- | -->
-<!-- |- data -->
-<!-- |   |-data-raw/ -->
-<!-- | -->
-<!-- |- documents    -->
-<!-- |   |- notes    -->
-<!-- |   |- reports -->
-<!-- | -->
-<!-- |- analysis   -->
-<!-- |   |- 01_clean_data.R -->
-<!-- |   |- 02_PCA.R -->
-<!-- | -->
-<!-- |- README.md -->
-<!-- ``` -->
 :::
-
+:::
 :::
 
 ## Create an R Studio Project
 
 . . .
+
+::: {.fragment}
 
 ### From scratch:
 
@@ -186,17 +176,20 @@ Project setup and structure
 4. `Create Project`
 
 :::
+:::
 
-. . .
+::: {.fragment}
 
 ### Associate an existing folder with an R Studio Project:
 
 ::: {.nonincremental}
 
+
 1. `File -> New Project -> Existing Directory`
 2. Choose your project folder
 3. `Create Project`
 
+:::
 :::
 
 ## Navigate an R Studio Project
@@ -216,12 +209,17 @@ You can use the `Files` pane in R Studio to interact with your project folder:
 
 ::: {.column width="50%"}
 
+::: {.fragment}
+
 ![](images/2023_04_20_what_they_forgot_to_teach_you/06_RStudio_project_navigation.png)
+:::
 :::
 
 :::
 
 ## Set up your project
+
+. . .
 
 R Studio offers a lot of settings and options. 
 
@@ -242,19 +240,22 @@ Most important setting:
 
 - Never save or restore your workspace as `.Rdata` -> You always want to start working with a clean slate
 
+:::
+
+::: {.column width="35%"}
+
+::: {.fragment}
+![](images/2023_04_20_what_they_forgot_to_teach_you/15_settings_workspace.png)
+:::
+:::
+:::
+
+. . .
 
 Other nice settings:
 
 - Code display settings (`Code -> Display`), e.g. highlight colors or rainbow parentheses
 
-:::
-
-::: {.column width="35%"}
-
-![](images/2023_04_20_what_they_forgot_to_teach_you/15_settings_workspace.png)
-:::
-
-:::
 
 ## Name your files properly
 
@@ -289,12 +290,14 @@ from file names (if needed).
 :page_facing_up: `2023-04-20 temperature göttingen.csv ` <br>
 :page_facing_up: `2023-04-20 rainfall göttingen.csv ` <br>
 
-. . .
+::: {.fragment}
 
 #### Good examples :heavy_check_mark: 
 
 :page_facing_up: `2023-04-20_temperature_goettingen.csv ` <br>
 :page_facing_up: `2023-04-20_rainfall_goettingen.csv ` <br>
+
+:::
 
 ## 2. Human readable file names
 
@@ -310,12 +313,14 @@ Which file names would you like to read at 4 a.m. in the morning?
 :page_facing_up: `01preparedataforanalysis.R` <br>
 :page_facing_up: `01firstscript.R` <br>
 
-. . .
+::: {.fragment}
 
 #### Good examples :heavy_check_mark: 
 
 :page_facing_up: `01_prepare-data-for-analysis.R` <br>
 :page_facing_up: `01_lm-temperature-trend.R` <br>
+
+:::
 
 ## 3. Default ordering
 
@@ -332,11 +337,15 @@ If you order your files by name, the ordering should make sense:
 :page_facing_up: `2023-04-20_temperature_goettingen.csv ` <br>
 :page_facing_up: `2023-04-21_temperature_goettingen.csv ` <br>
 
+:::: {.fragment}
+
 #### Logical order
 
 :page_facing_up: `01_prepare-data.R` <br>
 :page_facing_up: `02_lm-temperature-trend.R` <br>
 :page_facing_up: `helper01_load-data.R` <br>
+
+:::
 
 # Let's start coding
 
@@ -354,17 +363,18 @@ If you order your files by name, the ordering should make sense:
 ::: {.columns}
 
 ::: {.column width="50%"}
-
+::: {.nonincremental}
 
 1. General comment with purpose of the script, author, ...
 2. `library()` calls on top
 3. Set default variables and global options
 4. Source additional code
 5. Write the actual code, starting with loading all data files
-
+:::
 :::
 
 ::: {.column width="50%"}
+
 
 ```{r example-structure-1}
 # This code replicates figure 2 from the
@@ -600,8 +610,6 @@ dm1
 
 :::
 
-. . .
-
 ```{r object-names}
 # Bad
 T <- data.frame(temperature = 1:10)
@@ -611,6 +619,8 @@ sum <- function(x) mean(x)
 ```
 
 ## Coding style - Spacing
+
+. . .
 
 ::: {.nonincremental}
 
@@ -963,17 +973,19 @@ But this is for another time
 
 ## Next lecture
 
-Git and Github / Research compendia with R :construction_worker:
+. . .
 
-Some short description
+#### Package your research in an R :package:
+
+A research compendium is a **collection of all the digital parts of your research projects** (data, code, documents). R packages have a similar structure and therefore can be used to publish a fully reproducible version of your project.
+
+[Paper: Packaging data analytical work reproducibly using R (and friends) by Ben Marwick](https://peerj.com/preprints/3192v2/)
 
 . . .
 
 :date: 11th May :clock4: 4-5 p.m. :round_pushpin: Webex
 
 - For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
-
-- Slides provided on Github
 
 - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
 
