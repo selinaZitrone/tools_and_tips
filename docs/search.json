@@ -67,21 +67,14 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#background",
     "title": "What they forgot to teach you about R",
     "section": "Background",
-    "text": "Background\n\nReproducibility 🔄\n\nCan someone else reproduce my results?\n\nReliability 🏋\n\nWill my code work in the future?\n\nReusability ⚙️\n\nCan someone else actually use my code?\n\n\n\nBasis: Follow best practices to write clean, clear and maintainable code."
-  },
-  {
-    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#keep-your-files-together",
-    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#keep-your-files-together",
-    "title": "What they forgot to teach you about R",
-    "section": "Keep your files together",
-    "text": "Keep your files together\n\n\n\nEverything in one project folder\nAdd a README file\n\nExplain content of the project, where and how to start, whom to ask questions, …\n\nSeparate folders for data/, documents/, analysis/, R/ etc.\nBest structure depends on your type of project"
+    "text": "Background\n\nReproducibility 🔄\n\nCan someone else reproduce my results?\n\nReliability 🏋\n\nWill my code work in the future?\n\nReusability ⚙️\n\nCan someone else actually use my code?\n\n\n\nToday: Talk best practice rules to write clean, clear and maintainable code.\nIn other words: How to clean the kitchen?"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#use-r-studio-projects",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#use-r-studio-projects",
     "title": "What they forgot to teach you about R",
     "section": "Use R Studio projects",
-    "text": "Use R Studio projects\nAlways make your project an R Studio Project (if possible)!\n\n\n\nAn R Studio Project is just a normal directory with an *.Rproj file\n\ndouble-click this file to open your project in R Studio\n\nAdvantages:\n\nEasy to navigate in R Studio\nProject root is the working directory\nOpen multiple projects in separate R Studio instances"
+    "text": "Use R Studio projects\nAlways make your project an R Studio Project (if possible)!\n\n\n\n\nKeep your files together\nAn R Studio Project is just a normal directory with an *.Rproj file\n\ndouble-click this file to open your project in R Studio\n\nAdvantages:\n\nEasy to navigate in R Studio\nProject root is the working directory\nOpen multiple projects in separate R Studio instances"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#create-an-r-studio-project",
@@ -109,7 +102,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#set-up-your-project-1",
     "title": "What they forgot to teach you about R",
     "section": "Set up your project",
-    "text": "Set up your project\nR Studio offers a lot of settings and options.\n\n\nMost important setting:\n\nNever save or restore your workspace as .Rdata -> You always want to start working with a clean slate"
+    "text": "Set up your project\nR Studio offers a lot of settings and options.\n\n\nMost important setting for reproducibility:\n\nNever save or restore your work space as .Rdata -> You always want to start working with a clean slate"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#name-your-files-properly",
@@ -123,7 +116,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#machine-readable-file-names",
     "title": "What they forgot to teach you about R",
     "section": "1. Machine readable file names",
-    "text": "1. Machine readable file names\nNames should allow for easy searching, grouping and extracting information from file names (if needed).\n\n\nNo whitespace & special characters\nSeparate metadata to work with regular expressions (e.g. _ to separate metadata and - to make it readable)\n\n\n\nBad examples ❌\n📄 2023-04-20 temperature göttingen.csv  📄 2023-04-20 rainfall göttingen.csv \n\n\nGood examples ✔️\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-20_rainfall_goettingen.csv"
+    "text": "1. Machine readable file names\nNames should allow for easy searching, grouping and extracting information from file names.\n\n\nNo space & special characters\n\n\n\nBad examples ❌\n📄 2023-04-20 temperature göttingen.csv  📄 2023-04-20 rainfall göttingen.csv \n\n\nGood examples ✔️\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-20_rainfall_goettingen.csv"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#human-readable-file-names",
@@ -144,7 +137,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#write-beautiful-code",
     "title": "What they forgot to teach you about R",
     "section": "Write beautiful code",
-    "text": "Write beautiful code\n\nArtwork by Allsion Horst, CC BY 4.0\n“It’s harder to read code than to write it.”  — Joel Spolsky\n\n\nTry to write code that others (i.e. future you) can understand\nFollow standards for readable and maintainable code\n\nFor R: tidyverse style guide defines code organization, syntax standards, …"
+    "text": "Write beautiful code\n\nArtwork by Allsion Horst, CC BY 4.0\nTry to write code that others (i.e. future you) can understand\nFollow standards for readable and maintainable code\n\nFor R: tidyverse style guide defines code organization, syntax standards, …"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#standard-code-structure",
@@ -161,25 +154,11 @@
     "text": "Mark sections\n\nUse comments to break up your file into sections\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data <- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift\nNavigate sections in the file outline"
   },
   {
-    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow",
-    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow",
+    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#modularize-your-code",
+    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#modularize-your-code",
     "title": "What they forgot to teach you about R",
-    "section": "Split your workflow",
-    "text": "Split your workflow\n\nDon’t put all analysis into one long file\n\nWrite multiple files that can be called sequentially\nWrite functions that can be called in other scripts\n\nUse the source() function to source these files\nHave main workflow files that manage your workflow"
-  },
-  {
-    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow-1",
-    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow-1",
-    "title": "What they forgot to teach you about R",
-    "section": "Split your workflow",
-    "text": "Split your workflow\n01_prepare-data.R: A data preparation workflow that takes 20 mins to run\n\n# Purpose: Calculate daily mean temperature and store in data/\n# Authors: Selina Baldauf\nlibrary(data.table)\n\n# read raw data\ntemperatures <- data.table::fread(\"data/huge_temperature_dataset.csv\")\n\n# calculate daily mean temperature\ntemperature_mean <- temperatures[, mean := mean(temperature), by = c(\"city\", \"date\")]\n\n# save as .Rdata file\nsave(temperature_mean, file = \"data/temperature_mean.Rdata\")\n\n\n02_linear-model-analysis.R\n\n# Purpose: Conduct linear model analysis of daily mean temperature in cities\n# Authors: Selina Baldauf\n\nload(file = \"data/temperature_mean.Rdata\")\n\n# linear model\ntemp_lm <- lm(temperature ~ date, data = temperature_mean)"
-  },
-  {
-    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow-2",
-    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#split-your-workflow-2",
-    "title": "What they forgot to teach you about R",
-    "section": "Split your workflow",
-    "text": "Split your workflow\nR/helper01_prepare-data.R\n\n# Purpose: Function to read and prepare data for analysis\n# Authors: Selina Baldauf\nprepare_data <- function(path) {\n  the_data <- readr::read_csv(file = path)\n  the_data <- the_data %>%\n    group_by(city) %>%\n    summarize(temperature = mean(temperature))\n}\n\n\nanalysis/01_linear-model-analysis.R\n\n# Purpose: Conduct linear model analysis of daily mean temperature in cities\n# Authors: Selina Baldauf\n\ninput_file <- \"data/huge_temperature_dataset.csv\"\n\nsource(\"R/helper01_prepare-data.R\")\n\n# read and prepare the data\ntemperature <- prepare_data(path = input_file)"
+    "section": "Modularize your Code",
+    "text": "Modularize your Code\n\nDon’t put all your code into one long file (hard to maintain)\n\nWrite multiple files that can be called sequentially\n\nE.g. 01_prepare-data.R, 02_lm-temperature-trend.R, 03_plot-temperture-trends.R\n\nWrite functions that can be called in other scripts\n\nUse the source() function to source these files\nHave one main workflow script that calls these functions sequentially"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#use-save-paths",
@@ -200,14 +179,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---object-names",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Object names",
-    "text": "Coding style - Object names\n\nVariables and function names should only have lowercase letters, numbers, and _\nUse snake_case for longer variable names\nTry to use concise but meaningful names\n\n\n\n# Good\nday_one\nday_1\n\n# Bad\nDayOne\ndayone\nfirst_day_of_the_month\ndm1"
-  },
-  {
-    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---object-names-1",
-    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---object-names-1",
-    "title": "What they forgot to teach you about R",
-    "section": "Coding style - Object names",
-    "text": "Coding style - Object names\n\n\nVariables and function names should only have lowercase letters, numbers, and _\nUse snake_case for longer variable names\nTry to use concise but meaningful names\nAvoid re-using names of common functions and variables\n\n\n\n# Bad\nT <- data.frame(temperature = 1:10)\nc <- 10\ndata_frame <- data.frame(temperature = 1:10)\nsum <- function(x) mean(x)"
+    "text": "Coding style - Object names\n\n\nVariables and function names should only have lowercase letters, numbers, and _\nUse snake_case for longer variable names\nTry to use concise but meaningful names\n\n\n\n\n# Good\nday_one\nday_1\n\n# Bad\nDayOne\ndayone\nfirst_day_of_the_month\ndm1"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing",
@@ -228,35 +200,28 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-2",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces before and after () in if or for\n\n\n\n# Good\nif (debug) {\n  show(x)\n}\n\n# Bad\nif(debug){\n  show(x)\n}"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (<-, ==, +, etc.)\n\n\n\n# Good\nheight <- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight<-feet*12+inches\nmean(x, na.rm=TRUE)"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-3",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-3",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces before and after () in if or for\nSpaces around most operators (<-, ==, +, etc.)\n\n\n\n# Good\nheight <- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight<-feet*12+inches\nmean(x, na.rm=TRUE)"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (<-, ==, +, etc.)\nSpaces before pipes (%>%, |>) followed by new line\n\n\n\n# Good\niris %>%\n  group_by(Species) %>%\n  summarize_if(is.numeric, mean) %>%\n  ungroup()\n\n# Bad\niris %>% group_by(Species) %>% summarize_all(mean) %>% ungroup()"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-4",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-4",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces before and after () in if or for\nSpaces around most operators (<-, ==, +, etc.)\nSpaces before pipes (%>%, |>) followed by new line\n\n\n\n# Good\niris %>%\n  group_by(Species) %>%\n  summarize_if(is.numeric, mean) %>%\n  ungroup()\n\n# Bad\niris %>% group_by(Species) %>% summarize_all(mean) %>% ungroup()"
-  },
-  {
-    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-5",
-    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-5",
-    "title": "What they forgot to teach you about R",
-    "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces before and after () in if or for\nSpaces around most operators (<-, ==, +, etc.)\nSpaces before pipes (%>%, |>) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (<-, ==, +, etc.)\nSpaces before pipes (%>%, |>) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---line-width",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---line-width",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Line width",
-    "text": "Coding style - Line width\nTry to limit your line width to 80 characters.\n\nYou don’t want to scroll to the right to read all code\n80 characters can be displayed on most displays and programs\nSplit your code into multiple lines if it is too long\n\n\n\n# Bad\niris %>%\n  group_by(Species) %>%\n  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))\n\n# Good\niris %>%\n  group_by(Species) %>%\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    Species = n_distinct(Species)\n  )"
+    "text": "Coding style - Line width\nTry to limit your line width to 80 characters.\n\nYou don’t want to scroll to the right to read all code\n80 characters can be displayed on most displays and programs\nSplit your code into multiple lines if it is too long\n\nSee this grey vertical line in R Studio?\n\n\n\n\n# Bad\niris %>%\n  group_by(Species) %>%\n  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))\n\n# Good\niris %>%\n  group_by(Species) %>%\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    Species = n_distinct(Species)\n  )"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style",
@@ -271,13 +236,6 @@
     "title": "What they forgot to teach you about R",
     "section": "Coding style helpers - R Studio",
     "text": "Coding style helpers - R Studio\nR Studio has style diagnostics that tell you where something is wrong\n\nTools -> Gloabl Options -> Code -> Diagnostics"
-  },
-  {
-    "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---r-studio-1",
-    "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---r-studio-1",
-    "title": "What they forgot to teach you about R",
-    "section": "Coding style helpers - R Studio",
-    "text": "Coding style helpers - R Studio\nYou can show a margin line to help you keep 80 characters line width\n\nTools -> Global Options -> Code -> Display"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style-helpers---lintr",
