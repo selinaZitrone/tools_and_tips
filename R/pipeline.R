@@ -15,5 +15,5 @@ lapply(slides_html, function(x) {
 # commit and push
 git2r::add(path = here::here("docs"))
 git2r::commit(message = "re-render site")
-git2r::push(credentials = git2r::cred_token())
+git2r::push(credentials = git2r::ssh_path())
 
