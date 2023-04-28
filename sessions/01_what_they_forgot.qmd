@@ -4,23 +4,43 @@ subtitle: "2023-04-20"
 callout-appearance: default
 ---
 
+### Description:
+
 Do you use R in your daily work and research but you still feel your workflow isn't as smooth as it could be? In this lecture, I will share with you my best tips from 8 years experience with R. We will cover those concepts and tricks that are often overlooked but can make a big difference. Whether you're a beginner or more experienced R programmer, this lecture will enhance your workflow and help you write clean, reproducible and reusable code in R.
 
 ```{=html}
 <iframe class="slide-deck" width="780" height="500" src="../slides/2023_04_20_what_they_forgot_to_teach_you.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2023_04_20_what_they_forgot_to_teach_you.html){target="_blank"}
-
-<a href="../slides/2023_04_20_what_they_forgot_to_teach_you.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2023_04_20_what_they_forgot_to_teach_you.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2023_04_20_what_they_forgot_to_teach_you.pdf" download>Download PDF slides</a>
 
 ## Summary
 
-A summary of the topic (Coming soon...)
+There are many good practice tools and tips that require minimal effort and that
+can be implemented in your workflow immediately. You can refer to the following 
+checklist to see where you can still improve your project. For more details please
+have a look at the slides and the further resources linked below.
 
-## Exercises
+#### Project setup
 
+- Keep all of your project files in one location and separate them into sub folders to
+have a good overview
+- Make your project and R Studio Project
+- Give your files meaningful names that are *machine readable*, *human readable*, and that
+work well with *default ordering*
 
+#### Code
+
+- Follow the standard structure of a code file
+- Modularize your code and don't write one single very long script
+- Use save relative paths and avoid `setwd()` (This is easy if you use R Studio projects)
+- Follow a styleguide for your code (e.g. the tidyverse styleguide)
+  - Use the `lintr` and the `styler` package to help you with that
+
+#### Dependencies
+
+- Manage your dependencies with `renv` to avoid your code from breaking the future
+  
 ## Further links
 
 - [What they forgot to teach you about R book](https://rstats.wtf/) by Jenny Bryan and Jim Hester
