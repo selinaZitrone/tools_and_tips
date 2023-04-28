@@ -3916,18 +3916,7 @@ vertical-align: -.125em;
 }</script>
 
 
-<style type="text/css">
-.slide-deck {
-border: 3px solid #dee2e6;
-width: 100%;
-height: 475px;
-}
-@media only screen and (max-width: 600px) {
-.slide-deck {
-height: 400px;
-}
-}
-</style>
+<style type="text/css">.slide-deck {border: 3px solid #dee2e6;width: 100%;height: 475px;}@media only screen and (max-width: 600px) {.slide-deck {height: 400px;}}</style>
 </head>
 
 <body class="nav-fixed">
@@ -3980,8 +3969,8 @@ height: 400px;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description:</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#further-links" id="toc-further-links" class="nav-link" data-scroll-target="#further-links">Further links</a></li>
   </ul>
 </nav>
@@ -4007,16 +3996,41 @@ height: 400px;
 
 </header>
 
+<section id="description" class="level3">
+<h3 class="anchored" data-anchor-id="description">Description:</h3>
 <p>Do you use R in your daily work and research but you still feel your workflow isn’t as smooth as it could be? In this lecture, I will share with you my best tips from 8 years experience with R. We will cover those concepts and tricks that are often overlooked but can make a big difference. Whether you’re a beginner or more experienced R programmer, this lecture will enhance your workflow and help you write clean, reproducible and reusable code in R.</p>
 <iframe class="slide-deck" width="780" height="500" src="../slides/2023_04_20_what_they_forgot_to_teach_you.html"></iframe>
-<p><a href="../slides/2023_04_20_what_they_forgot_to_teach_you.html" target="_blank">Slides in full screen</a></p>
-<p><a href="../slides/2023_04_20_what_they_forgot_to_teach_you.pdf" download>Download PDF slides</a></p>
+<p><a href="../slides/2023_04_20_what_they_forgot_to_teach_you.html" target="_blank">Slides in full screen</a>     <a href="../slides/2023_04_20_what_they_forgot_to_teach_you.pdf" download>Download PDF slides</a></p>
+</section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>A summary of the topic (Coming soon…)</p>
+<p>There are many good practice tools and tips that require minimal effort and that can be implemented in your workflow immediately. You can refer to the following checklist to see where you can still improve your project. For more details please have a look at the slides and the further resources linked below.</p>
+<section id="project-setup" class="level4">
+<h4 class="anchored" data-anchor-id="project-setup">Project setup</h4>
+<ul>
+<li>Keep all of your project files in one location and separate them into sub folders to have a good overview</li>
+<li>Make your project and R Studio Project</li>
+<li>Give your files meaningful names that are <em>machine readable</em>, <em>human readable</em>, and that work well with <em>default ordering</em></li>
+</ul>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<section id="code" class="level4">
+<h4 class="anchored" data-anchor-id="code">Code</h4>
+<ul>
+<li>Follow the standard structure of a code file</li>
+<li>Modularize your code and don’t write one single very long script</li>
+<li>Use save relative paths and avoid <code>setwd()</code> (This is easy if you use R Studio projects)</li>
+<li>Follow a styleguide for your code (e.g. the tidyverse styleguide)
+<ul>
+<li>Use the <code>lintr</code> and the <code>styler</code> package to help you with that</li>
+</ul></li>
+</ul>
+</section>
+<section id="dependencies" class="level4">
+<h4 class="anchored" data-anchor-id="dependencies">Dependencies</h4>
+<ul>
+<li>Manage your dependencies with <code>renv</code> to avoid your code from breaking the future</li>
+</ul>
+</section>
 </section>
 <section id="further-links" class="level2">
 <h2 class="anchored" data-anchor-id="further-links">Further links</h2>

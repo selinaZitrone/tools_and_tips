@@ -4,28 +4,21 @@
     "href": "index.html",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "🚧🚧🚧 This site is still under construction 🚧🚧🚧\nEarly-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\nLecture topics\n\n2023-04-20: What they forgot to teach you about R"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R"
   },
   {
     "objectID": "sessions/01_what_they_forgot.html",
     "href": "sessions/01_what_they_forgot.html",
     "title": "What they forgot to teach you about R",
     "section": "",
-    "text": "Do you use R in your daily work and research but you still feel your workflow isn’t as smooth as it could be? In this lecture, I will share with you my best tips from 8 years experience with R. We will cover those concepts and tricks that are often overlooked but can make a big difference. Whether you’re a beginner or more experienced R programmer, this lecture will enhance your workflow and help you write clean, reproducible and reusable code in R.\nSlides in full screen\nDownload PDF slides"
+    "text": "Do you use R in your daily work and research but you still feel your workflow isn’t as smooth as it could be? In this lecture, I will share with you my best tips from 8 years experience with R. We will cover those concepts and tricks that are often overlooked but can make a big difference. Whether you’re a beginner or more experienced R programmer, this lecture will enhance your workflow and help you write clean, reproducible and reusable code in R.\n\nSlides in full screen     Download PDF slides"
   },
   {
     "objectID": "sessions/01_what_they_forgot.html#summary",
     "href": "sessions/01_what_they_forgot.html#summary",
     "title": "What they forgot to teach you about R",
     "section": "Summary",
-    "text": "Summary\nA summary of the topic (Coming soon…)"
-  },
-  {
-    "objectID": "sessions/01_what_they_forgot.html#exercises",
-    "href": "sessions/01_what_they_forgot.html#exercises",
-    "title": "What they forgot to teach you about R",
-    "section": "Exercises",
-    "text": "Exercises"
+    "text": "Summary\nThere are many good practice tools and tips that require minimal effort and that can be implemented in your workflow immediately. You can refer to the following checklist to see where you can still improve your project. For more details please have a look at the slides and the further resources linked below.\n\nProject setup\n\nKeep all of your project files in one location and separate them into sub folders to have a good overview\nMake your project and R Studio Project\nGive your files meaningful names that are machine readable, human readable, and that work well with default ordering\n\n\n\nCode\n\nFollow the standard structure of a code file\nModularize your code and don’t write one single very long script\nUse save relative paths and avoid setwd() (This is easy if you use R Studio projects)\nFollow a styleguide for your code (e.g. the tidyverse styleguide)\n\nUse the lintr and the styler package to help you with that\n\n\n\n\nDependencies\n\nManage your dependencies with renv to avoid your code from breaking the future"
   },
   {
     "objectID": "sessions/01_what_they_forgot.html#further-links",
@@ -305,7 +298,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#next-lecture",
     "title": "What they forgot to teach you about R",
     "section": "Next lecture",
-    "text": "Next lecture\n\nPackage your research in an R 📦\nA research compendium is a collection of all the digital parts of your research projects (data, code, documents). R packages have a similar structure and therefore can be used to publish a fully reproducible version of your project.\nPaper: Packaging data analytical work reproducibly using R (and friends) by Ben Marwick\n\n📅 11th May 🕓 4-5 p.m. 📍 Webex\n\nFor topic suggestions and/or feedback send me an email\nSubscribe to the mailing list"
+    "text": "Next lecture\n\nWrite reproducible documents with Quarto\nQuarto (the successor of rmarkdown) is a powerful tool that enables the seamless integration of code (R, Python, and more) and its output into a variety of formats such as reports, research papers, presentations, and more. This tool streamlines the process of creating reproducible workflows by eliminating the need to copy and paste figures, tables, or numbers. During this lecture, you’ll learn the fundamentals of Quarto and explore practical use cases that you can implement in your data analysis workflow.\n\n📅 11th May 🕓 4-5 p.m. 📍 Webex\n\nFor topic suggestions and/or feedback send me an email\nSubscribe to the mailing list"
   },
   {
     "objectID": "slides/zzz_template.html#introduction-of-this-lecture-series",
@@ -319,6 +312,6 @@
     "href": "todo_list.html",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "logo for the lecture series on the slides\nAdd link to slides on Github\nUse these nice boxes for tips and exclamation things\nMake Github website for the slides in pdf and html format"
+    "text": "logo for the lecture series on the slides\nAdd link to slides on Github\nMake project folder figures nicer\nFilenames: Reference to Jenny Bryan\nGood examples of project structures (template package etc.) -> Links\nUse these nice boxes for tips and exclamation things\nFootnotes instead of links on the slides -> For package websites\nMake Github website for the slides in pdf and html format\nlintr results in full screen with code and liner output\n2: Figures same size and columns appear after one another\n9: Make figure nice and appear after text\n10: Make figure nice and appear after text\n11: Not incremental yet\n14: Not incremental yet\n16: Not incremental bad and good examples\n17: Not incremental bad and good examples\n18: Not incremental yet\n22: Figure is too large\n27: Something is wrong here\n29: Styling\n52: Define next topic"
   }
 ]
