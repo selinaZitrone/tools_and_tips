@@ -31,7 +31,7 @@ from: markdown+emoji
 
 ::: {.column width="50%"}
 :::{.fragement}
-![Artwork by [Allsion Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/R_rain.gif){fig-alt="Animated gif of the R logo under a dark rain cloud, with pelting rain coming down."}
+![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/R_rain.gif){fig-alt="Animated gif of the R logo under a dark rain cloud, with pelting rain coming down."}
 :::
 :::
 
@@ -57,19 +57,19 @@ from: markdown+emoji
 - If you don't want to miss a lecture
   - Check out the [lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html)
   - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
-- Slides provided [on Github](https://selinazitrone.github.io/lecture_series/)
+- Slides provided [on Github](https://selinazitrone.github.io/tools_and_tips/)
 
 ## What they forgot to teach you about R
 
  It's [a book](https://rstats.wtf/) by J. Bryan and J. Hesters
 
-![Artwork by [Allsion Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/18_course_content.png){fig-alt="An exasperated teacher holding a box that says \"Another important thing\" walks towards a box labeled \"course content\", where different unruly topics labeled \"essential\", \"core\" etc. are leaping out and running away." width="80%"}
+![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/18_course_content.png){fig-alt="An exasperated teacher holding a box that says \"Another important thing\" walks towards a box labeled \"course content\", where different unruly topics labeled \"essential\", \"core\" etc. are leaping out and running away." width="80%"}
 
 ## Chaotic projects and workflows ...
 
 ... can make even small changes frustrating and difficult.
   
-![Artwork by [Allsion Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/02_kitchen_chaos.png){fig-alt="A frustrated looking little monster in front of a very disorganized cooking area, with smoke and fire coming from a pot surrounded by a mess of bowls, utensils, and scattered ingredients."}
+![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/02_kitchen_chaos.png){fig-alt="A frustrated looking little monster in front of a very disorganized cooking area, with smoke and fire coming from a pot surrounded by a mess of bowls, utensils, and scattered ingredients."}
 
 ## Background
 
@@ -297,7 +297,7 @@ If you order your files by name, the ordering should make sense:
 
 ## Write beautiful code
 
-![Artwork by [Allsion Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/17_beatuiful_code.png)
+![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/17_beatuiful_code.png)
 
 - Try to write code that others (i.e. future you) can understand
 - Follow standards for readable and maintainable code
@@ -723,7 +723,7 @@ call `renv::restore()`
 
 ... allow you and others to work productively.
 
-![Artwork by [Allsion Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/03_kitchen_clean.png){fig-alt="An organized kitchen with sections labeled \"tools\", \"report\" and \"files\", while a monster in a chef's hat stirs in a bowl labeled \"code.\""}
+![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/03_kitchen_clean.png){fig-alt="An organized kitchen with sections labeled \"tools\", \"report\" and \"files\", while a monster in a chef's hat stirs in a bowl labeled \"code.\""}
 
 ## Take aways
 
