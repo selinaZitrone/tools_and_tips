@@ -61,21 +61,23 @@ Document types that can be created with Quarto (examples):
 -   Books: HTML, ePub, PDF
 -   Websites
 
-. . .
+## Before we start
 
-**Today:** Focus on R and basic document types.
+Quarto is a huge topic and there are so many cool Quarto things out there!
 
--   Other languages and output are possible
--   Have a look at the test project and additional material linked on the website
+We cannot cover all of this here today.
+
+**Goal of today:** Introduction to Quarto and an overview of different document types and their possibilities.
+
+- Focus on R and R Studio
+- Keep in mind: This also works with other languages and other IDEs or text editors.
 
 ## How to get Quarto
 
 Different options, depending on your workflow
 
 -   Integrated in new versions of R Studio (Update R Studio via `Help -> Check for Updates`)
-
 -   Download the CLI for use with other IDE (e.g. Visual Studio code)
-
 -   R package `quarto` that provides an interface to Quarto (preconditions are Quarto CLI or new version of R Studio)
 
 ```{r}
@@ -118,11 +120,11 @@ install.packages("quarto")
 1.  **Create** a `.qmd` document
 2.  **Write** the document
 
--   *text*
--   *code* (R, Python, Julia)
--   *metadata* to define how the result should look like
+-   *text* that e.g. introduces you topic, interprets your results, ...
+-   *code* (R, Python, Julia) that produces numbers, figures, tables, ...
+-   *metadata* that defines how the result should look like (e.g. which output format)
 
-3.  **Render** the document to a defined output format using `Quarto`
+3.  **Render** the document to a defined output format (e.g. PDF) using `Quarto`
 
 ## Step 1 - Create the document
 
@@ -136,8 +138,6 @@ knitr::include_graphics("images/2023_05_11_quarto/new_quarto_doc.jpg")
 ```
 
 Just click `Create` and the file will open in R Studio.
-
-If you don't use R Studio, you can just create an empty file with `.qmd` file ending.
 
 ## Step 2 - Write the document
 
@@ -164,6 +164,7 @@ You can edit:
 
 ::: nonincremental
 -   Click the `Render` button in R Studio
+-   Keyboard shortcut `Ctrl + Shift + K`
 -   Call the `quarto::quarto_render()` function
 -   In the terminal: `quarto render doc.qmd`
 :::
@@ -182,73 +183,53 @@ knitr::include_graphics("images/2023_05_11_quarto/qmd_render_schema.png")
 
 > Text body, Code, YAML header
 
-## The text body
+## The text body - Markdown
 
 -   Text body in Markdown syntax
+-   Markdown is a simple markup language to create formatted text
 
--   Markdown is simple markup language to create formatted text
+Markdown allows you to do simple things like
 
--   Quarto uses pandoc's markdown syntax
+- Making text bold or italic
+- Creating headers of different levels
+- Creating bullet lists
 
-    -   Find a full documentation [here](https://pandoc.org/MANUAL.html#pandocs-markdown)
-    -   [Here](https://quarto.org/docs/authoring/markdown-basics.html) is a quick reference for the most important things.
+Or more complex things like:
 
-## Some markdown examples
+- Including images, links or footnotes
+- Add citations and cross-references
+- Latex style mathematical formulas
 
--   Bold: `**text**` becomes **text**
--   Italic: `*text*` becomes *text*
+## The text body - Markdown
 
-. . .
+Do I have to remember all of this??
 
-**Headers**
+No, there are good reference lists:
 
-``` markdown
-# First level header
+-   Find a full documentation [here](https://pandoc.org/MANUAL.html#pandocs-markdown)
+-   On the [Quarto website](https://quarto.org/docs/authoring/markdown-basics.html) you find a quick reference for the most important things.
 
-## Second level header
+And if you don't want to use markdown, there is a really nice feature in R Studio:
+**The visual editor**.
 
-### Third level header
-```
+## The visual editor
 
-**Lists**
+Provides a convenient, word-like user interface for formatting text and adding features.
 
-``` markdown
-An ordered list
-
-1. item 1
-2. item 2
-
-An unordered list
-
-- item 1
-- item 2
-```
-
-## The text body
-
-Always use spaces around markdown objects so that they can be rendered correctly, e.g.
-
-``` markdown
-## My section
-
-This is an **ordered** list:
-
-1. item 1
-2. item 2
-```
-
-instead of
-
-``` markdown
-## My section
-This is an **ordered** list:
-1. item 1
-2. item 2
+```{r}
+#|label: fig-visual-editor
+knitr::include_graphics("images/2023_05_11_quarto/visual_editor.png")
 ```
 
 ## The visual editor
 
-If you are not familiar with Markdown, you can use the visual editor included in newer R Studio versions:
+Using the visual editor, makes many things that would be painful in Markdown 
+really easy.
+
+My favorite features in the visual editor: 
+
+- Add citations (`Insert -> Citation`) from Zotero library, DOI search, PubMed, ...
+- Add tables
 
 ## The Code
 
@@ -321,7 +302,7 @@ plt.show()
 
 -   Use the keyboard shortcut `Ctrl + Alt + I` / `Cmd + Option + I`
 
--   Inline chunks have to be typed
+-   Inline chunks have to be typed or use the `</>` symbol in visual mode
 
 ## The Code
 
@@ -386,7 +367,7 @@ Intersting chunk options for table output:
 
 ## Include image via code chunk
 
-Include an image from a code chunk via `knitr::include_graphics()`. This gives you more control over the image compared to `![Figure Caption](path/to/figure)`
+Include an image from a code chunk via `knitr::include_graphics()`.
 
 ```` md
 ```{{r}}
@@ -484,7 +465,7 @@ format:
 :::
 :::
 
-# YAML header
+## YAML header
 
 **Execute options**
 
@@ -511,3 +492,35 @@ execute:
 -   Code chunks:
     -   [R code](https://quarto.org/docs/computations/r.html)
     -   [Python code](https://quarto.org/docs/computations/python.html)
+    
+## Summary
+
+## Take aways
+
+## Outlook
+
+## Next lecture
+
+. . .
+
+#### Git and Github
+
+blabla
+
+. . .
+
+:date: 11th May :clock4: 4-5 p.m. :round_pushpin: Webex
+
+- For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+- [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+# Thank you for your attention :) 
+Questions?
+
+# References
+
+:::{.nonincremental}
+:::
+
+
