@@ -94,7 +94,12 @@ section.has-dark-background a, section.has-dark-background a:hover {
   background-color: '#562457';
 }
 
-/* file: style.css */
-#vcenter {
-  vertical-align: middle;
+.reveal {
+  .slides {
+    .slide {
+      img+p.caption {
+        font-size: 0.5em;
+      }
+    }
+  }
 }

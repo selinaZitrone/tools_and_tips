@@ -1,0 +1,513 @@
+---
+title: "Reproducible documents with Quarto"
+subtitle: "Scientific workflows: Tools and Tips :hammer::bulb:"
+date: "2023-04-20"
+format: 
+  revealjs:
+    footer: "Reproducible documents with Quarto"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    code-line-numbers: false
+    theme: slides.scss
+editor: source
+execute: 
+  echo: false
+  eval: true
+from: markdown+emoji
+---
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+. . .
+
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+-   One topic from the world of scientific workflows
+-   For topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
+-   If you don't want to miss a lecture
+    -   Check out the [lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html)
+    -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+-   Slides provided [on Github](https://selinazitrone.github.io/tools_and_tips/)
+
+## Reproducible documents with Quarto
+
+. . .
+
+> Quarto is an open-source scientific and technical publishing system
+
+. . .
+
+Basic idea: Create documents with dynamic content and text
+
+```{r}
+#| echo: false
+#| fig-cap: Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by [Allison Horst](https://allisonhorst.com)
+#| fig-align: center
+#| fig-alt: A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto.
+knitr::include_graphics("images/2023_05_11_quarto/different_input.png")
+```
+
+## Reproducible documents with Quarto
+
+Document types that can be created with Quarto (examples):
+
+-   Documents: HTML, PDF, Word
+-   Presentations: HTML, Powerpoint
+-   Books: HTML, ePub, PDF
+-   Websites
+
+. . .
+
+**Today:** Focus on R and basic document types.
+
+-   Other languages and output are possible
+-   Have a look at the test project and additional material linked on the website
+
+## How to get Quarto
+
+Different options, depending on your workflow
+
+-   Integrated in new versions of R Studio (Update R Studio via `Help -> Check for Updates`)
+
+-   Download the CLI for use with other IDE (e.g. Visual Studio code)
+
+-   R package `quarto` that provides an interface to Quarto (preconditions are Quarto CLI or new version of R Studio)
+
+```{r}
+#| eval: false
+install.packages("quarto")
+```
+
+# The classic use case
+
+> Reproducible documents for data analysis
+
+## A standard workflow
+
+<br>
+
+![](images/2023_05_11_quarto/classic_workflow.png)
+
+. . .
+
+<br>
+
+**Problem:** Manual updates are **error prone** and **non-reproducible**
+
+## A Quarto workflow
+
+**Solution:** Use a **Quarto workflow** `r fontawesome::fa("arrow-right")` everything (code, text, metadata) in one place. Let `Quarto` do the magic
+
+![](images/2023_05_11_quarto/quarto_workflow.png)
+
+. . .
+
+**Advantages** of this workflow:
+
+-   Easy to redo analysis
+-   No more copy pasting
+-   Reproducibility `r fontawesome::fa("arrow-right")` workflow independent of the person that wrote it
+
+## The basic Quarto workflow
+
+1.  **Create** a `.qmd` document
+2.  **Write** the document
+
+-   *text*
+-   *code* (R, Python, Julia)
+-   *metadata* to define how the result should look like
+
+3.  **Render** the document to a defined output format using `Quarto`
+
+## Step 1 - Create the document
+
+It's easiest to start from a template.
+
+Open R Studio and go to `File -> New File -> Quarto Document`
+
+```{r}
+#| echo: false
+knitr::include_graphics("images/2023_05_11_quarto/new_quarto_doc.jpg")
+```
+
+Just click `Create` and the file will open in R Studio.
+
+If you don't use R Studio, you can just create an empty file with `.qmd` file ending.
+
+## Step 2 - Write the document
+
+::: columns
+::: {.column width="60%"}
+::: {layout="[[-1], [1], [-1]]"}
+```{r}
+#| echo: false
+knitr::include_graphics("images/2023_05_11_quarto/basic_doc_annotate_sections.jpg")
+```
+:::
+:::
+
+::: {.column width="38%"}
+You can edit:
+
+-   [YAML header]{style="color:#b31464"}: Metadata and control of the output format
+-   [Markdown text]{style="color:#00abcd"}: Formatted text body
+-   [Code chunks]{style="color:#ffcf01"}: Python, R, Julia code
+:::
+:::
+
+## Step 3 - Render the document
+
+::: nonincremental
+-   Click the `Render` button in R Studio
+-   Call the `quarto::quarto_render()` function
+-   In the terminal: `quarto render doc.qmd`
+:::
+
+## Step 3 - Render the document
+
+What happens during rendering?
+
+```{r}
+#| fig-alt: A schematic representing rendering of Quarto documents from .qmd, to knitr or jupyter, to plain text markdown, then converted by pandoc into any number of output types including html, PDF, or Word document.
+#| fig-cap: Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel,presented at RStudio Conference 2022. Illustrated by Allison Horst.
+knitr::include_graphics("images/2023_05_11_quarto/qmd_render_schema.png")
+```
+
+# Basic Elements of a `.qmd` document
+
+> Text body, Code, YAML header
+
+## The text body
+
+-   Text body in Markdown syntax
+
+-   Markdown is simple markup language to create formatted text
+
+-   Quarto uses pandoc's markdown syntax
+
+    -   Find a full documentation [here](https://pandoc.org/MANUAL.html#pandocs-markdown)
+    -   [Here](https://quarto.org/docs/authoring/markdown-basics.html) is a quick reference for the most important things.
+
+## Some markdown examples
+
+-   Bold: `**text**` becomes **text**
+-   Italic: `*text*` becomes *text*
+
+. . .
+
+**Headers**
+
+``` markdown
+# First level header
+
+## Second level header
+
+### Third level header
+```
+
+**Lists**
+
+``` markdown
+An ordered list
+
+1. item 1
+2. item 2
+
+An unordered list
+
+- item 1
+- item 2
+```
+
+## The text body
+
+Always use spaces around markdown objects so that they can be rendered correctly, e.g.
+
+``` markdown
+## My section
+
+This is an **ordered** list:
+
+1. item 1
+2. item 2
+```
+
+instead of
+
+``` markdown
+## My section
+This is an **ordered** list:
+1. item 1
+2. item 2
+```
+
+## The visual editor
+
+If you are not familiar with Markdown, you can use the visual editor included in newer R Studio versions:
+
+## The Code
+
+Code can be included in **code chunks** as **inline code**
+
+-   Code chunks can contain any type of R/Python/Julia code
+-   Code is (by default) executed and output is included in document
+    -   Text output
+    -   Figures
+    -   ...
+
+## The Code
+
+**Inline code** starts and ends with 1 backtick
+
+```{r, echo=FALSE}
+code = '`r `'
+cat(code)
+```
+
+. . .
+
+**Example**
+
+``` md
+The mean of the values 1, 2 and 3 is `r knitr::inline_expr("mean(1:3)")`
+```
+
+looks like this:
+
+The mean of the values 1, 2 and 3 is `r mean(1:3)`.
+
+## The Code
+
+**Code chunks** starts and ends with 3 backticks
+
+```` md
+```{{r}}
+library(ggplot2)
+ggplot(airquality, aes(Temp, Ozone)) + 
+  geom_point() + 
+  geom_smooth(method = "loess")
+```
+````
+
+<br>
+
+. . .
+
+````         
+```{{python}}
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw = {'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+````
+
+## The Code
+
+**Insert a code chunk**
+
+-   Insert a code chunk by going to `Code` -\> `Insert chunk`
+
+-   Use the keyboard shortcut `Ctrl + Alt + I` / `Cmd + Option + I`
+
+-   Inline chunks have to be typed
+
+## The Code
+
+**Run code chunk**
+
+-   Code chunks are evaluated by `knitr` when rendering the document
+
+-   Code chunks can also be run like normal R code
+
+-   Run Code chunk by clicking on the green arrow next to the chunk
+
+. . .
+
+![](images/2023_05_11_quarto/run_code_chunk.png)
+
+## The code
+
+Code chunk have special comments that start with `#|`, e.g.
+
+```` md
+```{{r}}
+#| label: fig-airquality
+#| fig-cap: Temperature and ozone level.
+#| warning: false
+
+library(ggplot2)
+
+ggplot(airquality, aes(Temp, Ozone)) + 
+  geom_point() + 
+  geom_smooth(method = "loess")
+```
+````
+
+-   `label`: Figure and the chunk a label that can be referred to in text
+-   `fig-cap`: Figure caption
+-   `warning`: Do not show warnigns that the code produces in the output
+
+## The code
+
+Interesting chunk options (i.e. species comments are) to control the output:
+
+-   `eval`: `true/false`, Evaluate the chunk?
+-   `echo`: `true/false`, Show source code in output?
+-   `warning`: `true/false` Show warnings in output?
+-   `include`: `true/false` is combination of `eval: true, echo: false, warning: false`
+
+## The code
+
+Interesting chunk options for figure output:
+
+-   `label`: Label of the figure: has to start with `fig-`
+-   `fig-cap`: Figure caption
+-   `fig-align`: `default/left/right/center`
+-   `out-width`: Output width in %
+
+## The code
+
+Intersting chunk options for table output:
+
+-   `label`: Label of the figure: has to start with `tbl-`
+-   `tbl-cap`: Table caption
+
+## Include image via code chunk
+
+Include an image from a code chunk via `knitr::include_graphics()`. This gives you more control over the image compared to `![Figure Caption](path/to/figure)`
+
+```` md
+```{{r}}
+#| echo: false
+#| out.width: "20%"
+#| fig-align: center
+#| fig-cap: Quarto logo
+#| fig-cap-location: margin
+knitr::include_graphics("images/2023_05_11_quarto/quarto_straight.png")
+```
+````
+
+```{r}
+#| echo: false
+#| out.width: "20%"
+#| fig-align: center
+#| fig-cap: Quarto logo
+#| fig-cap-location: margin
+knitr::include_graphics("images/2023_05_11_quarto/quarto_straight.png")
+```
+
+## YAML header
+
+. . .
+
+**For Metadata**
+
+``` yaml
+---
+title: "My first document"
+subtitle: "Whatever subtitle makes sense"
+author: "Selina Baldauf"
+date: "`r knitr::inline_expr("Sys.Date()")`"
+---
+```
+
+-   Inline R code can print the current date at knitting time
+
+## YAML header
+
+**For document output formats**
+
+``` yaml
+---
+format: html
+---
+```
+
+. . .
+
+You can also specify multiple output formats
+
+``` yaml
+---
+format: 
+  html: default
+  pdf: default
+  docx: default
+---
+```
+
+# YAML header
+
+**For document options**
+
+::: columns
+::: {.column width="45%"}
+::: nonincremental
+-   Some options are shared between formats, some are specific to one format
+-   Be careful to get the indentation right!
+:::
+:::
+
+::: {.column width="45%"}
+``` yaml
+---
+title: "The penguins of Antarctica"
+author: "Selina Baldauf"
+date: "`r Sys.Date()`"
+format: 
+  html: 
+    number-sections: true
+    toc: true
+    toc-location: left
+    code-fold: true
+    code-copy: true
+    df-print: kable
+  pdf: 
+    toc: true
+    number-sections: true
+    df-print: kable
+  docx: default
+---
+```
+:::
+:::
+
+# YAML header
+
+**Execute options**
+
+-   Default options for code chunks
+-   Can be overwritten by local comments in code chunks
+
+. . .
+
+``` yaml
+---
+execute: 
+  echo: false
+  warning: false
+---
+```
+
+## References for all the elements
+
+-   [Mardown syntax reference](https://quarto.org/docs/authoring/markdown-basics.html)
+-   YAML header options:
+    -   [HTML](https://quarto.org/docs/reference/formats/html.html)
+    -   [PDF](https://quarto.org/docs/reference/formats/pdf.html)
+    -   [DOCX](https://quarto.org/docs/reference/formats/docx.html)
+-   Code chunks:
+    -   [R code](https://quarto.org/docs/computations/r.html)
+    -   [Python code](https://quarto.org/docs/computations/python.html)
