@@ -65,7 +65,7 @@ Document types that can be created with Quarto (examples):
 
 Quarto is a huge topic and there are so many cool Quarto things out there!
 
-We cannot cover all of this here today.
+. . .
 
 **Goal of today:** Introduction to Quarto and an overview of different document types and their possibilities.
 
@@ -76,18 +76,57 @@ We cannot cover all of this here today.
 
 Different options, depending on your workflow
 
--   Integrated in new versions of R Studio (Update R Studio via `Help -> Check for Updates`)
--   Download the CLI for use with other IDE (e.g. Visual Studio code)
--   R package `quarto` that provides an interface to Quarto (preconditions are Quarto CLI or new version of R Studio)
+-   **Integrated in** new versions of **R Studio** (Update R Studio via `Help -> Check for Updates`)
+-   Download the **CLI** for use with other IDE (e.g. Visual Studio code)
+-   **R package** `quarto` that provides an interface to Quarto (preconditions are Quarto CLI or new version of R Studio)
+
+. . .
 
 ```{r}
 #| eval: false
+#| echo: true
 install.packages("quarto")
 ```
+
+. . .
+
+<br>
+
+Check out the [Quarto website](https://quarto.org/) for download and more info.
 
 # The classic use case
 
 > Reproducible documents for data analysis
+
+## An example document
+
+Download the demo project from [Github]()
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+An HTML example
+
+```{r}
+#|label: penguin-html
+knitr::include_graphics("images/2023_05_11_quarto/quarto_penguin_html_example.png")
+```
+
+:::
+
+:::{.column width="50%"}
+
+A PDF example:
+
+```{r}
+#| label: penguin-pdf
+knitr::include_graphics("images/2023_05_11_quarto/quarto_penguin_pdf_example.png")
+```
+
+:::
+
+:::
 
 ## A standard workflow
 
@@ -128,8 +167,6 @@ install.packages("quarto")
 
 ## Step 1 - Create the document
 
-It's easiest to start from a template.
-
 Open R Studio and go to `File -> New File -> Quarto Document`
 
 ```{r}
@@ -138,6 +175,8 @@ knitr::include_graphics("images/2023_05_11_quarto/new_quarto_doc.jpg")
 ```
 
 Just click `Create` and the file will open in R Studio.
+
+In other environments you can just create and empty file with `.qmd` ending
 
 ## Step 2 - Write the document
 
@@ -152,11 +191,15 @@ knitr::include_graphics("images/2023_05_11_quarto/basic_doc_annotate_sections.jp
 :::
 
 ::: {.column width="38%"}
+
+:::{.nonincremental}
 You can edit:
 
 -   [YAML header]{style="color:#b31464"}: Metadata and control of the output format
 -   [Markdown text]{style="color:#00abcd"}: Formatted text body
 -   [Code chunks]{style="color:#ffcf01"}: Python, R, Julia code
+
+:::
 :::
 :::
 
@@ -185,14 +228,17 @@ knitr::include_graphics("images/2023_05_11_quarto/qmd_render_schema.png")
 
 ## The text body - Markdown
 
--   Text body in Markdown syntax
 -   Markdown is a simple markup language to create formatted text
+
+. . .
 
 Markdown allows you to do simple things like
 
 - Making text bold or italic
 - Creating headers of different levels
 - Creating bullet lists
+
+. . .
 
 Or more complex things like:
 
@@ -202,19 +248,12 @@ Or more complex things like:
 
 ## The text body - Markdown
 
-Do I have to remember all of this??
-
-No, there are good reference lists:
-
--   Find a full documentation [here](https://pandoc.org/MANUAL.html#pandocs-markdown)
--   On the [Quarto website](https://quarto.org/docs/authoring/markdown-basics.html) you find a quick reference for the most important things.
-
-And if you don't want to use markdown, there is a really nice feature in R Studio:
+If you don't want to use markdown, there is a really nice feature in R Studio:
 **The visual editor**.
 
 ## The visual editor
 
-Provides a convenient, word-like user interface for formatting text and adding features.
+Convenient, word-like interface for formatting text and adding features.
 
 ```{r}
 #|label: fig-visual-editor
@@ -226,10 +265,9 @@ knitr::include_graphics("images/2023_05_11_quarto/visual_editor.png")
 Using the visual editor, makes many things that would be painful in Markdown 
 really easy.
 
-My favorite features in the visual editor: 
+**My favorite feature** in the visual editor: 
 
 - Add citations (`Insert -> Citation`) from Zotero library, DOI search, PubMed, ...
-- Add tables
 
 ## The Code
 
@@ -326,7 +364,7 @@ Code chunk have special comments that start with `#|`, e.g.
 ```{{r}}
 #| label: fig-airquality
 #| fig-cap: Temperature and ozone level.
-#| warning: false
+#| include: false
 
 library(ggplot2)
 
@@ -336,34 +374,9 @@ ggplot(airquality, aes(Temp, Ozone)) +
 ```
 ````
 
--   `label`: Figure and the chunk a label that can be referred to in text
--   `fig-cap`: Figure caption
--   `warning`: Do not show warnigns that the code produces in the output
-
-## The code
-
-Interesting chunk options (i.e. species comments are) to control the output:
-
--   `eval`: `true/false`, Evaluate the chunk?
--   `echo`: `true/false`, Show source code in output?
--   `warning`: `true/false` Show warnings in output?
--   `include`: `true/false` is combination of `eval: true, echo: false, warning: false`
-
-## The code
-
-Interesting chunk options for figure output:
-
--   `label`: Label of the figure: has to start with `fig-`
--   `fig-cap`: Figure caption
--   `fig-align`: `default/left/right/center`
--   `out-width`: Output width in %
-
-## The code
-
-Intersting chunk options for table output:
-
--   `label`: Label of the figure: has to start with `tbl-`
--   `tbl-cap`: Table caption
+- `label`: Figure and chunk label that can be referred to in text
+- `fig-cap`: Figure caption
+- `include`: Include the output (i.e. the plot) in the document but don't show the code
 
 ## Include image via code chunk
 
@@ -412,6 +425,9 @@ date: "`r knitr::inline_expr("Sys.Date()")`"
 
 ``` yaml
 ---
+title: "My first document"
+author: "Selina Baldauf"
+date: "`r knitr::inline_expr("Sys.Date()")`"
 format: html
 ---
 ```
@@ -422,6 +438,9 @@ You can also specify multiple output formats
 
 ``` yaml
 ---
+title: "My first document"
+author: "Selina Baldauf"
+date: "`r knitr::inline_expr("Sys.Date()")`"
 format: 
   html: default
   pdf: default
@@ -442,11 +461,14 @@ format:
 :::
 
 ::: {.column width="45%"}
+
+:::{.fragment}
+
 ``` yaml
 ---
-title: "The penguins of Antarctica"
+title: "My first document"
 author: "Selina Baldauf"
-date: "`r Sys.Date()`"
+date: "`r knitr::inline_expr("Sys.Date()")`"
 format: 
   html: 
     number-sections: true
@@ -462,6 +484,8 @@ format:
   docx: default
 ---
 ```
+
+:::
 :::
 :::
 
@@ -476,6 +500,10 @@ format:
 
 ``` yaml
 ---
+title: "My first document"
+author: "Selina Baldauf"
+date: "`r knitr::inline_expr("Sys.Date()")`"
+format: html
 execute: 
   echo: false
   warning: false
@@ -483,6 +511,8 @@ execute:
 ```
 
 ## References for all the elements
+
+:::{.nonincremental}
 
 -   [Mardown syntax reference](https://quarto.org/docs/authoring/markdown-basics.html)
 -   YAML header options:
@@ -492,35 +522,67 @@ execute:
 -   Code chunks:
     -   [R code](https://quarto.org/docs/computations/r.html)
     -   [Python code](https://quarto.org/docs/computations/python.html)
-    
+
+:::    
+
 ## Summary
 
-## Take aways
+- Quarto can combine formatted text and code to create reproducible documents
+
+. . .
+
+**Use cases for scientists**
+
+- Write reports and documents about data analysis
+- Use `qmd` instead of `.R` files to add text already to the code (e.g. for interpretation or methods)
+- Great for teaching because you can add explanations to your code
+- Many more ...
 
 ## Outlook
 
+Quarto offers many more things like:
+
+- Presentations (Powerpoint or Revealjs/HTML)
+- Websites
+- Easily publish your documents or websites on [quartopub](https://quartopub.com/) or Github
+  - See [here](https://quarto.org/docs/publishing/) for more information
+- Control the rendering process via R scripts using `quarto::quarto_render()`
+- Parameterized reports
+
 ## Next lecture
 
+#### Version control with Git
+
+Git is an essential skill if you use any programming language. 
+It allows you to keep track of changes over time, collaborate with others,
+and maintain a clear and organized file structure. This can save time, improve 
+research efficiency, and makes it easy to publish your code.
+
+<br>
+
 . . .
 
-#### Git and Github
+:date: 15th June :clock4: 4-5 p.m. :round_pushpin: Webex
 
-blabla
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
-. . .
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
 
-:date: 11th May :clock4: 4-5 p.m. :round_pushpin: Webex
-
-- For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
-
-- [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
-
-# Thank you for your attention :) 
+## Thank you for your attention :) {background-image="images/2023_05_11_quarto/quarto_thankyou.png" background-size="cover"}
 Questions?
+
+"Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst."
 
 # References
 
 :::{.nonincremental}
+- [Quarto website](https://quarto.org/) offers everything you need to get started
+  - [Download Quarto and starting guide](https://quarto.org/docs/get-started/) for different IDEs
+  - [Guides for different output formats](https://quarto.org/docs/guide/)
+  - [Gallery with Examples](https://quarto.org/docs/gallery/)
+- [Quarto introduction workshop](https://www.youtube.com/watch?v=yvi5uXQMvu4) on Youtube
+- [A curated collection of resources](https://github.com/mcanouil/awesome-quarto#featured-new-releases)
+
 :::
 
 

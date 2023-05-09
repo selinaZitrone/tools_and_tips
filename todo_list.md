@@ -1,4 +1,9 @@
 - logo for the lecture series on the slides
-- Add link to slides on Github
 - Use these nice boxes for tips and exclamation things
-- Make Github website for the slides in pdf and html format
+
+
+## Quarto
+
+- Fix Figure caption sizes
+- Add link to github project
+- Last slide make text smaller
