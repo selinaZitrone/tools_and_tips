@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R\n2023-05-11: Reproducible documents with Quarto"
   },
   {
     "objectID": "sessions/01_what_they_forgot.html",
@@ -28,11 +28,60 @@
     "text": "Further links\n\nWhat they forgot to teach you about R book by Jenny Bryan and Jim Hester\nBlogpost by Jenny Bryan on good project-oriented workflows\nR best practice blogpost by Krista L. DeStasio\nBook about coding style for R: The tidyverse style guide\nThe Turing way book General concepts and things to think about regarding reproducible research\nrenv package website\nstyler package website\nlintr package website"
   },
   {
+    "objectID": "sessions/02_quarto.html",
+    "href": "sessions/02_quarto.html",
+    "title": "Reproducible documents with Quarto",
+    "section": "",
+    "text": "Quarto (the successor of rmarkdown) is a powerful tool that enables the seamless integration of code (R, Python, and more) and its output into a variety of formats such as reports, research papers, presentations, and more. This tool streamlines the process of creating reproducible workflows by eliminating the need to copy and paste figures, tables, or numbers. During this lecture, you’ll learn the fundamentals of Quarto and explore practical use cases that you can implement in your data analysis workflow.\n\nSlides in full screen     Download PDF slides"
+  },
+  {
+    "objectID": "sessions/02_quarto.html#summary",
+    "href": "sessions/02_quarto.html#summary",
+    "title": "Reproducible documents with Quarto",
+    "section": "Summary",
+    "text": "Summary\nQuarto allows you to combine code in R, Python or Julia with text to create reproducible documents in various output formats. You can create e.g.\n\nDocuments: HTML, PDF, Word, Open Office format\nPresentations: Revealjs (HTML) or Powerpoint\nWebsites\nBooks: HTML or ePub\n\n\nGet started\nIf you use R and R Studio, ….."
+  },
+  {
+    "objectID": "sessions/02_quarto.html#example-project",
+    "href": "sessions/02_quarto.html#example-project",
+    "title": "Reproducible documents with Quarto",
+    "section": "Example project",
+    "text": "Example project\nTo get started, you can download the Quarto demo project from Github. It contains some simple and more complex Quarto examples. Have a look at the README of the the project for more information."
+  },
+  {
+    "objectID": "sessions/02_quarto.html#further-links",
+    "href": "sessions/02_quarto.html#further-links",
+    "title": "Reproducible documents with Quarto",
+    "section": "Further links",
+    "text": "Further links\nTo continue learning, I recommend, checking out the following resources:\n\nQuarto website offers everything you need to get started\n\nDownload Quarto and starting guide for different IDEs\nGuides for different output formats\nGallery with Examples\n\nQuarto introduction workshop on Youtube\nA curated collection of resources"
+  },
+  {
+    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html",
+    "href": "sessions/additional_material/02_quarto/penguins_paper.html",
+    "title": "The penguins of Antarctica",
+    "section": "",
+    "text": "There are three main penguin species in Antarctica (Chinstrap, Gentoo, Adelie). You can see them in Figure 1:\n\n\n\n\n\nFigure 1: Illustration of the three penguin species by Allison Horst\n\n\n\n\nIn this paper we want to answer the following questions\n\nHow bill depth depends on bill length?\nWhich penguin species has the highest body mass?"
+  },
+  {
+    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html#the-data",
+    "href": "sessions/additional_material/02_quarto/penguins_paper.html#the-data",
+    "title": "The penguins of Antarctica",
+    "section": "2.1 The data",
+    "text": "2.1 The data\nThe data was collected on islands in Antarctica and published by Gorman, Williams, and Fraser (2014). You can find the original paper with the title “Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis)” (Gorman, Williams, and Fraser 2014) in PLoS ONE1\nThe data is published via the palmerpenguins R package (Horst, Hill, and Gorman 2020) which you can find on this website.\nThe data contains (among others) the following measurements:\n\nbill length\nbill depth\nbody mass\nsex\n\nmale\nfemale"
+  },
+  {
+    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html#the-analysis",
+    "href": "sessions/additional_material/02_quarto/penguins_paper.html#the-analysis",
+    "title": "The penguins of Antarctica",
+    "section": "2.2 The analysis",
+    "text": "2.2 The analysis\nWe did some plots, calculated some summary statistics and a linear model of the form \\(y = ax + b + \\epsilon\\)"
+  },
+  {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#who-am-i",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#who-am-i",
     "title": "What they forgot to teach you about R",
     "section": "Who am I?",
-    "text": "Who am I?\n\nEcologist, PhD student for some years and now scientific programmer\n\n\n\n\n\n\n\n\nArtwork by Allsion Horst, CC BY 4.0"
+    "text": "Who am I?\n\nEcologist, PhD student for some years and now scientific programmer\n\n\n\n\n\n\n\n\nArtwork by Allison Horst, CC BY 4.0"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#what-is-this-lecture-series",
@@ -46,14 +95,14 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#what-they-forgot-to-teach-you-about-r",
     "title": "What they forgot to teach you about R",
     "section": "What they forgot to teach you about R",
-    "text": "What they forgot to teach you about R\nIt’s a book by J. Bryan and J. Hesters\n\nArtwork by Allsion Horst, CC BY 4.0"
+    "text": "What they forgot to teach you about R\nIt’s a book by J. Bryan and J. Hesters\n\nArtwork by Allison Horst, CC BY 4.0"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#chaotic-projects-and-workflows",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#chaotic-projects-and-workflows",
     "title": "What they forgot to teach you about R",
     "section": "Chaotic projects and workflows …",
-    "text": "Chaotic projects and workflows …\n… can make even small changes frustrating and difficult.\n\nArtwork by Allsion Horst, CC BY 4.0"
+    "text": "Chaotic projects and workflows …\n… can make even small changes frustrating and difficult.\n\nArtwork by Allison Horst, CC BY 4.0"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#background",
@@ -130,7 +179,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#write-beautiful-code",
     "title": "What they forgot to teach you about R",
     "section": "Write beautiful code",
-    "text": "Write beautiful code\n\nArtwork by Allsion Horst, CC BY 4.0\nTry to write code that others (i.e. future you) can understand\nFollow standards for readable and maintainable code\n\nFor R: tidyverse style guide defines code organization, syntax standards, …"
+    "text": "Write beautiful code\n\nArtwork by Allison Horst, CC BY 4.0\nTry to write code that others (i.e. future you) can understand\nFollow standards for readable and maintainable code\n\nFor R: tidyverse style guide defines code organization, syntax standards, …"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#standard-code-structure",
@@ -277,7 +326,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#clean-projects-and-workflows",
     "title": "What they forgot to teach you about R",
     "section": "Clean projects and workflows …",
-    "text": "Clean projects and workflows …\n… allow you and others to work productively.\n\nArtwork by Allsion Horst, CC BY 4.0"
+    "text": "Clean projects and workflows …\n… allow you and others to work productively.\n\nArtwork by Allison Horst, CC BY 4.0"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#take-aways",
@@ -301,6 +350,230 @@
     "text": "Next lecture\n\nWrite reproducible documents with Quarto\nQuarto (the successor of rmarkdown) is a powerful tool that enables the seamless integration of code (R, Python, and more) and its output into a variety of formats such as reports, research papers, presentations, and more. This tool streamlines the process of creating reproducible workflows by eliminating the need to copy and paste figures, tables, or numbers. During this lecture, you’ll learn the fundamentals of Quarto and explore practical use cases that you can implement in your data analysis workflow.\n\n📅 11th May 🕓 4-5 p.m. 📍 Webex\n\nFor topic suggestions and/or feedback send me an email\nSubscribe to the mailing list"
   },
   {
+    "objectID": "slides/2023_05_11_quarto.html#what-is-this-lecture-series",
+    "href": "slides/2023_05_11_quarto.html#what-is-this-lecture-series",
+    "title": "Reproducible documents with Quarto",
+    "section": "What is this lecture series?",
+    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nFor topic suggestions send me an email\nIf you don’t want to miss a lecture\n\nCheck out the lecture website\nSubscribe to the mailing list\n\nSlides provided on Github"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#reproducible-documents-with-quarto",
+    "href": "slides/2023_05_11_quarto.html#reproducible-documents-with-quarto",
+    "title": "Reproducible documents with Quarto",
+    "section": "Reproducible documents with Quarto",
+    "text": "Reproducible documents with Quarto\n\n\nQuarto is an open-source scientific and technical publishing system\n\n\n\nBasic idea: Create documents with dynamic content and text\n\n\n\n\n\nArtwork from “Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#reproducible-documents-with-quarto-1",
+    "href": "slides/2023_05_11_quarto.html#reproducible-documents-with-quarto-1",
+    "title": "Reproducible documents with Quarto",
+    "section": "Reproducible documents with Quarto",
+    "text": "Reproducible documents with Quarto\nDocument types that can be created with Quarto (examples):\n\nDocuments: HTML, PDF, Word\nPresentations: HTML, Powerpoint\nBooks: HTML, ePub, PDF\nWebsites"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#before-we-start",
+    "href": "slides/2023_05_11_quarto.html#before-we-start",
+    "title": "Reproducible documents with Quarto",
+    "section": "Before we start",
+    "text": "Before we start\nQuarto is a huge topic and there are so many cool Quarto things out there!\n\nGoal of today: Introduction to Quarto and an overview of different document types and their possibilities.\n\nFocus on R and R Studio\nKeep in mind: This also works with other languages and other IDEs or text editors."
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#how-to-get-quarto",
+    "href": "slides/2023_05_11_quarto.html#how-to-get-quarto",
+    "title": "Reproducible documents with Quarto",
+    "section": "How to get Quarto",
+    "text": "How to get Quarto\nDifferent options, depending on your workflow\n\nIntegrated in new versions of R Studio (Update R Studio via Help -> Check for Updates)\nDownload the CLI for use with other IDE (e.g. Visual Studio code)\nR package quarto that provides an interface to Quarto (preconditions are Quarto CLI or new version of R Studio)\n\n\n\ninstall.packages(\"quarto\")\n\n\n\n\nCheck out the Quarto website for download and more info."
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#an-example-document",
+    "href": "slides/2023_05_11_quarto.html#an-example-document",
+    "title": "Reproducible documents with Quarto",
+    "section": "An example document",
+    "text": "An example document\nDownload the demo project from Github\n\n\nAn HTML example\n\n\n\n\n\n\nA PDF example"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#a-standard-workflow",
+    "href": "slides/2023_05_11_quarto.html#a-standard-workflow",
+    "title": "Reproducible documents with Quarto",
+    "section": "A standard workflow",
+    "text": "A standard workflow\n\n\n\n\nProblem: Manual updates are error prone and non-reproducible"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#a-quarto-workflow",
+    "href": "slides/2023_05_11_quarto.html#a-quarto-workflow",
+    "title": "Reproducible documents with Quarto",
+    "section": "A Quarto workflow",
+    "text": "A Quarto workflow\nSolution: Use a Quarto workflow  everything (code, text, metadata) in one place. Let Quarto do the magic\n\n\nAdvantages of this workflow:\n\nEasy to redo analysis\nNo more copy pasting\nReproducibility  workflow independent of the person that wrote it"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-basic-quarto-workflow",
+    "href": "slides/2023_05_11_quarto.html#the-basic-quarto-workflow",
+    "title": "Reproducible documents with Quarto",
+    "section": "The basic Quarto workflow",
+    "text": "The basic Quarto workflow\n\nCreate a .qmd document\nWrite the document\n\n\ntext that e.g. introduces you topic, interprets your results, …\ncode (R, Python, Julia) that produces numbers, figures, tables, …\nmetadata that defines how the result should look like (e.g. which output format)\n\n\nRender the document to a defined output format (e.g. PDF) using Quarto"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#step-1---create-the-document",
+    "href": "slides/2023_05_11_quarto.html#step-1---create-the-document",
+    "title": "Reproducible documents with Quarto",
+    "section": "Step 1 - Create the document",
+    "text": "Step 1 - Create the document\nOpen R Studio and go to File -> New File -> Quarto Document\n\nJust click Create and the file will open in R Studio.\nIn other environments you can just create and empty file with .qmd ending"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#step-2---write-the-document",
+    "href": "slides/2023_05_11_quarto.html#step-2---write-the-document",
+    "title": "Reproducible documents with Quarto",
+    "section": "Step 2 - Write the document",
+    "text": "Step 2 - Write the document\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\nYou can edit:\n\nYAML header: Metadata and control of the output format\nMarkdown text: Formatted text body\nCode chunks: Python, R, Julia code"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#step-3---render-the-document",
+    "href": "slides/2023_05_11_quarto.html#step-3---render-the-document",
+    "title": "Reproducible documents with Quarto",
+    "section": "Step 3 - Render the document",
+    "text": "Step 3 - Render the document\n\n\nClick the Render button in R Studio\nKeyboard shortcut Ctrl + Shift + K\nCall the quarto::quarto_render() function\nIn the terminal: quarto render doc.qmd"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#step-3---render-the-document-1",
+    "href": "slides/2023_05_11_quarto.html#step-3---render-the-document-1",
+    "title": "Reproducible documents with Quarto",
+    "section": "Step 3 - Render the document",
+    "text": "Step 3 - Render the document\nWhat happens during rendering?\n\nArtwork from “Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel,presented at RStudio Conference 2022. Illustrated by Allison Horst."
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-text-body---markdown",
+    "href": "slides/2023_05_11_quarto.html#the-text-body---markdown",
+    "title": "Reproducible documents with Quarto",
+    "section": "The text body - Markdown",
+    "text": "The text body - Markdown\n\nMarkdown is a simple markup language to create formatted text\n\n\nMarkdown allows you to do simple things like\n\nMaking text bold or italic\nCreating headers of different levels\nCreating bullet lists\n\n\n\nOr more complex things like:\n\nIncluding images, links or footnotes\nAdd citations and cross-references\nLatex style mathematical formulas"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-text-body---markdown-1",
+    "href": "slides/2023_05_11_quarto.html#the-text-body---markdown-1",
+    "title": "Reproducible documents with Quarto",
+    "section": "The text body - Markdown",
+    "text": "The text body - Markdown\nIf you don’t want to use markdown, there is a really nice feature in R Studio: The visual editor."
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-visual-editor",
+    "href": "slides/2023_05_11_quarto.html#the-visual-editor",
+    "title": "Reproducible documents with Quarto",
+    "section": "The visual editor",
+    "text": "The visual editor\nConvenient, word-like interface for formatting text and adding features."
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-visual-editor-1",
+    "href": "slides/2023_05_11_quarto.html#the-visual-editor-1",
+    "title": "Reproducible documents with Quarto",
+    "section": "The visual editor",
+    "text": "The visual editor\nUsing the visual editor, makes many things that would be painful in Markdown really easy.\nMy favorite feature in the visual editor:\n\nAdd citations (Insert -> Citation) from Zotero library, DOI search, PubMed, …"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-code",
+    "href": "slides/2023_05_11_quarto.html#the-code",
+    "title": "Reproducible documents with Quarto",
+    "section": "The Code",
+    "text": "The Code\nCode can be included in code chunks as inline code\n\nCode chunks can contain any type of R/Python/Julia code\nCode is (by default) executed and output is included in document\n\nText output\nFigures\n…"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-code-1",
+    "href": "slides/2023_05_11_quarto.html#the-code-1",
+    "title": "Reproducible documents with Quarto",
+    "section": "The Code",
+    "text": "The Code\nInline code starts and ends with 1 backtick\n\n\n`r `\n\n\n\nExample\nThe mean of the values 1, 2 and 3 is `r mean(1:3)`\nlooks like this:\nThe mean of the values 1, 2 and 3 is 2."
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-code-2",
+    "href": "slides/2023_05_11_quarto.html#the-code-2",
+    "title": "Reproducible documents with Quarto",
+    "section": "The Code",
+    "text": "The Code\nCode chunks starts and ends with 3 backticks\n```{r}\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n```\n\n\n```{python}\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw = {'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n```"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-code-3",
+    "href": "slides/2023_05_11_quarto.html#the-code-3",
+    "title": "Reproducible documents with Quarto",
+    "section": "The Code",
+    "text": "The Code\nInsert a code chunk\n\nInsert a code chunk by going to Code -> Insert chunk\nUse the keyboard shortcut Ctrl + Alt + I / Cmd + Option + I\nInline chunks have to be typed or use the </> symbol in visual mode"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-code-4",
+    "href": "slides/2023_05_11_quarto.html#the-code-4",
+    "title": "Reproducible documents with Quarto",
+    "section": "The Code",
+    "text": "The Code\nRun code chunk\n\nCode chunks are evaluated by knitr when rendering the document\nCode chunks can also be run like normal R code\nRun Code chunk by clicking on the green arrow next to the chunk"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#the-code-5",
+    "href": "slides/2023_05_11_quarto.html#the-code-5",
+    "title": "Reproducible documents with Quarto",
+    "section": "The code",
+    "text": "The code\nCode chunk have special comments that start with #|, e.g.\n```{r}\n#| label: fig-airquality\n#| fig-cap: Temperature and ozone level.\n#| include: false\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n```\n\nlabel: Figure and chunk label that can be referred to in text\nfig-cap: Figure caption\ninclude: Include the output (i.e. the plot) in the document but don’t show the code"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#include-image-via-code-chunk",
+    "href": "slides/2023_05_11_quarto.html#include-image-via-code-chunk",
+    "title": "Reproducible documents with Quarto",
+    "section": "Include image via code chunk",
+    "text": "Include image via code chunk\nInclude an image from a code chunk via knitr::include_graphics().\n```{r}\n#| echo: false\n#| out.width: \"20%\"\n#| fig-align: center\n#| fig-cap: Quarto logo\n#| fig-cap-location: margin\nknitr::include_graphics(\"images/2023_05_11_quarto/quarto_straight.png\")\n```\n\nQuarto logo"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#yaml-header",
+    "href": "slides/2023_05_11_quarto.html#yaml-header",
+    "title": "Reproducible documents with Quarto",
+    "section": "YAML header",
+    "text": "YAML header\n\nFor Metadata\n---\ntitle: \"My first document\"\nsubtitle: \"Whatever subtitle makes sense\"\nauthor: \"Selina Baldauf\"\ndate: \"`r Sys.Date()`\"\n---\n\nInline R code can print the current date at knitting time"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#yaml-header-1",
+    "href": "slides/2023_05_11_quarto.html#yaml-header-1",
+    "title": "Reproducible documents with Quarto",
+    "section": "YAML header",
+    "text": "YAML header\nFor document output formats\n---\ntitle: \"My first document\"\nauthor: \"Selina Baldauf\"\ndate: \"`r Sys.Date()`\"\nformat: html\n---\n\nYou can also specify multiple output formats\n---\ntitle: \"My first document\"\nauthor: \"Selina Baldauf\"\ndate: \"`r Sys.Date()`\"\nformat: \n  html: default\n  pdf: default\n  docx: default\n---"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#yaml-header-3",
+    "href": "slides/2023_05_11_quarto.html#yaml-header-3",
+    "title": "Reproducible documents with Quarto",
+    "section": "YAML header",
+    "text": "YAML header\nExecute options\n\nDefault options for code chunks\nCan be overwritten by local comments in code chunks\n\n\n---\ntitle: \"My first document\"\nauthor: \"Selina Baldauf\"\ndate: \"`r Sys.Date()`\"\nformat: html\nexecute: \n  echo: false\n  warning: false\n---"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#references-for-all-the-elements",
+    "href": "slides/2023_05_11_quarto.html#references-for-all-the-elements",
+    "title": "Reproducible documents with Quarto",
+    "section": "References for all the elements",
+    "text": "References for all the elements\n\n\nMardown syntax reference\nYAML header options:\n\nHTML\nPDF\nDOCX\n\nCode chunks:\n\nR code\nPython code"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#summary",
+    "href": "slides/2023_05_11_quarto.html#summary",
+    "title": "Reproducible documents with Quarto",
+    "section": "Summary",
+    "text": "Summary\n\nQuarto can combine formatted text and code to create reproducible documents\n\n\nUse cases for scientists\n\nWrite reports and documents about data analysis\nUse qmd instead of .R files to add text already to the code (e.g. for interpretation or methods)\nGreat for teaching because you can add explanations to your code\nMany more …"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#outlook",
+    "href": "slides/2023_05_11_quarto.html#outlook",
+    "title": "Reproducible documents with Quarto",
+    "section": "Outlook",
+    "text": "Outlook\nQuarto offers many more things like:\n\nPresentations (Powerpoint or Revealjs/HTML)\nWebsites\nEasily publish your documents or websites on quartopub or Github\n\nSee here for more information\n\nControl the rendering process via R scripts using quarto::quarto_render()\nParameterized reports"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#next-lecture",
+    "href": "slides/2023_05_11_quarto.html#next-lecture",
+    "title": "Reproducible documents with Quarto",
+    "section": "Next lecture",
+    "text": "Next lecture\nVersion control with Git\nGit is an essential skill if you use any programming language. It allows you to keep track of changes over time, collaborate with others, and maintain a clear and organized file structure. This can save time, improve research efficiency, and makes it easy to publish your code.\n\n\n📅 15th June 🕓 4-5 p.m. 📍 Webex\n📧 For topic suggestions and/or feedback send me an email\n🔔 Subscribe to the mailing list"
+  },
+  {
+    "objectID": "slides/2023_05_11_quarto.html#thank-you-for-your-attention",
+    "href": "slides/2023_05_11_quarto.html#thank-you-for-your-attention",
+    "title": "Reproducible documents with Quarto",
+    "section": "Thank you for your attention :)",
+    "text": "Thank you for your attention :)\nQuestions?\n“Artwork from”Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst.”"
+  },
+  {
     "objectID": "slides/zzz_template.html#introduction-of-this-lecture-series",
     "href": "slides/zzz_template.html#introduction-of-this-lecture-series",
     "title": "The title of the current lecture",
@@ -312,6 +585,13 @@
     "href": "todo_list.html",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "logo for the lecture series on the slides\nAdd link to slides on Github\nMake project folder figures nicer\nFilenames: Reference to Jenny Bryan\nGood examples of project structures (template package etc.) -> Links\nUse these nice boxes for tips and exclamation things\nFootnotes instead of links on the slides -> For package websites\nMake Github website for the slides in pdf and html format\nlintr results in full screen with code and liner output\n2: Figures same size and columns appear after one another\n9: Make figure nice and appear after text\n10: Make figure nice and appear after text\n11: Not incremental yet\n14: Not incremental yet\n16: Not incremental bad and good examples\n17: Not incremental bad and good examples\n18: Not incremental yet\n22: Figure is too large\n27: Something is wrong here\n29: Styling\n52: Define next topic"
+    "text": "logo for the lecture series on the slides\nUse these nice boxes for tips and exclamation things"
+  },
+  {
+    "objectID": "todo_list.html#quarto",
+    "href": "todo_list.html#quarto",
+    "title": "Scientific workflows: Tools and Tips 🛠️",
+    "section": "Quarto",
+    "text": "Quarto\n\nFix Figure caption sizes\nAdd link to github project\nLast slide make text smaller"
   }
 ]
