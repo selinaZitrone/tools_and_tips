@@ -1,0 +1,46 @@
+---
+title: "Reproducible documents with Quarto"
+subtitle: "2023-05-11"
+callout-appearance: default
+---
+
+### Description:
+
+Quarto (the successor of rmarkdown) is a powerful tool that enables the seamless integration of code (R, Python, and more) and its output into a variety of formats such as reports, research papers, presentations, and more. This tool streamlines the process of creating reproducible workflows by eliminating the need to copy and paste figures, tables, or numbers. During this lecture, you'll learn the fundamentals of Quarto and explore practical use cases that you can implement in your data analysis workflow.
+
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2023_05_11_quarto.html"></iframe>
+```
+
+[Slides in full screen](../slides/2023_05_11_quarto.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2023_05_11_quarto.pdf" download>Download PDF slides</a>
+
+## Summary
+
+Quarto allows you to combine code in R, Python or Julia with text to create reproducible documents in various output formats. You can create e.g.
+
+- Documents: HTML, PDF, Word, Open Office format
+- Presentations: Revealjs (HTML) or Powerpoint
+- Websites
+- Books: HTML or ePub
+
+### Get started
+
+If you use R and R Studio, .....
+
+## Example project
+
+To get started, you can download the [Quarto demo project](https://github.com/selinaZitrone/quarto_demo/releases/tag/v1) from Github.
+It contains some simple and more complex Quarto examples. Have a look at the
+README of the the project for more information.
+
+## Further links
+
+To continue learning, I recommend, checking out the following resources:
+
+- [Quarto website](https://quarto.org/) offers everything you need to get started
+  - [Download Quarto and starting guide](https://quarto.org/docs/get-started/) for different IDEs
+  - [Guides for different output formats](https://quarto.org/docs/guide/)
+  - [Gallery with Examples](https://quarto.org/docs/gallery/)
+- [Quarto introduction workshop](https://www.youtube.com/watch?v=yvi5uXQMvu4) on Youtube
+- [A curated collection of resources](https://github.com/mcanouil/awesome-quarto#featured-new-releases)

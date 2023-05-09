@@ -1,7 +1,7 @@
 ---
 title: "Reproducible documents with Quarto"
 subtitle: "Scientific workflows: Tools and Tips :hammer::bulb:"
-date: "2023-04-20"
+date: "2023-05-11"
 format: 
   revealjs:
     footer: "Reproducible documents with Quarto"
@@ -9,6 +9,7 @@ format:
     mainfont: Cabinet Grotesk
     slide-number: true
     show-slide-number: all
+    self-contained: true
     incremental: true
     code-line-numbers: false
     theme: slides.scss
@@ -100,13 +101,13 @@ Check out the [Quarto website](https://quarto.org/) for download and more info.
 
 ## An example document
 
-Download the demo project from [Github]()
+Download the demo project from [Github](https://github.com/selinaZitrone/quarto_demo/releases/tag/v1)
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-An HTML example
+An [HTML example](../sessions/additional_material/02_quarto/penguins_paper.html)
 
 ```{r}
 #|label: penguin-html
@@ -117,7 +118,7 @@ knitr::include_graphics("images/2023_05_11_quarto/quarto_penguin_html_example.pn
 
 :::{.column width="50%"}
 
-A PDF example:
+A [PDF example](../sessions/additional_material/02_quarto/penguins_paper.pdf)
 
 ```{r}
 #| label: penguin-pdf

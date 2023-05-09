@@ -20,4 +20,5 @@ For any questions, feedback or topic suggestions [send me an email](mailto:selin
 On this website, you can find all slides and additional resources for lectures:
 
 - 2023-04-20: [What they forgot to teach you about R](sessions/01_what_they_forgot.html)
+- 2023-05-11: [Reproducible documents with Quarto](sessions/02_quarto.html)
 
