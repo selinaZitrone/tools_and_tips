@@ -64,14 +64,15 @@ Document types that can be created with Quarto (examples):
 
 ## Before we start
 
-Quarto is a huge topic and there are so many cool Quarto things out there!
+Quarto is a huge topic and there are so many cool Quarto things!
 
 . . .
 
-**Goal of today:** Introduction to Quarto and an overview of different document types and their possibilities.
+**Goal of today:** **Introduction** to Quarto and an **overview** of different document types and their possibilities.
 
 - Focus on R and R Studio
-- Keep in mind: This also works with other languages and other IDEs or text editors.
+- Keep in mind: This also works with other languages and other IDEs, the principles are 
+all the same.
 
 ## How to get Quarto
 
@@ -220,7 +221,7 @@ What happens during rendering?
 ```{r}
 #| fig-alt: A schematic representing rendering of Quarto documents from .qmd, to knitr or jupyter, to plain text markdown, then converted by pandoc into any number of output types including html, PDF, or Word document.
 #| fig-cap: Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel,presented at RStudio Conference 2022. Illustrated by Allison Horst.
-knitr::include_graphics("images/2023_05_11_quarto/qmd_render_schema.png")
+knitr::include_graphics("images/2023_05_11_quarto/quarto_render.png")
 ```
 
 # Basic Elements of a `.qmd` document
@@ -476,7 +477,6 @@ format:
     toc: true
     toc-location: left
     code-fold: true
-    code-copy: true
     df-print: kable
   pdf: 
     toc: true
@@ -572,7 +572,11 @@ research efficiency, and makes it easy to publish your code.
 ## Thank you for your attention :) {background-image="images/2023_05_11_quarto/quarto_thankyou.png" background-size="cover"}
 Questions?
 
+::: aside
+<small>
 "Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst."
+</small>
+:::
 
 # References
 
