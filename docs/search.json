@@ -46,7 +46,7 @@
     "href": "sessions/02_quarto.html#example-project",
     "title": "Reproducible documents with Quarto",
     "section": "Example project",
-    "text": "Example project\nTo get started, you can download the Quarto demo project from Github. It contains some simple and more complex Quarto examples. Have a look at the README of the the project for more information. If you use R Studio, open the project by double clicking on the quarto_demo.Rproj file."
+    "text": "Example project\nTo get started, you can download the Quarto demo project from Github (To download just click on the green Code button and then download the zip folder). It contains some simple and more complex Quarto examples. Have a look at the README of the the project for more information. If you use R Studio, open the project by double clicking on the quarto_demo.Rproj file."
   },
   {
     "objectID": "sessions/02_quarto.html#further-links",
@@ -382,14 +382,14 @@
     "href": "slides/2023_05_11_quarto.html#how-to-get-quarto",
     "title": "Reproducible documents with Quarto",
     "section": "How to get Quarto",
-    "text": "How to get Quarto\nDifferent options, depending on your workflow\n\nIntegrated in new versions of R Studio (Update R Studio via Help -> Check for Updates)\nDownload the CLI for use with other IDE (e.g. Visual Studio code)\nR package quarto that provides an interface to Quarto (preconditions are Quarto CLI or new version of R Studio)\n\n\n\ninstall.packages(\"quarto\")\n\n\n\n\nCheck out the Quarto website for download and more info."
+    "text": "How to get Quarto\nDifferent options, depending on your workflow:\n\nIntegrated in new versions of R Studio (Update R Studio via Help -> Check for Updates)\nDownload the CLI for use with other IDE (e.g. Visual Studio code)\n\n\n\nCheck out the Quarto website for download and more info."
   },
   {
     "objectID": "slides/2023_05_11_quarto.html#an-example-document",
     "href": "slides/2023_05_11_quarto.html#an-example-document",
     "title": "Reproducible documents with Quarto",
     "section": "An example document",
-    "text": "An example document\nDownload the demo project from Github\n\n\nAn HTML example\n\n\n\n\n\n\nA PDF example"
+    "text": "An example document\nAn HTML example - Download the entire demo project from Github"
   },
   {
     "objectID": "slides/2023_05_11_quarto.html#a-standard-workflow",
@@ -455,25 +455,25 @@
     "text": "The text body - Markdown\nIf you don’t want to use markdown, there is a really nice feature in R Studio: The visual editor."
   },
   {
-    "objectID": "slides/2023_05_11_quarto.html#the-visual-editor",
-    "href": "slides/2023_05_11_quarto.html#the-visual-editor",
+    "objectID": "slides/2023_05_11_quarto.html#the-visual-editor-in-r-studio",
+    "href": "slides/2023_05_11_quarto.html#the-visual-editor-in-r-studio",
     "title": "Reproducible documents with Quarto",
-    "section": "The visual editor",
-    "text": "The visual editor\nConvenient, word-like interface for formatting text and adding features."
+    "section": "The visual editor in R Studio",
+    "text": "The visual editor in R Studio\nConvenient, word-like interface for formatting text and adding features."
   },
   {
-    "objectID": "slides/2023_05_11_quarto.html#the-visual-editor-1",
-    "href": "slides/2023_05_11_quarto.html#the-visual-editor-1",
+    "objectID": "slides/2023_05_11_quarto.html#the-visual-editor-in-r-studio-1",
+    "href": "slides/2023_05_11_quarto.html#the-visual-editor-in-r-studio-1",
     "title": "Reproducible documents with Quarto",
-    "section": "The visual editor",
-    "text": "The visual editor\nUsing the visual editor, makes many things that would be painful in Markdown really easy.\nMy favorite feature in the visual editor:\n\nAdd citations (Insert -> Citation) from Zotero library, DOI search, PubMed, …"
+    "section": "The visual editor in R Studio",
+    "text": "The visual editor in R Studio\nUsing the visual editor, makes many things that would be painful in Markdown really easy.\nMy favorite feature in the visual editor:\n\nAdd citations (Insert -> Citation) from Zotero library, DOI search, PubMed, …"
   },
   {
     "objectID": "slides/2023_05_11_quarto.html#the-code",
     "href": "slides/2023_05_11_quarto.html#the-code",
     "title": "Reproducible documents with Quarto",
     "section": "The Code",
-    "text": "The Code\nCode can be included in code chunks as inline code\n\nCode chunks can contain any type of R/Python/Julia code\nCode is (by default) executed and output is included in document\n\nText output\nFigures\n…"
+    "text": "The Code\nCode can be included in code chunks or as inline code\n\nCode chunks can contain any type of R/Python/Julia code\nCode is (by default) executed and output is included in document\n\nText output, figures, tables, numbers, …"
   },
   {
     "objectID": "slides/2023_05_11_quarto.html#the-code-1",
@@ -494,14 +494,14 @@
     "href": "slides/2023_05_11_quarto.html#the-code-3",
     "title": "Reproducible documents with Quarto",
     "section": "The Code",
-    "text": "The Code\nInsert a code chunk\n\nInsert a code chunk by going to Code -> Insert chunk\nUse the keyboard shortcut Ctrl + Alt + I / Cmd + Option + I\nInline chunks have to be typed or use the </> symbol in visual mode"
+    "text": "The Code\nInsert a code chunk (R Studio)\n\nInsert a code chunk by going to Code -> Insert chunk\nUse the keyboard shortcut Ctrl + Alt + I / Cmd + Option + I\nInline chunks have to be typed or use the </> symbol in visual mode"
   },
   {
     "objectID": "slides/2023_05_11_quarto.html#the-code-4",
     "href": "slides/2023_05_11_quarto.html#the-code-4",
     "title": "Reproducible documents with Quarto",
     "section": "The Code",
-    "text": "The Code\nRun code chunk\n\nCode chunks are evaluated by knitr when rendering the document\nCode chunks can also be run like normal R code\nRun Code chunk by clicking on the green arrow next to the chunk"
+    "text": "The Code\nRun code chunk\n\nCode chunks are evaluated by knitr/jupyter when rendering the document\nCode chunks can also be run like “normal” code\nRun Code chunk by clicking on the green arrow next to the chunk"
   },
   {
     "objectID": "slides/2023_05_11_quarto.html#the-code-5",
@@ -509,13 +509,6 @@
     "title": "Reproducible documents with Quarto",
     "section": "The code",
     "text": "The code\nCode chunk have special comments that start with #|, e.g.\n```{r}\n#| label: fig-airquality\n#| fig-cap: Temperature and ozone level.\n#| include: false\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\")\n```\n\nlabel: Figure and chunk label that can be referred to in text\nfig-cap: Figure caption\ninclude: Include the output (i.e. the plot) in the document but don’t show the code"
-  },
-  {
-    "objectID": "slides/2023_05_11_quarto.html#include-image-via-code-chunk",
-    "href": "slides/2023_05_11_quarto.html#include-image-via-code-chunk",
-    "title": "Reproducible documents with Quarto",
-    "section": "Include image via code chunk",
-    "text": "Include image via code chunk\nInclude an image from a code chunk via knitr::include_graphics().\n```{r}\n#| echo: false\n#| out.width: \"20%\"\n#| fig-align: center\n#| fig-cap: Quarto logo\n#| fig-cap-location: margin\nknitr::include_graphics(\"images/2023_05_11_quarto/quarto_straight.png\")\n```\n\nQuarto logo"
   },
   {
     "objectID": "slides/2023_05_11_quarto.html#yaml-header",
