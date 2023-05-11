@@ -26,7 +26,8 @@ Quarto allows you to combine code in R, Python or Julia with text to create repr
 
 ## Example project
 
-To get started, you can download the [Quarto demo project](https://github.com/selinaZitrone/quarto_demo/releases/tag/v1) from Github.
+To get started, you can download the [Quarto demo project](https://github.com/selinaZitrone/quarto_demo) from Github
+(To download just click on the green Code button and then download the zip folder).
 It contains some simple and more complex Quarto examples. Have a look at the
 README of the the project for more information. If you use R Studio, open the project
 by double clicking on the `quarto_demo.Rproj` file.

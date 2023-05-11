@@ -116,7 +116,7 @@ ggplot(
   geom_point(size = 3, alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE) +
   scale_color_manual(values = c("darkorange", "purple", "cyan4")) +
-  theme_bw()+
+  theme_bw() +
   labs(
     x = "Bill length (mm)",
     y = "Bill depth (mm)",
