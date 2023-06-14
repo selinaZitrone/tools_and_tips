@@ -12,6 +12,7 @@ format:
     incremental: true
     code-line-numbers: false
     theme: slides.scss
+    auto-stretch: false
 editor: source
 execute: 
   echo: false
@@ -36,33 +37,9 @@ from: markdown+emoji
 
 :::
 
-## Version control
+##
 
-![](images/2023_06_15_git/final-doc_comic.jpg){fig-align="center"}
-
-
-## Version control
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-![](images/2023_06_15_git/final-doc_comic.jpg)
-:::
-
-:::{.column width="50%"}
-
-### Why?
-
-- **Go back** in time
-
-- **Collaborate** in teams
-
-- Don't loose **overview** of your project
-
-:::
-
-:::
+![By Jorge Cham from [PhD Comics](https://phdcomics.com/comics/archive.php?comicid=1531)](images/2023_06_15_git/final-doc_comic.jpg){fig-align="center"}
 
 
 ## Version control
@@ -76,7 +53,7 @@ from: markdown+emoji
 
 :::{.column width="50%"}
 
-### How?
+### Requirements
 
 - **Complete and long-term history** of every file in your project
 
@@ -92,52 +69,66 @@ from: markdown+emoji
 
 :::
 
+# Version control with Git
+
+![](images/2023_06_15_git/Git-Logo-2Color.png){width=10%}
+
 ## Version control with Git
 
 - Open source and free to use version control software
 
-- Quasi-standard for software development
+- Quasi standard for software development
+  - Optimized for text files (e.g. code, ...)
 
 - A whole universe of other software and services around it
 
-## Version control with Git
-
-- For projects with mainly text files (e.g. code, markdown files, ...)
-
 . . .
 
-![](images/2023_06_15_git/git_snapshots_a.png)
+#### Today
+
+- Basic concepts of Git
+- A simple workflow in theory and practice
+- A small outlook on more advanced features
+
+
+<!-- ## Version control with Git -->
+
+<!-- - For projects with mainly text files (e.g. code, markdown files, ...) -->
+
+<!-- . . . -->
+
+<!-- ![](images/2023_06_15_git/git_snapshots_a.png) -->
+
+<!-- ## Version control with Git -->
+
+<!-- :::{.nonincremental} -->
+
+<!-- - For projects with mainly text files (e.g. code, markdown files, ...) -->
+
+<!-- - Basic idea: Take snapshots of your project over time -->
+
+<!-- ::: -->
+
+<!-- ![](images/2023_06_15_git/git_snapshots_b.png) -->
 
 ## Version control with Git
-
-:::{.nonincremental}
 
 - For projects with mainly text files (e.g. code, markdown files, ...)
 
 - Basic idea: Take snapshots of your project over time
+  - Git registers the changes that you make to your projec
 
-:::
-
-![](images/2023_06_15_git/git_snapshots_b.png)
-
-## Version control with Git
-
-:::{.nonincremental}
-
-- For projects with mainly text files (e.g. code, markdown files, ...)
-
-- Basic idea: Take snapshots of your project over time
-
-- Snapshots are stored in a special `.git` folder inside your project
+- Information on the snapshots is stored in a special `.git` folder inside your project
   - The `.git` folder contains the **Git repository**
   
-:::
 
 ![](images/2023_06_15_git/git_snapshots_c.png)
 
 ## Version control with Git
 
 Git is a **distributed version control system**
+
+. . .
 
 :::{.columns}
 
@@ -159,367 +150,397 @@ Git is a **distributed version control system**
 ## How to use Git
 
 After you [installed it --- ADD LINK]() there are different ways to use the 
-software
+software for you projects
 
-## How to use Git
+## How to use Git - Terminal
 
-You can use Git from the terminal
-  - Gives you most control
-  - You find a lot of help online
-  - All git commands start with `git` and are followed by the command, e.g. `git init`
+Using Git from the terminal
 
-. . .   
-  
 ![](images/2023_06_15_git/git-init.png)
 
-## How to use Git
+- All Git commands start with `git` and are followed by the command, e.g. `git init`<br>
 
-A GUI to control Git is integrated in most (all?) IDEs, e.g.
+. . . 
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-R Studio
+`r fontawesome::fa(name = "plus", fill = "green")` Gives you most control<br>
 
-![](images/2023_06_15_git/rstudio-git.png)
+`r fontawesome::fa(name = "plus", fill = "green")` You find a lot of help online <br>
 
 :::
 
 :::{.column width="50%"}
 
-VS Code
+`r fontawesome::fa(name = "minus", fill = "red")` You need to use the terminal <br>
 
-![](images/2023_06_15_git/vscode-git.png)
+:::
+
+:::
+
+## How to use Git - GUIs
+
+A Git GUI is integrated in most (all?) IDEs, e.g. R Studio
+
+. . .
+
+![](images/2023_06_15_git/rstudio-git.png){fig-align="center" width=50%}
+
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+`r fontawesome::fa(name = "plus", fill = "green")` (Often) Easy and intuitive <br>
+
+`r fontawesome::fa(name = "plus", fill = "green")` Stay inside your IDE<br>
+
+:::
+
+:::{.column width="50%"}
+
+`r fontawesome::fa(name = "minus", fill = "red")` Not universal <br>
+
 :::
 
 :::
 
-
-# How to use Git
+## How to use Git - GUIs
   
-There are also standalone Git GUI software that is universal, e.g. Github Desktop
+Standalone Git GUI software, e.g. Github Desktop
 
-![](images/2023_06_15_git/github-desktop.png)
+![](images/2023_06_15_git/github-desktop.png){width=50% fig-align="center"}
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+`r fontawesome::fa(name = "plus", fill = "green")` Easy and intuitive <br>
+
+`r fontawesome::fa(name = "plus", fill = "green")` Helps with initial setup of Git <br>
+
+`r fontawesome::fa(name = "plus", fill = "green")` Nice integration with Github <br>
+
+:::
+
+:::{.column width="50%"}
+
+`r fontawesome::fa(name = "minus", fill = "red")` Switch program to use Git <br>
+
+:::
+
+:::
 
 ## How to use Git
 
-Today: Go through a basic Git workflow
+#### Which one to choose?
 
-Goal: Show you the core concepts but also the application
-      Show you that it's easy to get started
+- Depends on your prior experience and taste
+- Depends on your IDE
+- If you never used Git before, I recommend to start with Github Desktop
+  - But in the long run, it's definitely worth it looking a bit into the terminal
+- You can also mix methods and freely switch between them
 
-Not Goal: Give you a detailed step by step guide -> More hands-on on the website
+. . .
+
+Have a look at the [Website - ADD LINKs]() to find small tutorials for 3 different options using Git.
+
+# The basic Git workflow
+
+> `git init`, `git add`, `git commit`, `git push`
+
+## Starting situation
+
+- Local working directory (i.e. a folder) with or without files
+
+<!-- ![](images/2023_06_15_git/git-start-concept.png) -->
 
 
-<!-- # The basic Git workflow -->
+## Step 1: Initialize a git repository
 
-<!-- > `git init`, `git add`, `git commit`, `git push` -->
+- Add a (hidden) `.git` folder to your project that contains your git repository
+- You don't have to touch anything that is in this folder
 
-<!-- ## Starting situation -->
+. . .
 
-<!-- - Local working directory (i.e. a folder) with or without files -->
+![](images/2023_06_15_git/git-init-concept.png){fig-align="center" width=60%}
 
-<!-- .center[![](images/2023_06_15_git/git-start-concept.png)] -->
+## Step 2: Modify files and stage changes
+
+Git detects any changes in the working directory
+
+. . .
+
+![Add file Bob.txt to working directory](images/2023_06_15_git/git-add-concept-1.png)
+
+. . .
+
+Git shows you all the changes you did to the files.
+
+## Step 2: Modify files and stage changes
+
+When you want a file to be part of the next commit (i.e. snapshot), you have to stage the file
 
 
-<!-- ## Step 1: Initialize a git repository `git init` -->
+- In the terminal use `git add`
+- Usually in Git GUIs this is just a check mark next to the file name
 
-<!-- - Add a (hidden) `.git` folder to your project that contains your git repository -->
-<!-- - You don't have to touch anything that is in this folder -->
+. . .
 
-<!-- . . . -->
+![](images/2023_06_15_git/git-add-concept-2.png)
 
-<!-- .center[![Git init concept](images/2023_06_15_git/git-init-concept.png)] -->
+## Step 3: Commit changes
 
-<!-- ## Step 2: Modify files and stage changes `git add` -->
+- Commits are the snapshots of your project states
 
-<!-- :::{.columns} -->
+- Commit work from staging area to local repository
+  - Collect meaningful chunks of work in the staging area, then commit
 
-<!-- :::{.column width="50%"} -->
+. . .
 
-<!-- Git detects any changes in the working directory and marks them as  -->
+![](images/2023_06_15_git/git-commit-concept.png)
 
-<!--   - untracked -->
-<!--   - modified -->
-<!--   - deleted -->
+. . .
 
-<!-- ::: -->
+- After a commit, your changes are part of your project's git history
 
-<!-- :::{.column width="50%"} -->
+## Commit messages
 
-<!-- ![Add file Bob.txt to working directory](images/2023_06_15_git/git-add-concept-1.png) -->
+- Every commit has a unique identifier (so-called hash)
+  - You can use this hash to come back to the version
+- Every commit has a commit message
+- Good commit messages are essential to make good use of git!
 
-<!-- ::: -->
+<!-- :::{.center} -->
 
-<!-- ::: -->
-
-<!-- ## Step 2: Modify files and stage changes `git add` -->
-
-<!-- :::{.columns} -->
-
-<!-- :::{.column width="50%"} -->
-
-<!-- By staging a file, you mark it as being part of the next commit -->
-
-<!-- - Usually in Git GUIs this is just a checkmark next to the filename -->
-<!-- - In the terminal use `git add` -->
-
-<!-- ::: -->
-
-<!-- :::{.column width="50%"} -->
-
-<!-- ![Add file Bob.txt to working directory](images/2023_06_15_git/git-add-concept-2.png) -->
-<!-- ::: -->
-
-<!-- ::: -->
-
-<!-- # Step 3: Commit changes `git commit` -->
-
-<!-- :::{.columns} -->
-
-<!-- :::{.column width="50%"} -->
-
-<!-- - Commits are basically snapshots of your projects -->
-
-<!-- - Commit work from staging area to local repository -->
-<!--   - First, collect meaningful chunks of work in the staging area, then commit -->
-
-<!-- - After a commit, your changes are part of your project's git history -->
-
-<!-- ::: -->
-
-<!-- :::{.column width="50%"} -->
-
-<!-- ![Concept of a git commit](images/2023_06_15_git/git-commit-concept.png) -->
+<!-- ![](https://imgs.xkcd.com/comics/git_commit.png) -->
 
 <!-- ::: -->
+. . .
 
-<!-- ::: -->
+A good commit message has a *subject line* and a *body*, e.g.
+<br>
+```markdown
+Add function to calculate temperature
 
-<!-- # Commit messages -->
+This is the body where you can explain in detail which changes you did
+and why you did them. Then your colleages (and you from the future) immediately
+understand why.
+```
+::: {.aside}
 
+Read [here](https://cbea.ms/git-commit/) for a nice and detailed explanation on 
+good commit messages how to write them.
 
-<!-- - Every commit needs a commit message -->
-<!-- - Good commit messages are essential to make good use of git! -->
+:::
 
+## Step 4: Create and connect a remote repo
 
-<!-- .center[![xkcd on commit messages](https://imgs.xkcd.com/comics/git_commit.png)] -->
+- Remote repositories are on a server and can be used to *synchronize*, *share* and *collaborate*
 
-<!-- -- -->
+- Remote repositories can be private (only for you and selected collaborators) or
+public (visible to anyone online)
 
-<!-- - **One line commit messages** can be given directly in the command line: -->
-<!--   - `git commit -m "Your very nice commit message"` -->
-<!-- - **More complex commit messages** are better entered in a text editor: -->
-<!--   - `git commit` and a text editor will automatically open for you message -->
+. . .
 
-<!--   .footnote-right[Comic by [xkcd](https://xkcd.com/1296/)] -->
 
-<!-- Link to how to write a good commit message -->
+![](images/2023_06_15_git/git-remote-concept.png){fig-align="center" width=60%}
 
-<!-- ## Step 4: Create a remote repository and connect your local repository -->
+## Step 5: Share your changes with the remote repo
 
-<!-- - E.g. on Github, Bitbucket or Gitlab -->
-<!-- - How this works depends on the software you are using -->
-<!--   - In RStudio: `usethis` package make it easy with `use_github()` function -->
-<!--   - In Github Desktop: Also very ease -->
+- Push your local changes to the remote with `git push`
 
-<!-- ![](images/2023_06_15_git/git-remote-concept.png) -->
+. . .
 
-<!-- ## Step 5: Share your changes with the remote repository `git push` -->
+![](images/2023_06_15_git/git-push.png){fig-align="center" width=60%}
 
-<!-- - Push your local changes to the remote with `git push` -->
+## Summary
 
-<!-- ![](images/2023_06_15_git/git-push.png) -->
+- `git init`: Initialize a git repository
+  - adds a `.git` folder to your working directory
+- `git add`: Add files to the staging area
+  - This marks the files as being part of the next commit
+- `git commit`: Take a snapshot of your current project version
+  - Includes a timestamp, a meaningful commit message and information on the person who did the commit
+- `git push`: Push your newest commits to the remote repository
+  - Sync your local project version with the remote e.g. on Github
+  
+# Share and collaborate
 
-<!-- ## Summary -->
+> Between machines and/or people
 
-<!-- - `git init`: Initialize a git repository -->
-<!--   - adds a `.git` folder to your working directory -->
-<!-- - `git add`: Add files to the staging area -->
-<!--   - This marks the files as being part of the next commit -->
-<!-- - `git commit`: Take a snapshot of your current project version -->
-<!--   - Includes a timestamp, a meaningful commit message and information on the person who did the commit -->
-<!-- - `git push`: Push your newest commits to the remote repository -->
-<!--   - Sync your local project version with the remote e.g. on Github -->
+## Clone a repo from a remote
 
-<!-- This basic workflow allows you to **jump back to any commit** and you have an additional -->
-<!-- copy of your project on Github as a **backup** that you can use to sync on other machines  -->
-<!-- and that you can share with your friends. -->
+![](images/2023_06_15_git/distributed_git.png){fig-align="center" width=40%}
 
-<!-- ## Get a repo copy to another machine `git clone` -->
+- Get a copy of your own repository on a different machine
+- Get the repository from somebody else
 
-<!-- ![](images/2023_06_15_git/distributed-git.png) -->
+## Clone a repo from a remote
 
-<!-- - Get a copy of your own repository on a different machine -->
-<!-- - Get the repository from somebody else -->
+By cloning, you get a full copy of the repository and the working directory with all files on your machine.
 
-<!-- ## Get a repo copy to another machine `git clone` -->
+- Clone a remote repository with `git clone <remote_address>`
 
-<!-- :::{.columns} -->
+. . .
 
-<!-- :::{.column width="50%"} -->
+![](images/2023_06_15_git/git-clone-concept.png){width=50%}
 
-<!-- - Locally, working directory is created, git repository is copied and checked out -->
+- If the clone is authorized it can also commit and push
 
-<!-- ::: -->
+## Get changes from the remote
 
-<!-- :::{.column width="50%"} -->
+- Local changes, publish to remote: `git push`
 
-<!-- ![](images/2023_06_15_git/git-clone-concept.png) -->
+- Remote changes, pull to local: `git pull`
 
-<!-- ::: -->
+. . .
 
-<!-- ::: -->
+![](images/2023_06_15_git/git-pull-concept.png){width=60%}
 
+## A simple collaboration workflow
 
+- One branch with commits of multiple people
 
-<!-- - Clone a remote repository with <br> -->
-<!-- `git clone git@github.com:{your_username}/{your_project}` -->
+## A more complex collaboration workflow
 
+- Branching and merging
 
-<!-- ## Sync changes with the remote `git pull` -->
+OR PUT THIS IN THE OUTLOOK?????
 
-<!-- :::{.columns} -->
 
-<!-- :::{.column width="50%"} -->
+## Remote repository platforms
 
-<!-- - Local changes, publish to remote: `git push` -->
+The combination of Git and a remote repository platform unlocks a lot of possibilities!
 
-<!-- - Remote changes, pull to local: `git pull` -->
+- Advanced workflow features for collaboration and open-source development
+  - Issues and pull requests
+- Publishing and sharing of projects
+  - Easily connect with Zenodo to get a DOI
+  - Accepted by many journals
+- Additional features 
+  - Project wikis
+  - Project websites
 
-<!-- ::: -->
+## Take home
 
-<!-- :::{.column width="50%"} -->
+- Git (+ Github) is very powerful for coding projects
+  - Keep track of your changes and go back if you need to
+  - Collaborate and share
+  - Have fun
+- Can be confusing in the beginning, but Git GUIs make it intuitive
+- Valuable addition to your toolbox that's also relevant outside academia
 
-<!-- ![](images/2023_06_15_git/git-pull-concept.png) -->
+. . .
 
-<!-- ::: -->
+::: {.callout-tip}
+## Tips for getting started
+Start using it for small projects and discover features as you go along.
 
-<!-- ::: -->
+Don't get frustrated by the complexity - it will get better.
 
-<!-- ## How to ignore files/folders? -->
+Use a GUI if you don't like the terminal.
+:::
 
-<!-- - **Step 1: **  Create a file with the name `.gitignore` in working directory -->
+## Next lecture
 
-<!-- -- -->
+. . .
 
-<!-- - **Step 2: ** Add all files and directories you want to ignore to the `.gitignore` file -->
+#### Research compendia with R
 
-<!-- ## Ignoring files: Example -->
+A research compendium is a **collection of all the digital parts of your research projects** (data, code, documents) with the goal of your results being reproducible. You can do this in R by building an R 📦 which makes it easy to publish a fully reproducible version of your project.
 
-<!-- ``` -->
-<!-- *.html    # ignore all .html files -->
-<!-- *.exe     # ignore all .exe files -->
+<br>
 
-<!-- debug.log # ignore the file debug.log -->
+. . .
 
-<!-- build/    # ignore all files in subdirectory build -->
-<!-- ``` -->
+:date: 20th July :clock4: 1-2 p.m. :round_pushpin: Webex
 
-<!-- See [here](https://www.atlassian.com/git/tutorials/saving-changes/gitignore) for more ignore patterns that you can use. -->
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
 
-<!-- # Branches -->
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
-<!-- ## Branches in Git -->
+## Thank you for your attention :)
+Questions?
 
-<!-- <br> -->
 
-<!-- ![](images/2023_06_15_git/branching/git-commit-line.png) -->
+## References
 
-<!-- -- -->
-<!-- <br> -->
-<!-- - All repositories start with a default branch (main/master) -->
+:::{.nonincremental}
 
+[Learn git concepts, not commands](https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc): Blogpost that explains really well the concepts of git, also more advanced ones like `rebase` or `cherry-pick`.
 
-<!--   - As long as you work on one branch and just make changes in working directory, stage and commit them, you don't really care about branches -->
+[How to write good commit messages](https://cbea.ms/git-commit/): Blogpost that explains why good commit messages are important and gives 7 rules for writing them.
 
+[Git cheat sheet](https://education.github.com/git-cheat-sheet-education.pdf): Always handy if you don't remember the basic commands
 
-<!-- ## Multiple branches -->
+[Book on how to use Git wih R](https://happygitwithr.com/)
 
-<!-- - Work on different versions of the same project in parallel -->
+:::
 
-<!-- - This allows you to -->
-<!--   - Experiment on a branch without messing up the main version -->
-<!--   - Collaborate with others in a smooth way -->
+## How to ignore files/folders?
 
-<!-- ## Merging branches again -->
+- **Step 1: **  Create a file with the name `.gitignore` in working directory
 
-<!-- - You can bring changes from one branch into another one by merging them back togehter -->
+--
 
-<!-- ## Collaboration -->
+- **Step 2: ** Add all files and directories you want to ignore to the `.gitignore` file
 
-<!-- - Can be done on a single branch: -->
+## Ignoring files: Example
 
-<!-- ## More elaborate collaboration -->
+```
+*.html    # ignore all .html files
+*.exe     # ignore all .exe files
 
-<!-- Typical workflow in software development: -->
+debug.log # ignore the file debug.log
 
-<!-- - Work on your own branch, then when you are ready, do a pull request -->
-<!-- - Others can then first review what you did and then they can accept your changes -->
+build/    # ignore all files in subdirectory build
+```
 
-<!-- # A few words on Github -->
+See [here](https://www.atlassian.com/git/tutorials/saving-changes/gitignore) for more ignore patterns that you can use.
 
-<!-- > Or similar remote repository servers -->
+# Branches
 
-<!-- ## Github -->
+## Branches in Git
 
-<!-- - Advanced workflow features like -->
-<!--   - Pull requests -->
-<!--   - Issues -->
-<!--   - User access management -->
-<!-- - Collaboration with colleagues -->
-<!-- - Publishing repositories (more next week) -->
-<!-- - Create websites that go together with your repository -->
+<br>
 
-<!-- ## Summary -->
+![](images/2023_06_15_git/branching/git-commit-line.png)
 
-<!-- ## Outlook -->
+. . .
 
-<!-- You can do a lot of useful things with Git like -->
+<br>
+- All repositories start with a default branch (main/master)
 
-<!-- - Rolling back your project to an earlier stage -->
-<!-- - Comparing two commits to see which changes happened in between -->
-<!-- - ... -->
 
-<!-- But these things are best learned as you need them -->
+- As long as you work on one branch and just make changes in working directory, 
+stage and commit them, you don't really care about branches
 
-<!-- ## Next lecture -->
 
-<!-- . . . -->
+## Multiple branches
 
-<!-- #### Version control with Git -->
+- Work on different versions of the same project in parallel
 
-<!-- Git is an essential skill if you use any programming language.  -->
-<!-- It allows you to keep track of changes over time, collaborate with others, -->
-<!-- and maintain a clear and organized file structure. This can save time, improve  -->
-<!-- research efficiency, and makes it easy to publish your code. -->
+- This allows you to
+  - Experiment on a branch without messing up the main version
+  - Collaborate with others in a smooth way
 
-<!-- <br> -->
+## Merging branches again
 
-<!-- . . . -->
+- You can bring changes from one branch into another one by merging them back togehter
 
-<!-- :date: 15th June :clock4: 4-5 p.m. :round_pushpin: Webex -->
+## Collaboration
 
-<!-- :bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips) -->
+- Can be done on a single branch:
 
-<!-- :e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de) -->
+## More elaborate collaboration
 
-<!-- ## Thank you for your attention :)  -->
-<!-- Questions? -->
+Typical workflow in software development:
 
-
-<!-- ## More on the topic -->
-
-<!-- Thanks to this blogpost from which all the examples and explanations are taken: -->
-
-<!-- [Learn git concepts, not commands](https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc): Blogpost that explains really well the concepts of git, also more advanced ones like `rebase` or `cherry-pick`. -->
-
-<!-- [How to write good commit messages](https://cbea.ms/git-commit/): Blogpost that explains why good commit messages are important and gives 7 rules for writing them. -->
-
-<!-- [Git cheat sheet](https://education.github.com/git-cheat-sheet-education.pdf): Always handy if you don't remember the basic commands -->
-
-<!-- [Download Github Desktop](https://desktop.github.com/) -->
+- Work on your own branch, then when you are ready, do a pull request
+- Others can then first review what you did and then they can accept your changes
 
 
 
