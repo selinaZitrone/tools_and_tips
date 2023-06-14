@@ -56,6 +56,27 @@
     "text": "Further links\nTo continue learning, I recommend, checking out the following resources:\n\nQuarto website offers everything you need to get started\n\nDownload Quarto and starting guide for different IDEs\nGuides for different output formats\nGallery with Examples\n\nQuarto introduction workshop on Youtube\nA curated collection of resources"
   },
   {
+    "objectID": "sessions/03_git.html",
+    "href": "sessions/03_git.html",
+    "title": "Introduction to version control with Git",
+    "section": "",
+    "text": "Git is an essential skill if you use any programming language. It allows you to keep track of changes to your project over time, collaborate with others, and maintain a clear and organized project structure. This can save time, improve research efficiency, and also makes it easy to publish your code via platforms such as Github. In this lecture, I will introduce the basic concepts of Git and how to use it for you own projects. The lecture is for Git beginners but also for people who use basic Git for their own projects and want to know a bit more about the concepts behind the workflow.\n\nSlides in full screen     Download PDF slides"
+  },
+  {
+    "objectID": "sessions/03_git.html#summary",
+    "href": "sessions/03_git.html#summary",
+    "title": "Introduction to version control with Git",
+    "section": "Summary",
+    "text": "Summary\nInstall git for your machine following this guide\n\nGet started\n\nCommand line\nFollow this Git training for learning the Git concepts in the command line.\n\n\nR and R Studio\nThere is a whole book on using Git with R that explains the setup in detail but also goes into more advanced topics.\nFollow this step by step guide to set up Git and a Github connection in R and R Studio\n\n\nGithub Desktop\nThere are detailed step by step guides on how to set up Github Desktop and how to work with in the Github Desktop Documentation"
+  },
+  {
+    "objectID": "sessions/03_git.html#further-links",
+    "href": "sessions/03_git.html#further-links",
+    "title": "Introduction to version control with Git",
+    "section": "Further links",
+    "text": "Further links\nLearn git concepts, not commands: Blogpost that explains really well the concepts of git, also more advanced ones like rebase or cherry-pick.\nHow to write good commit messages: Blogpost that explains why good commit messages are important and gives 7 rules for writing them.\nGit cheat sheet: Always handy if you don’t remember the basic commands\nBook on how to use Git wih R"
+  },
+  {
     "objectID": "sessions/additional_material/02_quarto/penguins_paper.html",
     "href": "sessions/additional_material/02_quarto/penguins_paper.html",
     "title": "The penguins of Antarctica",
@@ -572,6 +593,230 @@
     "title": "Reproducible documents with Quarto",
     "section": "Thank you for your attention :)",
     "text": "Thank you for your attention :)\nQuestions?\n\n\n “Artwork from”Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst.”"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#what-is-this-lecture-series",
+    "href": "slides/2023_06_15_git.html#what-is-this-lecture-series",
+    "title": "Introduction to version control with Git",
+    "section": "What is this lecture series?",
+    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nFor topic suggestions send me an email\nIf you don’t want to miss a lecture\n\nCheck out the lecture website\nSubscribe to the mailing list\n\nSlides provided on Github"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#section",
+    "href": "slides/2023_06_15_git.html#section",
+    "title": "Introduction to version control with Git",
+    "section": "",
+    "text": "By Jorge Cham from PhD Comics"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#version-control",
+    "href": "slides/2023_06_15_git.html#version-control",
+    "title": "Introduction to version control with Git",
+    "section": "Version control",
+    "text": "Version control\n\n\n\n\nRequirements\n\nComplete and long-term history of every file in your project\nSafe (e.g. no accidental loss of versions)\nEasy to use\nOverview and documentation of all changes\nCollaboration should be possible"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#version-control-with-git-1",
+    "href": "slides/2023_06_15_git.html#version-control-with-git-1",
+    "title": "Introduction to version control with Git",
+    "section": "Version control with Git",
+    "text": "Version control with Git\n\nOpen source and free to use version control software\nQuasi standard for software development\n\nOptimized for text files (e.g. code, …)\n\nA whole universe of other software and services around it\n\n\nToday\n\nBasic concepts of Git\nA simple workflow in theory and practice\nA small outlook on more advanced features"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#version-control-with-git-2",
+    "href": "slides/2023_06_15_git.html#version-control-with-git-2",
+    "title": "Introduction to version control with Git",
+    "section": "Version control with Git",
+    "text": "Version control with Git\n\nFor projects with mainly text files (e.g. code, markdown files, …)\nBasic idea: Take snapshots of your project over time\n\nGit registers the changes that you make to your projec\n\nInformation on the version history etc. stored in a special .git folder"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#version-control-with-git-3",
+    "href": "slides/2023_06_15_git.html#version-control-with-git-3",
+    "title": "Introduction to version control with Git",
+    "section": "Version control with Git",
+    "text": "Version control with Git\nGit is a distributed version control system\n\n\n\n\n\n\nIdea: many local repositories synced via one remote repo\nEvery computer has full-fledged version of repository with entire history"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#how-to-use-git",
+    "href": "slides/2023_06_15_git.html#how-to-use-git",
+    "title": "Introduction to version control with Git",
+    "section": "How to use Git",
+    "text": "How to use Git\nAfter you installed it there are different ways to use the software for you projects"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#how-to-use-git---terminal",
+    "href": "slides/2023_06_15_git.html#how-to-use-git---terminal",
+    "title": "Introduction to version control with Git",
+    "section": "How to use Git - Terminal",
+    "text": "How to use Git - Terminal\nUsing Git from the terminal\n\n\n\n\n Gives you most control\n You find a lot of help online \n\n You need to use the terminal"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#how-to-use-git---guis",
+    "href": "slides/2023_06_15_git.html#how-to-use-git---guis",
+    "title": "Introduction to version control with Git",
+    "section": "How to use Git - GUIs",
+    "text": "How to use Git - GUIs\nA Git GUI is integrated in most (all?) IDEs, e.g. R Studio\n\n\n\n\n\n\n\n\n (Often) Easy and intuitive \n Stay inside your IDE\n\n Not universal"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#how-to-use-git---guis-1",
+    "href": "slides/2023_06_15_git.html#how-to-use-git---guis-1",
+    "title": "Introduction to version control with Git",
+    "section": "How to use Git - GUIs",
+    "text": "How to use Git - GUIs\nStandalone Git GUI software, e.g. Github Desktop\n\n\n\n\n\n\n\n Easy and intuitive \n Helps with initial setup of Git \n Nice integration with Github \n\n Switch program to use Git"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#how-to-use-git-1",
+    "href": "slides/2023_06_15_git.html#how-to-use-git-1",
+    "title": "Introduction to version control with Git",
+    "section": "How to use Git",
+    "text": "How to use Git\nWhich one to choose?\n\nDepends on your prior experience and taste\nDepends on your IDE\nIf you never used the terminal before, I recommend to start with Github Desktop\n\nBut in the long run, it’s definitely worth it looking into the terminal\n\nYou can also mix methods and freely switch between them"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#starting-situation",
+    "href": "slides/2023_06_15_git.html#starting-situation",
+    "title": "Introduction to version control with Git",
+    "section": "Starting situation",
+    "text": "Starting situation\n\nLocal working directory (i.e. a folder) with or without files"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#step-1-initialize-a-git-repository",
+    "href": "slides/2023_06_15_git.html#step-1-initialize-a-git-repository",
+    "title": "Introduction to version control with Git",
+    "section": "Step 1: Initialize a git repository",
+    "text": "Step 1: Initialize a git repository\n\nAdd a (hidden) .git folder to your project that will contain the Git repository\nYou don’t have to touch anything that is in this folder"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#step-2-modify-files-and-stage-changes",
+    "href": "slides/2023_06_15_git.html#step-2-modify-files-and-stage-changes",
+    "title": "Introduction to version control with Git",
+    "section": "Step 2: Modify files and stage changes",
+    "text": "Step 2: Modify files and stage changes\nGit detects any changes in the working directory\n\n\n\n\nGit shows you all the changes you did to the files."
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#step-2-modify-files-and-stage-changes-1",
+    "href": "slides/2023_06_15_git.html#step-2-modify-files-and-stage-changes-1",
+    "title": "Introduction to version control with Git",
+    "section": "Step 2: Modify files and stage changes",
+    "text": "Step 2: Modify files and stage changes\nWhen you want a file to be part of the next commit (i.e. snapshot), you have to stage the file\n\nIn the terminal use git add\nUsually in Git GUIs this is just a check mark next to the file name"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#step-3-commit-changes",
+    "href": "slides/2023_06_15_git.html#step-3-commit-changes",
+    "title": "Introduction to version control with Git",
+    "section": "Step 3: Commit changes",
+    "text": "Step 3: Commit changes\n\nCommits are the snapshots of your project states\nCommit work from staging area to local repository\n\nCollect meaningful chunks of work in the staging area, then commit\n\n\n\n\n\n\n\nAfter a commit, your changes are part of your project’s git history"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#commit-messages",
+    "href": "slides/2023_06_15_git.html#commit-messages",
+    "title": "Introduction to version control with Git",
+    "section": "Commit messages",
+    "text": "Commit messages\n\nEvery commit has a unique identifier (so-called hash)\n\nYou can use this hash to come back to the version\n\nEvery commit has a commit message\nGood commit messages are essential to make good use of git!\n\n\n\n\n\nA good commit message has a subject line and a body, e.g. \nAdd function to calculate temperature\n\nThis is the body where you can explain in detail which changes you did\nand why you did them. Then your colleages (and you from the future) immediately\nunderstand why.\n\n\n\nRead here for a nice and detailed explanation on good commit messages how to write them."
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#step-4-create-and-connect-a-remote-repo",
+    "href": "slides/2023_06_15_git.html#step-4-create-and-connect-a-remote-repo",
+    "title": "Introduction to version control with Git",
+    "section": "Step 4: Create and connect a remote repo",
+    "text": "Step 4: Create and connect a remote repo\n\nRemote repositories are on a server and can be used to synchronize, share and collaborate\nRemote repositories can be private (only for you and selected collaborators) or public (visible to anyone online)"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#step-5-share-your-changes-with-the-remote-repo",
+    "href": "slides/2023_06_15_git.html#step-5-share-your-changes-with-the-remote-repo",
+    "title": "Introduction to version control with Git",
+    "section": "Step 5: Share your changes with the remote repo",
+    "text": "Step 5: Share your changes with the remote repo\n\nPush your local changes to the remote with git push"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#summary",
+    "href": "slides/2023_06_15_git.html#summary",
+    "title": "Introduction to version control with Git",
+    "section": "Summary",
+    "text": "Summary\n\ngit init: Initialize a git repository\n\nadds a .git folder to your working directory\n\ngit add: Add files to the staging area\n\nThis marks the files as being part of the next commit\n\ngit commit: Take a snapshot of your current project version\n\nIncludes a timestamp, a meaningful commit message and information on the person who did the commit\n\ngit push: Push your newest commits to the remote repository\n\nSync your local project version with the remote e.g. on Github"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#clone-a-repo-from-a-remote",
+    "href": "slides/2023_06_15_git.html#clone-a-repo-from-a-remote",
+    "title": "Introduction to version control with Git",
+    "section": "Clone a repo from a remote",
+    "text": "Clone a repo from a remote\n\n\n\n\n\n\nGet a copy of your own repository on a different machine\nGet the repository from somebody else"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#clone-a-repo-from-a-remote-1",
+    "href": "slides/2023_06_15_git.html#clone-a-repo-from-a-remote-1",
+    "title": "Introduction to version control with Git",
+    "section": "Clone a repo from a remote",
+    "text": "Clone a repo from a remote\nBy cloning, you get a full copy of the repository and the working directory with all files on your machine.\n\nClone a remote repository with git clone <remote_address>\n\n\n\n\nIf the clone is authorized it can also commit and push"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#get-changes-from-the-remote",
+    "href": "slides/2023_06_15_git.html#get-changes-from-the-remote",
+    "title": "Introduction to version control with Git",
+    "section": "Get changes from the remote",
+    "text": "Get changes from the remote\n\nLocal changes, publish to remote: git push\nRemote changes, pull to local: git pull"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#a-simple-collaboration-workflow",
+    "href": "slides/2023_06_15_git.html#a-simple-collaboration-workflow",
+    "title": "Introduction to version control with Git",
+    "section": "A simple collaboration workflow",
+    "text": "A simple collaboration workflow\n \n\nBy default: Everything on one branch (main)\n\nBranches are connections between specific commits"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#a-more-complex-collaboration-workflow",
+    "href": "slides/2023_06_15_git.html#a-more-complex-collaboration-workflow",
+    "title": "Introduction to version control with Git",
+    "section": "A more complex collaboration workflow",
+    "text": "A more complex collaboration workflow\n\nYou can also have multiple branches of the same project\n\n\n\n\nWork on separate branches for\n\nSeparate people\nSeparate features"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#a-more-complex-collaboration-workflow-1",
+    "href": "slides/2023_06_15_git.html#a-more-complex-collaboration-workflow-1",
+    "title": "Introduction to version control with Git",
+    "section": "A more complex collaboration workflow",
+    "text": "A more complex collaboration workflow\nBranches can be merged using git merge"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#remote-repository-platforms",
+    "href": "slides/2023_06_15_git.html#remote-repository-platforms",
+    "title": "Introduction to version control with Git",
+    "section": "Remote repository platforms",
+    "text": "Remote repository platforms\nThe combination of Git and a remote repository platform unlocks a lot of possibilities!\n\nAdvanced workflow features for collaboration and open-source development\n\nIssues and pull requests\n\nPublishing and sharing of projects\n\nEasily connect with Zenodo to get a DOI\nAccepted by many journals\n\nAdditional features\n\nProject wikis\nProject websites"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#take-home",
+    "href": "slides/2023_06_15_git.html#take-home",
+    "title": "Introduction to version control with Git",
+    "section": "Take home",
+    "text": "Take home\n\nGit (+ Github) is very powerful for coding projects\n\nKeep track of your changes and go back if you need to\nCollaborate and share\nHave fun\n\nCan be confusing in the beginning, but Git GUIs make it intuitive\nValuable addition to your toolbox that’s also relevant outside academia\n\n\n\n\n\n\n\n\nTips for getting started\n\n\nStart using it for small projects and discover features as you go along.\nDon’t get frustrated by the complexity - it will get better.\nUse a GUI if you don’t like the terminal."
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#get-started",
+    "href": "slides/2023_06_15_git.html#get-started",
+    "title": "Introduction to version control with Git",
+    "section": "Get started",
+    "text": "Get started\nCommand line\nFollow this Git training for learning the Git concepts in the command line.\nR and R Studio\nThere is a whole book on using Git with R that explains the setup in detail but also goes into more advanced topics.\nFollow this step by step guide to set up Git and a Github connection in R and R Studio\nGithub Desktop\nThere are detailed step by step guides on how to set up Github Desktop and how to work with in the Github Desktop Documentation"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#next-lecture",
+    "href": "slides/2023_06_15_git.html#next-lecture",
+    "title": "Introduction to version control with Git",
+    "section": "Next lecture",
+    "text": "Next lecture\n\nResearch compendia with R\nA research compendium is a collection of all the digital parts of your research projects (data, code, documents) with the goal of your results being reproducible. You can do this in R by building an R 📦 which makes it easy to publish a fully reproducible version of your project.\n\n\n📅 20th July 🕓 1-2 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#thank-you-for-your-attention",
+    "href": "slides/2023_06_15_git.html#thank-you-for-your-attention",
+    "title": "Introduction to version control with Git",
+    "section": "Thank you for your attention :)",
+    "text": "Thank you for your attention :)\nQuestions?"
+  },
+  {
+    "objectID": "slides/2023_06_15_git.html#references",
+    "href": "slides/2023_06_15_git.html#references",
+    "title": "Introduction to version control with Git",
+    "section": "References",
+    "text": "References\n\nLearn git concepts, not commands: Blogpost that explains really well the concepts of git, also more advanced ones like rebase or cherry-pick.\nHow to write good commit messages: Blogpost that explains why good commit messages are important and gives 7 rules for writing them.\nGit cheat sheet: Always handy if you don’t remember the basic commands\nBook on how to use Git wih R\n\n\n\nVersion control with Git"
   },
   {
     "objectID": "slides/zzz_template.html#introduction-of-this-lecture-series",
