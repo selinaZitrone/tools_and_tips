@@ -641,7 +641,7 @@
     "href": "slides/2023_06_15_git.html#how-to-use-git",
     "title": "Introduction to version control with Git",
     "section": "How to use Git",
-    "text": "How to use Git\nAfter you installed it there are different ways to use the software for you projects"
+    "text": "How to use Git\nAfter you installed it there are different ways to use the software for your projects"
   },
   {
     "objectID": "slides/2023_06_15_git.html#how-to-use-git---terminal",
@@ -669,7 +669,7 @@
     "href": "slides/2023_06_15_git.html#how-to-use-git-1",
     "title": "Introduction to version control with Git",
     "section": "How to use Git",
-    "text": "How to use Git\nWhich one to choose?\n\nDepends on your prior experience and taste\nDepends on your IDE\nIf you never used the terminal before, I recommend to start with Github Desktop\n\nBut in the long run, it’s definitely worth it looking into the terminal\n\nYou can also mix methods and freely switch between them"
+    "text": "How to use Git\nWhich one to choose?\n\nDepends on your prior experience and taste\nIf you never used the terminal before, I recommend to start with Github Desktop\n\nBut in the long run, it’s definitely worth it looking into the terminal\n\nYou can also mix methods and freely switch between them"
   },
   {
     "objectID": "slides/2023_06_15_git.html#starting-situation",
@@ -707,11 +707,11 @@
     "text": "Step 3: Commit changes\n\nCommits are the snapshots of your project states\nCommit work from staging area to local repository\n\nCollect meaningful chunks of work in the staging area, then commit\n\n\n\n\n\n\n\nAfter a commit, your changes are part of your project’s git history"
   },
   {
-    "objectID": "slides/2023_06_15_git.html#commit-messages",
-    "href": "slides/2023_06_15_git.html#commit-messages",
+    "objectID": "slides/2023_06_15_git.html#step-3-commit-changes-1",
+    "href": "slides/2023_06_15_git.html#step-3-commit-changes-1",
     "title": "Introduction to version control with Git",
-    "section": "Commit messages",
-    "text": "Commit messages\n\nEvery commit has a unique identifier (so-called hash)\n\nYou can use this hash to come back to the version\n\nEvery commit has a commit message\nGood commit messages are essential to make good use of git!\n\n\n\n\n\nA good commit message has a subject line and a body, e.g. \nAdd function to calculate temperature\n\nThis is the body where you can explain in detail which changes you did\nand why you did them. Then your colleages (and you from the future) immediately\nunderstand why.\n\n\n\nRead here for a nice and detailed explanation on good commit messages how to write them."
+    "section": "Step 3: Commit changes",
+    "text": "Step 3: Commit changes\n\nEvery commit has a unique identifier (so-called hash)\n\nYou can use this hash to come back to the version\n\nEvery commit has a commit message\nGood commit messages are essential to make good use of git!\n\n\n\n\n\nA good commit message has a subject line and a body, e.g. \nAdd function to calculate temperature\n\nThis is the body where you can explain in detail which changes you did\nand why you did them. Then your colleages (and you from the future) immediately\nunderstand why.\n\n\n\nRead here for a nice and detailed explanation on good commit messages how to write them."
   },
   {
     "objectID": "slides/2023_06_15_git.html#step-4-create-and-connect-a-remote-repo",
@@ -760,14 +760,14 @@
     "href": "slides/2023_06_15_git.html#a-simple-collaboration-workflow",
     "title": "Introduction to version control with Git",
     "section": "A simple collaboration workflow",
-    "text": "A simple collaboration workflow\n \n\nBy default: Everything on one branch (main)\n\nBranches are connections between specific commits"
+    "text": "A simple collaboration workflow\n \n\nBy default: Everything on one branch (main)\n\nBranches are connections between specific commits\n\nBasic idea: Pull newest version before you start working, push new version after you are done"
   },
   {
     "objectID": "slides/2023_06_15_git.html#a-more-complex-collaboration-workflow",
     "href": "slides/2023_06_15_git.html#a-more-complex-collaboration-workflow",
     "title": "Introduction to version control with Git",
     "section": "A more complex collaboration workflow",
-    "text": "A more complex collaboration workflow\n\nYou can also have multiple branches of the same project\n\n\n\n\nWork on separate branches for\n\nSeparate people\nSeparate features"
+    "text": "A more complex collaboration workflow\n\nYou can also have multiple branches of the same project"
   },
   {
     "objectID": "slides/2023_06_15_git.html#a-more-complex-collaboration-workflow-1",
@@ -788,7 +788,7 @@
     "href": "slides/2023_06_15_git.html#take-home",
     "title": "Introduction to version control with Git",
     "section": "Take home",
-    "text": "Take home\n\nGit (+ Github) is very powerful for coding projects\n\nKeep track of your changes and go back if you need to\nCollaborate and share\nHave fun\n\nCan be confusing in the beginning, but Git GUIs make it intuitive\nValuable addition to your toolbox that’s also relevant outside academia\n\n\n\n\n\n\n\n\nTips for getting started\n\n\nStart using it for small projects and discover features as you go along.\nDon’t get frustrated by the complexity - it will get better.\nUse a GUI if you don’t like the terminal."
+    "text": "Take home\n\nGit (+ Github) is very powerful for coding projects\n\nKeep track of your changes and go back if you need to\nCollaborate and share\n\nCan be confusing in the beginning, but Git GUIs make it intuitive\nValuable addition to your toolbox that’s also relevant outside academia\n\n\n\n\n\n\n\n\nTips for getting started\n\n\nStart using it for small projects and discover features as you go along.\nDon’t get frustrated by the complexity - it will get better.\nUse a GUI if you don’t like the terminal."
   },
   {
     "objectID": "slides/2023_06_15_git.html#get-started",
