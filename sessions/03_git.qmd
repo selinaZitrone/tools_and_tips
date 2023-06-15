@@ -1,0 +1,52 @@
+---
+title: "Introduction to version control with Git"
+subtitle: "2023-06-15"
+callout-appearance: default
+---
+
+### Description:
+
+Git is an essential skill if you use any programming language. It allows you to keep track of changes to your project over time, collaborate with others, and maintain a clear and organized project structure. This can save time, improve research efficiency, and also makes it easy to publish your code via platforms such as Github. In this lecture, I will introduce the basic concepts of Git and how to use it for you own projects.
+The lecture is for Git beginners but also for people who use basic Git for their own projects and want to know a bit more about the concepts behind the workflow.
+
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2023_06_15_git.html"></iframe>
+```
+
+[Slides in full screen](../slides/2023_06_15_git.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2023_06_15_git.pdf" download>Download PDF slides</a>
+
+## Summary
+
+
+Install git for your machine following [this guide](https://www.atlassian.com/de/git/tutorials/install-git)
+
+### Get started
+
+#### Command line
+
+Follow [this Git training](https://github.com/UnseenWizzard/git_training) for learning the Git
+concepts in the command line. 
+
+#### R and R Studio
+
+There is a whole [book on using Git with R](https://happygitwithr.com/) that 
+explains the setup in detail but also goes into more advanced topics.
+
+Follow this [step by step guide](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/)
+to set up Git and a Github connection in R and R Studio
+
+#### Github Desktop
+
+There are detailed step by step guides on how to set up Github Desktop and how to
+work with in the [Github Desktop Documentation](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/creating-your-first-repository-using-github-desktop)
+
+## Further links
+
+[Learn git concepts, not commands](https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc): Blogpost that explains really well the concepts of git, also more advanced ones like `rebase` or `cherry-pick`.
+
+[How to write good commit messages](https://cbea.ms/git-commit/): Blogpost that explains why good commit messages are important and gives 7 rules for writing them.
+
+[Git cheat sheet](https://education.github.com/git-cheat-sheet-education.pdf): Always handy if you don't remember the basic commands
+
+[Book on how to use Git wih R](https://happygitwithr.com/)

@@ -22,6 +22,8 @@ website:
             href: sessions/01_what_they_forgot.qmd
           - text: 02 - Reproducible documents with Quarto
             href: sessions/02_quarto.qmd
+          - text: 03 - Version control with Git
+            href: sessions/03_git.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 
