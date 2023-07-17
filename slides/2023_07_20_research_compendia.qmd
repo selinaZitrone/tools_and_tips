@@ -1,0 +1,218 @@
+---
+title: "Research compendia as R packages"
+subtitle: "Scientific workflows: Tools and Tips :hammer_and_wrench:"
+date: "2023-06-15"
+format: 
+  revealjs:
+    footer: "Research compendia as R 📦"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute: 
+  echo: false
+  eval: true
+from: markdown+emoji
+---
+
+---
+title: "Reproducible data analysis"
+author: "Sebastian Hanß and Selina Baldauf"
+date: "May 2020 (updated `r format(Sys.time(), '%d %B, %Y')`)"
+subtitle: "R packages as research compendia"  
+output:
+  xaringan::moon_reader:
+    css: [xaringan-themer.css]
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: false
+      beforeInit: "macros.js"
+---
+
+# Workshop overview
+
+.pull-left[
+
+![:scale 100%](../docs/images/reproduciblejourney.jpg)
+.left[.small[This image was created by [Scriberia](http://www.scriberia.co.uk/) for The Turing Way community and is used under a CC-BY licence (DOI [10.5281/zenodo.3332807](10.5281/zenodo.3332807)).]]]
+
+--
+
+.pull-right[
+
+### Two main topics
+
+- Research compendia
+
+- R packages
+
+### Resources
+
+- Code on github [https://github.com/selinaZitrone/YoMos2020](https://github.com/selinaZitrone/YoMos2020)
+
+- Slides on [https://selinazitrone.github.io/YoMos2020/index.html](https://selinazitrone.github.io/YoMos2020/index.html)
+
+- How-To on [https://selinazitrone.github.io/YoMos2020/how_to.html](https://selinazitrone.github.io/YoMos2020/how_to.html)
+
+]
+
+---
+
+# Motivations for a better project organization and workflow
+
+--
+
+- Reproduciblity 🔃 (for you and others)
+
+--
+
+- Reliablity 🏋 (will it work again?)
+
+--
+
+- Re-usablity ⚙ (don't re-invent the wheel)
+
+--
+
+- Visiblity 🔍 (let others see and use your work)
+
+---
+
+# How? Use a research compendium!
+
+.pull-left[
+
+![:scale 100%](../docs/images/ResearchCompendium-ttw.jpg)
+.left[.small[This image was created by [Scriberia](http://www.scriberia.co.uk/) for The Turing Way community and is used under a CC-BY licence (DOI [10.5281/zenodo.3332807](10.5281/zenodo.3332807)).]]
+]
+
+.pull-right[
+> This is a collection of **all digital parts of a research project** including **data, 
+code, texts (protocols, reports, questionnaires, metadata)**. The collection is created 
+in such a way that reproducing all results is straight forward.
+
+(Definition from [The Turing Way](https://the-turing-way.netlify.app/afterword/glossary.html#term-Research-Compendia))<sup>1</sup>
+
+.footnote[
+[1] [Excursion to the TTW website](https://the-turing-way.netlify.app/welcome.html)
+
+]
+]
+---
+
+# What *is* a research compendium?
+
+.pull-left[
+
+### Principles
+
+
+- stick with the conventions in your field
+
+- Keep **data**, **methods** and **output** separate
+
+- specify the computational environment
+
+]
+
+--
+
+.pull-right[
+
+### Key components
+
+- License
+
+- VCS
+
+- Metadata
+
+- Archive
+
+]
+
+.footnote[
+from [Karthik Ram's talk at RStudio::conf 2019](https://inundata.org/talks/rstd19/#/0/3)
+]
+
+---
+
+![:scale 100%](../docs/images/Marwicketal2018.png)
+
+---
+
+# It's an 📦 R Package!
+
+.pull-left[
+.center[![:scale 60%](../docs/images/research_compendium.PNG)
+]]
+
+--
+
+.pull-right[
+
+- packages generating similar project directory structures: 
+  + `rrtools`
+  + `ProjectTemplate`
+  + `prodigenr`
+  + `workflowr`
+  
+]
+  
+---
+
+# Advantages of using R Packages
+
+--
+
+* benefit from quality control mechanisms built around R packages (<code>R CMD check</code>)
+
+--
+
+* easy documentation
+
+--
+
+* additional packages available to make your life easier
+  + [`usethis`](https://usethis.r-lib.org/): workflow package to automate tasks like project setup etc.
+  + [`pkgdown`](https://pkgdown.r-lib.org/): build a quick and easy website for your package
+  + [`goodpractice`](https://github.com/mangothecat/goodpractice): gives you advice about good
+  practices when building R packages
+  + [`testthat`](https://testthat.r-lib.org/): add unit testing to your package
+  + ... and many more
+  
+---
+class: inverse
+# Hands-on I 
+
+### Create a research compendium with the R package structure
+
+---
+
+# Outlook
+
+- add large datasets using `piggyback`
+- add other R packages to your package as dependencies
+- add unit tests 
+- add automated workflows with Github actions
+- create Docker images of your computational environment
+- use `holepunch` to present your results in a live R Studio server instance in the browser
+
+The nice thing:
+- everything is easy to set up with `usethis` and friends
+
+---
+class: inverse
+
+.center[
+# Thank you
+]
