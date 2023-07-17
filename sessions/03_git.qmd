@@ -4,7 +4,7 @@ subtitle: "2023-06-15"
 callout-appearance: default
 ---
 
-### Description:
+### Description
 
 Git is an essential skill if you use any programming language. It allows you to keep track of changes to your project over time, collaborate with others, and maintain a clear and organized project structure. This can save time, improve research efficiency, and also makes it easy to publish your code via platforms such as Github. In this lecture, I will introduce the basic concepts of Git and how to use it for you own projects.
 The lecture is for Git beginners but also for people who use basic Git for their own projects and want to know a bit more about the concepts behind the workflow.
