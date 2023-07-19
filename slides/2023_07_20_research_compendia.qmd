@@ -57,10 +57,10 @@ How to properly structure the project?
 
 I want
 
-- Reproduciblity 🔃 (for you and others)
-- Reliablity 🏋 (will it work again?)
-- Re-usablity ⚙ (don't re-invent the wheel)
-- Visiblity 🔍 (let others see and use your work)
+- 🔃 Reproduciblity (for you and others)
+- 🏋 Reliablity (will it work again?)
+- ⚙ Re-usablity (don't re-invent the wheel)
+- 🔍 Visiblity (let others see and use your work)
 
 
 ## How? Use a research compendium!
@@ -79,13 +79,18 @@ This image was created by [Scriberia](http://www.scriberia.co.uk/) for The Turin
 
 :::{.column width="50%"}
 
-#### What is a research compendium
+
+#### What is a research compendium?
 
 - Collection of all digital parts of a research project (data + code + text)
 
+:::{.fragment}
+
 >The goal of a research compendium is to provide a **standard and easily recognizable** way for organizing the digital materials of a project to enable others to **inspect, reproduce, and extend** the research.
 
-From the paper by Marwick et al. 2018
+From [Marwick et al. 2018](https://doi.org/10.1080/00031305.2017.1375986.)
+
+:::
 
 :::
 
@@ -118,9 +123,13 @@ Small compendium
 
 :::{.column width="50%"}
 
+:::{.fragment}
+
 Medium size compendium
 
 ![](images/2023-07-20_research_compendia/research_compendium.PNG){width="70%"}
+
+:::
 
 :::
 
@@ -134,11 +143,9 @@ Marwick et al. 2018
 
 ## R packages as research compendia
 
-![](images/2023-07-20_research_compendia/Marwicketal2018.png){.r-stretch}
+![](images/2023-07-20_research_compendia/Marwicketal2018.png){.r-stretch fig-align="center"}
 
-## R packages as research compendia
-
-**Basic idea:** Hijack the R package development ecosystem to build research compendia
+**Basic idea:** Hijack the R package development ecosystem to build a research compendium
 
 Different use cases, e.g.
 
@@ -149,10 +156,6 @@ Different use cases, e.g.
 
 - Benefit from quality control mechanisms built around R packages
 - Additional packages around this ecosystem to make your life easier
-  - [`usethis`](https://usethis.r-lib.org/): workflow package to automate tasks like project setup etc.
-  - [`pkgdown`](https://pkgdown.r-lib.org/): build a quick and easy website for your package
-  - [`goodpractice`](https://github.com/mangothecat/goodpractice): gives you advice about good practices when building R packages
-  - ... and many more
 - Easy documentation
 - Easy sharing of data
   
@@ -162,9 +165,9 @@ Different use cases, e.g.
 
 ## Summary and Conclusions
 
-It's good to have standards and follow them
+It's convenient to have standards you can follow
 
-- R packages provide an Ecosystem for reproducible projects that we can hijack for our research compendia
+- R packages provide an helpful development ecosystem that we can hijack for our research compendia
 - You can develop your compendium in different ways
 	- Purpose is for people to install the package in the end
 	- Purpose is just to use the quality checks from R Studio	
@@ -182,7 +185,7 @@ It's good to have standards and follow them
 
 The nice thing:
 
-- Also these thins are easy to set up with `usethis` and friends
+- Also this easy to set up with `usethis` and friends
 - They are also documented on the lecture series website
 
 ## Next lecture
@@ -191,9 +194,15 @@ Summer/Conference break in August and September!
 
 . . .
 
-Time for some feedback from you! Please fill out the questionnaire (5 mins)
+Time for some feedback from you! 
+
+Please fill out [the questionnaire](https://forms.gle/xyfNfqd3Ver1Yppq8) if you have time (5 mins)
 
 . . .
+
+<br>
+
+### Topic of next lecture t.b.a.
 
 :date: 19th October :clock4: 1-2 p.m. :round_pushpin: Webex
 
@@ -208,6 +217,10 @@ Questions?
 
 ## References
 
-- Marwick paper
-- Turing way book
+:::{.nonincremental}
+- Marwick, Ben, Carl Boettiger, and Lincoln Mullen. 2018. “Packaging Data Analytical Work Reproducibly Using R (and Friends).” American Statistician 72 (1): 80–88. https://doi.org/10.1080/00031305.2017.1375986.
+- [The Turing Way website](https://the-turing-way.netlify.app/introduction/introduction.html) is a very useful guide to reproducible data science
 - [Slides and list of resources for research compendia by Karthik](https://inundata.org/talks/rstudio2019/)
+
+:::
+  
