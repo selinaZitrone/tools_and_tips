@@ -24,6 +24,8 @@ website:
             href: sessions/02_quarto.qmd
           - text: 03 - Version control with Git
             href: sessions/03_git.qmd
+          - text: 04 - Research compendia as R packages
+            href: sessions/04_research_compendia.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 
