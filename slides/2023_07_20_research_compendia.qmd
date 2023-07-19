@@ -1,7 +1,7 @@
 ---
 title: "Research compendia as R packages"
 subtitle: "Scientific workflows: Tools and Tips :hammer_and_wrench:"
-date: "2023-06-15"
+date: "2023-07-20"
 format: 
   revealjs:
     footer: "Research compendia as R 📦"
@@ -26,8 +26,7 @@ from: markdown+emoji
 
 ### Scientific workflows: Tools and Tips :hammer_and_wrench:
 
-:::{.nonincremental}
-
+::: nonincremental
 :date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
 
 -   One topic from the world of scientific workflows
@@ -38,16 +37,13 @@ from: markdown+emoji
 -   Slides provided [on Github](https://selinazitrone.github.io/tools_and_tips/)
 :::
 
-:movie_camera: The lecture is being recorded :movie_camera:
-
 ## Steps of a scientific project
-
 
 ![](images/2023-07-20_research_compendia/reproduciblejourney.jpg){fig-align="center" width="70%"}
 
-
+::: {style="font-size: 50%;"}
 This image was created by [Scriberia](http://www.scriberia.co.uk/) for The Turing Way community and is used under a CC-BY licence (DOI [10.5281/zenodo.3332807](10.5281/zenodo.3332807)).
-
+:::
 
 ## Steps of a scientific project
 
@@ -57,87 +53,77 @@ How to properly structure the project?
 
 I want
 
-- 🔃 Reproduciblity (for you and others)
-- 🏋 Reliablity (will it work again?)
-- ⚙ Re-usablity (don't re-invent the wheel)
-- 🔍 Visiblity (let others see and use your work)
-
+-   :arrows_clockwise: Reproduciblity (for you and others)
+-   🏋 Reliablity (will it work again?)
+-   ⚙ Re-usablity (don't re-invent the wheel)
+-   :mag: Visiblity (let others see and use your work)
 
 ## How? Use a research compendium!
 
 . . .
 
-:::{.columns}
+::: columns
+::: {.column width="50%"}
+![](images/2023-07-20_research_compendia/ResearchCompendium-ttw.jpg){fig-align="center" width="50%\""}
 
-:::{.column width="50%"}
-
-![](images/2023-07-20_research_compendia/ResearchCompendium-ttw.jpg){fig-align="center" width=50%"}
+::: {style="font-size: 50%;"}
 
 This image was created by [Scriberia](http://www.scriberia.co.uk/) for The Turing Way community and is used under a CC-BY licence (DOI [10.5281/zenodo.3332807](10.5281/zenodo.3332807)).
 
 :::
 
-:::{.column width="50%"}
+:::
 
-
+::: {.column width="50%"}
 #### What is a research compendium?
 
-- Collection of all digital parts of a research project (data + code + text)
+-   Collection of all digital parts of a research project (data + code + text)
 
-:::{.fragment}
+::: fragment
 
->The goal of a research compendium is to provide a **standard and easily recognizable** way for organizing the digital materials of a project to enable others to **inspect, reproduce, and extend** the research.
+:::{style="font-size: 80%;"}
+> The goal of a research compendium is to provide a **standard and easily recognizable** way for organizing the digital materials of a project to enable others to **inspect, reproduce, and extend** the research.
 
 From [Marwick et al. 2018](https://doi.org/10.1080/00031305.2017.1375986.)
-
 :::
 
 :::
-
+:::
 :::
 
 ## Principles for building research compendia
 
-- Stick with the conventions in your field
-- Keep **data**, **methods** and **output** separate
-	- Original data *read only*, output considered *disposable*
-- Specify the computational environment
-- Key components for sharing the compendium include
-	- Licence
-	- Version control
-	- Metadata
-	- Persistent identifier (e.g DOI)
-
+-   Stick with the conventions in your field
+-   Keep **data**, **methods** and **output** separate
+    -   Original data *read only*, output considered *disposable*
+-   Specify the computational environment
+-   Key components for sharing the compendium include
+    -   Licence
+    -   Version control
+    -   Metadata
+    -   Persistent identifier (e.g DOI)
 
 ## Examples of different complexities
 
-:::{.columns}
-
-:::{.column width="50%"}
-
+::: columns
+::: {.column width="50%"}
 Small compendium
 
 ![](images/2023-07-20_research_compendia/research_compendium_small.PNG)
-
 :::
 
-:::{.column width="50%"}
-
-:::{.fragment}
-
+::: {.column width="50%"}
+::: fragment
 Medium size compendium
 
 ![](images/2023-07-20_research_compendia/research_compendium.PNG){width="70%"}
-
 :::
-
 :::
-
 :::
 
 They are R packages!
 
-:::{.aside}
+::: aside
 Marwick et al. 2018
 :::
 
@@ -149,16 +135,16 @@ Marwick et al. 2018
 
 Different use cases, e.g.
 
-- Publish code, data and analysis scripts alongside your paper
-- Publish a dataset in a way that other people can work with it in R
+-   Publish code, data and analysis scripts alongside your paper
+-   Publish a dataset in a way that other people can work with it in R
 
 ## Some benefits of R packages
 
-- Benefit from quality control mechanisms built around R packages
-- Additional packages around this ecosystem to make your life easier
-- Easy documentation
-- Easy sharing of data
-  
+-   Benefit from quality control mechanisms built around R packages
+-   Additional packages around this ecosystem to make your life easier
+-   Easy documentation
+-   Easy sharing of data
+
 # Hands-on: Create a research compendium with the R package structure
 
 > Find a detailed step-by-step guide on the website
@@ -167,26 +153,26 @@ Different use cases, e.g.
 
 It's convenient to have standards you can follow
 
-- R packages provide an helpful development ecosystem that we can hijack for our research compendia
-- You can develop your compendium in different ways
-	- Purpose is for people to install the package in the end
-	- Purpose is just to use the quality checks from R Studio	
-- `usethis` is a great workflow package that allows us to seamlessly follow this workshop
+-   R packages provide an helpful development ecosystem that we can hijack for our research compendia
+-   You can develop your compendium in different ways
+    -   Purpose is for people to install the package in the end
+    -   Purpose is just to use the quality checks from R Studio\
+-   `usethis` is a great workflow package that allows us to seamlessly follow this workshop
 
 ## Outlook
 
-- Include large datasets with [piggyback](https://github.com/ropensci/piggyback)
-- Automated tests with [Github actions](https://docs.github.com/en/actions)
-- Unit tests to test your functions using [testthat](https://testthat.r-lib.org/)
-- Easily [connect Github repo to Zenodo](https://emilio-berti.github.io/idiv-git-introduction/21-github_zenodo/index.html) to get a DOI
-- [holepunch package](https://karthik.github.io/holepunch/) to build a Docker image
+-   Include large datasets with [piggyback](https://github.com/ropensci/piggyback)
+-   Automated tests with [Github actions](https://docs.github.com/en/actions)
+-   Unit tests to test your functions using [testthat](https://testthat.r-lib.org/)
+-   Easily [connect Github repo to Zenodo](https://emilio-berti.github.io/idiv-git-introduction/21-github_zenodo/index.html) to get a DOI
+-   [holepunch package](https://karthik.github.io/holepunch/) to build a Docker image
 
 . . .
 
 The nice thing:
 
-- Also this easy to set up with `usethis` and friends
-- They are also documented on the lecture series website
+-   Also this easy to set up with `usethis` and friends
+-   They are also documented on the lecture series website
 
 ## Next lecture
 
@@ -194,7 +180,7 @@ Summer/Conference break in August and September!
 
 . . .
 
-Time for some feedback from you! 
+Time for some feedback from you!
 
 Please fill out [the questionnaire](https://forms.gle/xyfNfqd3Ver1Yppq8) if you have time (5 mins)
 
@@ -210,17 +196,14 @@ Please fill out [the questionnaire](https://forms.gle/xyfNfqd3Ver1Yppq8) if you 
 
 :e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
-
 ## Thank you for your attention :)
-Questions?
 
+Questions?
 
 ## References
 
-:::{.nonincremental}
-- Marwick, Ben, Carl Boettiger, and Lincoln Mullen. 2018. “Packaging Data Analytical Work Reproducibly Using R (and Friends).” American Statistician 72 (1): 80–88. https://doi.org/10.1080/00031305.2017.1375986.
-- [The Turing Way website](https://the-turing-way.netlify.app/introduction/introduction.html) is a very useful guide to reproducible data science
-- [Slides and list of resources for research compendia by Karthik](https://inundata.org/talks/rstudio2019/)
-
+::: nonincremental
+-   Marwick, Ben, Carl Boettiger, and Lincoln Mullen. 2018. "Packaging Data Analytical Work Reproducibly Using R (and Friends)." American Statistician 72 (1): 80--88. [https://doi.org/10.1080/00031305.2017.1375986.](https://doi.org/10.1080/00031305.2017.1375986)
+-   [The Turing Way website](https://the-turing-way.netlify.app/introduction/introduction.html) is a very useful guide to reproducible data science
+-   [Slides and list of resources for research compendia by Karthik](https://inundata.org/talks/rstudio2019/)
 :::
-  
