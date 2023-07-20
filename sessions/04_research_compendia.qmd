@@ -534,9 +534,9 @@ holepunch::build_binder()
 
 - You can use `devtools::spell_check()`{.R} to test your entire package for spelling errors. This is very useful if you have reports or other text intensive files in there. By default, the spell check will be for American English. However, you can change the langauage by adding a `Language` field to your `DESCRIPTION` file.
 
-- If you want to write a new function and generate the corresponding R script in the `R/` directory, you can conveniently call `usethis::use_r("functionName")`{.R}. This will create a file `functionName.R` ind the `/R` directory and open it for you. 
+- If you want to write a new function and generate the corresponding R script in the `R/` directory, you can conveniently call `usethis::use_r("functionName")`{.R}. This will create a file `functionName.R` ind the `R/` directory and open it for you. 
 
-- Use the [`goodpractice`](https://github.com/MangoTheCat/goodpractice) package to further test your package for parts which can be improved. Running `goodpractice::gp()`.{R} will tell you where your comment lines are too long, where you should consider renaming variables, if something is wrong with your `NAMESPACE`, ...
+- Use the [`goodpractice`](https://github.com/MangoTheCat/goodpractice) package to further test your package for parts which can be improved. Running `goodpractice::gp()`{R} will tell you where your comment lines are too long, where you should consider renaming variables, if something is wrong with your `NAMESPACE`, ...
 
 ## Links and further reading
 

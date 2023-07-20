@@ -95,7 +95,6 @@ From [Marwick et al. 2018](https://doi.org/10.1080/00031305.2017.1375986.)
 
 -   Stick with the conventions in your field
 -   Keep **data**, **methods** and **output** separate
-    -   Original data *read only*, output considered *disposable*
 -   Specify the computational environment
 -   Key components for sharing the compendium include
     -   Licence
@@ -116,12 +115,16 @@ Small compendium
 ::: fragment
 Medium size compendium
 
-![](images/2023-07-20_research_compendia/research_compendium.PNG){width="70%"}
+![](images/2023-07-20_research_compendia/research_compendium.PNG){width="50%"}
 :::
 :::
 :::
 
+:::{.fragment}
+
 They are R packages!
+
+:::
 
 ::: aside
 Marwick et al. 2018
@@ -155,9 +158,9 @@ It's convenient to have standards you can follow
 
 -   R packages provide an helpful development ecosystem that we can hijack for our research compendia
 -   You can develop your compendium in different ways
-    -   Purpose is for people to install the package in the end
-    -   Purpose is just to use the quality checks from R Studio\
--   `usethis` is a great workflow package that allows us to seamlessly follow this workshop
+    -   A package that is meant to be installed with `install.packages()`
+    -   A compendium that won't be installed but uses quality checks from package ecosystem
+-   `usethis` is a great workflow package (not only for package development)
 
 ## Outlook
 
@@ -190,7 +193,7 @@ Please fill out [the questionnaire](https://forms.gle/xyfNfqd3Ver1Yppq8) if you 
 
 ### Topic of next lecture t.b.a.
 
-:date: 19th October :clock4: 1-2 p.m. :round_pushpin: Webex
+:date: 19th October :clock4: 4-5 p.m. :round_pushpin: Webex
 
 :bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
 
