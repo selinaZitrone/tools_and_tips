@@ -1,0 +1,60 @@
+---
+title: "Effective digital notetaking with Obsidian"
+subtitle: "2023-10-19"
+callout-appearance: default
+execute: 
+  eval: false
+from: markdown+emoji
+---
+
+### Description
+
+Effective note taking is crucial for both students and scientist. It's useful to manage tasks, capture key insights from papers, and write down new ideas. In this lecture, I will introduce you to my note taking software of choice. Obsidian is a highly customizable, markdown-based tool that lets you organize your notes efficiently and create interconnected webs of thoughts and ideas (also called "second brain" or "Zettelkasten"). Join me if you want to streamline your note taking process and keep organized records of your tasks, readings and ideas.
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2023_10_19_obsidian.html"></iframe>
+```
+
+[Slides in full screen](../slides/2023_10_19_obsidian.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2023_10_19_obsidian.pdf" download>Download PDF slides</a>
+
+## Basic markdown syntax
+
+You can use the following basic formatting syntax to format the text in your 
+Obsidian notes
+
+````md
+# Heading 1
+## Heading 2
+### Heading 3
+
+**bold** and *italic*   -> Hotkeys: Ctrl/Cmd + B and Ctrl/Cmd + I
+
+- list item
+- list item
+
+1. numbered list item
+2. numbered list item
+
+- [ ] A task
+
+[A link to a website](https://google.com) -> Hotkey: Ctrl/Cmd + K
+
+```r
+# An R code snippet
+mean(1:3)
+```
+
+````
+
+## Further links
+
+- Install Obsidian from [https://obsidian.md/](https://obsidian.md/)
+- Get the Obsidian demo vault for academic notetaking from [Github](https://github.com/selinaZitrone/notebook_demo)
+  - Read the README file for a step-by-step guide on how to download and open the vault in Obsidian
+  - Have a look at the "Get Started" files in the demo vault for explanations and step-by-step guides
+- A good [tutorial video for Obsidian beginners](https://www.youtube.com/embed/OUrOfIqvGS4)
+- [Obsidian plugin recommendations 1](https://www.youtube.com/embed/2zhnb9KwmtA?si=Pf-Z3Y76ghBW0xo7)
+- [Obsidian plugin recommendations 2](https://www.youtube.com/embed/cBm95iCcX2E?si=uPCKGg32Q2V1AXvx)
+
+- [Step-by-Step guide](https://elizabethbutlermd.com/obsidian-notes/) on how to get started with Obsidian in written form
+- [Blogpost: Note Taking System For Success in Academia](https://ilyashabanov.substack.com/p/note-taking-system-for-success-in) using Obsidian

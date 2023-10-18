@@ -1,0 +1,165 @@
+---
+title: "Effective digital notetaking with Obsidian"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+date: "2023-10-19"
+format: 
+  revealjs:
+    footer: "Notetaking with Obsidian"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute: 
+  echo: false
+  eval: true
+from: markdown+emoji
+---
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+::: nonincremental
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+-   One topic from the world of scientific workflows
+-   Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+-   For topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
+-   If you don't want to miss a lecture
+    -   Check out the [lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html)
+    -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+:::
+
+## Motivation
+
+![](images/2023_10_19_obsidian/title.png)
+
+## Obsidian
+
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+Obsidian is
+
+- free for personal use
+- available for all platforms
+- markdown-based
+- simple at its core
+- highly scalable
+
+:::
+
+:::{.column width="50%"}
+
+![](images/2023_10_19_obsidian/obsidian-logo.png)
+
+:::
+
+:::
+
+## Notetaking purposes
+
+- Project management
+  - Keep track of project states, tasks, meetings
+- Personal management
+  - Plan your days and weeks, to-do lists, track your time
+- Literature management
+  - Connect Obsidian to Zotero
+- Idea/Knowledge management
+  - Interconnected notes (Zettelkasten)
+- . . .
+  
+. . . 
+
+In Obsidian you can connect all these purposes
+
+## Today
+
+:::{.nonincremental}
+
+- Project management
+- Personal management
+- Literature management
+- Idea/Knowledge management
+
+:::
+
+- Basic overview of Obsidian
+- Implement some basic workflows
+
+. . .
+
+Find additional material on the lecture website.
+
+# Let's get started
+
+![](images/2023_10_19_obsidian/obsidian-logo.png){style="float:right;padding: 0 0 0 10px;" fig-alt="Obsidian Logo" width="300"}
+
+## Summary
+
+Obsidian makes your notes
+
+- 🔎 *searchable* -> digital
+- 📆 *sustainable* 
+	- Can we understand our notes in the future?
+	- Will the program still work in the future?
+	- No proprietary software format
+- 🔗 *connected* -> linking between notes
+- 😃 *easy and fun* -> keep motivation to really take notes
+
+## Summary
+
+Benefits
+
+- 🗂️**Stay organized**
+
+::: {.fragment}
+
+:::{.nonincremental}
+
+- 🧠 **Second Brain**
+ 	- Store knowledge
+ 	- Get stuff out of your first brain
+
+:::
+
+:::
+
+- 💾 **Find information again**, also in 20 years
+
+## Get started
+
+- Have a look at the [demo notebook](https://github.com/selinaZitrone/notebook_demo)
+  - Find a video on how to open it [here](https://youtu.be/PyiHAw8bIIc)
+- Have a look at the resources linked on the lecture website
+
+## Next lecture
+
+. . .
+
+#### Efficient R programming
+
+How to write code efficiently, find bottlenecks in your code and improve the speed of your R programs.
+
+<br>
+
+:::{.fragment}
+
+:date: 16th November :clock4: 4-5 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+:::
+
+## Thank you for your attention :)
+Questions?
