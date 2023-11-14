@@ -1,10 +1,10 @@
 ---
 title: "What they forgot to teach you about R"
-subtitle: "Scientific workflows: Tools and Tips :hammer_and_wrench:"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
 date: "2023-04-20"
 format: 
   revealjs:
-    footer: "What they forgot to teach you about R"
+    footer: "Selina Baldauf // What they forgot to teach you about R"
     highlight-style: printing
     mainfont: Cabinet Grotesk
     slide-number: true
@@ -358,7 +358,7 @@ input_data <- read_csv(input_file)
 # Plot data ---------------------------------------------------------------
 
 ggplot(input_data, aes(x = x, y = y)) +
-  geom_point()
+    geom_point()
 ```
 
 - Insert a section label with `Ctrl/Cmd + Shift`
@@ -416,7 +416,7 @@ Use R Studio projects
 Instead of
 
 ```{r}
-# my unique path from hell with white space and special characters 
+# my unique path from hell with white space and special characters
 setwd("C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures")
 
 read_csv("data/2023-04-20_temperature_goettingen.csv")
@@ -471,9 +471,9 @@ dm1
 x[, 1]
 
 # Bad
-x[ , 1]
-x[,1]
-x[ ,1]
+x[, 1]
+x[, 1]
+x[, 1]
 ```
 
 ## Coding style - Spacing
@@ -490,8 +490,8 @@ x[ ,1]
 mean(x, na.rm = TRUE)
 
 # Bad
-mean (x, na.rm = TRUE)
-mean ( x, na.rm = TRUE )
+mean(x, na.rm = TRUE)
+mean(x, na.rm = TRUE)
 ```
 
 ## Coding style - Spacing
@@ -510,8 +510,8 @@ height <- (feet * 12) + inches
 mean(x, na.rm = TRUE)
 
 # Bad
-height<-feet*12+inches
-mean(x, na.rm=TRUE)
+height <- feet * 12 + inches
+mean(x, na.rm = TRUE)
 ```
 
 
@@ -529,12 +529,15 @@ mean(x, na.rm=TRUE)
 ```{r spaces-pipes}
 # Good
 iris %>%
-  group_by(Species) %>%
-  summarize_if(is.numeric, mean) %>%
-  ungroup()
+    group_by(Species) %>%
+    summarize_if(is.numeric, mean) %>%
+    ungroup()
 
 # Bad
-iris %>% group_by(Species) %>% summarize_all(mean) %>% ungroup() 
+iris %>%
+    group_by(Species) %>%
+    summarize_all(mean) %>%
+    ungroup()
 ```
 
 ## Coding style - Spacing
@@ -552,10 +555,11 @@ iris %>% group_by(Species) %>% summarize_all(mean) %>% ungroup()
 ```{r spaces-gglot}
 # Good
 ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
-  geom_point()
+    geom_point()
 
 # Bad
-ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()
+ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+    geom_point()
 ```
 
 ## Coding style - Line width
@@ -572,17 +576,17 @@ Try to limit your line width to 80 characters.
 ```{r linewidth-ggplot}
 # Bad
 iris %>%
-  group_by(Species) %>%
-  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))
+    group_by(Species) %>%
+    summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))
 
 # Good
 iris %>%
-  group_by(Species) %>%
-  summarise(
-    Sepal.Length = mean(Sepal.Length),
-    Sepal.Width = mean(Sepal.Width),
-    Species = n_distinct(Species)
-  )
+    group_by(Species) %>%
+    summarise(
+        Sepal.Length = mean(Sepal.Length),
+        Sepal.Width = mean(Sepal.Width),
+        Species = n_distinct(Species)
+    )
 ```
 
 ## Coding style

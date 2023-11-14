@@ -7,23 +7,40 @@
 //$font-family-sans-serif: 'Lato', Tahoma, sans-serif !default;
 $font-family-sans-serif: 'Jost', sans-serif !default;
 //$font-family-sans-serif:'Source Sans Pro', sans-serif !default;
+$theme-black: #100F0F !default;
+$theme-white: #F1F1F1 !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #ecf0f1 !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #b4bcc2 !default;
+$gray-600: #95a5a6 !default;
+$gray-700: #7b8a8b !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$theme-purple: #562457;
+$theme-purple-light: #88398A;
+$theme-purple-lighter: #C9A0D8;
+$theme-pink-light: #FEE4FF;
+$theme-yellow: #FFD166;
+$theme-green: #68bda0 !default;
 
 // headings
 //$presentation-heading-font: 'Yanone Kaffeesatz',  Tahoma, sans-serif  !default;
 $presentation-heading-font: 'Abhaya Libre', serif  !default;
-$presentation-heading-color: #562457 !default;
+$presentation-heading-color: $theme-purple !default;
 $h1-font-size: 1.6em !default;
 $h2-font-size: 1.3em !default;
 $h3-font-size: 1.15em !default;
 
 //code
-$code-color: #88398A !default;
+$code-color: $theme-purple-light !default;
   $font-family-monospace: 'Inconsolata', monospace  !default;
 
 // general  
 $body-bg: #fff;
   $body-color: #000000;
-  $link-color: #88398a;
+  $link-color: $theme-purple-light;
   $presentation-font-size-root: 35px;
 
 /*-- scss:rules --*/
@@ -35,7 +52,7 @@ $body-bg: #fff;
   }
 
 .subtitle {
-  color: #88398A;
+  color: $theme-purple-light;
   font-size: $h2-font-size;
   font-family: $presentation-heading-font;
 }
@@ -59,7 +76,7 @@ $body-bg: #fff;
 }
 
 .reveal .footer {
-  color: #9d709e;
+  color: light;
 }
 
 
@@ -68,7 +85,7 @@ $body-bg: #fff;
 }
 
 section.has-dark-background a, section.has-dark-background a:hover {
-  color: #fee4ff;
+  color: $theme-pink-light;
 }
 
 
@@ -90,10 +107,6 @@ section.has-dark-background a, section.has-dark-background a:hover {
   color: $body-color !important;
 }
 
-.inverse {
-  background-color: '#562457';
-}
-
 .reveal {
   .slides {
     .slide {
@@ -102,4 +115,126 @@ section.has-dark-background a, section.has-dark-background a:hover {
       }
     }
   }
+}
+
+// Inverse background slides -----------------------------------------------
+
+.inverse {
+  color: $theme-pink-light;
+  h1, h2, h3 {
+    color: $theme-purple-lighter;
+  }
+  .slide-background-content {
+    background-color: $theme-black;
+  }
+  blockquote {
+    color: $gray-200
+  }
+  a {
+    color: $theme-purple-lighter
+  }
+}
+
+section.has-dark-background {
+color: $theme-pink-light;
+}
+
+.slide-purple{
+color: $theme-purple;
+  h1, h2, h3, h4 {
+    color: $theme-pink-light;
+  }
+  .slide-background-content {
+    background-color: darken($theme-purple, 10%);
+  }
+  blockquote {
+    color: $gray-200 !important;
+  }
+  progress {
+    color: $theme-pink-light !important;
+  }
+  slide-number {
+    color: $theme-pink-light;
+  }
+  footer {
+    color: $theme-pink-light;
+  }
+  code {
+    color: lighten($theme-green, 20%);
+  }
+}
+
+// extra stuff -----------------------------------------------------------
+
+.highlight-purple{
+background-color: $theme-purple-light;
+color: $theme-black;
+padding: 0.1em 0.2em;
+font-weight: bold;
+}
+
+.highlight-ylw {
+background-color: $theme-yellow;
+color: $theme-black;
+padding: 0.1em 0.2em;
+font-weight: bold;
+}
+
+.highlight-grn {
+background-color: #79dfbd;
+color: $theme-black;
+padding: 0.1em 0.2em;
+font-weight: bold;
+}
+
+.circle-sketch-highlight{
+position:relative;
+left:0.5em;
+right:0.5em;
+font-weight: bold;
+}
+.circle-sketch-highlight:before{
+content:"";
+z-index:-1;
+left:-0.5em;
+top:-0.1em;
+border-width:2px;
+border-style:solid;
+border-color:$theme-purple-light;
+position:absolute;
+border-right-color:transparent;
+width:100%;
+height:1em;
+transform:rotate(2deg);
+opacity:0.7;
+border-radius:50%;
+padding:0.1em 0.25em;
+}
+.circle-sketch-highlight:after{
+content:"";
+z-index:-1;
+left:-0.5em;
+top:0.1em;
+padding:0.1em 0.25em;
+border-width:2px;
+border-style:solid;
+border-color:$theme-purple-light;
+border-left-color:transparent;
+border-top-color:transparent;
+position:absolute;
+width:100%;
+height:1em;
+transform:rotate(-1deg);
+opacity:0.7;
+border-radius:50%;
+}
+
+.reveal div .top-right {
+p {
+  margin: 0;
+}
+margin: 0;
+position: absolute;
+top: -4px;
+right: 12px;
 }

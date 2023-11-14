@@ -1,10 +1,10 @@
 ---
 title: "Research compendia as R packages"
-subtitle: "Scientific workflows: Tools and Tips :hammer_and_wrench:"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
 date: "2023-07-20"
 format: 
   revealjs:
-    footer: "Research compendia as R 📦"
+    footer: "Selina Baldauf // Research compendia as R 📦"
     highlight-style: printing
     mainfont: Cabinet Grotesk
     slide-number: true

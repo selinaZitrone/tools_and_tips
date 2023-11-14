@@ -32,8 +32,8 @@ $theme-yellow: #FFD166;
 $theme-green: #68bda0 !default;
 
 
-$primary:       $theme-purple-lighter !default;
-$secondary:     $gray-600 !default;
+$primary:       $theme-purple !default;
+$secondary:     $gray-200 !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
@@ -41,8 +41,9 @@ $danger:        $red !default;
 $light:         $gray-200 !default;
 $dark:          $gray-700 !default;
 
-$link-color: $theme-purple-light;
-$code-color: darken($theme-green, 10%);
+$link-color: $theme-purple-lighter;
+$code-color: lighten($theme-green, 10%);
+$body-color: $gray-200;
 
 /*-- scss:rules --*/
 

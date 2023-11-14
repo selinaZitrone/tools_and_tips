@@ -1,10 +1,10 @@
 ---
 title: "Introduction to version control with Git"
-subtitle: "Scientific workflows: Tools and Tips :hammer_and_wrench:"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
 date: "2023-06-15"
 format: 
   revealjs:
-    footer: "Version control with Git"
+    footer: "Selina Baldauf // Version control with Git"
     highlight-style: printing
     mainfont: Cabinet Grotesk
     slide-number: true

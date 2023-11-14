@@ -1,10 +1,10 @@
 ---
 title: "Reproducible documents with Quarto"
-subtitle: "Scientific workflows: Tools and Tips :hammer_and_wrench:"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
 date: "2023-05-11"
 format: 
   revealjs:
-    footer: "Reproducible documents with Quarto"
+    footer: "Selina Baldauf // Quarto"
     highlight-style: printing
     mainfont: Cabinet Grotesk
     slide-number: true
@@ -23,8 +23,6 @@ from: markdown+emoji
 ## What is this lecture series?
 
 ### Scientific workflows: Tools and Tips :hammer_and_wrench:
-
-. . .
 
 :date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
 
@@ -272,7 +270,7 @@ Code can be included in **code chunks** or as **inline code**
 **Inline code** starts and ends with 1 backtick
 
 ```{r, echo=FALSE}
-code = '`r `'
+code <- "`r `"
 cat(code)
 ```
 
