@@ -1,0 +1,1220 @@
+---
+title: "Efficient R"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+author: "Dr. Selina Baldauf"
+date: "2023-11-16"
+format: 
+  revealjs:
+    footer: "Selina Baldauf // Efficient R"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute: 
+  echo: true
+  eval: true
+  cache: true
+  message: false
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+from: markdown+emoji
+---
+
+```{r}
+#| label: setup
+#| include: false
+ggplot2::theme_set(ggplot2::theme_gray(base_size = 16))
+```
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+::: nonincremental
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+-   One topic from the world of scientific workflows
+-   Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+-   For topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
+-   If you don't want to miss a lecture
+    -   Check out the [lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html)
+    -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+:::
+
+
+## What is efficiency?
+
+$$
+\textsf{efficiency} = \frac{\textsf{work done}}{\textsf{unit of effort}}
+$$
+<br>
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+**Computational efficiency**
+
+:::
+
+:::{.fragment}
+
+:computer: Computation time <br>
+:floppy_disk: Memory usage
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+::: {.fragment}
+
+**Programmer efficiency** 
+
+🧍 How long does it take to
+
+:::
+
+- *write* code?
+- *maintain* code?
+- *read* and *understand* the code?
+
+:::
+
+
+:::
+
+. . .
+
+**Tradeoffs** and **Synergies** between these types of efficiencies
+
+## Main reference
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+Efficient R book by Gillespie and Lovelace, read it [here](https://bookdown.org/csgillespie/efficientR/)
+
+:::
+
+:::{.column width="50%"}
+
+![](images/2023_11_16_efficient_r/f0_web.png){width=80%}
+
+:::
+
+:::
+
+## Today
+
+:::{.r-stack}
+
+![](images/2023_11_16_efficient_r/pyramid_1.png){width=70% fig-align="center" .fragment}
+
+![](images/2023_11_16_efficient_r/pyramid_2.png){width=70% fig-align="center" .fragment}
+
+![](images/2023_11_16_efficient_r/pyramid_text.png){width=70% fig-align="center" .fragment}
+
+
+:::
+
+. . .
+
+**Principles** and **tools** on making R programming more effiicent for :computer:
+
+. . .
+
+Check out my talk ["What they forgot to teach you about R"](https://selinazitrone.github.io/tools_and_tips/sessions/01_what_they_forgot.html) for first two levels
+
+
+# Efficient setup of our tools {visibility="hidden"}
+
+## Efficient setup {visibility="hidden"}
+
+- Regularly update R, R packages and your IDE (RStudio/VS code/...)
+  - constantly improved, also regarding efficiency
+  - new versions provide new features
+- Know your tools
+  - Keyboard shortcuts (RStudio: **Help -> Keyboard Shortcuts Help**)
+  - Options (RStudio: **Tools -> Global Options**)
+
+## Efficient setup
+
+- Integrate AI tools (?), e.g.
+    - [Github Copilot for RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
+      - Free with a Github Pro account (student or teacher)
+    - [Package `gptstudio`](https://github.com/MichelNivard/GPTstudio) to integrate LLMs (e.g. ChatGPT)
+
+:::{.callout-note}
+
+These tools are still **in development** and may not be perfect yet. 
+Also be aware of the **ethical implications** of using AI tools.
+
+:::
+
+# Efficient project structure and coding style {visibility="hidden"}
+
+## Chaotic projects are inefficient {visibility="hidden"}
+  
+![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_11_16_efficient_r/02_kitchen_chaos.png){fig-alt="A frustrated looking little monster in front of a very disorganized cooking area, with smoke and fire coming from a pot surrounded by a mess of bowls, utensils, and scattered ingredients." width=85%}
+
+## Good practice R projects and code .... {visibility="hidden"}
+
+... make your life and the life of your collaborators easy.
+
+- This could be a whole other lecture
+- Check out my talk ["What they forgot to teach you about R"](https://selinazitrone.github.io/tools_and_tips/sessions/01_what_they_forgot.html) for details, resources and examples
+
+## Clear project structure {visibility="hidden"}
+
+Make it easy to find things
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+
+- Separate things into folders
+  - Use standard templates (see e.g. [here](https://github.com/FellowsFreiesWissen/computational_notebooks) for an example)
+- Use RStudio projects
+- Include a readme file
+- Name your files properly
+  - Machine and human readable
+
+:::
+
+:::{.column width="50%"}
+
+![](images/2023_11_16_efficient_r/04_folder_structures_all.png){width=60%}
+
+:::
+
+:::
+
+## Write beautiful code {visibility="hidden"}
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- Write code that others (i.e. future you) can understand
+- Follow standards for readable and maintainable code
+- For R: [tidyverse style guide](https://style.tidyverse.org/index.html)
+- Style your code automatically using [`styler` package](https://styler.r-lib.org/)
+  - Checkout [this guide](https://selinazitrone.github.io/intro-r-data-analysis/sessions/11_good-practice.html#use-the-styler-package) on how to set it up in RStudio
+
+:::
+
+:::{.column width="50%"}
+
+![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_11_16_efficient_r/17_beatuiful_code.png)
+
+:::
+
+:::
+
+# Efficient R code and optimization {.slide-purple}
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+> How can I make my R code faster?
+
+:::
+
+:::{.column width="50%"}
+
+![](images/2023_11_16_efficient_r/pyramid_text.png)
+
+:::
+
+:::
+
+
+
+## Is R slow?
+
+- R is slow compared to other programming languages (e.g. C++).
+  - R is designed to make programming easy, not fast
+
+- R is not designed to be memory efficient
+  
+- But: [R is fast and memory efficient enough]{.highlight-purple} for most tasks.
+
+## Should I optimize?
+
+. . .
+
+> It’s easy to get caught up in trying to remove all bottlenecks. Don’t! [Your time is valuable and is better spent analysing your data]{.highlight-purple}, not eliminating possible inefficiencies in your code. **Be pragmatic**: don’t spend hours of your time to save seconds of computer time.<br>
+(Hadley Wickham in [Advanced R](https://adv-r.hadley.nz/perf-improve.html))
+
+. . .
+
+#### Think about
+
+- How much time do I **save** by optimizing? 
+- **How often** do I run the code?
+- How much time do I **spend** optimizing?
+
+::: {.fragment} 
+
+Often: Trade-off between **readability** and **efficiency**
+
+:::
+
+## Should I optimize?
+
+If your code is to slow for you, you can go through these steps:
+
+1. If possible, **run the code somewhere else**
+
+## Run the code somewhere else
+
+::: {.fragment .nonincremental}
+
+- For this, RStudio has **background jobs**
+
+![](images/2023_11_16_efficient_r/background_job.png){width=50%}
+
+:::
+
+- Or: run it on a cluster (e.g. [FU Curta](https://www.fu-berlin.de/en/sites/high-performance-computing/Rechenressourcen/index.html))
+
+## Should I optimize?
+
+If your code is to slow for you, you can go through these steps:
+
+:::{.nonincremental}
+
+1. If possible, **run the code somewhere else**
+
+:::
+
+2. **Identify the critical** (slow) **parts** of your code
+3. Then **optimize only the bottlenecks**
+
+# Identify critical parts of your code
+
+> **Profiling** & **Benchmarking** to measure the speed and memory use of your code
+
+## Profiling R code
+
+What are the speed & memory bottlenecks in my code?
+
+- Use the [`profvis` package](https://rstudio.github.io/profvis/)
+
+## Profiling R code
+
+You can profile a section of code like this:
+
+```{r eval=FALSE}
+#| label: profvis
+#| code-line-numbers: 1-2|3-6|8-14|7-15 
+# install.packages("profvis")
+library(profvis)
+
+# Create a data frame with 150 columns and 400000 rows
+df <- data.frame(matrix(rnorm(150 * 400000), nrow = 400000))
+
+profvis({
+  # Calculate mean of each column and put it in a vector
+  means <- apply(df, 2, mean)
+
+  # Subtract mean from each value in the table
+  for (i in seq_along(means)) {
+    df[, i] <- df[, i] - means[i]
+  }
+})
+```
+
+## Profiling R code
+
+Profvis flame graph shows time and memory spent in each line of code.
+
+![](images/2023_11_16_efficient_r/profvis-flame.png)
+
+## Profiling R code
+
+Profvis data view for details on time spent in each function in the call stack.
+
+![](images/2023_11_16_efficient_r/profvis-data.png)
+
+## Profiling R code
+
+You can also interactively profile code in RStudio:
+
+::: {.nonincremental}
+
+- Go to **Profile -> Start profiling**
+- Now interactively run the code you want to profile
+- Go to **Profile -> Stop profiling** to see the results
+
+:::
+
+## Profiling R code {visibility="hidden"}
+
+If you have a longer program to profile, the best way is to:
+
+- Wrap the program in a function
+- Source the R script with the function
+- Use `profvis` function on the sourced function
+
+. . .
+
+```{r}
+#| eval: false
+# source the analysis script in which
+# the analysis is wrapped in a simple function
+source("my_analysis.R")
+
+# profile the analysis function
+profvis(my_analysis())
+```
+
+## Benchmarking R code
+
+Which version of the code is faster?
+
+. . .
+
+```{r}
+# Fill a data frame in a loop
+f1 <- function() {
+  x <- data.frame(a = numeric(), b = numeric())
+  for (i in 1:1e4) {
+    x[i, ] <- c(i, i)
+  }
+}
+
+# Fill a data frame directly with vectors
+f2 <- function() {
+  x <- data.frame(a = 1:1e4, b = 1:1e4)
+}
+```
+
+## Benchmarking R code
+
+Use the `microbenchmark` package to compare the functions:
+
+. . .
+
+```{r}
+#| label: benchmark-f1-f2
+#| output-location: fragment
+#| code-line-numbers: 1-3|4-9|10-14
+# install.packages("microbenchmark")
+library(microbenchmark)
+
+compare_functions <- microbenchmark(
+  old = f1(),
+  new = f2(),
+  times = 10 # default is 100
+)
+
+compare_functions
+```
+
+. . .
+
+We can look at benchmarking results using ggplot
+
+```{r}
+#| eval: false
+library(ggplot2)
+autoplot(compare_functions)
+```
+
+
+## Benchmarking R code
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4.5
+#| echo: false
+library(ggplot2)
+autoplot(compare_functions) + theme_gray(base_size = 16)
+```
+
+## Other ways to measure run time {visibility="hidden"}
+
+Use the `tictoc` package to get a quick overview of the time a section of code takes
+
+```{r}
+# install.packages("tictoc")
+library(tictoc)
+
+tic()
+f1()
+toc()
+
+tic()
+f2()
+toc()
+```
+ 
+# Optimize your code
+
+:::{.nonincremental}
+
+- Basic principles
+- Data analysis bottlenecks
+- Advanced optimization: Parallelization and C++
+  
+:::
+
+# Basic principles
+
+## Let R do as little as possible
+
+Use fewer function calls and less complex functions
+
+. . .
+
+**Example**:  Calculate mean of every column in a data frame
+
+. . .
+
+```{r}
+#| label: benchmark-colmeans-vs-apply
+#| output-location: fragment
+#| code-line-numbers: 1-3|4-9|10-13
+# A data frame with 1 million rows and 2 columns
+x <- data.frame(a = rnorm(1e6), b = rnorm(1e6))
+
+# Example to calculate the mean of each column
+microbenchmark(
+  apply = apply(x, 2, mean),
+  colMeans = colMeans(x),
+  times = 10
+)
+```
+
+## Let R do as little as possible {visibility="hidden"}
+
+Give R as much information as possible
+
+**Example**: Don't let R guess column classes when reading a data frame:
+
+. . .
+
+```{r}
+microbenchmark(
+  guess_classes = read.csv(here::here("slides/data/ghg_ems.csv")),
+  know_classes = read.csv(here::here("slides/data/ghg_ems.csv"), 
+                          colClasses = c("character", "integer", rep("double", 5))),
+  times = 10
+)
+```
+
+## Vectorize your code
+
+- Vectors are central to R programming
+- R is optimized for vectorized code
+  - Implemented directly in C/Fortran
+- Vector operations can often replace for-loops in R
+- If there is a vectorized version of a function: Use it
+
+## Vectorize your code
+
+**Example**: Calculate the log of every value in a vector and sum up the result
+
+. . .
+
+```{r}
+#| label: benchmark-vectorization
+#| code-line-numbers: 1-3|4-13|14-17
+# A vector with 1 million values
+x <- 1:1e6
+
+microbenchmark(
+  for_loop = {
+    log_sum <- 0
+    for (i in 1:length(x)) {
+      log_sum <- log_sum + log(x[i])
+    }
+  },
+  sum = sum(log(x)),
+  times = 10
+)
+```
+
+## Don't grow objects in a loop {visibility="hidden"}
+
+If you know how big your object will be, pre-allocate it
+
+- This avoids copying the object multiple times
+
+. . .
+
+**Example**: Fill up a data frame in a loop
+
+```{r}
+# Fill up data frame in a loop
+f1 <- function() {
+  x <- data.frame(a = numeric(), b = numeric())
+  for (i in 1:1e4) {
+    x[i, ] <- c(i, i)
+  }
+}
+
+# Fill up data frame in a loop but pre-allocate it
+f2 <- function() {
+  x <- data.frame(a = numeric(1e4), b = numeric(1e4))
+  for (i in 1:1e4) {
+    x[i, ] <- c(i, i)
+  }
+}
+
+```
+
+## Don't grow objects in a loop {visibility="hidden"}
+
+If you know how big your object will be, pre-allocate it
+
+:::{.nonincrmental}
+
+- This avoids copying the object multiple times
+
+:::
+
+**Example**: Fill up a data frame in a loop
+
+```{r}
+microbenchmark(
+  no_alloc = f1(),
+  pre_alloc = f2(),
+  times = 10
+)
+```
+
+
+## Don't grow objects in a loop {visibility="hidden"}
+
+Of course, here the even better version would be to fill the data frame directly with vectors:
+
+```{r}
+f3 <- function() {
+  x <- data.frame(a = 1:1e4, b = 1:1e4)
+}
+
+microbenchmark(
+  no_alloc = f1(),
+  pre_alloc = f2(),
+  no_loop = f3(),
+  times = 10
+)
+```
+
+## For-loops in R
+
+- For-loops are **relatively slow** and it is easy to make them even slower with bad design
+- Often they are used when vectorized code would be better
+
+- For loops can often be replaced, e.g. by
+  - Functions from the apply family (e.g. `apply`, `lapply`, ...)
+  - Vectorized functions (e.g. `sum`, `colMeans`, ...)
+  - Vectorized functions from the [`purrr` package](https://purrr.tidyverse.org/) (e.g. `map`)
+  
+. . .
+
+But: For loops are not necessarily bad, **sometimes** they are the **best solution** and **more readable** than vectorized code.
+
+## Cache variables
+
+If you use a value multiple times, store it in a variable to avoid re-calculation
+
+. . .
+
+**Example**: Calculate column means and normalize them by the standard deviation
+
+. . .
+
+```{r}
+#| label: cache-variables
+#| code-line-numbers: 1-3|4-10|11-14
+# A matrix with 1000 columns
+x <- matrix(rnorm(10000), ncol = 1000)
+
+microbenchmark(
+  no_cache = apply(x, 2, function(i) mean(i) / sd(x)),
+  cache = {
+    sd_x <- sd(x)
+    apply(x, 2, function(i) mean(i) / sd_x)
+  }
+)
+```
+
+# Efficient data analysis
+
+## Efficient workflow
+
+- Prepare the data to be clean and concise for analysis
+  - Helps to avoid unnecessary calculations
+- Save intermediate results
+  - Don't re-run time consuming steps if not necessary
+- Use the right packages
+  - [`tidyverse` packages](https://www.tidyverse.org/) can be quite fast (e.g. `readr`, `dplyr`)
+  - [`data.table` package](https://rdatatable.gitlab.io/data.table/) is fast and memory efficienct
+  - [`collapse` package](https://sebkrantz.github.io/collapse/index.html) for very fast data manipulation
+  
+## Read data
+
+**Example:** Read csv data on worldwide emissions of greenhouse gases (~14000 rows, 7 cols).
+
+- Base-R functions to read csv files are:
+  - `read.table`
+  - `read.csv`
+- There are many alternatives to read data, e.g.:
+  - `read_csv/read_tsv` from the `readr` package (tidyverse)
+  - `fread` from the `data.table` package
+
+## Read data
+
+Compare some alternative reading functions
+  
+```{r}
+#| label: benchmark-reading-data
+#| output-location: slide
+file_path_csv <- here::here("slides/data/ghg_ems_large.csv")
+
+compare_input <- microbenchmark::microbenchmark(
+  read.csv = read.csv(file_path_csv),
+  read_csv = readr::read_csv(file_path_csv, progress = FALSE, show_col_types = FALSE),
+  fread = data.table::fread(file_path_csv, showProgress = FALSE),
+  times = 10
+)
+
+autoplot(compare_input)
+```
+
+
+## Use plain text data
+
+Reading plain text is faster than excel files
+
+```{r}
+#| output-location: slide
+file_path_xlsx <- here::here("slides/data/ghg_ems_large.xlsx")
+
+compare_excel <- microbenchmark(
+  read_csv = readr::read_csv(file_path_csv, progress = FALSE, show_col_types = FALSE),
+  read_excel = readxl::read_excel(file_path_xlsx),
+  times = 10
+)
+
+autoplot(compare_excel)
+```
+
+
+## Write data
+
+::: {.nonincrmental}
+
+- Base-R functions to write files are:
+  - `write.table`
+  - `write.csv`
+- Faster alternatives are:
+  - `write_csv` from the `readr` package (tidyverse)
+  - `fwrite` from the `data.table` package
+
+:::
+
+## Write data {visibility="hidden"}
+
+Compare the efficiency of different writing functions:
+
+```{r}
+#| label: benchmark-writing-data
+#| eval: false
+#| output-location: slide
+#| code-line-numbers: 1-7|8-15|16
+# create an example with 10000 rows to export
+df <- data.frame(
+  x = rnorm(10000),
+  y = rnorm(10000),
+  z = rnorm(10000)
+)
+
+compare_output <- microbenchmark::microbenchmark(
+  write.csv = write.csv(df, "df.csv"),
+  write_csv = readr::write_csv(df, "df.csv"),
+  fwrite = data.table::fwrite(df, "df.csv"),
+  write_excel = writexl::write_xlsx(df, "df.xlsx"),
+  times = 10
+)
+
+autoplot(compare_output)
+```
+
+## Efficient data manipulation
+
+Different packages offer fast and efficient data manipulation and analysis:
+
+- `dplyr` has a C++ backend and is often faster than base R
+- `data.table` is fast and memory efficiency
+  - Syntax is quite different from base R and `tidyverse`
+- `collapse` is a C++ based package that is specifically developed for fast data analysis
+  - Works together with both `tidyverse` and `data.table` workflows
+  - Many functions similar to base R or `dplyr` just with prefix "f" (e.g. `fselect`, `fmean`, ...)
+  
+## Summarize data by group
+
+**Example**: Summarize mean carbon emissions from Electricity by Country
+
+```{r}
+library(data.table)
+library(dplyr)
+library(collapse)
+```
+
+## Summarize data by group
+
+**Example**: Summarize mean carbon emissions from Electricity by Country
+
+```{r}
+#| include: false
+ghg_ems <- data.table::fread(here::here("slides/data/ghg_ems.csv"))
+```
+
+```{r}
+#| label: functions-summarize-by-group
+#| code-line-numbers: 1-7|8-14|15-20
+# 1. The data table way
+# Convert the data to a data.table
+setDT(ghg_ems)
+summarize_dt <- function(){
+  ghg_ems[, mean(Electricity, na.rm = TRUE), by = Country]
+}
+
+# 2. The dplyr way
+summarize_dplyr <- function(){
+  ghg_ems |>
+      group_by(Country) |>
+      summarize(mean_e = mean(Electricity, na.rm = TRUE))
+}
+
+# 3. The collapse way
+summarize_collapse <- function(){
+  ghg_ems |>
+      fgroup_by(Country) |>
+      fsummarise(mean_e = fmean(Electricity))
+}
+```
+
+## Summarize data by group
+
+**Example**: Summarize mean carbon emissions from Electricity by Country
+
+```{r}
+#| label: benchmark-summarizing-by-group
+#| code-line-numbers: 1-7|8-12
+# compare the speed of all versions
+microbenchmark(
+  dplyr = summarize_dplyr(),
+  data_table = summarize_dt(),
+  collapse = summarize_collapse(),
+  times = 10
+)
+```
+
+## Select columns
+
+**Example**: Select columns Country, Year, Electricity, Transportation
+
+```{r}
+#| label: benchmark-selecting-columns
+#| code-line-numbers: 1-6|7-11
+#| output-location: fragment
+microbenchmark(
+  dplyr = select(ghg_ems, Country, Year, Electricity, Transportation),
+  data_table = ghg_ems[, .(Country, Electricity, Transportation)],
+  collapse = fselect(ghg_ems, Country, Electricity, Transportation),
+  times = 10
+)
+```
+
+# Advanced optimization
+
+> Parallelization and C++
+
+## Parallelization
+
+By default, R works on one core but CPUs have multiple cores
+
+. . .
+
+```{r}
+#| label: find-available-cores
+# Find out how many cores you have with the parallel package
+# install.packages("parallel")
+parallel::detectCores()
+```
+
+. . .
+
+::::{.columns}
+
+::: {.column width="50%"}
+
+Sequential
+
+![](images/2023_11_16_efficient_r/sequential.png){width="40%" fig-align="center"}
+
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment}
+
+Parallel
+
+![](images/2023_11_16_efficient_r/parallel.png)
+
+:::
+
+:::
+
+::::
+
+## Parallelization with the futureverse
+
+- `future` is a framework to help you parallelize existing R code
+  - Parallel versions of base R apply family
+  - Parallel versions of `purrr` functions
+  - Parallel versions of `foreach` loops
+- Find more details [here](https://www.futureverse.org/)
+- Find a tutorial for different use cases [here](https://henrikbengtsson.github.io/future-tutorial-user2022)
+
+## A slow example
+
+Let's create a very slow square root function
+
+```{r}
+slow_sqrt <- function(x){
+  Sys.sleep(1) # simulate 1 second of computation time
+  sqrt(x)
+}
+```
+<br>
+
+:::{.fragment}
+
+Before you run anything in parallel, tell R how many cores to use:
+
+```{r}
+library(future)
+# Plan parallel session with 6 cores
+plan(multisession, workers = 6)
+```
+
+:::
+
+## Parallel apply functions
+
+To run the function on a vector of numbers we could use
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+The **sequential** version
+
+```{r}
+#| message: false
+# to measure the runtime
+library(tictoc)
+
+# create a vector of 10 numbers
+x <- 1:10 
+
+tic()
+result <- lapply(x, slow_sqrt)
+toc()
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+The **parallel** version
+
+```{r}
+# Load future.apply package
+library(future.apply)
+
+tic()
+result <- future_lapply(x, slow_sqrt)
+toc()
+```
+
+:::
+
+:::
+
+:::
+
+## Parallel apply functions
+
+Selected base R apply functions and their future versions:
+
+```{r}
+#| echo: false
+# A data. frame with two columns: base and future.apply
+# In the base column there are the base R functions and in the future.apply
+# column there are the future versions of the functions
+# The function names should be enclosed in backticks and then in quotation marks to be printed nicely
+apply_functions <- data.frame(
+  base = c("`lapply`", "`sapply`", "`vapply`", "`mapply`", "`tapply`", "`apply`", "`Map`"),
+  future.apply = c("`future_lapply`", "`future_sapply`", "`future_vapply`", "`future_mapply`", "`future_tapply`",  "`future_apply`", "`future_Map`")
+)
+# print the data frame apply_functions nicely in the quarto doc using knitr
+# Apply striped design to the table
+knitr::kable(apply_functions) 
+```
+
+## Future `purrr` functions {visibility="hidden"}
+
+- The [`furrr` package](https://furrr.futureverse.org/) offers parallel versions of [`purrr` functions](https://purrr.tidyverse.org/)
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+The **sequential** version
+
+```{r}
+library(purrr)
+
+# the purrr version
+tic()
+z <- map(x, slow_sqrt)
+toc()
+```
+
+:::
+
+:::{.column width="50%"}
+
+The **parallel** version
+
+```{r}
+library(furrr)
+
+# the furrr version
+tic()
+z <- future_map(x, slow_sqrt)
+toc()
+```
+
+:::
+
+:::
+
+## Parallel for loops
+
+A normal for loop:
+
+```{r}
+z <- list()
+for (i in 1:10){
+  z[i] <- slow_sqrt(i)
+}
+```
+
+. . .
+
+Use `foreach` to write the same loop
+
+```{r}
+library(foreach)
+z <- foreach(i = 1:10) %do% {
+  slow_sqrt(i)
+}
+```
+
+## Parallel for loops
+
+Use `doFuture` and `foreach` package to parallelize for loops
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+The **sequential** version
+
+```{r}
+library(foreach)
+
+tic()
+z <- foreach(i = 1:10) %do% {
+  slow_sqrt(i)
+}
+toc()
+```
+
+:::
+
+:::{.column width="50%"}
+
+The **parallel** version
+
+```{r}
+library(doFuture)
+
+tic()
+z <- foreach(i = 1:10) %dofuture% {
+  slow_sqrt(i)
+}
+toc()
+```
+
+:::
+
+:::
+
+## Close multisession
+
+When you are done working in parallel, explicitly close your multisession:
+
+```{r}
+# close the multisession plan
+plan(sequential)
+```
+
+## Replace slow code with C++
+
+- Use the [`Rcpp` package](https://www.rcpp.org/) to re-write R functions in C++
+ - `Rcpp` is also used internally by many R packages to make them faster
+- Requirements: 
+  - C++ compiler installed
+  - Some knowledge of C++
+  
+- See [this book chapter](https://csgillespie.github.io/efficientR/performance.html#rcpp) and the [online documentation](https://www.rcpp.org/) for more info
+ 
+## Rewrite a function in C++
+
+**Example:** R function to calculate Fibonacci numbers
+
+```{r}
+# A function to calculate Fibonacci numbers
+fibonacci_r <- function(n){
+  if (n < 2){
+    return(n)
+  } else {
+    return(fibonacci_r(n - 1) + fibonacci_r(n - 2))
+  }
+}
+```
+<br>
+
+. . .
+
+```{r}
+# Calculate the 30th Fibonacci number
+fibonacci_r(30)
+```
+
+## Rewrite a function in C++
+
+Use `cppFunction` to rewrite the function in C++:
+
+```{r}
+library(Rcpp)
+
+# Rewrite the fibonacci_r function in C++
+fibonacci_cpp <- cppFunction(
+  'int fibonacci_cpp(int n){
+    if (n < 2){
+      return(n);
+    } else {
+      return(fibonacci_cpp(n - 1) + fibonacci_cpp(n - 2));
+    }
+  }'
+)
+```
+<br>
+
+. . .
+
+```{r}
+# calculate the 30th Fibonacci number
+fibonacci_cpp(30)
+```
+
+## Rewrite a function in C++
+
+You can also source C++ functions from C++ scripts.
+
+. . .
+
+C++ script `fibonacci.cpp`:
+
+```{cpp eval = FALSE}
+#include "Rcpp.h"
+
+// [[Rcpp::export]]
+int fibonacci_cpp(const int x) {
+   if (x < 2) return(x);
+   return (fibonacci(x - 1)) + fibonacci(x - 2);
+}
+```
+
+. . .
+
+Then source the function in your R script using `sourceCpp`:
+
+. . .
+
+```{r eval=FALSE}
+sourceCpp("fibonacci.cpp")
+
+# Use the function in your R script like you are used to
+fibonacci_cpp(30)
+```
+
+
+## How much faster is C++?
+
+```{r}
+microbenchmark(
+  r = fibonacci_r(30),
+  rcpp = fibonacci_cpp(30),
+  times = 10
+)
+```
+
+# Summary
+
+![](images/2023_11_16_efficient_r/pyramid_text.png){width=90%}
+
+## Next lecture
+
+#### Topic t.b.a.
+
+<br>
+
+:date: 18th January :clock4: 4-5 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+## Thank you for your attention :)
+Questions?
