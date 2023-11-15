@@ -21,7 +21,7 @@ $gray-900: #212529 !default;
 $theme-purple: #562457;
 $theme-purple-light: #88398A;
 $theme-purple-lighter: #C9A0D8;
-$theme-pink-light: #FEE4FF;
+$theme-pink-light: #fbedfb;
 $theme-yellow: #FFD166;
 $theme-green: #68bda0 !default;
 
@@ -38,8 +38,8 @@ $code-color: $theme-purple-light !default;
   $font-family-monospace: 'Inconsolata', monospace  !default;
 
 // general  
-$body-bg: #fff;
-  $body-color: #000000;
+$body-bg: $theme-white;
+  $body-color: $theme-black;
   $link-color: $theme-purple-light;
   $presentation-font-size-root: 35px;
 
@@ -167,7 +167,7 @@ color: $theme-purple;
 // extra stuff -----------------------------------------------------------
 
 .highlight-purple{
-background-color: $theme-purple-light;
+background-color: $theme-purple-lighter;
 color: $theme-black;
 padding: 0.1em 0.2em;
 font-weight: bold;
