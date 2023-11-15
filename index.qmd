@@ -24,4 +24,5 @@ On this website, you can find all slides and additional resources for lectures:
 - 2023-06-15: [Introduction to verion control with Git](sessions/03_git.html)
 - 2023-07-20: [Research compendia as R packages](sessions/04_research_compendia.html)
 - 2023-10-19: [Effective digital notetaking with Obsidian](sessions/05_obsidian.html)
+- 2023-11-16: [Efficient R](sessions/06_efficient_r.html)
 
