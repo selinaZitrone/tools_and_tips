@@ -1,11 +1,21 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "!sessions/additional_material/"
+    - "!slides/efficient-R.qmd"
+
   resources:
     - "slides/*.pdf"
     - "slides/*.html"
 
 website:
+  page-navigation: true
+  repo-url: "https://github.com/selinaZitrone/tools_and_tips"
+  site-url: "https://selinazitrone.github.io/tools_and_tips/"
+  repo-actions: [edit, issue]
+  repo-branch: main
   title: "Scientific workflows: Tools and Tips 🛠️"
   description: "A lecture series by Selina Baldauf"
 
@@ -26,6 +36,10 @@ website:
             href: sessions/03_git.qmd
           - text: 04 - Research compendia as R packages
             href: sessions/04_research_compendia.qmd
+          - text: 05 - Effective digital notetaking with Obsidian
+            href: sessions/05_obsidian.qmd
+          - text: 06 - Efficient R
+            href: sessions/06_efficient_r.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 
@@ -35,8 +49,7 @@ format:
     embed-resources: true
     theme:
       light: [flatly, style/theme.scss]
-      dark: [darkly, style/theme.scss]
-    css: style/style.css
+      dark: [darkly, style/theme-dark.scss]
     toc: true
     code-copy: true
     code-overflow: wrap

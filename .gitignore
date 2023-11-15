@@ -8,3 +8,5 @@ slides/*_files/
 .Rdata
 .httr-oauth
 .DS_Store
+slides/2023_11_16_efficient_r_cache/
+slides/2023_11_16_efficient_r_files/
