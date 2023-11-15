@@ -43,12 +43,27 @@ ggplot2::theme_set(ggplot2::theme_gray(base_size = 16))
 
 -   One topic from the world of scientific workflows
 -   Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
--   For topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
 -   If you don't want to miss a lecture
-    -   Check out the [lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html)
     -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
 :::
 
+## Main reference
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+Efficient R book by Gillespie and Lovelace, read it [here](https://bookdown.org/csgillespie/efficientR/)
+
+:::
+
+:::{.column width="50%"}
+
+![](images/2023_11_16_efficient_r/f0_web.png){width=80%}
+
+:::
+
+:::
 
 ## What is efficiency?
 
@@ -99,24 +114,6 @@ $$
 
 **Tradeoffs** and **Synergies** between these types of efficiencies
 
-## Main reference
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-Efficient R book by Gillespie and Lovelace, read it [here](https://bookdown.org/csgillespie/efficientR/)
-
-:::
-
-:::{.column width="50%"}
-
-![](images/2023_11_16_efficient_r/f0_web.png){width=80%}
-
-:::
-
-:::
-
 ## Today
 
 :::{.r-stack}
@@ -150,7 +147,7 @@ Check out my talk ["What they forgot to teach you about R"](https://selinazitron
   - Keyboard shortcuts (RStudio: **Help -> Keyboard Shortcuts Help**)
   - Options (RStudio: **Tools -> Global Options**)
 
-## Efficient setup
+## Efficient setup {visibility="hidden"}
 
 - Integrate AI tools (?), e.g.
     - [Github Copilot for RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
