@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "todo_list.html",
-    "href": "todo_list.html",
-    "title": "Scientific workflows: Tools and Tips 🛠️",
-    "section": "",
-    "text": "logo for the lecture series on the slides\nUse these nice boxes for tips and exclamation things"
-  },
-  {
-    "objectID": "todo_list.html#quarto",
-    "href": "todo_list.html#quarto",
-    "title": "Scientific workflows: Tools and Tips 🛠️",
-    "section": "Quarto",
-    "text": "Quarto\n\nFix Figure caption sizes\nAdd link to github project\nLast slide make text smaller"
+    "objectID": "slides/zzz_template.html#introduction-of-this-lecture-series",
+    "href": "slides/zzz_template.html#introduction-of-this-lecture-series",
+    "title": "The title of the current lecture",
+    "section": "Introduction of this lecture series",
+    "text": "Introduction of this lecture series\n\n\nMe: Scientific programmer\nThis lecture series: Idea"
   },
   {
     "objectID": "slides/2023_10_19_obsidian.html#what-is-this-lecture-series",
@@ -81,7 +74,7 @@
     "href": "slides/2023_10_19_obsidian.html#thank-you-for-your-attention",
     "title": "Effective digital notetaking with Obsidian",
     "section": "Thank you for your attention :)",
-    "text": "Thank you for your attention :)\nQuestions?\n\n\nNotetaking with Obsidian"
+    "text": "Thank you for your attention :)\nQuestions?\n\n\nSelina Baldauf // Notetaking with Obsidian"
   },
   {
     "objectID": "slides/2023_06_15_git.html#what-is-this-lecture-series",
@@ -298,7 +291,7 @@
     "href": "slides/2023_06_15_git.html#references",
     "title": "Introduction to version control with Git",
     "section": "References",
-    "text": "References\n\nLearn git concepts, not commands: Blogpost that explains really well the concepts of git, also more advanced ones like rebase or cherry-pick.\nHow to write good commit messages: Blogpost that explains why good commit messages are important and gives 7 rules for writing them.\nGit cheat sheet: Always handy if you don’t remember the basic commands\nBook on how to use Git wih R\n\n\n\nVersion control with Git"
+    "text": "References\n\nLearn git concepts, not commands: Blogpost that explains really well the concepts of git, also more advanced ones like rebase or cherry-pick.\nHow to write good commit messages: Blogpost that explains why good commit messages are important and gives 7 rules for writing them.\nGit cheat sheet: Always handy if you don’t remember the basic commands\nBook on how to use Git wih R\n\n\n\nSelina Baldauf // Version control with Git"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#who-am-i",
@@ -417,7 +410,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#mark-sections",
     "title": "What they forgot to teach you about R",
     "section": "Mark sections",
-    "text": "Mark sections\n\nUse comments to break up your file into sections\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data &lt;- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift\nNavigate sections in the file outline"
+    "text": "Mark sections\n\nUse comments to break up your file into sections\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data &lt;- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n    geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift\nNavigate sections in the file outline"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#modularize-your-code",
@@ -438,7 +431,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#avoid-setwd",
     "title": "What they forgot to teach you about R",
     "section": "Avoid setwd()",
-    "text": "Avoid setwd()\n\nUse R Studio projects\n\nProject root is automatically the working directory\nGive your project to a friend at it will work on their machine as well\n\n\n\nInstead of\n\n# my unique path from hell with white space and special characters \nsetwd(\"C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures\")\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")\n\n\n\nYou just need\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")\n\n\n\nIf you don’t use R Studio Projects, have a look at the {here} package for reproducible paths"
+    "text": "Avoid setwd()\n\nUse R Studio projects\n\nProject root is automatically the working directory\nGive your project to a friend at it will work on their machine as well\n\n\n\nInstead of\n\n# my unique path from hell with white space and special characters\nsetwd(\"C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures\")\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")\n\n\n\nYou just need\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")\n\n\n\nIf you don’t use R Studio Projects, have a look at the {here} package for reproducible paths"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---object-names",
@@ -452,42 +445,42 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\n\nAlways put spaces after a comma\n\n\n\n# Good\nx[, 1]\n\n# Bad\nx[ , 1]\nx[,1]\nx[ ,1]"
+    "text": "Coding style - Spacing\n\n\n\nAlways put spaces after a comma\n\n\n\n# Good\nx[, 1]\n\n# Bad\nx[, 1]\nx[, 1]\nx[, 1]"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-1",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-1",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\n\n\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean (x, na.rm = TRUE)\nmean ( x, na.rm = TRUE )"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\n\n\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean(x, na.rm = TRUE)\nmean(x, na.rm = TRUE)"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-2",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-2",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\n\n\n\n# Good\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight&lt;-feet*12+inches\nmean(x, na.rm=TRUE)"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\n\n\n\n# Good\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight &lt;- feet * 12 + inches\nmean(x, na.rm = TRUE)"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-3",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-3",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipes (%&gt;%, |&gt;) followed by new line\n\n\n\n# Good\niris %&gt;%\n  group_by(Species) %&gt;%\n  summarize_if(is.numeric, mean) %&gt;%\n  ungroup()\n\n# Bad\niris %&gt;% group_by(Species) %&gt;% summarize_all(mean) %&gt;% ungroup()"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipes (%&gt;%, |&gt;) followed by new line\n\n\n\n# Good\niris %&gt;%\n    group_by(Species) %&gt;%\n    summarize_if(is.numeric, mean) %&gt;%\n    ungroup()\n\n# Bad\niris %&gt;%\n    group_by(Species) %&gt;%\n    summarize_all(mean) %&gt;%\n    ungroup()"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-4",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---spacing-4",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipes (%&gt;%, |&gt;) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipes (%&gt;%, |&gt;) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n    geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n    geom_point()"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---line-width",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style---line-width",
     "title": "What they forgot to teach you about R",
     "section": "Coding style - Line width",
-    "text": "Coding style - Line width\nTry to limit your line width to 80 characters.\n\nYou don’t want to scroll to the right to read all code\n80 characters can be displayed on most displays and programs\nSplit your code into multiple lines if it is too long\n\nSee this grey vertical line in R Studio?\n\n\n\n\n# Bad\niris %&gt;%\n  group_by(Species) %&gt;%\n  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))\n\n# Good\niris %&gt;%\n  group_by(Species) %&gt;%\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    Species = n_distinct(Species)\n  )"
+    "text": "Coding style - Line width\nTry to limit your line width to 80 characters.\n\nYou don’t want to scroll to the right to read all code\n80 characters can be displayed on most displays and programs\nSplit your code into multiple lines if it is too long\n\nSee this grey vertical line in R Studio?\n\n\n\n\n# Bad\niris %&gt;%\n    group_by(Species) %&gt;%\n    summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))\n\n# Good\niris %&gt;%\n    group_by(Species) %&gt;%\n    summarise(\n        Sepal.Length = mean(Sepal.Length),\n        Sepal.Width = mean(Sepal.Width),\n        Species = n_distinct(Species)\n    )"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#coding-style",
@@ -641,21 +634,14 @@
     "href": "index.html",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R\n2023-05-11: Reproducible documents with Quarto\n2023-06-15: Introduction to verion control with Git\n2023-07-20: Research compendia as R packages\n2023-10-19: Effective digital notetaking with Obsidian"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R\n2023-05-11: Reproducible documents with Quarto\n2023-06-15: Introduction to verion control with Git\n2023-07-20: Research compendia as R packages\n2023-10-19: Effective digital notetaking with Obsidian\n2023-11-16: Efficient R"
   },
   {
     "objectID": "index.html#lecture-series",
     "href": "index.html#lecture-series",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R\n2023-05-11: Reproducible documents with Quarto\n2023-06-15: Introduction to verion control with Git\n2023-07-20: Research compendia as R packages\n2023-10-19: Effective digital notetaking with Obsidian"
-  },
-  {
-    "objectID": "LICENSE.html",
-    "href": "LICENSE.html",
-    "title": "Scientific workflows: Tools and Tips 🛠️",
-    "section": "",
-    "text": "Attribution 4.0 International\n=======================================================================\nCreative Commons Corporation (“Creative Commons”) is not a law firm and does not provide legal services or legal advice. Distribution of Creative Commons public licenses does not create a lawyer-client or other relationship. Creative Commons makes its licenses and related information available on an “as-is” basis. Creative Commons gives no warranties regarding its licenses, any material licensed under their terms and conditions, or any related information. Creative Commons disclaims all liability for damages resulting from their use to the fullest extent possible.\nUsing Creative Commons Public Licenses\nCreative Commons public licenses provide a standard set of terms and conditions that creators and other rights holders may use to share original works of authorship and other material subject to copyright and certain other rights specified in the public license below. The following considerations are for informational purposes only, are not exhaustive, and do not form part of our licenses.\n Considerations for licensors: Our public licenses are\n intended for use by those authorized to give the public\n permission to use material in ways otherwise restricted by\n copyright and certain other rights. Our licenses are\n irrevocable. Licensors should read and understand the terms\n and conditions of the license they choose before applying it.\n Licensors should also secure all rights necessary before\n applying our licenses so that the public can reuse the\n material as expected. Licensors should clearly mark any\n material not subject to the license. This includes other CC-\n licensed material, or material used under an exception or\n limitation to copyright. More considerations for licensors:\nwiki.creativecommons.org/Considerations_for_licensors\n\n Considerations for the public: By using one of our public\n licenses, a licensor grants the public permission to use the\n licensed material under specified terms and conditions. If\n the licensor's permission is not necessary for any reason--for\n example, because of any applicable exception or limitation to\n copyright--then that use is not regulated by the license. Our\n licenses grant only permissions under copyright and certain\n other rights that a licensor has authority to grant. Use of\n the licensed material may still be restricted for other\n reasons, including because others have copyright or other\n rights in the material. A licensor may make special requests,\n such as asking that all changes be marked or described.\n Although not required by our licenses, you are encouraged to\n respect those requests where reasonable. More considerations\n for the public: \nwiki.creativecommons.org/Considerations_for_licensees\n=======================================================================\nCreative Commons Attribution 4.0 International Public License\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution 4.0 International Public License (“Public License”). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\nSection 1 – Definitions.\n\nAdapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\nAdapter’s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.\nCopyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\nEffective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\nExceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\nLicensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\nLicensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\nLicensor means the individual(s) or entity(ies) granting rights under this Public License.\nShare means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\nSui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\nYou means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\nSection 2 – Scope.\n\nLicense grant.\n\nSubject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\n\nreproduce and Share the Licensed Material, in whole or in part; and\nproduce, reproduce, and Share Adapted Material.\n\nExceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\nTerm. The term of this Public License is specified in Section 6(a).\nMedia and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)\n\nnever produces Adapted Material.\n\nDownstream recipients.\n\nOffer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\nNo downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\n\nNo endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\nOther rights.\n\nMoral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\nPatent and trademark rights are not licensed under this Public License.\nTo the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.\n\n\nSection 3 – License Conditions.\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\nAttribution.\n\nIf You Share the Licensed Material (including in modified form), You must:\n\nretain the following if it is supplied by the Licensor with the Licensed Material:\n\nidentification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\na copyright notice;\na notice that refers to this Public License;\na notice that refers to the disclaimer of warranties;\na URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n\nindicate if You modified the Licensed Material and retain an indication of any previous modifications; and\nindicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\n\nYou may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\nIf requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\nIf You Share Adapted Material You produce, the Adapter’s License You apply must not prevent recipients of the Adapted Material from complying with this Public License.\n\n\nSection 4 – Sui Generis Database Rights.\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\nfor the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;\nif You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material; and\nYou must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\nUNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION, WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS, ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.\nTO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION, NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT, INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES, COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.\nThe disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\nSection 6 – Term and Termination.\n\nThis Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\nWhere Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n\nautomatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\nupon express reinstatement by the Licensor.\n\nFor the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\nFor the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\nSections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\nSection 7 – Other Terms and Conditions.\n\nThe Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\nAny arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.\n\nSection 8 – Interpretation.\n\nFor the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\nTo the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\nNo term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\nNothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.\n\n=======================================================================\nCreative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply one of its public licenses to material it publishes and in those instances will be considered the “Licensor.” The text of the Creative Commons public licenses is dedicated to the public domain under the CC0 Public Domain Dedication. Except for the limited purpose of indicating that material is shared under a Creative Commons public license or as otherwise permitted by the Creative Commons policies published at creativecommons.org/policies, Creative Commons does not authorize the use of the trademark “Creative Commons” or any other trademark or logo of Creative Commons without its prior written consent including, without limitation, in connection with any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the public licenses.\nCreative Commons may be contacted at creativecommons.org."
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R\n2023-05-11: Reproducible documents with Quarto\n2023-06-15: Introduction to verion control with Git\n2023-07-20: Research compendia as R packages\n2023-10-19: Effective digital notetaking with Obsidian\n2023-11-16: Efficient R"
   },
   {
     "objectID": "sessions/02_quarto.html",
@@ -718,7 +704,7 @@
     "href": "sessions/04_research_compendia.html#step-3-create-a-research-compendium",
     "title": "Research compenia as R packages",
     "section": "Step 3: Create a research compendium",
-    "text": "Step 3: Create a research compendium\n\nFill out the DESCRIPTION file\nThe DESCRIPTION file contains important metadata about your package and describes which other packages it needs to run correctly. If an R project contains a DESCRIPTION file, RStudio and devtools will consider it an R package.\nThere are a few conventions on how to fill out the fields of the DESCRIPTION file. Have a look at the R packages book to find out more about this.\nFor now, just look at how usethis already created a template for you. Fill out the dummy fields of the description file, e.g.\nPackage: temperatureBerlin\nType: Package\nTitle: Analyse Temperature Data From Berlin\nAuthors@R: \n    person(given = \"Selina\",\n           family = \"Baldauf\",\n           role = c(\"aut\", \"cre\"),\n           email = \"selina.baldauf@fu-berlin.de\")\nDescription: Analysis of the temperature data collected in Berlin from our\n    research project xyz presented in paper abc.\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to\n    pick a license\nEncoding: UTF-8\nLazyData: true\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.2.3\n\n\nAdd a license\nUse the usethis package to add a license, e.g. for the GNU General Public License 3 (gpl-3) license you can use\nusethis::use_gpl3_license()\nThis adds a file LICENSE.md with your name (or the name(s) specified in the DESCRIPTION file) in it to the project and automatically updates the license field in DESCRIPTION.\n\n\nAdd data\nThe correct folder for datasets you want to make available in your research compendium is the data/ folder. However, the convention of R packages is that you can only store binary .RData files in there. All data that is not in .RData format (e.g. csv files) can go into the data-raw/ folder and then they can be pre-processed and turned into .Rdata files from there.\n\nCreate a dataset with R\nWe first create a data-raw/ folder either manually or with\n\nusethis::use_data_raw(\"temperature\")\n\nThis will create a temperature.R file in data-raw/ which you can use to pre-process your raw data and then add it to the data/ folder as an .RData file.\nIn this R script, you can either create a fake data set using only R code, or you can read a csv file (or other data file), that you put into the data-raw/ folder before.\nAt the end of the script, you call the usethis::use_data() function to compress your data file and store it as .RData file in your package.\nSo, you can just put something like this in the temperature.R file and then run the script:\n\n# create a dummy dataset for temperature measurements\ntemperature &lt;- data.frame(id = 1:10, temp = rnorm(10, mean = 15, sd = 2))\n# or alternatively, if you have temperature data as csv in data-raw/\ntemperature &lt;- readr::read_csv(\"data-raw/temperature.csv\")\n\n# compress and store the data as .Rdata file\nusethis::use_data(temperature, overwrite = TRUE)\n\nNow have a look at the data/ folder in your project, where you will find a temperature.Rdata version of the data.\n\n\n\nAdd an analysis function\nAll R functions for your analysis go in the R/ folder. You can group related functions together in the same script but unrelated functions should go into separate scripts.\nHere, we create a simple function that prints the mean of a vector. We save this function in a new R script called printMean.R. To create this script in the correct location, you can conveniently run\n\nusethis::use_r(\"printMean\")\n\nThis will will create, save and open the script for you.\nNow add the following simple function to the script:\n\n# a simple printer function for the mean of a vector\nprintMean &lt;- function(x){\n  print(paste0(\"The mean value is \", mean(x, na.rm = T), \"!\"))\n}\n\nIf you forgot to do it, you can run devtools::check() now to see if everything is ok in your package. You will get a warning that you did not document your data and your function yet. This is what we will do in the next step.\n\n\nDocument function and data with roxygen2\nYou can document your functions and data using the package roxygen2. Roxygen2 will automatically generate .Rd documentation files in the man/ folder, update the NAMESPACE if you import or export functions and update the DESCRIPTION file if you include any functions from other packages.\nThe basic workflow is:\n\ninsert a roxygen skeleton for your function\n\n\neither use the RStudio GUI Code | Insert Roxygen Skeleton or the keyboard shortcut Ctrl + Alt + Shift + R (on Windows)\n\n\ncall devtools::document() or use Ctrl/Cmd + Shift + D to generate the documentation in the man/ folder and update the NAMESPACE\n\nTo create a documentation for our simple printMean function, navigate to the respective R script, click inside the function and add a roxygen skeleton.\nFill out the skeleton by adding all the information about the function using the roxygen tags. E.g. your roxygen description could look like the following:\n\n#' @title Print mean values in a sentence\n#' @description This function calculates the mean of its input and prints it \n#'    into a sentence. The function is called in the analysis.Rmd file\n#' @export\n#' @param x A vector of numeric values of which to calculate the mean\n#' \n#' @return The output of \\code{\\link{print}} after calculating the \n#'    \\code{\\link{mean}} and pasting it into a sentence\n#'\n#' @examples\n#' printMean(c(1,2,3))\n#'\n\nTo document datasets in your compendium create a new R script with the same name as your dataset in the R/ directory (in our case temperature.R) (remember usethis::use_r(\"temperature\")?) and describe your data set before specifying the name of your dataset as a string. As a bare minimum this could look like the following:\n\n#' @title Temperature data from place X\n#' @description Temperature measurements (2m height) measured on March 21st, \n#'     2009 at place x\n#' @format A \\code{data.frame} with 2 columns, which are:\n#' \\describe{\n#' \\item{id}{id of the sensor}\n#' \\item{temp}{temperature in °C}\n#'}\n\"temperature\"\n\nUnfortunately, for data sets you can’t automatically insert a preset roxygen skeleton.\n\n\n\n\n\n\nTip\n\n\n\nIf you are too lazy to document your dataset by hand, you can use the sinew package which is very convenient with package documentation using roxygen2. Install the package with\n\n# install.packages(\"remotes\")\nremotes::install_github('yonicd/sinew')\n\nand then run\n\nsinew::makeOxygen(obj = temperature)\n\nThis will print you a perfect, pre-made skeleton for the data to the console, and you can just copy paste it to your temperature.R file and then fill out the placeholders.\n\n\nIf you now run devtools::document() or rebuild your package, you will find an automatically generated read-only file printMean.Rd and temperature.Rd in the man/ folder of your research compendium. If you now call ?printMean or ?dummyTempData (after installing and restarting) you open the help file just like with any other R function you know.\nPlease also have a look at the conventions and guidelines on roxygen2-documentation and the quick reference of the most common tags.\n\n\nAdd an analysis script\nWe will now add an analysis script in the form of a Quarto document (could also be an R Script instead). Here we write some analysis using the data and functions that we just defined.\nAdd an /analysis folder with an quarto document report.qmd to your compendium. This can for example look like this:\n---\ntitle: \"Temperature Analyis\"\nauthor: \"Selina Baldauf\"\ndate: \"18 October, 2023\"\n---\n\n```{r setup, include=FALSE}\ndevtools::load_all(\".\")\n```\n\n# This is the temperature analysis\n\n```{r}\nprintMean(dummyTempData$temp)\n```\nWith the devtools::load_all(\".\") command, we tell the document to first load all functions included in the package before running the code chunks."
+    "text": "Step 3: Create a research compendium\n\nFill out the DESCRIPTION file\nThe DESCRIPTION file contains important metadata about your package and describes which other packages it needs to run correctly. If an R project contains a DESCRIPTION file, RStudio and devtools will consider it an R package.\nThere are a few conventions on how to fill out the fields of the DESCRIPTION file. Have a look at the R packages book to find out more about this.\nFor now, just look at how usethis already created a template for you. Fill out the dummy fields of the description file, e.g.\nPackage: temperatureBerlin\nType: Package\nTitle: Analyse Temperature Data From Berlin\nAuthors@R: \n    person(given = \"Selina\",\n           family = \"Baldauf\",\n           role = c(\"aut\", \"cre\"),\n           email = \"selina.baldauf@fu-berlin.de\")\nDescription: Analysis of the temperature data collected in Berlin from our\n    research project xyz presented in paper abc.\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to\n    pick a license\nEncoding: UTF-8\nLazyData: true\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.2.3\n\n\nAdd a license\nUse the usethis package to add a license, e.g. for the GNU General Public License 3 (gpl-3) license you can use\nusethis::use_gpl3_license()\nThis adds a file LICENSE.md with your name (or the name(s) specified in the DESCRIPTION file) in it to the project and automatically updates the license field in DESCRIPTION.\n\n\nAdd data\nThe correct folder for datasets you want to make available in your research compendium is the data/ folder. However, the convention of R packages is that you can only store binary .RData files in there. All data that is not in .RData format (e.g. csv files) can go into the data-raw/ folder and then they can be pre-processed and turned into .Rdata files from there.\n\nCreate a dataset with R\nWe first create a data-raw/ folder either manually or with\n\nusethis::use_data_raw(\"temperature\")\n\nThis will create a temperature.R file in data-raw/ which you can use to pre-process your raw data and then add it to the data/ folder as an .RData file.\nIn this R script, you can either create a fake data set using only R code, or you can read a csv file (or other data file), that you put into the data-raw/ folder before.\nAt the end of the script, you call the usethis::use_data() function to compress your data file and store it as .RData file in your package.\nSo, you can just put something like this in the temperature.R file and then run the script:\n\n# create a dummy dataset for temperature measurements\ntemperature &lt;- data.frame(id = 1:10, temp = rnorm(10, mean = 15, sd = 2))\n# or alternatively, if you have temperature data as csv in data-raw/\ntemperature &lt;- readr::read_csv(\"data-raw/temperature.csv\")\n\n# compress and store the data as .Rdata file\nusethis::use_data(temperature, overwrite = TRUE)\n\nNow have a look at the data/ folder in your project, where you will find a temperature.Rdata version of the data.\n\n\n\nAdd an analysis function\nAll R functions for your analysis go in the R/ folder. You can group related functions together in the same script but unrelated functions should go into separate scripts.\nHere, we create a simple function that prints the mean of a vector. We save this function in a new R script called printMean.R. To create this script in the correct location, you can conveniently run\n\nusethis::use_r(\"printMean\")\n\nThis will will create, save and open the script for you.\nNow add the following simple function to the script:\n\n# a simple printer function for the mean of a vector\nprintMean &lt;- function(x){\n  print(paste0(\"The mean value is \", mean(x, na.rm = T), \"!\"))\n}\n\nIf you forgot to do it, you can run devtools::check() now to see if everything is ok in your package. You will get a warning that you did not document your data and your function yet. This is what we will do in the next step.\n\n\nDocument function and data with roxygen2\nYou can document your functions and data using the package roxygen2. Roxygen2 will automatically generate .Rd documentation files in the man/ folder, update the NAMESPACE if you import or export functions and update the DESCRIPTION file if you include any functions from other packages.\nThe basic workflow is:\n\ninsert a roxygen skeleton for your function\n\n\neither use the RStudio GUI Code | Insert Roxygen Skeleton or the keyboard shortcut Ctrl + Alt + Shift + R (on Windows)\n\n\ncall devtools::document() or use Ctrl/Cmd + Shift + D to generate the documentation in the man/ folder and update the NAMESPACE\n\nTo create a documentation for our simple printMean function, navigate to the respective R script, click inside the function and add a roxygen skeleton.\nFill out the skeleton by adding all the information about the function using the roxygen tags. E.g. your roxygen description could look like the following:\n\n#' @title Print mean values in a sentence\n#' @description This function calculates the mean of its input and prints it \n#'    into a sentence. The function is called in the analysis.Rmd file\n#' @export\n#' @param x A vector of numeric values of which to calculate the mean\n#' \n#' @return The output of \\code{\\link{print}} after calculating the \n#'    \\code{\\link{mean}} and pasting it into a sentence\n#'\n#' @examples\n#' printMean(c(1,2,3))\n#'\n\nTo document datasets in your compendium create a new R script with the same name as your dataset in the R/ directory (in our case temperature.R) (remember usethis::use_r(\"temperature\")?) and describe your data set before specifying the name of your dataset as a string. As a bare minimum this could look like the following:\n\n#' @title Temperature data from place X\n#' @description Temperature measurements (2m height) measured on March 21st, \n#'     2009 at place x\n#' @format A \\code{data.frame} with 2 columns, which are:\n#' \\describe{\n#' \\item{id}{id of the sensor}\n#' \\item{temp}{temperature in °C}\n#'}\n\"temperature\"\n\nUnfortunately, for data sets you can’t automatically insert a preset roxygen skeleton.\n\n\n\n\n\n\nTip\n\n\n\nIf you are too lazy to document your dataset by hand, you can use the sinew package which is very convenient with package documentation using roxygen2. Install the package with\n\n# install.packages(\"remotes\")\nremotes::install_github('yonicd/sinew')\n\nand then run\n\nsinew::makeOxygen(obj = temperature)\n\nThis will print you a perfect, pre-made skeleton for the data to the console, and you can just copy paste it to your temperature.R file and then fill out the placeholders.\n\n\nIf you now run devtools::document() or rebuild your package, you will find an automatically generated read-only file printMean.Rd and temperature.Rd in the man/ folder of your research compendium. If you now call ?printMean or ?dummyTempData (after installing and restarting) you open the help file just like with any other R function you know.\nPlease also have a look at the conventions and guidelines on roxygen2-documentation and the quick reference of the most common tags.\n\n\nAdd an analysis script\nWe will now add an analysis script in the form of a Quarto document (could also be an R Script instead). Here we write some analysis using the data and functions that we just defined.\nAdd an /analysis folder with an quarto document report.qmd to your compendium. This can for example look like this:\n---\ntitle: \"Temperature Analyis\"\nauthor: \"Selina Baldauf\"\ndate: \"16 November, 2023\"\n---\n\n```{r setup, include=FALSE}\ndevtools::load_all(\".\")\n```\n\n# This is the temperature analysis\n\n```{r}\nprintMean(dummyTempData$temp)\n```\nWith the devtools::load_all(\".\") command, we tell the document to first load all functions included in the package before running the code chunks."
   },
   {
     "objectID": "sessions/04_research_compendia.html#step-4-version-control-with-git-and-github",
@@ -756,39 +742,32 @@
     "text": "Links and further reading\n\nThe Turing Way website is a very useful guide to reproducible data science\n\n\nAbout Reasearch compendia\n\nA guide to making your data analysis more reproducible: Nice talks and other helpful links and information on research compendia by Karthik Ram\nThe Turing Way guide’s section on reseach compendia\nRessources collection on research compendia\n\n\n\nR packages\n\nComprehensive book on how to create an R package by Hadley Wickham and Jennifer Bryan\nusethis: workflow package to automate tasks like project setup etc.\n\npkgdown: build a quick and easy website for your package\ngoodpractice: gives you advice about good practices when building R packages\n\n\n\n\nGit and GitHub\n\nBook an using Git and Github with R and R Studio\nGetting started with Github Actions\nTalk by Jim Hester on GitHub Actions with R\nGithub Action Examples with R\n\n\n\nReproducible environments\n\nThe Holepunch package for R and Binder (adds a live, on-demand RStudio server to your R project on GitHub/GitLab)\nIntroduction to Docker for R\n\n\n\nScientific publications\nJames, Justin. 2012. “10 Classic Mistakes That Plague Software Development Projects.” 2012. https://www.techrepublic.com/blog/10-things/10-classic-mistakes-that-plague-software-development-projects/.\nScheller, Robert M, Brian R Sturtevant, Eric J Gustafson, Brendan C Ward, and David J Mladenoff. 2010. “Increasing the Reliability of Ecological Models Using Modern Software Engineering Techniques.” Frontiers in Ecology and the Environment 8 (5): 253–60. https://doi.org/10.1890/080141.\nBaxter, Susan M., Steven W. Day, Jacquelyn S. Fetrow, and Stephanie J. Reisinger. 2006. “Scientific Software Development Is Not an Oxymoron.” PLoS Computational Biology 2 (9): 0975–78. https://doi.org/10.1371/journal.pcbi.0020087.\nMerali, Zeeya. 2010. “Computational Science: …Error.” Nature 467 (7317): 775–77. https://doi.org/10.1038/467775a.\nStorer, Tim. 2017. “Bridging the Chasm: A Survey of Software Engineering Practice in Scientific Programming.” ACM Computing Surveys 50 (4). https://doi.org/10.1145/3084225.\nMarwick, Ben, Carl Boettiger, and Lincoln Mullen. 2018. “Packaging Data Analytical Work Reproducibly Using R (and Friends).” American Statistician 72 (1): 80–88. https://doi.org/10.1080/00031305.2017.1375986."
   },
   {
-    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html",
-    "href": "sessions/additional_material/02_quarto/penguins_paper.html",
-    "title": "The penguins of Antarctica",
+    "objectID": "sessions/06_efficient_r.html",
+    "href": "sessions/06_efficient_r.html",
+    "title": "Efficient R",
     "section": "",
-    "text": "There are three main penguin species in Antarctica (Chinstrap, Gentoo, Adelie). You can see them in Figure 1:\n\n\n\n\n\nFigure 1: Illustration of the three penguin species by Allison Horst\n\n\n\n\nIn this paper we want to answer the following questions\n\nHow bill depth depends on bill length?\nWhich penguin species has the highest body mass?"
+    "text": "For most data analysis and statistical computing, R is efficient enough. However, there are times when we encounter bottlenecks in our code that slow it down significantly. In this lecture, I’ll teach you techniques to identify those bottlenecks and write more efficient code. You’ll learn the fundamental principles of faster R code and discover efficient packages for data analysis. We’ll also touch on advanced optimization methods like parallelization and integrating C++ code. If you have previous experience with R programming and looking to make your R code run faster, this lecture is for you. If you are an R beginner, you’ll still benefit from learning the principles and patterns but the more advanced techniques won’t be relevant for you yet.\n\nSlides in full screen     Download PDF slides"
   },
   {
-    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html#the-data",
-    "href": "sessions/additional_material/02_quarto/penguins_paper.html#the-data",
-    "title": "The penguins of Antarctica",
-    "section": "2.1 The data",
-    "text": "2.1 The data\nThe data was collected on islands in Antarctica and published by Gorman, Williams, and Fraser (2014). You can find the original paper with the title “Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis)” (Gorman, Williams, and Fraser 2014) in PLoS ONE1\nThe data is published via the palmerpenguins R package (Horst, Hill, and Gorman 2020) which you can find on this website.\nThe data contains (among others) the following measurements:\n\nbill length\nbill depth\nbody mass\nsex\n\nmale\nfemale"
+    "objectID": "sessions/06_efficient_r.html#description",
+    "href": "sessions/06_efficient_r.html#description",
+    "title": "Efficient R",
+    "section": "",
+    "text": "For most data analysis and statistical computing, R is efficient enough. However, there are times when we encounter bottlenecks in our code that slow it down significantly. In this lecture, I’ll teach you techniques to identify those bottlenecks and write more efficient code. You’ll learn the fundamental principles of faster R code and discover efficient packages for data analysis. We’ll also touch on advanced optimization methods like parallelization and integrating C++ code. If you have previous experience with R programming and looking to make your R code run faster, this lecture is for you. If you are an R beginner, you’ll still benefit from learning the principles and patterns but the more advanced techniques won’t be relevant for you yet.\n\nSlides in full screen     Download PDF slides"
   },
   {
-    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html#the-analysis",
-    "href": "sessions/additional_material/02_quarto/penguins_paper.html#the-analysis",
-    "title": "The penguins of Antarctica",
-    "section": "2.2 The analysis",
-    "text": "2.2 The analysis\nWe did some plots, calculated some summary statistics and a linear model of the form \\(y = ax + b + \\epsilon\\)"
-  },
-  {
-    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html#footnotes",
-    "href": "sessions/additional_material/02_quarto/penguins_paper.html#footnotes",
-    "title": "The penguins of Antarctica",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\npaper available here.↩︎"
+    "objectID": "sessions/06_efficient_r.html#links-and-resources",
+    "href": "sessions/06_efficient_r.html#links-and-resources",
+    "title": "Efficient R",
+    "section": "Links and resources",
+    "text": "Links and resources\n\nFor more details on the first two levels, check out my talk “What they forgot to teach you about R”\nBook Efficient R programming by Colin Gillespie and Robin Lovelace offers a great overview of different areas of efficiency\nYoutube Video on Writing efficient R code"
   },
   {
     "objectID": "slides/2023_05_11_quarto.html#what-is-this-lecture-series",
     "href": "slides/2023_05_11_quarto.html#what-is-this-lecture-series",
     "title": "Reproducible documents with Quarto",
     "section": "What is this lecture series?",
-    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n. . .\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nFor topic suggestions send me an email\nIf you don’t want to miss a lecture\n\nCheck out the lecture website\nSubscribe to the mailing list\n\nSlides provided on Github"
+    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nFor topic suggestions send me an email\nIf you don’t want to miss a lecture\n\nCheck out the lecture website\nSubscribe to the mailing list\n\nSlides provided on Github"
   },
   {
     "objectID": "slides/2023_05_11_quarto.html#reproducible-documents-with-quarto",
@@ -1096,13 +1075,349 @@
     "href": "slides/2023_07_20_research_compendia.html#references",
     "title": "Research compendia as R packages",
     "section": "References",
-    "text": "References\n\n\nMarwick, Ben, Carl Boettiger, and Lincoln Mullen. 2018. “Packaging Data Analytical Work Reproducibly Using R (and Friends).” American Statistician 72 (1): 80–88. https://doi.org/10.1080/00031305.2017.1375986.\nThe Turing Way website is a very useful guide to reproducible data science\nSlides and list of resources for research compendia by Karthik\n\n\n\n\nResearch compendia as R 📦"
+    "text": "References\n\n\nMarwick, Ben, Carl Boettiger, and Lincoln Mullen. 2018. “Packaging Data Analytical Work Reproducibly Using R (and Friends).” American Statistician 72 (1): 80–88. https://doi.org/10.1080/00031305.2017.1375986.\nThe Turing Way website is a very useful guide to reproducible data science\nSlides and list of resources for research compendia by Karthik\n\n\n\n\nSelina Baldauf // Research compendia as R 📦"
   },
   {
-    "objectID": "slides/zzz_template.html#introduction-of-this-lecture-series",
-    "href": "slides/zzz_template.html#introduction-of-this-lecture-series",
-    "title": "The title of the current lecture",
-    "section": "Introduction of this lecture series",
-    "text": "Introduction of this lecture series\n\n\nMe: Scientific programmer\nThis lecture series: Idea"
+    "objectID": "slides/2023_11_16_efficient_r.html#what-is-this-lecture-series",
+    "href": "slides/2023_11_16_efficient_r.html#what-is-this-lecture-series",
+    "title": "Efficient R",
+    "section": "What is this lecture series?",
+    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nMaterial provided online\nIf you don’t want to miss a lecture\n\nSubscribe to the mailing list"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#main-reference",
+    "href": "slides/2023_11_16_efficient_r.html#main-reference",
+    "title": "Efficient R",
+    "section": "Main reference",
+    "text": "Main reference\n\n\nEfficient R book by Gillespie and Lovelace, read it here"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#what-is-efficiency",
+    "href": "slides/2023_11_16_efficient_r.html#what-is-efficiency",
+    "title": "Efficient R",
+    "section": "What is efficiency?",
+    "text": "What is efficiency?\n\\[\n\\textsf{efficiency} = \\frac{\\textsf{work done}}{\\textsf{unit of effort}}\n\\] \n\n\n\nComputational efficiency\n\n\n💻 Computation time  💾 Memory usage\n\n\n\nProgrammer efficiency\n🧍 How long does it take to\n\n\nwrite code?\nmaintain code?\nread and understand the code?\n\n\n\n\nTradeoffs and Synergies between these types of efficiencies"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#today",
+    "href": "slides/2023_11_16_efficient_r.html#today",
+    "title": "Efficient R",
+    "section": "Today",
+    "text": "Today\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPrinciples and tools to make R programming more effiicent for 💻\n\n\nCheck out my talk “What they forgot to teach you about R” for first two levels"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#is-r-slow",
+    "href": "slides/2023_11_16_efficient_r.html#is-r-slow",
+    "title": "Efficient R",
+    "section": "Is R slow?",
+    "text": "Is R slow?\n\nR is slow compared to other programming languages (e.g. C++).\n\nR is designed to make programming easy, not fast\n\nR is not designed to be memory efficient\nBut: R is fast and memory efficient enough for most tasks."
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#should-i-optimize",
+    "href": "slides/2023_11_16_efficient_r.html#should-i-optimize",
+    "title": "Efficient R",
+    "section": "Should I optimize?",
+    "text": "Should I optimize?\n\n\nIt’s easy to get caught up in trying to remove all bottlenecks. Don’t! Your time is valuable and is better spent analysing your data, not eliminating possible inefficiencies in your code. Be pragmatic: don’t spend hours of your time to save seconds of computer time. (Hadley Wickham in Advanced R)\n\n\n\nThink about\n\nHow much time do I save by optimizing?\nHow often do I run the code?\nHow much time do I spend optimizing?\n\n\nOften: Trade-off between readability and efficiency"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#should-i-optimize-1",
+    "href": "slides/2023_11_16_efficient_r.html#should-i-optimize-1",
+    "title": "Efficient R",
+    "section": "Should I optimize?",
+    "text": "Should I optimize?\nIf your code is to slow for you, you can go through these steps:\n\nIf possible, run the code somewhere else"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#run-the-code-somewhere-else",
+    "href": "slides/2023_11_16_efficient_r.html#run-the-code-somewhere-else",
+    "title": "Efficient R",
+    "section": "Run the code somewhere else",
+    "text": "Run the code somewhere else\n\n\nFor this, RStudio has background jobs\n\n\n\n\nOr: run it on a cluster (e.g. FU Curta)"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#should-i-optimize-2",
+    "href": "slides/2023_11_16_efficient_r.html#should-i-optimize-2",
+    "title": "Efficient R",
+    "section": "Should I optimize?",
+    "text": "Should I optimize?\nIf your code is to slow for you, you can go through these steps:\n\n\nIf possible, run the code somewhere else\n\n\n\nIdentify the critical (slow) parts of your code\nThen optimize only the bottlenecks"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#profiling-r-code",
+    "href": "slides/2023_11_16_efficient_r.html#profiling-r-code",
+    "title": "Efficient R",
+    "section": "Profiling R code",
+    "text": "Profiling R code\nWhat are the speed & memory bottlenecks in my code?\n\nUse the profvis package"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#profiling-r-code-1",
+    "href": "slides/2023_11_16_efficient_r.html#profiling-r-code-1",
+    "title": "Efficient R",
+    "section": "Profiling R code",
+    "text": "Profiling R code\nYou can profile a section of code like this:\n\n# install.packages(\"profvis\")\nlibrary(profvis)\n\n# Create a data frame with 150 columns and 400000 rows\ndf &lt;- data.frame(matrix(rnorm(150 * 400000), nrow = 400000))\n\nprofvis({\n  # Calculate mean of each column and put it in a vector\n  means &lt;- apply(df, 2, mean)\n\n  # Subtract mean from each value in the table\n  for (i in seq_along(means)) {\n    df[, i] &lt;- df[, i] - means[i]\n  }\n})"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#profiling-r-code-2",
+    "href": "slides/2023_11_16_efficient_r.html#profiling-r-code-2",
+    "title": "Efficient R",
+    "section": "Profiling R code",
+    "text": "Profiling R code\nProfvis flame graph shows time and memory spent in each line of code."
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#profiling-r-code-3",
+    "href": "slides/2023_11_16_efficient_r.html#profiling-r-code-3",
+    "title": "Efficient R",
+    "section": "Profiling R code",
+    "text": "Profiling R code\nProfvis data view for details on time spent in each function in the call stack."
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#profiling-r-code-4",
+    "href": "slides/2023_11_16_efficient_r.html#profiling-r-code-4",
+    "title": "Efficient R",
+    "section": "Profiling R code",
+    "text": "Profiling R code\nYou can also interactively profile code in RStudio:\n\n\nGo to Profile -&gt; Start profiling\nNow interactively run the code you want to profile\nGo to Profile -&gt; Stop profiling to see the results"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#benchmarking-r-code",
+    "href": "slides/2023_11_16_efficient_r.html#benchmarking-r-code",
+    "title": "Efficient R",
+    "section": "Benchmarking R code",
+    "text": "Benchmarking R code\nWhich version of the code is faster?\n\n\n# Fill a data frame in a loop\nf1 &lt;- function() {\n  x &lt;- data.frame(a = numeric(), b = numeric())\n  for (i in 1:1e4) {\n    x[i, ] &lt;- c(i, i)\n  }\n}\n\n# Fill a data frame directly with vectors\nf2 &lt;- function() {\n  x &lt;- data.frame(a = 1:1e4, b = 1:1e4)\n}"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#benchmarking-r-code-1",
+    "href": "slides/2023_11_16_efficient_r.html#benchmarking-r-code-1",
+    "title": "Efficient R",
+    "section": "Benchmarking R code",
+    "text": "Benchmarking R code\nUse the microbenchmark package to compare the functions:\n\n\n# install.packages(\"microbenchmark\")\nlibrary(microbenchmark)\n\ncompare_functions &lt;- microbenchmark(\n  old = f1(),\n  new = f2(),\n  times = 10 # default is 100\n)\n\ncompare_functions\n#&gt; Unit: microseconds\n#&gt;  expr       min        lq      mean     median      uq       max neval cld\n#&gt;   old 3020299.9 3148224.8 3477195.5 3330624.60 3881289 4231654.5    10  a \n#&gt;   new     204.8     296.9     718.7     335.85     516    4034.3    10   b\n\n\n\n\n\n\nWe can look at benchmarking results using ggplot\n\nlibrary(ggplot2)\nautoplot(compare_functions)"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#benchmarking-r-code-2",
+    "href": "slides/2023_11_16_efficient_r.html#benchmarking-r-code-2",
+    "title": "Efficient R",
+    "section": "Benchmarking R code",
+    "text": "Benchmarking R code"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#vectorize-your-code",
+    "href": "slides/2023_11_16_efficient_r.html#vectorize-your-code",
+    "title": "Efficient R",
+    "section": "Vectorize your code",
+    "text": "Vectorize your code\n\nVectors are central to R programming\nR is optimized for vectorized code\n\nImplemented directly in C/Fortran\n\nVector operations can often replace for-loops in R\nIf there is a vectorized version of a function: Use it"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#vectorize-your-code-1",
+    "href": "slides/2023_11_16_efficient_r.html#vectorize-your-code-1",
+    "title": "Efficient R",
+    "section": "Vectorize your code",
+    "text": "Vectorize your code\nExample: Calculate the log of every value in a vector and sum up the result\n\n\n# A vector with 1 million values\nx &lt;- 1:1e6\n\nmicrobenchmark(\n  for_loop = {\n    log_sum &lt;- 0\n    for (i in 1:length(x)) {\n      log_sum &lt;- log_sum + log(x[i])\n    }\n  },\n  sum = sum(log(x)),\n  times = 10\n)\n#&gt; Unit: milliseconds\n#&gt;      expr      min       lq      mean    median       uq      max neval cld\n#&gt;  for_loop 116.5736 124.5762 138.09591 139.41500 144.2552 175.4058    10  a \n#&gt;       sum  39.0255  50.0998  55.92386  51.99125  70.2841  73.6352    10   b"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#for-loops-in-r",
+    "href": "slides/2023_11_16_efficient_r.html#for-loops-in-r",
+    "title": "Efficient R",
+    "section": "For-loops in R",
+    "text": "For-loops in R\n\nFor-loops are relatively slow and it is easy to make them even slower with bad design\nOften they are used when vectorized code would be better\nFor loops can often be replaced, e.g. by\n\nFunctions from the apply family (e.g. apply, lapply, …)\nVectorized functions (e.g. sum, colMeans, …)\nVectorized functions from the purrr package (e.g. map)\n\n\n\nBut: For loops are not necessarily bad, sometimes they are the best solution and more readable than vectorized code."
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#cache-variables",
+    "href": "slides/2023_11_16_efficient_r.html#cache-variables",
+    "title": "Efficient R",
+    "section": "Cache variables",
+    "text": "Cache variables\nIf you use a value multiple times, store it in a variable to avoid re-calculation\n\nExample: Calculate column means and normalize them by the standard deviation\n\n\n\n# A matrix with 1000 columns\nx &lt;- matrix(rnorm(10000), ncol = 1000)\n\nmicrobenchmark(\n  no_cache = apply(x, 2, function(i) mean(i) / sd(x)),\n  cache = {\n    sd_x &lt;- sd(x)\n    apply(x, 2, function(i) mean(i) / sd_x)\n  }\n)\n#&gt; Unit: milliseconds\n#&gt;      expr      min       lq      mean    median        uq      max neval cld\n#&gt;  no_cache 130.3633 147.2735 166.20257 158.29205 179.40650 333.9536   100  a \n#&gt;     cache   8.2358   9.6942  11.86932  11.06015  12.80075  24.3593   100   b"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#efficient-workflow",
+    "href": "slides/2023_11_16_efficient_r.html#efficient-workflow",
+    "title": "Efficient R",
+    "section": "Efficient workflow",
+    "text": "Efficient workflow\n\nPrepare the data to be clean and concise for analysis\n\nHelps to avoid unnecessary calculations\n\nSave intermediate results\n\nDon’t re-run time consuming steps if not necessary\n\nUse the right packages and functions"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#read-data",
+    "href": "slides/2023_11_16_efficient_r.html#read-data",
+    "title": "Efficient R",
+    "section": "Read data",
+    "text": "Read data\nExample: Read csv data on worldwide emissions of greenhouse gases (~14000 rows, 7 cols).\n\nBase-R functions to read csv files are:\n\nread.table\nread.csv\n\nThere are many alternatives to read data, e.g.:\n\nread_csv from the readr package (tidyverse)\nfread from the data.table package"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#read-data-1",
+    "href": "slides/2023_11_16_efficient_r.html#read-data-1",
+    "title": "Efficient R",
+    "section": "Read data",
+    "text": "Read data\nCompare some alternative reading functions\n\nfile_path_csv &lt;- here::here(\"slides/data/ghg_ems_large.csv\")\n\ncompare_input &lt;- microbenchmark::microbenchmark(\n  read.csv = read.csv(file_path_csv),\n  read_csv = readr::read_csv(file_path_csv, progress = FALSE, show_col_types = FALSE),\n  fread = data.table::fread(file_path_csv, showProgress = FALSE),\n  times = 10\n)\n\nautoplot(compare_input)"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#read-data-1-output",
+    "href": "slides/2023_11_16_efficient_r.html#read-data-1-output",
+    "title": "Efficient R",
+    "section": "Read data",
+    "text": "Read data"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#use-plain-text-data",
+    "href": "slides/2023_11_16_efficient_r.html#use-plain-text-data",
+    "title": "Efficient R",
+    "section": "Use plain text data",
+    "text": "Use plain text data\nReading plain text is faster than excel files\n\nfile_path_xlsx &lt;- here::here(\"slides/data/ghg_ems_large.xlsx\")\n\ncompare_excel &lt;- microbenchmark(\n  read_csv = readr::read_csv(file_path_csv, progress = FALSE, show_col_types = FALSE),\n  read_excel = readxl::read_excel(file_path_xlsx),\n  times = 10\n)\n\nautoplot(compare_excel)"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#use-plain-text-data-output",
+    "href": "slides/2023_11_16_efficient_r.html#use-plain-text-data-output",
+    "title": "Efficient R",
+    "section": "Use plain text data",
+    "text": "Use plain text data"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#write-data",
+    "href": "slides/2023_11_16_efficient_r.html#write-data",
+    "title": "Efficient R",
+    "section": "Write data",
+    "text": "Write data\n\n\nBase-R functions to write files are:\n\nwrite.table\nwrite.csv\n\nFaster alternatives are:\n\nwrite_csv from the readr package (tidyverse)\nfwrite from the data.table package"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#write-data-1-output",
+    "href": "slides/2023_11_16_efficient_r.html#write-data-1-output",
+    "title": "Efficient R",
+    "section": "Write data",
+    "text": "Write data"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#efficient-data-manipulation",
+    "href": "slides/2023_11_16_efficient_r.html#efficient-data-manipulation",
+    "title": "Efficient R",
+    "section": "Efficient data manipulation",
+    "text": "Efficient data manipulation\nDifferent packages offer fast and efficient data manipulation and analysis:\n\ndplyr package has a C++ backend and is often faster than base R\ndata.table package is fast and memory efficiency\n\nSyntax is quite different from base R and tidyverse\n\ncollapse package is a C++ based and specifically developed for fast data analysis\n\nWorks together with both tidyverse and data.table workflows\nMany functions similar to base R or dplyr just with prefix “f” (e.g. fselect, fmean, …)"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#summarize-data-by-group",
+    "href": "slides/2023_11_16_efficient_r.html#summarize-data-by-group",
+    "title": "Efficient R",
+    "section": "Summarize data by group",
+    "text": "Summarize data by group\nExample: Summarize mean carbon emissions from Electricity by Country\n\nlibrary(data.table)\nlibrary(dplyr)\nlibrary(collapse)"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#summarize-data-by-group-1",
+    "href": "slides/2023_11_16_efficient_r.html#summarize-data-by-group-1",
+    "title": "Efficient R",
+    "section": "Summarize data by group",
+    "text": "Summarize data by group\nExample: Summarize mean carbon emissions from Electricity by Country\n\n# 1. The data table way\n# Convert the data to a data.table\nsetDT(ghg_ems)\nsummarize_dt &lt;- function(){\n  ghg_ems[, mean(Electricity, na.rm = TRUE), by = Country]\n}\n\n# 2. The dplyr way\nsummarize_dplyr &lt;- function(){\n  ghg_ems |&gt;\n      group_by(Country) |&gt;\n      summarize(mean_e = mean(Electricity, na.rm = TRUE))\n}\n\n# 3. The collapse way\nsummarize_collapse &lt;- function(){\n  ghg_ems |&gt;\n      fgroup_by(Country) |&gt;\n      fsummarise(mean_e = fmean(Electricity))\n}"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#summarize-data-by-group-2",
+    "href": "slides/2023_11_16_efficient_r.html#summarize-data-by-group-2",
+    "title": "Efficient R",
+    "section": "Summarize data by group",
+    "text": "Summarize data by group\nExample: Summarize mean carbon emissions from Electricity by Country\n\n# compare the speed of all versions\nmicrobenchmark(\n  dplyr = summarize_dplyr(),\n  data_table = summarize_dt(),\n  collapse = summarize_collapse(),\n  times = 10\n)\n#&gt; Unit: microseconds\n#&gt;        expr     min      lq     mean   median      uq     max neval cld\n#&gt;       dplyr 14790.6 15268.5 17610.55 15896.70 17849.3 31915.9    10  a \n#&gt;  data_table  1807.9  1896.3  3303.93  1978.45  2583.2 11115.6    10   b\n#&gt;    collapse   452.7   538.0  1595.99   576.20  1720.4  5854.5    10   b"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#select-columns",
+    "href": "slides/2023_11_16_efficient_r.html#select-columns",
+    "title": "Efficient R",
+    "section": "Select columns",
+    "text": "Select columns\nExample: Select columns Country, Year, Electricity, Transportation\n\nmicrobenchmark(\n  dplyr = select(ghg_ems, Country, Year, Electricity, Transportation),\n  data_table = ghg_ems[, .(Country, Electricity, Transportation)],\n  collapse = fselect(ghg_ems, Country, Electricity, Transportation),\n  times = 10\n)\n#&gt; Unit: microseconds\n#&gt;        expr    min     lq    mean  median     uq     max neval cld\n#&gt;       dplyr 5286.3 5808.9 6946.64 5969.85 7321.2 12978.6    10  a \n#&gt;  data_table  761.3 1017.7 1132.57 1065.05 1178.8  1882.5    10   b\n#&gt;    collapse   16.2   18.1   51.58   35.50   36.6   255.5    10   b"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#parallelization",
+    "href": "slides/2023_11_16_efficient_r.html#parallelization",
+    "title": "Efficient R",
+    "section": "Parallelization",
+    "text": "Parallelization\nBy default, R works on one core but CPUs have multiple cores\n\n\n# Find out how many cores you have with the parallel package\n# install.packages(\"parallel\")\nparallel::detectCores()\n#&gt; [1] 8\n\n\n\n\n\nSequential\n\n\n\n\n\n\n\nParallel"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#parallelization-with-the-futureverse",
+    "href": "slides/2023_11_16_efficient_r.html#parallelization-with-the-futureverse",
+    "title": "Efficient R",
+    "section": "Parallelization with the futureverse",
+    "text": "Parallelization with the futureverse\n\nfuture is a framework to help you parallelize existing R code\n\nParallel versions of base R apply family\nParallel versions of purrr functions\nParallel versions of foreach loops\n\nFind more details here\nFind a tutorial for different use cases here"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#a-slow-example",
+    "href": "slides/2023_11_16_efficient_r.html#a-slow-example",
+    "title": "Efficient R",
+    "section": "A slow example",
+    "text": "A slow example\nLet’s create a very slow square root function\n\nslow_sqrt &lt;- function(x){\n  Sys.sleep(1) # simulate 1 second of computation time\n  sqrt(x)\n}\n\n\n\nBefore you run anything in parallel, tell R how many cores to use:\n\nlibrary(future)\n# Plan parallel session with 6 cores\nplan(multisession, workers = 6)"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#parallel-apply-functions",
+    "href": "slides/2023_11_16_efficient_r.html#parallel-apply-functions",
+    "title": "Efficient R",
+    "section": "Parallel apply functions",
+    "text": "Parallel apply functions\nTo run the function on a vector of numbers we could use\n\n\nThe sequential version\n\n# to measure the runtime\nlibrary(tictoc)\n\n# create a vector of 10 numbers\nx &lt;- 1:10 \n\ntic()\nresult &lt;- lapply(x, slow_sqrt)\ntoc()\n#&gt; 10.23 sec elapsed\n\n\n\nThe parallel version\n\n# Load future.apply package\nlibrary(future.apply)\n\ntic()\nresult &lt;- future_lapply(x, slow_sqrt)\ntoc()\n#&gt; 4.23 sec elapsed"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#parallel-apply-functions-1",
+    "href": "slides/2023_11_16_efficient_r.html#parallel-apply-functions-1",
+    "title": "Efficient R",
+    "section": "Parallel apply functions",
+    "text": "Parallel apply functions\nSelected base R apply functions and their future versions:\n\n\n\n\n\nbase\nfuture.apply\n\n\n\n\nlapply\nfuture_lapply\n\n\nsapply\nfuture_sapply\n\n\nvapply\nfuture_vapply\n\n\nmapply\nfuture_mapply\n\n\ntapply\nfuture_tapply\n\n\napply\nfuture_apply\n\n\nMap\nfuture_Map"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#parallel-for-loops",
+    "href": "slides/2023_11_16_efficient_r.html#parallel-for-loops",
+    "title": "Efficient R",
+    "section": "Parallel for loops",
+    "text": "Parallel for loops\nA normal for loop:\n\nz &lt;- list()\nfor (i in 1:10){\n  z[i] &lt;- slow_sqrt(i)\n}\n\n\nUse foreach to write the same loop\n\nlibrary(foreach)\nz &lt;- foreach(i = 1:10) %do% {\n  slow_sqrt(i)\n}"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#parallel-for-loops-1",
+    "href": "slides/2023_11_16_efficient_r.html#parallel-for-loops-1",
+    "title": "Efficient R",
+    "section": "Parallel for loops",
+    "text": "Parallel for loops\nUse doFuture and foreach package to parallelize for loops\n\n\nThe sequential version\n\nlibrary(foreach)\n\ntic()\nz &lt;- foreach(i = 1:10) %do% {\n  slow_sqrt(i)\n}\ntoc()\n#&gt; 10.19 sec elapsed\n\n\nThe parallel version\n\nlibrary(doFuture)\n\ntic()\nz &lt;- foreach(i = 1:10) %dofuture% {\n  slow_sqrt(i)\n}\ntoc()\n#&gt; 2.84 sec elapsed"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#close-multisession",
+    "href": "slides/2023_11_16_efficient_r.html#close-multisession",
+    "title": "Efficient R",
+    "section": "Close multisession",
+    "text": "Close multisession\nWhen you are done working in parallel, explicitly close your multisession:\n\n# close the multisession plan\nplan(sequential)"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#replace-slow-code-with-c",
+    "href": "slides/2023_11_16_efficient_r.html#replace-slow-code-with-c",
+    "title": "Efficient R",
+    "section": "Replace slow code with C++",
+    "text": "Replace slow code with C++\n\nUse the Rcpp package to re-write R functions in C++\nRcpp is also used internally by many R packages to make them faster\nRequirements:\n\nC++ compiler installed\nSome knowledge of C++\n\nSee this book chapter and the online documentation for more info"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#rewrite-a-function-in-c",
+    "href": "slides/2023_11_16_efficient_r.html#rewrite-a-function-in-c",
+    "title": "Efficient R",
+    "section": "Rewrite a function in C++",
+    "text": "Rewrite a function in C++\nExample: R function to calculate Fibonacci numbers\n\n# A function to calculate Fibonacci numbers\nfibonacci_r &lt;- function(n){\n  if (n &lt; 2){\n    return(n)\n  } else {\n    return(fibonacci_r(n - 1) + fibonacci_r(n - 2))\n  }\n}\n\n\n\n\n# Calculate the 30th Fibonacci number\nfibonacci_r(30)\n#&gt; [1] 832040"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#rewrite-a-function-in-c-1",
+    "href": "slides/2023_11_16_efficient_r.html#rewrite-a-function-in-c-1",
+    "title": "Efficient R",
+    "section": "Rewrite a function in C++",
+    "text": "Rewrite a function in C++\nUse cppFunction to rewrite the function in C++:\n\nlibrary(Rcpp)\n\n# Rewrite the fibonacci_r function in C++\nfibonacci_cpp &lt;- cppFunction(\n  'int fibonacci_cpp(int n){\n    if (n &lt; 2){\n      return(n);\n    } else {\n      return(fibonacci_cpp(n - 1) + fibonacci_cpp(n - 2));\n    }\n  }'\n)\n\n\n\n\n# calculate the 30th Fibonacci number\nfibonacci_cpp(30)\n#&gt; [1] 832040"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#rewrite-a-function-in-c-2",
+    "href": "slides/2023_11_16_efficient_r.html#rewrite-a-function-in-c-2",
+    "title": "Efficient R",
+    "section": "Rewrite a function in C++",
+    "text": "Rewrite a function in C++\nYou can also source C++ functions from C++ scripts.\n\nC++ script fibonacci.cpp:\n\n#include \"Rcpp.h\"\n\n// [[Rcpp::export]]\nint fibonacci_cpp(const int x) {\n   if (x &lt; 2) return(x);\n   return (fibonacci(x - 1)) + fibonacci(x - 2);\n}\n\n\n\nThen source the function in your R script using sourceCpp:\n\n\n\nsourceCpp(\"fibonacci.cpp\")\n\n# Use the function in your R script like you are used to\nfibonacci_cpp(30)"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#how-much-faster-is-c",
+    "href": "slides/2023_11_16_efficient_r.html#how-much-faster-is-c",
+    "title": "Efficient R",
+    "section": "How much faster is C++?",
+    "text": "How much faster is C++?\n\nmicrobenchmark(\n  r = fibonacci_r(30),\n  rcpp = fibonacci_cpp(30),\n  times = 10\n)\n#&gt; Unit: milliseconds\n#&gt;  expr       min       lq       mean    median        uq       max neval cld\n#&gt;     r 1500.8667 1565.980 1695.35756 1629.9862 1780.3685 2059.7378    10  a \n#&gt;  rcpp    2.3096    2.322    2.68697    2.5622    2.8446    3.5691    10   b"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#next-lecture",
+    "href": "slides/2023_11_16_efficient_r.html#next-lecture",
+    "title": "Efficient R",
+    "section": "Next lecture",
+    "text": "Next lecture\nTopic t.b.a.\n\n📅 18th January 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
+    "objectID": "slides/2023_11_16_efficient_r.html#thank-you-for-your-attention",
+    "href": "slides/2023_11_16_efficient_r.html#thank-you-for-your-attention",
+    "title": "Efficient R",
+    "section": "Thank you for your attention :)",
+    "text": "Thank you for your attention :)\nQuestions?\n\n\nSelina Baldauf // Efficient R"
   }
 ]
