@@ -10,3 +10,4 @@ slides/*_files/
 .DS_Store
 slides/2023_11_16_efficient_r_cache/
 slides/2023_11_16_efficient_r_files/
+slides/data/ghg_ems*

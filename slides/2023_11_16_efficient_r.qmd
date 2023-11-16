@@ -129,7 +129,7 @@ $$
 
 . . .
 
-**Principles** and **tools** on making R programming more effiicent for :computer:
+**Principles** and **tools** to make R programming more effiicent for :computer:
 
 . . .
 
@@ -474,7 +474,7 @@ toc()
 
 # Basic principles
 
-## Let R do as little as possible
+## Let R do as little as possible {visibilty="hidden"}
 
 Use fewer function calls and less complex functions
 
@@ -662,10 +662,7 @@ microbenchmark(
   - Helps to avoid unnecessary calculations
 - Save intermediate results
   - Don't re-run time consuming steps if not necessary
-- Use the right packages
-  - [`tidyverse` packages](https://www.tidyverse.org/) can be quite fast (e.g. `readr`, `dplyr`)
-  - [`data.table` package](https://rdatatable.gitlab.io/data.table/) is fast and memory efficienct
-  - [`collapse` package](https://sebkrantz.github.io/collapse/index.html) for very fast data manipulation
+- Use the right packages and functions
   
 ## Read data
 
@@ -675,7 +672,7 @@ microbenchmark(
   - `read.table`
   - `read.csv`
 - There are many alternatives to read data, e.g.:
-  - `read_csv/read_tsv` from the `readr` package (tidyverse)
+  - `read_csv` from the `readr` package (tidyverse)
   - `fread` from the `data.table` package
 
 ## Read data
@@ -718,7 +715,7 @@ autoplot(compare_excel)
 
 ## Write data
 
-::: {.nonincrmental}
+::: {.nonincremental}
 
 - Base-R functions to write files are:
   - `write.table`
@@ -760,10 +757,10 @@ autoplot(compare_output)
 
 Different packages offer fast and efficient data manipulation and analysis:
 
-- `dplyr` has a C++ backend and is often faster than base R
-- `data.table` is fast and memory efficiency
+- [`dplyr` package](https://dplyr.tidyverse.org/) has a C++ backend and is often faster than base R
+- [`data.table` package](https://rdatatable.gitlab.io/data.table/) is fast and memory efficiency
   - Syntax is quite different from base R and `tidyverse`
-- `collapse` is a C++ based package that is specifically developed for fast data analysis
+- [`collapse` package](https://sebkrantz.github.io/collapse/index.html) is a C++ based and specifically developed for fast data analysis
   - Works together with both `tidyverse` and `data.table` workflows
   - Many functions similar to base R or `dplyr` just with prefix "f" (e.g. `fselect`, `fmean`, ...)
   

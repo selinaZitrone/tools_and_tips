@@ -11,42 +11,12 @@ For most data analysis and statistical computing, R is efficient enough. However
 <iframe class="slide-deck" width="780" height="500" src="slides/2023_11_16_efficient_r.html"></iframe>
 ```
 
-[Slides in full screen](slides/2023_11_16_efficient_r.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/02_efficient-R.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/2023_11_16_efficient_r.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/2023_11_16_efficient_r.pdf" download>Download PDF slides</a>
 
-## Summary
+## Links and resources
 
-### Efficient setup of our tools
-
-- Keep R, R packages and your IDE up to date up to date
-- Learn about your IDE
-  - Learn keyboard shortcuts
-  - Learn about all the options
-    - [R Studio cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rstudio-ide.pdf) that explains all the buttons
-- Integrate AI Tools in your workflow
-  - [Github Copilot for RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
-  - [Package `gptstudio`](https://github.com/MichelNivard/GPTstudio) to integrate LLMs (e.g. ChatGPT)
-
-### Efficient project structure and coding style
-
-- Have a clean project structure
-  - 
-- Use R Studio projects: See [here](https://selinazitrone.github.io/tools_and_tips/slides/2023_04_20_what_they_forgot_to_teach_you.html#/create-an-r-studio-project) how to create them
-
-- Follow the [tidyverse styleguide](https://style.tidyverse.org/index.html)
-- Style your code automatically using the [`styler` package](https://styler.r-lib.org/)
-  - Have a look [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/11_good-practice.html#use-the-styler-package) to see how you can set it up
-
-### Efficient R code and optimization
-
-- First: Can I run it somewhere else?
-  - :wrench: Background job or cluster
-- If not: Find bottlenecks in your code
-  - :wrench: `profvis` package for profiling
-  - :wrench: `microbenchmark` package for benchmarking
-- Make the critical sections more efficient
-
-## Further resources
-
+- For more details on the first two levels, check out my talk ["What they forgot to teach you about R"](https://selinazitrone.github.io/tools_and_tips/sessions/01_what_they_forgot.html)
 - [Book Efficient R programming](https://csgillespie.github.io/efficientR/) by Colin Gillespie and Robin Lovelace offers a great overview of different areas of efficiency
 - [Youtube Video](https://www.youtube.com/watch?v=EHoTFOW1WjU) on Writing efficient R code
-- [What they forgot to teach you about R lecture](https://selinazitrone.github.io/tools_and_tips/sessions/01_what_they_forgot.html) with many more tips on good practice and efficient R workflows
+
+
