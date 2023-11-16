@@ -474,7 +474,7 @@ toc()
 
 # Basic principles
 
-## Let R do as little as possible {visibilty="hidden"}
+## Let R do as little as possible {visibility="hidden"}
 
 Use fewer function calls and less complex functions
 

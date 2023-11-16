@@ -8,10 +8,10 @@ from: markdown+emoji
 For most data analysis and statistical computing, R is efficient enough. However, there are times when we encounter bottlenecks in our code that slow it down significantly. In this lecture, I'll teach you techniques to identify those bottlenecks and write more efficient code. You'll learn the fundamental principles of faster R code and discover efficient packages for data analysis. We'll also touch on advanced optimization methods like parallelization and integrating C++ code. If you have previous experience with R programming and looking to make your R code run faster, this lecture is for you. If you are an R beginner, you'll still benefit from learning the principles and patterns but the more advanced techniques won't be relevant for you yet.
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/2023_11_16_efficient_r.html"></iframe>
+<iframe class="slide-deck" width="780" height="500" src="../slides/2023_11_16_efficient_r.html"></iframe>
 ```
 
-[Slides in full screen](slides/2023_11_16_efficient_r.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/2023_11_16_efficient_r.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2023_11_16_efficient_r.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2023_11_16_efficient_r.pdf" download>Download PDF slides</a>
 
 ## Links and resources
 
