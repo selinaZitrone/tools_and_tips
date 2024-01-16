@@ -41,6 +41,100 @@ from: markdown+emoji
     -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
 :::
 
+## Motivation
+
+::: {.columns}
+
+- AI tools assist programmers with
+  - Coding
+  - Debugging
+  - Learning
+  - ...
+- Higher productivity and efficiency
+- More motivation
+
+::: {.column width="50%"}
+
+
+:::
+::: {.column width="50%"}
+
+![](images/2024_01_18_ai_tools/dalle_motivation.png)
+
+:::
+
+## Overview of tools
+
+- **Browser-based chat bots** (ChatGPT, Bard, ...)
+  - General-purpose
+  - Prompt-engineering to get good programming answers
+  - Interactive learning, brainstorming, ...
+
+- **Data-analysis tools** (ChatGPT data analyst, RTutor)
+  - Execute code and give you results
+  - Upload data and ask questions about it
+  - Download the code
+
+- **Integrated AI tools** (Github Copilot, Codium AI, ...)
+  - Integrated directly in programming environment
+  - Real-time suggestions, chat, debugging, ...
+
+## Now You
+
+Webex survey:
+
+:red_question: What is your main programming language <br><br>
+
+:red_question: Which IDE do you use? <br><br>
+
+:red_question: Which AI tools for programming did you already try? <br><br>
+
+## Today
+
+:grey_question: Which AI tools did you try already for programming?
+
+- Focus on **integrated AI tools** (Github Copilot)
+  - Functioning and use cases
+
+- Find other tools on the [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html)
+
+- Concerns when using AI tools
+
+- Goal: Motivate you to try out tools and find out what fits your workflow
+
+# Integrated AI tools for programming
+
+## GitHub Copilot
+
+- Cloud-based AI tools by Github and OpenAI
+- Model based on GPT4 and OpenAI's Codex
+  - Specifically trained on
+- Basic idea: Plugin for your IDE to integrate Copilot
+- Provides
+  - Inline code-suggestions
+  - A chat to ask questions about your code project
+  - Funtionality to document, correct, explain and create
+  - ...
+- Works best for well-represented languages (Python, JS, ...)
+  
+## How to get GH Copilot
+
+You need:
+
+- GitHub Account
+- An active GH Copilot subscription
+  - 10$ per month
+  - Get it for free as academic with an educational account
+- An IDE that supports Copilot
+  - Full support in: Visual Studio Code, Visual Studio, Vim, Neovim, the JetBrains suite of IDE (e.g. PyCharm)
+  - Limited support: RStudio, ?
+
+. . .
+
+See [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html) for mor info.
+
+## 
+
 # Summary
 
 
