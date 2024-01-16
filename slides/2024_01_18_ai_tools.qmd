@@ -1,0 +1,60 @@
+---
+title: "AI tools in programming"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+author: "Dr. Selina Baldauf"
+date: "2024-01-18"
+format: 
+  revealjs:
+    footer: "Selina Baldauf // AI tools"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute: 
+  echo: true
+  eval: true
+  cache: true
+  message: false
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+from: markdown+emoji
+---
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+::: nonincremental
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+-   One topic from the world of scientific workflows
+-   Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+-   If you don't want to miss a lecture
+    -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+:::
+
+# Summary
+
+
+## Next lecture
+
+#### Topic t.b.a.
+
+<br>
+
+:date: 18th January :clock4: 4-5 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+## Thank you for your attention :)
+Questions?

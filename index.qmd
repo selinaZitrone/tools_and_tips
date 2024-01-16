@@ -25,4 +25,5 @@ On this website, you can find all slides and additional resources for lectures:
 - 2023-07-20: [Research compendia as R packages](sessions/04_research_compendia.html)
 - 2023-10-19: [Effective digital notetaking with Obsidian](sessions/05_obsidian.html)
 - 2023-11-16: [Efficient R](sessions/06_efficient_r.html)
+- 2024-07-18: [AI tools in programming](sessions/07_ai_tools.html)
 

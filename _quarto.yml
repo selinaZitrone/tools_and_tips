@@ -40,6 +40,8 @@ website:
             href: sessions/05_obsidian.qmd
           - text: 06 - Efficient R
             href: sessions/06_efficient_r.qmd
+          - text: 07 - AI tools in programming
+            href: sessions/07_ai_tools.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 

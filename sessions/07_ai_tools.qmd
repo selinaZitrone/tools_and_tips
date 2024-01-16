@@ -1,0 +1,29 @@
+---
+title: AI Tools in Programming
+from: markdown+emoji
+---
+
+## Description
+
+AI tools promise to make our programming workflows faster and more efficient. If applied correctly, such tools help us write better code, be more productive and learn new techniques easily. In this lecture, I will present some AI tools for programming (mainly GitHub Copilot) and show examples of how they can be integrated into our daily workflows for different purposes. I will also briefly talk about the problems and ethical concerns that come with such tools in science. Join me if you are interested! 
+
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2024_01_18_ai_tools.html"></iframe>
+```
+
+[Slides in full screen](../slides/2024_01_18_ai_tools.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2024_01_18_ai_tools.pdf" download>Download PDF slides</a>
+
+## Overview of AI tools for programming
+
+### Browser-based chat bots
+
+### AI powered data-analysis
+
+### Integrated AI tools
+
+## Further Links and resources
+
+
+
+
