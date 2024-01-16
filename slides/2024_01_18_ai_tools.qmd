@@ -128,15 +128,80 @@ You need:
 - An IDE that supports Copilot
   - Full support in: Visual Studio Code, Visual Studio, Vim, Neovim, the JetBrains suite of IDE (e.g. PyCharm)
   - Limited support: RStudio, ?
+- Installation of the extensions
+  - VS Code: Github Copilot & Github Copilot Chat
+  - RStudio: `Tools -> Global Options -> Copilot`
 
 . . .
 
-See [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html) for mor info.
+See [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html) for more info.
 
-## 
+# Using GH Copilot
+
+> Features and use cases
+
+## Inline code suggestions
+
+-  Supported in RStudio
+-  Copilot tries to guess what you want to do
+-  Suggests code that can be accepted with `Tab`
+-  Suggestions are based on the context
+   -  Previous code
+   -  Comments
+   -  Variable and function names
+   -  ...
+  
+## Get better suggestions
+
+see [here](https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp) for more info
+
+- Provide context
+  - Open other files
+  - Add top level comments explaining the purpose of the script
+  - Name variables and functions properly
+  - Copy-paste sample code and delete it later
+
+- Be consistent
+  - "Garbage in, garbage out"
+  - Have a nice and consistent coding style
+
+Side effect of using Copilot: More good-practice coding
+
+## Chat
+
+- Needs an additional extension
+  - In VS Code: GitHub Copilot Chat
+- Context of the chat can be:
+  - Highlightes lines of code
+  - The whole script
+  - The whole project
+- Preset commands with optional text starting with `/` 
+  - `/fix`: fix problems in your code
+  - `/doc`: create a documentation for the
+  - `/explain`: explain this code
+  - `/test`: write unit tests
+  - `/new`: Create new projects or scripts with Code
+
+## Codium AI as an alternative
+
+- No inline code suggestions
+- Great functionality to
+  - Explain code
+  - Suggestsions improve and enhance code
+  - Generate tests
+- Not in RStudio, but in VS code and many other IDEs
+- Free for personal use (for now)
+
+## Concerns
+
+- Privacy
+
 
 # Summary
 
+- But keep in mind
+  - AI can make mistakes: doublecheck!
+  - AI might not know newest techniques
 
 ## Next lecture
 
