@@ -69,15 +69,25 @@ from: markdown+emoji
 
 - **Browser-based chat bots** (ChatGPT, Bard, ...)
   - General-purpose
-  - Prompt-engineering to get good programming answers
 
-- **Data-analysis tools** (ChatGPT data analyst, RTutor)
+- **Data-analysis tools** (ChatGPT data analyst, RTutor, ...)
   - Upload data and ask questions about it
   - Download the code that was used for the results
 
 - **Integrated AI tools** (Github Copilot, Codium AI, ...)
   - Integrated directly in programming environment
   - Real-time suggestions, chat, debugging, ...
+
+## Today
+
+- Focus on **integrated AI tools**
+  - Functioning and use cases
+
+- Concerns when using AI tools
+
+- **Main goal:** Motivate you to try out tools and find out what fits your workflow
+
+- Find other tools on the [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html)
 
 ## Now You
 
@@ -89,17 +99,6 @@ Webex poll:<br><br>
 
 :question: Which **AI tools for programming** did you already try <br><br>
 
-## Today
-
-- Focus on **integrated AI tools**
-  - Functioning and use cases
-
-- Find other tools on the [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html)
-
-- Concerns when using AI tools
-
-- **Main goal:** Motivate you to try out tools and find out what fits your workflow
-
 # Integrated AI tools for programming
 
 > Mainly GitHub Copilot
@@ -110,11 +109,6 @@ Webex poll:<br><br>
 - Model based on GPT-4 and OpenAI's Codex
   - Specifically trained on source code
 - Basic idea: Plugin for your IDE to integrate Copilot
-- Provides
-  - Inline code-suggestions
-  - Funtionality to document, correct, explain and create
-  - A chat to ask questions about your code project
-  - ...
 - Works best for well-represented languages (Python, JS, ...)
   
 ## What you need for GH Copilot
@@ -125,11 +119,7 @@ Webex poll:<br><br>
 - IDE that supports Copilot
   - Full support: Visual Studio (Code), Vim, Neovim, JetBrains IDEs (e.g. PyCharm)
   - Limited support: RStudio, ?
-- Installation of the extensions
-  - VS Code: Github Copilot & Github Copilot Chat
-  - RStudio: `Tools -> Global Options -> Copilot`
-
-## What you need for GH Copilot
+- Installation of the Copilot extensions
 
 See [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html) for more info
 on how to get and setup GH Copilot.
@@ -141,13 +131,11 @@ on how to get and setup GH Copilot.
 ## Inline code suggestions
 
 -  Copilot tries to predict what you want to do next
--  Suggests code that can be accepted with `Tab`
 -  Suggestions are based on the context
    -  Previous code
    -  Comments
    -  Variable and function names
    -  ...
--  Supported in RStudio
   
 ## Get better suggestions
 
@@ -161,17 +149,16 @@ on how to get and setup GH Copilot.
   - "Garbage in, garbage out"
   - Have a nice and consistent coding style
 
-Side effect of using Copilot: More good-practice coding
+Nice side effect of using Copilot: More good-practice coding
 
 ## Chat
 
-- Needs an additional extension (GitHub Copilot Chat)
-- Context of the chat can be:
+- Ask and give commands regarding:
   - Highlighted lines of code
   - The whole script or project
-- Preset commands with optional text starting with `/` 
+- Preset commands starting with `/` 
   - `/fix`: fix problems in your code
-  - `/doc`: create a documentation for the
+  - `/doc`: create a documentation for the code
   - `/explain`: explain this code
   - `/test`: write unit tests
   - `/new`: create new projects or scripts with code
@@ -186,16 +173,15 @@ Side effect of using Copilot: More good-practice coding
 - Not in RStudio, but in VS code and many other IDEs
 - Free for personal use (for now)
 
-## Concerns
+## Concerns to consider
 
 - **Privacy** [(GH Copilot privacy FAQ)](https://github.com/features/copilot/#faq)
-  - Chose whether your prompts and suggestions will be used for `Github -> Seetings -> Copilot -> Policies`
+  - Chose whether your prompts and suggestions will be used by Github `Github -> Seetings -> Copilot -> Policies`
 - **Plagiarism**
-  - Should not happen but has been reported
   - Block suggestions matching public code (`Github -> Seetings -> Copilot -> Policies`)
 - **Ethical concerns**
   - For-profit tool trained on open-source
-- **Envioronmental concerns**
+- **Environmental concerns**
   - Water and enery usage
 
 ## Usage guidelines
@@ -218,6 +204,7 @@ Side effect of using Copilot: More good-practice coding
 - Think about concerns
 - Learn about relevant guidelines
 - Development is fast, so keep up
+- Find relevant info and links to get you started on the [lecture website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html)
 
 ## Next lecture
 
