@@ -9,7 +9,9 @@ If you have any trouble with the installation, you can also get help and instruc
 
 You can get one [here](https://github.com/signup). If you want to have an educational account (see step 2), you need to register with your university email address or add it to your account in addition to your private email address.
 
-To add a second email address to your account, go to your profile settings and click on `Emails` in the left sidebar. Then click on `Add email address` and follow the instructions. Make your university email address the primary email address.
+To add a second email address to your account, go to your profile settings and click on `Emails` in the left sidebar. Then click on `Add email address` and follow the instructions.
+
+Add a billing address in the [`Billing and plans` section](https://github.com/settings/billing/payment_information) of your profile settings. You will not be charged for GitHub Copilot, but you need to have a billing address to get it.
 
 ## 2. Apply for an educational account
 
@@ -22,7 +24,16 @@ It will take up to a few days to grant you your educational account. Every few y
 
 ## 3. Subscribe GitHub Copilot
 
-You can subscribe to GitHub Copilot [here](https://github.com/features/copilot/plans). Chose the "individual" plan for 10$ per month and follow the instructions. If you have an educational account you will get it for free.
+When you have the educational account, you are eligible to get GitHub Copilot for free.
+You can check if it worked, by going to your [GitHub profile settings on](https://github.com/settings/billing/summary), click on `Billing and plans/Plans and usage` in the left sidebar.
+Scroll down to the Section Add-ons. You should see something like this:
+
+![Eligible for free Copilot](img/copilot_for_free.jpg)
+
+To subscribe to GitHub Copilot, go to the to the [GitHub Copilot settings](https://github.com/settings/copilot) on
+your GitHub profile and find the subscribe button.
+
+Alternatively, you can subscribe via the [Copilot website](https://github.com/features/copilot/plans). Chose the "individual" plan for 10$ per month and follow the instructions. If you have an educational account you will get it for free.
 
 ## 4. Check Copilot settings
 
