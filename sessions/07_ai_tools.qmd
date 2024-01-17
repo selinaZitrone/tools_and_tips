@@ -37,8 +37,8 @@ AI tools promise to make our programming workflows faster and more efficient. If
 ### Integrated AI tools
 
 - They are integrated into your IDE directly and help you with coding
-- [GitHub Copilot](): One of the most widespread integrated tool. Gives you inline code suggestions and a chat. Great to code faster, write better code, debug, let the AI explain code etc. See below for details
-- [Codium AI](https://codium.ai/): Free tool that is great for explaining code, generating tests, improving and refactoring your code
+- [GitHub Copilot](): One of the most widespread integrated tool. Gives you inline code suggestions and a chat. Great to code faster, write better code, debug, let the AI explain code etc. See below for details.
+- [Codium AI](https://codium.ai/): Free tool that is great for explaining code, generating tests, improving and refactoring your code.
 
 ## GitHub Copilot
 

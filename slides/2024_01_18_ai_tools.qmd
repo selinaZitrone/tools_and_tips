@@ -159,7 +159,6 @@ Nice side effect of using Copilot: More good-practice coding
   - The whole script or project
 - Preset commands starting with `/` 
   - `/fix`: fix problems in your code
-  - `/doc`: create a documentation for the code
   - `/explain`: explain this code
   - `/test`: write unit tests
   - `/new`: create new projects or scripts with code
