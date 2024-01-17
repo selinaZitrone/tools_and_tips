@@ -63,6 +63,6 @@ Most important are guidelines of your university and the journals you want to pu
 
 ## Further Links and resources
 
-
+- [Experiment on programmer efficiency with AI tools](https://arxiv.org/abs/2302.06590)
 
 
