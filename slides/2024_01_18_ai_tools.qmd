@@ -175,7 +175,7 @@ Nice side effect of using Copilot: More good-practice coding
 
 ## Concerns to consider
 
-- **Privacy** [(GH Copilot privacy FAQ)](https://github.com/features/copilot/#faq)
+- **Privacy**
   - Chose whether your prompts and suggestions will be used by Github `Github -> Seetings -> Copilot -> Policies`
 - **Plagiarism**
   - Block suggestions matching public code (`Github -> Seetings -> Copilot -> Policies`)
@@ -223,4 +223,21 @@ Questions?
 
 ## References
 
-see [here](https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp) for more info
+- [Experiment on programmer efficiency with AI tools](https://arxiv.org/abs/2302.06590)
+- [GitHub Copilot](https://github.com/features/copilot)
+- [GitHub Copilot privacy FAQ](https://github.com/features/copilot/#faq)
+- [GitHub Copilot Docs](https://docs.github.com/en/copilot): Useful information and guides on how to use Copilot
+- [Prompt engineering with GitHub Copilot](https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp)
+- [Codium AI](https://codium.ai/)
+
+## References
+
+#### Guidelines
+
+- [DFG Rules on the use of AI](https://www.dfg.de/resource/blob/289676/89c03e7a7a8a024093602995974832f9/230921-statement-executive-committee-ki-ai-data.pdf) particularly for proposals
+- [Nature living guidelines on responsible use of generative AI in research](https://www.nature.com/articles/d41586-023-03266-1)
+- [EU AI Act](https://artificialintelligenceact.eu/)
+- Universities (German)
+  - [FU Berlin "Eckpunktepapier" (German)](https://www.fu-berlin.de/campusleben/lernen-und-lehren/2023/230511-umgang-mit-ki/Eckpunkte_FUB_KI-in-der-Lehre.pdf)
+  - [TU Berlin on AI](https://www.tu.berlin/bzhl/ressourcen-fuer-ihre-lehre/ressourcen-nach-themenbereichen/ki-in-der-hochschullehre): Mainly about AI in teaching but contains some general links to other guidelines
+
