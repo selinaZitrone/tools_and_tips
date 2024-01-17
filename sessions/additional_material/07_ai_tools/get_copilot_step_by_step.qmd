@@ -1,0 +1,45 @@
+---
+title: How to get GitHub Copilot
+subtitle: A step-by-step guide
+---
+
+If you have any trouble with the installation, you can also get help and instructions in the [GitHub Copilot Docs](https://docs.github.com/en/copilot).
+
+## 1. Create a GitHub account
+
+You can get one [here](https://github.com/signup). If you want to have an educational account (see step 2), you need to register with your university email address or add it to your account in addition to your private email address.
+
+To add a second email address to your account, go to your profile settings and click on `Emails` in the left sidebar. Then click on `Add email address` and follow the instructions. Make your university email address the primary email address.
+
+## 2. Apply for an educational account
+
+You can apply for an educational account [here](https://education.github.com/discount_requests/application). You can verify your academic status e.g. by uploading 
+
+- your immatriculation certificate
+- a letter with the university letterhead stating your academic affiliation
+
+It will take up to a few days to grant you your educational account. Every few years or so, they will ask you to re-verify your academic status.
+
+## 3. Subscribe GitHub Copilot
+
+You can subscribe to GitHub Copilot [here](https://github.com/features/copilot/plans). Chose the "individual" plan for 10$ per month and follow the instructions. If you have an educational account you will get it for free.
+
+## 4. Check Copilot settings
+
+Once you have a Copilot subscription, check the policy settings and change them. Go to your Github profile settings and click on `Copilot` in the left sidebar. Then find the `Policy` section. I recommend the following settings:
+
+![Copilot settings](img/copilot_settings.jpg)
+
+## 5. Install and configure an IDE that supports Copilot
+
+### 5.1 Visual Studio Code
+
+- Download and install [Visual Studio Code](https://code.visualstudio.com/Download)
+- Install [GitHub Copilot VS Code extension](https://docs.github.com/en/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode#installing-the-github-copilot-extension-in-visual-studio-code)
+- Install [GitHub Copilot Chat](https://docs.github.com/en/copilot/github-copilot-chat/using-github-copilot-chat-in-your-ide#installing-the-github-copilot-chat-extension-in-visual-studio-code)
+
+### 5.2 R Studio
+
+- Download and install [R Studio](https://posit.co/downloads/)
+- Connect and configure [GitHub Copilot for R Studio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html#setup) 
+
