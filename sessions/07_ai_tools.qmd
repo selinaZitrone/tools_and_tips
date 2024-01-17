@@ -18,9 +18,48 @@ AI tools promise to make our programming workflows faster and more efficient. If
 
 ### Browser-based chat bots
 
+- General-purpose AIs like [ChatGPT](https://chat.openai.com), [Bard](https://bard.google.com), ...
+- With good prompts they can help with programming
+  - [ChatGPT as a coding mentor](https://realpython.com/chatgpt-coding-mentor-python/): Blogpost explains how learn and improve your python skills and code (works for other languages or chat bots as well)
+  - [Prompt ideas to get coding help](https://dev.to/evergrowingdev/how-to-use-chatgpt-for-learning-to-code-with-examples-39e7): Get code explanations, debugging tips, practice exercises, code review and feedback, project ideas
+  - In ChatGPT you can set "Custom instructions" for your profile. These instructions will be used for all your questions. By filling out these custom instructions, you can get better answers without having to engineer every prompt
+    - [YT video on where to find custom instructions in ChatGPT](https://www.youtube.com/watch?v=TbbA44Jaric)
+    - [Simple example by OpenAI](https://openai.com/blog/custom-instructions-for-chatgpt)
+    - [Subreddit where people share their custom instructions for software developmen](https://www.reddit.com/r/ChatGPTPro/comments/15bghrm/custom_instructions_for_software_development/)
+
 ### AI powered data-analysis
 
+- [Rtutor](https://rtutor.ai/): Browser-based tool where you can ask questions about R and data analysis. You can also upload a dataset and ask the AI to analyse it. You can then download the corresponding R script or Rmardown report.
+  - There is also a [corresponding R package](https://github.com/gexijin/RTutor) that you can install to use locally. But for this you need to have your own OpenAI API key, so it is a bit more work to set up.
+
+- Data Analyst GPT: ChatGPT specialized to analyze data. You can upload files (e.g. data) and let GPT analyse it. You can then also download the code. To access the plugin, you need a subscription to ChatGPT (~20$ per month)
+
 ### Integrated AI tools
+
+- They are integrated into your IDE directly and help you with coding
+- [GitHub Copilot](): One of the most widespread integrated tool. Gives you inline code suggestions and a chat. Great to code faster, write better code, debug, let the AI explain code etc. See below for details
+- [Codium AI](https://codium.ai/): Free tool that is great for explaining code, generating tests, improving and refactoring your code
+
+## GitHub Copilot
+
+- [Step-by-step guide on how to get Copilot](additional_material/07_ai_tools/get_copilot_step_by_step.qmd) for free for Visual Studio Code or RStudio.
+- [GitHub Copilot Docs](https://docs.github.com/en/copilot): Useful information and guides on how to use Copilot
+- [Privacy FAQ of GitHub Copilot](https://github.com/features/copilot/#faq)
+- [Prompt engineering with GH Copilot](https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp) to get better results
+
+## Concerns and Guidelines
+
+Please note that the guidelines are constantly changing and evolving. So please check guidelines that are relevant for you regularly.
+
+Most important are guidelines of your university and the journals you want to publish in.
+
+- [DFG Rules on the use of AI](https://www.dfg.de/resource/blob/289676/89c03e7a7a8a024093602995974832f9/230921-statement-executive-committee-ki-ai-data.pdf) particularly for proposals
+- [Nature living guidelines on responsible use of generative AI in research](https://www.nature.com/articles/d41586-023-03266-1)
+- [EU AI Act](https://artificialintelligenceact.eu/)
+- Universities (German)
+  - [FU Berlin "Eckpunktepapier" (German)](https://www.fu-berlin.de/campusleben/lernen-und-lehren/2023/230511-umgang-mit-ki/Eckpunkte_FUB_KI-in-der-Lehre.pdf)
+  - [TU Berlin on AI](https://www.tu.berlin/bzhl/ressourcen-fuer-ihre-lehre/ressourcen-nach-themenbereichen/ki-in-der-hochschullehre): Mainly about AI in teaching but contains some general links to other guidelines
+
 
 ## Further Links and resources
 
