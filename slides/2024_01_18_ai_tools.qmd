@@ -5,7 +5,7 @@ author: "Dr. Selina Baldauf"
 date: "2024-01-18"
 format: 
   revealjs:
-    footer: "Selina Baldauf // AI tools"
+    footer: "Selina Baldauf // AI tools in programming"
     highlight-style: printing
     mainfont: Cabinet Grotesk
     slide-number: true
@@ -90,9 +90,11 @@ from: markdown+emoji
 
 - **Main goal:** Motivate you to try out tools and find out what fits your workflow
 
-- Find other tools on the [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html)
+- Find other tools on the [website](https://selinazitrone.github.io/tools_and_tips/sessions/07_ai_tools.html)
 
 ## Now You
+
+<br><br>
 
 :question: What is your **main programming language** <br><br>
 
@@ -104,7 +106,7 @@ from: markdown+emoji
 
 > Mainly GitHub Copilot
 
-## [GitHub Copilot](https://github.com/features/copilot)
+## GitHub Copilot
 
 - Cloud-based AI tool by Github and OpenAI
 - Model based on GPT-4 and OpenAI's Codex
@@ -123,7 +125,7 @@ It's really easy, but you need:
   - Full support: Visual Studio (Code), Vim, Neovim, JetBrains IDEs (e.g. PyCharm)
   - Limited support: RStudio, ?
 
-See [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html) for step-by-step guide and more information.
+See [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html) for step-by-step guide and more information.
 
 # Using GitHub Copilot
 
@@ -159,11 +161,12 @@ Nice side effect of using Copilot: More good-practice coding
   - The whole script or project
 - Preset commands starting with `/` 
   - `/fix`: fix problems in your code
+  - `/doc`: get documentation
   - `/explain`: explain this code
   - `/test`: write unit tests
   - `/new`: create new projects or scripts with code
 
-## [Codium AI](https://www.codium.ai/) as an alternative
+## Codium AI as an alternative
 
 - No inline code suggestions
 - Great functionality to
@@ -176,7 +179,7 @@ Nice side effect of using Copilot: More good-practice coding
 ## Concerns to consider
 
 - **Privacy**
-  - Chose whether your prompts and suggestions will be used by Github `Github -> Seetings -> Copilot -> Policies`
+  - Chose whether your prompts and suggestions will be used by Github (`Github -> Seetings -> Copilot -> Policies`)
 - **Plagiarism**
   - Block suggestions matching public code (`Github -> Seetings -> Copilot -> Policies`)
 - **Ethical concerns**
@@ -186,7 +189,7 @@ Nice side effect of using Copilot: More good-practice coding
 
 ## Usage guidelines
 
-- No definite guidelines, but see examples on [lecture website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html)
+- No definite guidelines, but see examples on [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/07_ai_tools.html#concerns-and-guidelines)
 - **Responsibility**
   - You are responsible for your scientific output
   - Stay critical, double-check
@@ -204,7 +207,7 @@ Nice side effect of using Copilot: More good-practice coding
 - Think about concerns
 - Learn about relevant guidelines
 - Development is fast, so keep up
-- Check out the [lecture website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html) if you want to get started
+- Check out the [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/07_ai_tools.html) if you want to get started
 
 ## Next lecture
 
@@ -219,9 +222,13 @@ Nice side effect of using Copilot: More good-practice coding
 :e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
 ## Thank you for your attention :)
-Questions?
+Questions?<br><br><br><br>
+
+Thanks to Anne Lewerentz for support with the preparation. 
 
 ## References
+
+:::{.nonincremental}
 
 - [Experiment on programmer efficiency with AI tools](https://arxiv.org/abs/2302.06590)
 - [GitHub Copilot](https://github.com/features/copilot)
@@ -230,7 +237,11 @@ Questions?
 - [Prompt engineering with GitHub Copilot](https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp)
 - [Codium AI](https://codium.ai/)
 
+:::
+
 ## References
+
+:::{.nonincremental}
 
 #### Guidelines
 
@@ -241,3 +252,4 @@ Questions?
   - [FU Berlin "Eckpunktepapier" (German)](https://www.fu-berlin.de/campusleben/lernen-und-lehren/2023/230511-umgang-mit-ki/Eckpunkte_FUB_KI-in-der-Lehre.pdf)
   - [TU Berlin on AI](https://www.tu.berlin/bzhl/ressourcen-fuer-ihre-lehre/ressourcen-nach-themenbereichen/ki-in-der-hochschullehre): Mainly about AI in teaching but contains some general links to other guidelines
 
+:::
