@@ -3,7 +3,7 @@ project:
   output-dir: docs
   render:
     - "*.qmd"
-    - "!sessions/additional_material/"
+    - "!sessions/additional_material/02_quarto/"
     - "!slides/efficient-R.qmd"
 
   resources:
