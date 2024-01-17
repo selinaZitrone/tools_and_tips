@@ -67,21 +67,24 @@ from: markdown+emoji
 
 ## Overview of tools
 
-- **Browser-based chat bots** (ChatGPT, Bard, ...)
-  - General-purpose
+- **Browser-based chat bots** ([ChatGPT](https://chat.openai.com), [Bard](https://bard.google.com), ...)
+  - General-purpose<br>
 
-- **Data-analysis tools** (ChatGPT data analyst, RTutor, ...)
+- **Data-analysis tools** (Data analyst GPT, [RTutor](https://rtutor.ai/), ...)
   - Upload data and ask questions about it
-  - Download the code that was used for the results
+  - Download the code that was used for the results<br>
 
-- **Integrated AI tools** (Github Copilot, Codium AI, ...)
+- **Integrated AI tools** ([GitHub Copilot](https://github.com/features/copilot), [Codium AI](https://codium.ai/), ...)
   - Integrated directly in programming environment
-  - Real-time suggestions, chat, debugging, ...
+  - Real-time suggestions, chat, debugging, ...<br>
 
 ## Today
 
 - Focus on **integrated AI tools**
-  - Functioning and use cases
+  - How to use GitHub Copilot to
+    - Speed up your coding
+    - Improve your code
+    - Learn
 
 - Concerns when using AI tools
 
@@ -90,8 +93,6 @@ from: markdown+emoji
 - Find other tools on the [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html)
 
 ## Now You
-
-Webex poll:<br><br>
 
 :question: What is your **main programming language** <br><br>
 
@@ -111,7 +112,9 @@ Webex poll:<br><br>
 - Basic idea: Plugin for your IDE to integrate Copilot
 - Works best for well-represented languages (Python, JS, ...)
   
-## What you need for GH Copilot
+## How to get GitHub Copilot
+
+It's really easy, but you need:
 
 - GitHub Account
 - Active GH Copilot subscription (10$ per month)
@@ -119,14 +122,12 @@ Webex poll:<br><br>
 - IDE that supports Copilot
   - Full support: Visual Studio (Code), Vim, Neovim, JetBrains IDEs (e.g. PyCharm)
   - Limited support: RStudio, ?
-- Installation of the Copilot extensions
 
-See [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html) for more info
-on how to get and setup GH Copilot.
+See [website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html) for step-by-step guide and more information.
 
-# Using GH Copilot
+# Using GitHub Copilot
 
-> Features and use cases
+> Demo of the main features and use cases
 
 ## Inline code suggestions
 
@@ -186,7 +187,7 @@ Nice side effect of using Copilot: More good-practice coding
 
 ## Usage guidelines
 
-- No definite guidelines, but see some examples on [lecture website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html)
+- No definite guidelines, but see examples on [lecture website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html)
 - **Responsibility**
   - You are responsible for your scientific output
   - Stay critical, double-check
@@ -199,12 +200,12 @@ Nice side effect of using Copilot: More good-practice coding
 
 # Summary
 
-- AI tools for programming are fun and useful
+- AI tools for programming can be extremely useful
 - Try different tools and find the ones you like
 - Think about concerns
 - Learn about relevant guidelines
 - Development is fast, so keep up
-- Find relevant info and links to get you started on the [lecture website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html)
+- Check out the [lecture website](https://selinazitrone.github.io/tools_and_tips/07_ai_tools.html) if you want to get started
 
 ## Next lecture
 
@@ -222,7 +223,5 @@ Nice side effect of using Copilot: More good-practice coding
 Questions?
 
 ## References
-
-- 
 
 see [here](https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp) for more info
