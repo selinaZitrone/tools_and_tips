@@ -15,7 +15,7 @@ Effective note taking is crucial for both students and scientist. It's useful to
 <iframe class="slide-deck" width="780" height="500" src="../slides/2023_10_19_obsidian.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2023_10_19_obsidian.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2023_10_19_obsidian.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2023_10_19_obsidian.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2023_10_19_obsidian.pdf" download>Download PDF slides</a> &nbsp;&nbsp;&nbsp; [Watch on Youtube](https://youtu.be/WPAV1SNkdFg?si=ffeb9FrzJFrhhXg7){target="_blank"}
 
 ## Basic markdown syntax
 
