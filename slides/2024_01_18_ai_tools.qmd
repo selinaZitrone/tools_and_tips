@@ -116,6 +116,8 @@ from: markdown+emoji
   
 ## How to get GitHub Copilot
 
+See [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html) for step-by-step guide and more information.
+
 It's really easy, but you need:
 
 - GitHub Account
@@ -125,7 +127,7 @@ It's really easy, but you need:
   - Full support: Visual Studio (Code), Vim, Neovim, JetBrains IDEs (e.g. PyCharm)
   - Limited support: RStudio, ?
 
-See [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html) for step-by-step guide and more information.
+
 
 # Using GitHub Copilot
 
@@ -133,12 +135,26 @@ See [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/ad
 
 ## Inline code suggestions
 
+:::{.columns}
+
+:::{.column width="50%"}
+
 -  Copilot tries to predict what you want to do next
 -  Suggestions are based on the context
    -  Previous code
    -  Comments
    -  Variable and function names
    -  ...
+
+:::
+
+:::{.column width="50%"}
+
+![](images/2024_01_18_ai_tools/01_fibonacci_demo.gif)
+
+:::
+
+:::
   
 ## Get better suggestions
 
@@ -165,6 +181,26 @@ Nice side effect of using Copilot: More good-practice coding
   - `/explain`: explain this code
   - `/test`: write unit tests
   - `/new`: create new projects or scripts with code
+
+## /fix with in-line chat
+
+![](images/2024_01_18_ai_tools/02_fibonacci_fix_negative_no.gif)
+
+## /fix with chat in the sidebar
+
+![](images/2024_01_18_ai_tools/03_lubridate_fix_chat.gif)
+
+## /doc with specific documentation standard
+
+![](images/2024_01_18_ai_tools/05_fibonacci_doc_roxygen.gif)
+
+## /explain
+
+![](images/2024_01_18_ai_tools/06_fibonacci_explain.gif)
+
+## Translate code
+
+![](images/2024_01_18_ai_tools/07_fibonacci_translate_to_python.gif)
 
 ## Codium AI as an alternative
 
