@@ -1,0 +1,23 @@
+---
+title: Introduction to the tidyverse
+from: markdown+emoji
+---
+
+## Description
+
+Discover the power of the tidyverse, an integrated suite of R packages designed for streamlined data analysis. In this lecture, we'll explore the cohesive design philosophy that makes the tidyverse efficient and intuitive, covering popular packages like ggplot2 and dplyr, as well as less familiar ones such as purrr and stringr. Ideal for those new to the tidyverse or familiar with only a few of its components, this session will introduce you to a comprehensive range of user-friendly tools.
+
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2024_02_15_tidyverse.html"></iframe>
+```
+
+[Slides in full screen](../slides/2024_02_15_tidyverse.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2024_02_15_tidyverse.pdf" download>Download PDF slides</a>
+
+## Summary
+
+## Further Links and resources
+
+
+
+

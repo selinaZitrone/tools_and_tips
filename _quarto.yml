@@ -42,6 +42,8 @@ website:
             href: sessions/06_efficient_r.qmd
           - text: 07 - AI tools in programming
             href: sessions/07_ai_tools.qmd
+          - text: 08 - Tidyverse introduction
+            href: sessions/08_tidyverse.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 
