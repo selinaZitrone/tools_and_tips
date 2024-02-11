@@ -41,3 +41,400 @@ from: markdown+emoji
     -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
 :::
 
+## What is the tidyverse?
+
+
+![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="10%"}
+
+
+> The tidyverse is an opinionated **collection of R packages** designed for data science. All packages **share** an underlying **design philosophy, grammar, and data structures**.  
+[www.tidyverse.org](https://www.tidyverse.org/)
+
+. . .
+
+:::{.columns}
+
+:::{.column width="40%"}
+
+**Tidyverse core packages**
+
+:::
+
+:::{.column width="60%"}
+
+![](images/2024_02_15_tidyverse/core_packages2.png)
+
+:::
+
+:::
+
+## Why the tidyverse?
+
+![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="10%"}
+
+Basic idea: Make data analysis **intuitive**, **efficient** and **readable**
+
+This facilitates
+
+- learning
+- collaboration
+- reproducible research
+
+Also, the tidyverse is **actively developed** and has a **large community**.
+
+## Which tidyverse packages do you use?
+
+Head over to the menti poll
+
+
+![](images/2024_02_15_tidyverse/core_packages2.png)
+
+
+
+## Today
+
+![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="10%"}
+
+Overview of 
+
+- **most important packages and functions**
+- underlying **principles** of the tidyverse
+- how the tidyverse packages work together in a **data analysis workflow**
+
+. . .
+
+I can't show you everything. But the tidyverse has an **[excellent documentation](https://www.tidyverse.org/)** and **[cheatsheets](https://posit.co/resources/cheatsheets/)**
+
+## Data analysis with the tidyverse
+
+:::{.r-stack}
+
+![](images/2024_02_15_tidyverse/workflow-1-import.png)
+![](images/2024_02_15_tidyverse/workflow-2-tidy.png){.fragment fig-align="center"}
+![](images/2024_02_15_tidyverse/workflow-3-transform.png){.fragment}
+![](images/2024_02_15_tidyverse/workflow-4-visualize.png){.fragment}
+![](images/2024_02_15_tidyverse/workflow-5-model.png){.fragment}
+![](images/2024_02_15_tidyverse/workflow-6-tibble.png){.fragment}
+![](images/2024_02_15_tidyverse/workflow-8-functional.png){.fragment}
+
+:::
+
+:::{.aside}
+
+Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)
+
+:::
+
+## Data analysis with the tidyverse
+
+- Install all tidyverse packages at once with 
+
+```r
+install.packages("tidyverse")
+```
+
+- Load all tidyverse packages at once with 
+
+```{r}
+#| message: true
+library(tidyverse)
+```
+
+- You can also load packages individually
+  - But don't do both
+
+## Tibbles: The overarching data structure
+
+Tibbles are 
+
+> a **modern reimagining of the data frame**. Tibbles are designed to be (as much as possible) **drop-in replacements** for data frames. 
+<br>[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]{.text-small}
+
+. . .
+
+- Tibbles have the same basic properties as data frames (named list of vectors)
+
+- Everything that you can do with data frames, you can do with tibbles
+
+- Main advantage: Tibbles print much nicer to the console
+
+. . .
+
+Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tibble) for a full list of the differences between data frames and tibbles and the advantages of using tibbles.
+
+## Tibbles: The overarching data structure
+
+- Tidyverse functions return tibbles automatically
+- Create a tibble using the `tibble()` function (equivalent to `data.frame()`)
+
+```{r}:
+tibble(
+  x = 1:3,
+  y = c("a", "b", "c")
+)
+```
+
+## Import data with readr
+
+The most important functions are:
+
+- `read_csv` to read **comma delimited** files
+- `read_tsv` to read **tab delimited** files
+- `read_delim` to read files with **any delimiter**
+
+All `read_*` functions return a `tibble`.
+
+## Import data with readr
+
+Here an example of reading a csv file with date-time columns as well:
+
+```{r}
+#| label: readr-example
+```
+
+. . .
+
+**Tip:** Use in combination with `janitor::clean_names` to get consistent and easy to use column names:
+
+```{r}
+#| label: janitor-example
+```
+
+## Import data with readr
+
+- Faster than `read.table`/`read.csv`
+- Better guessing of data types
+
+- Tidyverse packages for other data types:
+  - `readxl` for Excel files
+  - `haven` for SPSS, SAS, and Stata files
+  - `rvest` for web scraping
+  - ...
+
+## Tidy data with tidyr
+
+## What is tidy data?
+
+![Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst](images/2024_02_15_tidyverse/tidydata_1.jpg){width=85%}
+
+## What is tidy data?
+
+Let's look at some examples
+
+:::{.columns}
+
+:::{.column width="40%"}
+
+**Tidy**
+```{r echo=FALSE}
+data.frame(id = 1:6,
+  name = c("floof", "max", "cat", "donut", "merlin", "panda"),
+  color = c("gray", "black", "orange", "gray", "black", "calico")) |>
+  knitr::kable()
+```
+
+:::
+
+:::{.column width="60%"}
+
+:::{.fragment}
+
+**Non-tidy**
+```{r echo=FALSE}
+data.frame(floof = "gray",
+  max = "black",
+  cat = "orange",
+  donut = "gray",
+  merlin = "black",
+  panda = "calico") |>
+  knitr::kable()
+```  
+
+<br>
+```{r echo=FALSE}
+data.frame(gray = c("floof", "donut"),
+  black = c("max", "merlin"),
+  orange = c("cat", ""),
+  calico = c("panda", "")) |>
+  knitr::kable()
+```  
+
+:::
+
+:::
+
+:::
+
+. . .
+
+<br>
+
+Sometimes ***raw data*** is non-tidy because its structure is optimized for data entry or viewing rather than analysis.
+
+## Why tidy data?
+
+The main advantages of **tidy** data is that the `tidyverse` packages are built to work with it.
+
+![Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst](images/2024_02_15_tidyverse/tidydata_3.jpg){width=70%}
+
+## Tidy data
+
+Let's look at some examples
+
+:::{.columns}
+
+:::{.column width="40%"}
+
+**Tidy**
+```{r echo=FALSE}
+data.frame(id = 1:6,
+  name = c("floof", "max", "cat", "donut", "merlin", "panda"),
+  color = c("gray", "black", "orange", "gray", "black", "calico")) |>
+  knitr::kable()
+```
+
+:::
+
+:::{.column width="60%"}
+
+:::{.fragment}
+
+**Non-tidy**
+```{r echo=FALSE}
+data.frame(floof = "gray",
+  max = "black",
+  cat = "orange",
+  donut = "gray",
+  merlin = "black",
+  panda = "calico") |>
+  knitr::kable()
+```  
+
+<br>
+
+```{r echo=FALSE}
+data.frame(gray = c("floof", "donut"),
+  black = c("max", "merlin"),
+  orange = c("cat", ""),
+  calico = c("panda", "")) |>
+  knitr::kable()
+```  
+
+:::
+
+:::
+
+:::
+
+. . .
+
+<br>
+
+Sometimes ***raw data*** is non-tidy because its structure is optimized for data entry or viewing rather than analysis.
+
+## Why tidy data?
+
+The main advantages of **tidy** data is that the `tidyverse` packages are built to work with it.
+
+
+![Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst](images/2024_02_15_tidyverse/tidydata_3.jpg){width=70%}
+
+## Tidy data with tidyr
+
+- Tidying means reorganizing the data
+- Most important functions:
+  - pivoting: `pivot_longer` and `pivot_wider`
+  - splitting and combining columns: `separate_wider_delim/position/regex` and `unite`
+  - deal with missing values: `drop_na`, `replace_na`, `complete`
+
+## Tidy data with tidyr
+
+Here an example of how to use pivot longer, separate and complete:
+
+```{r}
+#| label: tidyr-example
+```
+
+## Data transformation with dplyr
+
+- Data cleaning, adding new columns, summarizing
+
+- Depending on the data type in combination with
+  - `stringr` for character columns
+  - `lubridate` for date-time columns
+  - `forcats` for factor columns
+
+## Data cleaning
+- `select`
+- `filter`
+- `arrange`
+
+## Adding new columns
+
+- `mutate`
+  - combination with `case_when`
+
+## Summarizing data
+
+## The pipe operatur `%>%`/`|>`
+
+## Visualize data with ggplot2
+
+- Whole universe build around ggplot
+
+## Purrr for functional programming
+
+
+## Summary
+
+Image of the whole workflow
+
+## Summary
+
+Tidyverse allows for **efficient**, **readable** and **intuitive** data analysis.
+
+Here a comparison of base R and tidyverse code:
+
+```{r}
+#| label: base-r-vs-tidyverse
+```
+
+
+## Summary
+
+Benefits of using the tidyverse:
+
+- Unified ecosystem
+- User-friendly syntax
+- Efficient
+- Active community and resources
+- Universe around tidyverse
+
+This leads to:
+
+- reproducibility
+- readability
+- collaobration
+  
+## Next lecture
+
+Semester break in March!
+
+#### Topic t.b.a.
+
+<br>
+
+:date: 18th April :clock4: 4-5 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+## Thank you for your attention :)
+Questions?<br><br><br><br>
+
+## References
+
+- [Tidyverse website](https://www.tidyverse.org/)
+- [Cheatsheets](https://posit.co/resources/cheatsheets/)
+- [R for Data Science](https://r4ds.had.co.nz/introduction.html) book: Learn data analysis with the tidyverse
