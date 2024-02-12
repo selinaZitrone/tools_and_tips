@@ -44,11 +44,11 @@ from: markdown+emoji
 ## What is the tidyverse?
 
 
-![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="10%"}
+![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="8%"}
 
 
 > The tidyverse is an opinionated **collection of R packages** designed for data science. All packages **share** an underlying **design philosophy, grammar, and data structures**.  
-[www.tidyverse.org](https://www.tidyverse.org/)
+[[www.tidyverse.org](https://www.tidyverse.org/)]{.text-small}
 
 . . .
 
@@ -56,13 +56,17 @@ from: markdown+emoji
 
 :::{.column width="40%"}
 
+:::{.r-stack}
+
 **Tidyverse core packages**
+
+:::
 
 :::
 
 :::{.column width="60%"}
 
-![](images/2024_02_15_tidyverse/core_packages2.png)
+![](images/2024_02_15_tidyverse/core_packages2.png){width="90%"}
 
 :::
 
@@ -70,15 +74,17 @@ from: markdown+emoji
 
 ## Why the tidyverse?
 
-![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="10%"}
+![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="8%"}
 
-Basic idea: Make data analysis **intuitive**, **efficient** and **readable**
+Basic idea: Make data analysis **intuitive**, **efficient** and **readable**.
 
 This facilitates
 
 - learning
 - collaboration
 - reproducible research
+
+. . .
 
 Also, the tidyverse is **actively developed** and has a **large community**.
 
@@ -87,36 +93,67 @@ Also, the tidyverse is **actively developed** and has a **large community**.
 Head over to the menti poll
 
 
-![](images/2024_02_15_tidyverse/core_packages2.png)
-
-
+![](images/2024_02_15_tidyverse/core_packages2.png){width="70%"}
 
 ## Today
 
-![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="10%"}
+![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="8%"}
 
 Overview of 
 
-- **most important packages and functions**
+- most important **packages and functions**
 - underlying **principles** of the tidyverse
 - how the tidyverse packages work together in a **data analysis workflow**
 
 . . .
 
-I can't show you everything. But the tidyverse has an **[excellent documentation](https://www.tidyverse.org/)** and **[cheatsheets](https://posit.co/resources/cheatsheets/)**
+I can't show you everything. But the tidyverse has an **[excellent documentation](https://www.tidyverse.org/)** and **[cheatsheets](https://posit.co/resources/cheatsheets/)**.
+
+## Getting the tidyverse
+
+Install all tidyverse packages with 
+
+```r
+install.packages("tidyverse")
+```
+
+. . .
+
+Load all core tidyverse packages with 
+
+```{r}
+#| message: true
+library(tidyverse)
+```
+
+. . .
+
+You can also load packages individually - But don't do both!
+
+. . .
+
+Non-core packages need to be loaded individually, e.g.
+
+```r
+library(readxl)
+```
 
 ## Data analysis with the tidyverse
 
-:::{.r-stack}
+::: {.r-stack}
+![](images/2024_02_15_tidyverse/workflow-1-import.png){.fragment}
 
-![](images/2024_02_15_tidyverse/workflow-1-import.png)
-![](images/2024_02_15_tidyverse/workflow-2-tidy.png){.fragment fig-align="center"}
+![](images/2024_02_15_tidyverse/workflow-2-tidy.png){.fragment}
+
 ![](images/2024_02_15_tidyverse/workflow-3-transform.png){.fragment}
-![](images/2024_02_15_tidyverse/workflow-4-visualize.png){.fragment}
-![](images/2024_02_15_tidyverse/workflow-5-model.png){.fragment}
-![](images/2024_02_15_tidyverse/workflow-6-tibble.png){.fragment}
-![](images/2024_02_15_tidyverse/workflow-8-functional.png){.fragment}
 
+![](images/2024_02_15_tidyverse/workflow-4-visualize.png){.fragment}
+
+![](images/2024_02_15_tidyverse/workflow-5-model.png){.fragment}
+
+![](images/2024_02_15_tidyverse/workflow-6-tibble.png){.fragment}
+
+![](images/2024_02_15_tidyverse/workflow-8-functional.png){.fragment}
 :::
 
 :::{.aside}
@@ -125,34 +162,16 @@ Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co
 
 :::
 
-## Data analysis with the tidyverse
-
-- Install all tidyverse packages at once with 
-
-```r
-install.packages("tidyverse")
-```
-
-- Load all tidyverse packages at once with 
-
-```{r}
-#| message: true
-library(tidyverse)
-```
-
-- You can also load packages individually
-  - But don't do both
-
 ## Tibbles: The overarching data structure
+
+![](images/2024_02_15_tidyverse/tibble.png){.top-right width="8%"}
 
 Tibbles are 
 
-> a **modern reimagining of the data frame**. Tibbles are designed to be (as much as possible) **drop-in replacements** for data frames. 
+> a **modern reimagining of the data frame**. Tibbles are designed to be (as much as possible) **drop-in replacements** for data frames.
 <br>[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]{.text-small}
 
-. . .
-
-- Tibbles have the same basic properties as data frames (named list of vectors)
+- Tibbles have the same basic properties as data frames
 
 - Everything that you can do with data frames, you can do with tibbles
 
@@ -164,17 +183,48 @@ Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tib
 
 ## Tibbles: The overarching data structure
 
-- Tidyverse functions return tibbles automatically
-- Create a tibble using the `tibble()` function (equivalent to `data.frame()`)
+![](images/2024_02_15_tidyverse/tibble.png){.top-right width="8%"}
 
-```{r}:
+- Tidyverse functions return tibbles automatically
+- Create with `tibble` function (equivalent to `data.frame`)
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+**Creating a tibble**
+
+```{r}
 tibble(
-  x = 1:3,
-  y = c("a", "b", "c")
+  x = 1:26,
+  y = letters,
+  z = factor(LETTERS)
 )
 ```
 
+:::
+
+:::{.column width="50%"}
+
+**Creating a data frame**
+
+```{r}
+data.frame(
+  x = 1:26,
+  y = letters,
+  z = factor(LETTERS)
+)
+```
+
+:::
+
+:::
+
 ## Import data with readr
+
+![](images/2024_02_15_tidyverse/readr.png){.top-right width="8%"}
 
 The most important functions are:
 
@@ -182,28 +232,91 @@ The most important functions are:
 - `read_tsv` to read **tab delimited** files
 - `read_delim` to read files with **any delimiter**
 
+. . .
+
 All `read_*` functions return a `tibble`.
 
 ## Import data with readr
 
-Here an example of reading a csv file with date-time columns as well:
+![](images/2024_02_15_tidyverse/readr.png){.top-right width="8%"}
+
+Example:  Read csv with temperature data from two arctic weather stations Foolik & Poolik [(Data modified from [`lterdatasampler`](https://lter.github.io/lterdatasampler/articles/arc_weather_vignette.html))]{.text-small}
+
+```{r}
+#| label: prepare-data
+#| include: false
+arc_weather <- lterdatasampler::arc_weather
+# Cut the table to make less computationally demanding
+arc_weather <- arc_weather[1:365, ] |> select(-daily_precip, -mean_windspeed)
+arc_weather <- mutate(arc_weather, station = "Foolik")
+arc_weather_poolik <- arc_weather |> mutate(station = "Poolik")
+arc_weather <- bind_rows(arc_weather, arc_weather_poolik)
+
+arc_weather <- arc_weather |> pivot_wider(names_from = station, values_from = c(mean_airtemp))
+
+names(arc_weather) <- c("Date", "FoolikMeanTemp°C", "PoolikMeanTemp°C")
+```
 
 ```{r}
 #| label: readr-example
+#| eval: false
+arc_weather <- read_csv(file = "data/arc_weather.csv")
+arc_weather
 ```
 
 . . .
 
-**Tip:** Use in combination with `janitor::clean_names` to get consistent and easy to use column names:
-
 ```{r}
-#| label: janitor-example
+#| label: show-arc-weather
+#| echo: false
+arc_weather
 ```
+
+. . .
+
+::: {.callout-tip}
+## Use readr functions with `janitor::clean_names`
+
+Get consistent and good-practice use column names. [Package documentation](https://sfirke.github.io/janitor/articles/janitor.html) {{< fa arrow-up-right-from-square >}} 
+
+:::
 
 ## Import data with readr
 
-- Faster than `read.table`/`read.csv`
-- Better guessing of data types
+![](images/2024_02_15_tidyverse/readr.png){.top-right width="8%"}
+
+Example: Read csv with temperature data from two arctic weather stations Foolik & Poolik [(Data modified from [`lterdatasampler`](https://lter.github.io/lterdatasampler/articles/arc_weather_vignette.html))]{.text-small}
+
+```{r}
+#| label: janitor-example
+#| eval: false
+arc_weather <- read_csv(file = "data/arc_weather.csv")
+arc_weather <- janitor::clean_names(arc_weather)
+arc_weather
+```
+
+```{r}
+#| label: show-janitor
+#| echo: false
+arc_weather <- janitor::clean_names(arc_weather)
+arc_weather
+```
+
+::: {.callout-tip}
+## Use readr functions with `janitor::clean_names`
+
+Get consistent and good-practice use column names. [Package documentation](https://sfirke.github.io/janitor/articles/janitor.html) {{< fa arrow-up-right-from-square >}} 
+
+:::
+
+## Import data with readr
+
+![](images/2024_02_15_tidyverse/readr.png){.top-right width="8%"}
+
+- Advantages of readr functions
+  - Faster than `read.table`/`read.csv`
+  - Better defaults than base (e.g. guessing of data types)
+  - Return tibbles
 
 - Tidyverse packages for other data types:
   - `readxl` for Excel files
@@ -212,6 +325,8 @@ Here an example of reading a csv file with date-time columns as well:
   - ...
 
 ## Tidy data with tidyr
+
+![](images/2024_02_15_tidyverse/tidyr.png){.top-right width="8%"}
 
 ## What is tidy data?
 
@@ -266,8 +381,6 @@ data.frame(gray = c("floof", "donut"),
 :::
 
 . . .
-
-<br>
 
 Sometimes ***raw data*** is non-tidy because its structure is optimized for data entry or viewing rather than analysis.
 
@@ -341,18 +454,49 @@ The main advantages of **tidy** data is that the `tidyverse` packages are built 
 
 ## Tidy data with tidyr
 
+![](images/2024_02_15_tidyverse/tidyr.png){.top-right width="8%"}
+
 - Tidying means reorganizing the data
-- Most important functions:
-  - pivoting: `pivot_longer` and `pivot_wider`
-  - splitting and combining columns: `separate_wider_delim/position/regex` and `unite`
-  - deal with missing values: `drop_na`, `replace_na`, `complete`
+  - Values do not change
+- Most important functionality:
+  - Pivoting: `pivot_longer` and `pivot_wider`
+  - Splitting and combining columns: `separate_wider_delim/position/regex` and `unite`
+  - Handle missing values: `drop_na`, `replace_na`, `complete`
 
 ## Tidy data with tidyr
 
-Here an example of how to use pivot longer, separate and complete:
+![](images/2024_02_15_tidyverse/tidyr.png){.top-right width="8%"}
+
+What is not tidy about our weather data?
 
 ```{r}
 #| label: tidyr-example
+arc_weather
+```
+
+- Each row has multiple observations
+- Variables are split across multiple columns
+
+## Tidy data with tidyr
+
+![](images/2024_02_15_tidyverse/tidyr.png){.top-right width="8%"}
+
+This can be solved with `pivot_longer`
+
+```{r}
+pivot_longer(arc_weather, 
+             cols = c(foolik_mean_temp_c, poolik_mean_temp_c))
+```
+. . .
+
+Or if you directly want nicer column names:
+
+```{r}
+arc_weather <- pivot_longer(arc_weather, 
+             cols = c(foolik_mean_temp_c, poolik_mean_temp_c),
+             names_to = "station",
+             values_to = "mean_temp_c")
+arc_weather
 ```
 
 ## Data transformation with dplyr
