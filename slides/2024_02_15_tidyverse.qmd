@@ -250,6 +250,10 @@ arc_weather <- lterdatasampler::arc_weather
 arc_weather <- arc_weather[1:365, ] |> select(-daily_precip, -mean_windspeed)
 arc_weather <- mutate(arc_weather, station = "Foolik")
 arc_weather_poolik <- arc_weather |> mutate(station = "Poolik")
+# add 1 °C and some random noise to arc_weather polik
+arc_weather_poolik <- arc_weather_poolik |> 
+  mutate(mean_airtemp = mean_airtemp + 3 + rnorm(n = nrow(arc_weather_poolik), mean = 0, sd = 0.5))
+
 arc_weather <- bind_rows(arc_weather, arc_weather_poolik)
 
 arc_weather <- arc_weather |> pivot_wider(names_from = station, values_from = c(mean_airtemp))
@@ -459,9 +463,9 @@ The main advantages of **tidy** data is that the `tidyverse` packages are built 
 - Tidying means reorganizing the data
   - Values do not change
 - Most important functionality:
-  - Pivoting: `pivot_longer` and `pivot_wider`
-  - Splitting and combining columns: `separate_wider_delim/position/regex` and `unite`
-  - Handle missing values: `drop_na`, `replace_na`, `complete`
+  - **Pivoting**: `pivot_longer` and `pivot_wider`
+  - **Splitting** and **combining** columns: `separate_wider_delim/position/regex` and `unite`
+  - Handle **missing values**: `drop_na`, `replace_na`, `complete`
 
 ## Tidy data with tidyr
 
@@ -487,7 +491,9 @@ This can be solved with `pivot_longer`
 pivot_longer(arc_weather, 
              cols = c(foolik_mean_temp_c, poolik_mean_temp_c))
 ```
-. . .
+## Tidy data with tidyr
+
+![](images/2024_02_15_tidyverse/tidyr.png){.top-right width="8%"}
 
 Or if you directly want nicer column names:
 
@@ -501,37 +507,379 @@ arc_weather
 
 ## Data transformation with dplyr
 
-- Data cleaning, adding new columns, summarizing
+![](images/2024_02_15_tidyverse/dplyr.png){.top-right width="8%"}
+
+- Data cleaning, adding new columns, summarizing, ...
 
 - Depending on the data type in combination with
   - `stringr` for character columns
   - `lubridate` for date-time columns
   - `forcats` for factor columns
 
-## Data cleaning
-- `select`
-- `filter`
-- `arrange`
+## Data transformation with dplyr
 
-## Adding new columns
+![](images/2024_02_15_tidyverse/dplyr.png){.top-right width="8%"}
 
-- `mutate`
-  - combination with `case_when`
+Basic vocabulary for data cleaning/filtering
 
-## Summarizing data
+:::{.columns}
 
-## The pipe operatur `%>%`/`|>`
+:::{.column width="50%"}
+
+`select()` picks variables (columns) based on their names
+
+```{r}
+select(arc_weather, date, mean_temp_c)
+```
+
+
+:::
+
+:::{.column width="50%"}
+
+`filter()` picks observations (rows) based on their values
+
+```{r}
+filter(arc_weather, station == "foolik_mean_temp_c")
+```
+
+
+:::
+
+:::
+
+## Data transformation with dplyr
+
+![](images/2024_02_15_tidyverse/dplyr.png){.top-right width="8%"}
+
+Use filter in combination with
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+`lubridate` to filter by month
+
+```{r}
+# Filter only data points from May
+filter(arc_weather, month(date) == 5)
+```
+
+
+:::
+
+:::{.column width="50%"}
+
+`stringr` to filter by string
+
+```{r}
+# Filter only rows where the station variable contains the word "foolik"
+filter(arc_weather, str_detect(station, "foolik"))
+```
+
+
+:::
+
+:::
+
+## Data transformation with dplyr
+
+![](images/2024_02_15_tidyverse/dplyr.png){.top-right width="8%"}
+
+Changing values and adding columns with `mutate`
+
+```{r}
+# Add column with temperature in K
+mutate(arc_weather, mean_temp_k = mean_temp_c + 274.15)
+```
+
+
+## Data transformation with dplyr
+
+![](images/2024_02_15_tidyverse/dplyr.png){.top-right width="8%"}
+
+Changing values and adding columns with `mutate`
+
+```{r}
+# Remove _mean_temp_c from station
+arc_weather <- mutate(arc_weather, station = str_remove(station, "_mean_temp_c"))
+arc_weather
+```
+
+## Data transformation with dplyr
+
+![](images/2024_02_15_tidyverse/dplyr.png){.top-right width="8%"}
+
+Summarizing data with `summarize`
+
+- will **collapse the data** to a **single row**
+
+. . .
+
+```{r}
+summarize(arc_weather, 
+          overall_mean = mean(mean_temp_c, na.rm = TRUE))
+```
+## Data transformation with dplyr
+
+![](images/2024_02_15_tidyverse/dplyr.png){.top-right width="8%"}
+
+Summarizing data with `summarize` and `group_by` or `.by`
+
+- will **collapse the data** to a **single row per group**
+
+```{r}
+summarize(arc_weather, 
+          overall_mean = mean(mean_temp_c, na.rm = TRUE),
+          .by = station)
+```
+
+## The pipe ` |> ` {.inverse}
+
+> Combine multiple data operations into one command
+
+## The pipe `|>`
+
+Data transformation often requires **multiple operations** in sequence.
+
+The pipe operator `|>` helps to keep these operations clear and readable.
+
+- You may also see `%>%` from the `magrittr` package
+- Turn on the native R pipe ` |> ` in **Tools -> Global Options -> Code**
+
+:::{.fragment}
+
+![](images/2024_02_15_tidyverse/native-pipe.png){width=50%}
+
+:::
+
+:::{.aside}
+
+See [here](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/) for differences 
+between the two pipe versions
+
+:::
+
+## The pipe `|>`
+
+Let's look at an example without pipe:
+
+```{r}
+#| eval: false
+# 1: read in the data
+arc_weather <- read_csv(file = "data/arc_weather.csv")
+# 2. clean column names
+arc_weather <- janitor::clean_names(arc_weather)
+# 3. Bring data in the right format
+arc_weather <- pivot_longer(arc_weather, 
+                            cols = c(foolik_mean_temp_c, poolik_mean_temp_c),
+                            names_to = "station",
+                            values_to = "mean_temp_c")
+# 4. Clean station column
+arc_weather <- mutate(arc_weather, station = str_remove(station, "_mean_temp_c"))
+```
+
+## The pipe `|>`
+
+The pipe operator makes it very easy to combine multiple operations:
+
+```{r}
+#| eval: false
+arc_weather <- read_csv(file = "data/arc_weather.csv") |>
+  janitor::clean_names() |>
+  pivot_longer(cols = c(foolik_mean_temp_c, poolik_mean_temp_c),
+                names_to = "station",
+                values_to = "mean_temp_c") |>
+  mutate(station = str_remove(station, "_mean_temp_c"))
+```
+
+. . .
+
+You can read from top to bottom and interpret the `|>` as an "and then do".
+
+## The pipe `|>`
+
+But what is happening?
+
+The pipe is "pushing" the result of one line into the first argument of the function from the next line.
+
+. . .
+
+```{r eval=FALSE}
+arc_weather |> 
+  filter(month(date) == 5)
+
+# instead of 
+filter(arc_weather, month(date) == 5)
+```
+
+. . .
+
+Piping works perfectly with the `tidyverse` functions because they are designed
+to return a tibble **and** take a tibble as first argument.
+
+. . .
+
+:::{.callout-tip}
+Use the keyboard shortcut ` Ctrl/Cmd + Shift + M ` to insert ` |> `
+:::
 
 ## Visualize data with ggplot2
 
+![](images/2024_02_15_tidyverse/ggplot2.png){.top-right width="8%"}
+
+![Artwork by [Allison Horst](https://twitter.com/allison_horst)](images/2024_02_15_tidyverse/ggplot2_exploratory.png){width=60%}
+
+## Visualize data with ggplot2
+
+![](images/2024_02_15_tidyverse/ggplot2.png){.top-right width="8%"}
+
+Add a collage of basic plot types
+
+## Visualize data with ggplot2
+
+![](images/2024_02_15_tidyverse/ggplot2.png){.top-right width="8%"}
+
+![Artwork by [Allison Horst](https://twitter.com/allison_horst)](images/2024_02_15_tidyverse/ggplot2_masterpiece.png){width=60%}
+
+## Visualize data with ggplot2
+
+![](images/2024_02_15_tidyverse/ggplot2.png){.top-right width="8%"}
+
+Add some data art with ggplot
+
+## Visualize data with ggplot2
+
+![](images/2024_02_15_tidyverse/ggplot2.png){.top-right width="8%"}
+
 - Whole universe build around ggplot
+  - Find a list of ggplot extensions [here](https://exts.ggplot2.tidyverse.org)
+
+## Visualize data with ggplot2
+
+![](images/2024_02_15_tidyverse/ggplot2.png){.top-right width="8%"}
+
+Piping also works well together with `ggplot`
+
+```{r}
+#| echo: false
+theme_set(theme_bw(base_size = 16))
+```
+
+```{r}
+#| output-location: column
+arc_weather |>
+  filter(month(date) == 5) |>
+  ggplot(aes(x = date, y = mean_temp_c, color = station)) +
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  labs(title = "Mean temperature in May",
+       x = "Date",
+       y = "Mean temperature (°C)",
+       color = "Station") +
+  scale_color_viridis_d() +
+  theme(legend.position = "bottom")
+```
 
 ## Purrr for functional programming
 
+![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
+
+- Apply functions to multiple elements of a list/vector/...
+- Useful to replace e.g. for loops/apply-functions
+  - Often purrr functions are more intuitive
+  - See [here](https://purrr.tidyverse.org/articles/base.html) for a full comparison
+  between base R functions and purr functions
+- Most important function: `map`
+  - comes in different versions, depending on the input and the desired output
+  
+## Purrr for functional programming
+
+![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
+
+```{r}
+tibble(
+  Output = c("List", "List", "Vector of desired type", "Vector of desired type", "Data frame", "Data frame"),
+  Input = c("1 Vector", "2 Vectors", "1 Vector", "2 Vectors", "1 Vector", "2 Vectors"),
+  `Purr function` = c("map", "map2", "map_lgl", "map2_lgl", "map_df", "map2_df")
+) |>
+  knitr::kable()
+
+```
+
+## Purrr for functional programming
+
+![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
+
+```{r}
+# Draw a random number from a normal distribution:
+rnorm(mean = 0, sd = 1, n = 1)
+
+# Draw 5 random numbers for mean 1:4
+means <- 1:4
+samples <- map(means, rnorm, n = 5, sd = 1)
+str(samples)
+```
+
+. . .
+
+This can also be combined with the pipe:
+
+```{r}
+means |>
+  map(rnorm, n = 5, sd = 1) |>
+  str()
+```
+
+
+## Purrr for functional programming
+
+![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
+
+Purrr functions are also nice for data analysis, for example if you have 
+multiple files with the same structure.
+
+```{r}
+#| eval: false
+# Step 1: List all files in your data directory
+paths <- list.files("data")
+```
+```{r}
+#| echo: false
+# Step 1: List all files in your data directory
+paths <- list.files("slides/data", pattern = "oolik")
+paths
+paths <- list.files("slides/data", pattern = "oolik", full.names = TRUE)
+```
+
+. . .
+
+```{r}
+# Step 2: Read all files into a list of tibbles
+arc_weather_files <- paths |>
+  map(read_csv)
+arc_weather_files
+```
+## Purrr for functional programming
+
+![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
+
+Purrr functions are also nice for data analysis, for example if you have 
+multiple files with the same structure.
+
+```{r}
+# Step 3: Apply a linear model to each station file,
+# get the model summary of each model and extract the coefficients
+
+arc_weather_files |>
+  map(\(x) lm(mean_temp_c ~ date, data = x)) |>
+  map(summary) |>
+  map_dbl("r.squared")
+```
 
 ## Summary
 
-Image of the whole workflow
+![](images/2024_02_15_tidyverse/workflow-complete.png)
 
 ## Summary
 
@@ -539,10 +887,109 @@ Tidyverse allows for **efficient**, **readable** and **intuitive** data analysis
 
 Here a comparison of base R and tidyverse code:
 
+:::{.columns}
+
+:::{.column width="50%"}
+
+**Tidyverse**
+
 ```{r}
-#| label: base-r-vs-tidyverse
+#| eval: false
+arc_weather <- read_csv(file = "data/arc_weather.csv") |>
+  janitor::clean_names() |>
+  pivot_longer(cols = c(foolik_mean_temp_c, poolik_mean_temp_c),
+                names_to = "station",
+                values_to = "mean_temp_c") |>
+  mutate(station = str_remove(station, "_mean_temp_c"))
 ```
 
+
+:::
+
+:::{.column width="50%"}
+
+**Base R**
+
+```{r}
+#| eval: false
+# Read the CSV file
+arc_weather <- read.csv(file = "data/arc_weather.csv", stringsAsFactors = FALSE)
+
+# Clean column names using janitor::clean_names()
+arc_weather <- janitor::clean_names(rc_weather)
+
+# Reshape the data from wide to long format
+arc_weather <- reshape(rc_weather,
+                           varying = c("foolik_mean_temp_c", "poolik_mean_temp_c"),
+                           v.names = "mean_temp_c",
+                           times = c("foolik", "poolik"),
+                           timevar = "station",
+                           direction = "long")
+
+# Remove the "_mean_temp_c" from the station names
+arc_weather$station <- gsub("_mean_temp_c", "", arc_weather$station)
+```
+
+::: 
+:::
+
+:::
+
+## Summary
+
+Tidyverse allows for **efficient**, **readable** and **intuitive** data analysis.
+
+Here a comparison of base R and tidyverse code:
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+**Tidyverse**
+
+```{r}
+#| eval: false
+arc_weather |>
+  filter(month(date) == 5) |>
+  ggplot(aes(x = date, y = mean_temp_c, color = station)) +
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  labs(title = "Mean temperature in May",
+       x = "Date",
+       y = "Mean temperature (°C)",
+       color = "Station") +
+  scale_color_viridis_d() +
+  theme(legend.position = "bottom")
+```
+
+
+:::
+
+:::{.column width="50%"}
+
+**Base R**
+
+```{r}
+#| eval: false
+# Filter the data
+arc_weather_may <- arc_weather[format(arc_weather$date, "%m") == "05", ]
+
+# Create a plot
+plot(arc_weather_may$date, arc_weather_may$mean_temp_c, 
+col = arc_weather_may$station,
+     main = "Mean temperature in May",
+     xlab = "Date",
+     ylab = "Mean temperature (°C)")
+
+# Add a legend
+legend("bottom", legend = unique(arc_weather_may$station), 
+fill = unique(arc_weather_may$station))
+```
+
+::: 
+:::
+
+:::
 
 ## Summary
 
@@ -554,11 +1001,13 @@ Benefits of using the tidyverse:
 - Active community and resources
 - Universe around tidyverse
 
+. . .
+
 This leads to:
 
-- reproducibility
-- readability
-- collaobration
+- Reproducibility
+- Readability
+- Collaboration
   
 ## Next lecture
 
@@ -579,6 +1028,6 @@ Questions?<br><br><br><br>
 
 ## References
 
-- [Tidyverse website](https://www.tidyverse.org/)
+- [Tidyverse website](https://www.tidyverse.org/): find links to all package documentations
 - [Cheatsheets](https://posit.co/resources/cheatsheets/)
 - [R for Data Science](https://r4ds.had.co.nz/introduction.html) book: Learn data analysis with the tidyverse
