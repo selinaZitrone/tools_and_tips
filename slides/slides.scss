@@ -44,6 +44,16 @@ $body-bg: $theme-white;
   $presentation-font-size-root: 35px;
 
 /*-- scss:rules --*/
+
+.text-small{
+  font-size: 80%;
+}
+
+.text-big{
+  font-size: 120%;
+}
+
+
   .reveal pre code {
     background-color: #f8f8f8;
       font-size: 1em;
