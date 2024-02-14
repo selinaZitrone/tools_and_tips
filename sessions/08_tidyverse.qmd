@@ -16,7 +16,13 @@ Discover the power of the tidyverse, an integrated suite of R packages designed 
 
 ## Summary
 
+![](../slides/images/2024_02_15_tidyverse/workflow-complete.png)
+
 ## Further Links and resources
+
+- [Tidyverse website](https://www.tidyverse.org/): find links to all package documentations
+- [Cheatsheets](https://posit.co/resources/cheatsheets/)
+- [R for Data Science](https://r4ds.had.co.nz/introduction.html) book: Learn data analysis with the tidyverse
 
 
 

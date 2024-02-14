@@ -2,7 +2,7 @@
 title: "Introduction to the tidyverse"
 subtitle: "Scientific workflows: Tools and Tips 🛠️"
 author: "Dr. Selina Baldauf"
-date: "2024-01-18"
+date: "2024-02-15"
 format: 
   revealjs:
     footer: "Selina Baldauf // Tidyverse"
@@ -97,13 +97,6 @@ This facilitates
 🔄 Reproducible research <br>
 
 
-## Which tidyverse packages do you use?
-
-Head over to the menti poll
-
-
-![](images/2024_02_15_tidyverse/core_packages2.png){width="70%"}
-
 ## Today
 
 ![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="8%"}
@@ -117,6 +110,12 @@ Overview of
 . . .
 
 I can't show you everything. But the tidyverse has an **[excellent documentation](https://www.tidyverse.org/)** and **[cheatsheets](https://posit.co/resources/cheatsheets/)**.
+
+## Which tidyverse packages do you use?
+
+Head over to the menti poll
+
+![](images/2024_02_15_tidyverse/core_packages2.png){width="70%"}
 
 ## Data analysis with the tidyverse
 
@@ -342,9 +341,9 @@ Get consistent and good-practice use column names. [Package documentation](https
 - Returns tibbles
 
 - Tidyverse packages for other data types:
-  - `readxl` for Excel files
-  - `haven` for SPSS, SAS, and Stata files
-  - `rvest` for web scraping
+  - [`readxl`](https://readxl.tidyverse.org/) for Excel files
+  - [`haven`](https://haven.tidyverse.org/) for SPSS, SAS, and Stata files
+  - [`googlesheets4`](https://googlesheets4.tidyverse.org/) for Google sheets
   - ...
 
 # Tidy data with `tidyr`
@@ -417,8 +416,7 @@ The main advantages of **tidy** data is that the `tidyverse` packages are built 
 
 ![](images/2024_02_15_tidyverse/tidyr.png){.top-right width="8%"}
 
-- Tidying means reorganizing the data
-  - Values do not change
+- `Tidyr` **reorganizes** the data but **does not change** values
 - Most important functionality:
   - **Pivoting**: `pivot_longer` and `pivot_wider`
   - **Splitting** and **combining** columns: `separate_wider_delim/position/regex` and `unite`
@@ -456,10 +454,10 @@ pivot_longer(arc_weather,
 You can also directly name the new columns:
 
 ```{r}
-arc_weather <- pivot_longer(arc_weather, 
-             cols = c(foolik_mean_temp_c, poolik_mean_temp_c),
-             names_to = "station",
-             values_to = "mean_temp_c")
+arc_weather <- pivot_longer(arc_weather,
+  cols = c(foolik_mean_temp_c, poolik_mean_temp_c),
+  names_to = "station",
+  values_to = "mean_temp_c")
 arc_weather
 ```
 
@@ -483,6 +481,8 @@ arc_weather
 ## Data cleaning and filtering
 
 ![](images/2024_02_15_tidyverse/dplyr.png){.top-right width="8%"}
+
+. . .
 
 :::{.columns}
 
@@ -517,6 +517,8 @@ filter(arc_weather,
 ## Combine `filter` with other packages
 
 ![](images/2024_02_15_tidyverse/dplyr.png){.top-right width="8%"}
+
+. . .
 
 :::{.columns}
 
@@ -555,6 +557,8 @@ filter(arc_weather,
 ![](images/2024_02_15_tidyverse/dplyr.png){.top-right width="8%"}
 
 Add columns with `mutate`
+
+. . .
 
 ```{r}
 # Add column with temperature in K
@@ -608,8 +612,7 @@ summarize(arc_weather,
 # Calculate the mean temperature for each station
 arc_weather_group <- group_by(arc_weather, station)
 summarize(arc_weather_group,
-  overall_mean = mean(mean_temp_c,
-    na.rm = TRUE))
+  overall_mean = mean(mean_temp_c, na.rm = TRUE))
 ```
 
 - `group_by` can be used for any dplyr function to perform the operation by group
@@ -626,8 +629,7 @@ summarize(arc_weather_group,
 # Alternatively, use `.by` to specify the
 # grouping variable (new feature).
 summarize(arc_weather,
-  overall_mean = mean(mean_temp_c,
-    na.rm = TRUE),
+  overall_mean = mean(mean_temp_c, na.rm = TRUE),
   .by = station)
 ```
 
@@ -685,7 +687,7 @@ arc_weather |>
 
 . . .
 
-You can read from top to bottom and interpret the `|>` as an "and then do".
+You can read from top to bottom and interpret the `|>` as an "*and then do*".
 
 ## The pipe `|>`
 
@@ -696,17 +698,17 @@ The pipe is "pushing" the result of one line into the first argument of the func
 . . .
 
 ```{r eval=FALSE}
-arc_weather |> 
-  filter(month(date) == 5)
+arc_weather |>
+  group_by(station)
 
 # instead of 
-filter(arc_weather, month(date) == 5)
+group_by(arc_weather, station)
 ```
 
 . . .
 
 Piping works perfectly with the `tidyverse` functions because they are designed
-to return a tibble **and** take a tibble as first argument.
+to **return a tibble** and **take a tibble as first argument**.
 
 . . .
 
@@ -844,8 +846,7 @@ arc_weather |>
     title = "Mean temperature in May",
     x = "Date",
     y = "Mean temperature (°C)") +
-  scale_color_viridis_d() +
-  theme(legend.position = "bottom")
+  scale_color_viridis_d()
 ```
 
 :::
@@ -887,28 +888,13 @@ arc_weather |>
 ![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
 
 - Apply functions to multiple elements of a list/vector/...
-  - replace e.g. for loops/apply-functions
+  - Replace e.g. for loops/apply-functions
   - Often `purrr` functions are more intuitive
   - See [here](https://purrr.tidyverse.org/articles/base.html) for a full comparison
   between base R functions and purr functions
 - Most important function: `map`
-  - comes in different versions, depending on the input and the desired output
+  - Comes in different versions, depending on the input and the desired output
   
-## Different versions of the `map` function
-
-![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
-
-```{r}
-#| echo: false
-tibble(
-  Output = c("List", "List", "Vector of desired type", "Vector of desired type", "Data frame", "Data frame"),
-  Input = c("1 Vector", "2 Vectors", "1 Vector", "2 Vectors", "1 Vector", "2 Vectors"),
-  `Purr function` = c("map", "map2", "map_lgl", "map2_lgl", "map_df", "map2_df")
-) |>
-  knitr::kable()
-
-```
-
 ## A simple example
 
 ![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
@@ -954,11 +940,7 @@ str(samples)
 
 :::
 
-## A simple example
-
-![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
-
-Draw 4 numbers from normal distribution with means 1, 2, 3, 4.
+. . .
 
 This can also be combined with the pipe:
 
@@ -966,6 +948,23 @@ This can also be combined with the pipe:
 means |>
   map(rnorm, n = 4, sd = 1) |>
   str()
+```
+
+## Different versions of the `map` function
+
+![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
+
+These are just some examples, there are [many more options](https://purrr.tidyverse.org/articles/base.html):
+
+```{r}
+#| echo: false
+tibble(
+  Output = c("List", "List", "Vector of desired type", "Vector of desired type", "Data frame", "Data frame"),
+  Input = c("1 Vector", "2 Vectors", "1 Vector", "2 Vectors", "1 Vector", "2 Vectors"),
+  `Purr function` = c("map", "map2", "map_lgl", "map2_lgl", "map_df", "map2_df")
+) |>
+  knitr::kable()
+
 ```
 
 
@@ -994,8 +993,7 @@ paths <- list.files(here::here("slides/data"), pattern = "oolik", full.names = T
 #| label: purrr-example-read
 #| output-location: column
 # Step 2: Read all files into a list of tibbles
-arc_weather_files <- paths |>
-  map(read_csv)
+arc_weather_files <- map(paths, read_csv)
 arc_weather_files
 ```
 
@@ -1048,7 +1046,7 @@ This facilitates
 
 Where to get started with the tidyverse?
 
-- Check out the lecture website for links to tutorials and documenation
+- Check out the [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/08_tidyverse.html#further-links-and-resources) for links to documenation, cheatsheets and books
 - Use the cheatsheets as reference while working
 
 ![Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst](images/2024_02_15_tidyverse/friends_with_tidy_data.jpg){width="70%" fig-alt="Digital illustration of two cute fuzzy monsters sitting on a park bench with a smiling data table between them, all eating ice cream together. In text above the illustration are the hand drawn words \"make friends with tidy data.\""}
@@ -1077,6 +1075,10 @@ Questions?<br>
 
 ## References
 
+:::{.nonincremental}
+
 - [Tidyverse website](https://www.tidyverse.org/): find links to all package documentations
 - [Cheatsheets](https://posit.co/resources/cheatsheets/)
 - [R for Data Science](https://r4ds.had.co.nz/introduction.html) book: Learn data analysis with the tidyverse
+
+:::
