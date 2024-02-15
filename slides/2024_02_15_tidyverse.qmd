@@ -278,7 +278,7 @@ arc_weather <- bind_rows(arc_weather, arc_weather_poolik)
 
 arc_weather <- arc_weather |> pivot_wider(names_from = station, values_from = c(mean_airtemp))
 
-names(arc_weather) <- c("Date", "FoolikMeanTemp°C", "PoolikMeanTemp°C")
+names(arc_weather) <- c("Date", "foolik_mean_temp_c", "poolik_mean_temp_c")
 ```
 
 ```{r}
@@ -295,42 +295,6 @@ arc_weather
 #| echo: false
 arc_weather
 ```
-
-. . .
-
-::: {.callout-tip}
-## Use readr functions with `janitor::clean_names`
-
-Get consistent and good-practice use column names. [Package documentation](https://sfirke.github.io/janitor/articles/janitor.html) {{< fa arrow-up-right-from-square >}} 
-
-:::
-
-## Example with arctic temperature data
-
-![](images/2024_02_15_tidyverse/readr.png){.top-right width="8%"}
-
-[Data modified from [`lterdatasampler`](https://lter.github.io/lterdatasampler/articles/arc_weather_vignette.html)]{.text-small}
-
-```{r}
-#| label: janitor-example
-#| eval: false
-arc_weather <- janitor::clean_names(arc_weather)
-arc_weather
-```
-
-```{r}
-#| label: show-janitor
-#| echo: false
-arc_weather <- janitor::clean_names(arc_weather)
-arc_weather
-```
-
-::: {.callout-tip}
-## Use readr functions with `janitor::clean_names`
-
-Get consistent and good-practice use column names. [Package documentation](https://sfirke.github.io/janitor/articles/janitor.html) {{< fa arrow-up-right-from-square >}} 
-
-:::
 
 ## Advantages of `readr`
 
