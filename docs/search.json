@@ -18,7 +18,7 @@
     "href": "slides/2024_02_15_tidyverse.html#why-the-tidyverse",
     "title": "Introduction to the tidyverse",
     "section": "Why the tidyverse?",
-    "text": "Why the tidyverse?\n\nBasic idea: Make data analysis efficient and intuitive\n\nWrite code that is easy to read, write and maintain\nMore time for data interpretation\nTidyverse is actively developed and has a large community.\n\n\nThis facilitates\n📚 Learning \n\n\n🤝 Collaboration \n\n\n🔄 Reproducible research"
+    "text": "Why the tidyverse?\n\nBasic idea: Make data analysis efficient and intuitive\n\nWrite code that is easy to read, write and maintain\nMore time for data interpretation\nTidyverse is actively developed and has a large community."
   },
   {
     "objectID": "slides/2024_02_15_tidyverse.html#today",
@@ -186,7 +186,7 @@
     "href": "slides/2024_02_15_tidyverse.html#summarizing-data-by-group",
     "title": "Introduction to the tidyverse",
     "section": "Summarizing data by group",
-    "text": "Summarizing data by group\n\nsummarize in combination with group_by will collapse the data to a single row per group\n\n\n\n\n# Calculate the mean temperature for each station\narc_weather_group &lt;- group_by(arc_weather, station)\nsummarize(arc_weather_group,\n  overall_mean = mean(mean_temp_c, na.rm = TRUE))\n#&gt; # A tibble: 2 × 2\n#&gt;   station overall_mean\n#&gt;   &lt;chr&gt;          &lt;dbl&gt;\n#&gt; 1 foolik         -8.60\n#&gt; 2 poolik         -5.60\n\n\ngroup_by can be used for any dplyr function to perform the operation by group\n\n\n\n\n# Alternatively, use `.by` to specify the\n# grouping variable (new feature).\nsummarize(arc_weather,\n  overall_mean = mean(mean_temp_c, na.rm = TRUE),\n  .by = station)\n#&gt; # A tibble: 2 × 2\n#&gt;   station overall_mean\n#&gt;   &lt;chr&gt;          &lt;dbl&gt;\n#&gt; 1 foolik         -8.60\n#&gt; 2 poolik         -5.60"
+    "text": "Summarizing data by group\n\nsummarize in combination with group_by will collapse the data to a single row per group\n\n\n# Calculate the mean temperature for each station\narc_weather_group &lt;- group_by(arc_weather, station)\nsummarize(arc_weather_group,\n  overall_mean = mean(mean_temp_c, na.rm = TRUE))\n#&gt; # A tibble: 2 × 2\n#&gt;   station overall_mean\n#&gt;   &lt;chr&gt;          &lt;dbl&gt;\n#&gt; 1 foolik         -8.60\n#&gt; 2 poolik         -5.60\n\n\ngroup_by can be used for any dplyr function to perform the operation by group"
   },
   {
     "objectID": "slides/2024_02_15_tidyverse.html#the-pipe",
@@ -263,7 +263,7 @@
     "href": "slides/2024_02_15_tidyverse.html#a-simple-example",
     "title": "Introduction to the tidyverse",
     "section": "A simple example",
-    "text": "A simple example\n\nDraw 4 numbers from normal distribution with means 1, 2, 3, 4.\n\n\n\nDo it by hand\n\n# Do it by hand\nset.seed(123)\nrnorm(n = 4, mean = 1, sd = 1)\n#&gt; [1] 0.4395244 0.7698225 2.5587083 1.0705084\nrnorm(n = 4, mean = 2, sd = 1)\n#&gt; [1] 2.1292877 3.7150650 2.4609162 0.7349388\nrnorm(n = 4, mean = 3, sd = 1)\n#&gt; [1] 2.313147 2.554338 4.224082 3.359814\nrnorm(n = 4, mean = 4, sd = 1)\n#&gt; [1] 4.400771 4.110683 3.444159 5.786913\n\n\n\nUse purrr\n\n# Use purrr\nset.seed(123)\nmeans &lt;- 1:4\nsamples &lt;- map(means, rnorm, n = 4, sd = 1)\nstr(samples)\n#&gt; List of 4\n#&gt;  $ : num [1:4] 0.44 0.77 2.56 1.07\n#&gt;  $ : num [1:4] 2.129 3.715 2.461 0.735\n#&gt;  $ : num [1:4] 2.31 2.55 4.22 3.36\n#&gt;  $ : num [1:4] 4.4 4.11 3.44 5.79\n\n\n\n\n\n\n\n# This can also be combined with the pipe:\nmeans |&gt;\n  map(rnorm, n = 4, sd = 1) |&gt;\n  str()\n#&gt; List of 4\n#&gt;  $ : num [1:4] 1.498 -0.967 1.701 0.527\n#&gt;  $ : num [1:4] 0.932 1.782 0.974 1.271\n#&gt;  $ : num [1:4] 2.37 1.31 3.84 3.15\n#&gt;  $ : num [1:4] 2.86 5.25 4.43 3.7"
+    "text": "A simple example\n\nDraw 4 numbers from normal distribution with means 1, 2, 3, 4.\n\n\n\nDo it by hand\n\n# Do it by hand\nset.seed(123)\nrnorm(n = 4, mean = 1, sd = 1)\n#&gt; [1] 0.4395244 0.7698225 2.5587083 1.0705084\nrnorm(n = 4, mean = 2, sd = 1)\n#&gt; [1] 2.1292877 3.7150650 2.4609162 0.7349388\nrnorm(n = 4, mean = 3, sd = 1)\n#&gt; [1] 2.313147 2.554338 4.224082 3.359814\nrnorm(n = 4, mean = 4, sd = 1)\n#&gt; [1] 4.400771 4.110683 3.444159 5.786913\n\n\n\nUse purrr\n\n# Use purrr\nset.seed(123)\nmeans &lt;- 1:4\nsamples &lt;- map(means, rnorm, n = 4, sd = 1)\nstr(samples)\n#&gt; List of 4\n#&gt;  $ : num [1:4] 0.44 0.77 2.56 1.07\n#&gt;  $ : num [1:4] 2.129 3.715 2.461 0.735\n#&gt;  $ : num [1:4] 2.31 2.55 4.22 3.36\n#&gt;  $ : num [1:4] 4.4 4.11 3.44 5.79"
   },
   {
     "objectID": "slides/2024_02_15_tidyverse.html#different-versions-of-the-map-function",
@@ -305,7 +305,7 @@
     "href": "slides/2024_02_15_tidyverse.html#summary-2",
     "title": "Introduction to the tidyverse",
     "section": "Summary",
-    "text": "Summary\nWhere to get started with the tidyverse?\n\n\n\nIllustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst\n\n\n\nCheck out the lecture website for links to documenation, cheatsheets and book"
+    "text": "Summary\nWhere to get started with the tidyverse?\n\nCheck out the lecture website for links to documenation, cheatsheets and book\n\n\n\n\nIllustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst"
   },
   {
     "objectID": "slides/2024_02_15_tidyverse.html#next-lecture",
