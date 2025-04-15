@@ -1511,12 +1511,8 @@ fill_amount <- gapminder_china_india |>
   geom_bar(stat = "identity", show.legend = FALSE) +
   ggtitle("Ordered by GDP")
 
-
-
-
-
 # Put them side by side and adjust the theme
-fill_amount + fill_country &
+fill_country + fill_amount &
   coord_flip() &
   theme_minimal() &
   labs(
@@ -1530,8 +1526,29 @@ fill_amount + fill_country &
     axis.title.y = element_blank()
   )
 ```
+## Declutter your graphs
 
+- Try to maximize the data/ink ratio
+- This is to an extent a matter of taste
+- Declutter your graphs and remove redundant elements
+  - excessive grid lines
+  - boxes
+  - duplicate text
 
+## Declutter your graphs
+
+Here an example
+
+# 8: Make it accessible
+
+- Font size
+- Choice of color
+  - Logically
+  - Color-blind friendly
+- Contrast
+- Add redundancy
+  - different channels can help convey the message in differnt ways
+  
 ## Summary
 
 ## Next lecture
