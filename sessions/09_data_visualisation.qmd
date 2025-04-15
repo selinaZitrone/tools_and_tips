@@ -1,0 +1,21 @@
+---
+title: "Clear figures, stronger stories: Fundamentals of Data Visualization"
+from: markdown+emoji
+---
+
+## Description
+
+Figures are essential for communicating research findings and data story telling, yet creating clear and engaging figures can be challenging for researchers. In this lecture, we'll explore the fundamental principles of effective data visualization, emphasizing clarity, accuracy, and avoiding common pitfalls. Through practical examples, you'll learn how strategic choices—such as selecting appropriate chart types, thoughtful use of color, and minimizing visual clutter—can enhance the quality of your figures and help you better communicate your research findings.
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2025_04_17_data-visualisation.html"></iframe>
+```
+
+[Slides in full screen](../slides/2025_04_17_data-visualisation.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_04_17_data-visualisation.pdf" download>Download PDF slides</a>
+
+## Further Links and resources
+
+
+
+
+

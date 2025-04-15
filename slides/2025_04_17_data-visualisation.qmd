@@ -1,0 +1,1562 @@
+---
+title: "Clear figures, stronger stories: Fundamentals of Data Visualization"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+author: "Dr. Selina Baldauf"
+date: "2025-04-17"
+format: 
+  revealjs:
+    footer: "Selina Baldauf // Data Visualization"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute: 
+  echo: false
+  eval: true
+  cache: true
+  message: false
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+from: markdown+emoji
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# load packages
+library(ggplot2)
+library(dplyr)
+library(forcats)
+library(tidyr)
+library(patchwork)
+library(gapminder)
+```
+
+```{r}
+#| label: create-basic-plot-theme
+okabe_ito <- okabe_ito <- c(
+  "#E69F00",
+  "#56B4E9",
+  "#009E73",
+  "#F0E442",
+  "#0072B2",
+  "#D55E00",
+  "#CC79A7"
+)
+
+theme_slideshow <- function(
+    base_size = 16,
+    base_family = "sans",
+    background_color = "white",
+    text_color = "#333333",
+    grid_color = "#cccccc",
+    accent_color = "#4285F4") {
+  # Start with theme_minimal as a base
+  theme_minimal(base_size = base_size, base_family = base_family) %+replace%
+    theme(
+      # Text elements
+      text = element_text(color = text_color, family = base_family),
+      plot.title = element_text(
+        size = base_size * 1.5,
+        face = "bold",
+        hjust = 0.5,
+        margin = margin(b = 15)
+      ),
+      plot.subtitle = element_text(
+        size = base_size * 1.1,
+        hjust = 0.5,
+        margin = margin(b = 10)
+      ),
+      plot.caption = element_text(
+        size = base_size * 0.8,
+        hjust = 1,
+        margin = margin(t = 10)
+      ),
+
+      # Axis elements
+      axis.title = element_text(size = base_size * 1.1, face = "bold"),
+      axis.text = element_text(size = base_size),
+      axis.line = element_line(color = text_color, linewidth = 0.5),
+
+      # Legend elements
+      legend.position = "bottom",
+      legend.title = element_text(size = base_size, face = "bold"),
+      legend.text = element_text(size = base_size * 0.9),
+      legend.key.size = unit(1, "cm"),
+
+      # Panel elements
+      panel.grid.major = element_line(color = grid_color, linewidth = 0.2),
+      panel.grid.minor = element_blank(),
+      panel.background = element_rect(fill = background_color, color = NA),
+      plot.background = element_rect(fill = background_color, color = NA),
+      strip.text = element_text(size = base_size * 1.3),
+
+      # Margins
+      plot.margin = margin(20, 20, 20, 20)
+    )
+}
+
+# set slideshow theme as basic theme
+theme_set(theme_slideshow())
+```
+
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+::: nonincremental
+
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+-   One topic from the world of scientific workflows
+-   Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+-   If you don't want to miss a lecture
+    -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:::
+
+## Motivation
+
+```{r}
+#| echo: false
+#| fig-cap: <small>Annual changes in Arctic sea ice cover by [Derek Watkins (New York Times)](https://www.nytimes.com/interactive/2015/03/24/science/earth/arctic-ice-low-winter-maximum.html?_r=0) </small>
+#| fig-align: center
+#| fig-alt: A line graph of the annual changes in Arctic sea ice cover by Derek Watkins (New York Times). Every line represents one year and it becomes clear how big changes from 2010 to 2014 were.
+#
+knitr::include_graphics("images/2025_04_17_data-visualisation/nyt_ice_cover.png")
+```
+
+## What makes a good figure?
+
+- **Correct and honest**
+	- truthful representation of the data, data integrity
+- **Useful**
+	- Supports the main point you want to make
+- **Easy to read  and understand**
+	- Accessible and straight forward
+- **Beautiful**
+	- Visually pleasing
+- **Appropriate**
+	- Different outlets have different requirements/freedoms
+	
+. . .
+
+Today: Some principles, do's and don'ts that address these points
+
+## Before we get started
+
+- No coding
+- But I use R and ggplot
+  - find some resources and an RScript on the website
+  
+. . .
+
+Main books that I used (free):
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+![[Healy, K. (2018). Data Visualization: A Practical Introduction. Princeton University Press.](https://socviz.co/index.html#preface)](images/2025_04_17_data-visualisation/healy_book.png)
+
+:::
+
+:::{.column width="50%"}
+
+![[Wilke, C. O. (2019). Fundamentals of Data Visualization. O'Reilly Media.](https://clauswilke.com/dataviz/)](images/2025_04_17_data-visualisation/wilke_book.png)
+
+:::
+
+:::
+
+# 8 steps for better figures
+
+# 1: Consider the context
+
+## Consider the context
+
+- Who is your audience?
+  - How familiar are they with the topic?
+- What are common practices in your field?
+  - Plot types, colors, ...
+
+
+
+## Consider the context
+
+- Where do you show the figure?
+
+| Context | Reading time | Complexity | Things to consider                                                                                                                  |
+| ------- | ------------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Paper   | 3            | 3          | Journal requirements<br>Usually read on PC<br>Print out in B/W -> No zoom                                                           |
+| Poster  | 2            | 2          | More open design choice<br>Attract people from far<br>You quickly loose people to other posters                                     |
+| Talk    | 1            | 1          | Big enough for the backseat people<br>You can use animations to guide through<br>People need to understand the graph while you talk |
+
+
+# 2: Be honest
+
+## Don't hide your data behind summary statistics
+
+```{r}
+#| label: create-datasaurus-plot
+#| include: false
+
+# calculate datasaurus summary stats
+# Create a scatter plot using ggplot2 showing the datasaurus figures
+sum_stats <- datasauRus::datasaurus_dozen |>
+  group_by(dataset) |>
+  summarise(mean_x = mean(x), mean_y = mean(y))
+
+# Create scatter plot of data saurus without summary statistics
+plot_datasaurus_basic <- datasauRus::datasaurus_dozen |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = 1) +
+  facet_wrap(~dataset, ncol = 4) +
+  labs(
+    title = "Datasaurus Dozen",
+    subtitle = "Different distributions with nearly identical summary statistics",
+    x = "X",
+    y = "Y",
+    caption = "Data from the datasauRus package based on Matejka, J., & Fitzmaurice, G. (2017). Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing. CHI 2017 Conference proceedings: ACM SIGCHI Conference on Human Factors in Computing Systems."
+  ) +
+  theme(
+    axis.title = element_blank(),
+    strip.text = element_blank()
+  )
+
+
+# Create scatter plot of data saurus with summary statistics
+plot_datasaurus_stats <- datasauRus::datasaurus_dozen |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = 1) +
+  # Overlay mean points for each dataset in blue
+  geom_smooth(method = "lm") +
+  geom_point(
+    data = sum_stats,
+    aes(x = mean_x, y = mean_y),
+    color = "orange",
+    size = 5,
+    shape = 18
+  ) +
+  facet_wrap(~dataset, ncol = 4) +
+  labs(
+    title = "Datasaurus Dozen",
+    subtitle = "Different distributions with nearly identical summary statistics",
+    x = "X",
+    y = "Y",
+    caption = "Data from the datasauRus package based on Matejka, J., & Fitzmaurice, G. (2017). Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing. CHI 2017 Conference proceedings: ACM SIGCHI Conference on Human Factors in Computing Systems."
+  ) +
+  theme(
+    axis.title = element_blank(),
+    strip.text = element_blank()
+  )
+```
+
+```{r}
+#| label: show-fig-datasaurus-basic
+
+plot_datasaurus_basic
+```
+
+## Don't hide your data behind summary statistics
+
+```{r}
+#| label: show-fig-datasaurus-stats
+
+plot_datasaurus_stats
+```
+
+## Don't hide your data behind summary statistics
+
+Simple bargraphs hide a lot of information about the data.
+
+![https://doi.org/10.1371/journal.pbio.1002128](images/2025_04_17_data-visualisation/beyond_bar_paper.png)
+
+## Don't hide your data behind summary statistics
+
+Same barplot - different data - different statistical test results
+
+![Figure 1 from [Weissgerber et al. 2015](https://doi.org/10.1371/journal.pbio.1002128)](images/2025_04_17_data-visualisation/beyond_bar_paper_tests.png
+)
+
+## Alternatives to bar plots
+
+```{r}
+#| label: generate-barplot-data
+
+set.seed(42) # for reproducibility
+
+# Category A: Many data points, symmetric distribution (normal)
+n_A <- 50
+catA <- data.frame(
+  category = "Group A",
+  value = rnorm(n_A, mean = 50, sd = 5)
+)
+
+# Category B: Data points with outliers
+n_B <- 50
+catB <- data.frame(
+  category = "Group B",
+  value = c(rnorm(45, mean = 50, sd = 5), rnorm(5, mean = 80, sd = 2))
+)
+
+# Category C: Bimodal distribution
+n_C <- 50
+catC <- data.frame(
+  category = "Group C",
+  value = c(rnorm(n_C / 2, mean = 40, sd = 4), rnorm(n_C / 2, mean = 60, sd = 4))
+)
+
+# Category D: Few data points
+n_D <- 5
+catD <- data.frame(
+  category = "Group D",
+  value = rnorm(n_D, mean = 55, sd = 5)
+)
+
+# Combine all data
+data_all <- bind_rows(catA, catB, catC, catD)
+data_all$category <- factor(data_all$category, levels = c("Group A", "Group B", "Group C", "Group D"))
+```
+
+
+A boxplot is already better
+
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| label: create-barplot
+
+# First create summary data
+summary_stats <- data_all %>%
+  group_by(category) %>%
+  summarize(
+    mean_val = mean(value),
+    se = sd(value) / sqrt(n())
+  )
+
+# make the plot
+barplot_errors <- ggplot(summary_stats, aes(x = category, y = mean_val, fill = category)) +
+  geom_errorbar(aes(ymin = mean_val - se, ymax = mean_val + se), width = 0.2) +
+  geom_col(width = 0.6) +
+  labs(
+    title = "Barplot with Error Bars",
+    subtitle = "Only shows mean ± SE",
+    x = "Category",
+    y = "Mean Value"
+  ) +
+  scale_fill_brewer(palette = "Set2") +
+  theme(
+    legend.position = "none",
+    axis.title = element_blank(),
+    axis.line.y = element_blank()
+  )
+barplot_errors
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#|label: anatomy-of-boxplot
+# Create sample data with a clear distribution
+set.seed(123)
+data <- data.frame(
+  value = c(rnorm(100, mean = 10, sd = 2)),
+  group = "Example"
+)
+
+# Calculate key statistics for annotations
+stats <- summary(data$value)
+iqr <- IQR(data$value)
+outlier_upper <- stats[5] + 1.5 * iqr
+outlier_lower <- stats[2] - 1.5 * iqr
+
+# Create the explanatory boxplot
+boxplot_anatomy <- ggplot(data, aes(x = group, y = value)) +
+  geom_boxplot(width = 0.3, outlier.size = 3, color = "cyan4", size = 1) +
+  # Add annotation lines and text
+  annotate("text", x = 1.4, y = stats[6], label = "Maximum (excluding outliers)", hjust = 0) +
+  annotate("text", x = 1.4, y = stats[5], label = "75th percentile (Q3)", hjust = 0) +
+  annotate("text", x = 1.4, y = stats[3], label = "Median", hjust = 0) +
+  annotate("text", x = 1.4, y = stats[2], label = "25th percentile (Q1)", hjust = 0) +
+  annotate("text", x = 1.4, y = stats[1], label = "Minimum (excluding outliers)", hjust = 0) +
+  # Add lines pointing to each component
+  annotate("segment",
+    x = 1.3, xend = 1.2,
+    y = c(stats[1], stats[2], stats[3], stats[5], stats[6]),
+    yend = c(stats[1], stats[2], stats[3], stats[5], stats[6])
+  ) +
+  # Add IQR explanation
+  annotate("text",
+    x = 0.5, y = mean(c(stats[2], stats[5])),
+    label = "IQR\n(Inter Quartile\nRange)", hjust = 0.5
+  ) +
+  # Customize theme
+  theme_void() +
+  theme(
+    axis.text.x = element_blank(),
+    panel.grid.major.x = element_blank()
+  ) +
+  coord_cartesian(xlim = c(0.7, 2.5)) # Adjust plot width to fit annotations
+```
+
+
+```{r}
+#| label: create-boxplot
+
+boxplot_groups <- ggplot(
+  data_all,
+  aes(
+    x = category,
+    y = value
+  )
+) +
+  # Add boxplot (narrow width) nudged to left
+  geom_boxplot(
+    aes(color = category),
+    outlier.shape = NA
+  ) +
+  labs(
+    title = "Boxplot",
+    subtitle = "Combining boxplot, density, and raw data points",
+    x = "Category",
+    y = "Value"
+  ) +
+  scale_fill_brewer(palette = "Set2") +
+  scale_color_brewer(palette = "Set2") +
+  theme_slideshow() +
+  theme(
+    legend.position = "none",
+    axis.title = element_blank(),
+    axis.line.y = element_blank()
+  )
+boxplot_groups + boxplot_anatomy
+```
+
+:::
+
+:::
+
+## Alternatives to bar plots
+
+You can add the raw data points to increase the information content of the plot
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+# label: barplot-on-left
+barplot_errors
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: boxplot-with-points
+
+boxplot_groups_points <- ggplot(
+  data_all,
+  aes(
+    x = category,
+    y = value,
+    color = category
+  )
+) +
+  # Add boxplot (narrow width) nudged to left
+  geom_boxplot(
+    aes(color = category),
+    outlier.shape = NA
+  ) +
+  geom_point(position = position_jitter(width = 0.1), alpha = 0.5) +
+  labs(
+    title = "Boxplot",
+    subtitle = "Combining boxplot, density, and raw data points",
+    x = "Category",
+    y = "Value"
+  ) +
+  scale_fill_brewer(palette = "Set2") +
+  scale_color_brewer(palette = "Set2") +
+  theme_slideshow() +
+  theme(
+    legend.position = "none",
+    axis.title = element_blank(),
+    axis.line.y = element_blank()
+  )
+boxplot_groups_points
+```
+
+:::
+
+:::
+
+## Alternatives to bar plots
+
+Raincloud plots show raw data points, distribution and summary statistics
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+# label: barplot-on-left
+barplot_errors
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: raincloud-plot
+
+raincloud_plot <- ggplot(
+  data_all,
+  aes(
+    x = category,
+    y = value
+  )
+) +
+  # Add boxplot (narrow width) nudged to left
+  geom_boxplot(
+    aes(color = category),
+    width = 0.1, outlier.shape = NA
+  ) +
+  # Add half-eye (density layer) from ggdist
+  ggdist::stat_halfeye(
+    aes(fill = category),
+    adjust = 0.5,
+    width = 0.6,
+    justification = -0.2,
+    .width = 0,
+    point_colour = NA
+  ) +
+  # Add half-points (raw data) using gghalves on the left
+  gghalves::geom_half_point(
+    aes(color = category),
+    side = "l",
+    range_scale = 0.4,
+    size = 2,
+    position = position_nudge(x = -0.1)
+  ) +
+  labs(
+    title = "Raincloud Plot",
+    subtitle = "Combining boxplot, density, and raw data points",
+    x = "Category",
+    y = "Value"
+  ) +
+  scale_fill_brewer(palette = "Set2") +
+  scale_color_brewer(palette = "Set2") +
+  theme_slideshow() +
+  theme(
+    legend.position = "none",
+    axis.title = element_blank(),
+    axis.line.y = element_blank()
+  )
+
+raincloud_plot
+```
+
+:::
+
+:::
+
+## Principle of proportional ink
+
+Bergstrom and West 2016: "the sizes of shaded areas in a visualization need to be proportional to the data values they represent"
+
+```{r}
+#| label: barplots-start-at-zero
+
+# Create a simple dataset with two groups and their values
+data <- data.frame(
+  group = rep(c("Group A", "Group B"), 1),
+  value = c(80, 90) # Values are close but slightly different
+)
+
+# Create a function to generate a bar plot with a specified y-axis minimum using coord_cartesian
+create_bar_plot <- function(data, y_min) {
+  ggplot(data, aes(x = group, y = value, fill = group)) +
+    geom_bar(stat = "identity", width = 0.6) +
+    scale_fill_manual(values = c("steelblue", "darkred")) +
+    coord_cartesian(ylim = c(y_min, 100), expand = FALSE) + # Set visible y-axis range without dropping data points
+    labs(
+      y = "Value (%)"
+    ) +
+    theme_slideshow() +
+    theme(
+      axis.title.x = element_blank(),
+      axis.text.x = element_blank(),
+      legend.position = "none",
+      axis.text = element_text(size = 10),
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.y = element_blank()
+    )
+}
+
+# Create three plots with different y-axis starting points
+plot1 <- create_bar_plot(data, 0)
+plot2 <- create_bar_plot(data, 20)
+plot3 <- create_bar_plot(data, 50)
+plot4 <- create_bar_plot(data, 70)
+plot5 <- create_bar_plot(data, 80)
+
+# Use patchwork to arrange the plots in multiple panels
+plot1 + plot2 + plot3 + plot4 + plot5 + plot_layout(nrow = 1, axes = "collect")
+```
+
+. . .
+
+Always start barplots at 0!
+
+## Principle of proportional ink
+
+For other plot types, it's ok, and can even be better to not start at 0
+
+```{r}
+#|
+recent_data <- gapminder |>
+  filter(year == max(year)) |>
+  group_by(continent) |>
+  summarize(life_expectancy = mean(lifeExp)) |>
+  mutate(continent = as.character(continent))
+
+# Create a bar chart that starts the y-axis at 0
+bar_chart <- ggplot(
+  recent_data,
+  aes(x = continent, y = life_expectancy, fill = continent)
+) +
+  geom_bar(stat = "identity", width = 0.6) +
+  scale_fill_manual(values = okabe_ito) +
+  coord_cartesian(ylim = c(0, 85)) +
+  labs(
+    title = "Life Expectancy by Continent (2007)",
+    subtitle = "Bar chart with y-axis starting at 0",
+    x = "Continent",
+    y = "Life Expectancy (years)"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5, size = 12),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12)
+  )
+
+# Create a point chart with a truncated y-axis (not starting at 0)
+point_chart <- ggplot(
+  recent_data,
+  aes(x = continent, y = life_expectancy, color = continent)
+) +
+  geom_point(size = 5) +
+  scale_color_manual(values = okabe_ito) +
+  coord_cartesian(
+    ylim = c(
+      min(recent_data$life_expectancy) - 2,
+      max(recent_data$life_expectancy) + 2
+    )
+  ) +
+  labs(
+    title = "Life Expectancy by Continent (2007)",
+    subtitle = "Point chart with truncated y-axis",
+    x = "Continent",
+    y = "Life Expectancy (years)"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5, size = 12),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12)
+  )
+
+# Combine the two plots vertically
+combined_plot <- bar_chart + point_chart + plot_layout(ncol = 2)
+print(combined_plot)
+```
+
+# 3: Choose the right chart type
+
+## Choose the right chart type
+
+There are so many chart types. But there are also cool tools to explore them
+
+:::{.columns}
+
+:::{.column width="50%"}
+![[From data vo viz](https://www.data-to-viz.com/ )](images/2025_04_17_data-visualisation/data_to_vis.png)
+:::
+
+:::{.column width="50%"}
+
+![[The dataviz project](https://datavizproject.com/)](images/2025_04_17_data-visualisation/datavis_100.png)
+
+:::
+
+:::
+
+## Accuracy of judgement depends on the channel
+
+- Accuracy of judgement decreases from left to right
+- Different charts allow for accurate judgements vs. more generic judgements
+
+![](images/2025_04_17_data-visualisation/different_channels.png)
+
+## Accuracy of judgement depends on the channel
+
+- You can also combine multiple channels
+- Adding numbers also helps to increase accuracy of judgement
+
+```{r}  
+#| label: compare-lollipot-pie
+# Calculate species counts and order the species by count descending
+penguin_counts <- palmerpenguins::penguins |>
+  count(species) |>
+  ## add percentage label with `scales::percent()`
+  dplyr::mutate(
+    percentage = scales::percent(n / sum(n), accuracy = .1, trim = FALSE)
+  ) |>
+  # add labels for the piechart with the species
+  mutate(
+    percentage_with_species = paste(species, percentage)
+  ) |>
+  # Order species by count descending
+  mutate(species = fct_reorder(species, n))
+
+# Make a lollipop plot
+lollipop_chart <- ggplot(
+  penguin_counts,
+  aes(x = species, y = n, color = species)
+) +
+  # Add segment lines
+  geom_segment(
+    aes(x = species, xend = species, y = 0, yend = n, color = species),
+    linewidth = 1
+  ) +
+  # Add points
+  geom_point(size = 5) +
+  geom_text(
+    aes(label = percentage),
+    size = 4,
+    fontface = "bold",
+    hjust = 1.5,
+    vjust = -1
+  ) +
+  scale_color_manual(values = okabe_ito) +
+  labs(
+    title = "Lollipop Chart",
+    x = "Species",
+    y = "Count"
+  ) +
+  coord_flip() +
+  scale_y_continuous(expand = c(0.03, 0.03)) +
+  theme_slideshow() +
+  theme(
+    axis.line.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    legend.position = "none",
+    axis.title.y = element_blank(),
+    axis.text.y = element_text(hjust = 1)
+  )
+
+# Make a pie chart
+pie_chart <- ggplot(
+  penguin_counts,
+  aes(x = "", y = percentage, fill = species)
+) +
+  geom_col() +
+  # geom_bar(stat = "identity", width = 1) +
+  coord_polar("y") +
+  geom_label(
+    aes(
+      label = percentage_with_species
+    ),
+    position = position_stack(vjust = 0.5),
+    ## make labels left-aligned
+    # hjust = 1,
+    size = 4,
+    fontface = "bold",
+    fill = "white",
+    label.size = 0
+  ) +
+  scale_fill_manual(values = okabe_ito) +
+  labs(
+    title = "Penguin Species Distribution",
+    subtitle = "Pie chart showing count and percentage"
+  ) +
+  theme_void() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5, size = 12)
+  )
+# Combine the two plots
+lollipop_chart + pie_chart
+```
+
+## Accuracy of judgement depends on the channel
+
+:::{.nonincremental}
+
+- You can also combine multiple channels
+- Adding numbers also helps to increase accuracy of judgement
+
+:::
+
+```{r}
+#| label: correlogram
+# Select only numerical columns and remove NA
+penguin_numeric <- palmerpenguins::penguins %>%
+  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) %>%
+  drop_na()
+
+# Calculate correlation matrix
+cor_matrix <- cor(penguin_numeric)
+
+# Create correlogram with color only
+p1 <- ggcorrplot::ggcorrplot(
+  cor_matrix,
+  type = "lower",
+  lab = FALSE,
+  title = "Color Only",
+  ggtheme = theme_minimal()
+) +
+  theme(plot.title = element_text(hjust = 0.5))
+
+# Create correlogram with color and labels
+p2 <- ggcorrplot::ggcorrplot(
+  cor_matrix,
+  type = "lower",
+  lab = TRUE,
+  lab_size = 3,
+  title = "Color + Text",
+  ggtheme = theme_minimal()
+) +
+  theme(plot.title = element_text(hjust = 0.5))
+
+# Create correlogram with color and size
+p3 <- ggcorrplot::ggcorrplot(
+  cor_matrix,
+  type = "lower",
+  method = "circle",
+  title = "Color + Size",
+  ggtheme = theme_minimal()
+) +
+  theme(plot.title = element_text(hjust = 0.5))
+
+# Display both plots side by side
+p1 + p2 + p3 + plot_layout(guides = "collect", axis = "collect")
+```
+
+# 4. Tell your story
+
+## Tell your story
+
+- The readers attention is limited: so be as clear as possible
+- Think about the main message you want to convey
+
+## Arrange your plot
+
+Arrange your plot so that it's easy to extract the main message from
+
+```{r}
+#| label: arrange-plots
+gap_data_asia_europ <- gapminder %>%
+  filter(continent %in% c("Europe", "Asia")) %>%
+  group_by(year, continent) %>%
+  summarise(
+    mean_life_exp = mean(lifeExp),
+    .groups = "drop"
+  )
+
+# Create grouped bar plot
+p_grouped <- ggplot(
+  gap_data_asia_europ,
+  aes(x = factor(year), y = mean_life_exp, fill = continent)
+) +
+  geom_col(position = "dodge", width = 0.8) +
+  labs(
+    title = "Life Expectancy group comparisons",
+    subtitle = "Europe always higher than Asia",
+    x = "Year",
+    y = "Mean Life Expectancy (years)",
+    fill = "Continent"
+  ) +
+  scale_fill_manual(values = okabe_ito) +
+  theme(
+    axis.title.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.line.y = element_blank()
+  )
+
+
+# Create small multiples version
+p_faceted <- ggplot(
+  gap_data_asia_europ,
+  aes(x = factor(year), y = mean_life_exp, fill = continent)
+) +
+  geom_col(width = 0.8) +
+  facet_wrap(~continent) +
+  labs(
+    title = "Life Expectancy Trends",
+    subtitle = "Main message: Different rates of improvement over time",
+    x = "Year",
+    y = "Mean Life Expectancy (years)",
+    fill = "Continent"
+  ) +
+  scale_fill_manual(values = okabe_ito) +
+  theme(
+    axis.title.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.line.y = element_blank()
+  )
+
+p_grouped + p_faceted +
+  plot_layout(guides = "collect", axis = "collect", ncol = 2)
+```
+
+
+## Choose a plot type the supports your story
+
+```{r}
+#| label: life-expectancy-story
+# Data for the dumbbell plot needs each year with two measures (one for each continent)
+gap_wide <- gap_data_asia_europ %>%
+  pivot_wider(names_from = continent, values_from = mean_life_exp)
+
+### Plot One: Dumbbell Plot
+# Create dumbbell plot
+
+p_dumbbell <- ggplot(gap_wide, aes(x = year)) +
+  # Create vertical segments for each year connecting the points
+  geom_segment(
+    aes(x = year, xend = year, y = Asia, yend = Europe),
+    color = "gray50",
+    size = 1
+  ) +
+  # Plot the points for Africa (left lower value)
+  geom_point(aes(y = Asia), color = okabe_ito[1], size = 3.5) +
+  # Plot the points for Europe (upper value)
+  geom_point(aes(y = Europe), color = okabe_ito[2], size = 3.5) +
+  labs(
+    title = "Highlight distance/difference",
+    x = "Year",
+    y = "Mean Life Expectancy (years)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+
+### Plot Two: Side-by-Side Line Charts
+# Here we plot separate line charts for Africa and Europe, revealing the trends over time in each facet.
+p_line <- ggplot(
+  gap_data_asia_europ,
+  aes(x = year, y = mean_life_exp, color = continent)
+) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  scale_color_manual(values = okabe_ito) +
+  labs(
+    title = "Highlight trends",
+    x = "Year",
+    y = "Mean Life Expectancy (years)",
+    color = "Continent"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+
+# Display the plots one after the other
+p_dumbbell + p_line + plot_layout(axis = "collect") &
+  theme(
+    axis.title.x = element_blank(),
+    legend.title = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
+
+## Tell your story
+
+**Don't overcomplicate** your figures and bury your message
+- There's always an appendix ;)
+
+What is the main message here?
+
+```{r}
+#|label: expectancy-complex
+
+gapminder |>
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  geom_point(aes(size = pop), alpha = 0.7) +
+  geom_smooth(
+    method = "lm",
+    se = FALSE
+  ) +
+  scale_x_log10(labels = scales::label_number(scale = 1, accuracy = 1)) +
+  scale_size_continuous(
+    labels = scales::label_number(scale = 1 / 1e6, suffix = " Mio")
+  ) +
+  labs(
+    x = "GDP per Captia ($)",
+    y = "Mean Life Expectancy (years)",
+    size = "Population size",
+    color = "Continent"
+  ) +
+  scale_color_manual(values = okabe_ito) +
+  theme_slideshow() +
+  theme(
+    legend.position = "right"
+  )
+```
+
+## Tell your story
+
+- Life expectancy increases with GDP
+- There are still big differences between continents
+
+```{r}
+#| label: expectancy-simplified
+
+# look only at the data from the last year
+gapminder_last_year <- gapminder |>
+  filter(year == max(gapminder$year))
+
+mean_lifeExp <- mean(gapminder_last_year$lifeExp, na.rm = TRUE)
+mean_gdpPercap <- mean(gapminder_last_year$gdpPercap, na.rm = TRUE)
+min_lifeExp <- min(gapminder_last_year$lifeExp, na.rm = TRUE)
+max_lifeExp <- max(gapminder_last_year$lifeExp, na.rm = TRUE)
+min_gdpPercap <- min(gapminder_last_year$gdpPercap, na.rm = TRUE)
+max_gdpPercap <- max(gapminder_last_year$gdpPercap, na.rm = TRUE)
+
+
+
+life_exp <- gapminder_last_year |>
+  summarize(
+    mean_life_exp = mean(lifeExp),
+    .by = continent
+  ) |>
+  mutate(
+    continent = fct_reorder(continent, mean_life_exp)
+  ) |>
+  ggplot(
+    aes(x = continent, y = mean_life_exp, fill = continent)
+  ) +
+  geom_col(width = 0.8) +
+  # add labels with the numbers pasting the word years after
+  geom_label(
+    aes(label = round(mean_life_exp, 1)),
+    position = position_stack(vjust = 0.95),
+    size = 4, fill = "white"
+  ) +
+  coord_flip() +
+  scale_y_continuous(expand = c(0.01, 0.01)) +
+  labs(
+    y = "Mean Life Expectancy (years)",
+    fill = "Continent"
+  ) +
+  scale_fill_manual(values = okabe_ito) +
+  theme_slideshow() +
+  theme(
+    axis.title.y = element_blank(),
+    legend.position = "none"
+  )
+
+# gdp
+gdp <- gapminder |>
+  ggplot(aes(x = gdpPercap, y = continent, fill = continent)) +
+  ggridges::geom_density_ridges(alpha = 0.7, scale = 0.9) +
+  scale_x_log10(labels = scales::label_comma()) +
+  scale_fill_manual(values = okabe_ito) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    panel.grid.major.y = element_blank()
+  ) +
+  labs(
+    x = "GDP per Capita (log scale)",
+    y = NULL
+  )
+
+life_exp + gdp + plot_layout(axis = "collect")
+```
+
+## Alternative
+
+![](images/2025_04_17_data-visualisation/paper_example_bury_message.png)
+
+# 5. Consider the trip
+
+## A figure as a timely experience
+
+- We look at elements step by step before we come back to understand the figure as a whole
+- Try to put yourself in the readers shoes
+  - What will they look at first?
+  - How will their path through the figure look like?
+  - How many steps does it take to understand all the elements?
+  
+
+**Here add an example plot from a paper**
+
+. . .
+
+Goal: Make the trip as short as possible
+
+## Highlight the main message
+
+- Use highlighting and de-emphasizing
+- Make use of preattentive focus
+  - Things that pop (even without thinking)
+- You can highlight with
+  - color
+  - size
+  - shape
+  - position
+  
+## Highlight the main message
+
+If your story is about China and India in the context of Asia, highlight those countries while deemphasizing all others.
+
+```{r}
+#| label: highlight-countries
+
+# Highlight the development of China and India in comparison to other countries
+gapminder_china_india <- gapminder |>
+  filter(continent == "Asia") |>
+  mutate(highlight = case_when(
+    country %in% "China" ~ "China",
+    country %in% "India" ~ "India",
+    .default = "Rest of Asia"
+  ))
+
+# define highlight colors
+highlight_colors <- c("China" = okabe_ito[1], "India" = okabe_ito[2], "Rest of Asia" = "grey70")
+
+# Population in these 2 contries vs. rest of asia
+# Make a donut chart
+pop_data <- gapminder_china_india |>
+  filter(year == max(year)) |>
+  summarize(
+    pop = sum(pop), .by = highlight
+  ) |>
+  mutate(
+    percentage = pop / sum(pop) * 100,
+    label_with_pct = paste0(round(percentage, 1), "%"),
+    total = sum(pop)
+  )
+
+# calculate average gdp
+avg_gdp <- gapminder_china_india |>
+  filter(year == max(year)) |>
+  pull(gdpPercap) |>
+  mean() |>
+  round(0)
+
+bar_basic <- gapminder_china_india |>
+  filter(year == max(year)) |>
+  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = highlight)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  scale_fill_manual(values = highlight_colors) +
+  # coord_flip() +
+  theme_minimal() +
+  geom_hline(yintercept = avg_gdp, linetype = "dashed", color = "darkred") +
+  labs(
+    x = "Country",
+    y = "GDP per Capita ($)"
+  ) +
+  scale_y_continuous(expand = c(0.01, 0.01)) +
+  theme_slideshow() +
+  theme(
+    axis.text = ggtext::element_markdown(),
+    plot.title = ggtext::element_markdown(hjust = 0.5),
+  )
+
+# Add a title
+bar_basic_title <- bar_basic +
+  labs(title = "China and India still have lower GDP per Capita <br> than many other Asian coutries") +
+  theme(
+    panel.grid.major.y = element_line(color = "grey80", linewidth = 0.5),
+    panel.grid.major.x = element_blank(),
+    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+    axis.title.x = element_blank()
+  ) +
+  annotate(
+    "text",
+    x = 4.5,
+    y = avg_gdp + 1000,
+    label = paste(c("Average GDP per Capita: ", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
+    color = "darkred",
+    size = 4
+  )
+
+# Population dount chart -------------------------------------------------------
+population_donut <- ggplot(pop_data, aes(x = 2, y = percentage, fill = highlight)) +
+  geom_col(width = 1) +
+  coord_polar(theta = "y") +
+  xlim(0.5, 2.5) + # This creates the donut hole
+  geom_text(aes(label = label_with_pct),
+    position = position_stack(vjust = 0.5)
+  ) +
+  # add the total world population in the center
+  geom_label(
+    aes(x = 0.5, y = 0, label = paste0("Total Asia (2007):\n ", format(total, big.mark = ","))),
+    size = 5,
+    fill = "white",
+    color = "black",
+    label.size = 0,
+    label.padding = unit(0.5, "lines")
+  ) +
+  scale_fill_manual(values = highlight_colors) +
+  theme_void() +
+  theme(
+    legend.title = element_blank(),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  labs(
+    title = "Population in China and India vs. the Rest of Asia",
+  )
+
+
+# Combine them into separate plots
+# inset the dount into the barchart
+bar_basic_title +
+  population_donut +
+  plot_layout(guides = "collect")
+```
+
+## Rotate your plot
+
+- Reading labels upside down is a neck rotation - very annoying
+
+![Figure by [Ilya Kashnitsky](https://ikashnitsky.phd/2024/rotate-damn-plot/index.html)](images/2025_04_17_data-visualisation/rotate_plot.png)
+
+## Rotate your plots
+
+Barplots can very often be rotated to make them easier to read
+
+```{r}
+#| label: rotate-barplot
+bar_basic +
+  labs(title = "China and India still have lower GDP per Capita <br> than many other Asian coutries") +
+  coord_flip() +
+  annotate(
+    "text",
+    x = 2,
+    y = avg_gdp + 18000,
+    label = paste(c("Average GDP per Capita:", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
+    color = "darkred",
+    size = 4
+  ) +
+  theme(
+    panel.grid.major.x = element_line(color = "grey80", linewidth = 0.5),
+    panel.grid.major.y = element_blank(),
+    axis.title.y = element_blank()
+  )
+```
+
+## Order your data
+
+- Don't accept the default order by the program
+- Order categories consciously
+
+```{r}
+#| label: order-categories
+order_gdp <- gapminder_china_india |>
+  filter(year == max(year)) |>
+  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  ggtitle("Ordered by GDP")
+
+
+# ordered alphabetially
+order_alphabetically <- gapminder_china_india |>
+  filter(year == max(year)) |>
+  ggplot(aes(x = fct_rev(country), y = gdpPercap)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  ggtitle("Ordered Alphabetically")
+
+# Put them side by side and adjust the theme
+order_gdp + order_alphabetically &
+  coord_flip() &
+  theme_minimal() &
+  labs(
+    x = "Country",
+    y = "GDP per Capita ($)"
+  ) &
+  scale_y_continuous(expand = c(0.01, 0.01)) &
+  theme(
+    panel.grid.major.x = element_line(color = "grey80", linewidth = 0.5),
+    panel.grid.major.y = element_blank(),
+    axis.title.y = element_blank()
+  )
+```
+
+## Order your data
+
+:::{.nonincremental}
+
+- Don't accept the default order by the program
+- Order categories consciously
+
+:::
+
+```{r}
+#| label: order-legend
+top_growth <- gapminder |>
+  group_by(country) |>
+  summarize(gdp_growth = last(gdpPercap) / first(gdpPercap)) |>
+  arrange(desc(gdp_growth)) |>
+  head(5) |>
+  pull(country)
+
+gapminder <- gapminder |>
+  mutate(highlight = case_when(
+    country %in% top_growth ~ country,
+    .default = "Other"
+  ))
+
+# define colors
+top_5_colors <- c(
+  "Equatorial Guinea" = okabe_ito[1],
+  "Taiwan" = okabe_ito[2],
+  "Korea, Rep." = okabe_ito[3],
+  "Singapore" = okabe_ito[4],
+  "Botswana" = okabe_ito[5],
+  "Other" = "grey90"
+)
+
+# With legend
+order_legend <- gapminder |>
+  filter(highlight != "Other") |>
+  mutate(
+    highlight = fct_relevel(highlight, c(
+      "Singapore",
+      "Taiwan",
+      "Korea, Rep.",
+      "Botswana",
+      "Equatorial Guinea"
+    ))
+  ) |>
+  ggplot(aes(
+    x = year,
+    y = gdpPercap,
+    group = country
+  )) +
+  geom_line(data = gapminder |>
+    filter(highlight == "Other"), color = "grey70", alpha = 0.2) +
+  geom_line(aes(color = highlight), size = 1) +
+  scale_color_manual(values = top_5_colors) +
+  scale_y_continuous(labels = scales::label_comma()) +
+  theme_minimal() +
+  labs(
+    title = "Top 5 Economic Growth Stories",
+    subtitle = "Countries with the highest GDP per capita growth",
+    x = "Year",
+    y = "GDP per Capita"
+  ) +
+  theme(
+    legend.title = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.title.x = element_blank()
+  )
+```
+
+## Put elements where the eyes are
+
+Use colors in the header and axes labels
+
+```{r}
+#| label: color-axes-title
+bar_with_color_title <- bar_basic +
+  scale_x_discrete(labels = function(x) {
+    case_when(
+      x == "China" ~ sprintf("<b><span style='color:%s;'>%s</span></b>", highlight_colors["China"], x),
+      x == "India" ~ sprintf("<b><span style='color:%s;'>%s</span></b>", highlight_colors["India"], x),
+      TRUE ~ x
+    )
+  }) +
+  labs(
+    title = sprintf(
+      "GDP per Capita:\n<span style='color:%s;'>China</span> and <span style='color:%s;'>India</span>\nvs. Rest of Asia",
+      highlight_colors["China"], highlight_colors["India"]
+    )
+  ) +
+  coord_flip() +
+  annotate(
+    "text",
+    x = 2,
+    y = avg_gdp + 15000,
+    label = paste(c("Average GDP per Capita:", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
+    color = "darkred",
+    size = 4
+  ) +
+  theme(
+    panel.grid.major.x = element_line(color = "grey80", linewidth = 0.5),
+    panel.grid.major.y = element_blank(),
+    axis.title.y = element_blank()
+  )
+bar_with_color_title
+```
+
+## Put elements where the eyes are
+
+Label the data directly
+
+```{r}
+#| label: label-data
+# Compute the fixed label x-position
+max_year <- max(gapminder$year, na.rm = TRUE)
+label_x <- max_year + 0.5 # adjust offset as needed
+
+# Calculate the last data point for each highlighted country
+latest_points <- gapminder |>
+  filter(highlight != "Other") |>
+  group_by(country) |>
+  filter(year == max(year)) |>
+  ungroup() |>
+  mutate(label_x = label_x) |>
+  mutate(
+    gdpPercap_label = case_when(
+      country == "Equatorial Guinea" ~ gdpPercap - 1500,
+      country == "Botswana" ~ gdpPercap + 1500,
+      .default = gdpPercap
+    )
+  )
+order_legend +
+  geom_text(
+    data = latest_points,
+    aes(x = label_x, y = gdpPercap_label, label = country, color = highlight),
+    hjust = 0,
+    vjust = 0.5,
+    size = 4
+  ) +
+  theme(legend.position = "none")
+```
+
+## Put elements where the eyes are
+
+Label the data directly - Experts can make this even better
+
+**Example of FT**
+
+# 6. Less is more
+
+## The importance of differences
+
+- Humans perceive differences
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+Effective visualization helps us understand data quickly. **Patterns** emerge naturally, while **colors** enhance meaning. Good **design** choices and proper **emphasis** make insights accessible to everyone.  
+
+:::
+
+:::{.column width="50%"}
+
+*Effective* visualization helps us <span style="font-style:italic; color:#E67E22; font-size:1.1em;">understand</span> data <span style="font-style:italic; font-family:'Georgia', serif; color:#2980B9;">quickly</span>. **Patterns** emerge <span style="font-style:italic; color:#8E44AD;">naturally</span>, while **colors** enhance <span style="font-style:italic; font-size:1.2em; color:#16A085;">meaning</span>. Good **design** choices and proper **emphasis** make <span style="font-style:italic; font-family:'Palatino', serif; color:#C0392B;">insights</span> accessible to everyone.  
+
+:::
+
+:::
+
+## The importance of differences
+
+Use differences to **communicate not to decorate**
+
+- Redundancy is not a problem
+
+Effective visualization helps us understand data quickly. **<span style="color:#2ECC71;">Patterns</span>** emerge naturally, while **<span style="color:#2ECC71;">colors</span>** enhance meaning. Good **<span style="color:#2ECC71;">design</span>** choices and proper **<span style="color:#2ECC71;">emphasis</span>** make insights accessible to everyone.  
+
+## The importance of differences
+
+Use differences to **communicate not to decorate**
+
+```{r}
+#| label: differences-to-communicate
+
+fill_country <- gapminder_china_india |>
+  filter(year == max(year)) |>
+  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = country)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  ggtitle("Ordered by GDP")
+
+fill_amount <- gapminder_china_india |>
+  filter(year == max(year)) |>
+  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = gdpPercap)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  ggtitle("Ordered by GDP")
+
+
+
+
+
+# Put them side by side and adjust the theme
+fill_amount + fill_country &
+  coord_flip() &
+  theme_minimal() &
+  labs(
+    x = "Country",
+    y = "GDP per Capita ($)"
+  ) &
+  scale_y_continuous(expand = c(0.01, 0.01)) &
+  theme(
+    panel.grid.major.x = element_line(color = "grey80", linewidth = 0.5),
+    panel.grid.major.y = element_blank(),
+    axis.title.y = element_blank()
+  )
+```
+
+
+## Summary
+
+## Next lecture
+
+#### Topic t.b.a.
+
+<br>
+
+:date: 15th May :clock4: 3-4 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+## Thank you for your attention :) {background-image="images/2024_02_15_tidyverse/complete_analysis_monsters.jpg" background-size="contain" background-color="white"}
+
+Questions?<br>
+
+:::{.aside}
+[Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst]{.text-small}
+:::
+
+## References
+
+:::{.nonincremental}
+
+
+:::
