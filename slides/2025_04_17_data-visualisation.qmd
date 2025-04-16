@@ -1,5 +1,5 @@
 ---
-title: "Clear figures, stronger stories"
+title: "Clear figures,<br> stronger stories"
 subtitle: "Scientific workflows: Tools and Tips 🛠️"
 author: "Dr. Selina Baldauf"
 date: "2025-04-17"
@@ -116,19 +116,6 @@ theme_slideshow <- function(
 
 ![Annual changes in Arctic sea ice cover by [Derek Watkins (New York Times)](https://www.nytimes.com/interactive/2015/03/24/science/earth/arctic-ice-low-winter-maximum.html?_r=0)](images/2025_04_17_data-visualisation/nyt_ice_cover.png){fig-alt="A line graph of the annual changes in Arctic sea ice cover by Derek Watkins (New York Times). Every line represents one year and it becomes clear how big changes from 2010 to 2014 were."}
 
-## What makes a good figure?
-
-- **Correct and honest**
-	- Truthful representation of the data, data integrity
-- **Useful**
-	- Supports the main point you want to make
-- **Easy to read  and understand**
-	- Accessible and straight forward
-- **Beautiful**
-	- Visually pleasing
-- **Appropriate**
-	- Different outlets have different requirements/freedoms
-	
 ## Before we get started
 
 Main books that I used (free):
@@ -149,6 +136,15 @@ Main books that I used (free):
 
 :::
 
+## What makes a good figure?
+
+
+- **Correct and transparent** <br>Truthful representation of the data, data integrity
+- **Useful** <br>Supports the main point you want to make
+- **Easy to read  and understand**	<br>Accessible for everyone
+- **Beautiful** <br>Visually interesting and pleasing
+- **Appropriate** <br>Different outlets have different requirements/freedoms
+
 # 7 steps for better figures
 
 # 👣 1: Consider the context
@@ -165,13 +161,13 @@ Main books that I used (free):
 
 ## Contexts in science
 
-| Context | Time spent | Particularities                                                                                                                                            | Complexity |  
-| ------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |  
-| Paper   | 3          | • Journal requirements<br>• Usually read on PC<br>• Print out in B/W → No zoom                                                                               | 3          |  
-| Poster  | 2          | • More open design choice<br>• Attract people from far<br>• You quickly lose people to other posters                                                          | 2          |  
-| Talk    | 1          | • You can use animations to guide through<br>• People need to understand the graph while you talk                                                             | 1          |  
+| Context |  Things to consider                                                                                                                                            | 
+| ------- |  ---------------------------------------------------------------------------------------------------------------------------------------------------------- |  
+| Paper   |  - Journal requirements<br>- Usually read on PC<br>- Print out in B/W → No zoom <br> - More time → Higher complexity                                                                              |  
+| Poster  |  - More open design choice<br>- Attract people from far<br>- You quickly lose people to other posters <br> - More time → Medium complexity                                                         |  
+| Talk    |  - You can use animations to guide through<br>- Little time → less complex                                                             |  
 
-# 👣 2: Be honest about your data
+# 👣 2: Make your data transparent
 
 ## Don't hide data behind summaries
 
@@ -270,6 +266,7 @@ Bar plots only show mean ± SE/SD.
 
 ```{r}
 #| label: generate-barplot-data
+#| cache: false
 
 set.seed(42) # for reproducibility
 
@@ -356,40 +353,6 @@ boxplot_groups_points <- ggplot(
   geom_point(position = position_jitter(width = 0.1), alpha = 0.7) +
   scale_fill_brewer(palette = "Set2") +
   scale_color_brewer(palette = "Set2")
-
-# Create raincloud plot
-raincloud_plot <- ggplot(
-  data_all,
-  aes(
-    x = category,
-    y = value
-  )
-) +
-  # Add boxplot (narrow width) nudged to left
-  geom_boxplot(
-    aes(color = category),
-    width = 0.1, outlier.shape = NA,
-    fill = "transparent"
-  ) +
-  # Add half-eye (density layer) from ggdist
-  ggdist::stat_halfeye(
-    aes(fill = category),
-    adjust = 0.5,
-    width = 0.6,
-    justification = -0.1,
-    .width = 0,
-    point_colour = NA
-  ) +
-  # Add half-points (raw data) using gghalves on the left
-  gghalves::geom_half_point(
-    aes(color = category),
-    side = "l",
-    range_scale = 0.4,
-    size = 2,
-    position = position_nudge(x = -0.1)
-  ) +
-  scale_fill_brewer(palette = "Set2") +
-  scale_color_brewer(palette = "Set2")
 ```
 
 
@@ -459,7 +422,7 @@ boxplot_anatomy <- ggplot(data, aes(x = group, y = value)) +
   annotate("text", x = 1.4, y = stats[5], label = "75th percentile (Q3)", hjust = 0) +
   annotate("text", x = 1.4, y = stats[3], label = "Median", hjust = 0) +
   annotate("text", x = 1.4, y = stats[2], label = "25th percentile (Q1)", hjust = 0) +
-  annotate("text", x = 1.4, y = stats[1], label = "Minimum (excluding outliers)", hjust = 0) +
+  annotate("text", x = 1.4, y = stats[1], label = "Outlier", hjust = 0) +
   # Add lines pointing to each component
   annotate("segment",
     x = 1.3, xend = 1.2,
@@ -478,30 +441,13 @@ boxplot_anatomy <- ggplot(data, aes(x = group, y = value)) +
     panel.grid.major.x = element_blank()
   ) +
   coord_cartesian(xlim = c(0.7, 2.5)) # Adjust plot width to fit annotations
+boxplot_groups + boxplot_anatomy &
+  theme(
+    # ttransparent background
+    panel.background = element_rect(fill = "transparent", color = NA),
+    plot.background = element_rect(fill = "transparent", color = NA)
+  )
 ```
-
-:::{.columns}
-
-:::{.column width="70%"}
-
-```{r, dev='svg', dev.args=list(bg="transparent")}
-#| label: print-boxplot-2
-#| cache: false
-boxplot_groups
-```
-:::
-
-:::{.column width="30%"}
-
-```{r, dev='svg', dev.args=list(bg="transparent")}  
-#| label: print-boxplot-anatomy
-#| cache: false
-
-boxplot_anatomy
-```
-:::
-
-:::
 
 ## Alternatives to bar plots
 
@@ -516,7 +462,8 @@ boxplot_groups_points <- boxplot_groups_points +
   theme(
     legend.position = "none",
     axis.title = element_blank(),
-    axis.line.y = element_blank()
+    axis.line.y = element_blank(),
+    axis.line.x = element_line()
   )
 
 boxplot_groups_points
@@ -525,11 +472,45 @@ boxplot_groups_points
 
 ## Alternatives to bar plots
 
-**Raincloud plots** show raw data points, distribution and summary statistics
+**Raincloud plots** show raw data points, summary statistics, and distribution
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: print-raincloud-plot
 #| cache: true
+
+# Create raincloud plot
+raincloud_plot <- ggplot(
+  data_all,
+  aes(
+    x = category,
+    y = value
+  )
+) +
+  # Add boxplot (narrow width) nudged to left
+  geom_boxplot(
+    aes(color = category),
+    width = 0.1, outlier.shape = NA,
+    fill = "transparent"
+  ) +
+  # Add half-eye (density layer) from ggdist
+  ggdist::stat_halfeye(
+    aes(fill = category),
+    adjust = 0.5,
+    width = 0.6,
+    justification = -0.2,
+    .width = 0,
+    point_colour = NA
+  ) +
+  # Add half-points (raw data) using gghalves on the left
+  gghalves::geom_half_point(
+    aes(color = category),
+    side = "l",
+    range_scale = 0.4,
+    size = 2,
+    position = position_nudge(x = -0.01)
+  ) +
+  scale_fill_brewer(palette = "Set2") +
+  scale_color_brewer(palette = "Set2")
 
 raincloud_plot <- raincloud_plot +
   theme_minimal() +
@@ -546,7 +527,7 @@ raincloud_plot
 
 ## Principle of proportional ink
 
-"the **sizes of shaded areas** in a visualization need to be **proportional** to the **data values** they represent"
+**Sizes of shaded areas** should be **proportional** to the **data values** they represent
 
 . . .
 
@@ -575,15 +556,15 @@ create_bar_plot <- function(data, y_min) {
 
 # Create three plots with different y-axis starting points
 plot1 <- create_bar_plot(data, 0)
-plot2 <- create_bar_plot(data, 25)
-plot3 <- create_bar_plot(data, 50)
+# plot2 <- create_bar_plot(data, 25)
+# plot3 <- create_bar_plot(data, 50)
 plot4 <- create_bar_plot(data, 75)
 
 # Use patchwork to arrange the plots in multiple panels
-plot1 + plot2 + plot3 + plot4 + plot_layout(nrow = 1, axis_titles = "collect") &
+plot1 + plot4 + plot_layout(nrow = 1, axis_titles = "collect") &
   theme_minimal() +
     theme(
-      panel.packground = element_rect(fill = "grey80"),
+      panel.packground = element_rect(fill = "grey70"),
       axis.title = element_blank(),
       axis.text.x = element_blank(),
       legend.position = "none",
@@ -594,7 +575,7 @@ plot1 + plot2 + plot3 + plot4 + plot_layout(nrow = 1, axis_titles = "collect") &
     )
 ```
 
-Here: length of bars is not proportional to the data values anymore
+Here: bar length does not represent **relative data proportions** anymore 
 
 . . .
 
@@ -629,7 +610,7 @@ bar_chart <- ggplot(
 ) +
   geom_bar(stat = "identity", width = 0.6) +
   coord_cartesian(ylim = c(0, 85)) +
-  labs(title = "Bars start at 0 and minimize differences")
+  labs(title = "Allows for relative comparisons")
 
 # Create a point chart with a truncated y-axis (not starting at 0)
 point_chart <- ggplot(
@@ -643,13 +624,14 @@ point_chart <- ggplot(
       max(recent_data$life_expectancy) + 2
     )
   ) +
-  labs(title = "Points start at 50 and highlight differences")
+  labs(title = "Focus on the absolute differences")
 # Combine the two plots vertically
 combined_plot <- bar_chart + point_chart + plot_layout(ncol = 2, axis_titles = "collect") +
   plot_annotation(
     title = "Life Expectancy by Continent (2007)",
     caption = "Data from the `gapminder` R package"
   ) &
+  scale_y_continuous(expand = c(0.01, 0.01)) &
   theme_minimal() +
     theme(
       axis.line.x = element_line(),
@@ -720,13 +702,13 @@ lollipop_chart <- ggplot(
   # Add segment lines
   geom_segment(
     aes(x = species, xend = species, y = 0, yend = n, color = species),
-    linewidth = 1
+    linewidth = 2
   ) +
   # Add points
-  geom_point(size = 5) +
+  geom_point(size = 6) +
   geom_text(
     aes(label = percentage),
-    size = 4,
+    size = 5,
     fontface = "bold",
     hjust = 1.5,
     vjust = -1
@@ -734,6 +716,7 @@ lollipop_chart <- ggplot(
   scale_color_manual(values = okabe_ito) +
   labs(
     title = "Position + Length + Text",
+    caption = "Number of 3 penguin species in Antarctica in the `palmerpenguins` dataset",
     y = "Count"
   ) +
   coord_flip() +
@@ -742,128 +725,34 @@ lollipop_chart <- ggplot(
   theme(
     axis.line.y = element_blank(),
     panel.grid.major.y = element_blank(),
-    legend.position = "none",
     axis.title.y = element_blank(),
-    axis.text.y = element_text(hjust = 1)
-  )
-
-# Make a pie chart
-pie_chart <- ggplot(
-  penguin_counts,
-  aes(x = "", y = percentage, fill = species)
-) +
-  geom_col() +
-  # geom_bar(stat = "identity", width = 1) +
-  coord_polar("y") +
-  geom_label(
-    aes(
-      label = percentage_with_species
-    ),
-    position = position_stack(vjust = 0.5),
-    ## make labels left-aligned
-    # hjust = 1,
-    size = 4,
-    fontface = "bold",
-    fill = "white",
-    label.size = 0
-  ) +
-  scale_fill_manual(values = okabe_ito) +
-  labs(
-    title = "Angle + Text"
-  ) +
-  theme_void()
-# Combine the two plots
-lollipop_chart + pie_chart +
-  plot_annotation(
-    caption = "Number of 3 penguin species in Antarctica in the `palmerpenguins` dataset"
-  ) &
-  theme(
+    axis.text.y = element_text(hjust = 1),
     plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
-    legend.position = "none",
-    # make background transparent
-    plot.background = element_rect(fill = "transparent", color = NA),
-    panel.background = element_rect(fill = "transparent", color = NA)
-  )
-```
-
-## Different channels - different accuracy
-
-:::{.nonincremental}
-
-- Combine multiple channels for more accuracy
-- Add numbers to increase accuracy of judgement
-
-:::
-
-```{r, dev='svg', dev.args=list(bg="transparent")}
-#| label: correlogram
-#| cache: true
-
-# Select only numerical columns and remove NA
-penguin_numeric <- palmerpenguins::penguins %>%
-  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) %>%
-  drop_na()
-
-# Calculate correlation matrix
-cor_matrix <- cor(penguin_numeric)
-
-# Create correlogram with color only
-p1 <- ggcorrplot::ggcorrplot(
-  cor_matrix,
-  type = "lower",
-  lab = FALSE,
-  title = "Color Only"
-)
-
-# Create correlogram with color and labels
-p2 <- ggcorrplot::ggcorrplot(
-  cor_matrix,
-  type = "lower",
-  lab = TRUE,
-  lab_size = 3,
-  title = "Color + Text"
-)
-
-# Create correlogram with color and size
-p3 <- ggcorrplot::ggcorrplot(
-  cor_matrix,
-  type = "lower",
-  method = "circle",
-  title = "Color + Area"
-)
-
-# Display both plots side by side
-correlogram <- p1 + p2 + p3 + plot_layout(guides = "collect", axis_titles = "collect") +
-  plot_annotation(
-    caption = "Correlation between different body measurments of penguins from the `palmerpenguins` dataset"
-  ) &
-  theme_minimal() &
-  theme(
-    plot.title = element_text(hjust = 0.5),
-    axis.title = element_blank(),
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    legend.position = "none"
   )
 
-print(correlogram)
+# Combine the two plots
+lollipop_chart
 ```
 
-# 👣 4. Tell your story
+# 👣 4. Focus on the core message
 
-## Tell your story
+## Focus on the core message
 
-- The readers attention is limited: so be as clear as possible
-- Think about the main message you want to convey
-- Does your plot clearly convey this message?
+- The readers attention is limited: **be concise**
+- Think about the **main message** you want to convey
+  - Which variables do you need?
+  - What can you omit?
 
 ## Arrange your plot
 
-Arrange your plot so that it's easy to extract the main message
+Arrange your plot so that it's **easy to extract** the main message
 
 . . .
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: arrange-plots
-#| cache: true
+#| cache: false
 gap_data_asia_europ <- gapminder %>%
   filter(continent %in% c("Europe", "Asia")) %>%
   group_by(year, continent) %>%
@@ -880,11 +769,12 @@ p_grouped <- ggplot(
   geom_col(position = "dodge", width = 0.8) +
   labs(
     title = "Life Expectancy group comparisons",
-    subtitle = "Main message: Europe always higher than Asia",
+    subtitle = "Main message: Europe higher than Asia, Asia catching up",
     x = "Year",
     y = "Mean Life Expectancy (years)",
     fill = "Continent"
-  )
+  ) +
+  theme_minimal()
 
 
 # Create small multiples version
@@ -899,6 +789,10 @@ p_faceted <- ggplot(
     subtitle = "Main message: Different rates of improvement over time",
     y = "Mean Life Expectancy (years)",
     fill = "Continent"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
   )
 
 
@@ -906,14 +800,16 @@ p_grouped + p_faceted +
   plot_layout(guides = "collect", axis_titles = "collect", ncol = 2) &
   scale_fill_manual(values = okabe_ito) &
   scale_y_continuous(expand = c(0.01, 0.05)) &
-  theme_minimal() &
   theme(
     axis.title.x = element_blank(),
     panel.grid.major.x = element_blank(),
     axis.line.y = element_blank(),
     legend.title = element_blank(),
     strip.placement = "inside",
-    legend.position = "bottom"
+    legend.position = "bottom",
+    # transparent background
+    plot.background = element_rect(fill = "transparent", color = NA),
+    panel.background = element_rect(fill = "transparent", color = NA)
   )
 ```
 
@@ -1089,49 +985,26 @@ life + gdp + plot_layout(axis_titles = "collect") &
   )
 ```
 
-## Alternative
-
-![](images/2025_04_17_data-visualisation/paper_example_bury_message.png)
-
 # 👣 5. Consider the trip
 
-## A figure as a timely experience
+## Reading a figure is a timely experience
 
-- We look at elements step by step before we come back to understand the figure as a whole
+- We look at elements **step by step** before we come back to understand the **figure as a whole**
 - Try to put yourself in the readers shoes
   - What will they look at first, second, etc.?
-  - How many steps does it take to understand all the elements?
+  - **How many steps** does it take to understand all the elements?
   
 . . .
 
-Goal: Make the trip as short as possible
+**Goal**: Make the trip as short as possible
 
-## Example 1
+## Consider the trip
 
-**A bad example**
-
-## Example 2
-
-**A good example**
-
-## Highlight the main message
-
-Use <span style="color: #4169E1; font-size: 120%; font-weight: bold;">highlighting</span> and <span style="color: #4d4d4d; font-size: 100%;">de-emphasizing</span>
-  
-<div style="border: 2px solid #ccc; padding: 0.5em; border-radius: 4px;"><span style="color: #4d4d4d; font-size: 100%;">Effective visualization helps us understand data quickly. </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">Patterns</span><span style="color: #4d4d4d; font-size: 100%;"> emerge naturally, while </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">colors</span><span style="color: #4d4d4d; font-size: 100%;"> enhance meaning. Good </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">design</span><span style="color: #4d4d4d; font-size: 100%;"> choices and proper </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">emphasis</span><span style="color: #4d4d4d; font-size: 100%;"> make insights accessible to everyone.</span></div>   
-
-- Make use of **pre-attentive focus** (Things that *pop* out)
-- Possible highlights: color, size, shape, arrows, ...
-
-## Highlight the main message
-
-If your story is about <span style="color: #E69F00; font-weight: bold;">China</span> and 
-<span style="color: #56B4E9; font-weight: bold;">India</span> in the context of Asia, highlight those countries while de-emphasizing all others.
+A story about the GDP China and India
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
-#| label: highlight-countries
+#| label: no-highlight-countries
 #| cache: false
-
 # Highlight the development of China and India in comparison to other countries
 gapminder_china_india <- gapminder |>
   filter(continent == "Asia") |>
@@ -1144,19 +1017,6 @@ gapminder_china_india <- gapminder |>
 # define highlight colors
 highlight_colors <- c("China" = okabe_ito[1], "India" = okabe_ito[2], "Rest of Asia" = "grey70")
 
-# Population in these 2 contries vs. rest of asia
-# Make a donut chart
-pop_data <- gapminder_china_india |>
-  filter(year == max(year)) |>
-  summarize(
-    pop = sum(pop), .by = highlight
-  ) |>
-  mutate(
-    percentage = pop / sum(pop) * 100,
-    label_with_pct = paste0(round(percentage, 1), "%"),
-    total = sum(pop)
-  )
-
 # calculate average gdp
 avg_gdp <- gapminder_china_india |>
   filter(year == max(year)) |>
@@ -1164,103 +1024,165 @@ avg_gdp <- gapminder_china_india |>
   mean() |>
   round(0)
 
-bar_basic <- gapminder_china_india |>
+barplot_no_highlights <- gapminder_china_india |>
   filter(year == max(year)) |>
-  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = highlight)) +
+  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap)) +
   geom_bar(stat = "identity", show.legend = FALSE) +
   scale_fill_manual(values = highlight_colors) +
-  # coord_flip() +
   theme_minimal() +
   labs(
-    y = "GDP per Capita ($)"
+    y = "GDP per Capita ($)",
+    title = "China and India still below average GDP"
   ) +
-  scale_y_continuous(expand = c(0.01, 0.01))
-
-# Add a title
-bar_basic_title <- bar_basic +
-  labs(title = "China and India still below average GDP") +
-  geom_hline(yintercept = avg_gdp) +
   annotate(
     "text",
-    x = 4.5,
-    y = avg_gdp + 1000,
+    x = 2.5,
+    y = avg_gdp + 2000,
     label = paste(c("Mean: ", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
     size = 4
   ) +
+  geom_hline(yintercept = avg_gdp) +
+  scale_y_continuous(expand = c(0.01, 0.01)) +
+  theme_minimal() +
   theme(
     axis.title.x = element_blank(),
-    axis.text.x = ggtext::element_markdown(angle = 90, hjust = 1)
+    axis.text.x = ggtext::element_markdown(angle = 90, hjust = 1, vjust = 0.5),
+    panel.grid.major.x = element_blank()
   )
-
-# Population dount chart -------------------------------------------------------
-population_donut <- ggplot(pop_data, aes(x = 2, y = percentage, fill = highlight)) +
-  geom_col(width = 1) +
-  coord_polar(theta = "y") +
-  xlim(0.5, 2.5) + # This creates the donut hole
-  geom_text(aes(label = label_with_pct),
-    position = position_stack(vjust = 0.5)
-  ) +
-  # add the total world population in the center
-  geom_label(
-    aes(x = 0.5, y = 0, label = paste0("All Asia:\n ", format(total, big.mark = ","))),
-    size = 5,
-    fill = "white",
-    color = "black",
-    label.size = 0,
-    label.padding = unit(0.3, "lines")
-  ) +
-  scale_fill_manual(values = highlight_colors) +
-  theme_void() +
-  theme(
-    legend.title = element_blank(),
-    plot.title = element_text(hjust = 0.5),
-    plot.subtitle = element_text(hjust = 0.5)
-  ) +
-  labs(
-    title = "Population distribution Asia",
-  )
-
-
-# Combine them into separate plots
-# inset the dount into the barchart
-bar_basic_title +
-  population_donut +
-  plot_layout(guides = "collect", widths = c(2, 1)) &
-  theme(
-    # transparent backgrounds
-    plot.background = element_rect(fill = "transparent", color = NA),
-    panel.background = element_rect(fill = "transparent", color = NA)
-  )
+barplot_no_highlights
 ```
+
 
 ## Rotate your plot
 
 Reading labels upside down is a neck rotation - very annoying
 
-![Figure by [Ilya Kashnitsky](https://ikashnitsky.phd/2024/rotate-damn-plot/index.html)](images/2025_04_17_data-visualisation/rotate_plot.png){width="50%"}
-
-## Rotate your plots
-
-Bar plots can very often be rotated
-
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: rotate-barplot
 #| cache: false
-bar_basic +
-  labs(title = "China and India still below average GDP") +
-  coord_flip() +
+
+barplot_no_highlights_rotate <- gapminder_china_india |>
+  filter(year == max(year)) |>
+  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  scale_fill_manual(values = highlight_colors) +
+  theme_minimal() +
+  labs(
+    y = "GDP per Capita ($)",
+    title = "China and India still below average GDP"
+  ) +
   annotate(
     "text",
     x = 2,
-    y = avg_gdp + 1000,
+    y = avg_gdp + 3200,
     label = paste(c("Mean:", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
     size = 4
   ) +
+  geom_hline(yintercept = avg_gdp) +
+  scale_y_continuous(expand = c(0, 0.01)) +
+  coord_flip() +
+  theme_minimal() +
   theme(
-    panel.grid.major.x = element_line(color = "grey80", linewidth = 0.5),
+    axis.title.y = element_blank(),
     panel.grid.major.y = element_blank(),
-    axis.title.y = element_blank()
+    axis.line.x = element_line(),
+    axis.ticks.x = element_line()
   )
+
+barplot_no_highlights_rotate
+```
+
+## Highlight the main message
+
+Use <span style="color: #4169E1; font-size: 120%; font-weight: bold;">highlighting</span> and <span style="color: #4d4d4d; font-size: 100%;">de-emphasizing</span>
+
+. . .
+  
+<div style="border: 2px solid #ccc; padding: 0.5em; border-radius: 4px;"><span style="color: #4d4d4d; font-size: 100%;">Effective visualization helps us understand data quickly. </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">Patterns</span><span style="color: #4d4d4d; font-size: 100%;"> emerge naturally, while </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">colors</span><span style="color: #4d4d4d; font-size: 100%;"> enhance meaning. Good </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">design</span><span style="color: #4d4d4d; font-size: 100%;"> choices and proper </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">emphasis</span><span style="color: #4d4d4d; font-size: 100%;"> make insights accessible to everyone.</span></div>   
+
+- Make use of **pre-attentive focus** (Things that *pop* out)
+- Possible highlights: color, size, shape, arrows, ...
+
+## Highlight the main message
+
+Highlight focus contries, de-emphasize all others
+
+```{r, dev='svg', dev.args=list(bg="transparent")}
+#| label: highlight-countries
+#| cache: false
+
+barplot_highlights_1 <- gapminder_china_india |>
+  filter(year == max(year)) |>
+  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = highlight)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  scale_fill_manual(values = c("China" = okabe_ito[1], "India" = okabe_ito[1], "Rest of Asia" = "grey70")) +
+  theme_minimal() +
+  labs(
+    y = "GDP per Capita ($)",
+    title = "China and India still below average GDP"
+  ) +
+  annotate(
+    "text",
+    x = 2,
+    y = avg_gdp + 3200,
+    label = paste(c("Mean:", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
+    size = 4
+  ) +
+  geom_hline(yintercept = avg_gdp) +
+  scale_y_continuous(expand = c(0, 0.01)) +
+  coord_flip() +
+  theme_minimal() +
+  theme(
+    axis.title.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    axis.line.x = element_line(),
+    axis.ticks.x = element_line()
+  )
+
+barplot_highlights_1
+```
+
+## Highlight the main message
+
+Highlight focus contries, de-emphasize all others
+
+```{r, dev='svg', dev.args=list(bg="transparent")}
+#| label: highlight-countries-2
+#| cache: false
+
+barplot_highlights_2 <- gapminder_china_india |>
+  filter(year == max(year)) |>
+  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = highlight)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  scale_fill_manual(values = c("China" = okabe_ito[1], "India" = okabe_ito[2], "Rest of Asia" = "grey70")) +
+  theme_minimal() +
+  labs(
+    title = sprintf(
+      "<span style='color:%s; font-weight: bold;'>China</span> and <span style='color:%s;font-weight: bold;'>India</span> still below average GDP",
+      highlight_colors["China"], highlight_colors["India"]
+    ),
+    y = "GDP per Capita ($)",
+  ) +
+  annotate(
+    "text",
+    x = 2,
+    y = avg_gdp + 3200,
+    label = paste(c("Mean:", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
+    size = 4
+  ) +
+  geom_hline(yintercept = avg_gdp) +
+  scale_y_continuous(expand = c(0, 0.01)) +
+  coord_flip() +
+  theme_minimal() +
+  theme(
+    axis.title.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    axis.line.x = element_line(),
+    axis.ticks.x = element_line(),
+    plot.title = ggtext::element_markdown()
+  )
+
+barplot_highlights_2
 ```
 
 ## Order your data
@@ -1294,7 +1216,6 @@ order_gdp + order_alphabetically &
   ) &
   scale_y_continuous(expand = c(0.01, 0.01)) &
   theme(
-    panel.grid.major.x = element_line(color = "grey80", linewidth = 0.5),
     panel.grid.major.y = element_blank(),
     axis.title.y = element_blank()
   )
@@ -1366,108 +1287,17 @@ order_legend <- gapminder |>
 print(order_legend)
 ```
 
-## Put elements where the eyes are
-
-Use colors in the header and axes labels
-
-```{r, dev='svg', dev.args=list(bg="transparent")}
-#| label: color-axes-title
-#| cache: false
-bar_with_color_title <- bar_basic +
-  scale_x_discrete(labels = function(x) {
-    case_when(
-      x == "China" ~ sprintf("<b><span style='color:%s;'>%s</span></b>", highlight_colors["China"], x),
-      x == "India" ~ sprintf("<b><span style='color:%s;'>%s</span></b>", highlight_colors["India"], x),
-      TRUE ~ x
-    )
-  }) +
-  labs(
-    title = sprintf(
-      "<span style='color:%s;'>China</span> and <span style='color:%s;'>India</span> still below average GDP",
-      highlight_colors["China"], highlight_colors["India"]
-    )
-  ) +
-  coord_flip() +
-  annotate(
-    "text",
-    x = 2,
-    y = avg_gdp + 1000,
-    label = paste(c("Average GDP per Capita:", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
-    size = 4
-  ) +
-  theme(
-    panel.grid.major.x = element_line(color = "grey80", linewidth = 0.5),
-    panel.grid.major.y = element_blank(),
-    axis.title.y = element_blank(),
-    axis.text = ggtext::element_markdown(),
-    plot.title = ggtext::element_markdown(hjust = 0.5)
-  )
-bar_with_color_title
-```
-
-## Put elements where the eyes are
-
-Label the data directly
-
-```{r, dev='svg', dev.args=list(bg="transparent")}
-#| label: label-data
-#| cache: false
-# Compute the fixed label x-position
-max_year <- max(gapminder$year, na.rm = TRUE)
-label_x <- max_year + 0.5 # adjust offset as needed
-
-# Calculate the last data point for each highlighted country
-latest_points <- gapminder |>
-  filter(highlight != "Other") |>
-  group_by(country) |>
-  filter(year == max(year)) |>
-  ungroup() |>
-  mutate(label_x = label_x) |>
-  mutate(
-    gdpPercap_label = case_when(
-      country == "Equatorial Guinea" ~ gdpPercap - 1500,
-      country == "Botswana" ~ gdpPercap + 1500,
-      .default = gdpPercap
-    )
-  )
-order_legend +
-  geom_text(
-    data = latest_points,
-    aes(x = label_x, y = gdpPercap_label, label = country, color = highlight),
-    hjust = 0,
-    vjust = 0.5,
-    size = 4
-  ) +
-  theme(legend.position = "none")
-```
-
-## Put elements where the eyes are
-
-Label the data directly - Experts can make this even better
-
-![Have a look at [this nice analysis](https://bsky.app/profile/peck.phd/post/3lbfgjdnvy22k) of the plot by Evan Peck](images/2025_04_17_data-visualisation/ft_linechart.jpg){width="70%}
-
 # 👣 6. Less is more
 
 ## The importance of differences
 
-<div style="border: 2px solid #ccc; padding: 0.5em; border-radius: 4px;"><span style="color: #4d4d4d; font-size: 120%;">Effective visualization helps us understand data quickly. </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">Patterns</span><span style="color: #4d4d4d; font-size: 120%;"> emerge naturally, while </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">colors</span><span style="color: #4d4d4d; font-size: 120%;"> enhance meaning. Good </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">design</span><span style="color: #4d4d4d; font-size: 120%;"> choices and proper </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">emphasis</span><span style="color: #4d4d4d; font-size: 120%;"> make insights accessible to everyone.</span></div>   
+<div style="border: 2px solid #ccc; padding: 0.5em; border-radius: 4px;"><span style="font-size: 90%; font-style: italic; color: #8B4513;">Effective</span> <span style="color: #4169E1; font-size: 115%; font-weight: bold;">visualization</span> <span style="color: #FF69B4;">helps</span> <span style="font-style: italic;">us</span> <span style="font-size: 110%; color: #9932CC;">understand</span> <span style="font-size: 85%;">data</span> <span style="color: #CD853F; font-style: italic;">quickly.</span> <span style="color: #4169E1; font-size: 120%; font-weight: bold;">Patterns</span> <span style="color: #FF4500; font-size: 110%;">emerge</span> <span style="font-size: 95%; color: #4682B4;">naturally,</span> <span style="font-style: italic; color: #DA70D6; font-weight: bold;">while</span> <span style="color: #4169E1; font-size: 120%; font-weight: bold;">colors</span> <span style="color: #20B2AA; font-size: 105%;">enhance</span> <span style="font-size: 115%; color: #CD5C5C;">meaning.</span> <span style="font-style: italic; color: #4B0082;">Good</span> <span style="color: #4169E1; font-size: 120%; font-weight: bold;">design</span> <span style="color: #8FBC8F; font-size: 110%;">choices</span> <span style="font-style: italic; color: #B8860B;">and</span> <span style="font-size: 95%;">proper</span> <span style="color: #4169E1; font-size: 120%; font-weight: bold;">emphasis</span> <span style="color: #6A5ACD; font-size: 105%;font-weight: bold;">make</span> <span style="font-style: italic; color: #FF7F50;">insights</span> <span style="color: #9370DB;">accessible</span> <span style="font-size: 90%; color: #556B2F;font-weight: bold;">to</span> <span style="font-style: italic; color: #8B008B;">everyone.</span></div>  
 
-<br><br>
+<br>
 
 . . .
 
-<div style="border: 2px solid #ccc; padding: 0.5em; border-radius: 4px;"><span style="font-size: 90%; font-style: italic; color: #8B4513;">Effective</span> <span style="color: #4169E1; font-size: 115%; font-weight: bold;">visualization</span> <span style="color: #FF69B4;">helps</span> <span style="font-style: italic;">us</span> <span style="font-size: 110%; color: #9932CC;">understand</span> <span style="font-size: 85%;">data</span> <span style="color: #CD853F; font-style: italic;">quickly.</span> <span style="color: #4169E1; font-size: 120%; font-weight: bold;">Patterns</span> <span style="color: #FF4500; font-size: 110%;">emerge</span> <span style="font-size: 95%; color: #4682B4;">naturally,</span> <span style="font-style: italic; color: #DA70D6; font-weight: bold;">while</span> <span style="color: #4169E1; font-size: 120%; font-weight: bold;">colors</span> <span style="color: #20B2AA; font-size: 105%;">enhance</span> <span style="font-size: 115%; color: #CD5C5C;">meaning.</span> <span style="font-style: italic; color: #4B0082;">Good</span> <span style="color: #4169E1; font-size: 120%; font-weight: bold;">design</span> <span style="color: #8FBC8F; font-size: 110%;">choices</span> <span style="font-style: italic; color: #B8860B;">and</span> <span style="font-size: 95%;">proper</span> <span style="color: #4169E1; font-size: 120%; font-weight: bold;">emphasis</span> <span style="color: #6A5ACD; font-size: 105%;font-weight: bold;">make</span> <span style="font-style: italic; color: #FF7F50;">insights</span> <span style="color: #9370DB;">accessible</span> <span style="font-size: 90%; color: #556B2F;font-weight: bold;">to</span> <span style="font-style: italic; color: #8B008B;">everyone.</span></div>  
-
-## The importance of differences
-
-<div style="border: 2px solid #ccc; padding: 0.5em; border-radius: 4px;"><span style="color: #4d4d4d; font-size: 120%;">Effective visualization helps us understand data quickly. </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">Patterns</span><span style="color: #4d4d4d; font-size: 120%;"> emerge naturally, while </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">colors</span><span style="color: #4d4d4d; font-size: 120%;"> enhance meaning. Good </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">design</span><span style="color: #4d4d4d; font-size: 120%;"> choices and proper </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">emphasis</span><span style="color: #4d4d4d; font-size: 120%;"> make insights accessible to everyone.</span></div> 
-
-Use differences to **communicate not to decorate**
-
-- Redundancy is not a problem
-  - Highlight the same elements using different highlights
-
+<div style="border: 2px solid #ccc; padding: 0.5em; border-radius: 4px;"><span style="color: #4d4d4d; font-size: 120%;">Effective visualization helps us understand data quickly. </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">Patterns</span><span style="color: #4d4d4d; font-size: 120%;"> emerge naturally, while </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">colors</span><span style="color: #4d4d4d; font-size: 120%;"> enhance meaning. Good </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">design</span><span style="color: #4d4d4d; font-size: 120%;"> choices and proper </span><span style="color: #4169E1; font-size: 120%; font-weight: bold;">emphasis</span><span style="color: #4d4d4d; font-size: 120%;"> make insights accessible to everyone.</span></div>   
 
 ## The importance of differences
 
@@ -1486,11 +1316,8 @@ fill_country <- gapminder_china_india |>
 
 fill_amount <- gapminder_china_india |>
   filter(year == max(year)) |>
-  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = gdpPercap)) +
-  geom_bar(stat = "identity", show.legend = FALSE) +
-  colorspace::scale_fill_continuous_sequential(
-    palette = "Blues 2"
-  )
+  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap)) +
+  geom_bar(stat = "identity", show.legend = FALSE, fill = "blue4")
 
 # Put them side by side and adjust the theme
 fill_country + fill_amount &
@@ -1502,7 +1329,6 @@ fill_country + fill_amount &
   ) &
   scale_y_continuous(expand = c(0.01, 0.01)) &
   theme(
-    panel.grid.major.x = element_line(color = "grey80", linewidth = 0.5),
     panel.grid.major.y = element_blank(),
     axis.title.y = element_blank()
   )
@@ -1510,13 +1336,13 @@ fill_country + fill_amount &
 
 ## Declutter your figure
 
-- Try to maximize the data/ink ratio
+- Try to maximize the **data/ink ratio**
 - This is to an extent a matter of taste
 - Remove redundant figure elements
-  - excessive grid lines
-  - boxes
-  - duplicate text
-  - ...
+  - Excessive grid lines
+  - Boxes
+  - Duplicate text ...
+- But keep elements important for reading
 
 ## Declutter your graphs
 
@@ -1556,66 +1382,119 @@ clean_ts <- ggplot(economics, aes(x = date, y = unemploy)) +
     axis.line.x = element_line(),
     axis.ticks.x = element_line(),
     panel.grid.minor = element_blank(),
-    panel.grid.major.x = element_blank()
+    panel.grid.major.x = element_blank(),
+    # transparent background
+    plot.background = element_rect(fill = "transparent", color = NA),
+    panel.background = element_rect(fill = "transparent", color = NA)
   )
+
+cluttered_ts + clean_ts
 ```
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r, dev='svg', dev.args=list(bg="transparent")}
-#| label: print-cluttered
-#| cache: false
-
-print(cluttered_ts)
-```
-
-:::
-
-:::{.column width="50%"}
-
-```{r, dev='svg', dev.args=list(bg="transparent")}
-#| label: print-clean
-#| cache: false
-
-print(clean_ts)
-```
-
-:::
-
-:::
 
 # 👣 7: Make it accessible
 
-## Font size
+## Element size
 
-- Make sure your font size is big enough
+- Make sure your elements are big enough<br>Text size, Linewidth, Point size
 - Depends on the context
+
+```{r, dev='svg', dev.args=list(bg="transparent")}
+#| label: element-size
+#| cache: false
+#| fig-height: 4
+
+lollipop_base <- ggplot(
+  penguin_counts,
+  aes(x = species, y = n, color = species)
+) +
+  scale_color_manual(values = okabe_ito) +
+  labs(
+    title = "Penguins in Antarctica",
+    y = "Count"
+  ) +
+  coord_flip() +
+  scale_y_continuous(expand = c(0.03, 0.03)) +
+  theme_minimal() +
+  theme(
+    axis.line.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_text(hjust = 1),
+    legend.position = "none",
+    axis.line.x = element_line()
+  )
+
+lollipop_small <- lollipop_base +
+  # Add segment lines
+  geom_segment(
+    aes(x = species, xend = species, y = 0, yend = n, color = species),
+    linewidth = 0.5
+  ) +
+  # Add points
+  geom_point(size = 2) +
+  geom_text(
+    aes(label = percentage),
+    size = 2,
+    fontface = "bold",
+    hjust = 1.5,
+    vjust = -1
+  ) +
+  theme(
+    plot.title = element_text(size = 8),
+    axis.title.x = element_text(size = 6)
+  )
+
+
+
+lollipop_big <- lollipop_base +
+  # Add segment lines
+  geom_segment(
+    aes(x = species, xend = species, y = 0, yend = n, color = species),
+    linewidth = 2
+  ) +
+  # Add points
+  geom_point(size = 6) +
+  geom_text(
+    aes(label = percentage),
+    size = 5,
+    fontface = "bold",
+    hjust = 1.5,
+    vjust = -1
+  ) +
+  theme(
+    axis.text = element_text(size = 12),
+    axis.title.x = element_text(size = 14),
+    plot.title = element_text(size = 16)
+  )
+
+# combine
+lollipop_small + lollipop_big &
+  theme(
+    # transparent background
+    plot.background = element_rect(fill = "transparent", color = NA),
+    panel.background = element_rect(fill = "transparent", color = NA)
+  )
+```
 
 ## Contrast
 
 Make sure that the contrast is high enough
 
-![[Blogpost on colors by Lisa Charlotte Muth (Datawrapper)](https://www.datawrapper.de/blog/colors)](images/2025_04_17_data-visualisation/contrast.png)
+![[Blogpost on colors](https://www.datawrapper.de/blog/colors) by Lisa Charlotte Muth (Datawrapper)](images/2025_04_17_data-visualisation/contrast.png)
+
+- Use tools to check contrast, e.g. <br>[https://snook.ca/technical/colour_contrast](https://snook.ca/technical/colour_contrast)
 
 ## Color
 
 Use logical/intuitive colors
 
-![[Blogpost on colors by Lisa Charlotte Muth (Datawrapper)](https://www.datawrapper.de/blog/colors)](images/2025_04_17_data-visualisation/intuitive_colors.png)
-
-## Color
-
-Choose meaningful color palettes.
-
-![Taken from [workshop by Cédric Scherer](https://posit-conf-2023.github.io/dataviz-storytelling/), CC BY 4.0](images/2025_04_17_data-visualisation/color_scales.png)
+![[Blogpost on colors](https://www.datawrapper.de/blog/colors) by Lisa Charlotte Muth (Datawrapper)](images/2025_04_17_data-visualisation/intuitive_colors.png)
 
 ## Color
 
 Choose colorblind friendly palettes (if in doubt: test!).
 
-![The [Viz Palette tool](https://projects.susielu.com/viz-palette) to test for color blindness](images/2025_04_17_data-visualisation/viz_palette.png){width="80%"}
+![Use the [Viz Palette tool](https://projects.susielu.com/viz-palette) to test for color blindness](images/2025_04_17_data-visualisation/viz_palette.png){width="70%"}
 
 ## Add redundancy
 
@@ -1662,13 +1541,17 @@ flipper_bill
 
 ## Summary
 
-1. Consider the context
-2. Be honest about your data
-3. Choose the right chart type
-4. Tell your story
-5. Consider the trip
-6. Less is more
-7. Make it accessible
+1. Consider the **context**
+2. Make your data **transparent**
+3. Choose the **right chart type**
+4. Focus on the **core message**
+5. Consider the **trip**
+6. **Less is more**
+7. Make it **accessible**
+
+. . .
+
+Start analyzing these points in yours and other people's plots.
 
 ## Next lecture
 
@@ -1682,14 +1565,9 @@ flipper_bill
 
 :e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
-## Thank you for your attention :) {background-image="images/2024_02_15_tidyverse/ggplot_masterpiece.png" background-size="contain" background-color="white"}
+## Thank you for your attention :)
 
 Questions?<br>
-
-:::{.aside}
-Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0
-:::
-
 
 
 ## References
