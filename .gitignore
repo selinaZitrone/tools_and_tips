@@ -1,5 +1,6 @@
 #*.html
 slides/*_files/
+sessions/*_files/
 .Rproj.user/
 /.quarto/
 *.pptx
@@ -12,3 +13,6 @@ slides/2023_11_16_efficient_r_cache/
 slides/2023_11_16_efficient_r_files/
 slides/*_cache/
 slides/data/ghg_ems*
+# rendered quarto files
+sessions/02_quarto_files/02_quarto/penguins_paper.docx
+sessions/02_quarto_files/02_quarto/penguins_paper.html
