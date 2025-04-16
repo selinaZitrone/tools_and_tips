@@ -82,21 +82,6 @@ Basic idea: Make data analysis **efficient** and **intuitive**
 - More time for **data interpretation**
 - Tidyverse is **actively developed** and has a **large community**.
 
-. . .
-
-This facilitates
-
-📚 Learning <br>
-
-. . .
-
-🤝 Collaboration <br>
-
-. . .
-
-🔄 Reproducible research <br>
-
-
 ## Today
 
 ![](images/2024_02_15_tidyverse/tidyverse.png){.top-right width="8%"}
@@ -263,36 +248,9 @@ All `read_*` functions return a `tibble`.
 [Data modified from [`lterdatasampler`](https://lter.github.io/lterdatasampler/articles/arc_weather_vignette.html)]{.text-small}
 
 ```{r}
-#| label: prepare-data
-#| include: false
-arc_weather <- lterdatasampler::arc_weather
-# Cut the table to make less computationally demanding
-arc_weather <- arc_weather[1:365, ] |> select(-daily_precip, -mean_windspeed)
-arc_weather <- mutate(arc_weather, station = "Foolik")
-arc_weather_poolik <- arc_weather |> mutate(station = "Poolik")
-# add 1 °C and some random noise to arc_weather polik
-arc_weather_poolik <- arc_weather_poolik |> 
-  mutate(mean_airtemp = mean_airtemp + 3 + rnorm(n = nrow(arc_weather_poolik), mean = 0, sd = 0.5))
-
-arc_weather <- bind_rows(arc_weather, arc_weather_poolik)
-
-arc_weather <- arc_weather |> pivot_wider(names_from = station, values_from = c(mean_airtemp))
-
-names(arc_weather) <- c("Date", "foolik_mean_temp_c", "poolik_mean_temp_c")
-```
-
-```{r}
 #| label: readr-example
-#| eval: false
+#| eval: true
 arc_weather <- read_csv(file = "data/arc_weather.csv")
-arc_weather
-```
-
-. . .
-
-```{r}
-#| label: show-arc-weather
-#| echo: false
 arc_weather
 ```
 
@@ -407,8 +365,8 @@ arc_weather
 This can be solved with `pivot_longer`
 
 ```{r}
-pivot_longer(arc_weather, 
-             cols = c(foolik_mean_temp_c, poolik_mean_temp_c))
+pivot_longer(arc_weather,
+  cols = c(foolik_mean_temp_c, poolik_mean_temp_c))
 ```
 
 ## Example
@@ -568,10 +526,6 @@ summarize(arc_weather,
 
 . . .
 
-:::{.columns}
-
-:::{.column width="50%"}
-
 ```{r}
 # Calculate the mean temperature for each station
 arc_weather_group <- group_by(arc_weather, station)
@@ -580,28 +534,6 @@ summarize(arc_weather_group,
 ```
 
 - `group_by` can be used for any dplyr function to perform the operation by group
-
-:::
-
-:::{.column width="50%"}
-
-:::{.fragment}
-
-
-
-```{r}
-# Alternatively, use `.by` to specify the
-# grouping variable (new feature).
-summarize(arc_weather,
-  overall_mean = mean(mean_temp_c, na.rm = TRUE),
-  .by = station)
-```
-
-:::
-
-:::
-
-:::
 
 ## The pipe `|>`
 
@@ -786,8 +718,8 @@ ggplot(data = arc_weather_may,
 
 ![](images/2024_02_15_tidyverse/ggplot2.png){.top-right width="8%"}
 
-- ggplot offers many more customization options and layers
-- works well with the pipe `|>`
+- Gplot offers many more customization options and layers
+- Works well with the pipe `|>`
 
 . . .
 
@@ -830,13 +762,13 @@ arc_weather |>
     y = mean_temp_c,
     color = station)) +
   geom_point() +
-  geom_smooth(se = FALSE) +
+  geom_smooth() +
   labs(
     title = "Mean temperature in May",
     x = "Date",
     y = "Mean temperature (°C)") +
   scale_color_viridis_d() +
-  theme(legend.position = "bottom")
+  theme_bw(base_size = 16)
 ```
 
 :::
@@ -904,21 +836,12 @@ str(samples)
 
 :::
 
-. . .
-
-This can also be combined with the pipe:
-
-```{r}
-means |>
-  map(rnorm, n = 4, sd = 1) |>
-  str()
-```
-
 ## Different versions of the `map` function
 
 ![](images/2024_02_15_tidyverse/purrr.png){.top-right width="8%"}
 
 These are just some examples, there are [many more options](https://purrr.tidyverse.org/articles/base.html):
+<br><br>
 
 ```{r}
 #| echo: false
@@ -970,10 +893,10 @@ Read in and analyse multiple files with the same structure at once.
 ```{r}
 # Step 3: Apply a linear model to each station file,
 # get the model summary of each model and extract the coefficients
-arc_weather_files |>
-  map(\(x) lm(mean_temp_c ~ date, data = x)) |>
-  map(summary) |>
-  map_dbl("r.squared")
+arc_weather_files |>                             # Take the data
+  map(\(x) lm(mean_temp_c ~ date, data = x)) |>  # Apply the same model to every tibbel in the list
+  map(summary) |>                                # Get the model summary of both models
+  map_dbl("r.squared")                           # Extract the r-squared from the model summaries
 ```
 
 ## Summary
@@ -1010,10 +933,10 @@ This facilitates
 
 Where to get started with the tidyverse?
 
-- Check out the [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/08_tidyverse.html#further-links-and-resources) for links to documenation, cheatsheets and books
-- Use the cheatsheets as reference while working
+- Check out the [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/08_tidyverse.html#further-links-and-resources) for links to documenation, cheatsheets and book
 
-![Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst](images/2024_02_15_tidyverse/friends_with_tidy_data.jpg){width="70%" fig-alt="Digital illustration of two cute fuzzy monsters sitting on a park bench with a smiling data table between them, all eating ice cream together. In text above the illustration are the hand drawn words \"make friends with tidy data.\""}
+![[Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst]{.text-small}](images/2024_02_15_tidyverse/friends_with_tidy_data.jpg){width="60%" fig-alt="Digital illustration of two cute fuzzy monsters sitting on a park bench with a smiling data table between them, all eating ice cream together. In text above the illustration are the hand drawn words \"make friends with tidy data.\""}
+
 
 ## Next lecture
 
