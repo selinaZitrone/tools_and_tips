@@ -16,3 +16,4 @@ slides/data/ghg_ems*
 # rendered quarto files
 sessions/02_quarto_files/02_quarto/penguins_paper.docx
 sessions/02_quarto_files/02_quarto/penguins_paper.html
+_extensions/*
