@@ -13,9 +13,51 @@ Figures are essential for communicating research findings and data story telling
 
 [Slides in full screen](../slides/2025_04_17_data-visualisation.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_04_17_data-visualisation.pdf" download>Download PDF slides</a>
 
-## Further Links and resources
+## Resources and links
 
+  
+### (Free) Books and Papers 
 
+- [Data Visualization: A Practical Introduction (Healy)](https://socviz.co/lookatdata.html): Very nice theoretical introduction with practical examples using R and `ggplot2`
+- [Fundamentals of Data Visualization (Wilke)](https://clauswilke.com/dataviz/): No coding, but with lots of examples and practical tips on how to make scientific figures more accurate, beautiful and effective
+- [ggplot2: Elegant Graphics for Data Analysis (Wickham et al.)](https://ggplot2-book.org/): Specific to learn the figure with `ggplot2`
+- [The Truthful Art (Alberto Cairo)](https://www.pearson.com/en-us/subject-catalog/p/the-truthful-art-data-charts-and-maps-for-communication/P200000008947/9780133440539) *(New Riders, 2016)*: Really nice general intro to data visualization. With some googling effort, you can find the pdf for free.
+- [Beyond Bars & Lines (PLOS Biology)](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1002128)  
+
+### Tools
+
+- [Snook.ca Color‑Contrast Tool](https://snook.ca/technical/colour_contrast/colour.html): Test the contrast of your colors
+- [Viz Palette tool](https://projects.susielu.com/viz-palette) to check your color palette for accessibility
+
+  
+### Inspiration for plot types & Galleries
+
+- [Data‑to‑Viz](https://www.data-to-viz.com/): Really cool tool with a decision tree depending on your data and question
+- [The DataViz Project](https://datavizproject.com/): A collection with 100 different plot types
+- [FT Visual Vocabulary](https://ft-interactive.github.io/visual-vocabulary/): Shows different visualisation options for different questions
+- [Datawrapper Examples](https://www.datawrapper.de/): Cool for inspiration
+  
+### R‑Specific Resources
+
+- [Coloring in R’s Blind Spot](https://journal.r-project.org/articles/RJ-2023-071/): Colorblind palettes for R
+- [Labeling Bar‑Graphs in ggplot2](https://www.cedricscherer.com/2021/07/05/a-quick-how-to-on-labelling-bar-graphs-in-ggplot2/)
+- [Blogpost on raincloud plots](https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/) and how to make them with `ggplot2`
+- [“The Evolution of a ggplot”](https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/): A nice tutorial on an alternative to boxplots with `ggplot2`
+
+  
+#### Notable R Packages from the `ggplot2` universe
+
+- [colorspace](https://colorspace.r-forge.r-project.org/articles/colorspace.html): Provides many colorblind friendly colors you can easily apply to ggplots
+- [ggdist](https://mjskay.github.io/ggdist): Visualize distributions in R  
+- [ggridges](https://wilkelab.org/ggridges): Create ridgeline plots with ggplot2  
+- [ggforce](https://ggforce.data-imaginist.com): For plot annotations and shapes
+- [ggtext](https://wilkelab.org/ggtext): Add rich text annotations to ggplots
+- [patchwork](https://patchwork.data-imaginist.com): Combine multiple ggplots into one figure
+
+### Other Blog Posts
+
+- [Datawrapper Blogpost on Color Selection](https://www.datawrapper.de/blog/colors)  
+- [Storytelling with Data: Colors & Emotions](https://www.storytellingwithdata.com/blog/2021/6/8/colors-and-emotions-in-data-visualization)  
 
 
 
