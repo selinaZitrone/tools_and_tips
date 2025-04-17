@@ -20,8 +20,8 @@ website:
   description: "A lecture series by Selina Baldauf"
 
   page-footer:
-    left: "The footer on the left"
-    right: "The footer on the right"
+    left: "Copyright © 2023 [Selina Baldauf](mailto:selina.baldauf@fu-berlin.de), CC BY 4.0"
+    right: "Website built with [Quarto](https://quarto.org/)"
 
   navbar:
     pinned: true
@@ -44,6 +44,8 @@ website:
             href: sessions/07_ai_tools.qmd
           - text: 08 - Tidyverse introduction
             href: sessions/08_tidyverse.qmd
+          - text: 09 - Data visualization
+            href: sessions/09_data_visualisation.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 
