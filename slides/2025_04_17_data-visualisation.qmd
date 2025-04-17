@@ -54,44 +54,38 @@ okabe_ito <- okabe_ito <- c(
   "#CC79A7"
 )
 
-theme_slideshow <- function(
-    base_size = 11,
-    base_family = "sans",
-    text_color = "#333333") {
+theme_slideshow <- function() {
   # Start with theme_minimal as a base
-  theme_minimal(base_size = base_size, base_family = base_family) %+replace%
+  theme_minimal() %+replace%
     theme(
       # Text elements
-      text = element_text(color = text_color, family = base_family),
       plot.title = element_text(
-        size = base_size * 1.5,
-        face = "bold",
-        hjust = 0.5,
-        margin = margin(b = 15)
-      ),
-      plot.subtitle = element_text(
-        size = base_size * 1.1,
-        hjust = 0.5,
+        size = 15,
+        hjust = 0,
         margin = margin(b = 10)
       ),
+      plot.subtitle = element_text(
+        size = 12,
+      ),
       plot.caption = element_text(
-        size = base_size * 0.8,
+        size = 10,
         hjust = 1,
         margin = margin(t = 10)
       ),
 
       # Axis elements
-      axis.title = element_text(size = base_size * 1.1, face = "bold"),
-      axis.text = element_text(size = base_size),
+      axis.title = element_text(size = 12),
+      axis.text = element_text(size = 10),
 
       # Legend elements
-      legend.title = element_text(size = base_size, face = "bold"),
-      legend.text = element_text(size = base_size * 0.9),
+      legend.title = element_text(size = 10),
+      legend.text = element_text(size = 10),
       legend.key.size = unit(1, "cm"),
 
       # Panel elements
       panel.grid.minor = element_blank(),
-      strip.text = element_text(size = base_size * 1.3)
+      panel.grid.major = element_line(color = "grey90"),
+      strip.text = element_text(size = 12)
     )
 }
 ```
@@ -116,26 +110,6 @@ theme_slideshow <- function(
 
 ![Annual changes in Arctic sea ice cover by [Derek Watkins (New York Times)](https://www.nytimes.com/interactive/2015/03/24/science/earth/arctic-ice-low-winter-maximum.html?_r=0)](images/2025_04_17_data-visualisation/nyt_ice_cover.png){fig-alt="A line graph of the annual changes in Arctic sea ice cover by Derek Watkins (New York Times). Every line represents one year and it becomes clear how big changes from 2010 to 2014 were."}
 
-## Before we get started
-
-Main books that I used (free):
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-![[Healy, K. (2018). Data Visualization: A Practical Introduction. Princeton University Press.](https://socviz.co/index.html#preface)](images/2025_04_17_data-visualisation/healy_book.png){width="50%" fig-alt="Book cover of Healy, K. (2018). Data Visualization: A Practical Introduction. Princeton University Press."}
-
-:::
-
-:::{.column width="50%"}
-
-![[Wilke, C. O. (2019). Fundamentals of Data Visualization. O'Reilly Media.](https://clauswilke.com/dataviz/)](images/2025_04_17_data-visualisation/wilke_book.png){width="50%" fig-alt="Book cover of Wilke, C. O. (2019). Fundamentals of Data Visualization. O'Reilly Media."}
-
-:::
-
-:::
-
 ## What makes a good figure?
 
 
@@ -151,20 +125,16 @@ Main books that I used (free):
 
 ## Consider the context
 
-- **Who** is your **audience**?
-  - How familiar are they with the topic?
-- **What** are **common practices** in your field?
-  - Plot types, colors, ...
-- **Where** do you present your figure?
-  - Different contexts require different designs
-  - How much time do readers spend on a figure?
+- **Who** is your **audience**?<br> Familiarity with the topic
+- **What** are **common practices** in your field?<br>Established plot types, colors, ...
+- **Where** do you present your figure?<br> Different contexts require different designs
 
 ## Contexts in science
 
 | Context |  Things to consider                                                                                                                                            | 
 | ------- |  ---------------------------------------------------------------------------------------------------------------------------------------------------------- |  
-| Paper   |  - Journal requirements<br>- Usually read on PC<br>- Print out in B/W → No zoom <br> - More time → Higher complexity                                                                              |  
-| Poster  |  - More open design choice<br>- Attract people from far<br>- You quickly lose people to other posters <br> - More time → Medium complexity                                                         |  
+| Paper   |  - Journal requirements<br>- Usually read on PC but also print (B/W)<br> - More time → Higher complexity                                                                              |  
+| Poster  |  - More open design choice<br>- Attract people from far<br>- You quickly loose people to other posters <br> - Medium complexity (depending on the event)                                                         |  
 | Talk    |  - You can use animations to guide through<br>- Little time → less complex                                                             |  
 
 # 👣 2: Make your data transparent
@@ -218,7 +188,9 @@ plot_datasaurus_basic <- plot_datasaurus_basic +
   theme(
     axis.title = element_blank(),
     strip.text = element_blank(),
-    panel.grid.major = element_blank()
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(size = 15, margin = margin(b = 10)),
+    plot.caption = element_text(size = 10, hjust = 1, margin = margin(t = 10))
   )
 
 
@@ -240,7 +212,9 @@ plot_datasaurus_stats <- plot_datasaurus_stats +
   theme(
     axis.title = element_blank(),
     strip.text = element_blank(),
-    panel.grid.major = element_blank()
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(size = 15, margin = margin(b = 10)),
+    plot.caption = element_text(size = 10, hjust = 1, margin = margin(t = 10))
   )
 
 # display the plot
@@ -249,7 +223,7 @@ print(plot_datasaurus_stats)
 
 ## Don't hide data behind summaries
 
-Simple bar graphs hide a lot of information about the data.
+Bar graphs hide a lot of information about the data.
 
 ![[https://doi.org/10.1371/journal.pbio.1002128](https://doi.org/10.1371/journal.pbio.1002128)](images/2025_04_17_data-visualisation/beyond_bar_paper.png)
 
@@ -266,7 +240,7 @@ Bar plots only show mean ± SE/SD.
 
 ```{r}
 #| label: generate-barplot-data
-#| cache: false
+#| cache: true
 
 set.seed(42) # for reproducibility
 
@@ -358,12 +332,15 @@ boxplot_groups_points <- ggplot(
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: print-barplot-1
-#| cache: true
+#| cache: false
 
 # add theme
 barplot_errors <- barplot_errors +
   theme_minimal() +
   theme(
+    axis.text.x = element_text(size = 12),
+    panel.grid.major.y = element_line(color = "grey99"),
+    panel.grid.minor.y = element_blank(),
     axis.line.x = element_line(),
     axis.title = element_blank(),
     panel.grid.major.x = element_blank(),
@@ -379,16 +356,17 @@ A box plot is already better (shows more of the distribution)
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: print-boxplot
-#| cache: true
 
 boxplot_groups <- boxplot_groups +
   theme_minimal() +
   theme(
-    panel.grid.major.x = element_blank(),
+    axis.text.x = element_text(size = 12),
+    panel.grid.major.y = element_line(color = "grey99"),
+    panel.grid.minor.y = element_blank(),
     axis.line.x = element_line(),
-    legend.position = "none",
     axis.title = element_blank(),
-    axis.line.y = element_blank()
+    panel.grid.major.x = element_blank(),
+    legend.position = "none"
   )
 
 boxplot_groups
@@ -455,16 +433,19 @@ Add raw data points to increase the information content of the plot
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: print-boxplot-with-points
-#| cache: true
 
 boxplot_groups_points <- boxplot_groups_points +
   theme_minimal() +
   theme(
-    legend.position = "none",
+    axis.text.x = element_text(size = 12),
+    panel.grid.major.y = element_line(color = "grey99"),
+    panel.grid.minor.y = element_blank(),
+    axis.line.x = element_line(),
     axis.title = element_blank(),
-    axis.line.y = element_blank(),
-    axis.line.x = element_line()
+    panel.grid.major.x = element_blank(),
+    legend.position = "none"
   )
+
 
 boxplot_groups_points
 ```
@@ -472,11 +453,10 @@ boxplot_groups_points
 
 ## Alternatives to bar plots
 
-**Raincloud plots** show raw data points, summary statistics, and distribution
+**Raincloud plots** show raw data, summary stats, and distribution
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: print-raincloud-plot
-#| cache: true
 
 # Create raincloud plot
 raincloud_plot <- ggplot(
@@ -515,12 +495,15 @@ raincloud_plot <- ggplot(
 raincloud_plot <- raincloud_plot +
   theme_minimal() +
   theme(
+    axis.text.x = element_text(size = 12),
+    panel.grid.major.y = element_line(color = "grey99"),
+    panel.grid.minor.y = element_blank(),
     axis.line.x = element_line(),
-    panel.grid.major.x = element_blank(),
-    legend.position = "none",
     axis.title = element_blank(),
-    axis.line.y = element_blank()
+    panel.grid.major.x = element_blank(),
+    legend.position = "none"
   )
+
 
 raincloud_plot
 ```
@@ -537,7 +520,6 @@ raincloud_plot
 #| fig-height: 2.2
 #| out-width: "100%"
 #| out-height: "100%"
-#| cache: true
 
 # Create a simple dataset with two groups and their values
 data <- data.frame(
@@ -580,7 +562,7 @@ Here: bar length does not represent **relative data proportions** anymore
 . . .
 
 <div style="font-size:1.5em; text-align: center; margin-bottom: 1em;">  
-  Always start bar plots at 0!  
+  Always start bars at 0!  
 </div>  
 
 
@@ -596,7 +578,6 @@ Other plot types don't have to start at 0.
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: proportional-ink
-#| cache: true
 recent_data <- gapminder |>
   filter(year == max(year)) |>
   group_by(continent) |>
@@ -628,16 +609,20 @@ point_chart <- ggplot(
 # Combine the two plots vertically
 combined_plot <- bar_chart + point_chart + plot_layout(ncol = 2, axis_titles = "collect") +
   plot_annotation(
-    title = "Life Expectancy by Continent (2007)",
     caption = "Data from the `gapminder` R package"
   ) &
   scale_y_continuous(expand = c(0.01, 0.01)) &
-  theme_minimal() +
-    theme(
-      axis.line.x = element_line(),
-      axis.ticks.x = element_line(),
-      axis.title.x = element_blank()
-    ) &
+  theme_minimal() &
+  theme(
+    axis.line.x = element_line(),
+    axis.ticks.x = element_line(),
+    axis.title.x = element_blank(),
+    panel.grid.major.y = element_line(color = "grey99"),
+    panel.grid.minor.y = element_line(color = "grey99"),
+    panel.grid.major.x = element_blank(),
+    axis.text.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12)
+  ) &
   labs(
     y = "Life Expectancy (years)"
   )
@@ -674,12 +659,15 @@ There are so many chart types - and cool tools to explore them
 
 ## Different channels - different accuracy
 
+:::{.nonincremental}
+
 - Combine multiple channels for more accuracy
 - Add numbers to increase accuracy of judgement
 
+:::
+
 ```{r, dev='svg', dev.args=list(bg="transparent")}  
 #| label: compare-lollipot-pie
-#| cache: true
 # Calculate species counts and order the species by count descending
 penguin_counts <- palmerpenguins::penguins |>
   count(species) |>
@@ -720,15 +708,18 @@ lollipop_chart <- ggplot(
     y = "Count"
   ) +
   coord_flip() +
-  scale_y_continuous(expand = c(0.03, 0.03)) +
+  scale_y_continuous(expand = c(0.011, 0)) +
   theme_minimal() +
   theme(
-    axis.line.y = element_blank(),
     panel.grid.major.y = element_blank(),
     axis.title.y = element_blank(),
-    axis.text.y = element_text(hjust = 1),
-    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
-    legend.position = "none"
+    axis.text.y = element_text(hjust = 1, size = 12),
+    axis.title.x = element_text(size = 12),
+    plot.title = element_text(size = 15, face = "bold", hjust = 0.5),
+    legend.position = "none",
+    panel.grid.major.x = element_line(color = "grey99"),
+    panel.grid.minor.x = element_line(color = "grey99"),
+    axis.line.y = element_line()
   )
 
 # Combine the two plots
@@ -752,7 +743,6 @@ Arrange your plot so that it's **easy to extract** the main message
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: arrange-plots
-#| cache: false
 gap_data_asia_europ <- gapminder %>%
   filter(continent %in% c("Europe", "Asia")) %>%
   group_by(year, continent) %>%
@@ -809,7 +799,10 @@ p_grouped + p_faceted +
     legend.position = "bottom",
     # transparent background
     plot.background = element_rect(fill = "transparent", color = NA),
-    panel.background = element_rect(fill = "transparent", color = NA)
+    panel.background = element_rect(fill = "transparent", color = NA),
+    panel.grid.major.y = element_line(color = "grey99"),
+    panel.grid.minor.y = element_line(color = "grey99"),
+    strip.text = element_text(size = 12)
   )
 ```
 
@@ -822,7 +815,6 @@ Different plot types tell different stories
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: life-expectancy-story
-#| cache: false
 # Data for the dumbbell plot needs each year with two measures (one for each continent)
 gap_wide <- gap_data_asia_europ %>%
   pivot_wider(names_from = continent, values_from = mean_life_exp)
@@ -868,7 +860,9 @@ p_dumbbell + p_line + plot_layout(axis_titles = "collect") +
     plot.title = element_text(hjust = 0.5),
     axis.title.x = element_blank(),
     legend.title = element_blank(),
-    panel.grid.minor = element_blank()
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_line(color = "grey99"),
+    axis.line = element_line()
   ) &
   labs(
     y = "Mean Life Expectancy (years)"
@@ -885,7 +879,6 @@ What is the main message here?
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: expectancy-complex
-#| cache: false
 
 gapminder |>
   ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +
@@ -900,28 +893,28 @@ gapminder |>
   ) +
   labs(
     x = "GDP per Captia ($)",
-    y = "Mean Life Expectancy (years)",
+    y = "Life Expectancy (years)",
     size = "Population size",
     color = "Continent"
   ) +
   scale_color_manual(values = okabe_ito) +
   theme_minimal() +
   theme(
-    legend.position = "right"
+    legend.position = "right",
+    panel.grid.major = element_line(color = "grey99"),
+    panel.grid.minor = element_line(color = "grey99"),
+    axis.line = element_line()
   )
 ```
 
 ## Keep it simple
 
-**Don't overcomplicate** your figures and bury your message
-
-- Distributions of life expectancy and GDP relative to world average
+Message: Life expectancy and GDP differences in the world
 
 . . .
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: expectancy-simplified
-#| cache: false
 
 # look only at the data from the last year
 gapminder_last_year <- gapminder |>
@@ -971,7 +964,7 @@ gdp <- gapminder |>
   scale_x_log10(labels = scales::label_comma()) +
   scale_fill_manual(values = okabe_ito) +
   labs(
-    x = "GDP per Capita (log scale)"
+    x = "GDP per Capita ($)"
   )
 
 life + gdp + plot_layout(axis_titles = "collect") &
@@ -981,7 +974,11 @@ life + gdp + plot_layout(axis_titles = "collect") &
   theme(
     axis.title.y = element_blank(),
     legend.position = "none",
-    panel.grid.major.y = element_blank()
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(color = "grey99"),
+    panel.grid.minor.x = element_blank(),
+    axis.text.y = element_text(size = 12),
+    axis.line.x = element_line()
   )
 ```
 
@@ -990,13 +987,13 @@ life + gdp + plot_layout(axis_titles = "collect") &
 ## Reading a figure is a timely experience
 
 - We look at elements **step by step** before we come back to understand the **figure as a whole**
-- Try to put yourself in the readers shoes
+- Put yourself in the readers shoes
   - What will they look at first, second, etc.?
   - **How many steps** does it take to understand all the elements?
   
 . . .
 
-**Goal**: Make the trip as short as possible
+**Goal**: Make the trip (for the eyes and the brain) as short as possible
 
 ## Consider the trip
 
@@ -1004,7 +1001,6 @@ A story about the GDP China and India
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: no-highlight-countries
-#| cache: false
 # Highlight the development of China and India in comparison to other countries
 gapminder_china_india <- gapminder |>
   filter(continent == "Asia") |>
@@ -1047,7 +1043,10 @@ barplot_no_highlights <- gapminder_china_india |>
   theme(
     axis.title.x = element_blank(),
     axis.text.x = ggtext::element_markdown(angle = 90, hjust = 1, vjust = 0.5),
-    panel.grid.major.x = element_blank()
+    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_line(color = "grey99"),
+    panel.grid.minor.y = element_line(color = "grey99"),
+    plot.title = element_text(size = 15)
   )
 barplot_no_highlights
 ```
@@ -1059,7 +1058,6 @@ Reading labels upside down is a neck rotation - very annoying
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: rotate-barplot
-#| cache: false
 
 barplot_no_highlights_rotate <- gapminder_china_india |>
   filter(year == max(year)) |>
@@ -1086,7 +1084,10 @@ barplot_no_highlights_rotate <- gapminder_china_india |>
     axis.title.y = element_blank(),
     panel.grid.major.y = element_blank(),
     axis.line.x = element_line(),
-    axis.ticks.x = element_line()
+    axis.ticks.x = element_line(),
+    panel.grid.major.x = element_line(color = "grey99"),
+    panel.grid.minor.x = element_line(color = "grey99"),
+    plot.title = element_text(size = 15)
   )
 
 barplot_no_highlights_rotate
@@ -1109,13 +1110,12 @@ Highlight focus contries, de-emphasize all others
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: highlight-countries
-#| cache: false
 
 barplot_highlights_1 <- gapminder_china_india |>
   filter(year == max(year)) |>
   ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = highlight)) +
   geom_bar(stat = "identity", show.legend = FALSE) +
-  scale_fill_manual(values = c("China" = okabe_ito[1], "India" = okabe_ito[1], "Rest of Asia" = "grey70")) +
+  scale_fill_manual(values = c("China" = okabe_ito[1], "India" = okabe_ito[1], "Rest of Asia" = "grey60")) +
   theme_minimal() +
   labs(
     y = "GDP per Capita ($)",
@@ -1136,7 +1136,10 @@ barplot_highlights_1 <- gapminder_china_india |>
     axis.title.y = element_blank(),
     panel.grid.major.y = element_blank(),
     axis.line.x = element_line(),
-    axis.ticks.x = element_line()
+    axis.ticks.x = element_line(),
+    panel.grid.major.x = element_line(color = "grey99"),
+    panel.grid.minor.x = element_line(color = "grey99"),
+    plot.title = element_text(size = 15)
   )
 
 barplot_highlights_1
@@ -1148,13 +1151,12 @@ Highlight focus contries, de-emphasize all others
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: highlight-countries-2
-#| cache: false
 
 barplot_highlights_2 <- gapminder_china_india |>
   filter(year == max(year)) |>
   ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = highlight)) +
   geom_bar(stat = "identity", show.legend = FALSE) +
-  scale_fill_manual(values = c("China" = okabe_ito[1], "India" = okabe_ito[2], "Rest of Asia" = "grey70")) +
+  scale_fill_manual(values = c("China" = okabe_ito[1], "India" = okabe_ito[2], "Rest of Asia" = "grey60")) +
   theme_minimal() +
   labs(
     title = sprintf(
@@ -1179,7 +1181,9 @@ barplot_highlights_2 <- gapminder_china_india |>
     panel.grid.major.y = element_blank(),
     axis.line.x = element_line(),
     axis.ticks.x = element_line(),
-    plot.title = ggtext::element_markdown()
+    plot.title = ggtext::element_markdown(size = 15),
+    panel.grid.major.x = element_line(color = "grey99"),
+    panel.grid.minor.x = element_line(color = "grey99")
   )
 
 barplot_highlights_2
@@ -1191,7 +1195,6 @@ Order categories consciously not automatically.
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: order-categories
-#| cache: true
 order_gdp <- gapminder_china_india |>
   filter(year == max(year)) |>
   ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap)) +
@@ -1217,7 +1220,10 @@ order_gdp + order_alphabetically &
   scale_y_continuous(expand = c(0.01, 0.01)) &
   theme(
     panel.grid.major.y = element_blank(),
-    axis.title.y = element_blank()
+    axis.title.y = element_blank(),
+    panel.grid.major.x = element_line(color = "grey99"),
+    panel.grid.minor.x = element_line(color = "grey99"),
+    axis.line.x = element_line()
   )
 ```
 
@@ -1227,7 +1233,6 @@ Order categories consciously not automatically.
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: order-legend
-#| cache: true
 top_growth <- gapminder |>
   group_by(country) |>
   summarize(gdp_growth = last(gdpPercap) / first(gdpPercap)) |>
@@ -1272,8 +1277,8 @@ order_legend <- gapminder |>
     filter(highlight == "Other"), color = "grey70", alpha = 0.2) +
   geom_line(aes(color = highlight), size = 1) +
   scale_color_manual(values = top_5_colors) +
-  scale_y_continuous(labels = scales::label_comma()) +
-  scale_x_continuous(expand = c(0.01, 0.01)) +
+  scale_y_continuous(labels = scales::label_comma(), expand = c(0.01, 0)) +
+  scale_x_continuous(expand = c(0, 0)) +
   theme_minimal() +
   labs(
     title = "Top 5 Economic Growth Stories",
@@ -1282,7 +1287,9 @@ order_legend <- gapminder |>
   theme(
     legend.title = element_blank(),
     panel.grid.minor = element_blank(),
-    axis.title.x = element_blank()
+    axis.title.x = element_blank(),
+    panel.grid.major = element_line(color = "grey99"),
+    axis.line = element_line()
   )
 print(order_legend)
 ```
@@ -1307,7 +1314,6 @@ Use differences to **communicate not to decorate**
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: differences-to-communicate
-#| cache: false
 
 fill_country <- gapminder_china_india |>
   filter(year == max(year)) |>
@@ -1330,7 +1336,10 @@ fill_country + fill_amount &
   scale_y_continuous(expand = c(0.01, 0.01)) &
   theme(
     panel.grid.major.y = element_blank(),
-    axis.title.y = element_blank()
+    axis.title.y = element_blank(),
+    panel.grid.major.x = element_line(color = "grey99"),
+    panel.grid.minor.x = element_line(color = "grey99"),
+    axis.line.x = element_line()
   )
 ```
 
@@ -1338,17 +1347,13 @@ fill_country + fill_amount &
 
 - Try to maximize the **data/ink ratio**
 - This is to an extent a matter of taste
-- Remove redundant figure elements
-  - Excessive grid lines
-  - Boxes
-  - Duplicate text ...
+- Remove redundant figure elements<br>Excessive grid lines, boxes, duplicate text ...
 - But keep elements important for reading
 
 ## Declutter your graphs
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: declutter
-#| cache: false
 
 # Cluttered plot with default theme and extra annotations
 cluttered_ts <- ggplot(economics, aes(x = date, y = unemploy)) +
@@ -1400,7 +1405,6 @@ cluttered_ts + clean_ts
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: element-size
-#| cache: false
 #| fig-height: 4
 
 lollipop_base <- ggplot(
@@ -1472,7 +1476,9 @@ lollipop_small + lollipop_big &
   theme(
     # transparent background
     plot.background = element_rect(fill = "transparent", color = NA),
-    panel.background = element_rect(fill = "transparent", color = NA)
+    panel.background = element_rect(fill = "transparent", color = NA),
+    panel.grid.major.x = element_line(color = "grey99"),
+    panel.grid.minor.x = element_line(color = "grey99"),
   )
 ```
 
@@ -1533,7 +1539,9 @@ flipper_bill <- ggplot(
     legend.position = c(0.85, 0.15),
     plot.title.position = "plot",
     plot.caption = element_text(hjust = 0, face = "italic"),
-    plot.caption.position = "plot"
+    plot.caption.position = "plot",
+    panel.grid.major = element_line(color = "grey99"),
+    panel.grid.minor = element_line(color = "grey99")
   )
 
 flipper_bill
@@ -1569,10 +1577,20 @@ Start analyzing these points in yours and other people's plots.
 
 Questions?<br>
 
-
 ## References
 
-:::{.nonincremental}
+:::{.columns}
 
+:::{.column width="50%"}
+
+![[Healy, K. (2018). Data Visualization: A Practical Introduction. Princeton University Press.](https://socviz.co/index.html#preface)](images/2025_04_17_data-visualisation/healy_book.png){width="50%" fig-alt="Book cover of Healy, K. (2018). Data Visualization: A Practical Introduction. Princeton University Press."}
+
+:::
+
+:::{.column width="50%"}
+
+![[Wilke, C. O. (2019). Fundamentals of Data Visualization. O'Reilly Media.](https://clauswilke.com/dataviz/)](images/2025_04_17_data-visualisation/wilke_book.png){width="50%" fig-alt="Book cover of Wilke, C. O. (2019). Fundamentals of Data Visualization. O'Reilly Media."}
+
+:::
 
 :::
