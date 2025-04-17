@@ -27,6 +27,7 @@ On this website, you can find all slides and additional resources for lectures:
 - 2023-11-16: [Efficient R](sessions/06_efficient_r.html)
 - 2024-01-18: [AI tools in programming](sessions/07_ai_tools.html)
 - 2024-02-15: [Introduction to the tidyverse](sessions/08_tidyverse.html)
+- 2025-04-17: [Clear figures, stronger stories](sessions/09_data_visualisation.html)
 
 I try to regularly upload recordings of the lectures on Youtube. The videos are
 linked on the respective topic pages. You can also find the entire [playlist on Youtube](https://youtube.com/playlist?list=PLK1lYQFwxAYeh5pAmCcrlUHCEROQiLI9f&si=mOcqXP5AtB7owg-9)
