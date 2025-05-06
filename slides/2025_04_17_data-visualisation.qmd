@@ -262,7 +262,10 @@ catB <- data.frame(
 n_C <- 50
 catC <- data.frame(
   category = "Group C",
-  value = c(rnorm(n_C / 2, mean = 40, sd = 4), rnorm(n_C / 2, mean = 60, sd = 4))
+  value = c(
+    rnorm(n_C / 2, mean = 40, sd = 4),
+    rnorm(n_C / 2, mean = 60, sd = 4)
+  )
 )
 
 # Category D: Few data points
@@ -274,7 +277,10 @@ catD <- data.frame(
 
 # Combine all data
 data_all <- bind_rows(catA, catB, catC, catD)
-data_all$category <- factor(data_all$category, levels = c("Group A", "Group B", "Group C", "Group D"))
+data_all$category <- factor(
+  data_all$category,
+  levels = c("Group A", "Group B", "Group C", "Group D")
+)
 
 # Create the basic bar plot
 # First create summary data
@@ -286,7 +292,10 @@ summary_stats <- data_all %>%
   )
 
 # make bar plot
-barplot_errors <- ggplot(summary_stats, aes(x = category, y = mean_val, fill = category)) +
+barplot_errors <- ggplot(
+  summary_stats,
+  aes(x = category, y = mean_val, fill = category)
+) +
   geom_errorbar(aes(ymin = mean_val - se, ymax = mean_val + se), width = 0.2) +
   geom_col(width = 0.6) +
   scale_fill_brewer(palette = "Set2")
@@ -396,21 +405,44 @@ outlier_lower <- stats[2] - 1.5 * iqr
 boxplot_anatomy <- ggplot(data, aes(x = group, y = value)) +
   geom_boxplot(width = 0.3, outlier.size = 3, size = 1) +
   # Add annotation lines and text
-  annotate("text", x = 1.4, y = stats[6], label = "Maximum (excluding outliers)", hjust = 0) +
-  annotate("text", x = 1.4, y = stats[5], label = "75th percentile (Q3)", hjust = 0) +
+  annotate(
+    "text",
+    x = 1.4,
+    y = stats[6],
+    label = "Maximum (excluding outliers)",
+    hjust = 0
+  ) +
+  annotate(
+    "text",
+    x = 1.4,
+    y = stats[5],
+    label = "75th percentile (Q3)",
+    hjust = 0
+  ) +
   annotate("text", x = 1.4, y = stats[3], label = "Median", hjust = 0) +
-  annotate("text", x = 1.4, y = stats[2], label = "25th percentile (Q1)", hjust = 0) +
+  annotate(
+    "text",
+    x = 1.4,
+    y = stats[2],
+    label = "25th percentile (Q1)",
+    hjust = 0
+  ) +
   annotate("text", x = 1.4, y = stats[1], label = "Outlier", hjust = 0) +
   # Add lines pointing to each component
-  annotate("segment",
-    x = 1.3, xend = 1.2,
+  annotate(
+    "segment",
+    x = 1.3,
+    xend = 1.2,
     y = c(stats[1], stats[2], stats[3], stats[5], stats[6]),
     yend = c(stats[1], stats[2], stats[3], stats[5], stats[6])
   ) +
   # Add IQR explanation
-  annotate("text",
-    x = 0.5, y = mean(c(stats[2], stats[5])),
-    label = "IQR\n(Inter Quartile\nRange)", hjust = 0.5
+  annotate(
+    "text",
+    x = 0.5,
+    y = mean(c(stats[2], stats[5])),
+    label = "IQR\n(Inter Quartile\nRange)",
+    hjust = 0.5
   ) +
   # Customize theme
   theme_void() +
@@ -419,7 +451,8 @@ boxplot_anatomy <- ggplot(data, aes(x = group, y = value)) +
     panel.grid.major.x = element_blank()
   ) +
   coord_cartesian(xlim = c(0.7, 2.5)) # Adjust plot width to fit annotations
-boxplot_groups + boxplot_anatomy &
+boxplot_groups +
+  boxplot_anatomy &
   theme(
     # ttransparent background
     panel.background = element_rect(fill = "transparent", color = NA),
@@ -469,7 +502,8 @@ raincloud_plot <- ggplot(
   # Add boxplot (narrow width) nudged to left
   geom_boxplot(
     aes(color = category),
-    width = 0.1, outlier.shape = NA,
+    width = 0.1,
+    outlier.shape = NA,
     fill = "transparent"
   ) +
   # Add half-eye (density layer) from ggdist
@@ -532,7 +566,10 @@ create_bar_plot <- function(data, y_min) {
   ggplot(data, aes(x = group, y = value, fill = group)) +
     geom_bar(stat = "identity", width = 0.6) +
     scale_fill_manual(values = c("steelblue", "darkred")) +
-    scale_y_continuous(breaks = c(0, 25, 50, 75, 100), labels = scales::label_percent(scale = 1)) +
+    scale_y_continuous(
+      breaks = c(0, 25, 50, 75, 100),
+      labels = scales::label_percent(scale = 1)
+    ) +
     coord_cartesian(ylim = c(y_min, 100), expand = FALSE)
 }
 
@@ -543,7 +580,9 @@ plot1 <- create_bar_plot(data, 0)
 plot4 <- create_bar_plot(data, 75)
 
 # Use patchwork to arrange the plots in multiple panels
-plot1 + plot4 + plot_layout(nrow = 1, axis_titles = "collect") &
+plot1 +
+  plot4 +
+  plot_layout(nrow = 1, axis_titles = "collect") &
   theme_minimal() +
     theme(
       panel.packground = element_rect(fill = "grey70"),
@@ -607,7 +646,9 @@ point_chart <- ggplot(
   ) +
   labs(title = "Focus on the absolute differences")
 # Combine the two plots vertically
-combined_plot <- bar_chart + point_chart + plot_layout(ncol = 2, axis_titles = "collect") +
+combined_plot <- bar_chart +
+  point_chart +
+  plot_layout(ncol = 2, axis_titles = "collect") +
   plot_annotation(
     caption = "Data from the `gapminder` R package"
   ) &
@@ -786,7 +827,8 @@ p_faceted <- ggplot(
   )
 
 
-p_grouped + p_faceted +
+p_grouped +
+  p_faceted +
   plot_layout(guides = "collect", axis_titles = "collect", ncol = 2) &
   scale_fill_manual(values = okabe_ito) &
   scale_y_continuous(expand = c(0.01, 0.05)) &
@@ -850,7 +892,9 @@ p_line <- ggplot(
   )
 
 # Display the plots one after the other
-p_dumbbell + p_line + plot_layout(axis_titles = "collect") +
+p_dumbbell +
+  p_line +
+  plot_layout(axis_titles = "collect") +
   plot_annotation(
     caption = "Data from the `gapminder` package"
   ) &
@@ -950,7 +994,12 @@ life <- gapminder |>
 
 # gdp
 gdp <- gapminder |>
-  ggplot(aes(x = gdpPercap, y = continent, fill = continent, color = continent)) +
+  ggplot(aes(
+    x = gdpPercap,
+    y = continent,
+    fill = continent,
+    color = continent
+  )) +
   ggridges::geom_density_ridges(alpha = 0.7, linewidth = 1) +
   geom_vline(xintercept = mean_gdpPercap) +
   annotate(
@@ -958,7 +1007,10 @@ gdp <- gapminder |>
     x = mean_gdpPercap + 1,
     y = 6.5,
     hjust = 1.1,
-    label = paste(c("Mean: ", format(round(mean_gdpPercap, 0), big.mark = ","), "$"), collapse = ""),
+    label = paste(
+      c("Mean: ", format(round(mean_gdpPercap, 0), big.mark = ","), "$"),
+      collapse = ""
+    ),
     size = 4
   ) +
   scale_x_log10(labels = scales::label_comma()) +
@@ -967,7 +1019,9 @@ gdp <- gapminder |>
     x = "GDP per Capita ($)"
   )
 
-life + gdp + plot_layout(axis_titles = "collect") &
+life +
+  gdp +
+  plot_layout(axis_titles = "collect") &
   scale_fill_manual(values = okabe_ito) &
   scale_color_manual(values = okabe_ito) &
   theme_minimal() &
@@ -1004,14 +1058,20 @@ A story about the GDP China and India
 # Highlight the development of China and India in comparison to other countries
 gapminder_china_india <- gapminder |>
   filter(continent == "Asia") |>
-  mutate(highlight = case_when(
-    country %in% "China" ~ "China",
-    country %in% "India" ~ "India",
-    .default = "Rest of Asia"
-  ))
+  mutate(
+    highlight = case_when(
+      country %in% "China" ~ "China",
+      country %in% "India" ~ "India",
+      .default = "Rest of Asia"
+    )
+  )
 
 # define highlight colors
-highlight_colors <- c("China" = okabe_ito[1], "India" = okabe_ito[2], "Rest of Asia" = "grey70")
+highlight_colors <- c(
+  "China" = okabe_ito[1],
+  "India" = okabe_ito[2],
+  "Rest of Asia" = "grey70"
+)
 
 # calculate average gdp
 avg_gdp <- gapminder_china_india |>
@@ -1034,7 +1094,10 @@ barplot_no_highlights <- gapminder_china_india |>
     "text",
     x = 2.5,
     y = avg_gdp + 2000,
-    label = paste(c("Mean: ", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
+    label = paste(
+      c("Mean: ", format(avg_gdp, big.mark = ","), "$"),
+      collapse = ""
+    ),
     size = 4
   ) +
   geom_hline(yintercept = avg_gdp) +
@@ -1073,7 +1136,10 @@ barplot_no_highlights_rotate <- gapminder_china_india |>
     "text",
     x = 2,
     y = avg_gdp + 3200,
-    label = paste(c("Mean:", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
+    label = paste(
+      c("Mean:", format(avg_gdp, big.mark = ","), "$"),
+      collapse = ""
+    ),
     size = 4
   ) +
   geom_hline(yintercept = avg_gdp) +
@@ -1113,9 +1179,19 @@ Highlight focus contries, de-emphasize all others
 
 barplot_highlights_1 <- gapminder_china_india |>
   filter(year == max(year)) |>
-  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = highlight)) +
+  ggplot(aes(
+    x = reorder(country, gdpPercap),
+    y = gdpPercap,
+    fill = highlight
+  )) +
   geom_bar(stat = "identity", show.legend = FALSE) +
-  scale_fill_manual(values = c("China" = okabe_ito[1], "India" = okabe_ito[1], "Rest of Asia" = "grey60")) +
+  scale_fill_manual(
+    values = c(
+      "China" = okabe_ito[1],
+      "India" = okabe_ito[1],
+      "Rest of Asia" = "grey60"
+    )
+  ) +
   theme_minimal() +
   labs(
     y = "GDP per Capita ($)",
@@ -1125,7 +1201,10 @@ barplot_highlights_1 <- gapminder_china_india |>
     "text",
     x = 2,
     y = avg_gdp + 3200,
-    label = paste(c("Mean:", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
+    label = paste(
+      c("Mean:", format(avg_gdp, big.mark = ","), "$"),
+      collapse = ""
+    ),
     size = 4
   ) +
   geom_hline(yintercept = avg_gdp) +
@@ -1154,14 +1233,25 @@ Highlight focus contries, de-emphasize all others
 
 barplot_highlights_2 <- gapminder_china_india |>
   filter(year == max(year)) |>
-  ggplot(aes(x = reorder(country, gdpPercap), y = gdpPercap, fill = highlight)) +
+  ggplot(aes(
+    x = reorder(country, gdpPercap),
+    y = gdpPercap,
+    fill = highlight
+  )) +
   geom_bar(stat = "identity", show.legend = FALSE) +
-  scale_fill_manual(values = c("China" = okabe_ito[1], "India" = okabe_ito[2], "Rest of Asia" = "grey60")) +
+  scale_fill_manual(
+    values = c(
+      "China" = okabe_ito[1],
+      "India" = okabe_ito[2],
+      "Rest of Asia" = "grey60"
+    )
+  ) +
   theme_minimal() +
   labs(
     title = sprintf(
       "<span style='color:%s; font-weight: bold;'>China</span> and <span style='color:%s;font-weight: bold;'>India</span> still below average GDP",
-      highlight_colors["China"], highlight_colors["India"]
+      highlight_colors["China"],
+      highlight_colors["India"]
     ),
     y = "GDP per Capita ($)",
   ) +
@@ -1169,7 +1259,10 @@ barplot_highlights_2 <- gapminder_china_india |>
     "text",
     x = 2,
     y = avg_gdp + 3200,
-    label = paste(c("Mean:", format(avg_gdp, big.mark = ","), "$"), collapse = ""),
+    label = paste(
+      c("Mean:", format(avg_gdp, big.mark = ","), "$"),
+      collapse = ""
+    ),
     size = 4
   ) +
   geom_hline(yintercept = avg_gdp) +
@@ -1210,7 +1303,8 @@ order_alphabetically <- gapminder_china_india |>
   ggtitle("Ordered Alphabetically")
 
 # Put them side by side and adjust the theme
-order_gdp + order_alphabetically &
+order_gdp +
+  order_alphabetically &
   coord_flip() &
   theme_minimal() &
   labs(
@@ -1241,10 +1335,12 @@ top_growth <- gapminder |>
   pull(country)
 
 gapminder <- gapminder |>
-  mutate(highlight = case_when(
-    country %in% top_growth ~ country,
-    .default = "Other"
-  ))
+  mutate(
+    highlight = case_when(
+      country %in% top_growth ~ country,
+      .default = "Other"
+    )
+  )
 
 # define colors
 top_5_colors <- c(
@@ -1260,21 +1356,28 @@ top_5_colors <- c(
 order_legend <- gapminder |>
   filter(highlight != "Other") |>
   mutate(
-    highlight = fct_relevel(highlight, c(
-      "Singapore",
-      "Taiwan",
-      "Korea, Rep.",
-      "Botswana",
-      "Equatorial Guinea"
-    ))
+    highlight = fct_relevel(
+      highlight,
+      c(
+        "Singapore",
+        "Taiwan",
+        "Korea, Rep.",
+        "Botswana",
+        "Equatorial Guinea"
+      )
+    )
   ) |>
   ggplot(aes(
     x = year,
     y = gdpPercap,
     group = country
   )) +
-  geom_line(data = gapminder |>
-    filter(highlight == "Other"), color = "grey70", alpha = 0.2) +
+  geom_line(
+    data = gapminder |>
+      filter(highlight == "Other"),
+    color = "grey70",
+    alpha = 0.2
+  ) +
   geom_line(aes(color = highlight), size = 1) +
   scale_color_manual(values = top_5_colors) +
   scale_y_continuous(labels = scales::label_comma(), expand = c(0.01, 0)) +
@@ -1326,7 +1429,8 @@ fill_amount <- gapminder_china_india |>
   geom_bar(stat = "identity", show.legend = FALSE, fill = "blue4")
 
 # Put them side by side and adjust the theme
-fill_country + fill_amount &
+fill_country +
+  fill_amount &
   coord_flip() &
   theme_minimal() &
   labs(
@@ -1449,7 +1553,6 @@ lollipop_small <- lollipop_base +
   )
 
 
-
 lollipop_big <- lollipop_base +
   # Add segment lines
   geom_segment(
@@ -1472,7 +1575,8 @@ lollipop_big <- lollipop_base +
   )
 
 # combine
-lollipop_small + lollipop_big &
+lollipop_small +
+  lollipop_big &
   theme(
     # transparent background
     plot.background = element_rect(fill = "transparent", color = NA),
