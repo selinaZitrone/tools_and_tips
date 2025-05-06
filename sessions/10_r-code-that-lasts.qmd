@@ -22,6 +22,8 @@ Below you find a summary of all the topics covered in this session. You can use 
   
 ### Books, Papers, Blog Posts
 
+- [What they forgot to teach you about R](https://rstats.wtf/): A free online book by Jenny Bryan et al. with many basic and practical tips on things to know about R besides data analysis.
+
 ### Tools
 
 

@@ -22,78 +22,91 @@ from: markdown+emoji
 ## What is this lecture series?
 
 ### Scientific workflows: Tools and Tips :hammer_and_wrench:
-. . .
+
+::: nonincremental
 
 :date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
 
-- One topic from the world of scientific workflows
-- Topics range from R programming over notetaking, literature management tools and more
-- For topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
-- If you don't want to miss a lecture
-  - Check out the [lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html)
-  - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
-- Slides provided [on Github](https://selinazitrone.github.io/tools_and_tips/)
+-   One topic from the world of scientific workflows
+-   Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+-   If you don't want to miss a lecture
+    -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
 
-## What they forgot to teach you about R
+:::
 
- It's [a book](https://rstats.wtf/) by J. Bryan and J. Hesters
+## In teaching: Focus on data analysis but less on workflow
 
 ![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/18_course_content.png){fig-alt="An exasperated teacher holding a box that says \"Another important thing\" walks towards a box labeled \"course content\", where different unruly topics labeled \"essential\", \"core\" etc. are leaping out and running away." width="80%"}
 
-## Chaotic projects and workflows ...
+## The problem it creates
 
-... can make even small changes frustrating and difficult.
+Messy projects and workflows creep in overtime!
   
 ![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/02_kitchen_chaos.png){fig-alt="A frustrated looking little monster in front of a very disorganized cooking area, with smoke and fire coming from a pot surrounded by a mess of bowls, utensils, and scattered ingredients."}
 
-## Background
+## The problem with messy projects
 
-- **Reproducibility** :arrows_counterclockwise: 
+- **Maintainability** :wrench: 
+  - Can I understand, update and fix my own code?
+ **Reproducibility** :arrows_counterclockwise: 
   - Can someone else reproduce my results?
 - **Reliability** 🏋 
   - Will my code work in the future?
 - **Reusability** :gear: 
   - Can someone else actually use my code?
-  
-. . .
-  
-Today: Talk **best practice** rules to write clean, clear and maintainable code.
 
-In other words: How to clean the kitchen?
+This is super-important because:
+
+- Most analyses are run many times before they are done
+- We want to publish our code for others
+
+## Today
+
+- Basic tips for better workflows and project organization
+- Aim: Increase reproducibility and maintainability
+
+Goal: Clean the kitchen
+
+::: {.callout-tip}
+
+## The reproducibility mindset
+
+While writing code, imagine how someone else (or you from two years in the future) will see the project for the first time. Will they be able to understand and use your project? The goal of writing reproducible code is to ensure that the answer to this question is “yes.” You can also practically test this by sending your project to a colleague and asking them to try to understand and run the code by themselves.
+
+:::
 
 
+# 1. Organizing projects for reproducibility
 
-# First things first
-Project setup and structure
-
-## Use R Studio projects
-
-**Always** make your project an R Studio Project (if possible)!
-
-. . .
+## Have a solid project structure
 
 ::: {.columns}
 
 ::: {.column width="60%"}
 
-- Keep your files together
-- An R Studio Project is just a normal directory with an `*.Rproj` file
-  - double-click this file to open your project in R Studio
-  
+- Self-contained projects
+  - All your code, data, reports, etc. in one place
+- Use project structure the IDE provides
+  - RStudio: RStudio projects
+  - VS Code/Positron: Workspaces
 - Advantages:
-
-  - Easy to navigate in R Studio
-  - Project root is the working directory
-  - Open multiple projects in separate R Studio instances
+  - Easy to navigate
+  - Sharable
+  - Project root as working directory
 :::
 
 ::: {.column width="35%"}
 
-![](images/2023_04_20_what_they_forgot_to_teach_you/04_folder_structures_rstudio.png)
-:::
-:::
-
-## Create an R Studio Project
+```
+exampleProject
+|- data-raw
+|- data-clean
+|- figs
+|- reports   
+|- analysis  
+|   |- 01_clean_data.R
+|   |- 02_PCA.R
+|- functions## Create an R Studio Project
 
 . . .
 
@@ -146,6 +159,16 @@ You can use the `Files` pane in R Studio to interact with your project folder:
 :::
 
 :::
+|   |- read_all_data.R
+|- README
+```
+
+:::
+:::
+
+
+
+
 
 ## Set up your project
 
@@ -180,6 +203,15 @@ Most important setting for reproducibility:
 :::
 :::
 
+## Always add a README
+
+- Document your project structure
+- Tell others how to use your code
+- Add contribution rules
+  - Naming conventions
+  - Coding style
+  - ...
+
 ## Name your files properly
 
 Your collaborators and your future self will love you for this.
@@ -204,6 +236,7 @@ from file names.
 . . .
 
 - No space & special characters
+- Use consistent separators
 
 . . .
 
@@ -216,16 +249,15 @@ from file names.
 
 #### Good examples :heavy_check_mark: 
 
-:page_facing_up: `2023-04-20_temperature_goettingen.csv ` <br>
-:page_facing_up: `2023-04-20_rainfall_goettingen.csv ` <br>
+:page_facing_up: `2023-04-20_temperature-goettingen.csv ` <br>
+:page_facing_up: `2023-04-20_rainfall-goettingen.csv ` <br>
 
 :::
 
 ## 2. Human readable file names
 
-Which file names would you like to read at 4 a.m. in the morning?
+Names shoud be **informative** and reveal the **file content**.
 
-- File names should reveal the file content
 - Use separators to make it readable
 
 . . .
@@ -256,8 +288,8 @@ If you order your files by name, the ordering should make sense:
 
 #### Chronological order
 
-:page_facing_up: `2023-04-20_temperature_goettingen.csv ` <br>
-:page_facing_up: `2023-04-21_temperature_goettingen.csv ` <br>
+:page_facing_up: `2023-04-20_temperature-goettingen.csv ` <br>
+:page_facing_up: `2023-04-21_temperature-goettingen.csv ` <br>
 
 :::: {.fragment}
 
@@ -278,7 +310,7 @@ If you order your files by name, the ordering should make sense:
 - Follow standards for readable and maintainable code
   - For R: [tidyverse style guide](https://style.tidyverse.org/index.html) defines code organization, syntax standards, ...
 
-## Standard code structure
+## Structure your scripts
 
 . . .
 
@@ -287,11 +319,12 @@ If you order your files by name, the ordering should make sense:
 ::: {.column width="50%"}
 ::: {.nonincremental}
 
-1. General comment with purpose of the script, author, ...
-2. `library()` calls on top
-3. Set default variables and global options
-4. Source additional code
-5. Write the actual code, starting with loading all data files
+- Use a standardized header 
+- Initialize at the top
+  - `library()` calls
+  - global options
+  - source additional code
+  - read all data
 :::
 :::
 
@@ -299,29 +332,29 @@ If you order your files by name, the ordering should make sense:
 
 
 ```{r example-structure-1}
-# This code replicates figure 2 from the
-# Baldauf et al. 2022 Journal of Ecology paper.
+# Purpose: Create Figure 2 showing the relationship between body mass and bill length
 # Authors: Selina Baldauf, Jane Doe, Jon Doe
 
+# load all libraries first
 library(tidyverse)
 library(vegan)
 
-# set defaults
+# Set global variables 
 input_file <- "data/results.csv"
 
-# source files
+# Source additional code
 source("R/my_cool_function.R")
 
-# read input
+# read all input data
 input_data <- read_csv(input_file)
 ```
 
 :::
 :::
 
-## Mark sections
+## Structure your scripts
 
-- Use comments to break up your file into sections
+- Use headers to break up your file into sections
 
 . . .
 
@@ -346,92 +379,138 @@ ggplot(input_data, aes(x = x, y = y)) +
 
 ## Modularize your Code
 
+## Split your scripts
+
 - Don't put all your code into one long file (hard to maintain)
-  - Write multiple files that can be called sequentially
-    - E.g. `01_prepare-data.R`, `02_lm-temperature-trend.R`, `03_plot-temperture-trends.R`
-  - Write functions that can be called in other scripts
-    - Use the `source()` function to source these files
-    - Have one main workflow script that calls these functions sequentially
 
-## Use save paths
+Instead, you can
 
-To read and write files, you need to tell R where to find them. 
+- Write multiple files that can be called sequentially, e.g. 
+  - `01_prepare-data.R`: Read raw data and prepare it for analysis
+  - `02_run_models.R`: Run statistical analysis
+  - `03_make_figures.R`: Create manuscript figures
+- Use `source()` to source R scripts in other scripts
+  - E.g. use `source("01_prepare-data.R")` in `02_run_models.R`
+- Use a main workflow script that calls other scripts sequentially
 
-. . .
+Example `make.R`
 
-Common workflow: set **working directory** with `setwd()`, then read files from there. But to this [Jenny Bryan said](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/):
+```r
+source("01_prepare-data.R")
+source("02_run_models.R")
+source("03_make_figures.R")
+```
+## Use functions
 
-. . .
+- DRY principle: Don't Repeat Yourself
+  - If you notice that you copy-paste code - write a function instead
+- Use `source()` to source functions in other scripts
 
-> If the first line of your R script is <br>
-  `setwd("C:\Users\jenny\path\that\only\I\have")` <br>
-  I will come into your office and SET YOUR COMPUTER ON FIRE :fire:.
-  
-. . .
+Basic structure of a function in R
 
-#### Why?
+```r
+my_function <- function(input) {
+  # Do something with input
+  output <- input * 2
+  # retrun output
+  return(output)
+}
 
-This is **100% not reproducible**: Your computer at exactly this time is (probably) the only one in the world that has this working directory
-
-. . .
-
-Avoid `setwd()` if it is possible in any way!
-
-## Avoid `setwd()`
-
-. . .
-
-Use R Studio projects
-
-  - Project root is automatically the working directory
-  - Give your project to a friend at it will work on their machine as well
-
-. . .
-
-Instead of
-
-```{r}
-# my unique path from hell with white space and special characters
-setwd("C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures")
-
-read_csv("data/2023-04-20_temperature_goettingen.csv")
+# Call function
+my_function(5)
 ```
 
-. . .
+## Use functions - Example
 
-You just need
-  
-```{r}
-read_csv("data/2023-04-20_temperature_goettingen.csv")
+Same data preparation for multiple data sets
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+```r
+my_data1 <- readr::read_csv("data/data1.csv")
+	# Clean and summarize data
+my_data1 <- my_data1 |>
+	# remove some columns
+	select(-meta)
+	# calculate summary statistics
+	summarize(
+		height = mean(height),
+		biomass = mean(biomass),
+		.by = c(country, species)
+	)
 ```
 
+:::
+
+::: {.column width="50%"}
+
+```r
+prepare_data <- function(file_path){
+my_data <- readr::read_csv(filepath)
+	# Clean and summarize data
+my_data <- my_data |>
+	# remove some columns
+	select(-meta)
+	# calculate summary statistics
+	summarize(
+		height = mean(height),
+		biomass = mean(biomass),
+		.by = c(country, species)
+	)
+	# Return the cleaned data from the function
+	return(my_data)
+}
+```
+
+:::
+
+:::
+
+## Use functions - Example
+
+Same data preparation for multiple data sets
+
+Use the `prepare_data` function in all scripts where it is needed
+
+```r
+# load the function
+source("functions/prepare_data.R")
+
+# Use the function to read and prepare the data for this script
+my_data1 <- prepare_data("data/data1.csv")
+```
+
+## Use a consistent coding style
+
+Have a naming convention for variables and functions and stick to it
+
 . . .
 
-If you don't use R Studio Projects, have a look at the [`{here}` package](https://here.r-lib.org/) for reproducible paths
-
-## Coding style - Object names
-
-. . .
-
-- Variables and function names should only have lowercase letters, numbers, and `_`
-- Use `snake_case` for longer variable names
-- Try to use concise but meaningful names
+- Concise and descriptive (nouns for variables, verbs for functions)
+- Consistent capitalization: Use `snake_case` for longer variable names
+- Avoid conflicts with existing R functions and packages
 
 . . .
 
 ```{r object-names-snake}
 # Good
 day_one
-day_1
+
+clean_data()
+
 
 # Bad
-DayOne
 dayone
 first_day_of_the_month
 dm1
+
+f1()
+
 ```
 
-## Coding style - Spacing
+## Use a consistent coding style
 
 . . .
 
@@ -671,6 +750,64 @@ install.packages("styler")
 . . .  
 
 Check out the [renv website](https://rstudio.github.io/renv/articles/renv.html) for more information
+
+
+
+## Use save paths
+
+To read and write files, you need to tell R where to find them. 
+
+. . .
+
+Common workflow: set **working directory** with `setwd()`, then read files from there. But to this [Jenny Bryan said](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/):
+
+. . .
+
+> If the first line of your R script is <br>
+  `setwd("C:\Users\jenny\path\that\only\I\have")` <br>
+  I will come into your office and SET YOUR COMPUTER ON FIRE :fire:.
+  
+. . .
+
+#### Why?
+
+This is **100% not reproducible**: Your computer at exactly this time is (probably) the only one in the world that has this working directory
+
+. . .
+
+Avoid `setwd()` if it is possible in any way!
+
+## Avoid `setwd()`
+
+. . .
+
+Use R Studio projects
+
+  - Project root is automatically the working directory
+  - Give your project to a friend at it will work on their machine as well
+
+. . .
+
+Instead of
+
+```{r}
+# my unique path from hell with white space and special characters
+setwd("C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures")
+
+read_csv("data/2023-04-20_temperature_goettingen.csv")
+```
+
+. . .
+
+You just need
+  
+```{r}
+read_csv("data/2023-04-20_temperature_goettingen.csv")
+```
+
+. . .
+
+If you don't use R Studio Projects, have a look at the [`{here}` package](https://here.r-lib.org/) for reproducible paths
 
 ## Manage dependencies with `{renv}`
 
