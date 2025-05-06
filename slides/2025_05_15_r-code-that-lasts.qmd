@@ -46,35 +46,32 @@ Messy projects and workflows creep in overtime!
 
 ## The problem with messy projects
 
-- **Maintainability** :wrench: 
-  - Can I understand, update and fix my own code?
- **Reproducibility** :arrows_counterclockwise: 
-  - Can someone else reproduce my results?
-- **Reliability** 🏋 
-  - Will my code work in the future?
-- **Reusability** :gear: 
-  - Can someone else actually use my code?
+:wrench: **Maintainability**: Can I understand, update and fix my own code?
 
-This is super-important because:
+. . .
 
-- Most analyses are run many times before they are done
-- We want to publish our code for others
+:arrows_counterclockwise: **Reproducibility**: Can someone else reproduce my results?
+
+. . .
+
+🏋 **Reliability**: Will my code work in the future?
+
+. . .
+
+:gear: **Reusability**: Can someone else actually use my code?
 
 ## Today
 
-- Basic tips for better workflows and project organization
-- Aim: Increase reproducibility and maintainability
+Learn how to keep the kitchen clean.
 
-Goal: Clean the kitchen
-
-::: {.callout-tip}
+- Basic tips for reproducible and maintainable data analysis projects
+- This is beneficial because it will
+  - save you from headaches
+  - makes it easy to publish
 
 ## The reproducibility mindset
 
 While writing code, imagine how someone else (or you from two years in the future) will see the project for the first time. Will they be able to understand and use your project? The goal of writing reproducible code is to ensure that the answer to this question is “yes.” You can also practically test this by sending your project to a colleague and asking them to try to understand and run the code by themselves.
-
-:::
-
 
 # 1. Organizing projects for reproducibility
 
@@ -106,7 +103,16 @@ exampleProject
 |- analysis  
 |   |- 01_clean_data.R
 |   |- 02_PCA.R
-|- functions## Create an R Studio Project
+|- functions
+|   |- read_all_data.R
+|- README.md
+```
+
+:::
+
+:::
+
+## Create an R Studio Project
 
 . . .
 
@@ -137,37 +143,6 @@ exampleProject
 
 :::
 :::
-
-## Navigate an R Studio Project
-
-You can use the `Files` pane in R Studio to interact with your project folder:
-
-::: {.columns}
-
-::: {.column width="50%"}
-
-- Navigate and open files
-- Create files and folders
-- Rename and delete
-- ...
-
-:::
-
-::: {.column width="50%"}
-
-![](images/2023_04_20_what_they_forgot_to_teach_you/06_RStudio_project_navigation.png)
-:::
-
-:::
-|   |- read_all_data.R
-|- README
-```
-
-:::
-:::
-
-
-
 
 
 ## Set up your project
@@ -202,15 +177,6 @@ Most important setting for reproducibility:
 :::
 :::
 :::
-
-## Always add a README
-
-- Document your project structure
-- Tell others how to use your code
-- Add contribution rules
-  - Naming conventions
-  - Coding style
-  - ...
 
 ## Name your files properly
 
@@ -302,11 +268,67 @@ If you order your files by name, the ordering should make sense:
 
 # Let's start coding
 
-## Write beautiful code
+## Use save paths
+
+To read and write files, you need to tell R where to find them. 
+
+. . .
+
+Common workflow: set **working directory** with `setwd()`, then read files from there. But to this [Jenny Bryan said](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/):
+
+. . .
+
+> If the first line of your R script is <br>
+  `setwd("C:\Users\jenny\path\that\only\I\have")` <br>
+  I will come into your office and SET YOUR COMPUTER ON FIRE :fire:.
+  
+. . .
+
+#### Why?
+
+This is **100% not reproducible**: Your computer at exactly this time is (probably) the only one in the world that has this working directory
+
+. . .
+
+Avoid `setwd()` if it is possible in any way!
+
+## Avoid `setwd()`
+
+. . .
+
+Use R Studio projects
+
+  - Project root is automatically the working directory
+  - Give your project to a friend at it will work on their machine as well
+
+. . .
+
+Instead of
+
+```{r}
+# my unique path from hell with white space and special characters
+setwd("C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures")
+
+read_csv("data/2023-04-20_temperature_goettingen.csv")
+```
+
+. . .
+
+You just need
+  
+```{r}
+read_csv("data/2023-04-20_temperature_goettingen.csv")
+```
+
+. . .
+
+If you don't use R Studio Projects, have a look at the [`{here}` package](https://here.r-lib.org/) for reproducible paths
+
+## Write well-structured and readable code
 
 ![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/17_beatuiful_code.png)
 
-- Try to write code that others (i.e. future you) can understand
+- Goal: Write code that others (i.e. future you) can understand
 - Follow standards for readable and maintainable code
   - For R: [tidyverse style guide](https://style.tidyverse.org/index.html) defines code organization, syntax standards, ...
 
@@ -324,7 +346,7 @@ If you order your files by name, the ordering should make sense:
   - `library()` calls
   - global options
   - source additional code
-  - read all data
+- read all external data at once
 :::
 :::
 
@@ -332,14 +354,19 @@ If you order your files by name, the ordering should make sense:
 
 
 ```{r example-structure-1}
-# Purpose: Create Figure 2 showing the relationship between body mass and bill length
+# Purpose: Create Figure 2 showing the relationship between
+# body mass and bill length
 # Authors: Selina Baldauf, Jane Doe, Jon Doe
 
 # load all libraries first
 library(tidyverse)
 library(vegan)
 
-# Set global variables 
+# Set global variables
+# Plot themes and colors
+theme_set(theme_minimal())
+custom_colors <- c("cyan4", "darkorange", "purple")
+# File paths
 input_file <- "data/results.csv"
 
 # Source additional code
@@ -366,10 +393,12 @@ input_data <- read_csv(input_file)
 # Plot data ---------------------------------------------------------------
 
 ggplot(input_data, aes(x = x, y = y)) +
-    geom_point()
+  geom_point()
 ```
 
-- Insert a section label with `Ctrl/Cmd + Shift`
+- Insert a section label with
+  - RStudio keyboard shortcut: `Ctrl/Cmd + Shift`
+  - Comment that followed by at least 4 `####` or `----`
 - Navigate sections in the file outline
 
 . . .
@@ -379,32 +408,49 @@ ggplot(input_data, aes(x = x, y = y)) +
 
 ## Modularize your Code
 
-## Split your scripts
+**Split your scripts**: One huge script is hard to maintain
 
-- Don't put all your code into one long file (hard to maintain)
-
-Instead, you can
-
-- Write multiple files that can be called sequentially, e.g. 
+- Write multiple files that are called sequentially, e.g.
   - `01_prepare-data.R`: Read raw data and prepare it for analysis
-  - `02_run_models.R`: Run statistical analysis
-  - `03_make_figures.R`: Create manuscript figures
+  - `02_run-models.R`: Run statistical analysis
+  - `03_make-figures.R`: Create manuscript figures
 - Use `source()` to source R scripts in other scripts
-  - E.g. use `source("01_prepare-data.R")` in `02_run_models.R`
+
+. . .
+
+E.g. in `02_run-models.R`:
+```r
+# run all the code in 01_prepare-data.R
+source("analysis/01_prepare-data.R")
+```
+
+## Modularize your Code
+
+**Split your scripts**: One huge script is hard to maintain
+
 - Use a main workflow script that calls other scripts sequentially
 
-Example `make.R`
+. . .
+
+Include a `make.R` script in your project
 
 ```r
+# Prepare the data
 source("01_prepare-data.R")
-source("02_run_models.R")
-source("03_make_figures.R")
+# Run all statistical models
+source("02_run-models.R")
+# Create manuscript figures
+source("03_make-figures.R")
 ```
-## Use functions
 
-- DRY principle: Don't Repeat Yourself
-  - If you notice that you copy-paste code - write a function instead
-- Use `source()` to source functions in other scripts
+## Modularize your
+
+**Use R functions** to follow DRY principle (Don't Repeat Yourself)
+
+- Idea: If you notice that you copy-paste code - write a function instead
+- Use `source()` to source the function in other scripts
+
+. . .
 
 Basic structure of a function in R
 
@@ -420,17 +466,18 @@ my_function <- function(input) {
 my_function(5)
 ```
 
-## Use functions - Example
+## Function example
 
-Same data preparation for multiple data sets
+Same data preparation code for multiple data sets
 
 ::: {.columns}
 
 ::: {.column width="50%"}
 
 ```r
+# Read the data
 my_data1 <- readr::read_csv("data/data1.csv")
-	# Clean and summarize data
+# Clean and summarize data
 my_data1 <- my_data1 |>
 	# remove some columns
 	select(-meta)
@@ -446,21 +493,21 @@ my_data1 <- my_data1 |>
 
 ::: {.column width="50%"}
 
-```r
-prepare_data <- function(file_path){
-my_data <- readr::read_csv(filepath)
-	# Clean and summarize data
-my_data <- my_data |>
-	# remove some columns
-	select(-meta)
-	# calculate summary statistics
-	summarize(
-		height = mean(height),
-		biomass = mean(biomass),
-		.by = c(country, species)
-	)
-	# Return the cleaned data from the function
-	return(my_data)
+:::{.fragment}
+
+```{r}
+prepare_data <- function(file_path) {
+  my_data <- readr::read_csv(filepath)
+  # Clean and summarize data
+  my_data <- my_data |>
+    select(-meta) |>
+    summarize(
+      height = mean(height),
+      biomass = mean(biomass),
+      .by = c(country, species)
+    )
+  # Return the cleaned data from the function
+  return(my_data)
 }
 ```
 
@@ -468,9 +515,11 @@ my_data <- my_data |>
 
 :::
 
-## Use functions - Example
+:::
 
-Same data preparation for multiple data sets
+## Function example
+
+Same data preparation code for multiple data sets
 
 Use the `prepare_data` function in all scripts where it is needed
 
@@ -484,7 +533,7 @@ my_data1 <- prepare_data("data/data1.csv")
 
 ## Use a consistent coding style
 
-Have a naming convention for variables and functions and stick to it
+Have a **naming convention** for variables and functions and stick to it
 
 . . .
 
@@ -576,22 +625,22 @@ mean(x, na.rm = TRUE)
 - Always put spaces after a comma
 - No spaces around parentheses for normal function calls
 - Spaces around most operators (`<-`, `==`, `+`, etc.)
-- Spaces before pipes (`%>%`, `|>`) followed by new line
+- Spaces before pipes (`|>`, `%>%`) followed by new line
 
 :::
 
 ```{r spaces-pipes}
 # Good
-iris %>%
-    group_by(Species) %>%
-    summarize_if(is.numeric, mean) %>%
-    ungroup()
+iris |>
+  group_by(Species) |>
+  summarize_if(is.numeric, mean) |>
+  ungroup()
 
 # Bad
-iris %>%
-    group_by(Species) %>%
-    summarize_all(mean) %>%
-    ungroup()
+iris |>
+  group_by(Species) |>
+  summarize_all(mean) |>
+  ungroup()
 ```
 
 ## Coding style - Spacing
@@ -601,7 +650,7 @@ iris %>%
 - Always put spaces after a comma
 - No spaces around parentheses for normal function calls
 - Spaces around most operators (`<-`, `==`, `+`, etc.)
-- Spaces before pipes (`%>%`, `|>`) followed by new line
+- Spaces before pipes (`|>`, `|>`) followed by new line
 - Spaces before `+` in ggplot followed by new line
 
 :::
@@ -609,11 +658,11 @@ iris %>%
 ```{r spaces-gglot}
 # Good
 ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
-    geom_point()
+  geom_point()
 
 # Bad
 ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
-    geom_point()
+  geom_point()
 ```
 
 ## Coding style - Line width
@@ -629,18 +678,22 @@ Try to limit your line width to 80 characters.
 
 ```{r linewidth-ggplot}
 # Bad
-iris %>%
-    group_by(Species) %>%
-    summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))
+iris |>
+  group_by(Species) |>
+  summarise(
+    Sepal.Length = mean(Sepal.Length),
+    Sepal.Width = mean(Sepal.Width),
+    Species = n_distinct(Species)
+  )
 
 # Good
-iris %>%
-    group_by(Species) %>%
-    summarise(
-        Sepal.Length = mean(Sepal.Length),
-        Sepal.Width = mean(Sepal.Width),
-        Species = n_distinct(Species)
-    )
+iris |>
+  group_by(Species) |>
+  summarise(
+    Sepal.Length = mean(Sepal.Length),
+    Sepal.Width = mean(Sepal.Width),
+    Species = n_distinct(Species)
+  )
 ```
 
 ## Coding style
@@ -692,32 +745,30 @@ lintr::lint_dir()
 
 ![](images/2023_04_20_what_they_forgot_to_teach_you/16_lintr_output.png){fig-align="center"}
 
-## Coding style helpers - `{styler}`
+## Coding style helpers - Auto-formatting
 
-The [styler package](http://styler.r-lib.org/) package automatically styles your files and projects
-according to the tidyverse style guide.
+Most IDEs (e.g. RStudio, Positron, VS Code) offer auto-formatting tools.
 
-. . .
+- Turn on "Format at save" to automatically format your code when you save the script
 
-```{r}
-# install from CRAN
-install.packages("styler")
+- R Studio: Open the command palette (`Ctrl/Cmd + Shift + P`) and search for "Format"
+  - Turn on "Reformat documents on save"
+- VS Code/Positron: Search for "Format on save" and click the check-mark
+
+![](images/2025_05_15_r-code-that-lasts/RStudio_format.png)
+
+# Manage dependencies
+
+## Manage dependencies manually
+
+Tell others which version of the software and packages you used.
+
+Add the output of `devtools::session_info()` to your `README.md`
+
+```{r session-info}
+#| eval: true
+devtools::session_info()
 ```
-
-- Use the R Studio `Addins` for styler:
-
-. . .
-
-![](images/2023_04_20_what_they_forgot_to_teach_you/12_styler_options.png)
-
-## Coding style helpers - `{styler}`
-
-- Pro-Tip: Add a custom keyboard short cut to style your files
-  - `Tools -> Modify Keyboard Shortcuts`
-  
-. . .
-  
-![](images/2023_04_20_what_they_forgot_to_teach_you/13_styler_shortcut.png)
 
 ## Manage dependencies with `{renv}`
 
@@ -751,63 +802,16 @@ install.packages("styler")
 
 Check out the [renv website](https://rstudio.github.io/renv/articles/renv.html) for more information
 
+## Documentation
 
+## Always add a README
 
-## Use save paths
-
-To read and write files, you need to tell R where to find them. 
-
-. . .
-
-Common workflow: set **working directory** with `setwd()`, then read files from there. But to this [Jenny Bryan said](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/):
-
-. . .
-
-> If the first line of your R script is <br>
-  `setwd("C:\Users\jenny\path\that\only\I\have")` <br>
-  I will come into your office and SET YOUR COMPUTER ON FIRE :fire:.
-  
-. . .
-
-#### Why?
-
-This is **100% not reproducible**: Your computer at exactly this time is (probably) the only one in the world that has this working directory
-
-. . .
-
-Avoid `setwd()` if it is possible in any way!
-
-## Avoid `setwd()`
-
-. . .
-
-Use R Studio projects
-
-  - Project root is automatically the working directory
-  - Give your project to a friend at it will work on their machine as well
-
-. . .
-
-Instead of
-
-```{r}
-# my unique path from hell with white space and special characters
-setwd("C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures")
-
-read_csv("data/2023-04-20_temperature_goettingen.csv")
-```
-
-. . .
-
-You just need
-  
-```{r}
-read_csv("data/2023-04-20_temperature_goettingen.csv")
-```
-
-. . .
-
-If you don't use R Studio Projects, have a look at the [`{here}` package](https://here.r-lib.org/) for reproducible paths
+- Document your project structure
+- Tell others how to use your code
+- Add contribution rules
+  - Naming conventions
+  - Coding style
+  - ...
 
 ## Manage dependencies with `{renv}`
 
