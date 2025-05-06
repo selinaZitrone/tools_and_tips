@@ -1,0 +1,28 @@
+---
+title: "Write R code that lasts: Practical tips for reproducible data analysis"
+from: markdown+emoji
+---
+
+## Description
+
+Do your R projects sometimes get messy, your scripts grow out of control, or your results are hard to reproduce? In this lecture, I’ll share practical tips for setting up clean, maintainable, and reproducible data analysis workflows. We’ll cover how to structure projects, organize scripts, write good-practice code, and manage dependencies effectively. The focus is on realistic practices that make your code easier for others — and your future self — to understand and reuse.
+While the examples will use R, many of the tips apply to anyone doing data analysis, also in other languages. Whether you’re just starting out or already experienced with R, this session will help you build better habits for writing clean, reusable code.
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2025_05_15_r-code-that-lasts.html"></iframe>
+```
+
+[Slides in full screen](../slides/2025_05_15_r-code-that-lasts.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_05_15_r-code-that-lasts.pdf" download>Download PDF slides</a>
+
+## Summary
+
+Below you find a summary of all the topics covered in this session. You can use this summary as a checklist for your own projects to see where you can still make improvements.
+
+## Resources and links
+  
+### Books, Papers, Blog Posts
+
+### Tools
+
+
+

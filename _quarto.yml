@@ -46,6 +46,8 @@ website:
             href: sessions/08_tidyverse.qmd
           - text: 09 - Data visualization
             href: sessions/09_data_visualisation.qmd
+          - text: 10 - Write R code that lasts
+            href: sessions/10_r-code-that-lasts.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 
