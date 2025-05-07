@@ -34,46 +34,64 @@ from: markdown+emoji
 
 :::
 
-## In teaching: Focus on data analysis but less on workflow
+## What they forgot to teach you about R
 
 ![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/18_course_content.png){fig-alt="An exasperated teacher holding a box that says \"Another important thing\" walks towards a box labeled \"course content\", where different unruly topics labeled \"essential\", \"core\" etc. are leaping out and running away." width="80%"}
 
-## The problem it creates
+## The problem
 
-Messy projects and workflows creep in overtime!
+Messy projects and workflows creep in and make things difficult!
   
 ![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/02_kitchen_chaos.png){fig-alt="A frustrated looking little monster in front of a very disorganized cooking area, with smoke and fire coming from a pot surrounded by a mess of bowls, utensils, and scattered ingredients."}
 
 ## The problem with messy projects
 
-:wrench: **Maintainability**: Can I understand, update and fix my own code?
+<br>
+
+:wrench: **Maintainability** Can I understand, update and fix my own code?
+<br><br>
 
 . . .
 
-:arrows_counterclockwise: **Reproducibility**: Can someone else reproduce my results?
+:arrows_counterclockwise: **Reproducibility** Can someone else reproduce my results?
+<br><br>
 
 . . .
 
-🏋 **Reliability**: Will my code work in the future?
+🏋 **Reliability** Will my code work in the future?
+<br><br>
 
 . . .
 
-:gear: **Reusability**: Can someone else actually use my code?
+:gear: **Reusability** Can someone else actually use my code?
 
 ## Today
 
 Learn how to keep the kitchen clean.
 
-- Basic tips for reproducible and maintainable data analysis projects
+- Basic tips for **reproducible** and **maintainable** data analysis projects
 - This is beneficial because it will
   - save you from headaches
   - makes it easy to publish
 
 ## The reproducibility mindset
 
-While writing code, imagine how someone else (or you from two years in the future) will see the project for the first time. Will they be able to understand and use your project? The goal of writing reproducible code is to ensure that the answer to this question is “yes.” You can also practically test this by sending your project to a colleague and asking them to try to understand and run the code by themselves.
+While writing code, imagine how someone else (or you from two years in the future) will see the project for the first time. 
 
-# 1. Organizing projects for reproducibility
+. . .
+
+Will they be able to understand and use your project? 
+
+. . .
+
+:::{.callout-tip}
+
+Test this and **send your project to a colleague** and asking them understand and run the code your analysis.
+
+:::
+
+
+# :file_folder: Organizing projects for reproducibility
 
 ## Have a solid project structure
 
@@ -81,69 +99,44 @@ While writing code, imagine how someone else (or you from two years in the futur
 
 ::: {.column width="60%"}
 
-- Self-contained projects
-  - All your code, data, reports, etc. in one place
-- Use project structure the IDE provides
-  - RStudio: RStudio projects
-  - VS Code/Positron: Workspaces
-- Advantages:
-  - Easy to navigate
-  - Sharable
-  - Project root as working directory
+- Self-contained projects: code, data, reports, etc. in one place
+
+
 :::
 
 ::: {.column width="35%"}
 
-```
-exampleProject
-|- data-raw
-|- data-clean
-|- figs
-|- reports   
-|- analysis  
-|   |- 01_clean_data.R
-|   |- 02_PCA.R
-|- functions
-|   |- read_all_data.R
-|- README.md
-```
+![](images/2025_05_15_r-code-that-lasts/file_structure.png)
 
 :::
 
 :::
 
-## Create an R Studio Project
+## Have a solid project structure
 
-. . .
+::: {.columns}
 
-::: {.fragment}
+::: {.column width="60%"}
 
-### From scratch:
-
-::: {.nonincremental}
-
-1. `File -> New Project -> New Directory -> New Project`
-2. Enter a directory name (this will be the name of your project)
-3. Choose the directory where the project should be initiated
-4. `Create Project`
-
-:::
+:::{.nonincremental}
+- Self-contained projects: code, data, reports, etc. in one place
 :::
 
-::: {.fragment}
-
-### Associate an existing folder with an R Studio Project:
-
-::: {.nonincremental}
-
-
-1. `File -> New Project -> Existing Directory`
-2. Choose your project folder
-3. `Create Project`
+- Use project structure the IDE provides
+- Advantages:
+  - Easy to navigate
+  - Sharable
+  - Project root as working directory
 
 :::
+
+::: {.column width="35%"}
+
+![](images/2025_05_15_r-code-that-lasts/file_structure_project.png)
+
 :::
 
+:::
 
 ## Set up your project
 
@@ -266,7 +259,7 @@ If you order your files by name, the ordering should make sense:
 
 :::
 
-# Let's start coding
+# :page_facing_up: Let's start coding
 
 ## Use save paths
 
@@ -274,55 +267,114 @@ To read and write files, you need to tell R where to find them.
 
 . . .
 
-Common workflow: set **working directory** with `setwd()`, then read files from there. But to this [Jenny Bryan said](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/):
+Common workflows: <br>
+set **working directory** with `setwd()`, then read files from there. 
+
+```r
+setwd("C:/Users/Selina/path/that/only/I/have")
+
+# read my data
+temperature <- read_csv("data/temperature.csv")
+```
+
+Or directly use the full path to the file:
+
+```r
+temperature <- read_csv("C:/Users/Selina/path/that/only/I/have/data/temperature.csv")
+```
 
 . . .
-
-> If the first line of your R script is <br>
-  `setwd("C:\Users\jenny\path\that\only\I\have")` <br>
-  I will come into your office and SET YOUR COMPUTER ON FIRE :fire:.
-  
-. . .
-
-#### Why?
 
 This is **100% not reproducible**: Your computer at exactly this time is (probably) the only one in the world that has this working directory
 
 . . .
 
-Avoid `setwd()` if it is possible in any way!
+Avoid `setwd()` and absolute paths!
 
-## Avoid `setwd()`
+## Use save paths
 
-. . .
+Option 1: Use RStudio projects: Project root is automatically the working directory
 
-Use R Studio projects
+:::{.columns}
 
-  - Project root is automatically the working directory
-  - Give your project to a friend at it will work on their machine as well
-
-. . .
-
-Instead of
+:::{.column width="60%"}
 
 ```{r}
-# my unique path from hell with white space and special characters
-setwd("C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures")
-
-read_csv("data/2023-04-20_temperature_goettingen.csv")
+read_csv("data/temperature.csv")
 ```
+
+:::
+
+:::{.column width="40%"}
+
+![](images/2025_05_15_r-code-that-lasts/file_structure_project.png)
+
+:::
+
+:::
+
+## Create an R Studio Project
 
 . . .
 
-You just need
-  
+::: {.fragment}
+
+### From scratch:
+
+::: {.nonincremental}
+
+1. `File -> New Project -> New Directory -> New Project`
+2. Enter a directory name (this will be the name of your project)
+3. Choose the directory where the project should be initiated
+4. `Create Project`
+
+:::
+:::
+
+::: {.fragment}
+
+### Associate an existing folder with an R Studio Project:
+
+::: {.nonincremental}
+
+
+1. `File -> New Project -> Existing Directory`
+2. Choose your project folder
+3. `Create Project`
+
+:::
+:::
+
+Avoid `setwd()` and absolute paths!
+
+## Use save paths
+
+Option 2: Use the [here package](https://here.r-lib.org/)
+
+:::{.columns}
+
+:::{.column width="60%"}
+
+- Uses a reasonable heuristics to find your project's files
+- Looks for `*.Rproj`, `.here`, `.git`, ...
+- Build a path using the `here` function
+
 ```{r}
-read_csv("data/2023-04-20_temperature_goettingen.csv")
+# use here::here or library(here)
+read_csv(here::here("data", "temperature.csv"))
+# or
+read_csv(here::here("data/temperature.csv"))
 ```
 
-. . .
+:::
 
-If you don't use R Studio Projects, have a look at the [`{here}` package](https://here.r-lib.org/) for reproducible paths
+:::{.column width="40%"}
+
+![](images/2025_05_15_r-code-that-lasts/file_structure_here.png)
+
+:::
+
+:::
 
 ## Write well-structured and readable code
 
@@ -339,23 +391,22 @@ If you don't use R Studio Projects, have a look at the [`{here}` package](https:
 ::: {.columns}
 
 ::: {.column width="50%"}
-::: {.nonincremental}
 
 - Use a standardized header 
 - Initialize at the top
   - `library()` calls
   - global options
   - source additional code
-- read all external data at once
-:::
+- Read all external data in one place
+
 :::
 
 ::: {.column width="50%"}
 
 
 ```{r example-structure-1}
-# Purpose: Create Figure 2 showing the relationship between
-# body mass and bill length
+# Purpose: Create Figure 2 showing the relationship
+# between body mass and bill length
 # Authors: Selina Baldauf, Jane Doe, Jon Doe
 
 # load all libraries first
@@ -443,7 +494,7 @@ source("02_run-models.R")
 source("03_make-figures.R")
 ```
 
-## Modularize your
+## Modularize your Code
 
 **Use R functions** to follow DRY principle (Don't Repeat Yourself)
 
@@ -454,8 +505,9 @@ source("03_make-figures.R")
 
 Basic structure of a function in R
 
-```r
-my_function <- function(input) {
+```{r}
+#| eval: true
+multiply_by_two <- function(input) {
   # Do something with input
   output <- input * 2
   # retrun output
@@ -463,7 +515,7 @@ my_function <- function(input) {
 }
 
 # Call function
-my_function(5)
+multiply_by_two(5)
 ```
 
 ## Function example
@@ -479,9 +531,7 @@ Same data preparation code for multiple data sets
 my_data1 <- readr::read_csv("data/data1.csv")
 # Clean and summarize data
 my_data1 <- my_data1 |>
-	# remove some columns
 	select(-meta)
-	# calculate summary statistics
 	summarize(
 		height = mean(height),
 		biomass = mean(biomass),
@@ -497,6 +547,7 @@ my_data1 <- my_data1 |>
 
 ```{r}
 prepare_data <- function(file_path) {
+  # Read the data
   my_data <- readr::read_csv(filepath)
   # Clean and summarize data
   my_data <- my_data |>
@@ -531,7 +582,7 @@ source("functions/prepare_data.R")
 my_data1 <- prepare_data("data/data1.csv")
 ```
 
-## Use a consistent coding style
+## Use a consistent coding style - naming
 
 Have a **naming convention** for variables and functions and stick to it
 
@@ -559,7 +610,7 @@ f1()
 
 ```
 
-## Use a consistent coding style
+## Use a consistent coding style - spacing
 
 . . .
 
@@ -579,7 +630,7 @@ x[, 1]
 x[, 1]
 ```
 
-## Coding style - Spacing
+## Use a consistent coding style - spacing
 
 ::: {.nonincremental}
 
@@ -597,7 +648,7 @@ mean(x, na.rm = TRUE)
 mean(x, na.rm = TRUE)
 ```
 
-## Coding style - Spacing
+## Use a consistent coding style - spacing
 
 ::: {.nonincremental}
 
@@ -618,7 +669,7 @@ mean(x, na.rm = TRUE)
 ```
 
 
-## Coding style - Spacing
+## Use a consistent coding style - spacing
 
 ::: {.nonincremental}
 
@@ -643,7 +694,7 @@ iris |>
   ungroup()
 ```
 
-## Coding style - Spacing
+## Use a consistent coding style - spacing
 
 ::: {.nonincremental}
 
@@ -665,7 +716,7 @@ ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
   geom_point()
 ```
 
-## Coding style - Line width
+## Use a consistent coding style - width
 
 Try to limit your line width to 80 characters.
 
@@ -696,7 +747,7 @@ iris |>
   )
 ```
 
-## Coding style
+## Use a consistent coding style
 
 Do I really have to remember all of this?
 
@@ -749,15 +800,28 @@ lintr::lint_dir()
 
 Most IDEs (e.g. RStudio, Positron, VS Code) offer auto-formatting tools.
 
-- Turn on "Format at save" to automatically format your code when you save the script
+- Turn on "Format at save" and let the IDE do the job
 
-- R Studio: Open the command palette (`Ctrl/Cmd + Shift + P`) and search for "Format"
-  - Turn on "Reformat documents on save"
-- VS Code/Positron: Search for "Format on save" and click the check-mark
+- R Studio: Open command palette (`Ctrl/Cmd + Shift + P`), search for "format" -> "Reformat documents on save"
 
-![](images/2025_05_15_r-code-that-lasts/RStudio_format.png)
+![](images/2025_05_15_r-code-that-lasts/RStudio_format.png){width="50%"}
 
-# Manage dependencies
+- VS Code/Positron: Check the  "Format on save" setting
+
+# Document what you do
+
+## Comments
+
+## Always add a README
+
+- Document your project structure
+- Tell others how to use your code
+- Add contribution rules
+  - Naming conventions
+  - Coding style
+  - ...
+
+# 🧩 Manage dependencies
 
 ## Manage dependencies manually
 
@@ -802,17 +866,6 @@ devtools::session_info()
 
 Check out the [renv website](https://rstudio.github.io/renv/articles/renv.html) for more information
 
-## Documentation
-
-## Always add a README
-
-- Document your project structure
-- Tell others how to use your code
-- Add contribution rules
-  - Naming conventions
-  - Coding style
-  - ...
-
 ## Manage dependencies with `{renv}`
 
 ```{r}
@@ -849,13 +902,27 @@ call `renv::restore()`
 
 There are a lot of things that require minimal effort and that you can start to implement into your workflow NOW
 
-1. Use R Studio projects -> Avoid `setwd()`!
-2. Keep your projects clean
-  - Sort your files into folders
-  - Give your files meaningful names
-3. Use `styler` to style your code automatically 
-4. Use `lintr` and let R analyse your project
-5. Consider `renv` for project local environments
+1. Project organization
+  - Self-contained folders
+  - Proper file names
+2. Coding
+  - Save paths with RStudio projects and `here`
+  - Auto-formatting for readable code
+  - Linting for code analysis
+3. Documentation
+  - Comments
+  - README files
+4. Dependency management
+  - manual
+  - `{renv}`
+
+Have a look at the [checklist for reproducible projects]() before you publish or share your code
+
+## Take aways
+
+- Plan ahead
+- Prioritize progress over perfection
+- Communicate your rules
 
 ## Outlook
 
@@ -863,7 +930,7 @@ Of course there is much more:
 
 - Version control with Git
 - Using R packages to build a research compendium
-- Docker containers for full reproducibility
+- Containerization (e.g. Docker) for full reproducibility
 - ...
 
 . . . 
@@ -874,13 +941,11 @@ But this is for another time
 
 . . .
 
-#### Write reproducible documents with [Quarto](https://quarto.org/)
-
-Quarto (the successor of rmarkdown) is a powerful tool that enables the seamless integration of code (R, Python, and more) and its output into a variety of formats such as reports, research papers, presentations, and more. This tool streamlines the process of creating reproducible workflows by eliminating the need to copy and paste figures, tables, or numbers. During this lecture, you'll learn the fundamentals of Quarto and explore practical use cases that you can implement in your data analysis workflow.
+#### Topic t.b.a.
 
 . . .
 
-:date: 11th May :clock4: 4-5 p.m. :round_pushpin: Webex
+:date: 19th June :clock4: 4-5 p.m. :round_pushpin: Webex
 
 - For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
@@ -900,7 +965,6 @@ Questions?
 - [The Turing way book](https://the-turing-way.netlify.app/index.html) General concepts and things to think about regarding reproducible research
 
 - [renv package website](https://rstudio.github.io/renv/articles/renv.html)
-- [styler package website](https://styler.r-lib.org/)
 - [lintr package website](https://lintr.r-lib.org/)
 
 :::
