@@ -34,17 +34,15 @@ from: markdown+emoji
 
 :::
 
-## What they forgot to teach you about R
-
-![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/18_course_content.png){fig-alt="An exasperated teacher holding a box that says \"Another important thing\" walks towards a box labeled \"course content\", where different unruly topics labeled \"essential\", \"core\" etc. are leaping out and running away." width="80%"}
-
 ## The problem
 
-Messy projects and workflows creep in and make things difficult!
-  
+. . .
+
 ![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/02_kitchen_chaos.png){fig-alt="A frustrated looking little monster in front of a very disorganized cooking area, with smoke and fire coming from a pot surrounded by a mess of bowls, utensils, and scattered ingredients."}
 
 ## The problem with messy projects
+
+. . .
 
 <br>
 
@@ -70,13 +68,14 @@ Messy projects and workflows creep in and make things difficult!
 Learn how to keep the kitchen clean.
 
 - Basic tips for **reproducible** and **maintainable** data analysis projects
-- This is beneficial because it will
-  - save you from headaches
-  - makes it easy to publish
+  - Project organization
+  - Coding
+  - Dependency management
 
 ## The reproducibility mindset
 
-While writing code, imagine how someone else (or you from two years in the future) will see the project for the first time. 
+- Imagine how someone else will see the project for the first time. 
+<br><br>
 
 . . .
 
@@ -84,14 +83,17 @@ Will they be able to understand and use your project?
 
 . . .
 
-:::{.callout-tip}
+<br><br>
 
-Test this and **send your project to a colleague** and asking them understand and run the code your analysis.
+:::{.callout-tip}
+## Practical reproducibility check
+
+Send your project to a colleague and ask them **understand** and **run** the code your analysis.
 
 :::
 
 
-# :file_folder: Organizing projects for reproducibility
+# First things first: <br>:file_folder: Organizing projects
 
 ## Have a solid project structure
 
@@ -99,7 +101,10 @@ Test this and **send your project to a colleague** and asking them understand an
 
 ::: {.column width="60%"}
 
-- Self-contained projects: code, data, reports, etc. in one place
+- **Self-contained** projects: code, data, reports, etc. in one place
+- Separate things into folders
+- Use standard templates (see e.g. the [`template` R package](https://github.com/Pakillo/template))
+
 
 
 :::
@@ -107,32 +112,6 @@ Test this and **send your project to a colleague** and asking them understand an
 ::: {.column width="35%"}
 
 ![](images/2025_05_15_r-code-that-lasts/file_structure.png)
-
-:::
-
-:::
-
-## Have a solid project structure
-
-::: {.columns}
-
-::: {.column width="60%"}
-
-:::{.nonincremental}
-- Self-contained projects: code, data, reports, etc. in one place
-:::
-
-- Use project structure the IDE provides
-- Advantages:
-  - Easy to navigate
-  - Sharable
-  - Project root as working directory
-
-:::
-
-::: {.column width="35%"}
-
-![](images/2025_05_15_r-code-that-lasts/file_structure_project.png)
 
 :::
 
@@ -259,25 +238,30 @@ If you order your files by name, the ordering should make sense:
 
 :::
 
-# :page_facing_up: Let's start coding
+# :computer: Let's start coding
 
-## Use save paths
+## Avoid `setwd()` and absolute paths
 
 To read and write files, you need to tell R where to find them. 
 
 . . .
 
-Common workflows: <br>
-set **working directory** with `setwd()`, then read files from there. 
+Common workflows: <br><br>
+
+Set **working directory** with `setwd()`, then read files from there: 
 
 ```r
+# set the project root as working directory
 setwd("C:/Users/Selina/path/that/only/I/have")
 
-# read my data
+# read my data using a path relative to the working directory
 temperature <- read_csv("data/temperature.csv")
 ```
 
-Or directly use the full path to the file:
+. . .
+
+<br>
+Or directly use the **absolute path** to the file:
 
 ```r
 temperature <- read_csv("C:/Users/Selina/path/that/only/I/have/data/temperature.csv")
@@ -285,19 +269,21 @@ temperature <- read_csv("C:/Users/Selina/path/that/only/I/have/data/temperature.
 
 . . .
 
-This is **100% not reproducible**: Your computer at exactly this time is (probably) the only one in the world that has this working directory
-
-. . .
-
-Avoid `setwd()` and absolute paths!
+This is **not reproducible!** Your computer at exactly this time is the only one that has this working directory.
 
 ## Use save paths
 
-Option 1: Use RStudio projects: Project root is automatically the working directory
+. . .
 
 :::{.columns}
 
 :::{.column width="60%"}
+
+Option 1: Use **RStudio projects**
+
+- Project root is automatically the working directory
+- No need to use `setwd()` manually
+- Read and write files with relative paths:
 
 ```{r}
 read_csv("data/temperature.csv")
@@ -345,19 +331,15 @@ read_csv("data/temperature.csv")
 :::
 :::
 
-Avoid `setwd()` and absolute paths!
-
 ## Use save paths
-
-Option 2: Use the [here package](https://here.r-lib.org/)
 
 :::{.columns}
 
 :::{.column width="60%"}
 
-- Uses a reasonable heuristics to find your project's files
-- Looks for `*.Rproj`, `.here`, `.git`, ...
-- Build a path using the `here` function
+Option 2: Use the [**`here` package**](https://here.r-lib.org/)
+
+- Build your paths using the `here` function 
 
 ```{r}
 # use here::here or library(here)
@@ -365,6 +347,9 @@ read_csv(here::here("data", "temperature.csv"))
 # or
 read_csv(here::here("data/temperature.csv"))
 ```
+
+- Uses a reasonable heuristics to find your project's files
+- Looks for `*.Rproj`, `.here`, `.git`, ...
 
 :::
 
@@ -381,7 +366,7 @@ read_csv(here::here("data/temperature.csv"))
 ![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/17_beatuiful_code.png)
 
 - Goal: Write code that others (i.e. future you) can understand
-- Follow standards for readable and maintainable code
+- Follow standards for readable code
   - For R: [tidyverse style guide](https://style.tidyverse.org/index.html) defines code organization, syntax standards, ...
 
 ## Structure your scripts
@@ -398,6 +383,9 @@ read_csv(here::here("data/temperature.csv"))
   - global options
   - source additional code
 - Read all external data in one place
+- Why?
+  - fail fast
+  - change code in one place
 
 :::
 
@@ -448,8 +436,11 @@ ggplot(input_data, aes(x = x, y = y)) +
 ```
 
 - Insert a section label with
-  - RStudio keyboard shortcut: `Ctrl/Cmd + Shift`
   - Comment that followed by at least 4 `####` or `----`
+  - RStudio keyboard shortcut: `Ctrl/Cmd + Shift + R`
+
+## Structure your scripts
+
 - Navigate sections in the file outline
 
 . . .
@@ -461,19 +452,11 @@ ggplot(input_data, aes(x = x, y = y)) +
 
 **Split your scripts**: One huge script is hard to maintain
 
-- Write multiple files that are called sequentially, e.g.
+- Write scripts that do one thing, e.g.
   - `01_prepare-data.R`: Read raw data and prepare it for analysis
   - `02_run-models.R`: Run statistical analysis
   - `03_make-figures.R`: Create manuscript figures
-- Use `source()` to source R scripts in other scripts
-
-. . .
-
-E.g. in `02_run-models.R`:
-```r
-# run all the code in 01_prepare-data.R
-source("analysis/01_prepare-data.R")
-```
+- Call these scripts sequentially
 
 ## Modularize your Code
 
@@ -682,9 +665,7 @@ mean(x, na.rm = TRUE)
 
 ```{r spaces-pipes}
 # Good
-iris |>
-  group_by(Species) |>
-  summarize_if(is.numeric, mean) |>
+iris |> group_by(Species) |> summarize_if(is.numeric, mean) |>
   ungroup()
 
 # Bad
@@ -708,8 +689,7 @@ iris |>
 
 ```{r spaces-gglot}
 # Good
-ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
-  geom_point()
+ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()
 
 # Bad
 ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
@@ -718,24 +698,21 @@ ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
 
 ## Use a consistent coding style - width
 
-Try to limit your line width to 80 characters.
+::: {.nonincremental}
 
-- You don't want to scroll to the right to read all code
-- 80 characters can be displayed on most displays and programs
-- Split your code into multiple lines if it is too long
-  - See this grey vertical line in R Studio?
+- Always put spaces after a comma
+- No spaces around parentheses for normal function calls
+- Spaces around most operators (`<-`, `==`, `+`, etc.)
+- Spaces before pipes (`|>`, `|>`) followed by new line
+- Spaces before `+` in ggplot followed by new line
+- Limit your line width to 80 characters.
 
-. . .
+:::
+
 
 ```{r linewidth-ggplot}
 # Bad
-iris |>
-  group_by(Species) |>
-  summarise(
-    Sepal.Length = mean(Sepal.Length),
-    Sepal.Width = mean(Sepal.Width),
-    Species = n_distinct(Species)
-  )
+iris |>  group_by(Species) |>  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))
 
 # Good
 iris |>
@@ -792,30 +769,34 @@ lintr::lint(filename = "analysis/01_prepare_data.R")
 lintr::lint_dir()
 ```
 
-## Coding style helpers - `{lintr}`
+## Coding style helpers - `lintr`
 
 ![](images/2023_04_20_what_they_forgot_to_teach_you/16_lintr_output.png){fig-align="center"}
 
 ## Coding style helpers - Auto-formatting
 
-Most IDEs (e.g. RStudio, Positron, VS Code) offer auto-formatting tools.
+IDEs (e.g. RStudio, Positron, VS Code) offer auto-formatting tools.
 
-- Turn on "Format at save" and let the IDE do the job
+- Use "Format on save" and let the IDE do the job
 
 - R Studio: Open command palette (`Ctrl/Cmd + Shift + P`), search for "format" -> "Reformat documents on save"
 
-![](images/2025_05_15_r-code-that-lasts/RStudio_format.png){width="50%"}
+![](images/2025_05_15_r-code-that-lasts/RStudio_format.png){width="60%" fig-align="center"}
 
-- VS Code/Positron: Check the  "Format on save" setting
+# :page_facing_up: Document what you do
 
-# Document what you do
+## Use Comments
 
-## Comments
+- Use comments in your script to explain what you are doing
+- Comments should be
+  - Concise
+  - Explain why, not how
 
 ## Always add a README
 
 - Document your project structure
 - Tell others how to use your code
+  - Where should they get started?
 - Add contribution rules
   - Naming conventions
   - Coding style
@@ -825,7 +806,7 @@ Most IDEs (e.g. RStudio, Positron, VS Code) offer auto-formatting tools.
 
 ## Manage dependencies manually
 
-Tell others which version of the software and packages you used.
+. . .
 
 Add the output of `devtools::session_info()` to your `README.md`
 
@@ -890,39 +871,24 @@ renv::restore()
 call `renv::restore()`
 - When you create an R Studio project there is a check mark to initialize with `renv`
 
-# Summary
+# Conclusion
+
+## Take aways
+
+- So many tips and rules 😵‍💫
+  - Have a look at the lecture website for a reproducibility checklist
+
+- Prioritize progress over perfection
+- Plan ahead
+- In collaborative projects
+  - Have common guidelines
+  - Communicate your rules (e.g. in the README)
 
 ## Clean projects and workflows ...
 
-... allow you and others to work productively.
+... help you to write robust and reproducible code.
 
 ![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/03_kitchen_clean.png){fig-alt="An organized kitchen with sections labeled \"tools\", \"report\" and \"files\", while a monster in a chef's hat stirs in a bowl labeled \"code.\""}
-
-## Take aways
-
-There are a lot of things that require minimal effort and that you can start to implement into your workflow NOW
-
-1. Project organization
-  - Self-contained folders
-  - Proper file names
-2. Coding
-  - Save paths with RStudio projects and `here`
-  - Auto-formatting for readable code
-  - Linting for code analysis
-3. Documentation
-  - Comments
-  - README files
-4. Dependency management
-  - manual
-  - `{renv}`
-
-Have a look at the [checklist for reproducible projects]() before you publish or share your code
-
-## Take aways
-
-- Plan ahead
-- Prioritize progress over perfection
-- Communicate your rules
 
 ## Outlook
 
@@ -939,11 +905,7 @@ But this is for another time
 
 ## Next lecture
 
-. . .
-
 #### Topic t.b.a.
-
-. . .
 
 :date: 19th June :clock4: 4-5 p.m. :round_pushpin: Webex
 

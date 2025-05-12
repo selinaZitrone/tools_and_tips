@@ -26,5 +26,7 @@ Below you find a summary of all the topics covered in this session. You can use 
 
 ### Tools
 
+- https://github.com/Pakillo/template: R package to create template project structure for
+
 
 
