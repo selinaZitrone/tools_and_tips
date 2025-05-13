@@ -103,6 +103,7 @@ Send your project to a colleague and ask them **understand** and **run** the cod
 
 - **Self-contained** projects: code, data, reports, etc. in one place
 - Separate things into folders
+- Always include a `README` file
 - Use standard templates (see e.g. the [`template` R package](https://github.com/Pakillo/template))
 
 
@@ -773,26 +774,6 @@ my_data2 <- prepare_data("data/data2.csv")
 
 :::
 
-
-# :page_facing_up: Document what you do
-
-## Use Comments
-
-- Use comments in your script to explain what you are doing
-- Comments should be
-  - Concise
-  - Explain why, not how
-
-## Always add a README
-
-- Document your project structure
-- Tell others how to use your code
-  - Where should they get started?
-- Add contribution rules
-  - Naming conventions
-  - Coding style
-  - ...
-
 # 🧩 Manage dependencies
 
 ## Manage dependencies manually
@@ -885,6 +866,7 @@ call `renv::restore()`
 
 Of course there is much more:
 
+- Proper documentation
 - Version control with Git
 - Containerization (e.g. Docker) for full reproducibility
 - Using R packages to build a research compendium
