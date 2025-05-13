@@ -591,28 +591,6 @@ Do I really have to remember all of this?
 
 Luckily, no! R and RStudio provide some nice helpers
 
-## Coding style helpers - RStudio
-
-RStudio has style diagnostics that tell you where something is wrong
-
-- `Tools -> Gloabl Options -> Code -> Diagnostics`
-
-. . .
-
-::: {.columns}
-
-::: {.column width="65%"}
-
-![](images/2023_04_20_what_they_forgot_to_teach_you/08_global_options_style.png)
-
-:::
-
-::: {.column width="35%"}
-![](images/2023_04_20_what_they_forgot_to_teach_you/09_style_warning.png)
-:::
-
-:::
-
 ## Coding style helpers - `{lintr}`
 
 The [`lintr` package](https://github.com/jimhester/lintr) analyses your code files or entire project and tells you what to fix.
