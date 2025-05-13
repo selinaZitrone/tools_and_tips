@@ -317,10 +317,11 @@ Option 2: Use the [**`here` package**](https://here.r-lib.org/)
 :::{.fragment}
 
 ```{r}
-# use here::here or library(here)
-read_csv(here::here("data", "temperature.csv"))
+# use here::here
+library(here)
+read_csv(here("data", "temperature.csv"))
 # or
-read_csv(here::here("data/temperature.csv"))
+read_csv(here("data/temperature.csv"))
 ```
 
 :::
@@ -329,7 +330,7 @@ read_csv(here::here("data/temperature.csv"))
 - Looks for `*.Rproj`, `.here`, `.git`, ...
 - My recommendation: **always** use `here`
   - with `*.Rproj` OR with `.here`
-  - only this is 100% fool-proof
+  - works in all cases
 
 :::
 
@@ -697,7 +698,7 @@ my_data2 <- my_data2 |>
 
 What's the **problem**?
 
-- What if you need to update the code cleaning?
+- What if you need to update the code preparation?
 - Bloats the script 
 
 ## Don't repeat yourself (DRY)
@@ -715,7 +716,7 @@ Function in `R/prepare_data.R`:
 ```{r}
 prepare_data <- function(file_path) {
   # Read the data
-  my_data <- readr::read_csv(filepath)
+  my_data <- read_csv(filepath)
   # Clean and summarize data
   my_data <- my_data |>
     summarize(
@@ -827,10 +828,9 @@ call `renv::restore()`
 ## Take aways
 
 - So many tips and guidelines 😵‍💫
-  - Have a look at the lecture website for a good-practice checklist for your projects
-  - Implement simple solutions first (e.g. format on save)
-  - Other guidelines will become habits over time
 - Prioritize progress over perfection
+  - Implement simple things first (e.g. format on save)
+  - Other guidelines will become habits over time
 - Plan ahead
 
 ## Clean projects and workflows ...
@@ -843,11 +843,15 @@ call `renv::restore()`
 
 Of course there is much that I left out:
 
+:::{.nonincremental}
+
 - Proper documentation
 - Version control with Git
 - Containerization (e.g. Docker) for full reproducibility
 - Using R packages to build a research compendium
 - ...
+
+:::
 
 . . . 
 
