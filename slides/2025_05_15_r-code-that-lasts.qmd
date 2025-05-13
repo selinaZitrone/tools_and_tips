@@ -519,7 +519,7 @@ mean(x, na.rm=TRUE)
 - Always put spaces after a comma
 - No spaces around parentheses for normal function calls
 - Spaces around most operators (`<-`, `==`, `+`, etc.)
-- Spaces before pipes (`|>`, `%>%`) followed by new line
+- Spaces before pipes (`|>`, `%>%`) and `+` in ggplot followed by new line
 
 :::
 
@@ -541,8 +541,7 @@ iris |>
 - Always put spaces after a comma
 - No spaces around parentheses for normal function calls
 - Spaces around most operators (`<-`, `==`, `+`, etc.)
-- Spaces before pipes (`|>`, `|>`) followed by new line
-- Spaces before `+` in ggplot followed by new line
+- Spaces before pipes (`|>`, `%>%`) and `+` in ggplot followed by new line
 
 :::
 
@@ -562,8 +561,7 @@ ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
 - Always put spaces after a comma
 - No spaces around parentheses for normal function calls
 - Spaces around most operators (`<-`, `==`, `+`, etc.)
-- Spaces before pipes (`|>`, `|>`) followed by new line
-- Spaces before `+` in ggplot followed by new line
+- Spaces before pipes (`|>`, `%>%`) and `+` in ggplot followed by new line
 - Limit your line width to 80 characters.
 
 :::
@@ -646,10 +644,11 @@ IDEs offer auto-formatting tools.
 
 :::
 
-## Modularize your Code
+## Modularize long scripts
 
-**Split your scripts**: One huge script is hard to maintain
+One huge script is **hard to maintain**
 
+- Break down long scripts into logical units
 - Write scripts that do one thing, e.g.
   - `01_prepare-data.R`: Read raw data and prepare it for analysis
   - `02_run-models.R`: Run statistical analysis
@@ -657,21 +656,22 @@ IDEs offer auto-formatting tools.
 - Call these scripts sequentially
 - Use `source()` to source R scripts in other scripts
 
+:::{.fragment}
+
 ```r
 # source data preparation in other scripts
 source("01_prepare-data.R")
 ```
 
+:::
 
-## Modularize your Code
+## Modularize long scripts
 
-**Split your scripts**: One huge script is hard to maintain
+Write a main **workflow script** that calls scripts in the right order.
 
-- Use a main **workflow script** that calls other scripts sequentially
+- Often called `make.R`, `run.R` or `main.R`
 
-. . .
-
-Include a `make.R` script in your project
+:::{.fragment}
 
 ```r
 # Prepare the data
@@ -682,67 +682,55 @@ source("02_run-models.R")
 source("03_make-figures.R")
 ```
 
-## Modularize your Code
+:::
 
-**Use R functions** to follow DRY principle (Don't Repeat Yourself)
+- Gives a nice overview of your workflow
+- Very user-friendly: No need to run scripts separately and in the right order
 
-- Idea: If you notice that you copy-paste code - write a function instead
-- Use `source()` to source the function in other scripts
+## Don't repeat yourself (DRY)
 
 . . .
 
-Basic structure of a function in R
-
-```{r}
-#| eval: true
-#| code-line-numbers: "|1|2-3|4-5|8-9"
-multiply_by_two <- function(input) {
-  # Do something with input
-  output <- input * 2
-  # retrun output
-  return(output)
-}
-
-# Call function
-multiply_by_two(5)
-```
-
-## Function example
-
-Same data preparation code for multiple data sets
-
-::: {.columns}
-
-::: {.column width="50%"}
+Example: Same data preparation code for multiple data sets
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "1,2,3|4-18"
 # Read the data
 my_data1 <- readr::read_csv("data/data1.csv")
 my_data2 <- readr::read_csv("data/data2.csv")
 # Clean and summarize data
 my_data1 <- my_data1 |>
-  select(-meta)
-summarize(
-  height = mean(height),
-  biomass = mean(biomass),
-  .by = c(country, species)
-)
+  summarize(
+    height = mean(height),
+    biomass = mean(biomass),
+    .by = c(country, species)
+  )
 my_data2 <- my_data2 |>
-  select(-meta)
-summarize(
-  height = mean(height),
-  biomass = mean(biomass),
-  .by = c(country, species)
-)
+  summarize(
+    height = mean(height),
+    biomass = mean(biomass),
+    .by = c(country, species)
+  )
 ```
 
-:::
+. . .
+
+What's the **problem**?
+
+- What if you need to update the code cleaning?
+- Bloats the script 
+
+## Don't repeat yourself (DRY)
+
+**Solution**: If you notice that you copy-paste code - write a **function**
+
+::: {.columns}
 
 ::: {.column width="50%"}
 
 :::{.fragment}
+
+File `R/prepare_data.R`:
 
 ```{r}
 prepare_data <- function(file_path) {
@@ -750,7 +738,6 @@ prepare_data <- function(file_path) {
   my_data <- readr::read_csv(filepath)
   # Clean and summarize data
   my_data <- my_data |>
-    select(-meta) |>
     summarize(
       height = mean(height),
       biomass = mean(biomass),
@@ -765,22 +752,27 @@ prepare_data <- function(file_path) {
 
 :::
 
-:::
+::: {.column width="50%"}
 
-## Function example
+:::{.fragment}
 
-Same data preparation code for multiple data sets
-
-Use the `prepare_data` function in all scripts where it is needed
+Source and use the `prepare_data` function in all scripts where it is needed
 
 ```r
-# load the function
+# Source the function
 source("R/prepare_data.R")
 
-# Use the function to read and prepare the data for this script
+# Use the function to read and prepare the data
 my_data1 <- prepare_data("data/data1.csv")
 my_data2 <- prepare_data("data/data2.csv")
 ```
+
+:::
+
+:::
+
+:::
+
 
 # :page_facing_up: Document what you do
 
