@@ -18,15 +18,43 @@ While the examples will use R, many of the tips apply to anyone doing data analy
 
 Below you find a summary of all the topics covered in this session. You can use this summary as a checklist for your own projects to see where you can still make improvements.
 
+### Project organization
+
+- Self-contained project structure: All files in one place separated into sub-folders
+- Include a REAMDE file
+- Name files properly: Files should be machine-readable, human-readable and work with default file ordering
+
+### Coding
+
+- Use save paths: Use RStudio projects and the [`here` package](https://here.r-lib.org/)
+- Structure your scripts: Initialize on top, read all data in one place
+- Use a consistent coding style: Follow the [tidyverse style guide](https://style.tidyverse.org/index.html), use the [`lintr` package](https://lintr.r-lib.org) to analyze your code, use auto-formatting tools
+- Modularize long scripts: Break down long scripts into logical units
+- Don't repeat yourself (DRY): Don't copy and paste code, write functions instead
+
+### Managing dependencies
+
+- Low effort, manual: Use `devtools::session_info()` to list package and software versions
+- More effort, more reproducible: Use [`renv` package](https://rstudio.github.io/renv/) to manage dependencies
+
 ## Resources and links
   
-### Books, Papers, Blog Posts
+### Books, Papers, Blog Posts, etc.
 
 - [What they forgot to teach you about R](https://rstats.wtf/): A free online book by Jenny Bryan et al. with many basic and practical tips on things to know about R besides data analysis.
+- [The Turing Way](https://the-turing-way.netlify.app/index.html): An open, community‑driven handbook on reproducible, ethical, and collaborative research.  
+- [“Workflow vs Script”](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/): Jenny Bryan’s blog post on turning one‑off scripts into reusable, automated workflows.  
+- [“R Best Practices”](https://kdestasio.github.io/post/r_best_practices/): Krista L. DeStasio’s overview of coding conventions and project hygiene in R.  
+- [“How to Name Files” (slides)](https://speakerdeck.com/jennybc/how-to-name-files): Jenny Bryan’s slide deck on systematic, machine‑friendly file naming.  
+- [tidyverse Style Guide](https://style.tidyverse.org/): A concise set of conventions for naming, spacing, and structuring R code.  
 
 ### Tools
 
-- https://github.com/Pakillo/template: R package to create template project structure for
+- [`template` R package](https://github.com/Pakillo/template): R package to create template project structure for
+- [`here` R package](https://here.r-lib.org/): Build robust relative file paths that always start at your project root.  
+- [`lintr` R package](https://lintr.r-lib.org/): Static code analysis for catching style issues and potential bugs in R scripts.  
+- [`renv` R package](https://rstudio.github.io/renv/articles/renv.html): Create project‑local package libraries and lock dependency versions for reproducibility.  
+
 
 
 
