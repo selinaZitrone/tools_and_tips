@@ -710,7 +710,7 @@ What's the **problem**?
 
 :::{.fragment}
 
-File `R/prepare_data.R`:
+Function in `R/prepare_data.R`:
 
 ```{r}
 prepare_data <- function(file_path) {
@@ -759,10 +759,11 @@ my_data2 <- prepare_data("data/data2.csv")
 
 . . .
 
-Add the output of `devtools::session_info()` to your `README.md`
+Add the output of `devtools::session_info()` to your `README`
 
 ```{r session-info}
 #| eval: true
+#| 
 devtools::session_info()
 ```
 
