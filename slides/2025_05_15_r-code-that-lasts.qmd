@@ -839,22 +839,19 @@ renv::snapshot()
 renv::restore()
 ```
 
-- Your collaborators only need to install the `renv` package, then they can also
+- Others only need to install the `renv` package, then they can also
 call `renv::restore()`
-- When you create an RStudio project there is a check mark to initialize with `renv`
 
 # Conclusion
 
 ## Take aways
 
-- So many tips and rules 😵‍💫
-  - Have a look at the lecture website for a checklist for your projects
-
+- So many tips and guidelines 😵‍💫
+  - Have a look at the lecture website for a good-practice checklist for your projects
+  - Implement simple solutions first (e.g. format on save)
+  - Other guidelines will become habits over time
 - Prioritize progress over perfection
 - Plan ahead
-- In collaborative projects
-  - Have common guidelines
-  - Communicate your rules (e.g. in the README)
 
 ## Clean projects and workflows ...
 
@@ -864,7 +861,7 @@ call `renv::restore()`
 
 ## Outlook
 
-Of course there is much more:
+Of course there is much that I left out:
 
 - Proper documentation
 - Version control with Git
