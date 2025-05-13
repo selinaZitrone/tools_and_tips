@@ -341,7 +341,6 @@ boxplot_groups_points <- ggplot(
 
 ```{r, dev='svg', dev.args=list(bg="transparent")}
 #| label: print-barplot-1
-#| cache: false
 
 # add theme
 barplot_errors <- barplot_errors +
