@@ -207,13 +207,13 @@ If you order your files by name, the ordering should make sense:
 
 # :computer: Let's start coding
 
-## Avoid `setwd()` and absolute paths
+## Use save paths
 
 To read and write files, you need to tell R where to find them. 
-
+<br><br>
 . . .
 
-Common workflows: <br><br>
+Common workflow: <br><br>
 
 Set **working directory** with `setwd()`, then read files from there: 
 
@@ -223,15 +223,6 @@ setwd("C:/Users/Selina/path/that/only/I/have")
 
 # read my data using a path relative to the working directory
 temperature <- read_csv("data/temperature.csv")
-```
-
-. . .
-
-<br>
-Or directly use the **absolute path** to the file:
-
-```r
-temperature <- read_csv("C:/Users/Selina/path/that/only/I/have/data/temperature.csv")
 ```
 
 . . .
@@ -332,8 +323,11 @@ read_csv(here::here("data/temperature.csv"))
 
 :::
 
-- Uses a reasonable heuristics to find your project's files
+- Reasonable heuristics to find project files
 - Looks for `*.Rproj`, `.here`, `.git`, ...
+- My recommendation: **always** use `here`
+  - with `*.Rproj` OR with `.here`
+  - only this is 100% fool-proof
 
 :::
 
@@ -345,15 +339,15 @@ read_csv(here::here("data/temperature.csv"))
 
 :::
 
-## Write well-structured and readable code
+## Write well-structured and consistent code
 
 ![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_04_20_what_they_forgot_to_teach_you/17_beatuiful_code.png)
 
-- Goal: Write code that others (i.e. future you) can understand
-- Follow standards for readable code
+- This is not about reproducibility, but about **readability** and **maintainability**
+- Follow standards for consistent and readable code
   - For R: [tidyverse style guide](https://style.tidyverse.org/index.html) defines code organization, syntax standards, ...
 
-## Structure your scripts
+## How to structure your scripts
 
 . . .
 
@@ -381,28 +375,27 @@ read_csv(here::here("data/temperature.csv"))
 # between body mass and bill length
 # Authors: Selina Baldauf, Jane Doe, Jon Doe
 
-# load all libraries first
+# load libraries ---------------------------------
 library(tidyverse)
 library(vegan)
 
-# Set global variables
+# Set global options -----------------------------
 # Plot themes and colors
 theme_set(theme_minimal())
 custom_colors <- c("cyan4", "darkorange", "purple")
-# File paths
-input_file <- "data/results.csv"
 
-# Source additional code
+# Source additional code -------------------------
 source("R/my_cool_function.R")
 
-# read all input data
-input_data <- read_csv(input_file)
+# Read data --------------------------------------
+temperature <- read_csv("data/temperature.csv")
+rainfall <- read_csv("data/rainfall.csv")
 ```
 
 :::
 :::
 
-## Structure your scripts
+## How to structure your scripts
 
 - Use headers to break up your file into sections
 
@@ -419,11 +412,10 @@ ggplot(input_data, aes(x = x, y = y)) +
   geom_point()
 ```
 
-- Insert a section label with
-  - Comment that followed by at least 4 `####` or `----`
+- Insert a section label with comment + at least 4 `####` or `----`
   - RStudio keyboard shortcut: `Ctrl/Cmd + Shift + R`
 
-## Structure your scripts
+## How to structure your scripts
 
 - Navigate sections in the file outline
 
@@ -432,141 +424,7 @@ ggplot(input_data, aes(x = x, y = y)) +
 ![](images/2023_04_20_what_they_forgot_to_teach_you/07_document_outline.png){width="80%"}
 
 
-## Modularize your Code
 
-**Split your scripts**: One huge script is hard to maintain
-
-- Write scripts that do one thing, e.g.
-  - `01_prepare-data.R`: Read raw data and prepare it for analysis
-  - `02_run-models.R`: Run statistical analysis
-  - `03_make-figures.R`: Create manuscript figures
-- Call these scripts sequentially
-- Use `source()` to source R scripts in other scripts
-
-```r
-# source data preparation in other scripts
-source("01_prepare-data.R")
-```
-
-
-## Modularize your Code
-
-**Split your scripts**: One huge script is hard to maintain
-
-- Use a main **workflow script** that calls other scripts sequentially
-
-. . .
-
-Include a `make.R` script in your project
-
-```r
-# Prepare the data
-source("01_prepare-data.R")
-# Run all statistical models
-source("02_run-models.R")
-# Create manuscript figures
-source("03_make-figures.R")
-```
-
-## Modularize your Code
-
-**Use R functions** to follow DRY principle (Don't Repeat Yourself)
-
-- Idea: If you notice that you copy-paste code - write a function instead
-- Use `source()` to source the function in other scripts
-
-. . .
-
-Basic structure of a function in R
-
-```{r}
-#| eval: true
-#| code-line-numbers: "|1|2-3|4-5|8-9"
-multiply_by_two <- function(input) {
-  # Do something with input
-  output <- input * 2
-  # retrun output
-  return(output)
-}
-
-# Call function
-multiply_by_two(5)
-```
-
-## Function example
-
-Same data preparation code for multiple data sets
-
-::: {.columns}
-
-::: {.column width="50%"}
-
-```{r}
-#| eval: false
-#| code-line-numbers: "1,2,3|4-18"
-# Read the data
-my_data1 <- readr::read_csv("data/data1.csv")
-my_data2 <- readr::read_csv("data/data2.csv")
-# Clean and summarize data
-my_data1 <- my_data1 |>
-  select(-meta)
-summarize(
-  height = mean(height),
-  biomass = mean(biomass),
-  .by = c(country, species)
-)
-my_data2 <- my_data2 |>
-  select(-meta)
-summarize(
-  height = mean(height),
-  biomass = mean(biomass),
-  .by = c(country, species)
-)
-```
-
-:::
-
-::: {.column width="50%"}
-
-:::{.fragment}
-
-```{r}
-prepare_data <- function(file_path) {
-  # Read the data
-  my_data <- readr::read_csv(filepath)
-  # Clean and summarize data
-  my_data <- my_data |>
-    select(-meta) |>
-    summarize(
-      height = mean(height),
-      biomass = mean(biomass),
-      .by = c(country, species)
-    )
-  # Return the cleaned data from the function
-  return(my_data)
-}
-```
-
-:::
-
-:::
-
-:::
-
-## Function example
-
-Same data preparation code for multiple data sets
-
-Use the `prepare_data` function in all scripts where it is needed
-
-```r
-# load the function
-source("R/prepare_data.R")
-
-# Use the function to read and prepare the data for this script
-my_data1 <- prepare_data("data/data1.csv")
-my_data2 <- prepare_data("data/data2.csv")
-```
 
 ## Use a consistent coding style - naming
 
@@ -787,6 +645,142 @@ IDEs offer auto-formatting tools.
 ![](images/2025_05_15_r-code-that-lasts/RStudio_format.png){width="60%" fig-align="center"}
 
 :::
+
+## Modularize your Code
+
+**Split your scripts**: One huge script is hard to maintain
+
+- Write scripts that do one thing, e.g.
+  - `01_prepare-data.R`: Read raw data and prepare it for analysis
+  - `02_run-models.R`: Run statistical analysis
+  - `03_make-figures.R`: Create manuscript figures
+- Call these scripts sequentially
+- Use `source()` to source R scripts in other scripts
+
+```r
+# source data preparation in other scripts
+source("01_prepare-data.R")
+```
+
+
+## Modularize your Code
+
+**Split your scripts**: One huge script is hard to maintain
+
+- Use a main **workflow script** that calls other scripts sequentially
+
+. . .
+
+Include a `make.R` script in your project
+
+```r
+# Prepare the data
+source("01_prepare-data.R")
+# Run all statistical models
+source("02_run-models.R")
+# Create manuscript figures
+source("03_make-figures.R")
+```
+
+## Modularize your Code
+
+**Use R functions** to follow DRY principle (Don't Repeat Yourself)
+
+- Idea: If you notice that you copy-paste code - write a function instead
+- Use `source()` to source the function in other scripts
+
+. . .
+
+Basic structure of a function in R
+
+```{r}
+#| eval: true
+#| code-line-numbers: "|1|2-3|4-5|8-9"
+multiply_by_two <- function(input) {
+  # Do something with input
+  output <- input * 2
+  # retrun output
+  return(output)
+}
+
+# Call function
+multiply_by_two(5)
+```
+
+## Function example
+
+Same data preparation code for multiple data sets
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| eval: false
+#| code-line-numbers: "1,2,3|4-18"
+# Read the data
+my_data1 <- readr::read_csv("data/data1.csv")
+my_data2 <- readr::read_csv("data/data2.csv")
+# Clean and summarize data
+my_data1 <- my_data1 |>
+  select(-meta)
+summarize(
+  height = mean(height),
+  biomass = mean(biomass),
+  .by = c(country, species)
+)
+my_data2 <- my_data2 |>
+  select(-meta)
+summarize(
+  height = mean(height),
+  biomass = mean(biomass),
+  .by = c(country, species)
+)
+```
+
+:::
+
+::: {.column width="50%"}
+
+:::{.fragment}
+
+```{r}
+prepare_data <- function(file_path) {
+  # Read the data
+  my_data <- readr::read_csv(filepath)
+  # Clean and summarize data
+  my_data <- my_data |>
+    select(-meta) |>
+    summarize(
+      height = mean(height),
+      biomass = mean(biomass),
+      .by = c(country, species)
+    )
+  # Return the cleaned data from the function
+  return(my_data)
+}
+```
+
+:::
+
+:::
+
+:::
+
+## Function example
+
+Same data preparation code for multiple data sets
+
+Use the `prepare_data` function in all scripts where it is needed
+
+```r
+# load the function
+source("R/prepare_data.R")
+
+# Use the function to read and prepare the data for this script
+my_data1 <- prepare_data("data/data1.csv")
+my_data2 <- prepare_data("data/data2.csv")
+```
 
 # :page_facing_up: Document what you do
 
