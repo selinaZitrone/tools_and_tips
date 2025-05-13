@@ -121,16 +121,16 @@ Send your project to a colleague and ask them **understand** and **run** the cod
 
 . . .
 
-R Studio offers a lot of settings and options. 
+RStudio offers a lot of settings and options. 
 
 So have a :coffee: and check out `Tools -> Global Options` and all the other buttons.
 
-- [R Studio cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rstudio-ide.pdf) that explains all the buttons
-- Update R Studio from time to time to get new settings (`Help -> Check for Updates`)
+- [RStudio cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rstudio-ide.pdf) that explains all the buttons
+- Update RStudio from time to time to get new settings (`Help -> Check for Updates`)
 
 ## Set up your project
 
-R Studio offers a lot of settings and options.
+RStudio offers a lot of settings and options.
 
 ::: {.columns}
 
@@ -279,15 +279,24 @@ This is **not reproducible!** Your computer at exactly this time is the only one
 
 :::{.column width="60%"}
 
+:::{.fragment}
+
 Option 1: Use **RStudio projects**
+
+:::
+
 
 - Project root is automatically the working directory
 - No need to use `setwd()` manually
 - Read and write files with relative paths:
 
+:::{.fragment}
+
 ```{r}
 read_csv("data/temperature.csv")
 ```
+
+:::
 
 :::
 
@@ -299,7 +308,7 @@ read_csv("data/temperature.csv")
 
 :::
 
-## Create an R Studio Project
+## Create an RStudio Project
 
 . . .
 
@@ -319,7 +328,7 @@ read_csv("data/temperature.csv")
 
 ::: {.fragment}
 
-### Associate an existing folder with an R Studio Project:
+### Associate an existing folder with an RStudio Project:
 
 ::: {.nonincremental}
 
@@ -337,9 +346,15 @@ read_csv("data/temperature.csv")
 
 :::{.column width="60%"}
 
+:::{.fragment}
+
 Option 2: Use the [**`here` package**](https://here.r-lib.org/)
 
+:::
+
 - Build your paths using the `here` function 
+
+:::{.fragment}
 
 ```{r}
 # use here::here or library(here)
@@ -347,6 +362,8 @@ read_csv(here::here("data", "temperature.csv"))
 # or
 read_csv(here::here("data/temperature.csv"))
 ```
+
+:::
 
 - Uses a reasonable heuristics to find your project's files
 - Looks for `*.Rproj`, `.here`, `.git`, ...
@@ -457,12 +474,19 @@ ggplot(input_data, aes(x = x, y = y)) +
   - `02_run-models.R`: Run statistical analysis
   - `03_make-figures.R`: Create manuscript figures
 - Call these scripts sequentially
+- Use `source()` to source R scripts in other scripts
+
+```r
+# source data preparation in other scripts
+source("01_prepare-data.R")
+```
+
 
 ## Modularize your Code
 
 **Split your scripts**: One huge script is hard to maintain
 
-- Use a main workflow script that calls other scripts sequentially
+- Use a main **workflow script** that calls other scripts sequentially
 
 . . .
 
@@ -490,6 +514,7 @@ Basic structure of a function in R
 
 ```{r}
 #| eval: true
+#| code-line-numbers: "|1|2-3|4-5|8-9"
 multiply_by_two <- function(input) {
   # Do something with input
   output <- input * 2
@@ -509,17 +534,27 @@ Same data preparation code for multiple data sets
 
 ::: {.column width="50%"}
 
-```r
+```{r}
+#| eval: false
+#| code-line-numbers: "1,2,3|4-18"
 # Read the data
 my_data1 <- readr::read_csv("data/data1.csv")
+my_data2 <- readr::read_csv("data/data2.csv")
 # Clean and summarize data
 my_data1 <- my_data1 |>
-	select(-meta)
-	summarize(
-		height = mean(height),
-		biomass = mean(biomass),
-		.by = c(country, species)
-	)
+  select(-meta)
+summarize(
+  height = mean(height),
+  biomass = mean(biomass),
+  .by = c(country, species)
+)
+my_data2 <- my_data2 |>
+  select(-meta)
+summarize(
+  height = mean(height),
+  biomass = mean(biomass),
+  .by = c(country, species)
+)
 ```
 
 :::
@@ -559,10 +594,11 @@ Use the `prepare_data` function in all scripts where it is needed
 
 ```r
 # load the function
-source("functions/prepare_data.R")
+source("R/prepare_data.R")
 
 # Use the function to read and prepare the data for this script
 my_data1 <- prepare_data("data/data1.csv")
+my_data2 <- prepare_data("data/data2.csv")
 ```
 
 ## Use a consistent coding style - naming
@@ -608,9 +644,8 @@ f1()
 x[, 1]
 
 # Bad
-x[, 1]
-x[, 1]
-x[, 1]
+x[,1]
+x[ , 1]
 ```
 
 ## Use a consistent coding style - spacing
@@ -627,8 +662,8 @@ x[, 1]
 mean(x, na.rm = TRUE)
 
 # Bad
-mean(x, na.rm = TRUE)
-mean(x, na.rm = TRUE)
+mean( x, na.rm = TRUE )
+mean (x, na.rm = TRUE)
 ```
 
 ## Use a consistent coding style - spacing
@@ -647,8 +682,8 @@ height <- (feet * 12) + inches
 mean(x, na.rm = TRUE)
 
 # Bad
-height <- feet * 12 + inches
-mean(x, na.rm = TRUE)
+height<-feet*12+inches
+mean(x, na.rm=TRUE)
 ```
 
 
@@ -665,8 +700,7 @@ mean(x, na.rm = TRUE)
 
 ```{r spaces-pipes}
 # Good
-iris |> group_by(Species) |> summarize_if(is.numeric, mean) |>
-  ungroup()
+iris|>group_by(Species)|>summarize_if(is.numeric, mean)|>ungroup()
 
 # Bad
 iris |>
@@ -730,11 +764,11 @@ Do I really have to remember all of this?
 
 . . .
 
-Luckily, no! R and R Studio provide some nice helpers
+Luckily, no! R and RStudio provide some nice helpers
 
-## Coding style helpers - R Studio
+## Coding style helpers - RStudio
 
-R Studio has style diagnostics that tell you where something is wrong
+RStudio has style diagnostics that tell you where something is wrong
 
 - `Tools -> Gloabl Options -> Code -> Diagnostics`
 
@@ -775,13 +809,17 @@ lintr::lint_dir()
 
 ## Coding style helpers - Auto-formatting
 
-IDEs (e.g. RStudio, Positron, VS Code) offer auto-formatting tools.
+IDEs offer auto-formatting tools.
 
-- Use "Format on save" and let the IDE do the job
+- Auto-format your scripts on save and let the IDE do the job
 
-- R Studio: Open command palette (`Ctrl/Cmd + Shift + P`), search for "format" -> "Reformat documents on save"
+- RStudio: Open command palette (`Tools` -> `Show command palette`), search for "format" -> "Reformat documents on save"
+
+:::{.fragment}
 
 ![](images/2025_05_15_r-code-that-lasts/RStudio_format.png){width="60%" fig-align="center"}
+
+:::
 
 # :page_facing_up: Document what you do
 
@@ -869,14 +907,14 @@ renv::restore()
 
 - Your collaborators only need to install the `renv` package, then they can also
 call `renv::restore()`
-- When you create an R Studio project there is a check mark to initialize with `renv`
+- When you create an RStudio project there is a check mark to initialize with `renv`
 
 # Conclusion
 
 ## Take aways
 
 - So many tips and rules 😵‍💫
-  - Have a look at the lecture website for a reproducibility checklist
+  - Have a look at the lecture website for a checklist for your projects
 
 - Prioritize progress over perfection
 - Plan ahead
@@ -895,8 +933,8 @@ call `renv::restore()`
 Of course there is much more:
 
 - Version control with Git
-- Using R packages to build a research compendium
 - Containerization (e.g. Docker) for full reproducibility
+- Using R packages to build a research compendium
 - ...
 
 . . . 
@@ -909,9 +947,13 @@ But this is for another time
 
 :date: 19th June :clock4: 4-5 p.m. :round_pushpin: Webex
 
+:::{.nonincremental}
+
 - For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
 - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:::
 
 # Thank you for your attention :) 
 Questions?
