@@ -117,39 +117,6 @@ Send your project to a colleague and ask them **understand** and **run** the cod
 
 :::
 
-## Set up your project
-
-. . .
-
-RStudio offers a lot of settings and options. 
-
-So have a :coffee: and check out `Tools -> Global Options` and all the other buttons.
-
-- [RStudio cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rstudio-ide.pdf) that explains all the buttons
-- Update RStudio from time to time to get new settings (`Help -> Check for Updates`)
-
-## Set up your project
-
-RStudio offers a lot of settings and options.
-
-::: {.columns}
-
-::: {.column width="60%"}
-
-Most important setting for reproducibility:
-
-- Never save or restore your work space as `.Rdata` -> You always want to start working with a clean slate
-
-:::
-
-::: {.column width="35%"}
-
-::: {.fragment}
-![](images/2023_04_20_what_they_forgot_to_teach_you/15_settings_workspace.png)
-:::
-:::
-:::
-
 ## Name your files properly
 
 Your collaborators and your future self will love you for this.
