@@ -212,6 +212,7 @@ If you order your files by name, the ordering should make sense:
 
 To read and write files, you need to tell R where to find them. 
 <br><br>
+
 . . .
 
 Common workflow: <br><br>
@@ -570,7 +571,7 @@ ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
 
 ```{r linewidth-ggplot}
 # Bad
-iris |>  group_by(Species) |>  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))
+iris |> group_by(Species) |> summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))
 
 # Good
 iris |>
