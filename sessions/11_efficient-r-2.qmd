@@ -1,0 +1,22 @@
+---
+title: Efficient R - How to write faster code
+from: markdown+emoji
+---
+
+## Description
+
+For most data analysis and statistical computing, R is efficient enough. However, there are times when we encounter bottlenecks in our code that slow it down significantly. In this lecture, I'll teach you techniques to identify those bottlenecks and write more efficient code. You'll learn the fundamental principles of faster R code and discover efficient packages for data analysis. We'll also touch on advanced optimization methods like parallelization and integrating C++ code. If you have previous experience with R programming and looking to make your R code run faster, this lecture is for you. If you are an R beginner, you'll still benefit from learning the principles and patterns and you will get a peak into some more advanced techniques.
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2025_06_19_efficient-r-2.html"></iframe>
+```
+
+[Slides in full screen](../slides/2025_06_19_efficient-r-2.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_06_19_efficient-r-2.pdf" download>Download PDF slides</a>&nbsp;&nbsp;&nbsp; [Watch on Youtube (old version)](https://youtu.be/TMp2kXyJF3s?si=RUovDYvjYFkAXw0I){target="_blank"}
+
+## Links and resources
+
+- For more details on the first two levels, check out my talk ["Write R code that lasts: Practical tips for reproducible data analysis"](https://selinazitrone.github.io/tools_and_tips/sessions/10_r-code-that-lasts.html)
+- [Book Efficient R programming](https://csgillespie.github.io/efficientR/) by Colin Gillespie and Robin Lovelace offers a great overview of different areas of efficiency
+- [Youtube Video](https://www.youtube.com/watch?v=EHoTFOW1WjU) on Writing efficient R code
+
+

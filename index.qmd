@@ -10,7 +10,7 @@ Early-career researchers understand the importance of digital tools for processi
 
 
 If you don't want to miss a lecture:<br>
-Check out the [official lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html) and [subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips) to get the link to
+Check out the [official lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/lecture-SB/index.html) and [subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips) to get the link to
 the lecture meeting.
 
 For any questions, feedback or topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
@@ -29,6 +29,7 @@ On this website, you can find all slides and additional resources for lectures:
 - 2024-02-15: [Introduction to the tidyverse](sessions/08_tidyverse.html)
 - 2025-04-17: [Clear figures, stronger stories](sessions/09_data_visualisation.html)
 - 2025-05-15: [Write R code that lasts](sessions/10_r-code-that-lasts.html)
+- 2025-06-19: [Efficient R (update)](sessions/11_efficient-r-2.html)
 
 I try to regularly upload recordings of the lectures on Youtube. The videos are
 linked on the respective topic pages. You can also find the entire [playlist on Youtube](https://youtube.com/playlist?list=PLK1lYQFwxAYeh5pAmCcrlUHCEROQiLI9f&si=mOcqXP5AtB7owg-9)
