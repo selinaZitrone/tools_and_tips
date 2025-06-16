@@ -63,6 +63,7 @@ format:
     toc: true
     code-copy: true
     code-overflow: wrap
+    cache: true
 
 
 
