@@ -15,8 +15,18 @@ For most data analysis and statistical computing, R is efficient enough. However
 
 ## Links and resources
 
-- For more details on the first two levels, check out my talk ["Write R code that lasts: Practical tips for reproducible data analysis"](https://selinazitrone.github.io/tools_and_tips/sessions/10_r-code-that-lasts.html)
+- For more details on good tool and project setup, an tips on writing good practice code, check out my talk ["Write R code that lasts: Practical tips for reproducible data analysis"](https://selinazitrone.github.io/tools_and_tips/sessions/10_r-code-that-lasts.html)
 - [Book Efficient R programming](https://csgillespie.github.io/efficientR/) by Colin Gillespie and Robin Lovelace offers a great overview of different areas of efficiency
 - [Youtube Video](https://www.youtube.com/watch?v=EHoTFOW1WjU) on Writing efficient R code
+- [Blogpost about profiling](https://support.posit.co/hc/en-us/articles/218221837-Profiling-R-code-with-the-RStudio-IDE)
+- [Chapter in Hadley Wickham's Advanced R on performance](https://adv-r.hadley.nz/perf-improve.html)
+
+### R packages
+
+- [profvis](https://profvis.r-lib.org/) for profiling R code
+- [microbenchmark examples](https://www.statology.org/r-microbenchmark/) showing how to use the `microbenchmark` package to measure execution time of R code
+- [data.table](https://rdatatable.gitlab.io/data.table/) for fast data import/export and manipulation
+- [collapse](https://sebkrantz.github.io/collapse/) for fast data manipulation and analysis
+- [arrow](https://arrow.apache.org/docs/r/) for fast data import/export (especially for large datasets, even bigger than memory)
 
 
