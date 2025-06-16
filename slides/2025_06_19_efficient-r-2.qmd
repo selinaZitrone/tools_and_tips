@@ -32,6 +32,12 @@ from: markdown+emoji
 #| label: setup
 #| include: false
 ggplot2::theme_set(ggplot2::theme_gray(base_size = 16))
+
+# Set default options for readr functions
+options(
+  readr.show_col_types = FALSE,
+  readr.show_progress = FALSE
+)
 ```
 
 ## What is this lecture series?
@@ -116,6 +122,12 @@ $$
 
 ## Today
 
+> “Make it **work**, then make it **beautiful**, then if you really, really have to, make it **fast**. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful!”
+> 
+> – Joe Armstrong
+
+## Today
+
 :::{.r-stack}
 
 ![](images/2023_11_16_efficient_r/pyramid_1.png){width=70% fig-align="center" .fragment}
@@ -129,125 +141,18 @@ $$
 
 . . .
 
-**Principles** and **tools** to make R programming more effiicent for :computer:
+**Principles** and **tools** to make R programming more efficient for the :computer:
 
 . . .
 
-Check out my talk ["What they forgot to teach you about R"](https://selinazitrone.github.io/tools_and_tips/sessions/01_what_they_forgot.html) for first two levels
-
-
-# Efficient setup of our tools {visibility="hidden"}
-
-## Efficient setup {visibility="hidden"}
-
-- Regularly update R, R packages and your IDE (RStudio/VS code/...)
-  - constantly improved, also regarding efficiency
-  - new versions provide new features
-- Know your tools
-  - Keyboard shortcuts (RStudio: **Help -> Keyboard Shortcuts Help**)
-  - Options (RStudio: **Tools -> Global Options**)
-
-## Efficient setup {visibility="hidden"}
-
-- Integrate AI tools (?), e.g.
-    - [Github Copilot for RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
-      - Free with a Github Pro account (student or teacher)
-    - [Package `gptstudio`](https://github.com/MichelNivard/GPTstudio) to integrate LLMs (e.g. ChatGPT)
-
-:::{.callout-note}
-
-These tools are still **in development** and may not be perfect yet. 
-Also be aware of the **ethical implications** of using AI tools.
-
-:::
-
-# Efficient project structure and coding style {visibility="hidden"}
-
-## Chaotic projects are inefficient {visibility="hidden"}
-  
-![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_11_16_efficient_r/02_kitchen_chaos.png){fig-alt="A frustrated looking little monster in front of a very disorganized cooking area, with smoke and fire coming from a pot surrounded by a mess of bowls, utensils, and scattered ingredients." width=85%}
-
-## Good practice R projects and code .... {visibility="hidden"}
-
-... make your life and the life of your collaborators easy.
-
-- This could be a whole other lecture
-- Check out my talk ["What they forgot to teach you about R"](https://selinazitrone.github.io/tools_and_tips/sessions/01_what_they_forgot.html) for details, resources and examples
-
-## Clear project structure {visibility="hidden"}
-
-Make it easy to find things
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-
-- Separate things into folders
-  - Use standard templates (see e.g. [here](https://github.com/FellowsFreiesWissen/computational_notebooks) for an example)
-- Use RStudio projects
-- Include a readme file
-- Name your files properly
-  - Machine and human readable
-
-:::
-
-:::{.column width="50%"}
-
-![](images/2023_11_16_efficient_r/04_folder_structures_all.png){width=60%}
-
-:::
-
-:::
-
-## Write beautiful code {visibility="hidden"}
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-- Write code that others (i.e. future you) can understand
-- Follow standards for readable and maintainable code
-- For R: [tidyverse style guide](https://style.tidyverse.org/index.html)
-- Style your code automatically using [`styler` package](https://styler.r-lib.org/)
-  - Checkout [this guide](https://selinazitrone.github.io/intro-r-data-analysis/sessions/11_good-practice.html#use-the-styler-package) on how to set it up in RStudio
-
-:::
-
-:::{.column width="50%"}
-
-![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](images/2023_11_16_efficient_r/17_beatuiful_code.png)
-
-:::
-
-:::
-
-# Efficient R code and optimization {.slide-purple}
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-> How can I make my R code faster?
-
-:::
-
-:::{.column width="50%"}
-
-![](images/2023_11_16_efficient_r/pyramid_text.png)
-
-:::
-
-:::
-
-
+Check out my talk ["Write R code that lasts"](https://selinazitrone.github.io/tools_and_tips/sessions/10_r-code-that-lasts.html) for basics
 
 ## Is R slow?
 
-- R is slow compared to other programming languages (e.g. C++).
-  - R is designed to make programming easy, not fast
+- R is slow compared to other programming languages (e.g. C++, Julia).
+  - R is designed to make statistical programming & data analysis **easy** and **interactive**, not fast
 
-- R is not designed to be memory efficient
+- R is the not the most memory efficient language
   
 - But: [R is fast and memory efficient enough]{.highlight-purple} for most tasks.
 
@@ -255,40 +160,44 @@ Make it easy to find things
 
 . . .
 
-> It’s easy to get caught up in trying to remove all bottlenecks. Don’t! [Your time is valuable and is better spent analysing your data]{.highlight-purple}, not eliminating possible inefficiencies in your code. **Be pragmatic**: don’t spend hours of your time to save seconds of computer time.<br>
+> It’s easy to get caught up in trying to remove all bottlenecks. Don’t! **Your time is valuable** and is **better spent analysing your data**, not eliminating possible inefficiencies in your code. **Be pragmatic**: don’t spend hours of your time to save seconds of computer time.<br>
 (Hadley Wickham in [Advanced R](https://adv-r.hadley.nz/perf-improve.html))
 
 . . .
 
 #### Think about
 
-- How much time do I **save** by optimizing? 
+- How much time do I **save** vs **spend** with optimizing? 
 - **How often** do I run the code?
-- How much time do I **spend** optimizing?
-
-::: {.fragment} 
-
-Often: Trade-off between **readability** and **efficiency**
-
-:::
+- Trade-offs between **readability** and **efficiency**
 
 ## Should I optimize?
 
 If your code is to slow for you, you can go through these steps:
 
-1. If possible, **run the code somewhere else**
+1. Think if you can **run the code somewhere else**
 
-## Run the code somewhere else
+- On a cluster (e.g. [FU Curta](https://www.fu-berlin.de/en/sites/high-performance-computing/Rechenressourcen/index.html))
+- On your computer but in the background
 
-::: {.fragment .nonincremental}
+## Run your code in the background
 
-- For this, RStudio has **background jobs**
+:::{.fragment}
+
+Use RStudio **background jobs**
 
 ![](images/2023_11_16_efficient_r/background_job.png){width=50%}
 
 :::
 
-- Or: run it on a cluster (e.g. [FU Curta](https://www.fu-berlin.de/en/sites/high-performance-computing/Rechenressourcen/index.html))
+:::{.fragment}
+
+Start your R script from the command line
+
+```bash
+Rscript my_script.R
+```
+:::
 
 ## Should I optimize?
 
@@ -296,16 +205,16 @@ If your code is to slow for you, you can go through these steps:
 
 :::{.nonincremental}
 
-1. If possible, **run the code somewhere else**
+1. Think if you can **run the code somewhere else**
 
 :::
 
 2. **Identify the critical** (slow) **parts** of your code
 3. Then **optimize only the bottlenecks**
 
-# Identify critical parts of your code
+# Profiling and benchmarking
 
-> **Profiling** & **Benchmarking** to measure the speed and memory use of your code
+> Measure the speed and memory usage of your code
 
 ## Profiling R code
 
@@ -319,7 +228,6 @@ You can profile a section of code like this:
 
 ```{r eval=FALSE}
 #| label: profvis
-#| code-line-numbers: 1-2|3-6|8-14|7-15 
 # install.packages("profvis")
 library(profvis)
 
@@ -372,6 +280,7 @@ If you have a longer program to profile, the best way is to:
 . . .
 
 ```{r}
+#| label: profvis-source
 #| eval: false
 # source the analysis script in which
 # the analysis is wrapped in a simple function
@@ -388,6 +297,7 @@ Which version of the code is faster?
 . . .
 
 ```{r}
+#| label: create-f1-f2
 # Fill a data frame in a loop
 f1 <- function() {
   x <- data.frame(a = numeric(), b = numeric())
@@ -411,7 +321,6 @@ Use the `microbenchmark` package to compare the functions:
 ```{r}
 #| label: benchmark-f1-f2
 #| output-location: fragment
-#| code-line-numbers: 1-3|4-9|10-14
 # install.packages("microbenchmark")
 library(microbenchmark)
 
@@ -424,20 +333,19 @@ compare_functions <- microbenchmark(
 compare_functions
 ```
 
-. . .
+## Benchmarking R code
 
 We can look at benchmarking results using ggplot
 
 ```{r}
+#| label: autoplot-compare-functions
 #| eval: false
 library(ggplot2)
 autoplot(compare_functions)
 ```
 
-
-## Benchmarking R code
-
 ```{r}
+#| label: autoplot-compare-functions-2
 #| fig-width: 8
 #| fig-height: 4.5
 #| echo: false
@@ -445,11 +353,12 @@ library(ggplot2)
 autoplot(compare_functions) + theme_gray(base_size = 16)
 ```
 
-## Other ways to measure run time {visibility="hidden"}
+## Other ways to measure run time
 
 Use the `tictoc` package to get a quick overview of the time a section of code takes
 
 ```{r}
+#| label: tic-toc
 # install.packages("tictoc")
 library(tictoc)
 
@@ -487,7 +396,6 @@ Use fewer function calls and less complex functions
 ```{r}
 #| label: benchmark-colmeans-vs-apply
 #| output-location: fragment
-#| code-line-numbers: 1-3|4-9|10-13
 # A data frame with 1 million rows and 2 columns
 x <- data.frame(a = rnorm(1e6), b = rnorm(1e6))
 
@@ -508,10 +416,13 @@ Give R as much information as possible
 . . .
 
 ```{r}
+#| label: benchmark-guess-vs-know-classes
 microbenchmark(
   guess_classes = read.csv(here::here("slides/data/ghg_ems.csv")),
-  know_classes = read.csv(here::here("slides/data/ghg_ems.csv"), 
-                          colClasses = c("character", "integer", rep("double", 5))),
+  know_classes = read.csv(
+    here::here("slides/data/ghg_ems.csv"),
+    colClasses = c("character", "integer", rep("double", 5))
+  ),
   times = 10
 )
 ```
@@ -532,7 +443,6 @@ microbenchmark(
 
 ```{r}
 #| label: benchmark-vectorization
-#| code-line-numbers: 1-3|4-13|14-17
 # A vector with 1 million values
 x <- 1:1e6
 
@@ -559,6 +469,7 @@ If you know how big your object will be, pre-allocate it
 **Example**: Fill up a data frame in a loop
 
 ```{r}
+#| label: create-f1-f2-loop
 # Fill up data frame in a loop
 f1 <- function() {
   x <- data.frame(a = numeric(), b = numeric())
@@ -590,6 +501,7 @@ If you know how big your object will be, pre-allocate it
 **Example**: Fill up a data frame in a loop
 
 ```{r}
+#| label: benchmark-f1-f2-loop
 microbenchmark(
   no_alloc = f1(),
   pre_alloc = f2(),
@@ -603,6 +515,7 @@ microbenchmark(
 Of course, here the even better version would be to fill the data frame directly with vectors:
 
 ```{r}
+#| label: create-f3
 f3 <- function() {
   x <- data.frame(a = 1:1e4, b = 1:1e4)
 }
@@ -641,7 +554,6 @@ If you use a value multiple times, store it in a variable to avoid re-calculatio
 
 ```{r}
 #| label: cache-variables
-#| code-line-numbers: 1-3|4-10|11-14
 # A matrix with 1000 columns
 x <- matrix(rnorm(10000), ncol = 1000)
 
@@ -662,7 +574,12 @@ microbenchmark(
   - Helps to avoid unnecessary calculations
 - Save intermediate results
   - Don't re-run time consuming steps if not necessary
-- Use the right packages and functions
+- Use the right packages
+  - [`tidyverse` packages](https://www.tidyverse.org/) can be quite fast (e.g. `readr`, `dplyr`)
+  - [`data.table` package](https://rdatatable.gitlab.io/data.table/) is fast and memory efficienct
+  - [`collapse` package](https://sebkrantz.github.io/collapse/index.html) for very fast data manipulation
+  - [`arrow` package](https://arrow.apache.org/docs/r/) for efficient reading, processing and writing of large datasets (even larger than RAM)
+
   
 ## Read data
 
@@ -674,6 +591,7 @@ microbenchmark(
 - There are many alternatives to read data, e.g.:
   - `read_csv` from the `readr` package (tidyverse)
   - `fread` from the `data.table` package
+  - `read_csv_arrow` from the `arrow` package
 
 ## Read data
 
@@ -681,13 +599,15 @@ Compare some alternative reading functions
   
 ```{r}
 #| label: benchmark-reading-data
+#| message: false
 #| output-location: slide
 file_path_csv <- here::here("slides/data/ghg_ems_large.csv")
 
 compare_input <- microbenchmark::microbenchmark(
   read.csv = read.csv(file_path_csv),
-  read_csv = readr::read_csv(file_path_csv, progress = FALSE, show_col_types = FALSE),
-  fread = data.table::fread(file_path_csv, showProgress = FALSE),
+  read_csv = readr::read_csv(file_path_csv),
+  fread = data.table::fread(file_path_csv),
+  read_csv_arrow = arrow::read_csv_arrow(file_path_csv),
   times = 10
 )
 
@@ -700,11 +620,12 @@ autoplot(compare_input)
 Reading plain text is faster than excel files
 
 ```{r}
+#| label: benchmark-reading-excel
 #| output-location: slide
 file_path_xlsx <- here::here("slides/data/ghg_ems_large.xlsx")
 
 compare_excel <- microbenchmark(
-  read_csv = readr::read_csv(file_path_csv, progress = FALSE, show_col_types = FALSE),
+  read_csv = readr::read_csv(file_path_csv),
   read_excel = readxl::read_excel(file_path_xlsx),
   times = 10
 )
@@ -712,29 +633,17 @@ compare_excel <- microbenchmark(
 autoplot(compare_excel)
 ```
 
-
 ## Write data
 
-::: {.nonincremental}
+Use faster alternatives to `write.table` or `write.csv`
 
-- Base-R functions to write files are:
-  - `write.table`
-  - `write.csv`
-- Faster alternatives are:
-  - `write_csv` from the `readr` package (tidyverse)
-  - `fwrite` from the `data.table` package
+**Example:** Write a data frame with 1000 rows as csv or excel file.
 
-:::
-
-## Write data {visibility="hidden"}
-
-Compare the efficiency of different writing functions:
-
+. . .
+  
 ```{r}
 #| label: benchmark-writing-data
-#| eval: false
 #| output-location: slide
-#| code-line-numbers: 1-7|8-15|16
 # create an example with 10000 rows to export
 df <- data.frame(
   x = rnorm(10000),
@@ -747,6 +656,7 @@ compare_output <- microbenchmark::microbenchmark(
   write_csv = readr::write_csv(df, "df.csv"),
   fwrite = data.table::fwrite(df, "df.csv"),
   write_excel = writexl::write_xlsx(df, "df.xlsx"),
+  write_csv_arrow = arrow::write_csv_arrow(df, "df.csv"),
   times = 10
 )
 
@@ -769,6 +679,7 @@ Different packages offer fast and efficient data manipulation and analysis:
 **Example**: Summarize mean carbon emissions from Electricity by Country
 
 ```{r}
+#| label: setup-summarize-by-group
 library(data.table)
 library(dplyr)
 library(collapse)
@@ -779,32 +690,33 @@ library(collapse)
 **Example**: Summarize mean carbon emissions from Electricity by Country
 
 ```{r}
+#| label: load-ghg-ems
 #| include: false
 ghg_ems <- data.table::fread(here::here("slides/data/ghg_ems.csv"))
 ```
 
 ```{r}
 #| label: functions-summarize-by-group
-#| code-line-numbers: 1-7|8-14|15-20
 # 1. The data table way
+
 # Convert the data to a data.table
 setDT(ghg_ems)
-summarize_dt <- function(){
+summarize_dt <- function() {
   ghg_ems[, mean(Electricity, na.rm = TRUE), by = Country]
 }
 
 # 2. The dplyr way
-summarize_dplyr <- function(){
+summarize_dplyr <- function() {
   ghg_ems |>
-      group_by(Country) |>
-      summarize(mean_e = mean(Electricity, na.rm = TRUE))
+    group_by(Country) |>
+    summarize(mean_e = mean(Electricity, na.rm = TRUE))
 }
 
 # 3. The collapse way
-summarize_collapse <- function(){
+summarize_collapse <- function() {
   ghg_ems |>
-      fgroup_by(Country) |>
-      fsummarise(mean_e = fmean(Electricity))
+    fgroup_by(Country) |>
+    fsummarise(mean_e = fmean(Electricity))
 }
 ```
 
@@ -814,7 +726,6 @@ summarize_collapse <- function(){
 
 ```{r}
 #| label: benchmark-summarizing-by-group
-#| code-line-numbers: 1-7|8-12
 # compare the speed of all versions
 microbenchmark(
   dplyr = summarize_dplyr(),
@@ -830,7 +741,6 @@ microbenchmark(
 
 ```{r}
 #| label: benchmark-selecting-columns
-#| code-line-numbers: 1-6|7-11
 #| output-location: fragment
 microbenchmark(
   dplyr = select(ghg_ems, Country, Year, Electricity, Transportation),
@@ -858,6 +768,8 @@ parallel::detectCores()
 ```
 
 . . .
+
+<br>
 
 ::::{.columns}
 
@@ -897,24 +809,12 @@ Parallel
 Let's create a very slow square root function
 
 ```{r}
-slow_sqrt <- function(x){
+#| label: slow-sqrt
+slow_sqrt <- function(x) {
   Sys.sleep(1) # simulate 1 second of computation time
   sqrt(x)
 }
 ```
-<br>
-
-:::{.fragment}
-
-Before you run anything in parallel, tell R how many cores to use:
-
-```{r}
-library(future)
-# Plan parallel session with 6 cores
-plan(multisession, workers = 6)
-```
-
-:::
 
 ## Parallel apply functions
 
@@ -924,16 +824,13 @@ To run the function on a vector of numbers we could use
 
 :::{.column width="50%"}
 
-The **sequential** version
+**`lapply`** <br>
 
 ```{r}
+#| label: lapply-slow-sqrt
 #| message: false
-# to measure the runtime
-library(tictoc)
-
 # create a vector of 10 numbers
-x <- 1:10 
-
+x <- 1:10
 tic()
 result <- lapply(x, slow_sqrt)
 toc()
@@ -945,11 +842,14 @@ toc()
 
 :::{.fragment}
 
-The **parallel** version
+**`future_lapply`** <br>
 
 ```{r}
+#| label: future-lapply-slow-sqrt
 # Load future.apply package
 library(future.apply)
+# Plan parallel session with 6 cores
+plan(multisession, workers = 6)
 
 tic()
 result <- future_lapply(x, slow_sqrt)
@@ -962,26 +862,75 @@ toc()
 
 :::
 
+. . .
+
+Use `parallel::detectCores()` to find out how many cores you have.
+
 ## Parallel apply functions
 
 Selected base R apply functions and their future versions:
 
 ```{r}
+#| label: apply-functions-table
 #| echo: false
 # A data. frame with two columns: base and future.apply
 # In the base column there are the base R functions and in the future.apply
 # column there are the future versions of the functions
 # The function names should be enclosed in backticks and then in quotation marks to be printed nicely
 apply_functions <- data.frame(
-  base = c("`lapply`", "`sapply`", "`vapply`", "`mapply`", "`tapply`", "`apply`", "`Map`"),
-  future.apply = c("`future_lapply`", "`future_sapply`", "`future_vapply`", "`future_mapply`", "`future_tapply`",  "`future_apply`", "`future_Map`")
+  base = c(
+    "`
+lapply
+`",
+    "`
+sapply
+`",
+    "`
+vapply
+`",
+    "`
+mapply
+`",
+    "`
+tapply
+`",
+    "`
+apply
+`",
+    "`
+Map
+`"
+  ),
+  future.apply = c(
+    "`
+future_lapply
+`",
+    "`
+future_sapply
+`",
+    "`
+future_vapply
+`",
+    "`
+future_mapply
+`",
+    "`
+future_tapply
+`",
+    "`
+future_apply
+`",
+    "`
+future_Map
+`"
+  )
 )
 # print the data frame apply_functions nicely in the quarto doc using knitr
 # Apply striped design to the table
-knitr::kable(apply_functions) 
+knitr::kable(apply_functions)
 ```
 
-## Future `purrr` functions {visibility="hidden"}
+## Future `purrr` functions
 
 - The [`furrr` package](https://furrr.futureverse.org/) offers parallel versions of [`purrr` functions](https://purrr.tidyverse.org/)
 
@@ -994,6 +943,7 @@ knitr::kable(apply_functions)
 The **sequential** version
 
 ```{r}
+#| label: purrr-slow-sqrt
 library(purrr)
 
 # the purrr version
@@ -1009,6 +959,7 @@ toc()
 The **parallel** version
 
 ```{r}
+#| label: furrr-slow-sqrt
 library(furrr)
 
 # the furrr version
@@ -1026,8 +977,9 @@ toc()
 A normal for loop:
 
 ```{r}
+#| label: for-loop-slow-sqrt
 z <- list()
-for (i in 1:10){
+for (i in 1:10) {
   z[i] <- slow_sqrt(i)
 }
 ```
@@ -1037,10 +989,12 @@ for (i in 1:10){
 Use `foreach` to write the same loop
 
 ```{r}
+#| label: foreach-slow-sqrt
 library(foreach)
-z <- foreach(i = 1:10) %do% {
-  slow_sqrt(i)
-}
+z <- foreach(i = 1:10) %do%
+  {
+    slow_sqrt(i)
+  }
 ```
 
 ## Parallel for loops
@@ -1054,12 +1008,14 @@ Use `doFuture` and `foreach` package to parallelize for loops
 The **sequential** version
 
 ```{r}
+#| label: foreach-slow-sqrt-sequential
 library(foreach)
 
 tic()
-z <- foreach(i = 1:10) %do% {
-  slow_sqrt(i)
-}
+z <- foreach(i = 1:10) %do%
+  {
+    slow_sqrt(i)
+  }
 toc()
 ```
 
@@ -1069,15 +1025,21 @@ toc()
 
 The **parallel** version
 
+:::{.fragment}
+
 ```{r}
+#| label: foreach-slow-sqrt-parallel
 library(doFuture)
 
 tic()
-z <- foreach(i = 1:10) %dofuture% {
-  slow_sqrt(i)
-}
+z <- foreach(i = 1:10) %dofuture%
+  {
+    slow_sqrt(i)
+  }
 toc()
 ```
+
+:::
 
 :::
 
@@ -1088,6 +1050,7 @@ toc()
 When you are done working in parallel, explicitly close your multisession:
 
 ```{r}
+#| label: close-multisession
 # close the multisession plan
 plan(sequential)
 ```
@@ -1107,20 +1070,23 @@ plan(sequential)
 **Example:** R function to calculate Fibonacci numbers
 
 ```{r}
+#| label: fibonacci-r
 # A function to calculate Fibonacci numbers
-fibonacci_r <- function(n){
-  if (n < 2){
+fibonacci_r <- function(n) {
+  if (n < 2) {
     return(n)
   } else {
     return(fibonacci_r(n - 1) + fibonacci_r(n - 2))
   }
 }
 ```
+
 <br>
 
 . . .
 
 ```{r}
+#| label: fibonacci-r-30
 # Calculate the 30th Fibonacci number
 fibonacci_r(30)
 ```
@@ -1130,6 +1096,7 @@ fibonacci_r(30)
 Use `cppFunction` to rewrite the function in C++:
 
 ```{r}
+#| label: fibonacci-cpp
 library(Rcpp)
 
 # Rewrite the fibonacci_r function in C++
@@ -1143,11 +1110,13 @@ fibonacci_cpp <- cppFunction(
   }'
 )
 ```
+
 <br>
 
 . . .
 
 ```{r}
+#| label: fibonacci-cpp-30
 # calculate the 30th Fibonacci number
 fibonacci_cpp(30)
 ```
@@ -1187,12 +1156,34 @@ fibonacci_cpp(30)
 ## How much faster is C++?
 
 ```{r}
+#| label: benchmark-fibonacci
 microbenchmark(
   r = fibonacci_r(30),
   rcpp = fibonacci_cpp(30),
   times = 10
 )
 ```
+
+# Summary
+
+## Efficient R code and optimization
+
+- First: Can I run it somewhere else?
+  - :wrench: Background job or cluster
+- If not: Find bottlenecks in your code
+  - :wrench: `profvis` package for profiling
+  - :wrench: `microbenchmark` package for benchmarking
+- Make the critical sections more efficient
+
+## Efficient R code and optimization
+
+- Basic principles
+- Efficient data analysis
+  - :wrench: `data.table`, `collapse`, `tidyverse`
+- Parallelization with the futureverse
+  - :wrench: `furrr`, `parallel`, `doParallel`
+- Rewrite code in C++
+  - :wrench: `Rcpp`
 
 # Summary
 
@@ -1204,7 +1195,7 @@ microbenchmark(
 
 <br>
 
-:date: 18th January :clock4: 4-5 p.m. :round_pushpin: Webex
+:date: 17th July :clock4: 4-5 p.m. :round_pushpin: Webex
 
 :bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
 
@@ -1212,3 +1203,53 @@ microbenchmark(
 
 ## Thank you for your attention :)
 Questions?
+
+# Appendix
+
+## Cache function results
+
+- Use the [`memoise` package](https://memoise.r-lib.org/)
+- If functions are called many times with the same arguments
+  - Avoids the recalculation
+- Useful to e.g. improve the performance of a shiny app
+
+## Cache function results
+
+**Example**: Create a plot on a subset of the `iris` data set
+
+```{r}
+#| label: setup-memoise
+# Example of using memoise to cache results
+library(memoise)
+library(ggplot2)
+
+# Remove rows from plotting function
+select_iris_species <- function(rows_to_remove) {
+  iris_subset <- iris[-rows_to_remove, ]
+  # Do a plot on the subset
+  p <- ggplot(
+    iris_subset,
+    aes(x = Sepal.Length, y = Sepal.Width, color = Species)
+  ) +
+    geom_point()
+}
+
+# Version of the function with memoise
+select_iris_species_mem <- memoise(select_iris_species)
+```
+
+## Cache function results
+
+**Example**: Create a plot on a subset of the `iris` data set
+
+```{r}
+#| label: benchmark-iris-species
+#| output-location: column
+# Compare the two versions
+result <- microbenchmark(
+  no_cache = select_iris_species(10),
+  cache = select_iris_species_mem(10)
+)
+
+autoplot(result)
+```
