@@ -4,6 +4,7 @@ project:
   render:
     - "*.qmd"
     - "!sessions/additional_material/02_quarto/"
+    - "!sessions/additional_material/11_efficient-r-2/"
     - "!slides/efficient-R.qmd"
 
   resources:

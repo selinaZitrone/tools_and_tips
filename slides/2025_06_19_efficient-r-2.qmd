@@ -122,12 +122,6 @@ $$
 
 ## Today
 
-> “Make it **work**, then make it **beautiful**, then if you really, really have to, make it **fast**. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful!”
-> 
-> – Joe Armstrong
-
-## Today
-
 :::{.r-stack}
 
 ![](images/2023_11_16_efficient_r/pyramid_1.png){width=70% fig-align="center" .fragment}
@@ -312,6 +306,24 @@ f2 <- function() {
 }
 ```
 
+## Benchmarking R code - the easy way
+
+Use the `tictoc` package to get a quick overview of the time a section of code takes
+
+```{r}
+#| label: tic-toc
+# install.packages("tictoc")
+library(tictoc)
+
+tic()
+f1()
+toc()
+
+tic()
+f2()
+toc()
+```
+
 ## Benchmarking R code
 
 Use the `microbenchmark` package to compare the functions:
@@ -353,24 +365,6 @@ library(ggplot2)
 autoplot(compare_functions) + theme_gray(base_size = 16)
 ```
 
-## Other ways to measure run time
-
-Use the `tictoc` package to get a quick overview of the time a section of code takes
-
-```{r}
-#| label: tic-toc
-# install.packages("tictoc")
-library(tictoc)
-
-tic()
-f1()
-toc()
-
-tic()
-f2()
-toc()
-```
- 
 # Optimize your code
 
 :::{.nonincremental}
@@ -571,15 +565,18 @@ microbenchmark(
 ## Efficient workflow
 
 - Prepare the data to be clean and concise for analysis
-  - Helps to avoid unnecessary calculations
 - Save intermediate results
-  - Don't re-run time consuming steps if not necessary
 - Use the right packages
-  - [`tidyverse` packages](https://www.tidyverse.org/) can be quite fast (e.g. `readr`, `dplyr`)
-  - [`data.table` package](https://rdatatable.gitlab.io/data.table/) is fast and memory efficienct
-  - [`collapse` package](https://sebkrantz.github.io/collapse/index.html) for very fast data manipulation
-  - [`arrow` package](https://arrow.apache.org/docs/r/) for efficient reading, processing and writing of large datasets (even larger than RAM)
 
+## Efficient workflow packages
+
+- [`tidyverse` packages](https://www.tidyverse.org/) have C++ backend and often faster than base R
+- [`data.table` package](https://rdatatable.gitlab.io/data.table/) is fast and memory efficient
+  - Syntax is quite different from base R and `tidyverse`
+- [`collapse` package](https://sebkrantz.github.io/collapse/index.html) for very fast data manipulation
+  - Works together with both `tidyverse` and `data.table` workflows
+  - Many functions similar to base R or `dplyr` just with prefix "f" (e.g. `fselect`, `fmean`, ...)
+- [`arrow` package](https://arrow.apache.org/docs/r/) for efficient reading, processing and writing of large datasets (even larger than RAM)
   
 ## Read data
 
@@ -665,17 +662,6 @@ autoplot(compare_output)
 
 ## Efficient data manipulation
 
-Different packages offer fast and efficient data manipulation and analysis:
-
-- [`dplyr` package](https://dplyr.tidyverse.org/) has a C++ backend and is often faster than base R
-- [`data.table` package](https://rdatatable.gitlab.io/data.table/) is fast and memory efficiency
-  - Syntax is quite different from base R and `tidyverse`
-- [`collapse` package](https://sebkrantz.github.io/collapse/index.html) is a C++ based and specifically developed for fast data analysis
-  - Works together with both `tidyverse` and `data.table` workflows
-  - Many functions similar to base R or `dplyr` just with prefix "f" (e.g. `fselect`, `fmean`, ...)
-  
-## Summarize data by group
-
 **Example**: Summarize mean carbon emissions from Electricity by Country
 
 ```{r}
@@ -685,7 +671,7 @@ library(dplyr)
 library(collapse)
 ```
 
-## Summarize data by group
+## Efficient data manipulation
 
 **Example**: Summarize mean carbon emissions from Electricity by Country
 
@@ -720,7 +706,7 @@ summarize_collapse <- function() {
 }
 ```
 
-## Summarize data by group
+## Efficient data manipulation
 
 **Example**: Summarize mean carbon emissions from Electricity by Country
 
@@ -735,7 +721,7 @@ microbenchmark(
 )
 ```
 
-## Select columns
+## Efficient data manipulation
 
 **Example**: Select columns Country, Year, Electricity, Transportation
 
@@ -1168,6 +1154,8 @@ microbenchmark(
 
 ## Efficient R code and optimization
 
+:::{.nonincremental}
+
 - First: Can I run it somewhere else?
   - :wrench: Background job or cluster
 - If not: Find bottlenecks in your code
@@ -1175,19 +1163,26 @@ microbenchmark(
   - :wrench: `microbenchmark` package for benchmarking
 - Make the critical sections more efficient
 
-## Efficient R code and optimization
-
-- Basic principles
-- Efficient data analysis
-  - :wrench: `data.table`, `collapse`, `tidyverse`
-- Parallelization with the futureverse
-  - :wrench: `furrr`, `parallel`, `doParallel`
-- Rewrite code in C++
-  - :wrench: `Rcpp`
+:::
 
 # Summary
 
+:::{.columns}
+
+:::{.column width="50%"}
+
+> “Make it **work**, then make it **beautiful**, then if you really, really have to, make it **fast**. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful!”
+> 
+> – Joe Armstrong
+
+:::
+
+::: {.column width="50%"}
+
 ![](images/2023_11_16_efficient_r/pyramid_text.png){width=90%}
+:::
+
+:::
 
 ## Next lecture
 
