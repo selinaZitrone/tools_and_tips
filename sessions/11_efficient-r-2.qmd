@@ -20,12 +20,11 @@ For most data analysis and statistical computing, R is efficient enough. However
 - [Youtube Video](https://www.youtube.com/watch?v=EHoTFOW1WjU) on Writing efficient R code
 - [Blogpost about profiling](https://support.posit.co/hc/en-us/articles/218221837-Profiling-R-code-with-the-RStudio-IDE)
 - [Chapter in Hadley Wickham's Advanced R on performance](https://adv-r.hadley.nz/perf-improve.html)
-- The [futureverse project](https://www.futureverse.org/) for parallel code
 - [Parllelization tutorials](https://henrikbengtsson.github.io/future-tutorial-user2022) for different use cases
 - [Book chapter on Rcpp](https://csgillespie.github.io/efficientR/performance.html#rcpp)
 - [Rcpp online documentation](https://www.rcpp.org/) with lots of info, tutorials and examples
 
-### R packages
+### Mentioned R packages
 
 - [profvis](https://profvis.r-lib.org/) for profiling R code
 - [microbenchmark examples](https://www.statology.org/r-microbenchmark/) showing how to use the `microbenchmark` package to measure execution time of R code
@@ -33,5 +32,13 @@ For most data analysis and statistical computing, R is efficient enough. However
 - [collapse](https://sebkrantz.github.io/collapse/) for fast data manipulation and analysis
 - [arrow](https://arrow.apache.org/docs/r/) for fast data import/export (especially for large datasets, even bigger than memory)
 - [Rcpp](https://www.rcpp.org/) for integrating C++ code into R for performance-critical tasks
+- [futureverse](https://www.futureverse.org/) overview of packages for parallelizing R code
+    - [future](https://future.futureverse.org/) is the core package of the futureverse
+    - [furrr](https://furrr.futureverse.org/) for parallelizing `purrr` functions
+    - [future.apply](https://future.apply.futureverse.org/) for future apply functions
+    - [dofuture](https://dofuture.futureverse.org/) for parallelizing for-loops and foreach-loops
+
+
+
 
 
