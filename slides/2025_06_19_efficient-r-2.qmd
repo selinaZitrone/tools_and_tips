@@ -31,13 +31,10 @@ from: markdown+emoji
 ```{r}
 #| label: setup
 #| include: false
+#| cache: false
 ggplot2::theme_set(ggplot2::theme_gray(base_size = 16))
 
-# Set default options for readr functions
-options(
-  readr.show_col_types = FALSE,
-  readr.show_progress = FALSE
-)
+library(tictoc)
 ```
 
 ## What is this lecture series?
@@ -161,36 +158,51 @@ Check out my talk ["Write R code that lasts"](https://selinazitrone.github.io/to
 
 #### Think about
 
-- How much time do I **save** vs **spend** with optimizing? 
+- How much time do I **save** vs. **spend** with optimizing? 
 - **How often** do I run the code?
 - Trade-offs between **readability** and **efficiency**
 
 ## Should I optimize?
 
-If your code is to slow for you, you can go through these steps:
+If your code is too slow for you, you can go through these steps:
 
 1. Think if you can **run the code somewhere else**
 
-- On a cluster (e.g. [FU Curta](https://www.fu-berlin.de/en/sites/high-performance-computing/Rechenressourcen/index.html))
-- On your computer but in the background
-
-## Run your code in the background
+## Run the code somewhere else
 
 :::{.fragment}
 
-Use RStudio **background jobs**
+:::{.nonincremental}
 
-![](images/2023_11_16_efficient_r/background_job.png){width=50%}
+- Use RStudio **background jobs**
+
+![](images/2023_11_16_efficient_r/background_job.png){width=40%}
+
+:::
 
 :::
 
 :::{.fragment}
 
-Start your R script from the command line
+:::{.nonincremental}
+
+- Start your R script from the command line
+
+:::
 
 ```bash
 Rscript my_script.R
 ```
+:::
+
+:::{.fragment}
+
+:::{.nonincremental}
+
+- Run it on a cluster (e.g. [FU Curta](https://www.fu-berlin.de/en/sites/high-performance-computing/Rechenressourcen/index.html))
+
+:::
+
 :::
 
 ## Should I optimize?
@@ -222,6 +234,7 @@ You can profile a section of code like this:
 
 ```{r eval=FALSE}
 #| label: profvis
+#| code-line-numbers: "1-2|3-6|8-14|7-15"
 # install.packages("profvis")
 library(profvis)
 
@@ -312,6 +325,7 @@ Use the `tictoc` package to get a quick overview of the time a section of code t
 
 ```{r}
 #| label: tic-toc
+#| code-line-numbers: "1-2|3-7|3-12"
 # install.packages("tictoc")
 library(tictoc)
 
@@ -333,6 +347,7 @@ Use the `microbenchmark` package to compare the functions:
 ```{r}
 #| label: benchmark-f1-f2
 #| output-location: fragment
+#| code-line-numbers: "1-2|3-8|9-14"
 # install.packages("microbenchmark")
 library(microbenchmark)
 
@@ -345,7 +360,7 @@ compare_functions <- microbenchmark(
 compare_functions
 ```
 
-## Benchmarking R code
+. . .
 
 We can look at benchmarking results using ggplot
 
@@ -355,6 +370,8 @@ We can look at benchmarking results using ggplot
 library(ggplot2)
 autoplot(compare_functions)
 ```
+
+## Benchmarking R code
 
 ```{r}
 #| label: autoplot-compare-functions-2
@@ -437,6 +454,7 @@ microbenchmark(
 
 ```{r}
 #| label: benchmark-vectorization
+#| code-line-numbers: 1-3|4-13|14-17
 # A vector with 1 million values
 x <- 1:1e6
 
@@ -548,6 +566,7 @@ If you use a value multiple times, store it in a variable to avoid re-calculatio
 
 ```{r}
 #| label: cache-variables
+#| code-line-numbers: 1-3|4-10|11-14
 # A matrix with 1000 columns
 x <- matrix(rnorm(10000), ncol = 1000)
 
@@ -565,19 +584,11 @@ microbenchmark(
 ## Efficient workflow
 
 - Prepare the data to be clean and concise for analysis
+  - Helps to avoid unnecessary calculations
 - Save intermediate results
-- Use the right packages
+  - Don't re-run time-consuming steps if not necessary
+- Use the right packages and functions
 
-## Efficient workflow packages
-
-- [`tidyverse` packages](https://www.tidyverse.org/) have C++ backend and often faster than base R
-- [`data.table` package](https://rdatatable.gitlab.io/data.table/) is fast and memory efficient
-  - Syntax is quite different from base R and `tidyverse`
-- [`collapse` package](https://sebkrantz.github.io/collapse/index.html) for very fast data manipulation
-  - Works together with both `tidyverse` and `data.table` workflows
-  - Many functions similar to base R or `dplyr` just with prefix "f" (e.g. `fselect`, `fmean`, ...)
-- [`arrow` package](https://arrow.apache.org/docs/r/) for efficient reading, processing and writing of large datasets (even larger than RAM)
-  
 ## Read data
 
 **Example:** Read csv data on worldwide emissions of greenhouse gases (~14000 rows, 7 cols).
@@ -602,8 +613,8 @@ file_path_csv <- here::here("slides/data/ghg_ems_large.csv")
 
 compare_input <- microbenchmark::microbenchmark(
   read.csv = read.csv(file_path_csv),
-  read_csv = readr::read_csv(file_path_csv),
-  fread = data.table::fread(file_path_csv),
+  read_csv = readr::read_csv(file_path_csv, progress = FALSE, show_col_types = FALSE),
+  fread = data.table::fread(file_path_csv, showProgress = FALSE),
   read_csv_arrow = arrow::read_csv_arrow(file_path_csv),
   times = 10
 )
@@ -632,16 +643,31 @@ autoplot(compare_excel)
 
 ## Write data
 
+:::{.nonincremental}
+
+- Base-R functions to write csv files are:
+  - `write.table`
+  - `write.csv`
+- Faster alternatives are 
+  - `write_csv` from the `readr` package (tidyverse)
+  - `fwrite` from the `data.table` package
+  - `write_csv_arrow` from the `arrow` package
+
+:::
+
+## Write data {visibility="hidden"}
+
 Use faster alternatives to `write.table` or `write.csv`
 
 **Example:** Write a data frame with 1000 rows as csv or excel file.
 
-. . .
-  
+
 ```{r}
 #| label: benchmark-writing-data
 #| output-location: slide
+#| eval: false
 # create an example with 10000 rows to export
+
 df <- data.frame(
   x = rnorm(10000),
   y = rnorm(10000),
@@ -662,6 +688,18 @@ autoplot(compare_output)
 
 ## Efficient data manipulation
 
+Different packages offer fast and efficient data manipulation and analysis:
+
+- `dplyr` package has a C++ backend and is often faster than base R
+- `data.table` package is fast and memory efficiency
+  - Syntax is quite different from base R and `tidyverse`
+- `collapse` package is a C++ based and specifically developed for fast data analysis
+  - Works together with both `tidyverse` and `data.table` workflows
+  - Many functions similar to base R or `dplyr` just with prefix "f" (e.g. `fselect`, `fmean`, ...)
+- `arrow` package for efficient reading, processing and writing of large datasets (even larger than RAM)
+
+## Summarize data by group
+
 **Example**: Summarize mean carbon emissions from Electricity by Country
 
 ```{r}
@@ -671,7 +709,7 @@ library(dplyr)
 library(collapse)
 ```
 
-## Efficient data manipulation
+## Summarize data by group
 
 **Example**: Summarize mean carbon emissions from Electricity by Country
 
@@ -683,8 +721,8 @@ ghg_ems <- data.table::fread(here::here("slides/data/ghg_ems.csv"))
 
 ```{r}
 #| label: functions-summarize-by-group
+#| code-line-numbers: 1-7|8-13|14-20
 # 1. The data table way
-
 # Convert the data to a data.table
 setDT(ghg_ems)
 summarize_dt <- function() {
@@ -721,12 +759,13 @@ microbenchmark(
 )
 ```
 
-## Efficient data manipulation
+## Select columns
 
 **Example**: Select columns Country, Year, Electricity, Transportation
 
 ```{r}
 #| label: benchmark-selecting-columns
+#| code-line-numbers: 1-6|7-11
 #| output-location: fragment
 microbenchmark(
   dplyr = select(ghg_ems, Country, Year, Electricity, Transportation),
@@ -802,6 +841,18 @@ slow_sqrt <- function(x) {
 }
 ```
 
+. . .
+
+Before you run anything in parallel, tell R how many cores to use:
+
+```{r}
+#| label: plan-parallel
+# Load future package
+library(future)
+# Plan parallel session with 6 cores
+plan(multisession, workers = 6)
+```	
+
 ## Parallel apply functions
 
 To run the function on a vector of numbers we could use
@@ -810,7 +861,7 @@ To run the function on a vector of numbers we could use
 
 :::{.column width="50%"}
 
-**`lapply`** <br>
+**Sequential** **`lapply`** <br>
 
 ```{r}
 #| label: lapply-slow-sqrt
@@ -828,18 +879,18 @@ toc()
 
 :::{.fragment}
 
-**`future_lapply`** <br>
+**Parallel** **`future_lapply`** <br>
 
 ```{r}
 #| label: future-lapply-slow-sqrt
+#| eval: false
 # Load future.apply package
 library(future.apply)
-# Plan parallel session with 6 cores
-plan(multisession, workers = 6)
 
 tic()
 result <- future_lapply(x, slow_sqrt)
 toc()
+#> 2.6 sec elapsed
 ```
 
 :::
@@ -916,48 +967,6 @@ future_Map
 knitr::kable(apply_functions)
 ```
 
-## Future `purrr` functions
-
-- The [`furrr` package](https://furrr.futureverse.org/) offers parallel versions of [`purrr` functions](https://purrr.tidyverse.org/)
-
-. . .
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-The **sequential** version
-
-```{r}
-#| label: purrr-slow-sqrt
-library(purrr)
-
-# the purrr version
-tic()
-z <- map(x, slow_sqrt)
-toc()
-```
-
-:::
-
-:::{.column width="50%"}
-
-The **parallel** version
-
-```{r}
-#| label: furrr-slow-sqrt
-library(furrr)
-
-# the furrr version
-tic()
-z <- future_map(x, slow_sqrt)
-toc()
-```
-
-:::
-
-:::
-
 ## Parallel for loops
 
 A normal for loop:
@@ -1026,6 +1035,48 @@ toc()
 ```
 
 :::
+
+:::
+
+:::
+
+## Future `purrr` functions
+
+The [`furrr` package](https://furrr.futureverse.org/) offers parallel versions of [`purrr` functions](https://purrr.tidyverse.org/)
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+The **sequential** version
+
+```{r}
+#| label: purrr-slow-sqrt
+library(purrr)
+
+# the purrr version
+tic()
+z <- map(x, slow_sqrt)
+toc()
+```
+
+:::
+
+:::{.column width="50%"}
+
+The **parallel** version
+
+```{r}
+#| label: furrr-slow-sqrt
+library(furrr)
+
+# the furrr version
+tic()
+z <- future_map(x, slow_sqrt)
+toc()
+```
 
 :::
 
@@ -1167,22 +1218,9 @@ microbenchmark(
 
 # Summary
 
-:::{.columns}
-
-:::{.column width="50%"}
-
-> “Make it **work**, then make it **beautiful**, then if you really, really have to, make it **fast**. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful!”
-> 
-> – Joe Armstrong
-
-:::
-
-::: {.column width="50%"}
 
 ![](images/2023_11_16_efficient_r/pyramid_text.png){width=90%}
-:::
 
-:::
 
 ## Next lecture
 
