@@ -1,6 +1,7 @@
 #*.html
 slides/*_files/
 sessions/*_files/
+sessions/*_cache/
 .Rproj.user/
 /.quarto/
 *.pptx
