@@ -1,0 +1,554 @@
+---
+title: "Introduction to version control with Git"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+date: "2025-07-17"
+format: 
+  revealjs:
+    footer: "Selina Baldauf // Version control with Git"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute: 
+  echo: false
+  eval: true
+from: markdown+emoji
+---
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+:::{.nonincremental}
+
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+-   If you want credit points -> send me a private message or email with your name and email add
+-   One topic from the world of scientific workflows
+-   For topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
+-   If you don't want to miss a lecture
+    -   Check out the [lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html)
+    -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+-   Slides provided [on Github](https://selinazitrone.github.io/tools_and_tips/)
+
+:::
+
+## Motivation
+
+Two examples in which proper version control can be a life/time saver
+
+. . .
+
+![](images/2023_06_15_git/code-does-not-work.png){fig-align="center" width=80%}
+
+. . .
+
+![](images/2023_06_15_git/collab-does-not-work.png){fig-align="center" width=80%}
+
+## Motivation
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.fragment}
+
+Git is very powerful ...<br>
+
+:::
+
+::: {.fragment}
+
+... but can also be confusing in the beginning.
+
+:::
+
+::: {.fragment}
+
+&nbsp;&nbsp;
+
+🎯 Learn simple Git workflows in **theory and practice** that you can **immediately apply** to your research projects.
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![[xkcd](https://xkcd.com/1597/) on Git](https://imgs.xkcd.com/comics/git.png)
+
+:::
+
+:::
+
+## Today
+
+
+Introduction to **Git concepts** and a **simple workflow** for your **individual projects**
+
+## Version control with Git
+
+- **Complete** and **long-term** history of every file in your project
+
+
+- **Open source and free** to use version control software
+
+
+- Quasi **standard** for software development
+
+
+- A whole universe of **other software and services** around it
+
+## Version control with Git
+
+- For projects with **mainly text files** (e.g. code, markdown files, ...)
+
+- Basic idea: Take snapshots (**commits**) of your project over time
+
+. . .
+
+![](images/2025_07_17_git-2/basic_idea.png)
+
+- A project version controlled with Git is a Git **repository** (**repo**)
+
+## Version control with Git
+
+Git is a **distributed version control system**
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+![](images/2025_07_17_git-2/distributed.png)
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+- Idea: many *local* repositories synced via one *remote* repo
+- Everyone has a complete copy of the repo
+
+:::
+
+:::
+
+## Why to use Git?
+
+- **Version control**: Keep a history of your project and roll back if needed
+  - Git makes it very hard for you to loose things
+  - Easy to figure out why code is suddenly broken
+- **Collaboration**: Work together on the same project without loosing track
+- **Publication**: Easily share your project with others (e.g. on Github)
+- **Backup**: Have multiple copies of your project, one of them on a remote server
+- ...
+
+## How to use Git
+
+After you [installed it](https://www.atlassian.com/de/git/tutorials/install-git) there are different ways to interact with the software.
+
+## How to use Git - Terminal
+
+Using Git from the terminal
+
+![](images/2025_07_17_git-2/git-init.png)
+
+. . . 
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:heavy_plus_sign: Most control<br>
+
+:heavy_plus_sign: A lot of help/answers online<br>
+
+:::
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+:heavy_minus_sign: You need to use terminal :scream:<br>
+
+:::
+
+:::
+
+:::
+
+## How to use Git - Integrated GUIs
+
+A Git GUI is integrated in most (all?) IDEs, e.g. R Studio, VS Code
+
+![](images/2025_07_17_git-2/rstudio_vscode_git.png){fig-align="center" width=80%}
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:heavy_plus_sign: Easy and intuitive <br>
+
+:heavy_plus_sign: Stay inside IDE<br>
+
+:::
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+:heavy_minus_sign: Different for every program <br>
+
+:::
+
+:::
+
+:::
+
+## How to use Git - Standalone GUIs
+  
+Standalone Git GUI software, e.g. GitHub Desktop, Source Tree, ...
+
+![](images/2025_07_17_git-2/GitHub_desktop.png){width=50% fig-align="center"}
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:heavy_plus_sign: Easy and intuitive <br>
+
+:heavy_plus_sign: Use for all projects <br>
+
+:::
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+:heavy_minus_sign: Switch programs to use Git <br>
+
+:::
+
+:::
+
+:::
+
+## How to use Git
+
+#### Which one to choose?
+
+- Depends on experience and taste
+- You can mix methods because they are all interfaces to the same Git
+
+:::{.fragment}
+
+- We will use GitHub Desktop
+  - Beginner-friendly, intuitive and convenient
+  - Nice integration with GitHub
+
+:::
+
+:::{.fragment}
+
+:::{.callout-tip}
+
+Have a look at the [website](https://selinazitrone.GitHub.io/get-started-with-git/) where you find **How-To guides for the other methods** as well.
+
+:::
+
+:::
+
+# The basic Git workflow {.inverse}
+
+> `git init`, `git add`, `git commit`, `git push`
+
+## Example
+
+A cook book project to collect all my favorite recipes.
+
+![](images/2025_07_17_git-2/basic_idea.png)
+
+. . .
+
+In real life this would be e.g. a data analysis project, your thesis in LaTex, 
+a software project, ...
+
+## Step 1: Initialize a Git repository
+
+![](images/2025_07_17_git-2/0_init_concept_folder.png)
+
+## Step 1: Initialize a Git repository
+
+![](images/2025_07_17_git-2/1_init_concept_folder.png)
+
+## Step 1: Initialize a Git repository
+
+![](images/2025_07_17_git-2/1_init_explanation.png)
+
+
+## Step 2: Add and modify files
+
+Git detects any changes in the working directory
+
+![](images/2025_07_17_git-2/2_modify_concept_folder.png)
+
+## Step 2: Stage changes
+
+Staging a file means to **list it for the next commit**.
+
+![](images/2025_07_17_git-2/2_modify_concept_folder.png)
+
+## Step 2: Stage changes
+
+Staging a file means to **list it for the next commit**.
+
+![](images/2025_07_17_git-2/2_add_concept_folder.png)
+
+## Step 3: Commit changes
+
+Commits are the snapshots of your project state
+
+![](images/2025_07_17_git-2/2_after_add_concept.png)
+
+## Step 3: Commit changes
+
+Commits are the snapshots of your project state
+
+![](images/2025_07_17_git-2/3_commit_concept_folder.png)
+
+## Step 3: Commit changes
+
+Changes are part of Git history and staging area is clear again 
+
+![](images/2025_07_17_git-2/3_afterCommit_concept_folder.png)
+
+## How to write good commit messages?
+
+![[xkcd](https://xkcd.com/1296/) on commit messages](https://imgs.xkcd.com/comics/git_commit.png){fig-align="center" width=70%}
+
+## How to write good commit messages?
+
+:::{.columns}
+
+:::{.column width="47%"}
+
+:heavy_check_mark:
+
+```md
+Add pie recipe
+
+This is my favorite pie in the world. 
+The recipe comes from my grandfather and 
+he learned it from his neighbor.
+```
+
+:::
+
+:::{.column width="47%"}
+
+:x:
+
+```md
+added a file.
+
+This is really good.
+```
+
+:::
+
+:::
+
+See [here](https://cbea.ms/git-commit/) for more details but some general rules:
+
+1. Limit summary line to 50 characters
+2. Capitalize summary line
+3. Do not end summary line with period
+4. Use imperative mood in the subject line
+5. Use the *Description* to explain **what** and **why**, not **how**
+
+# Now you (15 min) {.task-slide}
+> Start your own cook book <br>
+> Complete [Task 1 "Local repo"](https://selinazitrone.GitHub.io/get-started-with-git/sessions/01_intro_git.html#tasks) 
+
+**Stay in the meeting** for the task.<br>
+**Ask** if you are stuck. <br>
+**Turn down/off volume** if you are disturbed. <br>
+
+## The commit history
+
+::: {layout="[[-1], [1], [-1]]" layout-valign="bottom"}
+
+![](images/2025_07_17_git-2/commit_info_blank.png)
+
+:::
+
+## Step 4: Share changes with the remote repo
+
+Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
+
+::: {.nonincremental}
+
+- Remote repos can be **private** (you + collaborators) or
+**public** (visible to anyone)
+
+:::
+
+![](images/2025_07_17_git-2/4_remote_concept.png){width=60% style="position: relative; bottom: -20px; left: 50%; transform: translateX(-50%);"}
+
+## Step 4: Share changes with the remote repo
+
+Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
+
+- Remote repos can be **private** (you + collaborators) or
+**public** (visible to anyone)
+
+![](images/2025_07_17_git-2/4_push_concept.png){width=60% style="position: relative; bottom: -20px; left: 50%; transform: translateX(-50%);"}
+
+## Different remote repositories
+
+- There are **commercial** and **self-hosted** options for your remote repositories
+  - Commercial: GitHub, Gitlab, Bitbucket, ...
+  - Self-hosted: Gitlab (maybe at your institution?)
+
+- Please be aware of your institutional guidelines
+  - Servers outside EU
+  - Privacy rules might apply depending on type of data
+
+## Make your repositories public
+
+GitHub/Gitlab are a good way to publish and share your work.
+
+. . .
+
+&nbsp;
+
+#### Advantages of publishing your code
+
+- Others can build on your work
+- Citations
+- Reproducibility
+- Get feedback
+
+## Make your repositories public
+
+You can increase the quality/complexity of your repo by
+
+- Adding a nice README.md file
+- [Connecting the repo with Zenodo to get a DOI](https://emilio-berti.GitHub.io/idiv-git-introduction/21-GitHub_zenodo/index.html)
+- ...
+
+. . . 
+
+If you are interested, browse some nice GitHub repositories for inspiration (e.g.
+[Git training repository](https://github.com/UnseenWizzard/git_training), [Computational notebooks](https://github.com/FellowsFreiesWissen/computational_notebooks), [Repo to publish code from a manuscript](https://github.com/AnneLew/Lewerentz-etal_2021_Macrophytes-DDG))
+
+
+# Now you (10 min){.task-slide}
+
+> Publish your cook book on GitHub <br>
+> Complete [Task 2 "GitHub"](https://selinazitrone.GitHub.io/get-started-with-git/sessions/01_intro_git.html#tasks)
+
+## Summary of the basic steps
+
+:::{.nonincremental}
+
+- `git init`: Initialize a git repository
+  - Adds a `.git` folder to your working directory
+- `git add`: Add files to the staging area
+  - This marks the files as being part of the next commit
+- `git commit`: Take a snapshot of your current project version
+  - Includes time stamp, commit message and information on the person who did the commit
+- `git push`: Push new commits to the remote repository
+  - Sync your local project version with the remote e.g. on GitHub
+
+:::
+
+# Undo things {.inverse}
+
+> `git revert`
+
+## Revert changes
+
+- Use `git revert` to revert specific commits
+- This does not delete the commit, it creates a **new commit that undoes a previous commit**
+  - It's a safe way to undo commited changes
+
+. . .
+
+![](images/2025_07_17_git-2/commit_history_after_revert.png){width=90%}
+
+# Now you (5 min) {.task-slide}
+
+> Revert a commit from your cook book
+
+
+
+# Thanks for your attention {.inverse}
+
+> Questions?
+
+# Go back in time {.inverse}
+
+> `git checkout`
+
+## Checkout a previous commit
+
+Take your work space back in time temporarily with `git checkout`
+
+. . .
+
+![](images/2025_07_17_git-2/commit_history_head.png){width=85%}
+
+. . .
+
+![](images/2025_07_17_git-2/commit_history_checkout.png){width=85%}
+
+
+# Ignoring files with `.gitignore` {.inverse}
+
+## Ignore files with `.gitignore`
+
+::: {.nonincremental}
+
+- Useful to ignore e.g.
+  - Compiled code and build directories
+  - Log files 
+  - Hidden system files
+  - Personal IDE config files
+  - ...
+  
+:::
+
+## Ignore files with `.gitignore`
+
+
+- Create a file with the name `.gitignore` in working directory
+
+- Add all files and directories you want to ignore to the `.gitignore` file
+
+
+#### Example
+
+```md
+*.html    # ignore all .html files
+*.pdf     # ignore all .pdf files
+
+debug.log # ignore the file debug.log
+
+build/    # ignore all files in subdirectory build
+```
+
+See [here](https://www.atlassian.com/git/tutorials/saving-changes/gitignore) for more ignore patterns that you can use.
