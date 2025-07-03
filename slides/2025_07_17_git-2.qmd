@@ -29,29 +29,24 @@ from: markdown+emoji
 
 :date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
 
--   If you want credit points -> send me a private message or email with your name and email add
--   One topic from the world of scientific workflows
--   For topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
+-   For credit points: send me a private message/email with your name and email
+-   Slides provided [online](https://selinazitrone.github.io/tools_and_tips/)
 -   If you don't want to miss a lecture
     -   Check out the [lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html)
     -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
--   Slides provided [on Github](https://selinazitrone.github.io/tools_and_tips/)
 
 :::
 
-## Motivation
+## Why version control?
 
-Two examples in which proper version control can be a life/time saver
+Proper version control can be a time/stress saver
 
-. . .
+![](img/day1/motivation_time.png){.fragment .absolute top=200 left=0}
 
-![](images/2023_06_15_git/code-does-not-work.png){fig-align="center" width=80%}
 
-. . .
+![](img/day1/motivation_collab.png){.fragment .absolute top=200}
 
-![](images/2023_06_15_git/collab-does-not-work.png){fig-align="center" width=80%}
-
-## Motivation
+## Today
 
 ::: {.columns}
 
@@ -73,7 +68,8 @@ Git is very powerful ...<br>
 
 &nbsp;&nbsp;
 
-🎯 Learn simple Git workflows in **theory and practice** that you can **immediately apply** to your research projects.
+- Simple Git workflow in **theory and practice**
+- Publish your work on **GitHub**
 
 :::
 
@@ -87,12 +83,7 @@ Git is very powerful ...<br>
 
 :::
 
-## Today
-
-
-Introduction to **Git concepts** and a **simple workflow** for your **individual projects**
-
-## Version control with Git
+## What is Git?
 
 - **Complete** and **long-term** history of every file in your project
 
@@ -105,7 +96,7 @@ Introduction to **Git concepts** and a **simple workflow** for your **individual
 
 - A whole universe of **other software and services** around it
 
-## Version control with Git
+## What is Git?
 
 - For projects with **mainly text files** (e.g. code, markdown files, ...)
 
