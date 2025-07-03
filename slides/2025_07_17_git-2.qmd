@@ -21,30 +21,33 @@ execute:
 from: markdown+emoji
 ---
 
-## What is this lecture series?
-
-### Scientific workflows: Tools and Tips :hammer_and_wrench:
+## Scientific workflows: Tools and Tips :hammer_and_wrench:
 
 :::{.nonincremental}
 
 :date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
 
--   For credit points: send me a private message/email with your name and email
--   Slides provided [online](https://selinazitrone.github.io/tools_and_tips/)
--   If you don't want to miss a lecture
-    -   Check out the [lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/workshops/lecture-SB/index.html)
+-   **Credit points**: send me a private message/email with your name and email
+-   Slides and material provided [online](https://selinazitrone.github.io/tools_and_tips/)
     -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
 
 :::
 
 ## Why version control?
 
-Proper version control can be a time/stress saver
-
-![](img/day1/motivation_time.png){.fragment .absolute top=200 left=0}
+![](images/2025_07_17_git-2/motivation_time.png){.fragment .absolute top=200}
 
 
-![](img/day1/motivation_collab.png){.fragment .absolute top=200}
+![](images/2025_07_17_git-2/motivation_collab.png){.fragment .absolute top=200}
+
+## Why version control?
+
+Git is like a Lab Notebook for your scripts
+
+- **Tracks** every change in your scripts
+- Helps you **recover** older versions
+- Enables safe and easy **collaboration**
+- Makes it easy to **share** your work with others
 
 ## Today
 
@@ -52,26 +55,10 @@ Proper version control can be a time/stress saver
 
 ::: {.column width="50%"}
 
-::: {.fragment}
-
-Git is very powerful ...<br>
-
-:::
-
-::: {.fragment}
-
-... but can also be confusing in the beginning.
-
-:::
-
-::: {.fragment}
-
-&nbsp;&nbsp;
-
+- Introduction to **Git**
 - Simple Git workflow in **theory and practice**
 - Publish your work on **GitHub**
-
-:::
+- Find detailed how-to guides on the website
 
 :::
 
@@ -85,14 +72,11 @@ Git is very powerful ...<br>
 
 ## What is Git?
 
-- **Complete** and **long-term** history of every file in your project
-
-
 - **Open source and free** to use version control software
-
 
 - Quasi **standard** for software development
 
+- **Complete** and **long-term** history of every file in your project
 
 - A whole universe of **other software and services** around it
 
@@ -112,36 +96,18 @@ Git is very powerful ...<br>
 
 Git is a **distributed version control system**
 
-:::{.columns}
-
-:::{.column width="50%"}
 
 :::{.fragment}
 
-![](images/2025_07_17_git-2/distributed.png)
+Idea: many *local* repositories synced via one *remote* repo
+
+<br> 
+
+![](images/2025_07_17_git-2/distributed.png){width=40% fig-align="center"}
+
 
 :::
 
-:::
-
-:::{.column width="50%"}
-
-- Idea: many *local* repositories synced via one *remote* repo
-- Everyone has a complete copy of the repo
-
-:::
-
-:::
-
-## Why to use Git?
-
-- **Version control**: Keep a history of your project and roll back if needed
-  - Git makes it very hard for you to loose things
-  - Easy to figure out why code is suddenly broken
-- **Collaboration**: Work together on the same project without loosing track
-- **Publication**: Easily share your project with others (e.g. on Github)
-- **Backup**: Have multiple copies of your project, one of them on a remote server
-- ...
 
 ## How to use Git
 
@@ -246,9 +212,13 @@ Standalone Git GUI software, e.g. GitHub Desktop, Source Tree, ...
 
 :::{.fragment}
 
+:::{.nonincremental}
+
 - We will use GitHub Desktop
   - Beginner-friendly, intuitive and convenient
   - Nice integration with GitHub
+
+:::
 
 :::
 
@@ -326,11 +296,19 @@ Changes are part of Git history and staging area is clear again
 
 ![](images/2025_07_17_git-2/3_afterCommit_concept_folder.png)
 
-## How to write good commit messages?
+## The commit history
+
+::: {layout="[[-1], [1], [-1]]" layout-valign="bottom"}
+
+![](images/2025_07_17_git-2/commit_info_blank.png)
+
+:::
+
+## Good commit messages are hard
 
 ![[xkcd](https://xkcd.com/1296/) on commit messages](https://imgs.xkcd.com/comics/git_commit.png){fig-align="center" width=70%}
 
-## How to write good commit messages?
+## Good commit messages are hard
 
 :::{.columns}
 
@@ -362,7 +340,7 @@ This is really good.
 
 :::
 
-See [here](https://cbea.ms/git-commit/) for more details but some general rules:
+See [here](https://cbea.ms/git-commit/) for more details but some general rules.
 
 1. Limit summary line to 50 characters
 2. Capitalize summary line
@@ -370,29 +348,13 @@ See [here](https://cbea.ms/git-commit/) for more details but some general rules:
 4. Use imperative mood in the subject line
 5. Use the *Description* to explain **what** and **why**, not **how**
 
-# Now you (15 min) {.task-slide}
-> Start your own cook book <br>
-> Complete [Task 1 "Local repo"](https://selinazitrone.GitHub.io/get-started-with-git/sessions/01_intro_git.html#tasks) 
-
-**Stay in the meeting** for the task.<br>
-**Ask** if you are stuck. <br>
-**Turn down/off volume** if you are disturbed. <br>
-
-## The commit history
-
-::: {layout="[[-1], [1], [-1]]" layout-valign="bottom"}
-
-![](images/2025_07_17_git-2/commit_info_blank.png)
-
-:::
-
 ## Step 4: Share changes with the remote repo
 
 Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
 
 ::: {.nonincremental}
 
-- Remote repos can be **private** (you + collaborators) or
+- can be **private** (you + collaborators) or
 **public** (visible to anyone)
 
 :::
@@ -403,12 +365,211 @@ Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
 
 Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
 
-- Remote repos can be **private** (you + collaborators) or
+::: {.nonincremental}
+
+- can be **private** (you + collaborators) or
 **public** (visible to anyone)
+
+:::
 
 ![](images/2025_07_17_git-2/4_push_concept.png){width=60% style="position: relative; bottom: -20px; left: 50%; transform: translateX(-50%);"}
 
-## Different remote repositories
+## Recap
+
+:::{.columns}
+
+:::{.column width="70%"}
+
+Basic Git workflow:
+
+:::{.nonincremental}
+
+1. **Initialize** a Git repository
+2. **Work** on the project
+3. **Stage** and **commit** changes to the local repository
+4. **Push** to the remote repository
+
+:::
+
+:::
+
+:::{.column width="30%"}
+
+![](images/2025_07_17_git-2/local_to_remote.png){fig-align="center"}
+
+:::
+
+:::
+
+
+## Recap
+
+:::{.columns}
+
+:::{.column width="70%"}
+
+Basic Git workflow:
+
+:::{.nonincremental}
+
+1. **Initialize** a Git repository
+2. **Work** on the project
+3. **Stage** and **commit** changes to the local repository
+4. **Push** to the remote repository
+
+:::
+
+:::
+
+:::{.column width="30%"}
+
+![](images/2025_07_17_git-2/both_directions_with_question.png){fig-align="center"}
+
+:::
+
+:::
+
+## Recap
+
+Git is a **distributed version control system**
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+![](images/2025_07_17_git-2/distributed.png)
+
+:::
+
+:::{.column width="50%"}
+
+::: {.nonincremental}
+
+- Idea: many *local* repositories synced via one *remote* repo
+
+:::
+
+::: {.nonincremental}
+- Collaborate with
+  - **yourself** on different machines
+  - your **colleagues** and friends
+  - **strangers** on open source projects
+
+:::
+
+:::
+
+:::
+
+## Get a repo from a remote
+
+In Git language, this is called **cloning**
+
+<br>
+You can clone all public repositories and private repositories if you are a owner/collaborator
+
+
+![](images/2025_07_17_git-2/git_clone_concept_only_remote.png)
+
+## Get a repo from a remote
+
+In Git language, this is called **cloning**
+
+:::{.nonincremental}
+  - Get a **full copy** of the remote repo
+:::
+
+![](images/2025_07_17_git-2/git_clone_concept_both.png)
+
+## Get changes from the remote
+
+::: {.nonincremental}
+
+- Local changes, publish to remote: `git push`
+- Remote changes, pull to local: `git pull`
+
+:::
+
+![](images/2025_07_17_git-2/git_pull_concept.png){width=63% fig-align="center"}
+
+## A simple collaboration workflow
+
+<br>
+
+![](images/2025_07_17_git-2/collab_simple.png)
+
+::: {.nonincremental}
+
+- One remote repo on GitHub, multiple local repos
+
+:::
+
+- Idea: Everyone works on the same branch
+  - **Pull before** you start **working**
+  - **Push after** you finished **working**
+  
+## A simple collaboration workflow {visibility="hidden"}
+
+<br>
+
+![](images/2025_07_17_git-2/collab_simple.png)
+
+This works well if
+
+- Repo is not updated often
+- You don't work on the same files simultaneously
+- No need to discuss changes before they are integrated
+- You collaborate with yourself
+
+## A simple collaboration workflow {visibility="hidden"}
+
+<br>
+
+![](images/2025_07_17_git-2/collab_simple.png)
+
+This workflow starts to be problematic when
+
+- People push often/forget to pull regularly
+  - Potential conflicts on main
+- You just want to experiment
+  - Everything goes directly to main
+  
+## A branching-merging workflow
+
+<br>
+
+![](images/2025_07_17_git-2/collab_branching_merging.png)
+
+- One remote repo on GitHub, multiple local repos
+- Idea: Everyone works on the their **separate branch**
+  - **Merge** branch with the main when work is done
+- Check out the How-To guide for details
+
+## A branching-merging workflow {visibility="hidden"}
+
+<br>
+
+![](images/2025_07_17_git-2/collab_branching_merging.png)
+
+#### Advantages of this approach {visibility="hidden"}
+
+- Guarantee that main always works
+- Potential conflicts don't have to be solved on main
+- You can experiment without messing up the main
+
+## Working on a separate branch {visibility="hidden"}
+
+The steps to create and work on a separate branch are easy:
+
+![](images/2025_07_17_git-2/create_branch_stew.png)
+
+- Create a local branch and switch to it
+- Work on the branch like you are used to
+  - Make changes, **stage** and **commit**
+
+# Publishing your work {.inverse}
+
+## Remote repositories
 
 - There are **commercial** and **self-hosted** options for your remote repositories
   - Commercial: GitHub, Gitlab, Bitbucket, ...
@@ -418,39 +579,47 @@ Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
   - Servers outside EU
   - Privacy rules might apply depending on type of data
 
-## Make your repositories public
+## Public repositories
 
-GitHub/Gitlab are a good way to publish and share your work.
-
-. . .
-
-&nbsp;
-
-#### Advantages of publishing your code
-
-- Others can build on your work
-- Citations
-- Reproducibility
-- Get feedback
-
-## Make your repositories public
-
-You can increase the quality/complexity of your repo by
-
-- Adding a nice README.md file
-- [Connecting the repo with Zenodo to get a DOI](https://emilio-berti.GitHub.io/idiv-git-introduction/21-GitHub_zenodo/index.html)
-- ...
+- Making a repository public is a good way to publish and share your work
+- Always add a README.md file
+- Always add a LICENSE file
+  - This is important to clarify how others can use your work
+- [Connect your repo with Zenodo to get a DOI](https://emilio-berti.GitHub.io/idiv-git-introduction/21-GitHub_zenodo/index.html)
 
 . . . 
 
 If you are interested, browse some nice GitHub repositories for inspiration (e.g.
 [Git training repository](https://github.com/UnseenWizzard/git_training), [Computational notebooks](https://github.com/FellowsFreiesWissen/computational_notebooks), [Repo to publish code from a manuscript](https://github.com/AnneLew/Lewerentz-etal_2021_Macrophytes-DDG))
 
+## Outlook
 
-# Now you (10 min){.task-slide}
+- Git can do much more than we covered today
+  - Complex collaboration workflows with code review steps
+  - Rolling back to previous versions
+  - Ignoring files from the repository
+  - ...
+- GitHub et al. offer many more features
+  - Issues, pull requests, code review, project management, ...
+  - Host websites, wikis, ...
+- Important thing: Start with the basic workflow and build on that
 
-> Publish your cook book on GitHub <br>
-> Complete [Task 2 "GitHub"](https://selinazitrone.GitHub.io/get-started-with-git/sessions/01_intro_git.html#tasks)
+## Next lecture
+
+Summer/Conference break in August and September!
+
+### Topic of next lecture t.b.a.
+
+:date: 16th October :clock4: 4-5 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+
+# Thanks for your attention {.inverse}
+
+> Questions?
 
 ## Summary of the basic steps
 
@@ -481,15 +650,6 @@ If you are interested, browse some nice GitHub repositories for inspiration (e.g
 
 ![](images/2025_07_17_git-2/commit_history_after_revert.png){width=90%}
 
-# Now you (5 min) {.task-slide}
-
-> Revert a commit from your cook book
-
-
-
-# Thanks for your attention {.inverse}
-
-> Questions?
 
 # Go back in time {.inverse}
 
