@@ -226,7 +226,7 @@ Standalone Git GUI software, e.g. GitHub Desktop, Source Tree, ...
 
 :::{.callout-tip}
 
-Have a look at the [website](https://selinazitrone.GitHub.io/get-started-with-git/) where you find **How-To guides for the other methods** as well.
+Have a look [here](https://selinazitrone.GitHub.io/get-started-with-git/) to find **How-To guides for the other methods** as well.
 
 :::
 
@@ -340,7 +340,7 @@ This is really good.
 
 :::
 
-See [here](https://cbea.ms/git-commit/) for more details but some general rules.
+See [here](https://cbea.ms/git-commit/) for more details on good commit messages.
 
 1. Limit summary line to 50 characters
 2. Capitalize summary line
@@ -467,7 +467,7 @@ In Git language, this is called **cloning**
 
 <br>
 You can clone all public repositories and private repositories if you are a owner/collaborator
-
+<br>
 
 ![](images/2025_07_17_git-2/git_clone_concept_only_remote.png)
 
@@ -475,9 +475,9 @@ You can clone all public repositories and private repositories if you are a owne
 
 In Git language, this is called **cloning**
 
-:::{.nonincremental}
-  - Get a **full copy** of the remote repo
-:::
+<br>
+You can clone all public repositories and private repositories if you are a owner/collaborator
+<br>
 
 ![](images/2025_07_17_git-2/git_clone_concept_both.png)
 
@@ -602,7 +602,7 @@ If you are interested, browse some nice GitHub repositories for inspiration (e.g
 - GitHub et al. offer many more features
   - Issues, pull requests, code review, project management, ...
   - Host websites, wikis, ...
-- Important thing: Start with the basic workflow and build on that
+- Start with the basic workflow and build on that
 
 ## Next lecture
 
