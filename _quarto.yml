@@ -51,6 +51,8 @@ website:
             href: sessions/10_r-code-that-lasts.qmd
           - text: 11 - Efficient R (update)
             href: sessions/11_efficient-r-2.qmd
+          - text: 12 - Version control with Git (update)
+            href: sessions/12_git-2.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 
