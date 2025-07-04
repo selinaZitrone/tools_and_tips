@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI Tools in Programming – Scientific workflows: Tools and Tips 🛠️</title>
+<title>Introduction to version control with Git – Scientific workflows: Tools and Tips 🛠️</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4053,17 +4053,16 @@ vertical-align: -.125em;
    
   <ul>
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
-  <li><a href="#overview-of-ai-tools-for-programming" id="toc-overview-of-ai-tools-for-programming" class="nav-link" data-scroll-target="#overview-of-ai-tools-for-programming">Overview of AI tools for programming</a>
+  <li><a href="#get-started-with-git" id="toc-get-started-with-git" class="nav-link" data-scroll-target="#get-started-with-git">Get started with Git</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a>
   <ul class="collapse">
-  <li><a href="#browser-based-chat-bots" id="toc-browser-based-chat-bots" class="nav-link" data-scroll-target="#browser-based-chat-bots">Browser-based chat bots</a></li>
-  <li><a href="#ai-powered-data-analysis" id="toc-ai-powered-data-analysis" class="nav-link" data-scroll-target="#ai-powered-data-analysis">AI powered data-analysis</a></li>
-  <li><a href="#integrated-ai-tools" id="toc-integrated-ai-tools" class="nav-link" data-scroll-target="#integrated-ai-tools">Integrated AI tools</a></li>
+  <li><a href="#git-heart-command-line" id="toc-git-heart-command-line" class="nav-link" data-scroll-target="#git-heart-command-line">Git :heart: command line</a></li>
+  <li><a href="#git-heart-r" id="toc-git-heart-r" class="nav-link" data-scroll-target="#git-heart-r">Git :heart: R</a></li>
+  <li><a href="#git-heart-github-desktop" id="toc-git-heart-github-desktop" class="nav-link" data-scroll-target="#git-heart-github-desktop">Git :heart: GitHub Desktop</a></li>
+  <li><a href="#other-resources" id="toc-other-resources" class="nav-link" data-scroll-target="#other-resources">Other resources</a></li>
   </ul></li>
-  <li><a href="#github-copilot" id="toc-github-copilot" class="nav-link" data-scroll-target="#github-copilot">GitHub Copilot</a></li>
-  <li><a href="#concerns-and-guidelines" id="toc-concerns-and-guidelines" class="nav-link" data-scroll-target="#concerns-and-guidelines">Concerns and Guidelines</a></li>
-  <li><a href="#further-links-and-resources" id="toc-further-links-and-resources" class="nav-link" data-scroll-target="#further-links-and-resources">Further Links and resources</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/selinaZitrone/tools_and_tips/edit/main/sessions/07_ai_tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/tools_and_tips/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/selinaZitrone/tools_and_tips/edit/main/sessions/12_git-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/tools_and_tips/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -4071,7 +4070,8 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AI Tools in Programming</h1>
+<h1 class="title">Introduction to version control with Git</h1>
+<p class="subtitle lead">2025-07-17</p>
 </div>
 
 
@@ -4088,81 +4088,59 @@ vertical-align: -.125em;
 </header>
 
 
-<section id="description" class="level2">
-<h2 class="anchored" data-anchor-id="description">Description</h2>
-<p>AI tools promise to make our programming workflows faster and more efficient. If applied correctly, such tools help us write better code, be more productive and learn new techniques easily. In this lecture, I will present some AI tools for programming (mainly GitHub Copilot) and show examples of how they can be integrated into our daily workflows for different purposes. I will also briefly talk about the problems and ethical concerns that come with such tools in science. Join me if you are interested!</p>
-<iframe role="img" class="slide-deck" width="780" height="500" src="../slides/2024_01_18_ai_tools.html"></iframe>
-<p><a href="../slides/2024_01_18_ai_tools.html" target="_blank">Slides in full screen</a>     <a href="../slides/2024_01_18_ai_tools.pdf" download>Download PDF slides</a></p>
+<section id="description" class="level3">
+<h3 class="anchored" data-anchor-id="description">Description</h3>
+<p>Git is an essential skill if you use any programming language. It allows you to keep track of changes to your project over time, collaborate with others, and maintain a clear and organized project structure. This can save time, improve research efficiency, and also makes it easy to publish your code via platforms such as Github. In this lecture, I will introduce the basic concepts of Git and how to use it for you own projects. The lecture is for Git beginners but also for people who use basic Git for their own projects and want to know a bit more about the concepts behind the workflow.</p>
+<iframe role="img" class="slide-deck" width="780" height="500" src="../slides/2025_07_17_git-2.html"></iframe>
+<p><a href="../slides/2025_07_17_git-2.html" target="_blank">Slides in full screen</a>     <a href="../slides/2025_07_17_git-2.pdf" download>Download PDF slides</a></p>
 </section>
-<section id="overview-of-ai-tools-for-programming" class="level2">
-<h2 class="anchored" data-anchor-id="overview-of-ai-tools-for-programming">Overview of AI tools for programming</h2>
-<section id="browser-based-chat-bots" class="level3">
-<h3 class="anchored" data-anchor-id="browser-based-chat-bots">Browser-based chat bots</h3>
+<section id="get-started-with-git" class="level2">
+<h2 class="anchored" data-anchor-id="get-started-with-git">Get started with Git</h2>
+<p>You can check out the website of my Git workshop for:</p>
 <ul>
-<li>General-purpose AIs like <a href="https://chat.openai.com">ChatGPT</a>, <a href="https://bard.google.com">Bard</a>, …</li>
-<li>With good prompts they can help with programming
-<ul>
-<li><a href="https://realpython.com/chatgpt-coding-mentor-python/">ChatGPT as a coding mentor</a>: Blogpost explains how learn and improve your python skills and code (works for other languages or chat bots as well)</li>
-<li><a href="https://dev.to/evergrowingdev/how-to-use-chatgpt-for-learning-to-code-with-examples-39e7">Prompt ideas to get coding help</a>: Get code explanations, debugging tips, practice exercises, code review and feedback, project ideas</li>
-<li>In ChatGPT you can set “Custom instructions” for your profile. These instructions will be used for all your questions. By filling out these custom instructions, you can get better answers without having to engineer every prompt
-<ul>
-<li><a href="https://www.youtube.com/watch?v=TbbA44Jaric">YT video on where to find custom instructions in ChatGPT</a></li>
-<li><a href="https://openai.com/blog/custom-instructions-for-chatgpt">Simple example by OpenAI</a></li>
-<li><a href="https://www.reddit.com/r/ChatGPTPro/comments/15bghrm/custom_instructions_for_software_development/">Subreddit where people share their custom instructions for software developmen</a></li>
-</ul></li>
-</ul></li>
+<li><a href="https://selinazitrone.github.io/get-started-with-git/course_preparation.html">Installation Guide</a></li>
+<li><a href="https://selinazitrone.github.io/get-started-with-git/how-tos/git_workflow_gh_desktop.html">How to Git with Github Desktop</a></li>
+<li><a href="https://selinazitrone.github.io/get-started-with-git/how-tos/git_workflow_usethis.html">How to Git with R and R Studio</a></li>
+<li><a href="https://selinazitrone.github.io/get-started-with-git/how-tos/git_workflow_terminal.html">How to Git with the command line</a></li>
 </ul>
 </section>
-<section id="ai-powered-data-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="ai-powered-data-analysis">AI powered data-analysis</h3>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
 <ul>
-<li><a href="https://rtutor.ai/">Rtutor</a>: Browser-based tool where you can ask questions about R and data analysis. You can also upload a dataset and ask the AI to analyse it. You can then download the corresponding R script or Rmardown report.
+<li><a href="https://education.github.com/git-cheat-sheet-education.pdf">Git cheat sheet</a>: Always handy if you don’t remember the basic commands for the terminal.</li>
+<li><a href="https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc">Learn git concepts, not commands</a>: Very nice blogpost. Explains really well the concepts of git, also more advanced ones like <code>rebase</code> or <code>cherry-pick</code>.</li>
+<li><a href="https://cbea.ms/git-commit/">How to write good commit messages</a>: Explains why good commit messages are important and gives 7 rules for writing them.</li>
+<li><a href="https://git-scm.com/book/en/v2">Git book</a>: Explains git concepts from the very beginning.</li>
+</ul>
+<section id="git-heart-command-line" class="level3">
+<h3 class="anchored" data-anchor-id="git-heart-command-line">Git :heart: command line</h3>
 <ul>
-<li>There is also a <a href="https://github.com/gexijin/RTutor">corresponding R package</a> that you can install to use locally. But for this you need to have your own OpenAI API key, so it is a bit more work to set up.</li>
-</ul></li>
-<li>Data Analyst GPT: ChatGPT specialized to analyze data. You can upload files (e.g. data) and let GPT analyse it. You can then also download the code. To access the plugin, you need a subscription to ChatGPT (~20$ per month)</li>
+<li>Follow <a href="https://github.com/UnseenWizzard/git_training">this Git training</a> for learning the Git concepts in the command line.</li>
 </ul>
 </section>
-<section id="integrated-ai-tools" class="level3">
-<h3 class="anchored" data-anchor-id="integrated-ai-tools">Integrated AI tools</h3>
+<section id="git-heart-r" class="level3">
+<h3 class="anchored" data-anchor-id="git-heart-r">Git :heart: R</h3>
 <ul>
-<li>They are integrated into your IDE directly and help you with coding</li>
-<li><a href>GitHub Copilot</a>: One of the most widespread integrated tool. Gives you inline code suggestions and a chat. Great to code faster, write better code, debug, let the AI explain code etc. See below for details.</li>
-<li><a href="https://codium.ai/">Codium AI</a>: Free tool that is great for explaining code, generating tests, improving and refactoring your code.</li>
+<li><p>There is a whole <a href="https://happygitwithr.com/">book on using Git with R</a> that explains the setup in detail but also goes into more advanced topics.</p></li>
+<li><p>Follow this <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/">step by step guide</a> to set up Git and a GitHub connection in R and R Studio</p></li>
 </ul>
 </section>
-</section>
-<section id="github-copilot" class="level2">
-<h2 class="anchored" data-anchor-id="github-copilot">GitHub Copilot</h2>
+<section id="git-heart-github-desktop" class="level3">
+<h3 class="anchored" data-anchor-id="git-heart-github-desktop">Git :heart: GitHub Desktop</h3>
 <ul>
-<li><a href="../sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html">Step-by-step guide on how to get Copilot</a> for free for Visual Studio Code or RStudio.</li>
-<li><a href="https://docs.github.com/en/copilot">GitHub Copilot Docs</a>: Useful information and guides on how to use Copilot</li>
-<li><a href="https://github.com/features/copilot/#faq">Privacy FAQ of GitHub Copilot</a></li>
-<li><a href="https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp">Prompt engineering with GH Copilot</a> to get better results</li>
+<li>There are detailed step by step guides on how to set up GitHub Desktop and how to work with in the <a href="https://docs.github.com/desktop">GitHub Desktop Documentation</a></li>
 </ul>
 </section>
-<section id="concerns-and-guidelines" class="level2">
-<h2 class="anchored" data-anchor-id="concerns-and-guidelines">Concerns and Guidelines</h2>
-<p>Please note that the guidelines are constantly changing and evolving. So please check guidelines that are relevant for you regularly.</p>
-<p>Most important are guidelines of your university and the journals you want to publish in.</p>
+<section id="other-resources" class="level3">
+<h3 class="anchored" data-anchor-id="other-resources">Other resources</h3>
 <ul>
-<li><a href="https://www.dfg.de/resource/blob/289676/89c03e7a7a8a024093602995974832f9/230921-statement-executive-committee-ki-ai-data.pdf">DFG Rules on the use of AI</a> particularly for proposals</li>
-<li><a href="https://www.nature.com/articles/d41586-023-03266-1">Nature living guidelines on responsible use of generative AI in research</a></li>
-<li><a href="https://artificialintelligenceact.eu/">EU AI Act</a></li>
-<li>Universities (German)
-<ul>
-<li><a href="https://www.fu-berlin.de/campusleben/lernen-und-lehren/2023/230511-umgang-mit-ki/Eckpunkte_FUB_KI-in-der-Lehre.pdf">FU Berlin “Eckpunktepapier” (German)</a></li>
-<li><a href="https://www.tu.berlin/bzhl/ressourcen-fuer-ihre-lehre/ressourcen-nach-themenbereichen/ki-in-der-hochschullehre">TU Berlin on AI</a>: Mainly about AI in teaching but contains some general links to other guidelines</li>
-</ul></li>
-</ul>
-</section>
-<section id="further-links-and-resources" class="level2">
-<h2 class="anchored" data-anchor-id="further-links-and-resources">Further Links and resources</h2>
-<ul>
-<li><a href="https://arxiv.org/abs/2302.06590">Experiment on programmer efficiency with AI tools</a></li>
+<li><a href="https://itnext.io/how-to-use-github-desktop-with-gitlab-cd4d2de3d104?gi=b32bd84e7fe4">Connect GitHub Desktop with a Gitlab repository</a></li>
+<li><a href="https://emilio-berti.github.io/idiv-git-introduction/21-github_zenodo/index.html">Connecting the repo with Zenodo to get a DOI</a></li>
+<li><a href="https://github.com/im-luka/markdown-cheatsheet">A markdown cheat sheet for your README files</a></li>
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -4586,7 +4564,7 @@ vertical-align: -.125em;
 </div>   
     <div class="nav-footer-center">
        
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/selinaZitrone/tools_and_tips/edit/main/sessions/07_ai_tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/tools_and_tips/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/selinaZitrone/tools_and_tips/edit/main/sessions/12_git-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/tools_and_tips/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Website built with <a href="https://quarto.org/">Quarto</a></p>
 </div>
