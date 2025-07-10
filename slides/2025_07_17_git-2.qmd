@@ -350,7 +350,7 @@ See [here](https://cbea.ms/git-commit/) for more details on good commit messages
 
 ## Step 4: Share changes with the remote repo
 
-Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
+Use remote repos (on a server) to **backup**, **synchronize**, **share** and **collaborate**
 
 ::: {.nonincremental}
 
@@ -363,7 +363,7 @@ Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
 
 ## Step 4: Share changes with the remote repo
 
-Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
+Use remote repos (on a server) to **backup**, **synchronize**, **share** and **collaborate**
 
 ::: {.nonincremental}
 
