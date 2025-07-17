@@ -574,7 +574,7 @@ The steps to create and work on a separate branch are easy:
 . . . 
 
 If you are interested, browse some nice GitHub repositories for inspiration (e.g.
-[Git training repository](https://github.com/UnseenWizzard/git_training), [Computational notebooks](https://github.com/FellowsFreiesWissen/computational_notebooks), [Repo to publish code from a manuscript](https://github.com/AnneLew/Lewerentz-etal_2021_Macrophytes-DDG))
+[Git training repository](https://github.com/UnseenWizzard/git_training), [Computational notebooks](https://github.com/FellowsFreiesWissen/computational_notebooks), [Repo to publish code from a manuscript](https://github.com/oksanabuzh/Buzhdygan_et_al_sCale_Div_Driver))
 
 ## Outlook
 
