@@ -31,6 +31,7 @@ On this website, you can find all slides and additional resources for lectures:
 - 2025-05-15: [Write R code that lasts](sessions/10_r-code-that-lasts.html)
 - 2025-06-19: [Efficient R (update)](sessions/11_efficient-r-2.html)
 - 2025-07-17: [Version control with Git (update)](sessions/12_git-2.html)
+- 2025-10-16: [Reproducible documents with Quarto (update)](sessions/13_quarto-2.html)
 
 I try to regularly upload recordings of the lectures on Youtube. The videos are
 linked on the respective topic pages. You can also find the entire [playlist on Youtube](https://youtube.com/playlist?list=PLK1lYQFwxAYeh5pAmCcrlUHCEROQiLI9f&si=mOcqXP5AtB7owg-9)

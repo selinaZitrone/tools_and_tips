@@ -53,6 +53,8 @@ website:
             href: sessions/11_efficient-r-2.qmd
           - text: 12 - Version control with Git (update)
             href: sessions/12_git-2.qmd
+          - text: 13 - Reproducible documents with Quarto (update)
+            href: sessions/13_quarto-2.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 
