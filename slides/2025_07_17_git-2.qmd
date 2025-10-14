@@ -27,9 +27,9 @@ from: markdown+emoji
 
 :date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
 
--   **Credit points**: send me a private message/email with your name and email
 -   Slides and material provided [online](https://selinazitrone.github.io/tools_and_tips/)
     -   [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+-   **Credit points**: send me a private message/email with your name and email
 
 :::
 
@@ -51,24 +51,10 @@ Git is like a Lab Notebook for your scripts
 
 ## Today
 
-::: {.columns}
-
-::: {.column width="50%"}
-
 - Introduction to **Git**
 - Simple Git workflow in **theory and practice**
 - Publish your work on **GitHub**
 - Find detailed how-to guides on the website
-
-:::
-
-::: {.column width="50%"}
-
-![[xkcd](https://xkcd.com/1597/) on Git](https://imgs.xkcd.com/comics/git.png)
-
-:::
-
-:::
 
 ## What is Git?
 
@@ -304,11 +290,13 @@ Changes are part of Git history and staging area is clear again
 
 :::
 
-## Good commit messages are hard
+## Good commit messages
 
 ![[xkcd](https://xkcd.com/1296/) on commit messages](https://imgs.xkcd.com/comics/git_commit.png){fig-align="center" width=70%}
 
-## Good commit messages are hard
+## Good commit messages
+
+Good commit messages are descriptive and helpful.
 
 :::{.columns}
 
@@ -340,17 +328,13 @@ This is really good.
 
 :::
 
-See [here](https://cbea.ms/git-commit/) for more details on good commit messages.
 
-1. Limit summary line to 50 characters
-2. Capitalize summary line
-3. Do not end summary line with period
-4. Use imperative mood in the subject line
-5. Use the *Description* to explain **what** and **why**, not **how**
+
+See [here](https://cbea.ms/git-commit/) for more details on good commit messages.
 
 ## Step 4: Share changes with the remote repo
 
-Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
+Use remote repos (on a server) to **backup**, **synchronize**, **share** and **collaborate**
 
 ::: {.nonincremental}
 
@@ -363,7 +347,7 @@ Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
 
 ## Step 4: Share changes with the remote repo
 
-Use remote repos (on a server) to **synchronize**, **share** and **collaborate**
+Use remote repos (on a server) to **backup**, **synchronize**, **share** and **collaborate**
 
 ::: {.nonincremental}
 
@@ -590,7 +574,7 @@ The steps to create and work on a separate branch are easy:
 . . . 
 
 If you are interested, browse some nice GitHub repositories for inspiration (e.g.
-[Git training repository](https://github.com/UnseenWizzard/git_training), [Computational notebooks](https://github.com/FellowsFreiesWissen/computational_notebooks), [Repo to publish code from a manuscript](https://github.com/AnneLew/Lewerentz-etal_2021_Macrophytes-DDG))
+[Git training repository](https://github.com/UnseenWizzard/git_training), [Computational notebooks](https://github.com/FellowsFreiesWissen/computational_notebooks), [Repo to publish code from a manuscript](https://github.com/oksanabuzh/Buzhdygan_et_al_sCale_Div_Driver))
 
 ## Outlook
 

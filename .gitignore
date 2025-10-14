@@ -4,7 +4,6 @@ sessions/*_files/
 sessions/*_cache/
 .Rproj.user/
 /.quarto/
-*.pptx
 .Rproj.user
 .Rhistory
 .Rdata

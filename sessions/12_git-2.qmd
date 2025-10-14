@@ -2,6 +2,7 @@
 title: "Introduction to version control with Git"
 subtitle: "2025-07-17"
 callout-appearance: default
+from: markdown+emoji
 ---
 
 ### Description
