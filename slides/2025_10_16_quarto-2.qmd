@@ -77,18 +77,14 @@ Quarto is a huge topic and there are so many possibilities!
 <br>
 
 - Practical **introduction** and **overview**
-- Main focus R and RStudio
-- Keep in mind: The workflow is the same with other languages and other IDEs
+- Main focus R and RStudio, but same workflow with other languages and other IDEs
 - Download a quarto demo project from [Github](https://github.com/selinaZitrone/quarto_demo)
-  - Contains some simple and more complex Quarto examples for different document types and programming languages
 
-# Let's get started! {background-image="images/2025_10_16_quarto-2/penguins_jumping.png" background-size="cover"}
+. . .
 
-::: aside
-<small style="position: absolute; bottom: 0; left: 0; margin: 10px;">
-"Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst."
-</small>
-:::
+<br>
+
+Check out the [Quarto website](https://quarto.org/) for more information and tutorials
 
 ## How to get Quarto
 
@@ -103,6 +99,37 @@ Different options, depending on your workflow:
 
 Check out the [Quarto website](https://quarto.org/docs/get-started/) for download and tutorials for all options.
 
+# Let's get started! {#section-slide background-image="images/2025_10_16_quarto-2/penguins_jumping.png" background-size="cover"}
+
+```{css, echo=FALSE}
+#section-slide, 
+#section-slide h1 {
+ color: #fee4ff;
+}
+#section-slide h1 {
+  margin-top: -25%;
+}
+.reveal .figure-caption,
+#section-slide .figure-caption {
+  position: absolute !important;
+  bottom: 5vh !important;
+  font-size: 0.5em !important;
+  text-align: left !important;
+  width: 70% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+```
+
+
+:::{.figure-caption}
+"Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst."
+:::
+
+
+
+
 ## The basic Quarto workflow
 
 1.  *Create* a `.qmd` document
@@ -112,38 +139,18 @@ Check out the [Quarto website](https://quarto.org/docs/get-started/) for downloa
 -   **metadata** that defines how the document should look like (e.g. which output format)
 3.  *Render* the document to a defined output format (e.g. PDF) using `Quarto`
 
-## Creating a reproducible document step by step
-
-:::{.columns}
-
-::: {.column width="45%"}
-
-Basic Elements of a `.qmd` document:
-
-:::{.nonincremental}
-
-1. Text body
-2. Code
-3. YAML header
-
-:::
-
-:::
-
-::: {.column width="45%"}
-
-An [HTML example](../sessions/additional_material/02_quarto/penguins_paper.html)
+## Reproducible documents step by step
 
 ```{r}
-#|fig-align: center
+#| fig-align: center
+#| out-width: "80%"
 knitr::include_graphics(
   "images/2025_10_16_quarto-2/quarto_penguin_html_example.png"
 )
 ```
 
-:::
+An [HTML example](../sessions/additional_material/02_quarto/penguins_paper.html)
 
-:::
 
 ## References for all the elements
 
@@ -211,10 +218,6 @@ knitr::include_graphics("images/2023_05_11_quarto/visual_editor.png")
 
 ## The Code
 
-Code can be included in **code chunks** or as **inline code**
-
-## The Code
-
 **Inline code** starts and ends with 1 backtick
 
 ```{r, echo=FALSE}
@@ -242,9 +245,9 @@ The mean of the values 1, 2 and 3 is `r mean(1:3)`.
 ```{{r}}
 library(ggplot2)
 
-ggplot(airquality, aes(Temp, Ozone)) + 
+ggplot(penguins, aes(flipper_len, body_mass)) + 
   geom_point() + 
-  geom_smooth(method = "loess")
+  geom_smooth(method = "lm")
 ```
 ````
 
@@ -271,18 +274,8 @@ plt.show()
 
 **Run code chunk**
 
--   Code chunks can be run like "normal" code
+-   Code chunks can be run inside the document
 -   Code chunks are run when document is rendered
-
-. . .
-
-What happens during rendering?
-
-```{r}
-#| fig-alt: A schematic representing rendering of Quarto documents from .qmd, to knitr or jupyter, to plain text markdown, then converted by pandoc into any number of output types including html, PDF, or Word document.
-#| fig-cap: Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel,presented at RStudio Conference 2022. Illustrated by Allison Horst.
-knitr::include_graphics("images/2023_05_11_quarto/quarto_render.png")
-```
 
 ## The code
 
@@ -291,15 +284,15 @@ of the chunk.
 
 ```` md
 ```{{r}}
-#| label: fig-airquality
+#| label: fig-penguins
 #| fig-cap: Temperature and ozone level.
 #| echo: false
 
 library(ggplot2)
 
-ggplot(airquality, aes(Temp, Ozone)) + 
+ggplot(penguins, aes(flipper_len, body_mass)) + 
   geom_point() + 
-  geom_smooth(method = "loess")
+  geom_smooth(method = "lm")
 ```
 ````
 
@@ -328,12 +321,11 @@ date: today
 
 ``` yaml
 ---
-title: "My first document"
-author: "Selina Baldauf"
-date: today
 format: html
 ---
 ```
+
+or other formats like `pdf`, `docx`, `revealjs`, `powerpoint`, ...
 
 . . .
 
@@ -355,18 +347,6 @@ format:
 
 **For document options**
 
-::: columns
-::: {.column width="45%"}
-::: nonincremental
--   Some options are shared between formats, some are specific to one format
--   Be careful to get the indentation right!
-:::
-:::
-
-::: {.column width="45%"}
-
-:::{.fragment}
-
 ``` yaml
 ---
 title: "My first document"
@@ -380,18 +360,13 @@ format:
 ---
 ```
 
-:::
-:::
-:::
+-   Some options are shared between formats, some are specific to one format
+-   Be careful to get the indentation right!
+
 
 ## YAML header
 
 **Execute options**
-
--   Default options for code chunks
--   Can be overwritten by local comments in code chunks
-
-. . .
 
 ``` yaml
 ---
@@ -403,6 +378,40 @@ execute:
   message: false
   warning: false
 ---
+```
+
+-   Default options for code chunks
+-   Can be overwritten by local comments in code chunks
+
+## Render the document
+
+Many different options:
+
+:::{.nonincremental}
+
+- In RStudio/Positron/VS Code: Render button or keyboard shortcut (usually `Ctrl/Cmd + Shift + K`)
+- In the terminal/console: `quarto render my_document.qmd`
+- From R, using the [`quarto` package](https://quarto.org/docs/blog/posts/2025-07-28-r-package-release-1.5/): `quarto::quarto_render("my_document.qmd")`
+
+:::
+
+. . .
+
+These commands can be customized with additional options, e.g.
+
+```cmd
+quarto render my_document.qmd --to html
+quarto render my_document.qmd --to docx
+```
+
+## Render the document
+
+What happens during rendering?
+
+```{r}
+#| fig-alt: A schematic representing rendering of Quarto documents from .qmd, to knitr or jupyter, to plain text markdown, then converted by pandoc into any number of output types including html, PDF, or Word document.
+#| fig-cap: Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel,presented at RStudio Conference 2022. Illustrated by Allison Horst.
+knitr::include_graphics("images/2023_05_11_quarto/quarto_render.png")
 ```
 
 ## Parameterized reports
@@ -466,7 +475,7 @@ quarto::quarto_render(
 In the console:
 
 ```cmd
-quarto render my_report_chinstrap.qmd -P species:Chinstrap
+quarto render my_report.qmd --output "report_chinstrap.pdf" -P species:Chinstrap
 ```
 
 ## Summary
@@ -491,23 +500,10 @@ quarto render my_report_chinstrap.qmd -P species:Chinstrap
 }
 ```
 
+- Other options and formats: Presentations, Books, Websites
+- Easily publish documents or websites
+- Check out the demo project and the links on the lecture website
 
-::: aside
-<small>
-"Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst."
-</small>
-:::
-
-## Outlook{background-image="images/2023_05_11_quarto/quarto_outlook.png" background-size="cover" background-opacity="0.2"}
-
-Quarto offers many more things like:
-
-- Presentations (Powerpoint or Revealjs/HTML)
-- Websites
-- Easily publish your documents or websites on [quartopub](https://quartopub.com/) or Github
-  - See [here](https://quarto.org/docs/publishing/) for more information
-- Control the rendering process via R scripts using `quarto::quarto_render()`
-- Parameterized reports
 
 ::: aside
 <small>
@@ -520,8 +516,6 @@ Quarto offers many more things like:
 #### Topic tba
 
 <br>
-
-. . .
 
 :date: 20th November :clock4: 4-5 p.m. :round_pushpin: Webex
 
