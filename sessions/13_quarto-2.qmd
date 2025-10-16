@@ -10,35 +10,28 @@ Quarto (the successor of rmarkdown) is a powerful tool that enables the seamless
 
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="../slides/2023_05_11_quarto.html"></iframe>
+<iframe class="slide-deck" width="780" height="500" src="../slides/2025_10_16_quarto-2.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2023_05_11_quarto.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2023_05_11_quarto.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2025_10_16_quarto.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_10_16_quarto.pdf" download>Download PDF slides</a>
 
-## Summary
+## Resources
 
-Quarto allows you to combine code in R, Python or Julia with text to create reproducible documents in various output formats. You can create e.g.
-
-- Documents: HTML, PDF, Word, Open Office format
-- Presentations: Revealjs (HTML) or Powerpoint
-- Websites
-- Books: HTML or ePub
-
-## Example project
+## Demo project
 
 To get started, you can download the [Quarto demo project](https://github.com/selinaZitrone/quarto_demo) from Github
 (To download just click on the green Code button and then download the zip folder).
-It contains some simple and more complex Quarto examples. Have a look at the
-README of the the project for more information. If you use R Studio, open the project
+It contains some simple and more complex Quarto examples. Have a look at the project
+README for more information. If you use R Studio, open the project
 by double clicking on the `quarto_demo.Rproj` file.
 
-## Further links
+## Links
 
 To continue learning, I recommend, checking out the following resources:
 
 - [Quarto website](https://quarto.org/) offers everything you need to get started
-  - [Download Quarto and starting guide](https://quarto.org/docs/get-started/) for different IDEs
+  - [Download Quarto and starting guide](https://quarto.org/docs/get-started/) for different IDEs and languages
   - [Guides for different output formats](https://quarto.org/docs/guide/)
-  - [Gallery with Examples](https://quarto.org/docs/gallery/)
+  - [Gallery with Quarto Examples](https://quarto.org/docs/gallery/)
 - [Quarto introduction workshop](https://www.youtube.com/watch?v=yvi5uXQMvu4) on Youtube
 - [A curated collection of resources](https://github.com/mcanouil/awesome-quarto#featured-new-releases)

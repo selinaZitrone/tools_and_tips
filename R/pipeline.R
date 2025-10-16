@@ -1,5 +1,5 @@
 # render the website
-quarto::quarto_render()
+system("quarto render")
 
 # render slides as pdf
 slides_html <- list.files(
