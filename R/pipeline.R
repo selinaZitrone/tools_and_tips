@@ -41,4 +41,4 @@ print(paste0(
 # commit and push
 git2r::add(path = here::here("docs"))
 git2r::commit(message = "re-render site")
-git2r::push(credentials = git2r::ssh_path())
+system("git push")

@@ -13,7 +13,7 @@ Quarto (the successor of rmarkdown) is a powerful tool that enables the seamless
 <iframe class="slide-deck" width="780" height="500" src="../slides/2025_10_16_quarto-2.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2025_10_16_quarto.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_10_16_quarto.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2025_10_16_quarto-2.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_10_16_quarto-2.pdf" download>Download PDF slides</a>
 
 ## Resources
 

@@ -3603,5 +3603,33 @@
     "title": "Reproducible documents with Quarto",
     "section": "Next lecture",
     "text": "Next lecture\nTopic tba\n\n📅 20th November 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
+    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html",
+    "href": "sessions/additional_material/02_quarto/penguins_paper.html",
+    "title": "The penguins of Antarctica",
+    "section": "",
+    "text": "There are three main penguin species in Antarctica (Chinstrap, Gentoo, Adelie). You can see them in Figure 1:\n\n\n\n\n\n\n\n\nFigure 1: Illustration of the three penguin species by Allison Horst\n\n\n\n\n\nIn this paper we want to answer the following questions\n\nHow bill depth depends on bill length?\nWhich penguin species has the highest body mass?"
+  },
+  {
+    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html#the-data",
+    "href": "sessions/additional_material/02_quarto/penguins_paper.html#the-data",
+    "title": "The penguins of Antarctica",
+    "section": "2.1 The data",
+    "text": "2.1 The data\nThe data was collected on islands in Antarctica and published by Gorman, Williams, and Fraser (2014). You can find the original paper with the title “Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis)” (Gorman, Williams, and Fraser 2014) in PLoS ONE1\nThe data is published via the palmerpenguins R package (Horst, Hill, and Gorman 2020) which you can find on this website.\nThe data contains (among others) the following measurements:\n\nbill length\nbill depth\nbody mass\nsex\n\nmale\nfemale"
+  },
+  {
+    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html#the-analysis",
+    "href": "sessions/additional_material/02_quarto/penguins_paper.html#the-analysis",
+    "title": "The penguins of Antarctica",
+    "section": "2.2 The analysis",
+    "text": "2.2 The analysis\nWe did some plots, calculated some summary statistics and a linear model of the form \\(y = ax + b + \\epsilon\\)"
+  },
+  {
+    "objectID": "sessions/additional_material/02_quarto/penguins_paper.html#footnotes",
+    "href": "sessions/additional_material/02_quarto/penguins_paper.html#footnotes",
+    "title": "The penguins of Antarctica",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\npaper available here.↩︎"
   }
 ]
