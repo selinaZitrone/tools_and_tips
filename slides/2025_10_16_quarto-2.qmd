@@ -90,7 +90,7 @@ Different options, depending on your workflow:
 
 - **Integrated** in some IDEs (e.g. R Studio, Positron)
 - Download the **CLI** for use with other IDEs and workflows
-- There is also an R package to call quarto from (install.packages("quarto"))
+- There is also an **R package** to call quarto from (`install.packages("quarto")`)
 
 . . .
 
@@ -122,19 +122,6 @@ Check out the [Quarto website](https://quarto.org/docs/get-started/) for downloa
 “Artwork from”Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst.”
 :::
 
-
-
-
-
-## The basic Quarto workflow
-
-1.  *Create* a `.qmd` document
-2.  *Write* the document including:
--   **text** e.g. introduction, methods, or discussion
--   **code** (R, Python, Julia) that produces numbers, figures, tables, ...
--   **metadata** that defines how the document should look like (e.g. which output format)
-3.  *Render* the document to a defined output format (e.g. PDF) using `Quarto`
-
 ## Reproducible documents step by step
 
 ```{r}
@@ -146,6 +133,15 @@ knitr::include_graphics(
 ```
 
 An [HTML example](../sessions/additional_material/02_quarto/penguins_paper.html)
+
+## Reproducible documents step by step
+
+1.  *Create* a `.qmd` document
+2.  *Write* the document including:
+-   **text** e.g. introduction, methods, or discussion
+-   **code** (R, Python, Julia) that produces numbers, figures, tables, ...
+-   **metadata** that defines how the document should look like (e.g. which output format)
+3.  *Render* the document to a defined output format (e.g. PDF) using `Quarto`
 
 
 ## References for all the elements
@@ -217,7 +213,7 @@ knitr::include_graphics("images/2023_05_11_quarto/visual_editor.png")
 **Inline code** starts and ends with 1 backtick
 
 ```{r, echo=FALSE}
-code <- "`r `"
+code <- "`{r} `"
 cat(code)
 ```
 
@@ -226,12 +222,22 @@ cat(code)
 **Example**
 
 ``` md
-The mean of the values 1, 2 and 3 is `r knitr::inline_expr("mean(1:3)")`
+The mean of the values 1, 2 and 3 is `{{r}} mean(1:3)`
 ```
 
-looks like this:
+**Rendered output**<br>
 
-The mean of the values 1, 2 and 3 is `r mean(1:3)`.
+The mean of the values 1, 2 and 3 is `{r} mean(1:3)`.
+
+. . .
+
+<br>
+
+Same for Python:
+
+``` md
+The mean of the values 1, 2 and 3 is `{{python}} np.mean([1,2,3])`
+```
 
 ## The Code
 
@@ -339,7 +345,7 @@ format:
 ---
 ```
 
-# YAML header
+## YAML header
 
 **For document options**
 
@@ -356,7 +362,7 @@ format:
 ---
 ```
 
--   Some options are shared between formats, some are specific to one format
+-   Some options are shared, some are specific to one format
 -   Be careful to get the indentation right!
 
 
@@ -414,11 +420,9 @@ knitr::include_graphics("images/2023_05_11_quarto/quarto_render.png")
 
 You can also define parameters to be used in your document
 
-:::{.columns}
+:::{.fragment}
 
-:::{.column}
-
-For R (knitr engine)
+**R** (knitr engine): Add parameters to the YAML header
 
 ``` yaml
 ---
@@ -433,9 +437,9 @@ Use `params$species` to access.
 
 :::
 
-:::{.column}
+:::{.fragment}
 
-For Python (Jupyter engine)
+**Python** (Jupyter engine): Add a special code chunk at beginning
 
 ```` md
 ```{{python}}
@@ -449,9 +453,6 @@ Access via the parameter name `species`.
 
 :::
 
-:::
-
-
 ## Parameterized reports
 
 Render your document with different parameter inputs:
@@ -463,6 +464,7 @@ In R:
 #| echo: true
 quarto::quarto_render(
   input = "my_report.qmd",
+  output_format = "pdf",
   output_file = "report_chinstrap.pdf",
   params = list(species = "Chinstrap")
 )
@@ -471,40 +473,55 @@ quarto::quarto_render(
 In the console:
 
 ```cmd
-quarto render my_report.qmd --output "report_chinstrap.pdf" -P species:Chinstrap
+quarto render my_report.qmd --to pdf --output "report_chinstrap.pdf" -P species:Chinstrap
 ```
 
 ## Summary
 
-- Quarto combines formatted text and code to create reproducible documents
+- Quarto combines formatted text and code in one document
 
 . . .
 
-**Use cases for scientists**
+**Benefits**
 
-- Data analysis reports and documents
-- Use `qmd` instead of `.R` scripts to add text to the code (e.g. for interpretation or method description)
-- Use it for teaching material
+- **Reproducibility**: Code and text in one document
+- **Flexibility**: Different output formats and programming languages
+- **Version control friendly**: Text based
+- **Parameterized reports**: Generate multiple reports from the same template
 - ...
 
-## Outlook{#color-slide background-image="images/2023_05_11_quarto/quarto_outlook.png" background-size="cover"}
+
+## {#outlook-slide background-image="images/2023_05_11_quarto/quarto_outlook.png" background-size="cover"}
 
 ```{css, echo=FALSE}
-#color-slide, 
-#color-slide h2 {
- color: #fee4ff;
+#outlook-slide h1 {
+ margin-top: -30%;
+}
+
+.reveal .slide .aside-custom-right {
+  position: fixed;
+  color: #fef0ff;
+  font-size: 0.5em;
+  bottom: -20px;
+  right: -100px;
+  max-width: 60%
+  /* other properties */
+}
+
+/* Add this to style the bullet points and text */
+#outlook-slide ul {
+  color: #fef0ff;
+  width: 85%;
 }
 ```
 
-- Other options and formats: Presentations, Books, Websites
-- Easily publish documents or websites
-- Check out the demo project and the links on the lecture website
+- Other **options and formats**: Presentations, Books, Websites
+- Easily **publish** documents or websites
+- Check out the **demo project** and the **resources** on the lecture website
 
 
-::: aside
-<small>
+:::{.aside-custom-right}
 "Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst."
-</small>
 :::
 
 ## Next lecture
@@ -519,14 +536,30 @@ quarto render my_report.qmd --output "report_chinstrap.pdf" -P species:Chinstrap
 
 :e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
-## Thank you for your attention :) {background-image="images/2023_05_11_quarto/quarto_thankyou.png" background-size="cover"}
+# The end :) {#end-slide background-image="images/2023_05_11_quarto/quarto_thankyou.png" background-size="cover"}
+
 Questions?
 
-::: aside
-<small>
-"Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst."
-</small>
+```{css, echo=FALSE}
+#end-slide h1 {
+ margin-top: -27%;
+}
+
+.aside-custom-left {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  color: #fef0ff;
+  font-size: 0.5em;
+  max-width: 60%;
+}
+
+```
+
+::: {.aside-custom-left}
+“Artwork from”Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst.”
 :::
+
 
 # References
 
