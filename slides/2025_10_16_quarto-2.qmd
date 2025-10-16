@@ -18,6 +18,10 @@ execute:
   echo: false
   eval: true
 from: markdown+emoji
+revealjs-plugins:
+  - editable
+filters:
+  - editable
 ---
 
 ## What is this lecture series?
@@ -77,14 +81,8 @@ Quarto is a huge topic and there are so many possibilities!
 <br>
 
 - Practical **introduction** and **overview**
-- Main focus R and RStudio, but same workflow with other languages and other IDEs
+- Main focus R and Positron/RStudio, but same workflow with other languages and other IDEs
 - Download a quarto demo project from [Github](https://github.com/selinaZitrone/quarto_demo)
-
-. . .
-
-<br>
-
-Check out the [Quarto website](https://quarto.org/) for more information and tutorials
 
 ## How to get Quarto
 
@@ -92,6 +90,7 @@ Different options, depending on your workflow:
 
 - **Integrated** in some IDEs (e.g. R Studio, Positron)
 - Download the **CLI** for use with other IDEs and workflows
+- There is also an R package to call quarto from (install.packages("quarto"))
 
 . . .
 
@@ -102,30 +101,27 @@ Check out the [Quarto website](https://quarto.org/docs/get-started/) for downloa
 # Let's get started! {#section-slide background-image="images/2025_10_16_quarto-2/penguins_jumping.png" background-size="cover"}
 
 ```{css, echo=FALSE}
-#section-slide, 
 #section-slide h1 {
  color: #fee4ff;
+ margin-top: -27%;
 }
-#section-slide h1 {
-  margin-top: -25%;
+
+#section-slide .aside-custom {
+  position: fixed;
+  color: #fee4ff;
+  font-size: 0.5em;
+  bottom: -20px;
+  left: -130px;
+  max-width: 60%
+  /* other properties */
 }
-.reveal .figure-caption,
-#section-slide .figure-caption {
-  position: absolute !important;
-  bottom: 5vh !important;
-  font-size: 0.5em !important;
-  text-align: left !important;
-  width: 70% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  transform: none !important;
-}
+
 ```
 
-
-:::{.figure-caption}
-"Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst."
+:::{.aside-custom}
+“Artwork from”Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst.”
 :::
+
 
 
 
