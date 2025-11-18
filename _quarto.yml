@@ -55,6 +55,8 @@ website:
             href: sessions/12_git-2.qmd
           - text: 13 - Reproducible documents with Quarto (update)
             href: sessions/13_quarto-2.qmd
+          - text: 14 - Effective digital notetaking with Obsidian (update)
+            href: sessions/14_obsidian-2.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 
@@ -69,6 +71,7 @@ format:
     code-copy: true
     code-overflow: wrap
     cache: true
+    freeze: true
 
 
 
