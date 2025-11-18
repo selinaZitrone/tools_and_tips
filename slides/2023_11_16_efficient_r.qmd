@@ -319,7 +319,7 @@ You can profile a section of code like this:
 
 ```{r eval=FALSE}
 #| label: profvis
-#| code-line-numbers: 1-2|3-6|8-14|7-15 
+#| code-line-numbers: 1-2|3-6|8-14|7-15
 # install.packages("profvis")
 library(profvis)
 
@@ -510,8 +510,10 @@ Give R as much information as possible
 ```{r}
 microbenchmark(
   guess_classes = read.csv(here::here("slides/data/ghg_ems.csv")),
-  know_classes = read.csv(here::here("slides/data/ghg_ems.csv"), 
-                          colClasses = c("character", "integer", rep("double", 5))),
+  know_classes = read.csv(
+    here::here("slides/data/ghg_ems.csv"),
+    colClasses = c("character", "integer", rep("double", 5))
+  ),
   times = 10
 )
 ```
@@ -686,7 +688,11 @@ file_path_csv <- here::here("slides/data/ghg_ems_large.csv")
 
 compare_input <- microbenchmark::microbenchmark(
   read.csv = read.csv(file_path_csv),
-  read_csv = readr::read_csv(file_path_csv, progress = FALSE, show_col_types = FALSE),
+  read_csv = readr::read_csv(
+    file_path_csv,
+    progress = FALSE,
+    show_col_types = FALSE
+  ),
   fread = data.table::fread(file_path_csv, showProgress = FALSE),
   times = 10
 )
@@ -704,7 +710,11 @@ Reading plain text is faster than excel files
 file_path_xlsx <- here::here("slides/data/ghg_ems_large.xlsx")
 
 compare_excel <- microbenchmark(
-  read_csv = readr::read_csv(file_path_csv, progress = FALSE, show_col_types = FALSE),
+  read_csv = readr::read_csv(
+    file_path_csv,
+    progress = FALSE,
+    show_col_types = FALSE
+  ),
   read_excel = readxl::read_excel(file_path_xlsx),
   times = 10
 )
@@ -789,22 +799,22 @@ ghg_ems <- data.table::fread(here::here("slides/data/ghg_ems.csv"))
 # 1. The data table way
 # Convert the data to a data.table
 setDT(ghg_ems)
-summarize_dt <- function(){
+summarize_dt <- function() {
   ghg_ems[, mean(Electricity, na.rm = TRUE), by = Country]
 }
 
 # 2. The dplyr way
-summarize_dplyr <- function(){
+summarize_dplyr <- function() {
   ghg_ems |>
-      group_by(Country) |>
-      summarize(mean_e = mean(Electricity, na.rm = TRUE))
+    group_by(Country) |>
+    summarize(mean_e = mean(Electricity, na.rm = TRUE))
 }
 
 # 3. The collapse way
-summarize_collapse <- function(){
+summarize_collapse <- function() {
   ghg_ems |>
-      fgroup_by(Country) |>
-      fsummarise(mean_e = fmean(Electricity))
+    fgroup_by(Country) |>
+    fsummarise(mean_e = fmean(Electricity))
 }
 ```
 
@@ -897,11 +907,12 @@ Parallel
 Let's create a very slow square root function
 
 ```{r}
-slow_sqrt <- function(x){
+slow_sqrt <- function(x) {
   Sys.sleep(1) # simulate 1 second of computation time
   sqrt(x)
 }
 ```
+
 <br>
 
 :::{.fragment}
@@ -932,7 +943,7 @@ The **sequential** version
 library(tictoc)
 
 # create a vector of 10 numbers
-x <- 1:10 
+x <- 1:10
 
 tic()
 result <- lapply(x, slow_sqrt)
@@ -973,12 +984,28 @@ Selected base R apply functions and their future versions:
 # column there are the future versions of the functions
 # The function names should be enclosed in backticks and then in quotation marks to be printed nicely
 apply_functions <- data.frame(
-  base = c("`lapply`", "`sapply`", "`vapply`", "`mapply`", "`tapply`", "`apply`", "`Map`"),
-  future.apply = c("`future_lapply`", "`future_sapply`", "`future_vapply`", "`future_mapply`", "`future_tapply`",  "`future_apply`", "`future_Map`")
+  base = c(
+    "`lapply`",
+    "`sapply`",
+    "`vapply`",
+    "`mapply`",
+    "`tapply`",
+    "`apply`",
+    "`Map`"
+  ),
+  future.apply = c(
+    "`future_lapply`",
+    "`future_sapply`",
+    "`future_vapply`",
+    "`future_mapply`",
+    "`future_tapply`",
+    "`future_apply`",
+    "`future_Map`"
+  )
 )
 # print the data frame apply_functions nicely in the quarto doc using knitr
 # Apply striped design to the table
-knitr::kable(apply_functions) 
+knitr::kable(apply_functions)
 ```
 
 ## Future `purrr` functions {visibility="hidden"}
@@ -1027,7 +1054,7 @@ A normal for loop:
 
 ```{r}
 z <- list()
-for (i in 1:10){
+for (i in 1:10) {
   z[i] <- slow_sqrt(i)
 }
 ```
@@ -1038,9 +1065,10 @@ Use `foreach` to write the same loop
 
 ```{r}
 library(foreach)
-z <- foreach(i = 1:10) %do% {
-  slow_sqrt(i)
-}
+z <- foreach(i = 1:10) %do%
+  {
+    slow_sqrt(i)
+  }
 ```
 
 ## Parallel for loops
@@ -1057,9 +1085,10 @@ The **sequential** version
 library(foreach)
 
 tic()
-z <- foreach(i = 1:10) %do% {
-  slow_sqrt(i)
-}
+z <- foreach(i = 1:10) %do%
+  {
+    slow_sqrt(i)
+  }
 toc()
 ```
 
@@ -1073,9 +1102,10 @@ The **parallel** version
 library(doFuture)
 
 tic()
-z <- foreach(i = 1:10) %dofuture% {
-  slow_sqrt(i)
-}
+z <- foreach(i = 1:10) %dofuture%
+  {
+    slow_sqrt(i)
+  }
 toc()
 ```
 
@@ -1108,14 +1138,15 @@ plan(sequential)
 
 ```{r}
 # A function to calculate Fibonacci numbers
-fibonacci_r <- function(n){
-  if (n < 2){
+fibonacci_r <- function(n) {
+  if (n < 2) {
     return(n)
   } else {
     return(fibonacci_r(n - 1) + fibonacci_r(n - 2))
   }
 }
 ```
+
 <br>
 
 . . .
@@ -1143,6 +1174,7 @@ fibonacci_cpp <- cppFunction(
   }'
 )
 ```
+
 <br>
 
 . . .
