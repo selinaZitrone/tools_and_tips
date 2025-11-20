@@ -1,6 +1,6 @@
 ---
 title: "Effective digital notetaking with Obsidian"
-subtitle: "2023-10-19"
+subtitle: "2023-10-20"
 callout-appearance: default
 execute: 
   eval: false
@@ -9,13 +9,13 @@ from: markdown+emoji
 
 ### Description
 
-Effective note taking is crucial for both students and scientist. It's useful to manage tasks, capture key insights from papers, and write down new ideas. In this lecture, I will introduce you to my note taking software of choice. Obsidian is a highly customizable, markdown-based tool that lets you organize your notes efficiently and create interconnected webs of thoughts and ideas (also called "second brain" or "Zettelkasten"). Join me if you want to streamline your note taking process and keep organized records of your tasks, readings and ideas.
+Disorganized notes, scattered references, and constant tool-switching make research more stressful than necessary. Researchers need a smart, reliable system that keeps everything connected, easy to find, and ready to use. In this practical lecture, I will introduce Obsidian, a powerful markdown-based note-taking software. You will learn how to use Obsidian to organize your work, from tracking to-do lists and meetings to collecting notes and references, recording ideas, and linking them into mind maps—all in one interconnected place.
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="../slides/2025_11_20_obsidian.html"></iframe>
+<iframe class="slide-deck" width="780" height="500" src="../slides/2025_11_20_obsidian-2.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2025_11_20_obsidian.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_11_20_obsidian.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2025_11_20_obsidian-2.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_11_20_obsidian-2.pdf" download>Download PDF slides</a>&nbsp;&nbsp;&nbsp;[Watch on Youtube](https://youtu.be/WPAV1SNkdFg?si=ffeb9FrzJFrhhXg7){target="_blank"}
 
 ## Basic markdown syntax
 
@@ -53,8 +53,5 @@ mean(1:3)
   - Read the README file for a step-by-step guide on how to download and open the vault in Obsidian
   - Have a look at the "Get Started" files in the demo vault for explanations and step-by-step guides
 - A good [tutorial video for Obsidian beginners](https://www.youtube.com/embed/OUrOfIqvGS4)
-- [Obsidian plugin recommendations 1](https://www.youtube.com/embed/2zhnb9KwmtA?si=Pf-Z3Y76ghBW0xo7)
-- [Obsidian plugin recommendations 2](https://www.youtube.com/embed/cBm95iCcX2E?si=uPCKGg32Q2V1AXvx)
-
-- [Step-by-Step guide](https://elizabethbutlermd.com/obsidian-notes/) on how to get started with Obsidian in written form
+- [Step-by-Step guide](https://elizabethbutlermd.com/obsidian-notes/) on how to get started with Obsidian
 - [Blogpost: Note Taking System For Success in Academia](https://ilyashabanov.substack.com/p/note-taking-system-for-success-in) using Obsidian
