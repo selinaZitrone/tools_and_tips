@@ -43,13 +43,18 @@ Once you have a Copilot subscription, check the policy settings and change them.
 
 ## 5. Install and configure an IDE that supports Copilot
 
-### 5.1 Visual Studio Code
+### Positron
+
+- [Download Positron](https://positron.posit.co/download.html)
+- [Setup guide for GitHub Copilot in Positron](https://positron.posit.co/assistant-getting-started.html)
+
+### Visual Studio Code
 
 - Download and install [Visual Studio Code](https://code.visualstudio.com/Download)
 - Install [GitHub Copilot VS Code extension](https://docs.github.com/en/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode#installing-the-github-copilot-extension-in-visual-studio-code)
 - Install [GitHub Copilot Chat](https://docs.github.com/en/copilot/github-copilot-chat/using-github-copilot-chat-in-your-ide#installing-the-github-copilot-chat-extension-in-visual-studio-code)
 
-### 5.2 R Studio
+### R Studio
 
 - Download and install [R Studio](https://posit.co/downloads/)
 - Connect and configure [GitHub Copilot for R Studio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html#setup) 

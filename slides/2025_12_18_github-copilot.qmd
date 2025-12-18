@@ -182,7 +182,7 @@ Copilot predicts what you want to write based on
 
 :::
 :::{.column width="50%"}
-![](images/2025_12_18_github-copilot/chat.png){width="60%" fig-align="center"}
+![](images/2025_12_18_github-copilot/chat.png){width="50%" fig-align="center"}
 :::
 :::
 

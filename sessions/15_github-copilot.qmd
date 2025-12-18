@@ -42,4 +42,4 @@ In general, the Positron webpage is very helpful and contains a lot of useful in
 - [A blogpost](https://posit.co/blog/trust-llm-tools/) on data privacy and AI assistants in Positron
 - [Guideline for Dealing with Artificial Intelligence](https://www.berlin-universities-publishing.de/en/ueber-uns/policies/ki-leitlinie/index.html) by Berlin Universities Publishing
 - [FU KI website](https://www.ki.fu-berlin.de/) with more information and guidelines on AI use at FU Berlin (but not specifically about coding)
-  - [TU Berlin on AI](https://www.tu.berlin/en/bzhl/ressourcen-fuer-ihre-lehre/ressourcen-nach-themenbereichen/ai-in-university-teaching): Information about AI in general but also AI tools in research (not specifically about coding)
+- [TU Berlin on AI](https://www.tu.berlin/en/bzhl/ressourcen-fuer-ihre-lehre/ressourcen-nach-themenbereichen/ai-in-university-teaching): Information about AI in general but also AI tools in research (not specifically about coding)
