@@ -48,7 +48,6 @@ from: markdown+emoji
 - Speed up repetitive tasks
 - Learn new methods and languages
 - Support debugging, documenting, refactoring, ...
-- Support but not replace
 
 ## AI tools for programming
 
@@ -79,17 +78,41 @@ Integrated tools
 
 ## GitHub Copilot
 
+:::{.columns}
+
+:::{.column width="50%"}
+
 - **Integrated** and **context-aware**
-- **Standard** tool
+- **Standard** tool for different environments
 - **Free** for academics with an educational account 
-  - See [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html) for guide
+  - See [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html) for guide on how to get it
+
+:::
+
+:::{.column width="50%"}
+
+![](images/2025_12_18_github-copilot/copilot_logo.png){width="60%" fig-align="center"}
+
+:::
+:::
 
 ## Positron
+
+:::{.columns}
+:::{.column width="50%"}
 
 - General-purpose data science IDE
 - Built by the same team behind RStudio
 - Based on VS Code
 - Complete GitHub Copilot integration
+
+:::
+:::{.column width="50%"}
+
+![](images/2025_12_18_github-copilot/positron.png)
+
+:::
+:::
 
 
 ## Code auto-complete
@@ -120,22 +143,48 @@ Copilot predicts what you want to write based on
   
 ## Get better suggestions
 
+. . .
+
+:::{.nonincremental}
 - **Provide context**
   - Good comments and names for functions and variables
   - Open other relevant files
+:::
+
+. . .
+
+:::{.nonincremental}
 
 - **Adopt a good coding style**
   - GitHub Copilot will imitate your style
+
+:::
+
+. . .
+
+:::{.nonincremental}
 
 - **Acceptance discipline**
   - Don't auto-accept everything
   - Modify suggestions if needed
 
+:::
+
 ## Sidebar Chat
+
+:::{.columns}
+
+:::{.column width="50%"}
 
 - Tell GitHub Copilot what to do with your code
 - Larger contexts and longer conversations
 - Can see: files, console output, project workspace
+
+:::
+:::{.column width="50%"}
+![](images/2025_12_18_github-copilot/chat.png){width="60%" fig-align="center"}
+:::
+:::
 
 ## The default context
 
@@ -226,20 +275,20 @@ Write project-level documentation draft
 
 ## Advanced features
 
-- Custom prompts
-- Project-level instruction files
-- Agents
+- **Project-level instruction files**
+  - Give instructions that apply to the whole project
+  - Special file in `/.github/instructions.md`
+- **Agents**: Automate multi-step workflows (use with care)
 
 ## Limitations and risks
 
 - Can suggest
-  - Outdated functions
+  - Outdated functions and code
   - Patterns that are common but not best practice
 - GitHub Copilot has no understanding
 - Predicts plausible code not necessarily correct code
   - Code can be subtly wrong or inappropriate
 - Risk of over-reliance
-- Illusion of understanding
 
 ## Responsible use
 
@@ -254,15 +303,17 @@ Write project-level documentation draft
 ## Conclusion
 
 - GitHub Copilot can be a great **assistant**
-- You have the final responsibility
+- Support but not replace
 
 ## Getting started
 
 :::{.nonincremental}
-- Install Positron
-- Get GitHub Copilot for free with your educational GitHub account
-- Setup GitHub Copilot in Positron
+1. Get GitHub Copilot for free with your educational GitHub account
+2. Install Positron
+3. Setup GitHub Copilot in Positron
 :::
+
+Check out the [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/15_github-copilot.html) for all relevant information
 
 ## Next lecture
 
@@ -276,5 +327,5 @@ Write project-level documentation draft
 
 :e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
-## Thank you for your attention :)
+# Thanks for your attention :) {.inverse}
 Questions?<br><br><br><br>
