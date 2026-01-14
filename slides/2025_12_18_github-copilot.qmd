@@ -327,5 +327,9 @@ Check out the [lecture website](https://selinazitrone.github.io/tools_and_tips/s
 
 :e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
-# Thanks for your attention :) {.inverse}
-Questions?<br><br><br><br>
+## Thanks for your attention :) {.inverse}
+Questions?
+
+<video autoplay loop muted playsinline controls="false" width="900">
+  <source src="images/2025_12_18_github-copilot/christmas_tree.mp4" type="video/mp4">
+</video>
