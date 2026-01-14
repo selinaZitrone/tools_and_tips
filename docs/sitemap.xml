@@ -1,40 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_12_18_github-copilot.html</loc>
-    <lastmod>2025-12-18T13:58:15.002Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2026_01_15_git-3.html</loc>
+    <lastmod>2026-01-14T16:05:39.339Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_10_16_quarto-2.html</loc>
-    <lastmod>2025-10-16T09:05:42.629Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_11_20_obsidian-2.html</loc>
+    <lastmod>2025-11-20T08:26:21.092Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_06_19_efficient-r-2.html</loc>
-    <lastmod>2025-06-19T11:28:48.615Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_07_17_git-2.html</loc>
+    <lastmod>2025-10-14T09:11:51.646Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_04_17_data-visualisation.html</loc>
-    <lastmod>2025-05-13T21:25:27.357Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_05_15_r-code-that-lasts.html</loc>
+    <lastmod>2025-05-13T21:08:59.849Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2024_01_18_ai_tools.html</loc>
-    <lastmod>2025-04-15T17:01:37.796Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2024_02_15_tidyverse.html</loc>
+    <lastmod>2025-04-16T17:00:32.160Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_10_19_obsidian.html</loc>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_11_16_efficient_r.html</loc>
+    <lastmod>2025-11-18T16:19:42.340Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_07_20_research_compendia.html</loc>
     <lastmod>2025-04-15T17:01:37.795Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_06_15_git.html</loc>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_05_11_quarto.html</loc>
     <lastmod>2025-04-15T17:01:37.794Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_04_20_what_they_forgot_to_teach_you.html</loc>
-    <lastmod>2025-04-15T17:01:37.794Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html</loc>
+    <lastmod>2025-12-18T11:49:16.184Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/02_quarto/penguins_paper.html</loc>
-    <lastmod>2025-10-16T09:35:38.547Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/16_git-3.html</loc>
+    <lastmod>2026-01-14T15:57:21.796Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/sessions/14_obsidian-2.html</loc>
@@ -66,7 +70,7 @@
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/index.html</loc>
-    <lastmod>2025-12-13T19:33:04.945Z</lastmod>
+    <lastmod>2026-01-14T15:43:13.621Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/sessions/01_what_they_forgot.html</loc>
@@ -101,35 +105,39 @@
     <lastmod>2025-12-18T11:48:35.947Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html</loc>
-    <lastmod>2025-12-18T11:49:16.184Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/02_quarto/penguins_paper.html</loc>
+    <lastmod>2025-10-16T09:35:38.547Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_05_11_quarto.html</loc>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_04_20_what_they_forgot_to_teach_you.html</loc>
     <lastmod>2025-04-15T17:01:37.794Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_07_20_research_compendia.html</loc>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_06_15_git.html</loc>
+    <lastmod>2025-04-15T17:01:37.794Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_10_19_obsidian.html</loc>
     <lastmod>2025-04-15T17:01:37.795Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_11_16_efficient_r.html</loc>
-    <lastmod>2025-11-18T16:19:42.340Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2024_01_18_ai_tools.html</loc>
+    <lastmod>2025-04-15T17:01:37.796Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2024_02_15_tidyverse.html</loc>
-    <lastmod>2025-04-16T17:00:32.160Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_04_17_data-visualisation.html</loc>
+    <lastmod>2025-05-13T21:25:27.357Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_05_15_r-code-that-lasts.html</loc>
-    <lastmod>2025-05-13T21:08:59.849Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_06_19_efficient-r-2.html</loc>
+    <lastmod>2025-06-19T11:28:48.615Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_07_17_git-2.html</loc>
-    <lastmod>2025-10-14T09:11:51.646Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_10_16_quarto-2.html</loc>
+    <lastmod>2025-10-16T09:05:42.629Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_11_20_obsidian-2.html</loc>
-    <lastmod>2025-11-20T08:26:21.092Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_12_18_github-copilot.html</loc>
+    <lastmod>2025-12-18T13:58:15.002Z</lastmod>
   </url>
 </urlset>
