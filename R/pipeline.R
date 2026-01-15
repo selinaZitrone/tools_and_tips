@@ -28,16 +28,6 @@ results <- lapply(slides_html, function(x) {
   )
 })
 
-# Print summary
-success_count <- sum(unlist(results))
-print(paste0(
-  "Successfully printed ",
-  success_count,
-  " out of ",
-  length(slides_html),
-  " slides"
-))
-
 # commit and push
 git2r::add(path = here::here("docs"))
 git2r::commit(message = "re-render site")
