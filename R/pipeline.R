@@ -28,6 +28,8 @@ results <- lapply(slides_html, function(x) {
   )
 })
 
+# Add a comment
+
 # commit and push
 git2r::add(path = here::here("docs"))
 git2r::commit(message = "re-render site")
