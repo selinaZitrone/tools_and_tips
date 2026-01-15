@@ -59,6 +59,8 @@ website:
             href: sessions/14_obsidian-2.qmd
           - text: 15 - Github Copilot
             href: sessions/15_github-copilot.qmd
+          - text: 16 - Version control with Git
+            href: sessions/16_git-3.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 

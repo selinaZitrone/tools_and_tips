@@ -1,0 +1,59 @@
+---
+title: "Introduction to version control with Git"
+subtitle: "2026-01-15"
+callout-appearance: default
+from: markdown+emoji
+---
+
+### Description
+
+Git is an essential skill if you use any programming language. It allows you to keep track of changes to your project over time, collaborate with others, and maintain a clear and organized project structure. This can save time, improve research efficiency, and also makes it easy to publish your code via platforms such as Github. In this lecture, I will introduce the basic concepts of Git and how to use it for you own projects.
+The lecture is for Git beginners but also for people who use basic Git for their own projects and want to know a bit more about the concepts behind the workflow.
+
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2026_01_15_git-3.html"></iframe>
+```
+
+[Slides in full screen](../slides/2026_01_15_git-3.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2026_01_15_git-3.pdf" download>Download PDF slides</a>
+
+## Get started with Git
+
+You can check out the website of my Git workshop for:
+
+- [Installation Guide](https://selinazitrone.github.io/get-started-with-git/course_preparation.html)
+- [How to Git with Github Desktop](https://selinazitrone.github.io/get-started-with-git/how-tos/git_workflow_gh_desktop.html)
+- [How to Git with R and R Studio](https://selinazitrone.github.io/get-started-with-git/how-tos/git_workflow_usethis.html)
+- [How to Git with the command line](https://selinazitrone.github.io/get-started-with-git/how-tos/git_workflow_terminal.html)
+
+## Resources
+
+- [Git book](https://git-scm.com/book/en/v2): Explains git concepts from the very beginning.
+- [Git cheat sheet](https://education.github.com/git-cheat-sheet-education.pdf): Always handy if you don't remember the basic commands for the 
+terminal.
+- [Learn git concepts, not commands](https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc): Very nice blogpost. Explains really well the concepts of git, also more advanced ones like `rebase` or `cherry-pick`.
+- [How to write good commit messages](https://cbea.ms/git-commit/): Explains why good commit messages are important and gives 7 rules for writing them.
+
+### Git :heart: command line
+
+- Follow [this Git training](https://github.com/UnseenWizzard/git_training) for learning the Git
+concepts in the command line. 
+
+### Git :heart: R
+
+- There is a whole [book on using Git with R](https://happygitwithr.com/) that 
+explains the setup in detail but also goes into more advanced topics.
+
+- Follow this [step by step guide](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/)
+to set up Git and a GitHub connection in R and R Studio
+
+### Git :heart: GitHub Desktop
+
+- There are detailed step by step guides on how to set up GitHub Desktop and how to
+work with in the [GitHub Desktop Documentation](https://docs.github.com/desktop)
+
+### Other resources
+
+- [Connect GitHub Desktop with a Gitlab repository](https://itnext.io/how-to-use-github-desktop-with-gitlab-cd4d2de3d104?gi=b32bd84e7fe4)
+- [Connecting the repo with Zenodo to get a DOI](https://emilio-berti.github.io/idiv-git-introduction/21-github_zenodo/index.html)
+- [A markdown cheat sheet for your README files](https://github.com/im-luka/markdown-cheatsheet)

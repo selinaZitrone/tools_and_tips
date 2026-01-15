@@ -34,4 +34,5 @@ On this website, you can find all slides and additional resources for lectures:
 - 2025-10-16: [Reproducible documents with Quarto (update)](sessions/13_quarto-2.html)
 - 2025-11-20: [Effective digital notetaking with Obsidian (update)](sessions/14_obsidian-2.html)
 - 2025-12-18: [Applied AI Tools for Scientific Programming](sessions/15_github-copilot.html)
+- 2026-01-15: [Introduction to version control with Git](sessions/16_git-3.html)
 
