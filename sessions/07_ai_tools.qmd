@@ -12,7 +12,7 @@ AI tools promise to make our programming workflows faster and more efficient. If
 <iframe class="slide-deck" width="780" height="500" src="../slides/2024_01_18_ai_tools.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2024_01_18_ai_tools.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2024_01_18_ai_tools.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2024_01_18_ai_tools.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2024_01_18_ai_tools.pdf" download>Download PDF slides</a>
 
 ## Overview of AI tools for programming
 

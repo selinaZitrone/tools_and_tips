@@ -12,7 +12,7 @@ Do you use R in your daily work and research but you still feel your workflow is
 <iframe class="slide-deck" width="780" height="500" src="../slides/2023_04_20_what_they_forgot_to_teach_you.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2023_04_20_what_they_forgot_to_teach_you.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2023_04_20_what_they_forgot_to_teach_you.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2023_04_20_what_they_forgot_to_teach_you.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2023_04_20_what_they_forgot_to_teach_you.pdf" download>Download PDF slides</a>
 
 ## Summary
 

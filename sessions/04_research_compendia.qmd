@@ -17,7 +17,7 @@ The structure and tools of R packages provide a standard workflow for building s
 <iframe class="slide-deck" width="780" height="500" src="../slides/2023_07_20_research_compendia.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2023_07_20_research_compendia.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2023_07_20_research_compendia.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2023_07_20_research_compendia.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2023_07_20_research_compendia.pdf" download>Download PDF slides</a>
 
 # How to build your own research compendium - Step by step
 

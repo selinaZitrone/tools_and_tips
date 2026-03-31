@@ -15,7 +15,7 @@ The lecture is for Git beginners but also for people who use basic Git for their
 <iframe class="slide-deck" width="780" height="500" src="../slides/2026_01_15_git-3.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2026_01_15_git-3.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2026_01_15_git-3.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2026_01_15_git-3.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2026_01_15_git-3.pdf" download>Download PDF slides</a>
 
 ## Get started with Git
 

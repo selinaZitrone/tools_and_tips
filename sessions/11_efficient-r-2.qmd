@@ -11,7 +11,7 @@ For most data analysis and statistical computing, R is efficient enough. However
 <iframe class="slide-deck" width="780" height="500" src="../slides/2025_06_19_efficient-r-2.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2025_06_19_efficient-r-2.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_06_19_efficient-r-2.pdf" download>Download PDF slides</a>&nbsp;&nbsp;&nbsp; [Watch on Youtube (old version)](https://youtu.be/TMp2kXyJF3s?si=RUovDYvjYFkAXw0I){target="_blank"}
+[Slides in full screen](../slides/2025_06_19_efficient-r-2.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2025_06_19_efficient-r-2.pdf" download>Download PDF slides</a>&nbsp;&nbsp;&nbsp; [Watch on Youtube (old version)](https://youtu.be/TMp2kXyJF3s?si=RUovDYvjYFkAXw0I){target="_blank"}
 
 ## Links and resources
 

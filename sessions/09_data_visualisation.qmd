@@ -11,7 +11,7 @@ Figures are essential for communicating research findings and data story telling
 <iframe class="slide-deck" width="780" height="500" src="../slides/2025_04_17_data-visualisation.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2025_04_17_data-visualisation.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_04_17_data-visualisation.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2025_04_17_data-visualisation.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2025_04_17_data-visualisation.pdf" download>Download PDF slides</a>
 
 ## Resources and links
 

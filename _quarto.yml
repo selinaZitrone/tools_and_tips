@@ -8,8 +8,7 @@ project:
     - "!slides/efficient-R.qmd"
 
   resources:
-    - "slides/*.pdf"
-    - "slides/*.html"
+    - "slides/slides_pdf/*.pdf"
 
 website:
   page-navigation: true

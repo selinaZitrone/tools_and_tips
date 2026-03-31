@@ -18,7 +18,7 @@ AI coding assistants can accelerate learning, improve code quality, support debu
 <iframe class="slide-deck" width="780" height="500" src="../slides/2025_12_18_github-copilot.html"></iframe>
 ```
 
-[Slides in full screen](../slides/2025_12_18_github-copilot.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/2025_12_18_github-copilot.pdf" download>Download PDF slides</a>
+[Slides in full screen](../slides/2025_12_18_github-copilot.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2025_12_18_github-copilot.pdf" download>Download PDF slides</a>
 
 
 ## Links
