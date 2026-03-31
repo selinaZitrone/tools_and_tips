@@ -41,7 +41,6 @@ Imports:
     scales,
     tictoc,
     tidyr
-
 URL: https://github.com/selinaZitrone/tools_and_tips
 BugReports: https://github.com/selinaZitrone/tools_and_tips/issues
 Type: Workshop
