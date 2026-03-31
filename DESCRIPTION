@@ -8,8 +8,40 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-Imports: 
+Imports:
+    arrow,
+    collapse,
+    data.table,
+    datasauRus,
+    doFuture,
+    dplyr,
+    fontawesome,
+    forcats,
+    foreach,
+    furrr,
+    future,
+    gapminder,
+    ggdist,
+    gghalves,
+    ggplot2,
+    ggridges,
+    ggtext,
+    git2r,
+    here,
+    knitr,
+    memoise,
+    microbenchmark,
+    pagedown,
+    palmerpenguins,
+    patchwork,
+    purrr,
+    Rcpp,
+    readr,
+    readxl,
+    scales,
+    tictoc,
+    tidyr
 
-URL: https://github.com/selinaZitrone/intro-r-short
-BugReports: https://github.com/selinaZitrone/intro-r-short/issues
+URL: https://github.com/selinaZitrone/tools_and_tips
+BugReports: https://github.com/selinaZitrone/tools_and_tips/issues
 Type: Workshop
