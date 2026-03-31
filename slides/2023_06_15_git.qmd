@@ -10,7 +10,6 @@ format:
     slide-number: true
     show-slide-number: all
     incremental: true
-    self-contained: true
     code-line-numbers: false
     theme: slides.scss
     auto-stretch: false

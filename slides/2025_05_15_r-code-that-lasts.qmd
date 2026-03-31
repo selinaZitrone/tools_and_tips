@@ -8,7 +8,6 @@ format:
     highlight-style: printing
     mainfont: Cabinet Grotesk
     slide-number: true
-    self-contained: true
     show-slide-number: all
     incremental: true
     code-line-numbers: false
