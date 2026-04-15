@@ -1,0 +1,19 @@
+---
+title: "Build and publish your personal academic website with Quarto"
+subtitle: "2026-04-16"
+callout-appearance: default
+from: markdown+emoji
+---
+
+### Description
+
+In this hands-on workshop, we will build and publish your own academic website from scratch, step by step and together. We will use Quarto, a modern publishing tool that lets you create websites, blogs, and more from plain text files. By the end of the session, you will have a live website you can share with the world.
+
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2026_04_16_quarto-website.html"></iframe>
+```
+
+[Slides in full screen](../slides/2026_04_16_quarto-website.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2026_04_16_quarto-website.pdf" download>Download PDF slides</a>
+
+## Resources

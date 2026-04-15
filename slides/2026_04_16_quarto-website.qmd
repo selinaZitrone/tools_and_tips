@@ -1,0 +1,500 @@
+---
+title: "Build your academic website with Quarto"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+date: "2026-04-16"
+format:
+  revealjs:
+    footer: "Selina Baldauf // Quarto Websites"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute:
+  echo: false
+  eval: true
+from: markdown+emoji
+---
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+::: nonincremental
+
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+- One topic from the world of scientific workflows
+- Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+- If you don't want to miss a lecture
+  - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+- For credit points: Send me a short message (Email or Webex)
+
+:::
+
+## Why an academic website?
+
+- Showcase your work, publications, projects, ...
+- It's *yours*, you can take it with you (unlike institutional pages)
+- A central place where people can find you and your research
+
+## Tools for academic websites
+
+**Many tools exist for static websites, today we use Quarto**
+
+- Simple, works in RStudio / Positron / VS Code
+- Easy to publish for free
+- Excellent [documentation](https://quarto.org/docs/websites/)
+
+## What a finished site can look like
+
+Some examples of academic Quarto websites:
+
+::: nonincremental
+
+- [Silvia Canelón](https://silviacanelon.com/)
+- [Andrew Heiss](https://www.andrewheiss.com/)
+- [Sam Csik](https://samanthacsik.github.io/)
+- [John Helveston](https://www.jhelvy.com/)
+
+:::
+
+## Plan for today
+
+::: nonincremental
+
+1. Quick **Quarto intro/refresher**
+2. Basic **website from scratch**
+3. Understand and customize an **academic website template**
+4. **Publish your website** via GitHub Pages
+5. **Wrap up**
+
+:::
+
+## Follow along
+
+To follow along you only need:
+
+- Recent version of RStudio (or Positron, VS Code)
+- GitHub account (for publishing, optional)
+
+## What is Quarto?
+
+. . .
+
+> Quarto is an open-source scientific and technical publishing system
+
+. . .
+
+Examples of document types that can be created with Quarto:
+
+::: {.nonincremental}
+
+-   **Documents**: HTML, PDF, Word
+-   **Presentations**: HTML, Powerpoint
+-   **Books**: HTML, ePub, PDF
+-   **Websites**: HTML
+- ...
+
+:::
+
+## What is Quarto?
+
+- A Quarto document (`.qmd`) has three components:
+  - **Markdown** text
+  - (Optional) **code** chunks (R, Python, Julia, ...)
+  - **YAML** header for metadata
+- You **render** the project → Quarto turns `.qmd` files into HTML, PDF, etc.
+
+. . .
+
+A Quarto *website* is just: **several `.qmd` files + one `_quarto.yml` config file**
+
+## What we won't cover today
+
+::: nonincremental
+
+- Executing code in documents (R/Python output)
+- PDF/Word documents or slides
+- Advanced theming/CSS
+- Custom domains
+
+:::
+
+. . .
+
+All of these are possible with Quarto. Pointers at the end!
+
+# Build a website from scratch {.inverse}
+
+> Understanding the basics before we use the template
+
+## Building from scratch
+
+I'll create a minimal website live. **No need to follow along**, just watch.
+
+. . .
+
+::: nonincremental
+
+The steps:
+
+1. Create a new Quarto Website project in RStudio
+2. Look at the generated files
+3. Render and preview
+4. Add a new page
+
+:::
+
+## The core loop
+
+After the demo, this is the mental model:
+
+. . .
+
+::: nonincremental
+
+- A Quarto website = a **folder of `.qmd` files** + **`_quarto.yml`**
+- Add a page = **create a `.qmd`** + **add it to the navbar** in `_quarto.yml`
+- See your changes = **click Render**
+
+:::
+
+. . .
+
+That's it. Everything else builds on this.
+
+# Customize the template {.inverse}
+
+> From template to your personal website
+
+## Switching to the template
+
+- We *could* build everything from scratch, but we'd run out of time
+- I prepared a **template** with more pages and nicer defaults
+- It's just what we built, with more content
+
+. . .
+
+**From now on: follow along with me!**
+
+. . .
+
+::: nonincremental
+
+1. Download the template from the link in chat
+2. Unzip and open the `.Rproj` file in RStudio
+3. Click **Render** to see the template site
+
+:::
+
+## Template file structure
+
+::: nonincremental
+
+| File / Folder | Purpose |
+|---|---|
+| `_quarto.yml` | Site-wide config (navbar, theme, footer) |
+| `index.qmd` | Home page (set up as an About page) |
+| `cv.qmd` | CV page |
+| `publications.qmd` | Publications page |
+| `blog.qmd` + `posts/` | Blog listing + individual posts |
+| `styles.css` | Small custom style tweaks |
+
+:::
+
+## Exercise: `_quarto.yml` {.inverse}
+
+::: nonincremental
+
+> :pencil2: **Exercise (3 min):**
+>
+> 1. Change the site `title:` to your name
+> 2. Pick a theme from the [theme list](https://quarto.org/docs/output-formats/html-themes.html) and swap the `theme:` value
+> 3. Render and see what changed
+
+:::
+
+## Exercise: `index.qmd` (the About page) {.inverse}
+
+Quarto has a special **About page** type, perfect for a personal landing page.
+
+::: nonincremental
+
+- `template:` choose from [several layouts](https://quarto.org/docs/websites/website-about.html) (jolla, trestles, solana, marquee, broadside)
+- `image:` path to your photo
+- `links:` social/email links with icons
+
+:::
+
+. . .
+
+::: nonincremental
+
+> :pencil2: **Exercise (4 min):**
+>
+> 1. Replace the placeholder text with a short bio
+> 2. Update the `links:`, delete what doesn't apply, add your own
+> 3. (Optional) Try a different `template:` and re-render
+
+:::
+
+## Exercise: `cv.qmd` {.inverse}
+
+A page can be very simple: just a YAML header with a title and markdown content.
+
+::: nonincremental
+
+> :pencil2: **Exercise (3 min):**
+>
+> 1. Replace the placeholder content with your own CV
+> 2. (Or just a few lines, you can finish later)
+
+:::
+
+## `publications.qmd`
+
+- Same idea as the CV: markdown content grouped by year
+- Write citations by hand, optionally with links
+
+. . .
+
+:bulb: If you have many publications, you can later switch to a `.bib` file with automatic formatting. See the [Quarto docs on citations](https://quarto.org/docs/authoring/citations.html).
+
+## Listing pages: `blog.qmd` + `posts/`
+
+A **listing page** shows a collection of other pages. Perfect for blogs, talks, or projects.
+
+. . .
+
+::: nonincremental
+
+- `blog.qmd` has a `listing:` block in the YAML:
+  - `contents: posts` → look in the `posts/` folder
+  - `type: default` → layout style (`default`, `grid`, `table`)
+  - `sort: "date desc"` → newest first
+- Each post lives in its own subfolder in `posts/` with an `index.qmd`
+
+:::
+
+## Exercise: Add a blog post {.inverse}
+
+::: nonincremental
+
+> :pencil2: **Exercise (5 min):**
+>
+> 1. Create a new folder in `posts/`, add an `index.qmd` with a title, date, and a few lines of text
+> 2. Render and check that it appears in the blog listing
+> 3. (Optional) Try changing `type: default` to `type: grid` in `blog.qmd`
+
+:::
+
+## (Optional) Custom styling with SCSS
+
+Themes are a starting point. If you want to tweak colors, fonts, or spacing, you can use SCSS.
+
+Wire it into `_quarto.yml`:
+
+```yaml
+format:
+  html:
+    theme: [cosmo, custom.scss]
+```
+
+. . .
+
+::: nonincremental
+
+- **Want to go further?**
+  - [Quarto theming docs](https://quarto.org/docs/output-formats/html-themes.html#theme-options)
+  - Pick colors with [coolors.co](https://coolors.co) or [Adobe Color](https://color.adobe.com)
+
+:::
+
+# Publish your website {.inverse}
+
+> Getting your site online
+
+## How publishing works
+
+::: nonincremental
+
+1. When you **render**, Quarto produces a folder of HTML, CSS, and image files
+2. A **hosting service** stores those files and serves them at a public URL
+3. That's the entire concept: **render → upload → live**
+
+:::
+
+. . .
+
+**Options:** GitHub Pages, Netlify, Posit Connect Cloud, university web server, ...
+
+Today we use **GitHub Pages**: free, reliable, and standard in academia.
+
+## Publishing to GitHub Pages
+
+::: nonincremental
+
+Three steps:
+
+1. Tell Quarto to **render to `docs/`** by adding `output-dir: docs` in `_quarto.yml`
+2. **Push to GitHub**: create a repo and push your project
+3. **Turn on Pages** in the repo settings
+
+:::
+
+. . .
+
+Your site will be live at `https://<username>.github.io/<reponame>/`
+
+## Step 1: Render to `docs/`
+
+Add this to `_quarto.yml`:
+
+```yaml
+project:
+  type: website
+  output-dir: docs
+```
+
+Then render again.
+
+## Step 2: Push to GitHub
+
+- I'll demo this with **GitHub Desktop** (easiest for beginners)
+- If you use Git from the terminal or RStudio, that works too
+
+. . .
+
+::: nonincremental
+
+1. Open GitHub Desktop → **Add Existing Repository** (or create new)
+2. Commit all files
+3. **Publish repository** to GitHub
+
+:::
+
+## Step 3: Turn on GitHub Pages
+
+::: nonincremental
+
+On your GitHub repo page:
+
+1. **Settings** → **Pages** (left sidebar)
+2. Source: **Deploy from a branch**
+3. Branch: **main**, folder: **/docs**
+4. Click **Save**
+5. Wait ~1-2 min → your site is live :tada:
+
+:::
+
+## Exercise: Publish your website {.inverse}
+
+::: nonincremental
+
+> :pencil2: **Now you: publish your website!**
+>
+> Follow the three steps. If your site is live, **drop the URL in the chat**!
+>
+> If you don't have Git set up, follow along conceptually. I'll share a written guide with screenshots so you can finish at your own pace.
+
+:::
+
+## Updating your site later
+
+The workflow from now on:
+
+::: nonincremental
+
+1. **Edit** your `.qmd` files
+2. **Render**
+3. **Commit and push** (Git pane or GitHub Desktop)
+4. GitHub rebuilds automatically, changes are live in ~1 min
+
+:::
+
+. . .
+
+That's it. Welcome to having a website. :tada:
+
+# Wrap up {.inverse}
+
+> Where to go from here
+
+## What you built today
+
+::: nonincremental
+
+- Built a Quarto website from scratch
+- Customized the main page types: **About pages**, **plain pages**, **listing pages**
+- Configured the site through `_quarto.yml` (themes, navbar, footer)
+- Published to GitHub Pages
+
+:::
+
+. . .
+
+That's the whole core skill set. Everything else is variations and extras.
+
+## Inspiration: academic Quarto sites
+
+| Site | Highlights |
+|---|---|
+| [Silvia Canelón](https://silviacanelon.com/) | Beautiful design, custom styling |
+| [Andrew Heiss](https://www.andrewheiss.com/) | Rich academic content, blog, teaching |
+| [Sam Csik](https://samanthacsik.github.io/) | Clean structure, well-organized |
+| [John Helveston](https://www.jhelvy.com/) | Great publications page |
+
+. . .
+
+:bulb: **Tip**: Find their GitHub repos and look at the source code!
+
+More examples: [Gang He's curated list](https://drganghe.github.io/quarto-academic-site-examples.html)
+
+## Where to go next
+
+::: nonincremental
+
+- Point your own **custom domain** (`yourname.com`) at your GitHub Pages site
+- Switch to a **`.bib` file** for automatic publication formatting ([docs](https://quarto.org/docs/authoring/citations.html))
+- Go deeper into **SCSS** for custom styling
+- Add **Google Analytics** or **Plausible** to see who visits ([docs](https://quarto.org/docs/websites/website-tools.html#google-analytics))
+- Write your **first real blog post**: research note, conference takeaways, tutorial
+
+:::
+
+## Next lecture
+
+#### Topic tba
+
+<br>
+
+:date: tba :clock4: 4-5 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+# The end :) {background-color="#2c2c2c"}
+
+Questions?
+
+## References
+
+::: nonincremental
+
+- [Quarto website documentation](https://quarto.org/docs/websites/)
+- [Get started with Quarto](https://quarto.org/docs/get-started/)
+- [HTML themes overview](https://quarto.org/docs/output-formats/html-themes.html)
+- [About page templates](https://quarto.org/docs/websites/website-about.html)
+- [Listing pages (blogs, publications, ...)](https://quarto.org/docs/websites/website-listings.html)
+- [Publishing options](https://quarto.org/docs/publishing/)
+- [Adding a blog to a Quarto website](https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/) (Sam Csik)
+- [Academic site examples](https://drganghe.github.io/quarto-academic-site-examples.html) (Gang He)
+
+:::
