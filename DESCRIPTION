@@ -22,7 +22,6 @@ Imports:
     future,
     gapminder,
     ggdist,
-    gghalves,
     ggplot2,
     ggridges,
     ggtext,

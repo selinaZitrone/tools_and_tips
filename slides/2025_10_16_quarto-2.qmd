@@ -17,10 +17,6 @@ execute:
   echo: false
   eval: true
 from: markdown+emoji
-revealjs-plugins:
-  - editable
-filters:
-  - editable
 ---
 
 ## What is this lecture series?

@@ -518,8 +518,7 @@ raincloud_plot <- ggplot(
     aes(color = category),
     side = "l",
     range_scale = 0.4,
-    size = 2,
-    position = position_nudge(x = -0.01)
+    size = 2
   ) +
   scale_fill_brewer(palette = "Set2") +
   scale_color_brewer(palette = "Set2")
@@ -1157,6 +1156,7 @@ barplot_no_highlights_rotate <- gapminder_china_india |>
 barplot_no_highlights_rotate
 ```
 
+
 ## Highlight the main message
 
 Use <span style="color: #4169E1; font-size: 120%; font-weight: bold;">highlighting</span> and <span style="color: #4d4d4d; font-size: 100%;">de-emphasizing</span>
@@ -1222,6 +1222,7 @@ barplot_highlights_1 <- gapminder_china_india |>
 barplot_highlights_1
 ```
 
+
 ## Highlight the main message
 
 Highlight focus contries, de-emphasize all others
@@ -1280,6 +1281,7 @@ barplot_highlights_2 <- gapminder_china_india |>
 barplot_highlights_2
 ```
 
+
 ## Order your data
 
 Order categories consciously not automatically.
@@ -1293,7 +1295,7 @@ order_gdp <- gapminder_china_india |>
   ggtitle("Ordered by GDP")
 
 
-# ordered alphabetially
+# ordered alphabetically
 order_alphabetically <- gapminder_china_india |>
   filter(year == max(year)) |>
   ggplot(aes(x = fct_rev(country), y = gdpPercap)) +
@@ -1318,6 +1320,7 @@ order_gdp +
     axis.line.x = element_line()
   )
 ```
+
 
 ## Order your data
 

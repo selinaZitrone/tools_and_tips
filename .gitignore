@@ -22,3 +22,5 @@ sessions/additional_material/02_quarto/*_files/*
 
 # Quarto extensions
 _extensions/*
+
+**/*.quarto_ipynb

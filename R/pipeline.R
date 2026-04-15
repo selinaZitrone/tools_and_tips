@@ -27,7 +27,7 @@ lapply(slides_qmd, function(qmd) {
   if (needs_update) {
     message("Rendering PDF: ", name)
     pagedown::chrome_print(
-      html,
+      paste0("file:///", normalizePath(html, winslash = "/")),
       output = pdf_src,
       timeout = 180,
       options = c("--disable-dev-shm-usage", "--no-sandbox")

@@ -101,6 +101,8 @@ Use the following workflow when creating new sessions:
 3. **Draft slides**: Once the outline is agreed, Claude will produce a `.qmd` slide file using the template above
 4. **Session page**: Claude can also draft the `sessions/##_topic.qmd` landing page
 
+The pool of agreed future topics is tracked in **TOPICS.md** in the repo root. Check it before brainstorming to avoid duplicates, and tick off topics when a session is created.
+
 When brainstorming topics, consider:
 - What practical pain points do PhD students in life sciences commonly face?
 - Does the topic fit in a 1-hour slot, or is it better as a 2-hour workshop?
