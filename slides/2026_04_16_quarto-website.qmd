@@ -43,9 +43,9 @@ from: markdown+emoji
 - It's *yours*, you can take it with you (unlike institutional pages)
 - A central place where people can find you and your research
 
-## Tools for academic websites
+## Tools
 
-**Many tools exist for static websites, today we use Quarto**
+There are many tools for static websites, today we use **Quarto**
 
 - Simple, works in RStudio / Positron / VS Code
 - Easy to publish for free
@@ -53,7 +53,7 @@ from: markdown+emoji
 
 ## What a finished site can look like
 
-Some examples of academic Quarto websites:
+Some examples of nice academic Quarto websites:
 
 ::: nonincremental
 
@@ -64,21 +64,24 @@ Some examples of academic Quarto websites:
 
 :::
 
+. . .
+
+Goal for today: Build (and publish) a simple personal website with Quarto to perfect later!
+
 ## Plan for today
 
 ::: nonincremental
 
 1. Quick **Quarto intro/refresher**
-2. Basic **website from scratch**
+2. Basic **website** from scratch
 3. Understand and customize an **academic website template**
-4. **Publish your website** via GitHub Pages
-5. **Wrap up**
+4. **Publish** your website via GitHub Pages
 
 :::
 
-## Follow along
+. . .
 
-To follow along you only need:
+To **follow along** you only need:
 
 - Recent version of RStudio (or Positron, VS Code)
 - GitHub account (for publishing, optional)
@@ -91,7 +94,7 @@ To follow along you only need:
 
 . . .
 
-Examples of document types that can be created with Quarto:
+Quarto can create many types of output:
 
 ::: {.nonincremental}
 
@@ -105,87 +108,163 @@ Examples of document types that can be created with Quarto:
 
 ## What is Quarto?
 
-- A Quarto document (`.qmd`) has three components:
-  - **Markdown** text
-  - (Optional) **code** chunks (R, Python, Julia, ...)
-  - **YAML** header for metadata
-- You **render** the project → Quarto turns `.qmd` files into HTML, PDF, etc.
 
-. . .
+::: {.columns}
 
-A Quarto *website* is just: **several `.qmd` files + one `_quarto.yml` config file**
+::: {.column}
 
-## What we won't cover today
+A Quarto document (`.qmd`) is basically a text file
 
-::: nonincremental
+![](images/2023_05_11_quarto/basic_doc.jpg)
 
-- Executing code in documents (R/Python output)
-- PDF/Word documents or slides
-- Advanced theming/CSS
-- Custom domains
+:::
+
+::: {.column}
+
+:::{.fragment}
+
+When you **render** it, Quarto turns it into a nice HTML/PDf/etc. 
+
+![](images/2023_05_11_quarto/basic_doc_output.jpg)
+
+:::
+
+:::
+
+:::
+
+## Basic components of a Quarto document
+
+```{=html}
+<style>
+.highlight-pink { background-color: #e83e8c; color: #100F0F; padding: 0.1em 0.2em; font-weight: bold; }
+.highlight-blue { background-color: #4a9ed9; color: #100F0F; padding: 0.1em 0.2em; font-weight: bold; }
+</style>
+```
+
+::: {.columns}
+
+::: {.column}
+
+A Quarto document (`.qmd`) is basically a text file
+
+![](images/2023_05_11_quarto/basic_doc_annotate_sections.jpg)
+
+:::
+
+::: {.column}
+
+A Quarto document (`.qmd`) has three components:
+
+  - [**YAML** header]{.highlight-pink} for metadata and configuration
+  - [**Markdown** text]{.highlight-blue}
+  - (Optional) [**code** chunks]{.highlight-ylw} (R, Python, Julia, ...)
+
+:::
+
+:::
+
+## The YAML header
+
+::: {.columns}
+
+::: {.column}
+
+```yaml
+---
+title: "An example document"
+author: "Selina Baldauf"
+date: "2023-05-11"
+format:
+  html:
+    theme: cosmo
+    toc: true
+```
+
+:::
+
+::: {.column}
+
+
+- Between --- at the top of the file
+- Metadata + settings in key: value form
+  - Careful with indentation and alignment
+
+:::
+
+:::
+
+## The Markdown text
+
+::: {.columns}
+
+::: {.column}
+
+You write content like this:
+
+````markdown
+# A section header
+
+## A subsection header
+
+Some **bold** and *italic* text and a
+[link to Quarto](https://quarto.org).
+
+- First bullet
+- Second bullet
+- Third bullet
+````
+
+:::
+
+::: {.column}
+
+And it will render like this:
+
+### A section header
+
+#### A subsection header
+
+Some **bold** and *italic* text and a
+[link to Quarto](https://quarto.org).
+
+:::{.nonincremental}
+- First bullet
+- Second bullet
+- Third bullet
+:::
+
+:::
 
 :::
 
 . . .
 
-All of these are possible with Quarto. Pointers at the end!
+:::{.callout-note}
 
-# Build a website from scratch {.inverse}
-
-> Understanding the basics before we use the template
-
-## Building from scratch
-
-I'll create a minimal website live. **No need to follow along**, just watch.
-
-. . .
-
-::: nonincremental
-
-The steps:
-
-1. Create a new Quarto Website project in RStudio
-2. Look at the generated files
-3. Render and preview
-4. Add a new page
+Checkout other [Quarto Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html)
 
 :::
 
-## The core loop
+# A Quarto website from scratch {.inverse}
 
-After the demo, this is the mental model:
+> A Quarto *website* is just: **several `.qmd` files + one `_quarto.yml` config file**
 
-. . .
+## Quarto website summary
 
-::: nonincremental
+- Quarto website = a folder of `.qmd` files for **content** + `_quarto.yml` for **configuration**
+- To add a page: create a `.qmd` and add it to the navbar in `_quarto.yml`
+- See your changes: Render the project
 
-- A Quarto website = a **folder of `.qmd` files** + **`_quarto.yml`**
-- Add a page = **create a `.qmd`** + **add it to the navbar** in `_quarto.yml`
-- See your changes = **click Render**
+# Building an academic website {.inverse}
 
-:::
+> Create a personal website from a template
 
-. . .
+## The template
 
-That's it. Everything else builds on this.
+## Get the template
 
-# Customize the template {.inverse}
-
-> From template to your personal website
-
-## Switching to the template
-
-- We *could* build everything from scratch, but we'd run out of time
-- I prepared a **template** with more pages and nicer defaults
-- It's just what we built, with more content
-
-. . .
-
-**From now on: follow along with me!**
-
-. . .
-
-::: nonincremental
+:::{.nonincremental}
 
 1. Download the template from the link in chat
 2. Unzip and open the `.Rproj` file in RStudio
@@ -193,96 +272,85 @@ That's it. Everything else builds on this.
 
 :::
 
-## Template file structure
+## Project structure
 
 ::: nonincremental
 
 | File / Folder | Purpose |
 |---|---|
 | `_quarto.yml` | Site-wide config (navbar, theme, footer) |
-| `index.qmd` | Home page (set up as an About page) |
-| `cv.qmd` | CV page |
+| `index.qmd` | Home page |
+| `about.qmd` | About page with your profile/CV |
 | `publications.qmd` | Publications page |
 | `blog.qmd` + `posts/` | Blog listing + individual posts |
 | `styles.css` | Small custom style tweaks |
 
 :::
 
-## Exercise: `_quarto.yml` {.inverse}
+## Customize the `_quarto.yml` {.inverse}
 
 ::: nonincremental
 
-> :pencil2: **Exercise (3 min):**
+> :pencil2: **Exercise (5 min):**
 >
-> 1. Change the site `title:` to your name
-> 2. Pick a theme from the [theme list](https://quarto.org/docs/output-formats/html-themes.html) and swap the `theme:` value
+> 1. Change the site `title` and footer `text`
+> 2. Browse the themes from the [theme list](https://quarto.org/docs/output-formats/html-themes.html) and swap the `theme` value
 > 3. Render and see what changed
 
 :::
 
-## Exercise: `index.qmd` (the About page) {.inverse}
+:::{.callout-note}
 
-Quarto has a special **About page** type, perfect for a personal landing page.
+## If you finish early
 
-::: nonincremental
+Find out which other elements you could customize in the `_quarto.yml` on the Quarto website:
 
-- `template:` choose from [several layouts](https://quarto.org/docs/websites/website-about.html) (jolla, trestles, solana, marquee, broadside)
-- `image:` path to your photo
-- `links:` social/email links with icons
+:::{.nonincremental}
+
+- [Website Navigation](https://quarto.org/docs/websites/website-navigation.html): Navbar, footer options, etc.
+- [Theming options](https://quarto.org/docs/output-formats/html-themes.html): Change some colors, font sizes, etc.
 
 :::
 
-. . .
+:::
+
+## Customize the landing page `index.qmd` {.inverse}
 
 ::: nonincremental
 
-> :pencil2: **Exercise (4 min):**
+> :pencil2: **Exercise (5 min):**
 >
 > 1. Replace the placeholder text with a short bio
-> 2. Update the `links:`, delete what doesn't apply, add your own
-> 3. (Optional) Try a different `template:` and re-render
+> 2. YAML: Update the `links:`, delete what doesn't apply, add your own
+> 3. YAML: Try a different `template:` and re-render
+> 4. (Optional) Add a photo to the project folder and update the image path
 
 :::
 
-## Exercise: `cv.qmd` {.inverse}
+:::{.callout-note}
 
-A page can be very simple: just a YAML header with a title and markdown content.
+Get an overview of the available [About page templates](https://quarto.org/docs/websites/website-about.html#templates)
+
+:::
+
+## Customize `about.qmd` and `publications.qmd` {.inverse}
 
 ::: nonincremental
 
-> :pencil2: **Exercise (3 min):**
+> :pencil2: **Exercise (5 min):**
 >
-> 1. Replace the placeholder content with your own CV
-> 2. (Or just a few lines, you can finish later)
+> Replace the placeholder content with your own content. 
+> You can also just add some lines and experiment with Markdown formatting. You can do the full content later.
 
 :::
 
-## `publications.qmd`
+:::{.callout-note}
 
-- Same idea as the CV: markdown content grouped by year
-- Write citations by hand, optionally with links
-
-. . .
-
-:bulb: If you have many publications, you can later switch to a `.bib` file with automatic formatting. See the [Quarto docs on citations](https://quarto.org/docs/authoring/citations.html).
-
-## Listing pages: `blog.qmd` + `posts/`
-
-A **listing page** shows a collection of other pages. Perfect for blogs, talks, or projects.
-
-. . .
-
-::: nonincremental
-
-- `blog.qmd` has a `listing:` block in the YAML:
-  - `contents: posts` → look in the `posts/` folder
-  - `type: default` → layout style (`default`, `grid`, `table`)
-  - `sort: "date desc"` → newest first
-- Each post lives in its own subfolder in `posts/` with an `index.qmd`
+Find a markdown reference on the Quarto website: [Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html)
 
 :::
 
-## Exercise: Add a blog post {.inverse}
+## Add a blog post {.inverse}
 
 ::: nonincremental
 
@@ -290,11 +358,17 @@ A **listing page** shows a collection of other pages. Perfect for blogs, talks, 
 >
 > 1. Create a new folder in `posts/`, add an `index.qmd` with a title, date, and a few lines of text
 > 2. Render and check that it appears in the blog listing
-> 3. (Optional) Try changing `type: default` to `type: grid` in `blog.qmd`
+> 3. (Optional) Try changing listing type `type: default` to `type: grid` in `blog.qmd`
 
 :::
 
-## (Optional) Custom styling with SCSS
+::: {.callout-note}
+
+Find out about [listing page types](https://quarto.org/docs/websites/website-listings.html)
+
+:::
+
+## Custom styling with SCSS
 
 Themes are a starting point. If you want to tweak colors, fonts, or spacing, you can use SCSS.
 
@@ -316,9 +390,7 @@ format:
 
 :::
 
-# Publish your website {.inverse}
-
-> Getting your site online
+# Publishing a website {.inverse}
 
 ## How publishing works
 
