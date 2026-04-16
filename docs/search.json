@@ -2230,14 +2230,14 @@
     "href": "index.html",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R\n2023-05-11: Reproducible documents with Quarto\n2023-06-15: Introduction to verion control with Git\n2023-07-20: Research compendia as R packages\n2023-10-19: Effective digital notetaking with Obsidian\n2023-11-16: Efficient R\n2024-01-18: AI tools in programming\n2024-02-15: Introduction to the tidyverse\n2025-04-17: Clear figures, stronger stories\n2025-05-15: Write R code that lasts\n2025-06-19: Efficient R (update)\n2025-07-17: Version control with Git (update)\n2025-10-16: Reproducible documents with Quarto (update)\n2025-11-20: Effective digital notetaking with Obsidian (update)\n2025-12-18: Applied AI Tools for Scientific Programming\n2026-01-15: Introduction to version control with Git"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R\n2023-05-11: Reproducible documents with Quarto\n2023-06-15: Introduction to verion control with Git\n2023-07-20: Research compendia as R packages\n2023-10-19: Effective digital notetaking with Obsidian\n2023-11-16: Efficient R\n2024-01-18: AI tools in programming\n2024-02-15: Introduction to the tidyverse\n2025-04-17: Clear figures, stronger stories\n2025-05-15: Write R code that lasts\n2025-06-19: Efficient R (update)\n2025-07-17: Version control with Git (update)\n2025-10-16: Reproducible documents with Quarto (update)\n2025-11-20: Effective digital notetaking with Obsidian (update)\n2025-12-18: Applied AI Tools for Scientific Programming\n2026-01-15: Introduction to version control with Git\n2026-04-16: Build and publish your personal academic website with Quarto"
   },
   {
     "objectID": "index.html#lecture-series",
     "href": "index.html#lecture-series",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R\n2023-05-11: Reproducible documents with Quarto\n2023-06-15: Introduction to verion control with Git\n2023-07-20: Research compendia as R packages\n2023-10-19: Effective digital notetaking with Obsidian\n2023-11-16: Efficient R\n2024-01-18: AI tools in programming\n2024-02-15: Introduction to the tidyverse\n2025-04-17: Clear figures, stronger stories\n2025-05-15: Write R code that lasts\n2025-06-19: Efficient R (update)\n2025-07-17: Version control with Git (update)\n2025-10-16: Reproducible documents with Quarto (update)\n2025-11-20: Effective digital notetaking with Obsidian (update)\n2025-12-18: Applied AI Tools for Scientific Programming\n2026-01-15: Introduction to version control with Git"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture: Check out the official lecture website and subscribe to the mailing list to get the link to the lecture meeting.\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n2023-04-20: What they forgot to teach you about R\n2023-05-11: Reproducible documents with Quarto\n2023-06-15: Introduction to verion control with Git\n2023-07-20: Research compendia as R packages\n2023-10-19: Effective digital notetaking with Obsidian\n2023-11-16: Efficient R\n2024-01-18: AI tools in programming\n2024-02-15: Introduction to the tidyverse\n2025-04-17: Clear figures, stronger stories\n2025-05-15: Write R code that lasts\n2025-06-19: Efficient R (update)\n2025-07-17: Version control with Git (update)\n2025-10-16: Reproducible documents with Quarto (update)\n2025-11-20: Effective digital notetaking with Obsidian (update)\n2025-12-18: Applied AI Tools for Scientific Programming\n2026-01-15: Introduction to version control with Git\n2026-04-16: Build and publish your personal academic website with Quarto"
   },
   {
     "objectID": "sessions/01_what_they_forgot.html",
@@ -4205,5 +4205,376 @@
     "title": "Applied AI Tools for Scientific Programming",
     "section": "Thanks for your attention :)",
     "text": "Thanks for your attention :)\nQuestions?"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#what-is-this-lecture-series",
+    "href": "slides/2026_04_16_quarto-website.html#what-is-this-lecture-series",
+    "title": "Build your academic website with Quarto",
+    "section": "What is this lecture series?",
+    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nMaterial provided online\nIf you don’t want to miss a lecture\n\nSubscribe to the mailing list\n\nFor credit points: Send me a short message (Email or Webex)"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#why-an-academic-website",
+    "href": "slides/2026_04_16_quarto-website.html#why-an-academic-website",
+    "title": "Build your academic website with Quarto",
+    "section": "Why an academic website?",
+    "text": "Why an academic website?\n\nShowcase your work, publications, projects, …\nIt’s yours, you can take it with you (unlike institutional pages)\nA central place where people can find you and your research"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#tools-for-academic-websites",
+    "href": "slides/2026_04_16_quarto-website.html#tools-for-academic-websites",
+    "title": "Build your academic website with Quarto",
+    "section": "Tools for academic websites",
+    "text": "Tools for academic websites\nMany tools exist for static websites, today we use Quarto\n\nSimple, works in RStudio / Positron / VS Code\nEasy to publish for free\nExcellent documentation"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#what-a-finished-site-can-look-like",
+    "href": "slides/2026_04_16_quarto-website.html#what-a-finished-site-can-look-like",
+    "title": "Build your academic website with Quarto",
+    "section": "What a finished site can look like",
+    "text": "What a finished site can look like\nSome examples of nice academic Quarto websites:\n\nSilvia Canelón\nAndrew Heiss\nSam Csik\nJohn Helveston\n\n\nGoal for today: Build (and publish) a simple personal website with Quarto to perfect later!"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#plan-for-today",
+    "href": "slides/2026_04_16_quarto-website.html#plan-for-today",
+    "title": "Build your academic website with Quarto",
+    "section": "Plan for today",
+    "text": "Plan for today\n\nQuick Quarto intro/refresher\nBasic website from scratch\nUnderstand and customize an academic website template\nPublish your website via GitHub Pages\n\n\nTo follow along you only need:\n\nRecent version of RStudio (or Positron, VS Code)\nGitHub account (for publishing, optional)"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#follow-along",
+    "href": "slides/2026_04_16_quarto-website.html#follow-along",
+    "title": "Build your academic website with Quarto",
+    "section": "Follow along",
+    "text": "Follow along\nTo follow along you only need:\n\nRecent version of RStudio (or Positron, VS Code)\nGitHub account (for publishing, optional)"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#what-is-quarto",
+    "href": "slides/2026_04_16_quarto-website.html#what-is-quarto",
+    "title": "Build your academic website with Quarto",
+    "section": "What is Quarto?",
+    "text": "What is Quarto?\n\n\nQuarto is an open-source scientific and technical publishing system\n\n\n\nQuarto can create many types of output:\n\nDocuments: HTML, PDF, Word\nPresentations: HTML, Powerpoint\nBooks: HTML, ePub, PDF\nWebsites: HTML\n…"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#what-is-quarto-1",
+    "href": "slides/2026_04_16_quarto-website.html#what-is-quarto-1",
+    "title": "Build your academic website with Quarto",
+    "section": "What is Quarto?",
+    "text": "What is Quarto?\n\n\nA Quarto document (.qmd) is basically a text file\n\n\n\nWhen you render it, Quarto turns it into a nice HTML/PDf/etc."
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#what-we-wont-cover-today",
+    "href": "slides/2026_04_16_quarto-website.html#what-we-wont-cover-today",
+    "title": "Build your academic website with Quarto",
+    "section": "What we won’t cover today",
+    "text": "What we won’t cover today\n\nExecuting code in documents (R/Python output)\nPDF/Word documents or slides\nAdvanced theming/CSS\nCustom domains\n\n\nAll of these are possible with Quarto. Pointers at the end!"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#building-from-scratch",
+    "href": "slides/2026_04_16_quarto-website.html#building-from-scratch",
+    "title": "Build your academic website with Quarto",
+    "section": "Building from scratch",
+    "text": "Building from scratch\nI’ll create a minimal website live. No need to follow along, just watch.\n\nThe steps:\n\nCreate a new Quarto Website project in RStudio\nLook at the generated files\nRender and preview\nAdd a new page"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#the-core-loop",
+    "href": "slides/2026_04_16_quarto-website.html#the-core-loop",
+    "title": "Build your academic website with Quarto",
+    "section": "The core loop",
+    "text": "The core loop\nAfter the demo, this is the mental model:\n\n\nA Quarto website = a folder of .qmd files + _quarto.yml\nAdd a page = create a .qmd + add it to the navbar in _quarto.yml\nSee your changes = click Render\n\n\n\nThat’s it. Everything else builds on this."
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#switching-to-the-template",
+    "href": "slides/2026_04_16_quarto-website.html#switching-to-the-template",
+    "title": "Build your academic website with Quarto",
+    "section": "Switching to the template",
+    "text": "Switching to the template\n\nWe could build everything from scratch, but we’d run out of time\nI prepared a template with more pages and nicer defaults\nIt’s just what we built, with more content\n\n\nFrom now on: follow along with me!\n\n\n\nDownload the template from the link in chat\nUnzip and open the .Rproj file in RStudio\nClick Render to see the template site"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#template-file-structure",
+    "href": "slides/2026_04_16_quarto-website.html#template-file-structure",
+    "title": "Build your academic website with Quarto",
+    "section": "Template file structure",
+    "text": "Template file structure\n\n\n\nFile / Folder\nPurpose\n\n\n\n\n_quarto.yml\nSite-wide config (navbar, theme, footer)\n\n\nindex.qmd\nHome page (set up as an About page)\n\n\ncv.qmd\nCV page\n\n\npublications.qmd\nPublications page\n\n\nblog.qmd + posts/\nBlog listing + individual posts\n\n\nstyles.css\nSmall custom style tweaks"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#exercise-_quarto.yml",
+    "href": "slides/2026_04_16_quarto-website.html#exercise-_quarto.yml",
+    "title": "Build your academic website with Quarto",
+    "section": "Exercise: _quarto.yml",
+    "text": "Exercise: _quarto.yml\n\n✏️ Exercise (3 min):\n\nChange the site title: to your name\nPick a theme from the theme list and swap the theme: value\nRender and see what changed"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#exercise-index.qmd-the-about-page",
+    "href": "slides/2026_04_16_quarto-website.html#exercise-index.qmd-the-about-page",
+    "title": "Build your academic website with Quarto",
+    "section": "Exercise: index.qmd (the About page)",
+    "text": "Exercise: index.qmd (the About page)\nQuarto has a special About page type, perfect for a personal landing page.\n\ntemplate: choose from several layouts (jolla, trestles, solana, marquee, broadside)\nimage: path to your photo\nlinks: social/email links with icons\n\n\n\n✏️ Exercise (4 min):\n\nReplace the placeholder text with a short bio\nUpdate the links:, delete what doesn’t apply, add your own\n(Optional) Try a different template: and re-render"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#exercise-cv.qmd",
+    "href": "slides/2026_04_16_quarto-website.html#exercise-cv.qmd",
+    "title": "Build your academic website with Quarto",
+    "section": "Exercise: cv.qmd",
+    "text": "Exercise: cv.qmd\nA page can be very simple: just a YAML header with a title and markdown content.\n\n✏️ Exercise (3 min):\n\nReplace the placeholder content with your own CV\n(Or just a few lines, you can finish later)"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#publications.qmd",
+    "href": "slides/2026_04_16_quarto-website.html#publications.qmd",
+    "title": "Build your academic website with Quarto",
+    "section": "publications.qmd",
+    "text": "publications.qmd\n\nSame idea as the CV: markdown content grouped by year\nWrite citations by hand, optionally with links\n\n\n💡 If you have many publications, you can later switch to a .bib file with automatic formatting. See the Quarto docs on citations."
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#listing-pages-blog.qmd-posts",
+    "href": "slides/2026_04_16_quarto-website.html#listing-pages-blog.qmd-posts",
+    "title": "Build your academic website with Quarto",
+    "section": "Listing pages: blog.qmd + posts/",
+    "text": "Listing pages: blog.qmd + posts/\nA listing page shows a collection of other pages. Perfect for blogs, talks, or projects.\n\n\nblog.qmd has a listing: block in the YAML:\n\ncontents: posts → look in the posts/ folder\ntype: default → layout style (default, grid, table)\nsort: \"date desc\" → newest first\n\nEach post lives in its own subfolder in posts/ with an index.qmd"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#exercise-add-a-blog-post",
+    "href": "slides/2026_04_16_quarto-website.html#exercise-add-a-blog-post",
+    "title": "Build your academic website with Quarto",
+    "section": "Exercise: Add a blog post",
+    "text": "Exercise: Add a blog post\n\n✏️ Exercise (5 min):\n\nCreate a new folder in posts/, add an index.qmd with a title, date, and a few lines of text\nRender and check that it appears in the blog listing\n(Optional) Try changing type: default to type: grid in blog.qmd"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#optional-custom-styling-with-scss",
+    "href": "slides/2026_04_16_quarto-website.html#optional-custom-styling-with-scss",
+    "title": "Build your academic website with Quarto",
+    "section": "(Optional) Custom styling with SCSS",
+    "text": "(Optional) Custom styling with SCSS\nThemes are a starting point. If you want to tweak colors, fonts, or spacing, you can use SCSS.\nWire it into _quarto.yml:\nformat:\n  html:\n    theme: [cosmo, custom.scss]\n\n\nWant to go further?\n\nQuarto theming docs\nPick colors with coolors.co or Adobe Color"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#how-publishing-works",
+    "href": "slides/2026_04_16_quarto-website.html#how-publishing-works",
+    "title": "Build your academic website with Quarto",
+    "section": "How publishing works",
+    "text": "How publishing works\n\nWhen you render, Quarto produces a folder of HTML, CSS, and image files (default: _site/)\nUpload these files to a hosting service that stores the files and serves them at a public URL\n\n\nHosting options: GitHub Pages, Netlify, Posit Connect Cloud, university web server, …"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#publishing-to-github-pages",
+    "href": "slides/2026_04_16_quarto-website.html#publishing-to-github-pages",
+    "title": "Build your academic website with Quarto",
+    "section": "Publishing to GitHub Pages",
+    "text": "Publishing to GitHub Pages\nThree steps:\n\nTell Quarto to render to docs/ by adding output-dir: docs in _quarto.yml\nPush to GitHub: create a repo and push your project\nTurn on Pages in the repo settings\n\n\nYour site will be live at https://&lt;username&gt;.github.io/&lt;reponame&gt;/"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#step-1-render-to-docs",
+    "href": "slides/2026_04_16_quarto-website.html#step-1-render-to-docs",
+    "title": "Build your academic website with Quarto",
+    "section": "Step 1: Render to docs/",
+    "text": "Step 1: Render to docs/\nAdd this to _quarto.yml:\nproject:\n  type: website\n  output-dir: docs\nThen render again."
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#step-2-push-to-github",
+    "href": "slides/2026_04_16_quarto-website.html#step-2-push-to-github",
+    "title": "Build your academic website with Quarto",
+    "section": "Step 2: Push to GitHub",
+    "text": "Step 2: Push to GitHub\n\nI’ll demo this with GitHub Desktop (easiest for beginners)\nIf you use Git from the terminal or RStudio, that works too\n\n\n\nOpen GitHub Desktop → Add Existing Repository (or create new)\nCommit all files\nPublish repository to GitHub"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#step-3-turn-on-github-pages",
+    "href": "slides/2026_04_16_quarto-website.html#step-3-turn-on-github-pages",
+    "title": "Build your academic website with Quarto",
+    "section": "Step 3: Turn on GitHub Pages",
+    "text": "Step 3: Turn on GitHub Pages\nOn your GitHub repo page:\n\nSettings → Pages (left sidebar)\nSource: Deploy from a branch\nBranch: main, folder: /docs\nClick Save\nWait ~1-2 min → your site is live 🎉"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#exercise-publish-your-website",
+    "href": "slides/2026_04_16_quarto-website.html#exercise-publish-your-website",
+    "title": "Build your academic website with Quarto",
+    "section": "Exercise: Publish your website",
+    "text": "Exercise: Publish your website\n\n✏️ Now you: publish your website!\nFollow the three steps. If your site is live, drop the URL in the chat!\nIf you don’t have Git set up, follow along conceptually. I’ll share a written guide with screenshots so you can finish at your own pace."
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#updating-your-site-later",
+    "href": "slides/2026_04_16_quarto-website.html#updating-your-site-later",
+    "title": "Build your academic website with Quarto",
+    "section": "Updating your site later",
+    "text": "Updating your site later\n\nEdit your .qmd files\nRender\nCommit and push (Git pane or GitHub Desktop)\nGitHub rebuilds automatically, changes are live in ~1 min"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#what-you-built-today",
+    "href": "slides/2026_04_16_quarto-website.html#what-you-built-today",
+    "title": "Build your academic website with Quarto",
+    "section": "What you built today",
+    "text": "What you built today\n\nBuilt a Quarto website from scratch\nCustomized the main page types: About pages, plain pages, listing pages\nConfigured the site through _quarto.yml (themes, navbar, footer)\nPublished to GitHub Pages\n\n\nThat’s the whole core skill set. Everything else is variations and extras."
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#inspiration-academic-quarto-sites",
+    "href": "slides/2026_04_16_quarto-website.html#inspiration-academic-quarto-sites",
+    "title": "Build your academic website with Quarto",
+    "section": "Inspiration: academic Quarto sites",
+    "text": "Inspiration: academic Quarto sites\nPeople are nice and provide source code for their websites. If you see elements that you like, you can check out how they did it and adapt it for your own site.\n\n\n\nSite\nSource code\n\n\n\n\nSilvia Canelón\nhttps://github.com/spcanelon/silvia\n\n\nAndrew Heiss\nhttps://github.com/andrewheiss/ath-quarto\n\n\nSam Csik\nhttps://github.com/samanthacsik/samanthacsik.github.io\n\n\nJohn Helveston\nhttps://github.com/jhelvy/jhelvy_quarto\n\n\n\nMore examples from Gang He’s curated list"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#where-to-go-next",
+    "href": "slides/2026_04_16_quarto-website.html#where-to-go-next",
+    "title": "Build your academic website with Quarto",
+    "section": "Where to go next",
+    "text": "Where to go next\n\nPoint your own custom domain (yourname.com) at your GitHub Pages site\nSwitch to a .bib file for automatic publication formatting (docs)\nGo deeper into SCSS for custom styling\nAdd Google Analytics or Plausible to see who visits (docs)\nWrite your first real blog post: research note, conference takeaways, tutorial"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#next-lecture",
+    "href": "slides/2026_04_16_quarto-website.html#next-lecture",
+    "title": "Build your academic website with Quarto",
+    "section": "Next lecture",
+    "text": "Next lecture\nTopic tba\n\n📅 tba 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#references",
+    "href": "slides/2026_04_16_quarto-website.html#references",
+    "title": "Build your academic website with Quarto",
+    "section": "References",
+    "text": "References\n\nQuarto website documentation\nGet started with Quarto\nHTML themes overview\nAbout page templates\nListing pages (blogs, publications, …)\nPublishing options\nAdding a blog to a Quarto website (Sam Csik)\nAcademic site examples (Gang He)"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#basic-components-of-a-quarto-document",
+    "href": "slides/2026_04_16_quarto-website.html#basic-components-of-a-quarto-document",
+    "title": "Build your academic website with Quarto",
+    "section": "Basic components of a Quarto document",
+    "text": "Basic components of a Quarto document\n\n\n\nA Quarto document (.qmd) is basically a text file\n\n\nA Quarto document (.qmd) has three components:\n\nYAML header for metadata and configuration\nMarkdown text\n(Optional) code chunks (R, Python, Julia, …)"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#quarto-website-summary",
+    "href": "slides/2026_04_16_quarto-website.html#quarto-website-summary",
+    "title": "Build your academic website with Quarto",
+    "section": "Quarto website summary",
+    "text": "Quarto website summary\n\nQuarto website = a folder of .qmd files for content + _quarto.yml for configuration\nTo add a page: create a .qmd and add it to the navbar in _quarto.yml\nSee your changes: Render the project"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#the-template",
+    "href": "slides/2026_04_16_quarto-website.html#the-template",
+    "title": "Build your academic website with Quarto",
+    "section": "The template",
+    "text": "The template"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#get-the-template",
+    "href": "slides/2026_04_16_quarto-website.html#get-the-template",
+    "title": "Build your academic website with Quarto",
+    "section": "Get the template",
+    "text": "Get the template\n\nDownload the template from here\nUnzip and open the .Rproj file in RStudio\nClick Render to see the template site"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#project-structure",
+    "href": "slides/2026_04_16_quarto-website.html#project-structure",
+    "title": "Build your academic website with Quarto",
+    "section": "Project structure",
+    "text": "Project structure\nCreate a Website project in R Studio:  File &gt; New Project &gt; New Directory &gt; Quarto Website\n\n\n\nFile\nPurpose\n\n\n\n\n_quarto.yml\nSite-wide config (navbar, theme, etc.)\n\n\nindex.qmd\nHome page\n\n\nabout.qmd\nAbout page\n\n\nstyles.css\nSmall custom style tweaks\n\n\nproject-name.Rproj\nThe R project file to open the project"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#customize-the-_quarto.yml",
+    "href": "slides/2026_04_16_quarto-website.html#customize-the-_quarto.yml",
+    "title": "Build your academic website with Quarto",
+    "section": "Customize the _quarto.yml",
+    "text": "Customize the _quarto.yml\n\n✏️ Exercise (5 min):\n\nChange the site title and footer text\nBrowse the themes from the theme list and swap the theme value for what you like most\nRender and see what changed\n\n\n\n\n\n\n\n\nLearn more about _quarto.yml configuration\n\n\n\nWebsite Navigation: Navbar, footer options, etc.\nTheming options: Change some colors, font sizes, etc."
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#customize-the-landing-page-index.qmd",
+    "href": "slides/2026_04_16_quarto-website.html#customize-the-landing-page-index.qmd",
+    "title": "Build your academic website with Quarto",
+    "section": "Customize the landing page index.qmd",
+    "text": "Customize the landing page index.qmd\n\n✏️ Exercise (10 min):\n\nReplace the placeholder text with a short bio\nYAML: Update the links, delete what doesn’t apply, add what’s missing\nYAML: Try a different template and re-render\n(Optional) Add a photo to the project folder and update the image path\n\n\n\n\n\n\n\n\nLearn more about “About page templates”\n\n\nCheck out the Quarto docs"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#tools",
+    "href": "slides/2026_04_16_quarto-website.html#tools",
+    "title": "Build your academic website with Quarto",
+    "section": "Tools",
+    "text": "Tools\nThere are many tools for static websites, today we use Quarto\n\nSimple, works in RStudio / Positron / VS Code\nEasy to publish for free\nExcellent documentation"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#the-yaml-header",
+    "href": "slides/2026_04_16_quarto-website.html#the-yaml-header",
+    "title": "Build your academic website with Quarto",
+    "section": "The YAML header",
+    "text": "The YAML header\n\n\n---\ntitle: \"An example document\"\nauthor: \"Selina Baldauf\"\ndate: \"2023-05-11\"\nformat:\n  html:\n    theme: cosmo\n    toc: true\n---\n\n\nBetween --- at the top of the file\nMetadata + config in “key: value” form\nCareful with indentation and alignment of nested elements"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#the-markdown-body",
+    "href": "slides/2026_04_16_quarto-website.html#the-markdown-body",
+    "title": "Build your academic website with Quarto",
+    "section": "The Markdown body",
+    "text": "The Markdown body\n\n\n## A section header\n\nSome **bold** text and a\n[link to Quarto](https://quarto.org).\n\n- First bullet\n- Second bullet\n- Third bullet\n\nA section header\nSome bold text and a link to Quarto.\n\nFirst bullet\nSecond bullet\nThird bullet\n\n\n\nA Quarto website is just: several .qmd files + one _quarto.yml config file"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#the-markdown-text",
+    "href": "slides/2026_04_16_quarto-website.html#the-markdown-text",
+    "title": "Build your academic website with Quarto",
+    "section": "The Markdown text",
+    "text": "The Markdown text\n\n\nYou write content like this:\n\n# A section header\n\n## A subsection header\n\nSome **bold** and *italic* text and a\n[link to Quarto](https://quarto.org).\n\n- First bullet\n- Second bullet\n- Third bullet\n\nAnd it will render like this:\n\nA section header\nA subsection header\nSome bold and italic text and a link to Quarto.\n\nFirst bullet\nSecond bullet\nThird bullet\n\n\n\n\n\n\n\n\n\nOther Quarto Markdown Basics\n\n\nCheckout the Quarto docs"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#customize-about.qmd-and-publications.qmd",
+    "href": "slides/2026_04_16_quarto-website.html#customize-about.qmd-and-publications.qmd",
+    "title": "Build your academic website with Quarto",
+    "section": "Customize about.qmd and publications.qmd",
+    "text": "Customize about.qmd and publications.qmd\n\n✏️ Exercise (10 min):\nReplace the placeholder content with your own content. You can also just add some lines and experiment with Markdown formatting. You can do the full content later.\n\n\n\n\n\n\n\nLearn more about Markdown\n\n\nCheckout the Markdown Basics on the Quarto website"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#add-a-blog-post",
+    "href": "slides/2026_04_16_quarto-website.html#add-a-blog-post",
+    "title": "Build your academic website with Quarto",
+    "section": "Add a blog post",
+    "text": "Add a blog post\n\n✏️ Exercise (10 min):\n\nCreate a new folder in posts/, add an index.qmd with a title, date, and a few lines of text\nRender and check that it appears in the blog listing\n(Optional) Try changing listing type from default to grid or table in blog.qmd and render to see the difference\n\n\n\n\n\n\n\n\nLearn more about listing page types\n\n\nCheck out the Quarto docs"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#custom-styling-with-scss",
+    "href": "slides/2026_04_16_quarto-website.html#custom-styling-with-scss",
+    "title": "Build your academic website with Quarto",
+    "section": "Custom styling with SCSS",
+    "text": "Custom styling with SCSS\nThemes are a starting point. If you want to tweak colors, fonts, or spacing, you can use SCSS.\nWire it into _quarto.yml:\nformat:\n  html:\n    theme: [cosmo, custom.scss]\n\n\n\n\n\n\nLearn more about theming and custom styling\n\n\n\nQuarto theming docs\nDifferent variables you can set in custom SCSS"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#publish-your-website",
+    "href": "slides/2026_04_16_quarto-website.html#publish-your-website",
+    "title": "Build your academic website with Quarto",
+    "section": "Publish your website",
+    "text": "Publish your website\n\n✏️ Exercise (10 min):\nFollow the step-by-step guide. If your site is live, drop the URL in the chat!"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#today",
+    "href": "slides/2026_04_16_quarto-website.html#today",
+    "title": "Build your academic website with Quarto",
+    "section": "Today",
+    "text": "Today\n\nBuilt a Quarto website from scratch\nCustomized the main page types: About pages, plain pages, listing pages\nConfigured the site through _quarto.yml (themes, navbar, footer)\nPublished to GitHub Pages"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#next-steps",
+    "href": "slides/2026_04_16_quarto-website.html#next-steps",
+    "title": "Build your academic website with Quarto",
+    "section": "Next steps",
+    "text": "Next steps\n\nCustomize your website\n\nAdd relevant content and pages\nCustomize the look with SCSS for custom styling\n\nUse your custom domain (yourname.com) for your GitHub Pages site\nGet an overview of other Quarto website features on the Quarto docs."
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#next-lectureworkshop",
+    "href": "slides/2026_04_16_quarto-website.html#next-lectureworkshop",
+    "title": "Build your academic website with Quarto",
+    "section": "Next lecture/workshop",
+    "text": "Next lecture/workshop\nTopic tba\n\n📅 21.05.2026 🕓 4-5/6 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
+    "objectID": "slides/2026_04_16_quarto-website.html#project-structure-1",
+    "href": "slides/2026_04_16_quarto-website.html#project-structure-1",
+    "title": "Build your academic website with Quarto",
+    "section": "Project structure",
+    "text": "Project structure\n\n\n\nFile / Folder\nPurpose\n\n\n\n\n_quarto.yml\nSite-wide config (navbar, theme, footer)\n\n\nindex.qmd\nHome page\n\n\nabout.qmd\nAbout page with your profile/CV\n\n\npublications.qmd\nPublications page\n\n\nblog.qmd + posts/\nBlog listing + individual posts\n\n\nstyles.css\nSmall custom style tweaks"
+  },
+  {
+    "objectID": "sessions/17_quarto-website.html",
+    "href": "sessions/17_quarto-website.html",
+    "title": "Build and publish your personal academic website with Quarto",
+    "section": "",
+    "text": "In this hands-on workshop, we will build and publish your own academic website from scratch, step by step and together. We will use Quarto, a modern publishing tool that lets you create websites, blogs, and more from plain text files. By the end of the session, you will have a live website you can share with the world.\n\nSlides in full screen     Download PDF slides"
+  },
+  {
+    "objectID": "sessions/17_quarto-website.html#resources",
+    "href": "sessions/17_quarto-website.html#resources",
+    "title": "Build and publish your personal academic website with Quarto",
+    "section": "Resources",
+    "text": "Resources\n\nQuarto documentation\n\nGet started with Quarto: Installation and basic tutorial\nQuarto Websites: Everything about creating websites with Quarto\nWebsite Navigation: Navbar, sidebar, footer options\nHTML Themes: List of predefined themes\nTheme Options & SASS Variables: Customize colors, fonts, and spacing with SCSS\nAbout Page Templates: Templates for personal landing pages\nListing Pages: Blog listings, publication lists, project galleries\nMarkdown Basics: Formatting text in Quarto\nPublishing: All publishing options (GitHub Pages, Netlify, Posit Connect Cloud, …)\n\n\n\nCommunity resources\n\nAdding a blog to a Quarto website by Sam Csik\nCurated list of academic Quarto sites by Gang He\n\n\n\nTemplate\n\nquarto-academic-template: The template we used in the workshop\n\n\n\nExample academic websites with source code\n\n\n\nSite\nSource code\n\n\n\n\nSilvia Canelón\nGitHub\n\n\nAndrew Heiss\nGitHub\n\n\nSam Csik\nGitHub\n\n\nJohn Helveston\nGitHub"
   }
 ]
