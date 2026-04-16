@@ -35,4 +35,5 @@ On this website, you can find all slides and additional resources for lectures:
 - 2025-11-20: [Effective digital notetaking with Obsidian (update)](sessions/14_obsidian-2.html)
 - 2025-12-18: [Applied AI Tools for Scientific Programming](sessions/15_github-copilot.html)
 - 2026-01-15: [Introduction to version control with Git](sessions/16_git-3.html)
+- 2026-04-16: [Build and publish your personal academic website with Quarto](sessions/17_quarto-website.html)
 

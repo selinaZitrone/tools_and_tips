@@ -60,6 +60,8 @@ website:
             href: sessions/15_github-copilot.qmd
           - text: 16 - Version control with Git
             href: sessions/16_git-3.qmd
+          - text: 17 - Quarto websites
+            href: sessions/17_quarto-website.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 
