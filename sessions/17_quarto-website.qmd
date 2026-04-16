@@ -17,3 +17,33 @@ In this hands-on workshop, we will build and publish your own academic website f
 [Slides in full screen](../slides/2026_04_16_quarto-website.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2026_04_16_quarto-website.pdf" download>Download PDF slides</a>
 
 ## Resources
+
+### Quarto documentation
+
+- [Get started with Quarto](https://quarto.org/docs/get-started/): Installation and basic tutorial
+- [Quarto Websites](https://quarto.org/docs/websites/): Everything about creating websites with Quarto
+- [Website Navigation](https://quarto.org/docs/websites/website-navigation.html): Navbar, sidebar, footer options
+- [HTML Themes](https://quarto.org/docs/output-formats/html-themes.html): List of predefined themes
+- [Theme Options & SASS Variables](https://quarto.org/docs/output-formats/html-themes.html#sass-variables): Customize colors, fonts, and spacing with SCSS
+- [About Page Templates](https://quarto.org/docs/websites/website-about.html): Templates for personal landing pages
+- [Listing Pages](https://quarto.org/docs/websites/website-listings.html): Blog listings, publication lists, project galleries
+- [Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html): Formatting text in Quarto
+- [Publishing](https://quarto.org/docs/publishing/): All publishing options (GitHub Pages, Netlify, Posit Connect Cloud, ...)
+
+### Community resources
+
+- [Adding a blog to a Quarto website](https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/) by Sam Csik
+- [Curated list of academic Quarto sites](https://drganghe.github.io/quarto-academic-site-examples.html) by Gang He
+
+### Template
+
+- [quarto-academic-template](https://github.com/selinaZitrone/quarto-academic-template): The template we used in the workshop
+
+### Example academic websites with source code
+
+| Site | Source code |
+|---|---|
+| [Silvia Canelón](https://silviacanelon.com/) | [GitHub](https://github.com/spcanelon/silvia) |
+| [Andrew Heiss](https://www.andrewheiss.com/) | [GitHub](https://github.com/andrewheiss/ath-quarto) |
+| [Sam Csik](https://samanthacsik.github.io/) | [GitHub](https://github.com/samanthacsik/samanthacsik.github.io) |
+| [John Helveston](https://www.jhelvy.com/) | [GitHub](https://github.com/jhelvy/jhelvy_quarto) |
