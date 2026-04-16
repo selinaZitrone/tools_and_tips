@@ -4582,7 +4582,7 @@
     "href": "sessions/additional_material/17_quarto-website/publish-quarto-website.html",
     "title": "Publish a Quarto website on GitHub Pages",
     "section": "",
-    "text": "This guide shows you how to publish a Quarto website on GitHub Pages. The basic idea is simple: you render the website locally and push it to GitHub. From there, you configure GitHub Pages to serve it.\nAlready comfortable with Git and GitHub? Make sure your project is in a Git repo and pushed to GitHub, then skip ahead to Step 4: Enable GitHub Pages."
+    "text": "This guide shows you how to publish a Quarto website on GitHub Pages. The basic idea is simple: you render the website locally and push it to GitHub. From there, you configure GitHub Pages to serve it.\nAlready comfortable with Git and GitHub? Start with Step 1, then make sure your project is in a Git repo and pushed to GitHub, and skip ahead to Step 4: Enable GitHub Pages."
   },
   {
     "objectID": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#requirements",
@@ -4603,27 +4603,27 @@
     "href": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-2-initialize-a-git-repository",
     "title": "Publish a Quarto website on GitHub Pages",
     "section": "Step 2: Initialize a Git repository",
-    "text": "Step 2: Initialize a Git repository\nIf your project is already a Git repository, skip to Step 3.\nOpen GitHub Desktop and go to File &gt; Add local repository.\n\nBrowse to your website project folder using the Choose… button. GitHub Desktop will show a warning that the folder is not a Git repository yet. Click the create a repository link.\n\nIn the dialog that opens:\n\nDouble-check that the Local path at the bottom points to your website project folder\nOptionally select a License (e.g. MIT License)\nClick Create repository\n\n\nYour project is now a local Git repository."
+    "text": "Step 2: Initialize a Git repository\nIf your project is already a Git repository, skip to Step 3.\nOpen GitHub Desktop and go to File &gt; Add local repository.\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nBrowse to your website project folder using the Choose… button. GitHub Desktop will show a warning that the folder is not a Git repository yet. Click the create a repository link.\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nIn the dialog that opens:\n\nDouble-check that the Local path at the bottom points to your website project folder\nOptionally select a License (e.g. MIT License)\nClick Create repository\n\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nYour project is now a local Git repository."
   },
   {
     "objectID": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-3-publish-to-github",
     "href": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-3-publish-to-github",
     "title": "Publish a Quarto website on GitHub Pages",
     "section": "Step 3: Publish to GitHub",
-    "text": "Step 3: Publish to GitHub\nIf your project is already on GitHub, skip to Step 4.\nBack in GitHub Desktop, make sure the correct repository is selected in the top left. Then click the Publish repository button.\n\nIn the dialog, choose a name for your repository and decide whether it should be public or private.\n\n\n\n\n\n\nGitHub Pages and private repositories\n\n\n\nOn a free GitHub account, GitHub Pages only works with public repositories. If you want to keep your repository private and still use GitHub Pages, you need a paid GitHub plan (GitHub Pro or GitHub Team). For most use cases, a public repository works just fine.\n\n\n\nClick Publish repository. Your project is now on GitHub. To verify, go to Repository &gt; View on GitHub in the menu bar."
+    "text": "Step 3: Publish to GitHub\nIf your project is already on GitHub, skip to Step 4.\nBack in GitHub Desktop, make sure the correct repository is selected in the top left. Then click the Publish repository button.\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nIn the dialog, choose a name for your repository and decide whether it should be public or private.\n\n\n\n\n\n\nGitHub Pages and private repositories\n\n\n\nOn a free GitHub account, GitHub Pages only works with public repositories. If you want to keep your repository private and still use GitHub Pages, you need a paid GitHub plan (GitHub Pro or GitHub Team). For most use cases, a public repository works just fine.\n\n\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nClick Publish repository. Your project is now on GitHub. To verify, go to Repository &gt; View on GitHub in the menu bar.\n\n\n\n\n\n\nScreenshot"
   },
   {
     "objectID": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-4-enable-github-pages",
     "href": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-4-enable-github-pages",
     "title": "Publish a Quarto website on GitHub Pages",
     "section": "Step 4: Enable GitHub Pages",
-    "text": "Step 4: Enable GitHub Pages\nOpen your repository on GitHub in your browser. Check that the docs folder is there, then click on Settings in the top menu bar.\n\nIn the left sidebar, click Pages. Under “Build and deployment”, configure the following:\n\nSet Branch to main\nSet the folder to /docs\nClick Save\n\n\nGitHub will now build and deploy your site. Navigate back to the main page of your repository by clicking the repository name at the top.\nAfter a minute or two, your website will be live at:\nhttps://yourusername.github.io/your-repo-name/\nYou can also find the link in the Deployments section in the right sidebar of your repository page."
+    "text": "Step 4: Enable GitHub Pages\nOpen your repository on GitHub in your browser. Check that the docs folder is there, then click on Settings in the top menu bar.\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nIn the left sidebar, click Pages. Under “Build and deployment”, configure the following:\n\nSet Branch to main\nSet the folder to /docs\nClick Save\n\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nGitHub will now build and deploy your site. Navigate back to the main page of your repository by clicking the repository name at the top.\nAfter a minute or two, your website will be live at:\nhttps://yourusername.github.io/your-repo-name/\nYou can also find the link in the Deployments section in the right sidebar of your repository page.\n\n\n\n\n\n\nScreenshot"
   },
   {
     "objectID": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-5-update-your-website",
     "href": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-5-update-your-website",
     "title": "Publish a Quarto website on GitHub Pages",
     "section": "Step 5: Update your website",
-    "text": "Step 5: Update your website\nWhenever you make changes to your website, the workflow is:\n\nEdit your .qmd files locally\nRe-render the website in Quarto\nOpen GitHub Desktop - you should see the changed files in the Changes tab\nWrite a short summary describing what you changed and click Commit to main\n\n\n\nClick Push origin to push the changes to GitHub\n\n\nGitHub Pages will automatically pick up the new files and update your website. This usually takes 1-2 minutes."
+    "text": "Step 5: Update your website\nWhenever you make changes to your website, the workflow is:\n\nEdit your .qmd files locally\nRe-render the website in Quarto\nOpen GitHub Desktop - you should see the changed files in the Changes tab\nWrite a short summary describing what you changed and click Commit to main\n\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\n\nClick Push origin to push the changes to GitHub\n\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nGitHub Pages will automatically pick up the new files and update your website. This usually takes 1-2 minutes."
   }
 ]
