@@ -38,6 +38,7 @@ In this hands-on workshop, we will build and publish your own academic website f
 ### Template
 
 - [quarto-academic-template](https://github.com/selinaZitrone/quarto-academic-template): The template we used in the workshop
+- [Publish a Quarto website on GitHub Pages](additional_material/17_quarto-website/publish-quarto-website.qmd): Step-by-step guide to publish your website on GitHub Pages
 
 ### Example academic websites with source code
 
