@@ -130,18 +130,21 @@ section.has-dark-background a, section.has-dark-background a:hover {
 // Inverse background slides -----------------------------------------------
 
 .inverse {
-  color: $theme-pink-light;
+  color: $theme-white;
   h1, h2, h3 {
-    color: $theme-purple-lighter;
+    color: $theme-white;
   }
   .slide-background-content {
-    background-color: $theme-black;
+    background-color: #2c2c2c;
   }
   blockquote {
     color: $gray-200
   }
   a {
     color: $theme-purple-lighter
+  }
+  code {
+    color: $theme-purple-lighter;
   }
 }
 
