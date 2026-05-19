@@ -60,6 +60,8 @@ website:
             href: sessions/15_github-copilot.qmd
           - text: 16 - Version control with Git
             href: sessions/16_git-3.qmd
+          - text: 17 - Advanced ggplot2
+            href: sessions/17_advanced_ggplot.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 

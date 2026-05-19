@@ -1,0 +1,992 @@
+---
+title: "Advanced ggplot2"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+author: "Dr. Selina Baldauf"
+date: "2026-05-21"
+format:
+  revealjs:
+    footer: "Selina Baldauf // Advanced ggplot2"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute:
+  echo: false
+  eval: true
+  cache: true
+  message: false
+from: markdown+emoji
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| cache: false
+
+library(ggplot2)
+library(dplyr)
+library(gapminder)
+library(patchwork)
+library(scales)
+library(gghighlight)
+library(ggrepel)
+library(ggtext)
+
+gap_2007 <- gapminder |> filter(year == 2007)
+
+# The custom theme we'll build in module 1
+theme_workshop <- function() {
+  theme_minimal(base_size = 12) %+replace%
+    theme(
+      plot.title = element_text(
+        size = 14, hjust = 0,
+        margin = margin(b = 10)
+      ),
+      axis.title = element_text(size = 12),
+      axis.text = element_text(size = 10),
+      panel.grid.minor = element_blank(),
+      panel.grid.major.x = element_blank(),
+      panel.grid.major.y = element_line(color = "grey90"),
+      legend.position = "bottom",
+      plot.background = element_rect(fill = "transparent", color = NA),
+      panel.background = element_rect(fill = "transparent", color = NA)
+    )
+}
+
+p_default <- ggplot(
+  gap_2007,
+  aes(x = gdpPercap, y = lifeExp, color = continent, size = pop)
+) +
+  geom_point(alpha = 0.7) +
+  scale_x_log10() +
+  labs(
+    title = "Life expectancy vs GDP per capita (2007)",
+    x = "GDP per capita (USD)",
+    y = "Life expectancy (years)",
+    color = "Continent",
+    size = "Population"
+  )
+
+# data and palette for module 2
+gap_continent <- gapminder |>
+  group_by(year, continent) |>
+  summarise(mean_lifeExp = mean(lifeExp), .groups = "drop")
+
+okabe_ito_continent <- c(
+  Africa = "#E69F00",
+  Americas = "#56B4E9",
+  Asia = "#009E73",
+  Europe = "#0072B2",
+  Oceania = "#D55E00"
+)
+
+p_continent <- ggplot(
+  gap_continent,
+  aes(x = year, y = mean_lifeExp, color = continent)
+) +
+  geom_line(linewidth = 1) +
+  labs(
+    title = "Life expectancy over time by continent",
+    x = NULL,
+    y = "Life expectancy (years)",
+    color = NULL
+  )
+
+# data and helpers for module 3
+gap_asia <- gapminder |> filter(continent == "Asia")
+
+highlight_colors_asia <- c(China = "#E69F00", India = "#0072B2")
+
+endpoints_asia <- gap_asia |>
+  filter(year == max(year), country %in% c("China", "India"))
+
+# named plots for module 4
+p_scatter <- ggplot(
+  gap_2007,
+  aes(x = gdpPercap, y = lifeExp, color = continent)
+) +
+  geom_point(alpha = 0.7, size = 3) +
+  scale_x_log10(labels = label_dollar()) +
+  labs(title = "2007 snapshot", x = "GDP per capita", y = "Life expectancy (years)")
+
+p_lines <- ggplot(
+  gap_continent,
+  aes(x = year, y = mean_lifeExp, color = continent)
+) +
+  geom_line(linewidth = 1) +
+  labs(title = "Over time", x = NULL, y = "Life expectancy (years)")
+
+p_box <- ggplot(
+  gap_2007,
+  aes(x = continent, y = lifeExp, color = continent)
+) +
+  geom_boxplot(fill = "white") +
+  labs(title = "By continent (2007)", x = NULL, y = "Life expectancy (years)")
+```
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+::: nonincremental
+
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+- One topic from the world of scientific workflows
+- Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+- If you don't want to miss a lecture
+  - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+- For credit points: Send me a short message (Email or Webex)
+
+:::
+
+## Why this workshop?
+
+Default `ggplot2` plots look fine for exploration
+
+. . .
+
+...but they're rarely publication-ready out of the box:
+
+- Default themes carry decoration you didn't ask for
+- Default colors aren't colorblind-safe
+- Text sizes don't match any output medium
+- Single plots — papers want A/B/C panels
+- Exports come out blurry or the wrong size
+
+. . .
+
+Today: a tour of the parts of the `ggplot2` ecosystem that fix these
+
+## Plan for today
+
+::: nonincremental
+
+1. **Themes** — write your own and reuse it
+2. **Color** — colorblind-safe palettes that stick to your groups
+3. **Directing attention** — `ggtext`, `ggrepel`, `gghighlight`
+4. **Multi-panel layouts** — A/B/C figures with `patchwork`
+5. **Export** — get fonts and dimensions right for journals
+
+Plus a short tour of useful extension packages at the end.
+
+:::
+
+## Follow along
+
+::: nonincremental
+
+Everything we do today is in this repo:
+
+[github.com/selinazitrone/advanced-ggplot-workshop](https://github.com/selinazitrone/advanced-ggplot-workshop)
+
+1. Clone it (or download the zip)
+2. Open `advanced-ggplot-workshop.Rproj`
+3. From the R console: `source("install_packages.R")`
+
+For each module: I demo from `R/`, you do a short exercise from `exercises/`.
+
+:::
+
+# Build a reusable theme {.inverse}
+
+## The default theme carries baggage
+
+```{r}
+#| label: plot-default
+#| fig-width: 9
+#| fig-height: 5
+p_default
+```
+
+## A custom theme, applied
+
+```{r}
+#| label: plot-themed
+#| fig-width: 9
+#| fig-height: 5
+p_default + theme_workshop()
+```
+
+## Anatomy of `theme()`
+
+`theme()` controls every non-data element of the plot.
+
+Elements form an inheritance tree:
+
+```
+text  ──┬── axis.text  ──┬── axis.text.x
+        │                └── axis.text.y
+        ├── plot.title
+        ├── plot.subtitle
+        └── legend.text
+
+line  ──┬── axis.line   ──┬── axis.line.x
+        │                 └── axis.line.y
+        ├── axis.ticks
+        └── panel.grid   ─── panel.grid.major / minor
+
+rect  ──┬── plot.background
+        └── panel.background
+```
+
+Setting a parent affects all its children.
+
+## Cheatsheet: every theme element on one plot
+
+A beautiful reference by Henry Wang showing every named element:
+
+::: nonincremental
+
+[henrywang.nl/ggplot2-theme-elements-demonstration](https://henrywang.nl/ggplot2-theme-elements-demonstration/)
+
+:::
+
+. . .
+
+Keep this open while you tweak — it saves a lot of `?theme` lookups.
+
+## Two ways to modify a theme
+
+**With `+` :** keep the base, tweak it
+
+```r
+p_default +
+  theme_minimal() +
+  theme(panel.grid.minor = element_blank())
+```
+
+. . .
+
+**With `%+replace%` :** start fresh, you specify everything
+
+```r
+my_theme <- theme_minimal() %+replace%
+  theme(panel.grid.minor = element_blank())
+```
+
+. . .
+
+Use `%+replace%` inside theme **functions** — full control, no surprises.
+
+## Make it a function
+
+```r
+theme_workshop <- function() {
+  theme_minimal(base_size = 12) %+replace%
+    theme(
+      plot.title = element_text(size = 14, hjust = 0),
+      axis.title = element_text(size = 12),
+      panel.grid.minor = element_blank(),
+      panel.grid.major.x = element_blank(),
+      legend.position = "bottom"
+      # ...
+    )
+}
+
+p + theme_workshop()
+```
+
+::: nonincremental
+
+- A function composes cleanly with other layers
+- Easy to share, version, edit in one place
+
+:::
+
+## Apply globally, then source from a file
+
+Set it once at the top of a script:
+
+```r
+theme_set(theme_workshop())
+```
+
+. . .
+
+Every subsequent plot uses it — no per-plot `+ theme_workshop()`.
+
+. . .
+
+In a real project, the theme lives in its own file:
+
+```r
+# at the top of every analysis script
+source(here::here("R", "theme_lab.R"))
+theme_set(theme_lab())
+```
+
+One edit to `R/theme_lab.R` updates every figure in your project.
+
+## Your turn :writing_hand: (8 min)
+
+::: nonincremental
+
+Open `exercises/01_themes.R`
+
+1. Create `R/theme_lab.R` with a function `theme_lab()`:
+   - based on `theme_minimal()`
+   - no minor gridlines
+   - axis title size 12, plot title size 14
+2. Source it and apply with `theme_set(theme_lab())`
+
+**Stretch goals** (if you finish early):
+
+- Custom plot background color
+- Google font via `sysfonts` + `showtext`
+- Make a second plot and confirm the theme applies automatically
+
+:::
+
+# Color with intent {.inverse}
+
+## Default colors carry baggage too
+
+```{r}
+#| label: line-default
+#| fig-width: 9
+#| fig-height: 5
+p_continent
+```
+
+## With a colorblind-safe palette
+
+```{r}
+#| label: line-okabe
+#| fig-width: 9
+#| fig-height: 5
+p_continent +
+  scale_color_manual(values = okabe_ito_continent)
+```
+
+## Pick intuitive colors when you can
+
+If a meaning is already in your reader's head, use it:
+
+::: nonincremental
+
+- Water, sky → blue
+- Blood, fire → red
+- Vegetation → green
+- Gold, sun → yellow
+
+:::
+
+. . .
+
+If there's no natural mapping, pick from a safe palette and stay consistent across all figures in the paper.
+
+## Three safe palette families
+
+::: nonincremental
+
+- **Okabe-Ito** — 8 hand-picked categorical colors, distinguishable for all common forms of colorblindness
+- **viridis** — perceptually uniform, great for continuous or many groups (`scale_*_viridis_d/c()`)
+- **ColorBrewer (CB-safe subset)** — qualitative, sequential, diverging palettes (`scale_*_brewer()`)
+
+:::
+
+. . .
+
+Browse hundreds more with **`paletteer`** — a meta-package for ~2500 palettes from dozens of sources.
+
+## Check it: `cvd_grid()`
+
+```r
+library(colorblindr)
+cvd_grid(p)
+```
+
+Renders your plot under four simulations:
+
+::: nonincremental
+
+- Deuteranopia (red-green)
+- Protanopia (red-green)
+- Tritanopia (blue-yellow)
+- Grayscale
+
+:::
+
+. . .
+
+If you can still read the plot in all four, you're good.
+
+## Named vectors: colors that stick
+
+**Positional** (fragile):
+
+```r
+scale_color_manual(values = c("orange", "blue", "green", "navy", "red"))
+```
+
+If one continent drops out of your filtered data, every other continent shifts colors.
+
+. . .
+
+**Named** (defensive):
+
+```r
+scale_color_manual(values = c(
+  Africa = "#E69F00",
+  Americas = "#56B4E9",
+  Asia = "#009E73",
+  Europe = "#0072B2",
+  Oceania = "#D55E00"
+))
+```
+
+Asia is always green, no matter which subset you plot.
+
+## Double-coding: color + shape
+
+When you have ≤4 categories, encode the same group twice:
+
+```r
+aes(color = group, shape = group)
+# or
+aes(color = group, linetype = group)
+```
+
+. . .
+
+```{r}
+#| label: double-coding
+#| fig-width: 9
+#| fig-height: 4
+
+gap_three <- gap_continent |>
+  filter(continent %in% c("Africa", "Asia", "Europe"))
+
+ggplot(
+  gap_three,
+  aes(x = year, y = mean_lifeExp, color = continent, linetype = continent)
+) +
+  geom_line(linewidth = 1) +
+  scale_color_manual(values = okabe_ito_continent) +
+  labs(x = NULL, y = "Life expectancy (years)", color = NULL, linetype = NULL)
+```
+
+Useful for colorblind viewers and for B/W print.
+
+## Your turn :writing_hand: (8 min)
+
+::: nonincremental
+
+Open `exercises/02_color.R`
+
+1. Build a named Okabe-Ito vector for the 5 continents and apply with `scale_color_manual()`
+2. Run `cvd_grid()` and check it survives all four simulations
+
+**Stretch goals**:
+
+- Try 2-3 other palettes from `paletteer` and check each with `cvd_grid()` — which survives best?
+- Make a continuous version: color points by `gdpPercap` with `scale_color_viridis_c()`
+
+:::
+
+# Directing attention {.inverse}
+
+## Too many lines, no story
+
+```{r}
+#| label: asia-default
+#| fig-width: 9
+#| fig-height: 5
+ggplot(gap_asia, aes(x = year, y = gdpPercap, color = country)) +
+  geom_line(linewidth = 1) +
+  scale_y_continuous(labels = label_dollar()) +
+  labs(title = "GDP per capita in Asia, 1952-2007", x = NULL, y = "GDP per capita")
+```
+
+## `gghighlight`: dim the rest in one line
+
+```{r}
+#| label: asia-highlight
+#| fig-width: 9
+#| fig-height: 4.5
+ggplot(gap_asia, aes(x = year, y = gdpPercap, color = country)) +
+  geom_line(linewidth = 1) +
+  gghighlight(country %in% c("China", "India"), use_direct_label = FALSE) +
+  scale_y_continuous(labels = label_dollar()) +
+  labs(title = "GDP per capita in Asia, 1952-2007", x = NULL, y = "GDP per capita")
+```
+
+```r
+gghighlight(country %in% c("China", "India"))
+```
+
+## Control the highlighted colors
+
+```{r}
+#| label: asia-colored
+#| fig-width: 9
+#| fig-height: 4.5
+ggplot(gap_asia, aes(x = year, y = gdpPercap, color = country)) +
+  geom_line(linewidth = 1) +
+  gghighlight(country %in% c("China", "India"), use_direct_label = FALSE) +
+  scale_color_manual(values = highlight_colors_asia) +
+  scale_y_continuous(labels = label_dollar()) +
+  labs(title = "GDP per capita in Asia, 1952-2007", x = NULL, y = "GDP per capita")
+```
+
+## `ggrepel`: labels at the endpoints
+
+```{r}
+#| label: asia-labeled
+#| fig-width: 9
+#| fig-height: 4.5
+ggplot(gap_asia, aes(x = year, y = gdpPercap, color = country)) +
+  geom_line(linewidth = 1) +
+  gghighlight(country %in% c("China", "India"), use_direct_label = FALSE) +
+  scale_color_manual(values = highlight_colors_asia) +
+  scale_y_continuous(labels = label_dollar()) +
+  geom_text_repel(
+    data = endpoints_asia, aes(label = country),
+    nudge_x = 3, hjust = "left", direction = "y", segment.color = NA
+  ) +
+  labs(title = "GDP per capita in Asia, 1952-2007", x = NULL, y = "GDP per capita") +
+  theme(legend.position = "none")
+```
+
+## `ggtext`: colored words in the title
+
+```{r}
+#| label: asia-final
+#| fig-width: 9
+#| fig-height: 4.5
+ggplot(gap_asia, aes(x = year, y = gdpPercap, color = country)) +
+  geom_line(linewidth = 1) +
+  gghighlight(country %in% c("China", "India"), use_direct_label = FALSE) +
+  scale_color_manual(values = highlight_colors_asia) +
+  scale_y_continuous(labels = label_dollar()) +
+  geom_text_repel(
+    data = endpoints_asia, aes(label = country),
+    nudge_x = 3, hjust = "left", direction = "y", segment.color = NA
+  ) +
+  labs(
+    title = "**<span style='color:#E69F00'>China</span>** and **<span style='color:#0072B2'>India</span>**: GDP per capita 1952-2007",
+    x = NULL, y = "GDP per capita"
+  ) +
+  theme(legend.position = "none", plot.title = element_markdown())
+```
+
+## `annotate()`: one-off notes and arrows
+
+For a labelled event on the plot:
+
+```r
++ annotate("label", x = 1960, y = 55000,
+           label = "China's reform period\nbegan in 1978",
+           label.size = 0, fill = "white") +
+  annotate("segment", x = 1972, xend = 1978, y = 50000, yend = 3000,
+           arrow = arrow(length = unit(0.2, "cm")))
+```
+
+## A sprinkle: `scales` for axis labels
+
+You already saw `scales::label_dollar()` on the y-axis. The whole family is useful:
+
+```r
+scale_y_continuous(labels = label_dollar())
+scale_y_continuous(labels = label_comma())
+scale_y_continuous(labels = label_percent())
+scale_y_continuous(labels = label_number(scale_cut = cut_short_scale()))
+```
+
+The last renders `1200000` as `"1.2M"`.
+
+## Your turn :writing_hand: (10 min)
+
+::: nonincremental
+
+Open `exercises/03_attention.R`
+
+1. Find the top 5 GDP-growth countries (1952 → 2007) and highlight them with `gghighlight`; dim the rest
+2. Add `ggrepel` endpoint labels at year 2007
+3. Drop the legend
+
+**Stretch goals**:
+
+- Color the 5 with a named Okabe-Ito vector
+- `ggtext` title naming the 5 in their colors
+- `annotate()` a context note
+
+:::
+
+## Coffee break :coffee: (5 min)
+
+# Multi-panel layouts with patchwork {.inverse}
+
+## Three plots, named as R objects
+
+```r
+p_scatter <- ggplot(...) + ...
+p_lines   <- ggplot(...) + ...
+p_box     <- ggplot(...) + ...
+```
+
+. . .
+
+Building plots as named objects is the small habit that unlocks composition. You'll also stop re-running long pipelines just to tweak one layer.
+
+## Side by side, stacked, nested
+
+```r
+p1 + p2          # side by side
+p1 / p2          # stacked
+p1 | p2          # alias for +
+(p1 + p2) / p3   # nested
+```
+
+## Combine into A/B/C
+
+```{r}
+#| label: patch-basic
+#| fig-width: 10
+#| fig-height: 5.5
+(p_scatter + p_lines) / p_box
+```
+
+## Collect legend and axis titles
+
+```{r}
+#| label: patch-collect
+#| fig-width: 10
+#| fig-height: 5.5
+(p_scatter + p_lines) / p_box +
+  plot_layout(guides = "collect", axis_titles = "collect") &
+  theme(legend.position = "bottom")
+```
+
+## Tag panels automatically
+
+```{r}
+#| label: patch-tags
+#| fig-width: 10
+#| fig-height: 5.5
+(p_scatter + p_lines) / p_box +
+  plot_layout(guides = "collect") +
+  plot_annotation(tag_levels = "A") &
+  theme(legend.position = "bottom")
+```
+
+## `&` vs `+` — apply to all panels
+
+`+` modifies only the last plot in the chain.
+
+`&` applies to **every** plot:
+
+```r
+(p1 + p2) / p3 +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "bottom",
+        plot.title = element_text(face = "bold"))
+```
+
+## `inset_element()`
+
+```{r}
+#| label: patch-inset
+#| fig-width: 9
+#| fig-height: 5
+p_scatter +
+  inset_element(
+    p_box + theme_void() + theme(legend.position = "none"),
+    left = 0.55, bottom = 0.05, right = 0.98, top = 0.45
+  )
+```
+
+## Your turn :writing_hand: (8 min)
+
+::: nonincremental
+
+Open `exercises/04_patchwork.R`
+
+1. Combine the three provided plots into an A/B/C figure with panel tags, one collected legend, shared y-axis title where it makes sense
+
+**Stretch goals**:
+
+- Compare `(p_scatter + p_lines) / p_box` vs `p_scatter / (p_lines + p_box)` — which tells the story better?
+- Set `widths` so `p_scatter` is twice as wide as `p_lines`
+- Add an `inset_element()` with a small overview plot in the corner of one panel
+
+:::
+
+# Export for journals {.inverse}
+
+## What you see is not what you get
+
+Default `ggsave("plot.png", p)`:
+
+- uses your IDE's plot pane dimensions
+- uses the system antialiaser — fuzzy text on many setups
+
+. . .
+
+What you want:
+
+```r
+ggsave(
+  "fig1.png", p,
+  width = 89, height = 70,
+  units = "mm", dpi = 300
+)
+```
+
+## Real journal column widths
+
+::: nonincremental
+
+- PLOS-Biology single column ≈ **89 mm**
+- PLOS-Biology double column ≈ **183 mm**
+- Each journal publishes its specs — check the figure guidelines
+
+:::
+
+. . .
+
+Specify dimensions in **mm** so they match what the journal expects.
+
+## The text-size trap
+
+A title at size 14 looks fine in your plot pane (~7 inches wide) but tiny at 89 mm.
+
+. . .
+
+Text scales with physical size, not pixel count. Iterate font sizes at the real export dimensions, not at your default pane size.
+
+## `ggview`: preview at export size
+
+```r
+library(ggview)
+ggview(p, width = 89, height = 70, units = "mm")
+```
+
+. . .
+
+Wraps your plot and previews it at the requested dimensions in the plot pane. No save-and-reopen cycle.
+
+## Why `ragg::agg_png` and not plain `png()`?
+
+```r
+ggsave("fig1.png", p, device = ragg::agg_png, ...)
+```
+
+::: nonincremental
+
+- AGG renderer → better antialiasing, crisper text
+- Handles unicode, emoji, ligatures cleanly via `systemfonts`
+- Consistent across Windows / macOS / Linux
+
+:::
+
+. . .
+
+For PDF: `device = cairo_pdf` — embeds fonts so reviewers see what you saw.
+
+## Online vs print
+
+::: nonincremental
+
+- Design for **print** (mm + dpi)
+- The PDF is the canonical format; most readers download it
+- Online HTML readers rescale that same image
+- For talks and social media, re-export at slide-deck dimensions with bigger text
+
+:::
+
+## Your turn :writing_hand: (5 min)
+
+::: nonincremental
+
+Open `exercises/05_export.R`
+
+1. Export the provided plot with default `ggsave("default.png", p)`
+2. Export it with `ragg::agg_png` at PLOS single column (89 mm × 70 mm, 300 dpi)
+3. Open both files, zoom in, compare the text
+
+**Stretch goals**:
+
+- Export at double-column width (183 mm) — what changes about font sizes?
+- Export as `cairo_pdf`; check fonts are embedded (Acrobat → Properties → Fonts)
+- Use `ggview()` to iterate
+
+:::
+
+# Honorable mentions {.inverse}
+
+## `ggdist`
+
+Halfeye, raincloud, dotsinterval. The modern bar-plot replacement.
+
+```{r}
+#| label: hm-ggdist
+#| fig-width: 8
+#| fig-height: 3.5
+ggplot(gap_2007, aes(x = continent, y = lifeExp)) +
+  ggdist::stat_halfeye(adjust = 0.5, width = 0.5, justification = -0.2, .width = 0) +
+  geom_boxplot(width = 0.12, outlier.shape = NA)
+```
+
+```r
+ggdist::stat_halfeye(...) + geom_boxplot(...)
+```
+
+## `ggsignif` / `ggpubr`
+
+Significance brackets and p-values on plots.
+
+```{r}
+#| label: hm-ggsignif
+#| fig-width: 7
+#| fig-height: 3.5
+ggplot(
+  gap_2007 |> filter(continent %in% c("Asia", "Europe", "Africa")),
+  aes(x = continent, y = lifeExp)
+) +
+  geom_boxplot() +
+  ggsignif::geom_signif(
+    comparisons = list(c("Asia", "Europe"), c("Asia", "Africa")),
+    step_increase = 0.1
+  )
+```
+
+```r
+ggsignif::geom_signif(comparisons = list(c("Asia", "Europe")))
+```
+
+*(Some statisticians dislike on-figure p-values — know the arguments.)*
+
+## `ggridges`
+
+Ridgeline plots for distributions across groups or time.
+
+```{r}
+#| label: hm-ggridges
+#| fig-width: 8
+#| fig-height: 4
+ggplot(gapminder, aes(x = lifeExp, y = continent, fill = continent)) +
+  ggridges::geom_density_ridges(alpha = 0.7) +
+  theme(legend.position = "none")
+```
+
+```r
+ggridges::geom_density_ridges()
+```
+
+## `ggh4x`
+
+Nested facets and custom strip styling for factorial designs.
+
+```{r}
+#| label: hm-ggh4x
+#| fig-width: 9
+#| fig-height: 3.8
+ggplot(
+  gapminder |> filter(
+    year %in% c(1957, 1987, 2007),
+    continent %in% c("Asia", "Europe", "Africa")
+  ),
+  aes(x = gdpPercap, y = lifeExp)
+) +
+  geom_point(alpha = 0.5) +
+  scale_x_log10() +
+  ggh4x::facet_nested(~ continent + year)
+```
+
+```r
+ggh4x::facet_nested(~ continent + year)
+```
+
+## `ggExtra`
+
+Marginal histograms / densities on a scatter.
+
+```{r}
+#| label: hm-ggmarginal
+#| fig-width: 7
+#| fig-height: 4.5
+p_marg <- ggplot(
+  gap_2007,
+  aes(x = gdpPercap, y = lifeExp, color = continent)
+) +
+  geom_point(alpha = 0.7) +
+  scale_x_log10() +
+  theme(legend.position = "none")
+
+ggExtra::ggMarginal(p_marg, type = "histogram", groupColour = TRUE, groupFill = TRUE)
+```
+
+```r
+ggExtra::ggMarginal(p, type = "histogram")
+```
+
+## `cowplot`
+
+Patchwork's older sibling. Useful helpers like `plot_grid()`, `theme_cowplot()`, `draw_plot()`.
+
+```{r}
+#| label: hm-cowplot
+#| fig-width: 9
+#| fig-height: 3.5
+cowplot::plot_grid(
+  p_scatter + theme(legend.position = "none"),
+  p_lines + theme(legend.position = "none"),
+  labels = c("A", "B"),
+  nrow = 1
+)
+```
+
+```r
+cowplot::plot_grid(p1, p2, labels = c("A", "B"))
+```
+
+# Wrap up {.inverse}
+
+## Recap
+
+::: nonincremental
+
+The inside-out arc:
+
+1. **Theme** — strip default decoration, define your own
+2. **Color** — encode meaning, stay accessible
+3. **Attention** — direct the eye where it matters
+4. **Layout** — compose multi-panel figures
+5. **Export** — ship at the right size and resolution
+
+:::
+
+## Keep learning
+
+::: nonincremental
+
+- [Cédric Scherer's tutorials](https://www.cedricscherer.com/) — the modern ggplot2 reference
+- [Albert Rapp's blog](https://albert-rapp.de/) — practical, polished examples
+- [ggplot2 book (3rd ed)](https://ggplot2-book.org/) — the canonical reference
+- [R Graphics Cookbook](https://r-graphics.org/) — recipe-style problems and answers
+
+:::
+
+## Next lecture
+
+#### Topic t.b.a.
+
+<br>
+
+:date: 18th June :clock3: 4 - 5 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+## The end :)
+
+Questions?
