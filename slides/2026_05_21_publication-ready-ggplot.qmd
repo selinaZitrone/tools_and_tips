@@ -459,7 +459,7 @@ Open `demo/02_color.R`.
 # 3. Multi-panel layouts {.inverse}
 
 ```{r}
-#| label: m4-setup
+#| label: m3-setup
 #| include: false
 gap_continent <- gapminder |>
   group_by(year, continent) |>
@@ -549,7 +549,7 @@ Open `demo/03_patchwork.R`.
 # 4. Exporting figures {.inverse}
 
 ```{r}
-#| label: m5-setup
+#| label: m4-setup
 #| include: false
 p_bubble_m5 <- p_bubble +
   scale_color_scico_d(palette = "batlow") +
@@ -701,10 +701,6 @@ ggplot(gap_2007 |> filter(continent != "Oceania"), aes(lifeExp, continent, fill 
   theme(legend.position = "none") +
   labs(x = "Life expectancy (years)", y = NULL)
 ```
-
-::: {.aside}
-
-:::
 
 ## Takeaways
 
