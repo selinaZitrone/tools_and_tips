@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-14d2473a982606de670f0038afa36c2b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f54e89b23e61ed5ea72ef6b7d94f77ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Dr.&nbsp;Selina Baldauf">
   <meta name="dcterms.date" content="2024-02-15">
@@ -96,7 +96,7 @@
     code span.vs { color: #bf0303; } /* VerbatimString */
     code span.wa { color: #bf0303; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-38333f6353ed9da038f001ef3dcdf733.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f8b811162412c090d44ed2a2142c94ae.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -284,21 +284,21 @@ Dr.&nbsp;Selina Baldauf
 <section id="getting-the-tidyverse" class="slide level2">
 <h2>Getting the tidyverse</h2>
 <p>Install all tidyverse packages with</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>Load all core tidyverse packages with</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──</span></span>
-<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ dplyr     1.1.4     ✔ readr     2.1.6</span></span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ dplyr     1.2.0     ✔ readr     2.2.0</span></span>
 <span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ forcats   1.0.1     ✔ stringr   1.6.0</span></span>
-<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ ggplot2   4.0.1     ✔ tibble    3.3.1</span></span>
-<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ lubridate 1.9.4     ✔ tidyr     1.3.2</span></span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ ggplot2   4.0.2     ✔ tibble    3.3.1</span></span>
+<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ lubridate 1.9.5     ✔ tidyr     1.3.2</span></span>
 <span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✔ purrr     1.2.1     </span></span>
 <span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
 <span id="cb2-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span>
 <span id="cb2-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span>
-<span id="cb2-11"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-11"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -306,7 +306,7 @@ Dr.&nbsp;Selina Baldauf
 </div>
 <div class="fragment">
 <p>Non-core packages need to be loaded individually, e.g.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section>
@@ -352,7 +352,7 @@ Dr.&nbsp;Selina Baldauf
 <div class="column" style="width:50%;">
 <p><strong>Creating a tibble</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>,</span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> letters,</span>
 <span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">factor</span>(LETTERS)</span>
@@ -370,12 +370,12 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb4-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8     8 h     H    </span></span>
 <span id="cb4-17"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9     9 i     I    </span></span>
 <span id="cb4-18"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10    10 j     J    </span></span>
-<span id="cb4-19"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 16 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-19"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 16 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Creating a data frame</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>,</span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> letters,</span>
 <span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">factor</span>(LETTERS)</span>
@@ -406,7 +406,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb5-29"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 23 w W</span></span>
 <span id="cb5-30"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24 24 x X</span></span>
 <span id="cb5-31"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25 25 y Y</span></span>
-<span id="cb5-32"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26 26 z Z</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-32"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26 26 z Z</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section></section>
@@ -439,7 +439,7 @@ Dr.&nbsp;Selina Baldauf
 <p><img data-src="images/2024_02_15_tidyverse/readr.png" class="top-right" style="width:8.0%"></p>
 <p><span class="text-small">Data modified from <a href="https://lter.github.io/lterdatasampler/articles/arc_weather_vignette.html"><code>lterdatasampler</code></a></span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"data/arc_weather.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"data/arc_weather.csv"</span>)</span>
 <span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>arc_weather</span>
 <span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 365 × 3</span></span>
 <span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date       foolik_mean_temp_c poolik_mean_temp_c</span></span>
@@ -454,7 +454,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb6-13"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1988-06-08                9.4              12.1 </span></span>
 <span id="cb6-14"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1988-06-09               13.1              16.5 </span></span>
 <span id="cb6-15"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1988-06-10               17.7              20.9 </span></span>
-<span id="cb6-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 355 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 355 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="advantages-of-readr" class="slide level2">
@@ -636,7 +636,7 @@ Dr.&nbsp;Selina Baldauf
 <p><img data-src="images/2024_02_15_tidyverse/tidyr.png" class="top-right" style="width:8.0%"></p>
 <p>What is not tidy about our weather data?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather</span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 365 × 3</span></span>
 <span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date       foolik_mean_temp_c poolik_mean_temp_c</span></span>
 <span id="cb7-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;date&gt;                  &lt;dbl&gt;              &lt;dbl&gt;</span></span>
@@ -650,7 +650,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb7-12"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1988-06-08                9.4              12.1 </span></span>
 <span id="cb7-13"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1988-06-09               13.1              16.5 </span></span>
 <span id="cb7-14"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1988-06-10               17.7              20.9 </span></span>
-<span id="cb7-15"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 355 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-15"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 355 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment">Each row has multiple observations</li>
@@ -662,7 +662,7 @@ Dr.&nbsp;Selina Baldauf
 <p><img data-src="images/2024_02_15_tidyverse/tidyr.png" class="top-right" style="width:8.0%"></p>
 <p>This can be solved with <code>pivot_longer</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(arc_weather,</span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(arc_weather,</span>
 <span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">c</span>(foolik_mean_temp_c, poolik_mean_temp_c))</span>
 <span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 730 × 3</span></span>
 <span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date       name               value</span></span>
@@ -677,7 +677,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb8-13"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1988-06-04 poolik_mean_temp_c  3.95</span></span>
 <span id="cb8-14"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1988-06-05 foolik_mean_temp_c  6.8 </span></span>
 <span id="cb8-15"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1988-06-05 poolik_mean_temp_c  9.81</span></span>
-<span id="cb8-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 720 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 720 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-2" class="slide level2">
@@ -685,7 +685,7 @@ Dr.&nbsp;Selina Baldauf
 <p><img data-src="images/2024_02_15_tidyverse/tidyr.png" class="top-right" style="width:8.0%"></p>
 <p>You can also directly name the new columns:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(arc_weather,</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(arc_weather,</span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">c</span>(foolik_mean_temp_c, poolik_mean_temp_c),</span>
 <span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">"station"</span>,</span>
 <span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">"mean_temp_c"</span>)</span>
@@ -703,7 +703,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb9-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1988-06-04 poolik_mean_temp_c        3.95</span></span>
 <span id="cb9-17"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1988-06-05 foolik_mean_temp_c        6.8 </span></span>
 <span id="cb9-18"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1988-06-05 poolik_mean_temp_c        9.81</span></span>
-<span id="cb9-19"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 720 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-19"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 720 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -739,7 +739,7 @@ Dr.&nbsp;Selina Baldauf
 <div class="column" style="width:50%;">
 <p><code>select</code> picks variables (columns) based on their names</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(arc_weather,</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(arc_weather,</span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>  date, mean_temp_c)</span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 730 × 2</span></span>
 <span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date       mean_temp_c</span></span>
@@ -754,13 +754,13 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb10-13"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1988-06-04        3.95</span></span>
 <span id="cb10-14"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1988-06-05        6.8 </span></span>
 <span id="cb10-15"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1988-06-05        9.81</span></span>
-<span id="cb10-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 720 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 720 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <p><code>filter</code> picks observations (rows) based on their values</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(arc_weather,</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(arc_weather,</span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>  station <span class="sc">==</span> <span class="st">"foolik_mean_temp_c"</span>)</span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 365 × 3</span></span>
 <span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    date       station            mean_temp_c</span></span>
@@ -775,7 +775,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb11-13"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1988-06-08 foolik_mean_temp_c         9.4</span></span>
 <span id="cb11-14"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1988-06-09 foolik_mean_temp_c        13.1</span></span>
 <span id="cb11-15"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1988-06-10 foolik_mean_temp_c        17.7</span></span>
-<span id="cb11-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 355 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 355 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div></div>
@@ -789,7 +789,7 @@ Dr.&nbsp;Selina Baldauf
 <div class="column" style="width:50%;">
 <p><code>lubridate</code> to filter by month</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows from May</span></span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows from May</span></span>
 <span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(arc_weather,</span>
 <span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">month</span>(date) <span class="sc">==</span> <span class="dv">5</span>)</span>
 <span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 62 × 3</span></span>
@@ -805,13 +805,13 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb12-14"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1989-05-04 poolik_mean_temp_c       0.457</span></span>
 <span id="cb12-15"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1989-05-05 foolik_mean_temp_c      -2    </span></span>
 <span id="cb12-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1989-05-05 poolik_mean_temp_c       1.19 </span></span>
-<span id="cb12-17"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 52 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-17"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 52 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <p><code>stringr</code> to filter characters</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows where the station contains "foolik"</span></span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Filter rows where the station contains "foolik"</span></span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(arc_weather,</span>
 <span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(station, <span class="st">"foolik"</span>))</span>
 <span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 365 × 3</span></span>
@@ -827,7 +827,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb13-14"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1988-06-08 foolik_mean_temp_c         9.4</span></span>
 <span id="cb13-15"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1988-06-09 foolik_mean_temp_c        13.1</span></span>
 <span id="cb13-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1988-06-10 foolik_mean_temp_c        17.7</span></span>
-<span id="cb13-17"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 355 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-17"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 355 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div></div>
@@ -839,7 +839,7 @@ Dr.&nbsp;Selina Baldauf
 <p>Add columns with <code>mutate</code></p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Add column with temperature in K</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Add column with temperature in K</span></span>
 <span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(arc_weather, </span>
 <span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_temp_k =</span> mean_temp_c <span class="sc">+</span> <span class="fl">274.15</span>)</span>
 <span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 730 × 4</span></span>
@@ -855,7 +855,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb14-14"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1988-06-04 poolik_mean_temp_c        3.95        278.</span></span>
 <span id="cb14-15"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1988-06-05 foolik_mean_temp_c        6.8         281.</span></span>
 <span id="cb14-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1988-06-05 poolik_mean_temp_c        9.81        284.</span></span>
-<span id="cb14-17"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 720 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-17"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 720 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -865,7 +865,7 @@ Dr.&nbsp;Selina Baldauf
 <p>Change the values of existing columns with <code>mutate</code></p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Remove _mean_temp_c from station</span></span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Remove _mean_temp_c from station</span></span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="ot">&lt;-</span> <span class="fu">mutate</span>(arc_weather, </span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>                        <span class="at">station =</span> <span class="fu">str_remove</span>(station, <span class="st">"_mean_temp_c"</span>))</span>
 <span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a>arc_weather</span>
@@ -882,7 +882,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb15-15"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1988-06-04 poolik         3.95</span></span>
 <span id="cb15-16"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1988-06-05 foolik         6.8 </span></span>
 <span id="cb15-17"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1988-06-05 poolik         9.81</span></span>
-<span id="cb15-18"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 720 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-18"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 720 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -892,13 +892,13 @@ Dr.&nbsp;Selina Baldauf
 <p><code>summarize</code> will <strong>collapse the data</strong> to a <strong>single row</strong></p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the overall mean temperature</span></span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the overall mean temperature</span></span>
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(arc_weather, </span>
 <span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">overall_mean =</span> <span class="fu">mean</span>(mean_temp_c, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 1</span></span>
 <span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   overall_mean</span></span>
 <span id="cb16-6"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          &lt;dbl&gt;</span></span>
-<span id="cb16-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        -7.10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        -7.10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -908,7 +908,7 @@ Dr.&nbsp;Selina Baldauf
 <p><code>summarize</code> in combination with <code>group_by</code> will <strong>collapse the data</strong> to a <strong>single row per group</strong></p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean temperature for each station</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean temperature for each station</span></span>
 <span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>arc_weather_group <span class="ot">&lt;-</span> <span class="fu">group_by</span>(arc_weather, station)</span>
 <span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(arc_weather_group,</span>
 <span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">overall_mean =</span> <span class="fu">mean</span>(mean_temp_c, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
@@ -916,7 +916,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb17-6"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   station overall_mean</span></span>
 <span id="cb17-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;</span></span>
 <span id="cb17-8"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 foolik         -8.60</span></span>
-<span id="cb17-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 poolik         -5.60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 poolik         -5.60</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment"><code>group_by</code> can be used for any dplyr function to perform the operation by group</li>
@@ -944,16 +944,16 @@ Dr.&nbsp;Selina Baldauf
 <h2>The pipe <code>|&gt;</code></h2>
 <p>Let’s look at an example without the pipe:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather_group <span class="ot">&lt;-</span> <span class="fu">group_by</span>(arc_weather, station)</span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather_group <span class="ot">&lt;-</span> <span class="fu">group_by</span>(arc_weather, station)</span>
 <span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(arc_weather_group, </span>
-<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">overall_mean =</span> <span class="fu">mean</span>(mean_temp_c, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">overall_mean =</span> <span class="fu">mean</span>(mean_temp_c, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>The pipe operator makes it very easy to combine these operations</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="sc">|&gt;</span></span>
 <span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(station) <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">overall_mean =</span> <span class="fu">mean</span>(mean_temp_c, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">overall_mean =</span> <span class="fu">mean</span>(mean_temp_c, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -966,11 +966,11 @@ Dr.&nbsp;Selina Baldauf
 <p>The pipe is “pushing” the result of one line into the first argument of the function from the next line.</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="sc">|&gt;</span></span>
 <span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(station)</span>
 <span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># instead of </span></span>
-<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(arc_weather, station)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(arc_weather, station)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -1060,7 +1060,7 @@ Dr.&nbsp;Selina Baldauf
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather_may <span class="ot">&lt;-</span> <span class="fu">filter</span>(arc_weather,</span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather_may <span class="ot">&lt;-</span> <span class="fu">filter</span>(arc_weather,</span>
 <span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">month</span>(date) <span class="sc">==</span> <span class="dv">5</span>)</span>
 <span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> arc_weather_may,</span>
 <span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
@@ -1068,7 +1068,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb21-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> mean_temp_c,</span>
 <span id="cb21-7"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> station</span>
 <span id="cb21-8"><a aria-hidden="true" tabindex="-1"></a>)) <span class="sc">+</span></span>
-<span id="cb21-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment"><strong>aes</strong>thetics define how data variables are mapped onto plot properties</li>
@@ -1098,7 +1098,7 @@ Dr.&nbsp;Selina Baldauf
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a>arc_weather <span class="sc">|&gt;</span></span>
 <span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">month</span>(date) <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">|&gt;</span></span>
 <span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
 <span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> date,</span>
@@ -1110,7 +1110,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb22-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean temperature in May"</span>,</span>
 <span id="cb22-11"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Date"</span>,</span>
 <span id="cb22-12"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean temperature (°C)"</span>) <span class="sc">+</span></span>
-<span id="cb22-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -1159,7 +1159,7 @@ Dr.&nbsp;Selina Baldauf
 <div class="column" style="width:50%;">
 <p><strong>Do it by hand</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Do it by hand</span></span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Do it by hand</span></span>
 <span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
 <span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.4395244 0.7698225 2.5587083 1.0705084</span></span>
@@ -1168,13 +1168,13 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb23-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
 <span id="cb23-8"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.313147 2.554338 4.224082 3.359814</span></span>
 <span id="cb23-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">mean =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb23-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.400771 4.110683 3.444159 5.786913</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.400771 4.110683 3.444159 5.786913</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <p><strong>Use purrr</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Use purrr</span></span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Use purrr</span></span>
 <span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
 <span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">map</span>(means, rnorm, <span class="at">n =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
@@ -1183,7 +1183,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:4] 0.44 0.77 2.56 1.07</span></span>
 <span id="cb24-8"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:4] 2.129 3.715 2.461 0.735</span></span>
 <span id="cb24-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:4] 2.31 2.55 4.22 3.36</span></span>
-<span id="cb24-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:4] 4.4 4.11 3.44 5.79</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : num [1:4] 4.4 4.11 3.44 5.79</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div></div>
@@ -1244,8 +1244,8 @@ Dr.&nbsp;Selina Baldauf
 <p><img data-src="images/2024_02_15_tidyverse/purrr.png" class="top-right" style="width:8.0%"></p>
 <p>Read in and analyse multiple files with the same structure at once.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: List all files in your data directory</span></span>
-<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"data"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: List all files in your data directory</span></span>
+<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <pre><code>#&gt; [1] "foolik.csv" "poolik.csv"</code></pre>
@@ -1253,7 +1253,7 @@ Dr.&nbsp;Selina Baldauf
 <div class="fragment">
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Read all files into a list of tibbles</span></span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Read all files into a list of tibbles</span></span>
 <span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>arc_weather_files <span class="ot">&lt;-</span> <span class="fu">map</span>(paths, read_csv)</span>
 <span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>arc_weather_files</span>
 <span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
@@ -1286,7 +1286,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb27-31"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 1988-06-08 poolik        12.7 </span></span>
 <span id="cb27-32"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 1988-06-09 poolik        16.0 </span></span>
 <span id="cb27-33"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 1988-06-10 poolik        21.5 </span></span>
-<span id="cb27-34"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 355 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-34"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 355 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 
 </div></div>
@@ -1297,13 +1297,13 @@ Dr.&nbsp;Selina Baldauf
 <p><img data-src="images/2024_02_15_tidyverse/purrr.png" class="top-right" style="width:8.0%"></p>
 <p>Read in and analyse multiple files with the same structure at once.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Apply a linear model to each station file,</span></span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Apply a linear model to each station file,</span></span>
 <span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary of each model and extract the coefficients</span></span>
 <span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>arc_weather_files <span class="sc">|&gt;</span>                             <span class="co"># Take the data</span></span>
 <span id="cb28-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(\(x) <span class="fu">lm</span>(mean_temp_c <span class="sc">~</span> date, <span class="at">data =</span> x)) <span class="sc">|&gt;</span>  <span class="co"># Apply the same model to every tibbel in the list</span></span>
 <span id="cb28-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(summary) <span class="sc">|&gt;</span>                                <span class="co"># Get the model summary of both models</span></span>
 <span id="cb28-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(<span class="st">"r.squared"</span>)                           <span class="co"># Extract the r-squared from the model summaries</span></span>
-<span id="cb28-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.2018279 0.2000210</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.2018279 0.2000210</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="summary" class="slide level2">
@@ -1560,7 +1560,7 @@ Dr.&nbsp;Selina Baldauf
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1710,14 +1710,13 @@ Dr.&nbsp;Selina Baldauf
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

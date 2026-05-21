@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to version control with Git – Scientific workflows: Tools and Tips 🛠️</title>
+<title>From default to publication-ready ggplot2 – Scientific workflows: Tools and Tips 🛠️</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4077,13 +4077,17 @@ vertical-align: -.125em;
    
   <ul>
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <li><a href="#workshop-materials" id="toc-workshop-materials" class="nav-link" data-scroll-target="#workshop-materials">Workshop materials</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a>
   <ul class="collapse">
-  <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get started</a></li>
+  <li><a href="#custom-themes" id="toc-custom-themes" class="nav-link" data-scroll-target="#custom-themes">1. Custom themes</a></li>
+  <li><a href="#colour" id="toc-colour" class="nav-link" data-scroll-target="#colour">2. Colour</a></li>
+  <li><a href="#multi-panel-layouts-with-patchwork" id="toc-multi-panel-layouts-with-patchwork" class="nav-link" data-scroll-target="#multi-panel-layouts-with-patchwork">3. Multi-panel layouts with patchwork</a></li>
+  <li><a href="#exporting-figures" id="toc-exporting-figures" class="nav-link" data-scroll-target="#exporting-figures">4. Exporting figures</a></li>
   </ul></li>
-  <li><a href="#further-links" id="toc-further-links" class="nav-link" data-scroll-target="#further-links">Further links</a></li>
+  <li><a href="#other-handy-packages" id="toc-other-handy-packages" class="nav-link" data-scroll-target="#other-handy-packages">Other handy packages</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/selinaZitrone/tools_and_tips/edit/main/sessions/03_git.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/tools_and_tips/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/selinaZitrone/tools_and_tips/edit/main/sessions/18_publication-ready-ggplot.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/tools_and_tips/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -4091,8 +4095,8 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to version control with Git</h1>
-<p class="subtitle lead">2023-06-15</p>
+<h1 class="title">From default to publication-ready ggplot2</h1>
+<p class="subtitle lead">2026-05-21</p>
 </div>
 
 
@@ -4111,36 +4115,66 @@ vertical-align: -.125em;
 
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>Git is an essential skill if you use any programming language. It allows you to keep track of changes to your project over time, collaborate with others, and maintain a clear and organized project structure. This can save time, improve research efficiency, and also makes it easy to publish your code via platforms such as Github. In this lecture, I will introduce the basic concepts of Git and how to use it for you own projects. The lecture is for Git beginners but also for people who use basic Git for their own projects and want to know a bit more about the concepts behind the workflow.</p>
-<iframe role="img" class="slide-deck" width="780" height="500" src="../slides/2023_06_15_git.html"></iframe>
-<p><a href="../slides/2023_06_15_git.html" target="_blank">Slides in full screen</a>     <a href="../slides/slides_pdf/2023_06_15_git.pdf" download>Download PDF slides</a></p>
+<p>In this hands-on workshop, you’ll learn how to transform standard ggplot2 outputs into clear, polished, publication-ready figures. Working through practical examples, we will cover:</p>
+<ul>
+<li>building <strong>custom themes</strong> for a consistent look</li>
+<li>choosing <strong>colour</strong> scales with intent (intuitive and colourblind-safe palettes)</li>
+<li>composing <strong>multi-panel layouts</strong> with <code>patchwork</code></li>
+<li><strong>exporting</strong> figures at the resolution and dimensions journals expect</li>
+</ul>
+<p>Along the way I will show you a few useful extension packages from the ggplot2 ecosystem (<code>ggtext</code>, <code>ggrepel</code>, <code>gghighlight</code>, <code>ggdist</code>, <code>ggridges</code>) so you can pick up techniques you can apply directly to your own plots.</p>
 </section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>Install git for your machine following <a href="https://www.atlassian.com/de/git/tutorials/install-git">this guide</a></p>
-<section id="get-started" class="level3">
-<h3 class="anchored" data-anchor-id="get-started">Get started</h3>
-<section id="command-line" class="level4">
-<h4 class="anchored" data-anchor-id="command-line">Command line</h4>
-<p>Follow <a href="https://github.com/UnseenWizzard/git_training">this Git training</a> for learning the Git concepts in the command line.</p>
+<section id="workshop-materials" class="level3">
+<h3 class="anchored" data-anchor-id="workshop-materials">Workshop materials</h3>
+<p>The workshop repo contains all demo scripts, exercises, and solutions:</p>
+<p><a href="https://github.com/selinaZitrone/advanced-ggplot-workshop">github.com/selinaZitrone/advanced-ggplot-workshop</a></p>
+<iframe role="img" class="slide-deck" width="780" height="500" src="../slides/2026_05_21_publication-ready-ggplot.html"></iframe>
+<p><a href="../slides/2026_05_21_publication-ready-ggplot.html" target="_blank">Slides in full screen</a>     <a href="../slides/slides_pdf/2026_05_21_publication-ready-ggplot.pdf" download>Download PDF slides</a></p>
 </section>
-<section id="r-and-r-studio" class="level4">
-<h4 class="anchored" data-anchor-id="r-and-r-studio">R and R Studio</h4>
-<p>There is a whole <a href="https://happygitwithr.com/">book on using Git with R</a> that explains the setup in detail but also goes into more advanced topics.</p>
-<p>Follow this <a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/">step by step guide</a> to set up Git and a Github connection in R and R Studio</p>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<section id="custom-themes" class="level3">
+<h3 class="anchored" data-anchor-id="custom-themes">1. Custom themes</h3>
+<ul>
+<li><a href="https://ggplot2.tidyverse.org/reference/theme.html"><code>theme()</code> reference</a> doc for every theme argument</li>
+<li><a href="https://jrnold.github.io/ggthemes/"><code>ggthemes</code></a>: ready-made themes if you don’t want to build your own</li>
+</ul>
 </section>
-<section id="github-desktop" class="level4">
-<h4 class="anchored" data-anchor-id="github-desktop">Github Desktop</h4>
-<p>There are detailed step by step guides on how to set up Github Desktop and how to work with in the <a href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/creating-your-first-repository-using-github-desktop">Github Desktop Documentation</a></p>
+<section id="colour" class="level3">
+<h3 class="anchored" data-anchor-id="colour">2. Colour</h3>
+<ul>
+<li><a href="https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/">Which color scale to use</a>: Blogpost by Lisa Charlotte Muth, Datawrapper</li>
+<li><a href="https://clauswilke.com/dataviz/color-pitfalls.html">Colour pitfalls (Wilke, <em>Fundamentals of Data Visualization</em>)</a>: background on choosing colour and the Okabe-Ito and other CVD-safe palettes</li>
+<li><a href="https://sjmgarnier.github.io/viridis/"><code>viridis</code></a>: More info on the viridis palette colors</li>
+<li><a href="https://github.com/thomasp85/scico"><code>scico</code></a> and <a href="https://www.fabiocrameri.ch/colourmaps/">Fabio Crameri’s colour maps</a> for scientific palettes, designed to be fair and citable</li>
+<li><a href="https://cran.r-project.org/package=colorBlindness"><code>colorBlindness</code></a> to check your plots for colourblind accessibility</li>
+</ul>
+</section>
+<section id="multi-panel-layouts-with-patchwork" class="level3">
+<h3 class="anchored" data-anchor-id="multi-panel-layouts-with-patchwork">3. Multi-panel layouts with patchwork</h3>
+<ul>
+<li><a href="https://patchwork.data-imaginist.com/">patchwork documentation</a> is excellent and has a gallery of examples to browse</li>
+</ul>
+</section>
+<section id="exporting-figures" class="level3">
+<h3 class="anchored" data-anchor-id="exporting-figures">4. Exporting figures</h3>
+<ul>
+<li><a href="https://www.ggplot2-uncharted.com/module1/export">Export module from ggplot2-uncharted workshop</a></li>
+<li><a href="https://github.com/idmn/ggview"><code>ggview</code></a> to preview a plot at its true size before exporting</li>
+<li><a href="https://ragg.r-lib.org/"><code>ragg</code></a> for fast, high-quality raster device for PNG/TIFF</li>
+</ul>
 </section>
 </section>
-</section>
-<section id="further-links" class="level2">
-<h2 class="anchored" data-anchor-id="further-links">Further links</h2>
-<p><a href="https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc">Learn git concepts, not commands</a>: Blogpost that explains really well the concepts of git, also more advanced ones like <code>rebase</code> or <code>cherry-pick</code>.</p>
-<p><a href="https://cbea.ms/git-commit/">How to write good commit messages</a>: Blogpost that explains why good commit messages are important and gives 7 rules for writing them.</p>
-<p><a href="https://education.github.com/git-cheat-sheet-education.pdf">Git cheat sheet</a>: Always handy if you don’t remember the basic commands</p>
-<p><a href="https://happygitwithr.com/">Book on how to use Git wih R</a></p>
+<section id="other-handy-packages" class="level2">
+<h2 class="anchored" data-anchor-id="other-handy-packages">Other handy packages</h2>
+<p>The official <a href="https://exts.ggplot2.tidyverse.org/gallery/">ggplot extension gallery</a> lists ~120 community extension packages to browse</p>
+<ul>
+<li><a href="https://yutannihilation.github.io/gghighlight/"><code>gghighlight</code></a> — fade non-focal data with one line</li>
+<li><a href="https://ggrepel.slowkow.com/"><code>ggrepel</code></a> — non-overlapping text labels</li>
+<li><a href="https://wilkelab.org/ggtext/"><code>ggtext</code></a> — markdown / HTML in titles, axis text, and annotations</li>
+<li><a href="https://mjskay.github.io/ggdist/"><code>ggdist</code></a> — distributions and uncertainty (raincloud, halfeye, interval plots)</li>
+<li><a href="https://wilkelab.org/ggridges/"><code>ggridges</code></a> — ridgeline / joy plots</li>
+</ul>
 
 
 </section>
@@ -4566,7 +4600,7 @@ vertical-align: -.125em;
 </div>   
     <div class="nav-footer-center">
        
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/selinaZitrone/tools_and_tips/edit/main/sessions/03_git.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/tools_and_tips/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/selinaZitrone/tools_and_tips/edit/main/sessions/18_publication-ready-ggplot.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/tools_and_tips/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Website built with <a href="https://quarto.org/">Quarto</a></p>
 </div>

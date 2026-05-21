@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-14d2473a982606de670f0038afa36c2b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f54e89b23e61ed5ea72ef6b7d94f77ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Dr.&nbsp;Selina Baldauf">
   <meta name="dcterms.date" content="2025-06-19">
@@ -96,7 +96,7 @@
     code span.vs { color: #bf0303; } /* VerbatimString */
     code span.wa { color: #bf0303; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-38333f6353ed9da038f001ef3dcdf733.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f8b811162412c090d44ed2a2142c94ae.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -329,7 +329,7 @@ Dr.&nbsp;Selina Baldauf
 <ul>
 <li>Start your R script from the command line</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> my_script.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> my_script.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <ul>
@@ -366,7 +366,7 @@ Dr.&nbsp;Selina Baldauf
 <h2>Profiling R code</h2>
 <p>You can profile a section of code like this:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1-2|3-6|8-14|7-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># install.packages("profvis")</span></span>
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1-2|3-6|8-14|7-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># install.packages("profvis")</span></span>
 <span id="cb2-2"><a></a><span class="fu">library</span>(profvis)</span>
 <span id="cb2-3"><a></a></span>
 <span id="cb2-4"><a></a><span class="co"># Create a data frame with 150 columns and 400000 rows</span></span>
@@ -380,7 +380,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb2-12"><a></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(means)) {</span>
 <span id="cb2-13"><a></a>    df[, i] <span class="ot">&lt;-</span> df[, i] <span class="sc">-</span> means[i]</span>
 <span id="cb2-14"><a></a>  }</span>
-<span id="cb2-15"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-15"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="profiling-r-code-2" class="slide level2">
@@ -408,7 +408,7 @@ Dr.&nbsp;Selina Baldauf
 <p>Which version of the code is faster?</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fill a data frame in a loop</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fill a data frame in a loop</span></span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="fu">numeric</span>(), <span class="at">b =</span> <span class="fu">numeric</span>())</span>
 <span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fl">1e4</span>) {</span>
@@ -419,7 +419,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb4-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Fill a data frame directly with vectors</span></span>
 <span id="cb4-10"><a aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb4-11"><a aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="fl">1e4</span>, <span class="at">b =</span> <span class="dv">1</span><span class="sc">:</span><span class="fl">1e4</span>)</span>
-<span id="cb4-12"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-12"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -427,18 +427,18 @@ Dr.&nbsp;Selina Baldauf
 <h2>Benchmarking R code - the easy way</h2>
 <p>Use the <code>tictoc</code> package to get a quick overview of the time a section of code takes</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-code-line-numbers="1-2|3-7|3-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># install.packages("tictoc")</span></span>
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="1-2|3-7|3-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># install.packages("tictoc")</span></span>
 <span id="cb5-2"><a></a><span class="fu">library</span>(tictoc)</span>
 <span id="cb5-3"><a></a></span>
 <span id="cb5-4"><a></a><span class="fu">tic</span>()</span>
 <span id="cb5-5"><a></a><span class="fu">f1</span>()</span>
 <span id="cb5-6"><a></a><span class="fu">toc</span>()</span>
-<span id="cb5-7"><a></a><span class="co">#&gt; 1.25 sec elapsed</span></span>
+<span id="cb5-7"><a></a><span class="co">#&gt; 1.12 sec elapsed</span></span>
 <span id="cb5-8"><a></a></span>
 <span id="cb5-9"><a></a><span class="fu">tic</span>()</span>
 <span id="cb5-10"><a></a><span class="fu">f2</span>()</span>
 <span id="cb5-11"><a></a><span class="fu">toc</span>()</span>
-<span id="cb5-12"><a></a><span class="co">#&gt; 0 sec elapsed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-12"><a></a><span class="co">#&gt; 0 sec elapsed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="benchmarking-r-code-1" class="slide level2">
@@ -446,7 +446,7 @@ Dr.&nbsp;Selina Baldauf
 <p>Use the <code>microbenchmark</code> package to compare the functions:</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1-2|3-8|9-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># install.packages("microbenchmark")</span></span>
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1-2|3-8|9-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># install.packages("microbenchmark")</span></span>
 <span id="cb6-2"><a></a><span class="fu">library</span>(microbenchmark)</span>
 <span id="cb6-3"><a></a></span>
 <span id="cb6-4"><a></a>compare_functions <span class="ot">&lt;-</span> <span class="fu">microbenchmark</span>(</span>
@@ -457,9 +457,9 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb6-9"><a></a></span>
 <span id="cb6-10"><a></a>compare_functions</span>
 <span id="cb6-11"><a></a><span class="co">#&gt; Unit: microseconds</span></span>
-<span id="cb6-12"><a></a><span class="co">#&gt;  expr       min        lq      mean     median        uq       max neval cld</span></span>
-<span id="cb6-13"><a></a><span class="co">#&gt;   old 1204274.4 1224502.9 1289691.2 1265086.30 1353718.5 1453146.0    10  a </span></span>
-<span id="cb6-14"><a></a><span class="co">#&gt;   new      66.9      80.6     280.9      96.85     204.8    1446.8    10   b</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-12"><a></a><span class="co">#&gt;  expr     min        lq       mean     median      uq       max neval cld</span></span>
+<span id="cb6-13"><a></a><span class="co">#&gt;   old 1063482 1107142.4 1139802.19 1135030.70 1176419 1210050.0    10  a </span></span>
+<span id="cb6-14"><a></a><span class="co">#&gt;   new      62      76.8     247.96     178.35     183    1267.8    10   b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -468,8 +468,8 @@ Dr.&nbsp;Selina Baldauf
 <div class="fragment">
 <p>We can look at benchmarking results using ggplot</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(compare_functions)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(compare_functions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -518,7 +518,7 @@ Dr.&nbsp;Selina Baldauf
 <p><strong>Example</strong>: Calculate the log of every value in a vector and sum up the result</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-code-line-numbers="1-3|4-13|14-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># A vector with 1 million values</span></span>
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="1-3|4-13|14-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># A vector with 1 million values</span></span>
 <span id="cb10-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fl">1e6</span></span>
 <span id="cb10-3"><a></a></span>
 <span id="cb10-4"><a></a><span class="fu">microbenchmark</span>(</span>
@@ -533,8 +533,8 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb10-13"><a></a>)</span>
 <span id="cb10-14"><a></a><span class="co">#&gt; Unit: milliseconds</span></span>
 <span id="cb10-15"><a></a><span class="co">#&gt;      expr     min      lq     mean  median      uq     max neval cld</span></span>
-<span id="cb10-16"><a></a><span class="co">#&gt;  for_loop 39.2334 39.5070 40.35139 40.3330 41.0836 41.6231    10  a </span></span>
-<span id="cb10-17"><a></a><span class="co">#&gt;       sum 19.9408 20.2146 21.28390 21.6083 22.0062 22.8566    10   b</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-16"><a></a><span class="co">#&gt;  for_loop 58.7096 59.0902 59.96390 59.5209 60.4307 63.5593    10  a </span></span>
+<span id="cb10-17"><a></a><span class="co">#&gt;       sum 35.8210 36.6466 37.21634 37.0020 37.9745 38.8886    10   b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -565,7 +565,7 @@ Dr.&nbsp;Selina Baldauf
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-code-line-numbers="1-3|4-10|11-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># A matrix with 1000 columns</span></span>
+<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="1-3|4-10|11-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># A matrix with 1000 columns</span></span>
 <span id="cb14-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">10000</span>), <span class="at">ncol =</span> <span class="dv">1000</span>)</span>
 <span id="cb14-3"><a></a></span>
 <span id="cb14-4"><a></a><span class="fu">microbenchmark</span>(</span>
@@ -577,8 +577,8 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb14-10"><a></a>)</span>
 <span id="cb14-11"><a></a><span class="co">#&gt; Unit: milliseconds</span></span>
 <span id="cb14-12"><a></a><span class="co">#&gt;      expr     min      lq      mean   median       uq      max neval cld</span></span>
-<span id="cb14-13"><a></a><span class="co">#&gt;  no_cache 38.3473 42.2739 45.597475 43.43775 45.20405 158.0655   100  a </span></span>
-<span id="cb14-14"><a></a><span class="co">#&gt;     cache  3.1371  3.2574  3.858989  3.51440  4.20380   7.4205   100   b</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-13"><a></a><span class="co">#&gt;  no_cache 57.9128 60.9763 63.638999 62.88575 64.68335 111.1956   100  a </span></span>
+<span id="cb14-14"><a></a><span class="co">#&gt;     cache  3.3494  3.5692  3.676188  3.63415  3.71695   5.2457   100   b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section></section>
@@ -622,7 +622,7 @@ Dr.&nbsp;Selina Baldauf
 <h2>Read data</h2>
 <p>Compare some alternative reading functions</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>file_path_csv <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"slides/data/ghg_ems_large.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>file_path_csv <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"slides/data/ghg_ems_large.csv"</span>)</span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>compare_input <span class="ot">&lt;-</span> microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
 <span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">read.csv =</span> <span class="fu">read.csv</span>(file_path_csv),</span>
@@ -632,7 +632,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb15-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">10</span></span>
 <span id="cb15-9"><a aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb15-10"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(compare_input)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(compare_input)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -648,7 +648,7 @@ Dr.&nbsp;Selina Baldauf
 <h2>Use plain text data</h2>
 <p>Reading plain text is faster than excel files</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a>file_path_xlsx <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"slides/data/ghg_ems_large.xlsx"</span>)</span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a>file_path_xlsx <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"slides/data/ghg_ems_large.xlsx"</span>)</span>
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>compare_excel <span class="ot">&lt;-</span> <span class="fu">microbenchmark</span>(</span>
 <span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">read_csv =</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(file_path_csv),</span>
@@ -656,7 +656,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb16-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">10</span></span>
 <span id="cb16-7"><a aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb16-8"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(compare_excel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(compare_excel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -708,16 +708,16 @@ Dr.&nbsp;Selina Baldauf
 <h2>Summarize data by group</h2>
 <p><strong>Example</strong>: Summarize mean carbon emissions from Electricity by Country</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
 <span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(collapse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(collapse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="summarize-data-by-group-1" class="slide level2">
 <h2>Summarize data by group</h2>
 <p><strong>Example</strong>: Summarize mean carbon emissions from Electricity by Country</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers="1-7|8-13|14-20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># 1. The data table way</span></span>
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="1-7|8-13|14-20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># 1. The data table way</span></span>
 <span id="cb19-2"><a></a><span class="co"># Convert the data to a data.table</span></span>
 <span id="cb19-3"><a></a><span class="fu">setDT</span>(ghg_ems)</span>
 <span id="cb19-4"><a></a>summarize_dt <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
@@ -736,14 +736,14 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb19-17"><a></a>  ghg_ems <span class="sc">|&gt;</span></span>
 <span id="cb19-18"><a></a>    <span class="fu">fgroup_by</span>(Country) <span class="sc">|&gt;</span></span>
 <span id="cb19-19"><a></a>    <span class="fu">fsummarise</span>(<span class="at">mean_e =</span> <span class="fu">fmean</span>(Electricity))</span>
-<span id="cb19-20"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-20"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="efficient-data-manipulation-1" class="slide level2">
 <h2>Efficient data manipulation</h2>
 <p><strong>Example</strong>: Summarize mean carbon emissions from Electricity by Country</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># compare the speed of all versions</span></span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># compare the speed of all versions</span></span>
 <span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
 <span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">dplyr =</span> <span class="fu">summarize_dplyr</span>(),</span>
 <span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">data_table =</span> <span class="fu">summarize_dt</span>(),</span>
@@ -752,26 +752,26 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb20-7"><a aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb20-8"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Unit: microseconds</span></span>
 <span id="cb20-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        expr    min     lq    mean  median     uq     max neval cld</span></span>
-<span id="cb20-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       dplyr 4853.2 5205.3 8037.60 7323.50 9931.3 13163.8    10  a </span></span>
-<span id="cb20-11"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  data_table  925.2 1026.5 2933.56 1648.55 4993.2  8628.7    10   b</span></span>
-<span id="cb20-12"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    collapse  123.0  178.0  607.66  222.80  348.7  2670.0    10   b</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-10"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       dplyr 2155.2 2179.4 3598.01 2262.65 2479.2 14360.4    10  a </span></span>
+<span id="cb20-11"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  data_table 1276.2 1329.9 2012.95 1474.85 1786.0  5818.1    10  ab</span></span>
+<span id="cb20-12"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    collapse  157.1  177.2  382.28  203.65  235.0  1159.0    10   b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="select-columns" class="slide level2">
 <h2>Select columns</h2>
 <p><strong>Example</strong>: Select columns Country, Year, Electricity, Transportation</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="1-6|7-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">microbenchmark</span>(</span>
+<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="1-6|7-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">microbenchmark</span>(</span>
 <span id="cb21-2"><a></a>  <span class="at">dplyr =</span> <span class="fu">select</span>(ghg_ems, Country, Year, Electricity, Transportation),</span>
 <span id="cb21-3"><a></a>  <span class="at">data_table =</span> ghg_ems[, .(Country, Electricity, Transportation)],</span>
 <span id="cb21-4"><a></a>  <span class="at">collapse =</span> <span class="fu">fselect</span>(ghg_ems, Country, Electricity, Transportation),</span>
 <span id="cb21-5"><a></a>  <span class="at">times =</span> <span class="dv">10</span></span>
 <span id="cb21-6"><a></a>)</span>
 <span id="cb21-7"><a></a><span class="co">#&gt; Unit: microseconds</span></span>
-<span id="cb21-8"><a></a><span class="co">#&gt;        expr    min     lq    mean  median     uq    max neval cld</span></span>
-<span id="cb21-9"><a></a><span class="co">#&gt;       dplyr 1068.6 1164.6 2101.62 1728.55 2833.6 4012.4    10 a  </span></span>
-<span id="cb21-10"><a></a><span class="co">#&gt;  data_table  436.2  469.3 1034.74 1192.65 1495.8 1572.6    10  b </span></span>
-<span id="cb21-11"><a></a><span class="co">#&gt;    collapse    5.6    8.8   38.45   14.75   37.1  203.5    10   c</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-8"><a></a><span class="co">#&gt;        expr   min    lq   mean median    uq    max neval cld</span></span>
+<span id="cb21-9"><a></a><span class="co">#&gt;       dplyr 554.8 586.0 892.32  611.5 739.8 3132.2    10  a </span></span>
+<span id="cb21-10"><a></a><span class="co">#&gt;  data_table 331.3 333.9 655.54  351.8 417.7 3321.8    10  ab</span></span>
+<span id="cb21-11"><a></a><span class="co">#&gt;    collapse   4.4   4.8  13.54    7.6   8.7   72.3    10   b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -789,10 +789,10 @@ Dr.&nbsp;Selina Baldauf
 <p>By default, R works on one core but CPUs have multiple cores</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Find out how many cores you have with the parallel package</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Find out how many cores you have with the parallel package</span></span>
 <span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("parallel")</span></span>
 <span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a>parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
-<span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -830,18 +830,18 @@ Dr.&nbsp;Selina Baldauf
 <h2>A slow example</h2>
 <p>Let’s create a very slow square root function</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>slow_sqrt <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>slow_sqrt <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">1</span>) <span class="co"># simulate 1 second of computation time</span></span>
 <span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(x)</span>
-<span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>Before you run anything in parallel, tell R how many cores to use:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Load future package</span></span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Load future package</span></span>
 <span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(future)</span>
 <span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Plan parallel session with 6 cores</span></span>
-<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -852,24 +852,24 @@ Dr.&nbsp;Selina Baldauf
 <div class="column" style="width:50%;">
 <p><strong>Sequential</strong> <strong><code>lapply</code></strong> <br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector of 10 numbers</span></span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector of 10 numbers</span></span>
 <span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb25-4"><a aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">lapply</span>(x, slow_sqrt)</span>
 <span id="cb25-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span>
-<span id="cb25-6"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10.18 sec elapsed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-6"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10.09 sec elapsed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <p><strong>Parallel</strong> <strong><code>future_lapply</code></strong> <br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Load future.apply package</span></span>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Load future.apply package</span></span>
 <span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(future.apply)</span>
 <span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb26-5"><a aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">future_lapply</span>(x, slow_sqrt)</span>
 <span id="cb26-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span>
-<span id="cb26-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2.6 sec elapsed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2.6 sec elapsed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div></div>
@@ -927,19 +927,19 @@ Dr.&nbsp;Selina Baldauf
 <h2>Parallel for loops</h2>
 <p>A normal for loop:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
 <span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
 <span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>  z[i] <span class="ot">&lt;-</span> <span class="fu">slow_sqrt</span>(i)</span>
-<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>Use <code>foreach</code> to write the same loop</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
 <span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%do%</span></span>
 <span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>  {</span>
 <span id="cb28-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">slow_sqrt</span>(i)</span>
-<span id="cb28-5"><a aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-5"><a aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -950,7 +950,7 @@ Dr.&nbsp;Selina Baldauf
 <div class="column" style="width:50%;">
 <p>The <strong>sequential</strong> version</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
 <span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb29-4"><a aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%do%</span></span>
@@ -958,13 +958,13 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb29-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">slow_sqrt</span>(i)</span>
 <span id="cb29-7"><a aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb29-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span>
-<span id="cb29-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10.2 sec elapsed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10.17 sec elapsed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>The <strong>parallel</strong> version</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doFuture)</span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doFuture)</span>
 <span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb30-4"><a aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">foreach</span>(<span class="at">i =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%dofuture%</span></span>
@@ -972,7 +972,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb30-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">slow_sqrt</span>(i)</span>
 <span id="cb30-7"><a aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb30-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span>
-<span id="cb30-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2.39 sec elapsed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb30-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2.25 sec elapsed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div></div>
@@ -985,24 +985,24 @@ Dr.&nbsp;Selina Baldauf
 <div class="column" style="width:50%;">
 <p>The <strong>sequential</strong> version</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># the purrr version</span></span>
 <span id="cb31-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb31-5"><a aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">map</span>(x, slow_sqrt)</span>
 <span id="cb31-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span>
-<span id="cb31-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10.19 sec elapsed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10.11 sec elapsed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>The <strong>parallel</strong> version</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(furrr)</span>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(furrr)</span>
 <span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># the furrr version</span></span>
 <span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
 <span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">future_map</span>(x, slow_sqrt)</span>
 <span id="cb32-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span>
-<span id="cb32-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2.45 sec elapsed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb32-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2.72 sec elapsed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </div>
@@ -1011,8 +1011,8 @@ Dr.&nbsp;Selina Baldauf
 <h2>Close multisession</h2>
 <p>When you are done working in parallel, explicitly close your multisession:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># close the multisession plan</span></span>
-<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(sequential)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># close the multisession plan</span></span>
+<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(sequential)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="replace-slow-code-with-c" class="slide level2">
@@ -1032,21 +1032,21 @@ Dr.&nbsp;Selina Baldauf
 <h2>Rewrite a function in C++</h2>
 <p><strong>Example:</strong> R function to calculate Fibonacci numbers</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># A function to calculate Fibonacci numbers</span></span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># A function to calculate Fibonacci numbers</span></span>
 <span id="cb34-2"><a aria-hidden="true" tabindex="-1"></a>fibonacci_r <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
 <span id="cb34-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
 <span id="cb34-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(n)</span>
 <span id="cb34-5"><a aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
 <span id="cb34-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">fibonacci_r</span>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">fibonacci_r</span>(n <span class="sc">-</span> <span class="dv">2</span>))</span>
 <span id="cb34-7"><a aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb34-8"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb34-8"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the 30th Fibonacci number</span></span>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the 30th Fibonacci number</span></span>
 <span id="cb35-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">fibonacci_r</span>(<span class="dv">30</span>)</span>
-<span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 832040</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 832040</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1054,7 +1054,7 @@ Dr.&nbsp;Selina Baldauf
 <h2>Rewrite a function in C++</h2>
 <p>Use <code>cppFunction</code> to rewrite the function in C++:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rcpp)</span>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rcpp)</span>
 <span id="cb36-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Rewrite the fibonacci_r function in C++</span></span>
 <span id="cb36-4"><a aria-hidden="true" tabindex="-1"></a>fibonacci_cpp <span class="ot">&lt;-</span> <span class="fu">cppFunction</span>(</span>
@@ -1065,14 +1065,14 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb36-9"><a aria-hidden="true" tabindex="-1"></a><span class="st">      return(fibonacci_cpp(n - 1) + fibonacci_cpp(n - 2));</span></span>
 <span id="cb36-10"><a aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
 <span id="cb36-11"><a aria-hidden="true" tabindex="-1"></a><span class="st">  }'</span></span>
-<span id="cb36-12"><a aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb36-12"><a aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the 30th Fibonacci number</span></span>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the 30th Fibonacci number</span></span>
 <span id="cb37-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">fibonacci_cpp</span>(<span class="dv">30</span>)</span>
-<span id="cb37-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 832040</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb37-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 832040</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1082,13 +1082,13 @@ Dr.&nbsp;Selina Baldauf
 <div class="fragment">
 <p>C++ script <code>fibonacci.cpp</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"Rcpp.h"</span></span>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"Rcpp.h"</span></span>
 <span id="cb38-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">// [[Rcpp::export]]</span></span>
 <span id="cb38-4"><a aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> fibonacci_cpp<span class="op">(</span><span class="at">const</span> <span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb38-5"><a aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> <span class="op">(</span>x <span class="op">&lt;</span> <span class="dv">2</span><span class="op">)</span> <span class="cf">return</span><span class="op">(</span>x<span class="op">);</span></span>
 <span id="cb38-6"><a aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="op">(</span>fibonacci<span class="op">(</span>x <span class="op">-</span> <span class="dv">1</span><span class="op">))</span> <span class="op">+</span> fibonacci<span class="op">(</span>x <span class="op">-</span> <span class="dv">2</span><span class="op">);</span></span>
-<span id="cb38-7"><a aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb38-7"><a aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -1096,25 +1096,25 @@ Dr.&nbsp;Selina Baldauf
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sourceCpp</span>(<span class="st">"fibonacci.cpp"</span>)</span>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sourceCpp</span>(<span class="st">"fibonacci.cpp"</span>)</span>
 <span id="cb39-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function in your R script like you are used to</span></span>
-<span id="cb39-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">fibonacci_cpp</span>(<span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb39-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">fibonacci_cpp</span>(<span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="how-much-faster-is-c" class="slide level2">
 <h2>How much faster is C++?</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
 <span id="cb40-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">r =</span> <span class="fu">fibonacci_r</span>(<span class="dv">30</span>),</span>
 <span id="cb40-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">rcpp =</span> <span class="fu">fibonacci_cpp</span>(<span class="dv">30</span>),</span>
 <span id="cb40-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">10</span></span>
 <span id="cb40-5"><a aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb40-6"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Unit: microseconds</span></span>
 <span id="cb40-7"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  expr      min       lq      mean    median       uq      max neval cld</span></span>
-<span id="cb40-8"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     r 368853.5 375472.8 384258.16 383497.70 387699.5 404987.4    10  a </span></span>
-<span id="cb40-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  rcpp    913.8    939.8   1058.99    947.75    983.7   1798.1    10   b</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb40-8"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     r 376508.6 380203.3 382167.28 381371.20 384285.0 390013.1    10  a </span></span>
+<span id="cb40-9"><a aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  rcpp    849.9    865.6    949.38    871.15    926.5   1579.0    10   b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -1174,7 +1174,7 @@ Dr.&nbsp;Selina Baldauf
 <h2>Cache function results</h2>
 <p><strong>Example</strong>: Create a plot on a subset of the <code>iris</code> data set</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Example of using memoise to cache results</span></span>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Example of using memoise to cache results</span></span>
 <span id="cb41-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(memoise)</span>
 <span id="cb41-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb41-4"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -1190,7 +1190,7 @@ Dr.&nbsp;Selina Baldauf
 <span id="cb41-14"><a aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb41-15"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-16"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Version of the function with memoise</span></span>
-<span id="cb41-17"><a aria-hidden="true" tabindex="-1"></a>select_iris_species_mem <span class="ot">&lt;-</span> <span class="fu">memoise</span>(select_iris_species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb41-17"><a aria-hidden="true" tabindex="-1"></a>select_iris_species_mem <span class="ot">&lt;-</span> <span class="fu">memoise</span>(select_iris_species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="cache-function-results-2" class="slide level2">
@@ -1198,13 +1198,13 @@ Dr.&nbsp;Selina Baldauf
 <p><strong>Example</strong>: Create a plot on a subset of the <code>iris</code> data set</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compare the two versions</span></span>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Compare the two versions</span></span>
 <span id="cb42-2"><a aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">microbenchmark</span>(</span>
 <span id="cb42-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">no_cache =</span> <span class="fu">select_iris_species</span>(<span class="dv">10</span>),</span>
 <span id="cb42-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">cache =</span> <span class="fu">select_iris_species_mem</span>(<span class="dv">10</span>)</span>
 <span id="cb42-5"><a aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb42-6"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb42-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -1406,7 +1406,7 @@ Dr.&nbsp;Selina Baldauf
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1556,14 +1556,13 @@ Dr.&nbsp;Selina Baldauf
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
