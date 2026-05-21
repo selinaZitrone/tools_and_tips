@@ -11,7 +11,7 @@ Potential topics for future sessions and workshops. Remove a topic when a sessio
 - [ ] **Research data management and publication** — Make your data FAIR (Findable, Accessible, Interoperable, Reusable): how to document, structure, and publish datasets so they're citable and reusable. (Requested)
 
 ## Visualization & Output
-- [ ] **Publication-ready figures and tables** — Polish your ggplot2 figures and data tables to meet journal standards: fonts, sizing, multi-panel layouts, and export formats.
+- [x] **Publication-ready figures and tables** — Polish your ggplot2 figures and data tables to meet journal standards: fonts, sizing, multi-panel layouts, and export formats. (Session 18, 2026-05-21)
 - [ ] **Interactive web apps with Shiny** — Build and share interactive data applications directly from R — no web development experience needed.
 - [ ] **Interactive dashboards with Quarto** — Create lightweight interactive dashboards to present and share your results.
 - [ ] **Build your personal academic website with Quarto** — Set up and publish a professional academic website for free using Quarto and GitHub Pages. 2 h workshop with product being your own

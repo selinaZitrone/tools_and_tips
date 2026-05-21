@@ -62,6 +62,8 @@ website:
             href: sessions/16_git-3.qmd
           - text: 17 - Quarto websites
             href: sessions/17_quarto-website.qmd
+          - text: 18 - From default to publication-ready ggplot2
+            href: sessions/18_publication-ready-ggplot.qmd
       - icon: github
         href: https://github.com/selinaZitrone/lecture_series
 

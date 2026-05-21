@@ -1,0 +1,21 @@
+---
+title: "From default to publication-ready ggplot2"
+subtitle: "2026-05-21"
+callout-appearance: default
+from: markdown+emoji
+---
+
+### Description
+
+<!-- TODO: add description -->
+
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2026_05_21_publication-ready-ggplot.html"></iframe>
+```
+
+[Slides in full screen](../slides/2026_05_21_publication-ready-ggplot.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2026_05_21_publication-ready-ggplot.pdf" download>Download PDF slides</a>
+
+## Resources
+
+<!-- TODO: add resources -->

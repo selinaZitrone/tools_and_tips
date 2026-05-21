@@ -1,0 +1,26 @@
+---
+title: "Publication-ready ggplot2"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+date: "2026-05-21"
+format:
+  revealjs:
+    footer: "Selina Baldauf // Publication-ready ggplot2"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute:
+  echo: false
+  eval: true
+from: markdown+emoji
+---
+
+## Title slide
+
+<!-- TODO: paste slide content here -->
