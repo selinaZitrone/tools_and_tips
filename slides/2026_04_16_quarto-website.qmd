@@ -203,8 +203,6 @@ format:
 
 You write content like this:
 
-<br>
-
 ````markdown
 # A section header
 
@@ -215,7 +213,6 @@ Some **bold** and *italic* text and a
 
 - First bullet
 - Second bullet
-- Third bullet
 ````
 
 :::
@@ -223,8 +220,6 @@ Some **bold** and *italic* text and a
 ::: {.column}
 
 And it will render like this:
-
-<br>
 
 ### A section header
 
@@ -236,7 +231,6 @@ Some **bold** and *italic* text and a
 :::{.nonincremental}
 - First bullet
 - Second bullet
-- Third bullet
 :::
 
 :::
@@ -291,7 +285,7 @@ File > New Project > New Directory > Quarto Website
 
 :::
 
-![](images/2026_04_16_quarto-website/download_template.png)
+![](images/2026_04_16_quarto-website/download_template.png){width="70%"}
 
 ## Project structure
 
@@ -358,7 +352,7 @@ Check out the [Quarto docs](https://quarto.org/docs/websites/website-about.html#
 
 ::: nonincremental
 
-> :pencil2: **Exercise (10 min):**
+> :pencil2: **Exercise (5 min):**
 >
 > Replace the placeholder content with your own content. 
 > You can also just add some lines and experiment with Markdown formatting. You can do the full content later.
