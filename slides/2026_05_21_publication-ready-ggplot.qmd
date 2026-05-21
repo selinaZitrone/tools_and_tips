@@ -16,24 +16,11 @@ format:
     auto-stretch: false
 editor: source
 execute:
-  echo: false
-  eval: true
-from: markdown+emoji
----
-
----
-title: "From default to publication-ready ggplot2"
-subtitle: "A hands-on workshop"
-author: "Selina Baldauf"
-format:
-  revealjs:
-    slide-number: true
-    code-line-numbers: false
-    highlight-style: github
-execute:
   echo: true
+  eval: true
   warning: false
   message: false
+from: markdown+emoji
 ---
 
 ```{r}
@@ -75,11 +62,29 @@ p_bubble <- ggplot(
   )
 ```
 
-# Intro
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+::: nonincremental
+
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+- One topic from the world of scientific workflows
+- Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+- If you don't want to miss a lecture
+  - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+- For credit points: Send me a short message (Email or Webex)
+
+:::
 
 ## From default to publication-ready
 
 - Making a first plot is easy, but making it publication-ready takes more work, choices and iterations
+
+. . .
+
+:::{.nonincremental}
 
 So many things you can tune:
 
@@ -88,6 +93,8 @@ So many things you can tune:
 - How to highlight your results
 - Creating multi-panel plots
 - Exporting at a readable size
+
+:::
 
 . . .
 
@@ -112,12 +119,18 @@ This is not an exhaustive list, there is so much more ggplot extension packages 
 
 ## How it works
 
+:::{.nonincremental}
+
 - There's a **GitHub repo** you download and open in your IDE (I'll use Positron)
 - I demonstrate each topic: **follow along or just watch**
 - Each module has a short **exercise** to play with the concept
 - **Questions** anytime: in the chat or just unmute
 
+:::
+
 ## Get set up
+
+:::{.nonincremental}
 
 1. Click the green **Code** button → **Download ZIP**
 2. Unzip it somewhere you can find it
@@ -125,11 +138,11 @@ This is not an exhaustive list, there is so much more ggplot extension packages 
    - *(Positron/VS code users: open the folder)*
 4. Run `install_packages.R` to install today's packages
 
-. . .
+Repo: https://github.com/selinaZitrone/advanced-ggplot-workshop
 
-Repo: **<https://github.com/selinaZitrone/advanced-ggplot-workshop>**
+:::
 
-# Module 1: Custom themes
+# 1. Custom themes {.inverse}
 
 ## The default isn't publication-ready
 
@@ -168,7 +181,7 @@ wrap_plots(
 
 A theme controls everything that isn't data: Fonts, sizes, colours, grid lines, spacing, legends, ...
 
-![ggplot2 theme-system cheatsheet (by [Clara Granell](https://github.com/claragranell/ggplot2/tree/main))](ggplot_theme_system_cheatsheet.png){fig-align="center" width="80%"}
+![ggplot2 theme-system cheatsheet (by [Clara Granell](https://github.com/claragranell/ggplot2/tree/main))](images/2026_05_21_publication-ready-ggplot/ggplot_theme_system_cheatsheet.png){fig-align="center" width="60%"}
 
 ## Inheritance of `theme` elements
 
@@ -204,15 +217,15 @@ p_bubble +
 
 ## Live demo
 
-Open `R/01_themes.R`
+Open `demo/01_themes.R`
 
-## Your turn
+## Your turn {.inverse}
 
-### Task (~7 min)
-
+> :pencil2: **Exercise (~7 min):**
+>
 > Open `exercises/01_themes_exercise.R`
 
-# Module 2: Colour with intent
+# 2. Colour with intent {.inverse}
 
 ```{r}
 #| label: m2-setup
@@ -262,15 +275,19 @@ ramp_panel <- function(named_cols, ncol = 1) {
 
 Use colours your reader already associates with the thing.
 
-![[Blogpost on colours by Lisa Charlotte Muth (Datawrapper)](https://www.datawrapper.de/blog/colors)](intuitive_colors.png)
+![[Blogpost on colours by Lisa Charlotte Muth (Datawrapper)](https://www.datawrapper.de/blog/colors)](images/2026_05_21_publication-ready-ggplot/intuitive_colors.png)
 
 
 ## Two things that matter
 
 For scientific figures:
 
+:::{.nonincremental}
+
 1. **Intuitive** colours that match what your reader expects
 2. **Colourblind-safe** colours
+
+:::
 
 ```{r}
 #| echo: false
@@ -431,15 +448,15 @@ ramp_panel(
 
 ## Live demo
 
-Open `R/02_color.R`.
+Open `demo/02_color.R`.
 
-## Your turn
+## Your turn {.inverse}
 
-### Task (~5 min)
-
+> :pencil2: **Exercise (~5 min):**
+>
 > Open `exercises/02_color_exercise.R`
 
-# Module 3: Multi-panel layouts
+# 3. Multi-panel layouts {.inverse}
 
 ```{r}
 #| label: m4-setup
@@ -506,26 +523,30 @@ p_bubble_m4 /
 
 ## The patchwork package
 
+:::{.nonincremental}
+
 - Compose plots
 - Collect shared legends and axes
 - Tag panels
 - Apply additional plot layers to every panel
 - Place plots inside plots as insets
 
+:::
+
 The [patchwork documentation](https://patchwork.data-imaginist.com/) is excellent
 
 ## Live demo
 
-Open `R/03_patchwork.R`.
+Open `demo/03_patchwork.R`.
 
-## Your turn
+## Your turn {.inverse}
 
-### Task (~8 min)
-
+> :pencil2: **Exercise (~8 min):**
+>
 > Open `exercises/03_patchwork_exercise.R`
 
 
-# Module 4: Exporting figures
+# 4. Exporting figures {.inverse}
 
 ```{r}
 #| label: m5-setup
@@ -575,15 +596,15 @@ Starting points for Canvas and font sizes:
 
 ## Live demo
 
-Open `R/04_export.R`.
+Open `demo/04_export.R`.
 
-## Your turn
+## Your turn {.inverse}
 
-### Task (~7 min)
-
+> :pencil2: **Exercise (~7 min):**
+>
 > Open `exercises/04_export_exercise.R`
 
-# Other handy packages
+# Other handy packages {.inverse}
 
 ## `gghighlight`
 
@@ -683,8 +704,6 @@ ggplot(gap_2007 |> filter(continent != "Oceania"), aes(lifeExp, continent, fill 
 
 :::
 
-# Outro
-
 ## Takeaways
 
 What you can take back to your own plots:
@@ -694,5 +713,18 @@ What you can take back to your own plots:
 3. **Multi-panel layouts**: compose plots with `patchwork`, collect shared legends, add tag panels, ...
 4. **Export**: pick the canvas size, preview with `ggview::canvas()`, tweak `base_size` and geoms, and save with `ragg::ragg_png` or `cairo_pdf`.
 
+## Next lecture/workshop
 
+#### Topic tba
 
+<br>
+
+:date: 18.06.2026 :clock4: 4-5 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+# The end :) {background-color="#2c2c2c"}
+
+Questions?
