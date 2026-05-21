@@ -606,6 +606,8 @@ Open `demo/04_export.R`.
 
 # Other handy packages {.inverse}
 
+The official [ggplot extension gallery](https://exts.ggplot2.tidyverse.org/gallery/) lists ~120 community extension packages to browse
+
 ## `gghighlight`
 
 [`gghighlight`](https://yutannihilation.github.io/gghighlight/) to fade data and highlight specific elements.
