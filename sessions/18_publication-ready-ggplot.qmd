@@ -16,13 +16,6 @@ In this hands-on workshop, you'll learn how to transform standard ggplot2 output
 
 Along the way I will show you a few useful extension packages from the ggplot2 ecosystem (`ggtext`, `ggrepel`, `gghighlight`, `ggdist`, `ggridges`) so you can pick up techniques you can apply directly to your own plots.
 
-### Workshop materials
-
-The workshop repo contains all demo scripts, exercises, and solutions:
-
-[github.com/selinaZitrone/advanced-ggplot-workshop](https://github.com/selinaZitrone/advanced-ggplot-workshop)
-
-
 ```{=html}
 <iframe class="slide-deck" width="780" height="500" src="../slides/2026_05_21_publication-ready-ggplot.html"></iframe>
 ```
@@ -30,6 +23,12 @@ The workshop repo contains all demo scripts, exercises, and solutions:
 [Slides in full screen](../slides/2026_05_21_publication-ready-ggplot.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2026_05_21_publication-ready-ggplot.pdf" download>Download PDF slides</a>
 
 ## Resources
+
+### Workshop materials
+
+The workshop repo contains all demo scripts, exercises, and solutions:
+
+[github.com/selinaZitrone/advanced-ggplot-workshop](https://github.com/selinaZitrone/advanced-ggplot-workshop)
 
 ### 1. Custom themes
 

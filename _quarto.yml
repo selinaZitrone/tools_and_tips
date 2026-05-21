@@ -77,7 +77,7 @@ format:
     toc: true
     code-copy: true
     code-overflow: wrap
-    freeze: true
+    freeze: auto
 
 
 
