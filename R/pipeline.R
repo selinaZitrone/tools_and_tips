@@ -1,4 +1,4 @@
-system("quarto render --cache-refresh")
+system("quarto render")
 
 # Render slide PDFs only for slides that have changed since the last PDF build.
 # PDFs are stored in slides/slides_pdf/ (tracked in git, never deleted by quarto render).

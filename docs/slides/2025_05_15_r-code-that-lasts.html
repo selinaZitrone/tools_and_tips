@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-14d2473a982606de670f0038afa36c2b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-f54e89b23e61ed5ea72ef6b7d94f77ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.29">
 
   <meta name="dcterms.date" content="2025-05-15">
   <title>Scientific workflows: Tools and Tips 🛠️ – Write R code that lasts</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #bf0303; } /* VerbatimString */
     code span.wa { color: #bf0303; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-38333f6353ed9da038f001ef3dcdf733.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f8b811162412c090d44ed2a2142c94ae.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -373,11 +373,11 @@
 <div class="fragment">
 <p>Common workflow: <br><br></p>
 <p>Set <strong>working directory</strong> with <code>setwd()</code>, then read files from there:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># set the project root as working directory</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># set the project root as working directory</span></span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/Selina/path/that/only/I/have"</span>)</span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># read my data using a path relative to the working directory</span></span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/temperature.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/temperature.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>This is <strong>not reproducible!</strong> Your computer at exactly this time is the only one that has this working directory.</p>
@@ -398,7 +398,7 @@
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/temperature.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/temperature.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
@@ -440,11 +440,11 @@
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># use here::here</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># use here::here</span></span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"temperature.csv"</span>))</span>
 <span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data/temperature.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data/temperature.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <ul>
@@ -493,7 +493,7 @@
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Purpose: Create Figure 2 showing the relationship</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Purpose: Create Figure 2 showing the relationship</span></span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># between body mass and bill length</span></span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Authors: Selina Baldauf, Jane Doe, Jon Doe</span></span>
 <span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -511,7 +511,7 @@
 <span id="cb4-16"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-17"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Read data --------------------------------------</span></span>
 <span id="cb4-18"><a aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/temperature.csv"</span>)</span>
-<span id="cb4-19"><a aria-hidden="true" tabindex="-1"></a>rainfall <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/rainfall.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-19"><a aria-hidden="true" tabindex="-1"></a>rainfall <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/rainfall.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </div>
@@ -523,14 +523,14 @@
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Load data ---------------------------------------------------------------</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Load data ---------------------------------------------------------------</span></span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>input_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(input_file)</span>
 <span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data ---------------------------------------------------------------</span></span>
 <span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(input_data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment">Insert a section label with comment + at least 4 <code>####</code> or <code>----</code>
@@ -561,7 +561,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
 <span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>day_one</span>
 <span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">clean_data</span>()</span>
@@ -572,7 +572,7 @@
 <span id="cb6-9"><a aria-hidden="true" tabindex="-1"></a>first_day_of_the_month</span>
 <span id="cb6-10"><a aria-hidden="true" tabindex="-1"></a>dm1</span>
 <span id="cb6-11"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">f1</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-12"><a aria-hidden="true" tabindex="-1"></a><span class="fu">f1</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -583,12 +583,12 @@
 <li>Always put spaces after a comma</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a>x[, <span class="dv">1</span>]</span>
 <span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
 <span id="cb7-5"><a aria-hidden="true" tabindex="-1"></a>x[,<span class="dv">1</span>]</span>
-<span id="cb7-6"><a aria-hidden="true" tabindex="-1"></a>x[ , <span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-6"><a aria-hidden="true" tabindex="-1"></a>x[ , <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -599,12 +599,12 @@
 <li>No spaces around parentheses for normal function calls</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
 <span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
 <span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>( x, <span class="at">na.rm =</span> <span class="cn">TRUE</span> )</span>
-<span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span> (x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span> (x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-a-consistent-coding-style---spacing-2" class="slide level2">
@@ -615,13 +615,13 @@
 <li>Spaces around most operators (<code>&lt;-</code>, <code>==</code>, <code>+</code>, etc.)</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> (feet <span class="sc">*</span> <span class="dv">12</span>) <span class="sc">+</span> inches</span>
 <span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
 <span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a>height<span class="ot">&lt;-</span>feet<span class="sc">*</span><span class="dv">12</span><span class="sc">+</span>inches</span>
-<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-a-consistent-coding-style---spacing-3" class="slide level2">
@@ -633,14 +633,14 @@
 <li>Spaces before pipes (<code>|&gt;</code>, <code>%&gt;%</code>) and <code>+</code> in ggplot followed by new line</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>iris<span class="sc">|&gt;</span><span class="fu">group_by</span>(Species)<span class="sc">|&gt;</span><span class="fu">summarize_if</span>(is.numeric, mean)<span class="sc">|&gt;</span><span class="fu">ungroup</span>()</span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
 <span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>iris <span class="sc">|&gt;</span></span>
 <span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">|&gt;</span></span>
 <span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize_all</span>(mean) <span class="sc">|&gt;</span></span>
-<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-a-consistent-coding-style---spacing-4" class="slide level2">
@@ -652,12 +652,12 @@
 <li>Spaces before pipes (<code>|&gt;</code>, <code>%&gt;%</code>) and <code>+</code> in ggplot followed by new line</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Width, <span class="at">y =</span> Sepal.Length, <span class="at">color =</span> Species))<span class="sc">+</span><span class="fu">geom_point</span>()</span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
 <span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Width, <span class="at">y =</span> Sepal.Length, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-a-consistent-coding-style---width" class="slide level2">
@@ -670,7 +670,7 @@
 <li>Limit your line width to 80 characters.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
 <span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>iris <span class="sc">|&gt;</span> <span class="fu">group_by</span>(Species) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">Sepal.Length =</span> <span class="fu">mean</span>(Sepal.Length), <span class="at">Sepal.Width =</span> <span class="fu">mean</span>(Sepal.Width), <span class="at">Species =</span> <span class="fu">n_distinct</span>(Species))</span>
 <span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
@@ -680,7 +680,7 @@
 <span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">Sepal.Length =</span> <span class="fu">mean</span>(Sepal.Length),</span>
 <span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">Sepal.Width =</span> <span class="fu">mean</span>(Sepal.Width),</span>
 <span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">Species =</span> <span class="fu">n_distinct</span>(Species)</span>
-<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-a-consistent-coding-style" class="slide level2">
@@ -695,12 +695,12 @@
 <p>The <a href="https://github.com/jimhester/lintr"><code>lintr</code> package</a> analyses your code files or entire project and tells you what to fix.</p>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># install the package before you can use it</span></span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># install the package before you can use it</span></span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"lintr"</span>)</span>
 <span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># lint specific file</span></span>
 <span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>lintr<span class="sc">::</span><span class="fu">lint</span>(<span class="at">filename =</span> <span class="st">"analysis/01_prepare_data.R"</span>)</span>
 <span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># lint a directory (by default the whole project)</span></span>
-<span id="cb13-6"><a aria-hidden="true" tabindex="-1"></a>lintr<span class="sc">::</span><span class="fu">lint_dir</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-6"><a aria-hidden="true" tabindex="-1"></a>lintr<span class="sc">::</span><span class="fu">lint_dir</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -738,8 +738,8 @@
 <li class="fragment">Use <code>source()</code> to source R scripts in other scripts</li>
 </ul>
 <div class="fragment">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># source data preparation in other scripts</span></span>
-<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"01_prepare-data.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># source data preparation in other scripts</span></span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"01_prepare-data.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="modularize-long-scripts-1" class="slide level2">
@@ -749,12 +749,12 @@
 <li class="fragment">Often called <code>make.R</code>, <code>run.R</code> or <code>main.R</code></li>
 </ul>
 <div class="fragment">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data</span></span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data</span></span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"01_prepare-data.R"</span>)</span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Run all statistical models</span></span>
 <span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"02_run-models.R"</span>)</span>
 <span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Create manuscript figures</span></span>
-<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"03_make-figures.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"03_make-figures.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment">Gives a nice overview of your workflow</li>
@@ -766,7 +766,7 @@
 <div class="fragment">
 <p>Example: Same data preparation code for multiple data sets</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data</span></span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data</span></span>
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>my_data1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/data1.csv"</span>)</span>
 <span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>my_data2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/data2.csv"</span>)</span>
 <span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Clean and summarize data</span></span>
@@ -781,7 +781,7 @@
 <span id="cb16-13"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="fu">mean</span>(height),</span>
 <span id="cb16-14"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">biomass =</span> <span class="fu">mean</span>(biomass),</span>
 <span id="cb16-15"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(country, species)</span>
-<span id="cb16-16"><a aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-16"><a aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -800,7 +800,7 @@
 <div class="fragment">
 <p>Function in <code>R/prepare_data.R</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a>prepare_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file_path) {</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a>prepare_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file_path) {</span>
 <span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="co"># Read the data</span></span>
 <span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>  my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(filepath)</span>
 <span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clean and summarize data</span></span>
@@ -812,18 +812,18 @@
 <span id="cb17-10"><a aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb17-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return the cleaned data from the function</span></span>
 <span id="cb17-12"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(my_data)</span>
-<span id="cb17-13"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-13"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
 <p>Source and use the <code>prepare_data</code> function in all scripts where it is needed</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Source the function</span></span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Source the function</span></span>
 <span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/prepare_data.R"</span>)</span>
 <span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function to read and prepare the data</span></span>
 <span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a>my_data1 <span class="ot">&lt;-</span> <span class="fu">prepare_data</span>(<span class="st">"data/data1.csv"</span>)</span>
-<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a>my_data2 <span class="ot">&lt;-</span> <span class="fu">prepare_data</span>(<span class="st">"data/data2.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a>my_data2 <span class="ot">&lt;-</span> <span class="fu">prepare_data</span>(<span class="st">"data/data2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section></section>
@@ -837,7 +837,7 @@
 <div class="fragment">
 <p>Add the output of <code>devtools::session_info()</code> to your <code>README</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
@@ -845,43 +845,54 @@
  os       Windows 11 x64 (build 26200)
  system   x86_64, mingw32
  ui       RTerm
- language (EN)
+ language en
  collate  English_Germany.utf8
  ctype    English_Germany.utf8
  tz       Europe/Berlin
- date     2026-04-01
- pandoc   3.6.3 @ c:\\Program Files\\Positron\\resources\\app\\quarto\\bin\\tools/ (via rmarkdown)
+ date     2026-05-21
+ pandoc   3.8.3 @ c:\\Program Files\\Positron\\resources\\app\\quarto\\bin\\tools/ (via rmarkdown)
  quarto   NA @ C:\\Users\\Selina\\AppData\\Local\\Programs\\Quarto\\bin\\quarto.exe
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date (UTC) lib source
- cachem        1.1.0   2024-05-16 [1] CRAN (R 4.5.2)
- cli           3.6.5   2025-04-23 [1] CRAN (R 4.5.2)
- devtools      2.4.6   2025-10-03 [1] CRAN (R 4.5.2)
- digest        0.6.39  2025-11-19 [1] CRAN (R 4.5.2)
- ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.5.2)
- evaluate      1.0.5   2025-08-27 [1] CRAN (R 4.5.2)
- fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.5.2)
- fs            1.6.6   2025-04-12 [1] CRAN (R 4.5.2)
- glue          1.8.0   2024-09-30 [1] CRAN (R 4.5.2)
- htmltools     0.5.9   2025-12-04 [1] CRAN (R 4.5.2)
- jsonlite      2.0.0   2025-03-27 [1] CRAN (R 4.5.2)
+ cachem        1.1.0   2024-05-16 [1] CRAN (R 4.5.1)
+ cli           3.6.5   2025-04-23 [1] CRAN (R 4.5.1)
+ devtools      2.4.5   2022-10-11 [1] CRAN (R 4.5.1)
+ digest        0.6.37  2024-08-19 [1] CRAN (R 4.5.1)
+ ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.5.1)
+ evaluate      1.0.5   2025-08-27 [1] CRAN (R 4.5.1)
+ fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.5.1)
+ fs            1.6.6   2025-04-12 [1] CRAN (R 4.5.1)
+ glue          1.8.0   2024-09-30 [1] CRAN (R 4.5.1)
+ htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.5.1)
+ htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.5.1)
+ httpuv        1.6.16  2025-04-16 [1] CRAN (R 4.5.1)
+ jsonlite      2.0.0   2025-03-27 [1] CRAN (R 4.5.1)
  knitr         1.51    2025-12-20 [1] CRAN (R 4.5.2)
+ later         1.4.4   2025-08-27 [1] CRAN (R 4.5.1)
  lifecycle     1.0.5   2026-01-08 [1] CRAN (R 4.5.2)
  magrittr      2.0.4   2025-09-12 [1] CRAN (R 4.5.2)
- memoise       2.0.1   2021-11-26 [1] CRAN (R 4.5.2)
+ memoise       2.0.1   2021-11-26 [1] CRAN (R 4.5.1)
+ mime          0.13    2025-03-17 [1] CRAN (R 4.5.0)
+ miniUI        0.1.2   2025-04-17 [1] CRAN (R 4.5.1)
  otel          0.2.0   2025-08-29 [1] CRAN (R 4.5.2)
- pkgbuild      1.4.8   2025-05-26 [1] CRAN (R 4.5.2)
- pkgload       1.4.1   2025-09-23 [1] CRAN (R 4.5.2)
+ pkgbuild      1.4.8   2025-05-26 [1] CRAN (R 4.5.1)
+ pkgload       1.5.0   2026-02-03 [1] CRAN (R 4.5.2)
+ profvis       0.4.0   2024-09-20 [1] CRAN (R 4.5.1)
+ promises      1.5.0   2025-11-01 [1] CRAN (R 4.5.2)
  purrr         1.2.1   2026-01-09 [1] CRAN (R 4.5.2)
- R6            2.6.1   2025-02-15 [1] CRAN (R 4.5.2)
- remotes       2.5.0   2024-03-17 [1] CRAN (R 4.5.2)
+ R6            2.6.1   2025-02-15 [1] CRAN (R 4.5.1)
+ Rcpp          1.1.1   2026-01-10 [1] CRAN (R 4.5.2)
+ remotes       2.5.0   2024-03-17 [1] CRAN (R 4.5.1)
  rlang         1.1.7   2026-01-09 [1] CRAN (R 4.5.2)
  rmarkdown     2.30    2025-09-28 [1] CRAN (R 4.5.2)
- sessioninfo   1.2.3   2025-02-05 [1] CRAN (R 4.5.2)
- usethis       3.2.1   2025-09-06 [1] CRAN (R 4.5.2)
+ sessioninfo   1.2.3   2025-02-05 [1] CRAN (R 4.5.1)
+ shiny         1.12.1  2025-12-09 [1] CRAN (R 4.5.2)
+ urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.5.1)
+ usethis       3.2.1   2025-09-06 [1] CRAN (R 4.5.1)
  vctrs         0.7.1   2026-01-23 [1] CRAN (R 4.5.2)
  xfun          0.56    2026-01-18 [1] CRAN (R 4.5.2)
+ xtable        1.8-4   2019-04-21 [1] CRAN (R 4.5.1)
  yaml          2.3.12  2025-12-10 [1] CRAN (R 4.5.2)
 
  [1] C:/Users/Selina/AppData/Local/Programs/R/R-4.5.2/library
@@ -922,18 +933,18 @@
 <section id="manage-dependencies-with-renv-1" class="slide level2">
 <h2>Manage dependencies with <code>{renv}</code></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Get started</span></span>
-<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"renv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Get started</span></span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"renv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>Very simple to use and integrate into your project workflow:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: initialize a project level R library</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: initialize a project level R library</span></span>
 <span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()</span>
 <span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: save the current status of your library to a lock file</span></span>
 <span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span>
 <span id="cb22-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: restore state of your project from renv.lock</span></span>
-<span id="cb22-6"><a aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-6"><a aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment">Others only need to install the <code>renv</code> package, then they can also call <code>renv::restore()</code></li>
@@ -1195,7 +1206,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1345,14 +1356,13 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

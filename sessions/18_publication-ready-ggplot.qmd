@@ -1,0 +1,68 @@
+---
+title: "From default to publication-ready ggplot2"
+subtitle: "2026-05-21"
+callout-appearance: default
+from: markdown+emoji
+---
+
+### Description
+
+In this hands-on workshop, you'll learn how to transform standard ggplot2 outputs into clear, polished, publication-ready figures. Working through practical examples, we will cover:
+
+- building **custom themes** for a consistent look
+- choosing **colour** scales with intent (intuitive and colourblind-safe palettes)
+- composing **multi-panel layouts** with `patchwork`
+- **exporting** figures at the resolution and dimensions journals expect
+
+Along the way I will show you a few useful extension packages from the ggplot2 ecosystem (`ggtext`, `ggrepel`, `gghighlight`, `ggdist`, `ggridges`) so you can pick up techniques you can apply directly to your own plots.
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2026_05_21_publication-ready-ggplot.html"></iframe>
+```
+
+[Slides in full screen](../slides/2026_05_21_publication-ready-ggplot.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2026_05_21_publication-ready-ggplot.pdf" download>Download PDF slides</a>
+
+## Resources
+
+### Workshop materials
+
+The workshop repo contains all demo scripts, exercises, and solutions:
+
+[github.com/selinaZitrone/advanced-ggplot-workshop](https://github.com/selinaZitrone/advanced-ggplot-workshop)
+
+### 1. Custom themes
+
+- [`theme()` reference](https://ggplot2.tidyverse.org/reference/theme.html) doc for every theme argument
+- [`ggthemes`](https://jrnold.github.io/ggthemes/): ready-made themes if you don't want to build your own
+
+### 2. Colour
+
+- [Which color scale to use](https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/): Blogpost by Lisa Charlotte Muth, Datawrapper
+- [Colour pitfalls (Wilke, *Fundamentals of Data Visualization*)](https://clauswilke.com/dataviz/color-pitfalls.html): background on choosing colour and the Okabe-Ito and other CVD-safe palettes
+- [`viridis`](https://sjmgarnier.github.io/viridis/): More info on the viridis palette colors
+- [`scico`](https://github.com/thomasp85/scico) and [Fabio Crameri's colour maps](https://www.fabiocrameri.ch/colourmaps/) for scientific palettes, designed to be fair and citable
+- [`colorBlindness`](https://cran.r-project.org/package=colorBlindness) to check your plots for colourblind accessibility
+
+### 3. Multi-panel layouts with patchwork
+
+- [patchwork documentation](https://patchwork.data-imaginist.com/) is excellent and has a gallery of examples to browse
+
+### 4. Exporting figures
+
+- [Export module from ggplot2-uncharted workshop](https://www.ggplot2-uncharted.com/module1/export)
+- [`ggview`](https://github.com/idmn/ggview) to preview a plot at its true size before exporting
+- [`ragg`](https://ragg.r-lib.org/) for fast, high-quality raster device for PNG/TIFF
+
+## Other handy packages
+
+The official [ggplot extension gallery](https://exts.ggplot2.tidyverse.org/gallery/) lists ~120 community extension packages to browse
+
+
+- [`gghighlight`](https://yutannihilation.github.io/gghighlight/) — fade non-focal data with one line
+- [`ggrepel`](https://ggrepel.slowkow.com/) — non-overlapping text labels
+- [`ggtext`](https://wilkelab.org/ggtext/) — markdown / HTML in titles, axis text, and annotations
+- [`ggdist`](https://mjskay.github.io/ggdist/) — distributions and uncertainty (raincloud, halfeye, interval plots)
+- [`ggridges`](https://wilkelab.org/ggridges/) — ridgeline / joy plots
+
+
+

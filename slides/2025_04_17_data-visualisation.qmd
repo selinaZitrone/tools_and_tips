@@ -513,12 +513,12 @@ raincloud_plot <- ggplot(
     .width = 0,
     point_colour = NA
   ) +
-  # Add half-points (raw data) using gghalves on the left
-  gghalves::geom_half_point(
+  # Add half-points (raw data) using ggdist::stat_dots on the left
+  ggdist::stat_dots(
     aes(color = category),
-    side = "l",
-    range_scale = 0.4,
-    size = 2
+    side = "left",
+    justification = 1.1,
+    dotsize = 0.6
   ) +
   scale_fill_brewer(palette = "Set2") +
   scale_color_brewer(palette = "Set2")

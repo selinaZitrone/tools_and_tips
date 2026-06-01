@@ -1,155 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2026_05_21_publication-ready-ggplot.html</loc>
+    <lastmod>2026-05-21T11:56:52.190Z</lastmod>
+  </url>
+  <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/slides/2026_01_15_git-3.html</loc>
-    <lastmod>2026-03-31T10:06:26.762Z</lastmod>
+    <lastmod>2026-04-15T17:14:13.884Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_11_20_obsidian-2.html</loc>
-    <lastmod>2026-03-31T10:06:26.755Z</lastmod>
+    <lastmod>2026-04-15T17:14:13.884Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_07_17_git-2.html</loc>
-    <lastmod>2026-03-31T10:06:26.740Z</lastmod>
+    <lastmod>2026-04-15T17:14:13.883Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_05_15_r-code-that-lasts.html</loc>
-    <lastmod>2026-03-31T10:06:26.725Z</lastmod>
+    <lastmod>2026-04-15T17:14:13.882Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/slides/2024_02_15_tidyverse.html</loc>
-    <lastmod>2026-03-31T10:06:26.709Z</lastmod>
+    <lastmod>2026-04-15T17:14:13.880Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_11_16_efficient_r.html</loc>
-    <lastmod>2026-03-31T10:06:26.694Z</lastmod>
+    <lastmod>2026-04-15T17:14:13.879Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_07_20_research_compendia.html</loc>
-    <lastmod>2026-03-31T10:06:26.678Z</lastmod>
+    <lastmod>2026-04-15T17:14:13.878Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_05_11_quarto.html</loc>
-    <lastmod>2026-03-31T10:06:26.662Z</lastmod>
+    <lastmod>2026-04-15T17:14:13.876Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html</loc>
-    <lastmod>2026-03-12T09:08:15.225Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/16_git-3.html</loc>
-    <lastmod>2026-03-31T10:01:04.621Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/14_obsidian-2.html</loc>
-    <lastmod>2026-03-31T10:01:04.608Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/12_git-2.html</loc>
-    <lastmod>2026-03-31T10:01:04.593Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/10_r-code-that-lasts.html</loc>
-    <lastmod>2026-03-31T10:01:04.578Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/08_tidyverse.html</loc>
-    <lastmod>2026-03-31T10:01:04.565Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/06_efficient_r.html</loc>
-    <lastmod>2026-03-31T10:01:04.548Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/04_research_compendia.html</loc>
-    <lastmod>2026-03-31T10:01:04.533Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/02_quarto.html</loc>
-    <lastmod>2026-03-31T10:01:04.518Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/index.html</loc>
-    <lastmod>2026-04-16T08:35:42.486Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/01_what_they_forgot.html</loc>
-    <lastmod>2026-03-31T10:01:04.509Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/03_git.html</loc>
-    <lastmod>2026-03-31T10:01:04.525Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/05_obsidian.html</loc>
-    <lastmod>2026-03-31T10:01:04.541Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/07_ai_tools.html</loc>
-    <lastmod>2026-03-31T10:01:04.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/09_data_visualisation.html</loc>
-    <lastmod>2026-03-31T10:01:04.571Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/11_efficient-r-2.html</loc>
-    <lastmod>2026-03-31T10:01:04.586Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/13_quarto-2.html</loc>
-    <lastmod>2026-03-31T10:01:04.601Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/15_github-copilot.html</loc>
-    <lastmod>2026-03-31T10:01:04.615Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/17_quarto-website/publish-quarto-website.html</loc>
+    <lastmod>2026-04-16T10:56:48.830Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/02_quarto/penguins_paper.html</loc>
-    <lastmod>2026-03-12T09:08:15.223Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_04_20_what_they_forgot_to_teach_you.html</loc>
-    <lastmod>2026-03-31T10:06:26.654Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_06_15_git.html</loc>
-    <lastmod>2026-03-31T10:06:26.670Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_10_19_obsidian.html</loc>
-    <lastmod>2026-03-31T10:06:26.685Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2024_01_18_ai_tools.html</loc>
-    <lastmod>2026-03-31T10:06:26.701Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_04_17_data-visualisation.html</loc>
-    <lastmod>2026-03-31T14:02:19.690Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_06_19_efficient-r-2.html</loc>
-    <lastmod>2026-03-31T10:06:26.733Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_10_16_quarto-2.html</loc>
-    <lastmod>2026-03-31T14:13:23.434Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_12_18_github-copilot.html</loc>
-    <lastmod>2026-03-31T10:06:26.762Z</lastmod>
-  </url>
-  <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2026_04_16_quarto-website.html</loc>
-    <lastmod>2026-04-16T08:29:53.191Z</lastmod>
+    <lastmod>2025-10-16T09:35:38.547Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/tools_and_tips/sessions/17_quarto-website.html</loc>
     <lastmod>2026-04-16T10:14:12.136Z</lastmod>
   </url>
   <url>
-    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/17_quarto-website/publish-quarto-website.html</loc>
-    <lastmod>2026-04-16T10:56:48.830Z</lastmod>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/15_github-copilot.html</loc>
+    <lastmod>2026-04-15T17:14:13.875Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/13_quarto-2.html</loc>
+    <lastmod>2026-04-15T17:14:13.874Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/11_efficient-r-2.html</loc>
+    <lastmod>2026-04-15T17:14:13.873Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/09_data_visualisation.html</loc>
+    <lastmod>2026-04-15T17:14:13.873Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/07_ai_tools.html</loc>
+    <lastmod>2026-04-15T17:14:13.872Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/05_obsidian.html</loc>
+    <lastmod>2026-04-15T17:14:13.870Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/03_git.html</loc>
+    <lastmod>2026-04-15T17:14:13.870Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/01_what_they_forgot.html</loc>
+    <lastmod>2026-04-15T17:14:13.869Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/index.html</loc>
+    <lastmod>2026-05-21T11:16:42.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/02_quarto.html</loc>
+    <lastmod>2026-04-15T17:14:13.869Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/04_research_compendia.html</loc>
+    <lastmod>2026-04-15T17:14:13.870Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/06_efficient_r.html</loc>
+    <lastmod>2026-04-15T17:14:13.871Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/08_tidyverse.html</loc>
+    <lastmod>2026-04-15T17:14:13.872Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/10_r-code-that-lasts.html</loc>
+    <lastmod>2026-04-15T17:14:13.873Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/12_git-2.html</loc>
+    <lastmod>2026-04-15T17:14:13.873Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/14_obsidian-2.html</loc>
+    <lastmod>2026-04-15T17:14:13.874Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/16_git-3.html</loc>
+    <lastmod>2026-04-15T17:14:13.875Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/18_publication-ready-ggplot.html</loc>
+    <lastmod>2026-05-21T12:21:11.745Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html</loc>
+    <lastmod>2025-12-18T11:49:16.184Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_04_20_what_they_forgot_to_teach_you.html</loc>
+    <lastmod>2026-04-15T17:14:13.876Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_06_15_git.html</loc>
+    <lastmod>2026-04-15T17:14:13.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2023_10_19_obsidian.html</loc>
+    <lastmod>2026-04-15T17:14:13.879Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2024_01_18_ai_tools.html</loc>
+    <lastmod>2026-04-15T17:14:13.879Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_04_17_data-visualisation.html</loc>
+    <lastmod>2026-05-21T12:16:55.994Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_06_19_efficient-r-2.html</loc>
+    <lastmod>2026-04-15T17:14:13.882Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_10_16_quarto-2.html</loc>
+    <lastmod>2026-04-15T17:14:13.883Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2025_12_18_github-copilot.html</loc>
+    <lastmod>2026-04-15T17:14:13.884Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/tools_and_tips/slides/2026_04_16_quarto-website.html</loc>
+    <lastmod>2026-04-16T12:03:37.712Z</lastmod>
   </url>
 </urlset>

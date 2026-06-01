@@ -25,6 +25,7 @@ Imports:
     ggplot2,
     ggridges,
     ggtext,
+    gghalves,
     git2r,
     here,
     knitr,
@@ -39,7 +40,8 @@ Imports:
     readxl,
     scales,
     tictoc,
-    tidyr
+    tidyr,
+    datasauRus
 URL: https://github.com/selinaZitrone/tools_and_tips
 BugReports: https://github.com/selinaZitrone/tools_and_tips/issues
 Type: Workshop
