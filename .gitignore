@@ -24,3 +24,9 @@ sessions/additional_material/02_quarto/*_files/*
 _extensions/*
 
 **/*.quarto_ipynb
+
+# AI peer-review (local secrets + scratch)
+.env
+.peer-review/tmp/
+ai-peer-review/
+.claude/settings.json
