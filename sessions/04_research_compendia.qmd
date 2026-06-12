@@ -1,6 +1,6 @@
 ---
-title: "Research compenia as R packages"
-subtitle: "2023-07-20"
+title: "Research compendia as R packages"
+date: "2023-07-20"
 callout-appearance: default
 execute: 
   eval: false

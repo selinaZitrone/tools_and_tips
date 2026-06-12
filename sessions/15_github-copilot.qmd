@@ -1,5 +1,6 @@
 ---
 title: Applied AI Tools for Scientific Programming
+date: "2025-12-18"
 from: markdown+emoji
 ---
 

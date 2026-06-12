@@ -1,6 +1,6 @@
 ---
-title: "Effective digital notetaking with Obsidian"
-subtitle: "2023-10-20"
+title: "Effective digital notetaking with Obsidian (2025)"
+date: "2025-11-20"
 callout-appearance: default
 execute: 
   eval: false

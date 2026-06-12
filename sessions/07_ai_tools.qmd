@@ -1,5 +1,6 @@
 ---
 title: AI Tools in Programming
+date: "2024-01-18"
 from: markdown+emoji
 ---
 

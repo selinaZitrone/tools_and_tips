@@ -1,3 +1,19 @@
+---
+listing:
+  id: sessions
+  contents: sessions/*.qmd
+  type: table
+  sort: "date desc"
+  fields: [date, title]
+  field-display-names:
+    date: "Date"
+    title: "Session"
+  date-format: "YYYY-MM-DD"
+  sort-ui: false
+  filter-ui: false
+  page-size: 100
+---
+
 ## Lecture series
 
 ### Description:
@@ -19,22 +35,6 @@ For any questions, feedback or topic suggestions [send me an email](mailto:selin
 
 On this website, you can find all slides and additional resources for lectures:
 
-- 2023-04-20: [What they forgot to teach you about R](sessions/01_what_they_forgot.html)
-- 2023-05-11: [Reproducible documents with Quarto](sessions/02_quarto.html)
-- 2023-06-15: [Introduction to verion control with Git](sessions/03_git.html)
-- 2023-07-20: [Research compendia as R packages](sessions/04_research_compendia.html)
-- 2023-10-19: [Effective digital notetaking with Obsidian](sessions/05_obsidian.html)
-- 2023-11-16: [Efficient R](sessions/06_efficient_r.html)
-- 2024-01-18: [AI tools in programming](sessions/07_ai_tools.html)
-- 2024-02-15: [Introduction to the tidyverse](sessions/08_tidyverse.html)
-- 2025-04-17: [Clear figures, stronger stories](sessions/09_data_visualisation.html)
-- 2025-05-15: [Write R code that lasts](sessions/10_r-code-that-lasts.html)
-- 2025-06-19: [Efficient R (update)](sessions/11_efficient-r-2.html)
-- 2025-07-17: [Version control with Git (update)](sessions/12_git-2.html)
-- 2025-10-16: [Reproducible documents with Quarto (update)](sessions/13_quarto-2.html)
-- 2025-11-20: [Effective digital notetaking with Obsidian (update)](sessions/14_obsidian-2.html)
-- 2025-12-18: [Applied AI Tools for Scientific Programming](sessions/15_github-copilot.html)
-- 2026-01-15: [Introduction to version control with Git](sessions/16_git-3.html)
-- 2026-04-16: [Build and publish your personal academic website with Quarto](sessions/17_quarto-website.html)
-- 2026-05-21: [From default to publication-ready ggplot2](sessions/18_publication-ready-ggplot.html)
+::: {#sessions}
+:::
 

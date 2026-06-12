@@ -1,6 +1,6 @@
 ---
-title: "Introduction to version control with Git"
-subtitle: "2026-01-15"
+title: "Introduction to version control with Git (2026)"
+date: "2026-01-15"
 callout-appearance: default
 from: markdown+emoji
 ---

@@ -1,5 +1,6 @@
 ---
 title: Efficient R - How to write faster code
+date: "2025-06-19"
 from: markdown+emoji
 ---
 

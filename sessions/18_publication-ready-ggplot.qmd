@@ -1,6 +1,6 @@
 ---
 title: "From default to publication-ready ggplot2"
-subtitle: "2026-05-21"
+date: "2026-05-21"
 callout-appearance: default
 from: markdown+emoji
 ---
