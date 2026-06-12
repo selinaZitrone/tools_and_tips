@@ -18,9 +18,10 @@ website:
   repo-branch: main
   title: "Scientific workflows: Tools and Tips 🛠️"
   description: "A lecture series by Selina Baldauf"
+  favicon: style/favicon.svg
 
   page-footer:
-    left: "Copyright © 2023 [Selina Baldauf](mailto:selina.baldauf@fu-berlin.de), CC BY 4.0"
+    left: "© 2023–2026 [Selina Baldauf](mailto:selina.baldauf@fu-berlin.de) · CC BY 4.0"
     right: "Website built with [Quarto](https://quarto.org/)"
 
   navbar:
@@ -65,7 +66,7 @@ website:
           - text: 18 - From default to publication-ready ggplot2
             href: sessions/18_publication-ready-ggplot.qmd
       - icon: github
-        href: https://github.com/selinaZitrone/lecture_series
+        href: https://github.com/selinaZitrone/tools_and_tips
 
 
 format:
