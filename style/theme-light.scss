@@ -29,7 +29,7 @@ $body-color:       $ink !default;
 $link-color:       $forest-dark !default;
 $link-hover-color: $amber-dark !default;
 $code-color:       $amber-dark !default;
-$headings-color:   $forest-darker !default;
+$headings-color:   $ink !default; // neutral: same family as body, hierarchy via size/weight
 
 /*-- scss:rules --*/
 
