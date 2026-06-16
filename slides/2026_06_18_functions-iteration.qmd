@@ -1,0 +1,429 @@
+---
+title: "Stop repeating yourself: functions and iteration in R"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+date: "2026-06-18"
+format:
+  revealjs:
+    footer: "Selina Baldauf // Functions and iteration in R"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute:
+  echo: false
+  eval: false
+from: markdown+emoji
+---
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+::: nonincremental
+
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+- One topic from the world of scientific workflows
+- Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+- If you don't want to miss a lecture
+  - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+- For credit points: Send me a short message (Email or Webex)
+
+:::
+
+## Today: two skills, one idea
+
+Sooner or later you need to do the same thing many times — for each species, each group, each file.
+
+. . .
+
+The usual answer is **copy-paste**. It's slow, and it's easy to get wrong.
+
+. . .
+
+Today, two skills that fix that:
+
+1. **Writing your own functions**
+2. **Iterating** with the **`purrr`** package (part of the tidyverse)
+
+. . .
+
+Closely linked — we iterate the functions we write — but each stands on its own.
+
+## Functions are worth it on their own
+
+Functions aren't just a setup for iteration.
+
+::: nonincremental
+
+- A fundamental programming skill
+- More **modular**, more **readable** code
+- **Reuse** logic instead of rewriting it
+- The building blocks of your own R packages
+
+:::
+
+. . .
+
+Today we focus on one big payoff: **not repeating yourself**.
+
+## Don't Repeat Yourself (DRY)
+
+The same logic should live in **exactly one place**.
+
+. . .
+
+Copy-paste breaks that:
+
+::: nonincremental
+
+- Tedious
+- **Fragile** — change one thing, change it *everywhere*
+- Easy to miss a spot
+
+:::
+
+## The kind of script we all write
+
+```r
+adelie <- filter(penguins, species == "Adelie")
+ggplot(adelie, aes(flipper_length_mm, body_mass_g)) +
+  geom_point() + geom_smooth(method = "lm") + labs(title = "Adelie")
+
+chinstrap <- filter(penguins, species == "Chinstrap")
+ggplot(chinstrap, aes(flipper_length_mm, body_mass_g)) +
+  geom_point() + geom_smooth(method = "lm") + labs(title = "Chinstrap")
+
+gentoo <- filter(penguins, species == "Chinstrap")   # ...spot the problem?
+ggplot(gentoo, aes(flipper_length_mm, body_mass_g)) +
+  geom_point() + geom_smooth(method = "lm") + labs(title = "Gentoo")
+```
+
+. . .
+
+The "Gentoo" plot is **Chinstrap data** — a paste where I forgot to change the filter. Looks fine, silently wrong.
+
+## How it works
+
+:::{.nonincremental}
+
+- There's a **GitHub repo** you download and open in your IDE
+- I demonstrate each topic: **follow along or just watch**
+- Each module has a short **exercise** to try it yourself
+- **Questions** anytime: in the chat or just unmute
+
+:::
+
+## Get set up
+
+:::{.nonincremental}
+
+1. Click the green **Code** button → **Download ZIP**
+2. Unzip it somewhere you can find it
+3. Double-click the `.Rproj` file → opens in RStudio
+   - *(Positron / VS Code users: open the folder)*
+4. Install today's packages:
+
+```r
+install.packages(c("tidyverse", "palmerpenguins", "here"))
+```
+
+Repo: https://github.com/selinaZitrone/functions-iteration-workshop
+
+:::
+
+# 1. Writing your own functions {.inverse}
+
+## Anatomy of a function
+
+A function has a **name**, **arguments** (its inputs), a **body**, and a **return value**.
+
+```r
+name <- function(arguments) {
+  body
+  return(return_value)
+}
+```
+
+. . .
+
+```r
+add <- function(x, y) {
+  x + y          # R returns the last line
+}
+
+add(1, 1)        # 2
+```
+
+## What changes vs. what stays
+
+Back to the messy script. Between the three blocks:
+
+. . .
+
+- What **changes** → becomes an **argument** (the data)
+- What **stays the same** → becomes the **body** (the ggplot)
+
+. . .
+
+That's the whole move.
+
+## Live demo {.inverse}
+
+Build `plot_penguins()` — and let it grow, one argument at a time.
+
+`demo/01_functions.R`
+
+## Your turn — Exercise 1
+
+Turn a different plot block into a function.
+
+:::{.nonincremental}
+
+- You're given a working boxplot — **wrap it** in a function `plot_mass_by_sex(data)`
+- Call it for a different species
+- **Going further:** add an argument with a default (`fill` or `title`)
+
+:::
+
+`exercises/01_functions_exercise.R`
+
+# 2. Iterating with `map()` {.inverse}
+
+## The classic tool: a for loop
+
+"Do this for each element":
+
+```r
+roots <- c()
+for (x in 1:3) {
+  roots[x] <- sqrt(x)
+}
+roots
+```
+
+. . .
+
+It works — but there's boilerplate: a container, an index, the filling-in. You'll see loops in the wild; today we use `map()`.
+
+## `map()`: the one idea
+
+```r
+map(1:3, sqrt)        # a list, one result per element
+```
+
+. . .
+
+`map(x, f)` calls `f` **once per element** of `x` and gives back **one result per element**.
+
+. . .
+
+`x` can be anything with elements — a vector, the **columns of a data frame**, a list of **file paths**. Only the *element* changes from example to example.
+
+## The `map_*()` family
+
+The suffix says what comes **back**:
+
+::: nonincremental
+
+- `map()` → list
+- `map_dbl()` → double &nbsp; `map_chr()` → character
+- `map_lgl()` → logical &nbsp; `map_int()` → integer
+
+:::
+
+. . .
+
+All of these return something. `walk()` (Module 4) is the sibling for when you want a **side effect**, not a result.
+
+## Anonymous functions: `\(x) ...`
+
+Write a function on the spot when:
+
+. . .
+
+**There's no ready-made function**
+
+```r
+map_dbl(1:3, \(x) x^2)
+```
+
+. . .
+
+**Your value isn't the first argument** — e.g. the species in `filter()`:
+
+```r
+map(species_names, \(s) filter(penguins, species == s))
+```
+
+## Live demo {.inverse}
+
+Map over columns, write an anonymous function, and read every CSV in a folder.
+
+`demo/02_map.R`
+
+## Your turn — Exercise 2
+
+Two ways to use `map()`:
+
+:::{.nonincremental}
+
+- **Task A** — map a ready-made function (no `\()`): distinct values per column
+- **Task B** — an anonymous function: one data frame per **island**
+
+:::
+
+`exercises/02_map_exercise.R`
+
+# 3. `map()` with your own functions {.inverse}
+
+## Put the two skills together
+
+We can plot one species:
+
+```r
+plot_penguins(filter(penguins, species == "Adelie"))
+```
+
+. . .
+
+We want this for **every** species — that's `map`. But `map` needs a **list**: one data frame per species.
+
+## `split()` into a named list
+
+```r
+by_species <- split(penguins, penguins$species)
+
+names(by_species)        # "Adelie" "Chinstrap" "Gentoo"
+by_species[["Adelie"]]   # each element is a data frame
+```
+
+. . .
+
+A **named list of data frames** — exactly what `map` walks over.
+
+## The payoff
+
+```r
+plots <- map(by_species, plot_penguins)
+plots[["Adelie"]]
+```
+
+. . .
+
+The messy three-block script is now **two lines**. Fix `plot_penguins` once, every plot updates — no copy-paste bug.
+
+## The same shape, anything per group
+
+```r
+penguins |>
+  split(penguins$species) |>
+  map(\(df) lm(body_mass_g ~ flipper_length_mm, data = df)) |>
+  map(summary) |>
+  map_dbl(\(x) x$r.squared)
+```
+
+`split → map → map_dbl` works whether each element becomes a plot, a **model**, or a number. *(Bonus: `bonus/model_per_group.R`.)*
+
+## Live demo {.inverse}
+
+`demo/03_map_functions.R`
+
+## Your turn — Exercise 3
+
+One plot per **island** instead of per species.
+
+:::{.nonincremental}
+
+- The split is done for you — you write the `map`
+- **Going further:** pull one number per island with `map_dbl()`, or map a function you wrote yourself
+
+:::
+
+`exercises/03_map_functions_exercise.R`
+
+# 4. `walk()`: saving results {.inverse}
+
+## `map` vs `walk`
+
+- `map()` → you want the **results** back
+- `walk()` → you want a **side effect** (print, save a file); the return value isn't the point
+
+. . .
+
+Same iteration idea, two purposes.
+
+## Show them all, then save them all
+
+```r
+walk(plots, print)              # draw each plot
+```
+
+. . .
+
+```r
+save_plot <- function(plot, name) {
+  ggsave(here("plots", paste0(name, ".png")), plot, width = 6, height = 4)
+}
+
+walk2(plots, names(plots), save_plot)   # plot + filename, in parallel
+```
+
+The names from `split()` become the filenames.
+
+## Live demo {.inverse}
+
+`demo/04_walk.R`
+
+# Wrap-up {.inverse}
+
+## The messy script, redeemed
+
+```r
+penguins_all <- list.files(here("data"), pattern = "\\.csv$", full.names = TRUE) |>
+  map(read_csv) |>      # iterate over files  -> one data frame
+  list_rbind()
+
+by_species <- split(penguins_all, penguins_all$species)
+plots <- map(by_species, plot_penguins)   # iterate over groups -> one plot each
+walk2(plots, names(plots), save_plot)      # iterate to save     -> one file each
+```
+
+The whole analysis, one readable chain. Add a fourth species or a tenth file — nothing changes.
+
+## Two skills, one shape
+
+::: nonincremental
+
+- **Functions:** write the logic once
+- **Iteration:** run it over many inputs
+  - `map()` for results, `walk()` for side effects
+
+:::
+
+. . .
+
+A list → `map` your function → a result per element. That's it.
+
+## Where next
+
+::: nonincremental
+
+- **More inputs at once:** `map2()`, `pmap()`
+- **When some iterations fail:** `safely()`, `possibly()`
+- **Going parallel:** purrr's `in_parallel()` (≥ 1.1.0) or the `furrr` package
+- **Bare column names in your functions:** tidy-eval `{{ }}`
+
+:::
+
+## Thank you! {.inverse}
+
+Write the thing once, then map it.
+
+Questions?
