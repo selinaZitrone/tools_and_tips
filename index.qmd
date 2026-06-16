@@ -25,9 +25,9 @@ Early-career researchers understand the importance of digital tools for processi
 📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex
 
 
-If you don't want to miss a lecture:<br>
-Check out the [official lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/lecture-SB/index.html) and [subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips) to get the link to
-the lecture meeting.
+If you don't want to miss a lecture, check out the [official lecture website](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/veranstaltungen/lecture-SB/index.html) and subscribe below to get the link to each meeting:
+
+[✉️ Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips){.btn .btn-primary role="button"}
 
 For any questions, feedback or topic suggestions [send me an email](mailto:selina.baldauf@fu-berlin.de)
 
