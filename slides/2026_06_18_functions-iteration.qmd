@@ -132,10 +132,10 @@ ggplot(gentoo, aes(flipper_length_mm, body_mass_g)) +
 2. Unzip it somewhere you can find it
 3. Double-click the `.Rproj` file → opens in RStudio
    - *(Positron/VS code users: open the folder)*
-4. Run `install_packages.R` to install today's packages
+4. Install today's packages (if you don't have them yet)
 
 ```r
-install.packages(c("tidyverse", "palmerpenguins", "here"))
+install.packages(c("tidyverse", "palmerpenguins"))
 ```
 
 Repo: [https://github.com/selinaZitrone/functions-iteration-workshop](https://github.com/selinaZitrone/functions-iteration-workshop)
@@ -230,16 +230,16 @@ plot_penguins(adelie)
 
 ```{r}
 # Define a default color for penguin data points
-plot_penguins <- function(data, point_color = "blue") {
+plot_penguins <- function(data, color = "black") {
   ggplot(data, aes(flipper_length_mm, body_mass_g)) +
-    geom_point(color = point_color) +
+    geom_point(color = color) +
     geom_smooth(method = "lm") +
     theme_minimal()
 }
-# Call the function with the default blue color
+# Call the function with the default black color
 plot_penguins(adelie)
 # Call the function with a custom color
-plot_penguins(adelie, point_color = "red")
+plot_penguins(adelie, color = "red")
 ```
 
 
@@ -375,7 +375,7 @@ Map over columns, write an anonymous function, and read every CSV in a folder.
 
 ## Your turn {.inverse}
 
-> :pencil2: **Exercise 1 (~7 min):**
+> :pencil2: **Exercise 2 (~7 min):**
 >
 > Open `exercises/02_map_exercise.R`
 
@@ -441,7 +441,7 @@ penguins |>
 
 ## Your turn {.inverse}
 
-> :pencil2: **Exercise 1 (~7 min):**
+> :pencil2: **Exercise 3 (~7 min):**
 >
 > Open `exercises/03_map_functions_exercise.R`
 
@@ -473,13 +473,19 @@ We can also `walk()` over two inputs at the same time with `walk2()`: the list o
 ```{r}
 # Walk 2 iterates over 2 inputs (x, y) in parallel
 walk2(plots, names(plots), function(x, y) {ggsave(
-  here("plots", paste0(y, ".png")), x
+  paste0("plots/", y, ".png"), x
 )})
 ```
 
 ## Live demo {.inverse}
 
 `demo/04_walk.R`
+
+## Your turn {.inverse}
+
+> :pencil2: **Exercise 4 (~7 min, optional / take-home):**
+>
+> Open `exercises/04_walk_exercise.R`
 
 # Wrap-up {.inverse}
 
