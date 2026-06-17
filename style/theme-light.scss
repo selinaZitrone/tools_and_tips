@@ -1,0 +1,39 @@
+/*-- scss:defaults --*/
+// Light-mode values. Shared fonts, grays, and semantic accent colors live in theme.scss.
+
+// === Brand colors (Pine, light) ===
+$forest:        #2C5545;
+$forest-dark:   #234538;
+$forest-darker: #1E3A2F;
+$forest-light:  #3E7A60;
+$amber:         #B7791F;
+$amber-dark:    #975A16;
+$amber-light:   #D69E2E;
+$sand:          #FAF8F3;
+$sand-200:      #F0EBE1;
+$ink:           #1C1917;
+$warm-gray:     #57534E;
+
+// === Bootstrap semantic mappings (brand-dependent) ===
+$primary:    $forest !default;
+$secondary:  $warm-gray !default;
+$success:    $forest !default;
+$warning:    $amber-light !default;
+$light:      $sand-200 !default;
+$dark:       $ink !default;
+$green:      $forest !default;
+
+// === Body / links / code ===
+$body-bg:          $sand !default;
+$body-color:       $ink !default;
+$link-color:       $forest-dark !default;
+$link-hover-color: $amber-dark !default;
+$code-color:       $amber-dark !default;
+$headings-color:   $ink !default; // neutral: same family as body, hierarchy via size/weight
+
+/*-- scss:rules --*/
+
+.slide-deck {
+  border: 1px solid $sand-200;
+  box-shadow: 0 6px 24px rgba(28, 25, 23, 0.10);
+}

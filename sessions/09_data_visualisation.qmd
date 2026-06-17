@@ -1,5 +1,6 @@
 ---
 title: "Clear figures, stronger stories: Fundamentals of Data Visualization"
+date: "2025-04-17"
 from: markdown+emoji
 ---
 

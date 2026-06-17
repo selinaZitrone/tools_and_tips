@@ -18,62 +18,25 @@ website:
   repo-branch: main
   title: "Scientific workflows: Tools and Tips 🛠️"
   description: "A lecture series by Selina Baldauf"
+  favicon: style/favicon.svg
 
   page-footer:
-    left: "Copyright © 2023 [Selina Baldauf](mailto:selina.baldauf@fu-berlin.de), CC BY 4.0"
+    left: "© 2023–2026 [Selina Baldauf](mailto:selina.baldauf@fu-berlin.de) · CC BY 4.0"
     right: "Website built with [Quarto](https://quarto.org/)"
 
   navbar:
     pinned: true
     right:
-      - text: Sessions
-        menu:
-          - text: 01 - What they forgot to teach you about R
-            href: sessions/01_what_they_forgot.qmd
-          - text: 02 - Reproducible documents with Quarto
-            href: sessions/02_quarto.qmd
-          - text: 03 - Version control with Git
-            href: sessions/03_git.qmd
-          - text: 04 - Research compendia as R packages
-            href: sessions/04_research_compendia.qmd
-          - text: 05 - Effective digital notetaking with Obsidian
-            href: sessions/05_obsidian.qmd
-          - text: 06 - Efficient R
-            href: sessions/06_efficient_r.qmd
-          - text: 07 - AI tools in programming
-            href: sessions/07_ai_tools.qmd
-          - text: 08 - Tidyverse introduction
-            href: sessions/08_tidyverse.qmd
-          - text: 09 - Data visualization
-            href: sessions/09_data_visualisation.qmd
-          - text: 10 - Write R code that lasts
-            href: sessions/10_r-code-that-lasts.qmd
-          - text: 11 - Efficient R (update)
-            href: sessions/11_efficient-r-2.qmd
-          - text: 12 - Version control with Git (update)
-            href: sessions/12_git-2.qmd
-          - text: 13 - Reproducible documents with Quarto (update)
-            href: sessions/13_quarto-2.qmd
-          - text: 14 - Effective digital notetaking with Obsidian (update)
-            href: sessions/14_obsidian-2.qmd
-          - text: 15 - Github Copilot
-            href: sessions/15_github-copilot.qmd
-          - text: 16 - Version control with Git
-            href: sessions/16_git-3.qmd
-          - text: 17 - Quarto websites
-            href: sessions/17_quarto-website.qmd
-          - text: 18 - From default to publication-ready ggplot2
-            href: sessions/18_publication-ready-ggplot.qmd
       - icon: github
-        href: https://github.com/selinaZitrone/lecture_series
+        href: https://github.com/selinaZitrone/tools_and_tips
 
 
 format:
   html:
     embed-resources: true
     theme:
-      light: [flatly, style/theme.scss]
-      dark: [darkly, style/theme-dark.scss]
+      light: [flatly, style/theme-light.scss, style/theme.scss]
+      dark: [darkly, style/theme-dark.scss, style/theme.scss]
     toc: true
     code-copy: true
     code-overflow: wrap

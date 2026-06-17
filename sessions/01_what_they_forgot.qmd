@@ -1,6 +1,6 @@
 ---
 title: "What they forgot to teach you about R"
-subtitle: "2023-04-20"
+date: "2023-04-20"
 callout-appearance: default
 ---
 

@@ -1,6 +1,19 @@
 /*-- scss:defaults --*/
+// Shared theme layer — values identical across light and dark modes.
+// Mode-specific colors live in theme-light.scss and theme-dark.scss.
+// NOTE: this file must be listed LAST in each theme list in _quarto.yml so its
+// variable definitions are available to the mode-specific layers (Quarto emits
+// scss:defaults in reverse of the listed order).
 
-// Define the colors
+// === Fonts ===
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !default;
+$font-family-monospace:  "Fira Code", SFMono-Regular, Menlo, Consolas, monospace !default;
+$headings-font-family:   "Lora", Georgia, serif !default;
+$headings-font-weight:   600 !default;
+
+// === Neutral gray scale ===
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #ecf0f1 !default;
@@ -13,6 +26,7 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
+// === Semantic accent colors (same in both modes) ===
 $blue:    #2c3e50 !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
@@ -20,42 +34,25 @@ $pink:    #e83e8c !default;
 $red:     #e74c3c !default;
 $orange:  #fd7e14 !default;
 $yellow:  #f39c12 !default;
-$green:   #18bc9c !default;
 $teal:    #20c997 !default;
 $cyan:    #3498db !default;
-
-$theme-purple: #562457;
-$theme-purple-light: #88398A;
-$theme-purple-lighter: #C9A0D8;
-$theme-pink-light: #FEE4FF;
-$theme-yellow: #FFD166;
-$theme-green: #68bda0 !default;
-
-
-$primary:       $theme-purple-lighter !default;
-$secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-200 !default;
-$dark:          $gray-700 !default;
-
-$link-color: $theme-purple-light;
-$code-color: darken($theme-green, 10%);
+$info:    $cyan !default;
+$danger:  $red !default;
 
 /*-- scss:rules --*/
 
-.slide-deck {
-    border: 3px solid #dee2e6;
-    width: 100%;
-    height: 475px;
-  }
-  
-  @media only screen and (max-width: 600px) {
-   .slide-deck {
-      height: 400px;
-    }
-  }
-  
+body {
+  -webkit-font-smoothing: antialiased;
+}
 
+.slide-deck {
+  border-radius: 10px;
+  width: 100%;
+  height: 475px;
+}
+
+@media only screen and (max-width: 600px) {
+  .slide-deck {
+    height: 400px;
+  }
+}

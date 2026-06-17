@@ -1,62 +1,38 @@
 /*-- scss:defaults --*/
+// Dark-mode values. Shared fonts, grays, and semantic accent colors live in theme.scss.
 
-// Define the colors
-$white:    #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #ecf0f1 !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #b4bcc2 !default;
-$gray-600: #95a5a6 !default;
-$gray-700: #7b8a8b !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black:    #000 !default;
+// === Brand colors (Pine, dark variants tuned for contrast) ===
+$forest:       #3E7A60;
+$forest-dark:  #2C5545;
+$forest-light: #7FB89E;
+$amber:        #D69E2E;
+$amber-light:  #ECC94B;
+$ink:          #1C1917;
+$ink-200:      #292524;
+$warm-light:   #E7E5E4;
+$warm-gray:    #A8A29E;
 
-$blue:    #2c3e50 !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
-$red:     #e74c3c !default;
-$orange:  #fd7e14 !default;
-$yellow:  #f39c12 !default;
-$green:   #18bc9c !default;
-$teal:    #20c997 !default;
-$cyan:    #3498db !default;
+// === Bootstrap semantic mappings (brand-dependent) ===
+$primary:    $forest !default;
+$secondary:  $warm-gray !default;
+$success:    $forest !default;
+$warning:    $amber-light !default;
+$light:      $ink-200 !default;
+$dark:       $ink !default;
+$green:      $forest !default;
 
-$theme-purple: #562457;
-$theme-purple-light: #88398A;
-$theme-purple-lighter: #C9A0D8;
-$theme-pink-light: #FEE4FF;
-$theme-yellow: #FFD166;
-$theme-green: #68bda0 !default;
-
-
-$primary:       $theme-purple !default;
-$secondary:     $gray-200 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-200 !default;
-$dark:          $gray-700 !default;
-
-$link-color: $theme-purple-lighter;
-$code-color: lighten($theme-green, 10%);
-$body-color: $gray-200;
+// === Body / links / code ===
+$body-bg:          $ink !default;
+$body-color:       $warm-light !default;
+$link-color:       $forest-light !default;
+$link-hover-color: $amber-light !default;
+$code-color:       #C99A4E !default; // muted ochre, matches light-mode code hue
+$code-bg:          $ink-200 !default;
+$headings-color:   #F5F1EA !default; // neutral: a touch brighter than body so headings still lift
 
 /*-- scss:rules --*/
 
 .slide-deck {
-    border: 3px solid #dee2e6;
-    width: 100%;
-    height: 475px;
-  }
-  
-  @media only screen and (max-width: 600px) {
-   .slide-deck {
-      height: 400px;
-    }
-  }
-  
-
+  border: 1px solid $ink-200;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}

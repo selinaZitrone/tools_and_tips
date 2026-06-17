@@ -1,5 +1,6 @@
 ---
 title: "Write R code that lasts: Practical tips for reproducible data analysis"
+date: "2025-05-15"
 from: markdown+emoji
 ---
 

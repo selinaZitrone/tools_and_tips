@@ -1,5 +1,6 @@
 ---
 title: Efficient R
+date: "2023-11-16"
 from: markdown+emoji
 ---
 

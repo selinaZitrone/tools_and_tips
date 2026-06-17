@@ -1,6 +1,6 @@
 ---
 title: "Build and publish your personal academic website with Quarto"
-subtitle: "2026-04-16"
+date: "2026-04-16"
 callout-appearance: default
 from: markdown+emoji
 ---

@@ -1,6 +1,6 @@
 ---
-title: "Reproducible documents with Quarto"
-subtitle: "2023-05-11"
+title: "Reproducible documents with Quarto (2025)"
+date: "2025-10-16"
 callout-appearance: default
 ---
 
