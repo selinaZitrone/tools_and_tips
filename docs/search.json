@@ -4709,5 +4709,264 @@
     "title": "Build your academic website with Quarto",
     "section": "Next lecture/workshop",
     "text": "Next lecture/workshop\nTopic tba\n\n📅 21.05.2026 🕓 4-5/6 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#what-is-this-lecture-series",
+    "href": "slides/2026_06_18_functions-iteration.html#what-is-this-lecture-series",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "What is this lecture series?",
+    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nMaterial provided online\nIf you don’t want to miss a lecture\n\nSubscribe to the mailing list\n\nFor credit points: Send me a short message (Email or Webex)"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#today-two-skills-one-idea",
+    "href": "slides/2026_06_18_functions-iteration.html#today-two-skills-one-idea",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Today: two skills, one idea",
+    "text": "Today: two skills, one idea\nSooner or later you need to do the same thing many times — for each species, each group, each file.\n\nThe usual answer is copy-paste. It’s slow, and it’s easy to get wrong.\n\n\nToday, two skills that fix that:\n\nWriting your own functions\nIterating with the purrr package (part of the tidyverse)\n\n\n\nClosely linked — we iterate the functions we write — but each stands on its own."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#functions-are-worth-it-on-their-own",
+    "href": "slides/2026_06_18_functions-iteration.html#functions-are-worth-it-on-their-own",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Functions are worth it on their own",
+    "text": "Functions are worth it on their own\nFunctions aren’t just a setup for iteration.\n\nA fundamental programming skill\nMore modular, more readable code\nReuse logic instead of rewriting it\nThe building blocks of your own R packages\n\n\nToday we focus on one big payoff: not repeating yourself."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#dont-repeat-yourself-dry",
+    "href": "slides/2026_06_18_functions-iteration.html#dont-repeat-yourself-dry",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Don’t Repeat Yourself (DRY)",
+    "text": "Don’t Repeat Yourself (DRY)\nThe same logic should live in exactly one place.\n\nCopy-paste breaks that:\n\nTedious\nFragile — change one thing, change it everywhere\nEasy to miss a spot"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-kind-of-script-we-all-write",
+    "href": "slides/2026_06_18_functions-iteration.html#the-kind-of-script-we-all-write",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The kind of script we all write",
+    "text": "The kind of script we all write\n\n\n\n\n\nlibrary(tidyverse)\nadelie &lt;- filter(penguins, species == \"Adelie\")\nggplot(adelie, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(title = \"Adelie\")\n\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")\nggplot(chinstrap, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(title = \"Chinstrap\")\n\ngentoo &lt;- filter(penguins, species == \"Chinstrap\")\nggplot(gentoo, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(title = \"Gentoo\")"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#how-it-works",
+    "href": "slides/2026_06_18_functions-iteration.html#how-it-works",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "How it works",
+    "text": "How it works\n\nThere’s a GitHub repo you download and open in your IDE\nI demonstrate each topic: follow along or just watch\nEach module has a short exercise to try it yourself\nQuestions anytime: in the chat or just unmute"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#get-set-up",
+    "href": "slides/2026_06_18_functions-iteration.html#get-set-up",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Get set up",
+    "text": "Get set up\n\nClick the green Code button → Download ZIP\nUnzip it somewhere you can find it\nDouble-click the .Rproj file → opens in RStudio\n\n(Positron/VS code users: open the folder)\n\nRun install_packages.R to install today’s packages\n\ninstall.packages(c(\"tidyverse\", \"palmerpenguins\", \"here\"))\nRepo: https://github.com/selinaZitrone/functions-iteration-workshop"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#anatomy-of-a-function",
+    "href": "slides/2026_06_18_functions-iteration.html#anatomy-of-a-function",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Anatomy of a function",
+    "text": "Anatomy of a function\nA function has\n\na name: Choose something descriptive that starts with a verb\narguments (its inputs)\na body: All the code that is run using the input\na return value: the output of the function (the last line of the body)\n\n\n\nname &lt;- function(arguments) {\n  body\n}\n\n\n\nadd_numbers &lt;- function(x, y) {\n  x + y\n}\n\nadd_numbers(1, 1)\n\n[1] 2\n\nadd_numbers(x = 1, y = 1)\n\n[1] 2"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#what-changes-vs.-what-stays",
+    "href": "slides/2026_06_18_functions-iteration.html#what-changes-vs.-what-stays",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "What changes vs. what stays",
+    "text": "What changes vs. what stays\nBack to the messy script. Between the three blocks:\n\n\nWhat changes → becomes an argument (the data)\nWhat stays the same → becomes the body (the ggplot)\n\n\n\nThat’s the whole move."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#live-demo",
+    "href": "slides/2026_06_18_functions-iteration.html#live-demo",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Live demo",
+    "text": "Live demo\nBuild plot_penguins()\ndemo/01_functions.R"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#your-turn-exercise-1",
+    "href": "slides/2026_06_18_functions-iteration.html#your-turn-exercise-1",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Your turn — Exercise 1",
+    "text": "Your turn — Exercise 1\nTurn a different plot block into a function.\n\nYou’re given a working boxplot — wrap it in a function plot_mass_by_sex(data)\nCall it for a different species\nGoing further: add an argument with a default (fill or title)\n\nexercises/01_functions_exercise.R"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-classic-tool-a-for-loop",
+    "href": "slides/2026_06_18_functions-iteration.html#the-classic-tool-a-for-loop",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The classic tool: a for loop",
+    "text": "The classic tool: a for loop\n“Do this for each element”:\nroots &lt;- c()\nfor (x in 1:3) {\n  roots[x] &lt;- sqrt(x)\n}\nroots\n\nIt works — but there’s boilerplate: a container, an index, the filling-in. You’ll see loops in the wild; today we use map()."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#map-the-one-idea",
+    "href": "slides/2026_06_18_functions-iteration.html#map-the-one-idea",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "map(): the one idea",
+    "text": "map(): the one idea\nmap(1:3, sqrt)        # a list, one result per element\n\nmap(x, f) calls f once per element of x and gives back one result per element.\n\n\nx can be anything with elements — a vector, the columns of a data frame, a list of file paths. Only the element changes from example to example."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-map_-family",
+    "href": "slides/2026_06_18_functions-iteration.html#the-map_-family",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The map_*() family",
+    "text": "The map_*() family\nThe suffix says what comes back:\n\nmap() → list\nmap_dbl() → double   map_chr() → character\nmap_lgl() → logical   map_int() → integer\n\n\nAll of these return something. walk() (Module 4) is the sibling for when you want a side effect, not a result."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#anonymous-functions-x-...",
+    "href": "slides/2026_06_18_functions-iteration.html#anonymous-functions-x-...",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Anonymous functions: \\(x) ...",
+    "text": "Anonymous functions: \\(x) ...\nWrite a function on the spot when:\n\nThere’s no ready-made function\nmap_dbl(1:3, \\(x) x^2)\n\n\nYour value isn’t the first argument — e.g. the species in filter():\nmap(species_names, \\(s) filter(penguins, species == s))"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#live-demo-1",
+    "href": "slides/2026_06_18_functions-iteration.html#live-demo-1",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Live demo",
+    "text": "Live demo\nMap over columns, write an anonymous function, and read every CSV in a folder.\ndemo/02_map.R"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#your-turn-exercise-2",
+    "href": "slides/2026_06_18_functions-iteration.html#your-turn-exercise-2",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Your turn — Exercise 2",
+    "text": "Your turn — Exercise 2\nTwo ways to use map():\n\nTask A — map a ready-made function (no \\()): distinct values per column\nTask B — an anonymous function: one data frame per island\n\nexercises/02_map_exercise.R"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#put-the-two-skills-together",
+    "href": "slides/2026_06_18_functions-iteration.html#put-the-two-skills-together",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Put the two skills together",
+    "text": "Put the two skills together\nWe can plot one species:\nplot_penguins(filter(penguins, species == \"Adelie\"))\n\nWe want this for every species — that’s map. But map needs a list: one data frame per species."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#split-into-a-named-list",
+    "href": "slides/2026_06_18_functions-iteration.html#split-into-a-named-list",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "split() into a named list",
+    "text": "split() into a named list\nby_species &lt;- split(penguins, penguins$species)\n\nnames(by_species)        # \"Adelie\" \"Chinstrap\" \"Gentoo\"\nby_species[[\"Adelie\"]]   # each element is a data frame\n\nA named list of data frames — exactly what map walks over."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-payoff",
+    "href": "slides/2026_06_18_functions-iteration.html#the-payoff",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The payoff",
+    "text": "The payoff\nplots &lt;- map(by_species, plot_penguins)\nplots[[\"Adelie\"]]\n\nThe messy three-block script is now two lines. Fix plot_penguins once, every plot updates — no copy-paste bug."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-same-shape-anything-per-group",
+    "href": "slides/2026_06_18_functions-iteration.html#the-same-shape-anything-per-group",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The same shape, anything per group",
+    "text": "The same shape, anything per group\npenguins |&gt;\n  split(penguins$species) |&gt;\n  map(\\(df) lm(body_mass_g ~ flipper_length_mm, data = df)) |&gt;\n  map(summary) |&gt;\n  map_dbl(\\(x) x$r.squared)\nsplit → map → map_dbl works whether each element becomes a plot, a model, or a number. (Bonus: bonus/model_per_group.R.)"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#live-demo-2",
+    "href": "slides/2026_06_18_functions-iteration.html#live-demo-2",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Live demo",
+    "text": "Live demo\ndemo/03_map_functions.R"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#your-turn-exercise-3",
+    "href": "slides/2026_06_18_functions-iteration.html#your-turn-exercise-3",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Your turn — Exercise 3",
+    "text": "Your turn — Exercise 3\nOne plot per island instead of per species.\n\nThe split is done for you — you write the map\nGoing further: pull one number per island with map_dbl(), or map a function you wrote yourself\n\nexercises/03_map_functions_exercise.R"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#map-vs-walk",
+    "href": "slides/2026_06_18_functions-iteration.html#map-vs-walk",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "map vs walk",
+    "text": "map vs walk\n\nmap() → you want the results back\nwalk() → you want a side effect (print, save a file); the return value isn’t the point\n\n\nSame iteration idea, two purposes."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#show-them-all-then-save-them-all",
+    "href": "slides/2026_06_18_functions-iteration.html#show-them-all-then-save-them-all",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Show them all, then save them all",
+    "text": "Show them all, then save them all\nwalk(plots, print)              # draw each plot\n\nsave_plot &lt;- function(plot, name) {\n  ggsave(here(\"plots\", paste0(name, \".png\")), plot, width = 6, height = 4)\n}\n\nwalk2(plots, names(plots), save_plot)   # plot + filename, in parallel\nThe names from split() become the filenames."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#live-demo-3",
+    "href": "slides/2026_06_18_functions-iteration.html#live-demo-3",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Live demo",
+    "text": "Live demo\ndemo/04_walk.R"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-messy-script-redeemed",
+    "href": "slides/2026_06_18_functions-iteration.html#the-messy-script-redeemed",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The messy script, redeemed",
+    "text": "The messy script, redeemed\npenguins_all &lt;- list.files(here(\"data\"), pattern = \"\\\\.csv$\", full.names = TRUE) |&gt;\n  map(read_csv) |&gt;      # iterate over files  -&gt; one data frame\n  list_rbind()\n\nby_species &lt;- split(penguins_all, penguins_all$species)\nplots &lt;- map(by_species, plot_penguins)   # iterate over groups -&gt; one plot each\nwalk2(plots, names(plots), save_plot)      # iterate to save     -&gt; one file each\nThe whole analysis, one readable chain. Add a fourth species or a tenth file — nothing changes."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#two-skills-one-shape",
+    "href": "slides/2026_06_18_functions-iteration.html#two-skills-one-shape",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Two skills, one shape",
+    "text": "Two skills, one shape\n\nFunctions: write the logic once\nIteration: run it over many inputs\n\nmap() for results, walk() for side effects\n\n\n\nA list → map your function → a result per element. That’s it."
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#where-next",
+    "href": "slides/2026_06_18_functions-iteration.html#where-next",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Where next",
+    "text": "Where next\n\nMore inputs at once: map2(), pmap()\nWhen some iterations fail: safely(), possibly()\nGoing parallel: purrr’s in_parallel() (≥ 1.1.0) or the furrr package\nBare column names in your functions: tidy-eval { }"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#thank-you",
+    "href": "slides/2026_06_18_functions-iteration.html#thank-you",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Thank you!",
+    "text": "Thank you!\nWrite the thing once, then map it.\nQuestions?"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#a-typical-script",
+    "href": "slides/2026_06_18_functions-iteration.html#a-typical-script",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "A typical script",
+    "text": "A typical script\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\nadelie &lt;- filter(penguins, species == \"Adelie\")\nggplot(adelie, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(title = \"Adelie\")\n\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")\nggplot(chinstrap, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(title = \"Chinstrap\")\n\ngentoo &lt;- filter(penguins, species == \"Chinstrap\")\nggplot(gentoo, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(title = \"Gentoo\")"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#dry-dont-repeat-yourself",
+    "href": "slides/2026_06_18_functions-iteration.html#dry-dont-repeat-yourself",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "DRY: Don’t Repeat Yourself",
+    "text": "DRY: Don’t Repeat Yourself\n\nFundamental principle of software development\nCopy-pasting code is error-prone and hard to maintain\nSolution: Write a functions to capture the logic, then iterate over different inputs"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#today-functions-and-iterations",
+    "href": "slides/2026_06_18_functions-iteration.html#today-functions-and-iterations",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Today: Functions and iterations",
+    "text": "Today: Functions and iterations\n\nHow to write your own functions\nHow to iterate using the purrr package from the tidyverse\n\n\nHow it works\n\nThere’s a GitHub repo you download and open in your IDE\nI demonstrate each topic: follow along or just watch\nEach module has a short exercise to try it yourself\nQuestions anytime: in the chat or just unmute"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-problem-copy-paste-code",
+    "href": "slides/2026_06_18_functions-iteration.html#the-problem-copy-paste-code",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The problem: copy-paste code",
+    "text": "The problem: copy-paste code\n\n\n\nCopy paste code violates the DRY (do not repeat yourself) principle\nFragile and hard to maintain\n\nCopy-paste errors\nChange logic in multiple places\n\n\n\nSolution: Write a function to capture the logic, then iterate over different inputs\n\n\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\n# Adelie species\nadelie &lt;- filter(penguins, species == \"Adelie\")\nggplot(adelie, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  theme_minimal()\n\n# Chinstrap species\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")\nggplot(chinstrap, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  theme_minimal()\n\n# Gentoo species\ngentoo &lt;- filter(penguins, species == \"Chinstrap\")\nggplot(gentoo, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html",
+    "href": "slides/2026_06_18_functions-iteration.html",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "",
+    "text": "📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nMaterial provided online\nIf you don’t want to miss a lecture\n\nSubscribe to the mailing list\n\nFor credit points: Send me a short message (Email or Webex)"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#turn-code-into-functions",
+    "href": "slides/2026_06_18_functions-iteration.html#turn-code-into-functions",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Turn code into functions",
+    "text": "Turn code into functions\n\nWhat changes becomes an argument (the data)\nWhat stays the same becomes the body (the ggplot)\n\n\n\n\nadelie &lt;- filter(penguins, species == \"Adelie\")\nggplot(adelie, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  theme_minimal()\n\n\n\n# generic penguin function\nplot_penguins &lt;- function(data) {\n  ggplot(data, aes(flipper_length_mm, body_mass_g)) +\n    geom_point() +\n    geom_smooth(method = \"lm\") +\n    theme_minimal()\n}\n# apply the function to the Adelie data\nadelie &lt;- filter(penguins, species == \"Adelie\")\nplot_penguins(adelie)"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#default-arguments",
+    "href": "slides/2026_06_18_functions-iteration.html#default-arguments",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Default arguments",
+    "text": "Default arguments\n\nArguments with default values don’t have to be specified when calling the function\nThey can be used for things that usually stay the same, but sometimes are changed\nDefault arguments are defined in the function body with arg = default\n\n\n# Define a default color for penguin data points\nplot_penguins &lt;- function(data, point_color = \"blue\") {\n  ggplot(data, aes(flipper_length_mm, body_mass_g)) +\n    geom_point(color = point_color) +\n    geom_smooth(method = \"lm\") +\n    theme_minimal()\n}\n# Call the function with the default blue color\nplot_penguins(adelie)\n# Call the function with a custom color\nplot_penguins(adelie, point_color = \"red\")"
   }
 ]
