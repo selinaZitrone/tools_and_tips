@@ -255,72 +255,123 @@ Turn a different plot block into a function.
 
 `exercises/01_functions_exercise.R`
 
-# 2. Iterating with `map()` {.inverse}
+# Iteration with the `purrr` package {.inverse}
 
-## The classic tool: a for loop
+## Base R iteration: for-loops and `apply()` 
 
-"Do this for each element":
+::: {.columns}
 
-```r
-roots <- c()
-for (x in 1:3) {
-  roots[x] <- sqrt(x)
-}
-roots
+::: {.column}
+
+Run the same function for multiple inputs, e.g.
+
+```{r}
+sqrt(1)
+sqrt(2)
+sqrt(3)
 ```
 
-. . .
-
-It works — but there's boilerplate: a container, an index, the filling-in. You'll see loops in the wild; today we use `map()`.
-
-## `map()`: the one idea
-
-```r
-map(1:3, sqrt)        # a list, one result per element
-```
-
-. . .
-
-`map(x, f)` calls `f` **once per element** of `x` and gives back **one result per element**.
-
-. . .
-
-`x` can be anything with elements — a vector, the **columns of a data frame**, a list of **file paths**. Only the *element* changes from example to example.
-
-## The `map_*()` family
-
-The suffix says what comes **back**:
-
-::: nonincremental
-
-- `map()` → list
-- `map_dbl()` → double &nbsp; `map_chr()` → character
-- `map_lgl()` → logical &nbsp; `map_int()` → integer
 
 :::
 
-. . .
+::: {.column}
 
-All of these return something. `walk()` (Module 4) is the sibling for when you want a **side effect**, not a result.
+Base R iteration options:
 
-## Anonymous functions: `\(x) ...`
+```{r}
+# for loop
+for (x in 1:3) {
+  sqrt(x)
+}
 
-Write a function on the spot when:
-
-. . .
-
-**There's no ready-made function**
-
-```r
-map_dbl(1:3, \(x) x^2)
+# Functions from the apply family
+lapply(1:3, sqrt) # a list
+sapply(1:3, sqrt) # a vector
 ```
 
-. . .
 
-**Your value isn't the first argument** — e.g. the species in `filter()`:
+:::
 
-```r
-map(species_names, \(s) filter(penguins, species == s))
+:::
+
+
+## The `purrr` package
+
+- Part of the `tidyverse` packages
+- Provides functions for functional programming and iteration
+- Why use it?
+  - More consistent than base R `apply` functions
+  - More flexible than base R iteration
+  - Integrates well in a tidyverse workflow
+
+## The main function: `map`
+
+```{r}
+# x: a list or vector to iterate over
+# f: a function to apply to each element of x
+map(x, f)
+```
+
+- `map(x, f)` calls `f` **once per element** of `x` and gives back **one result per element**.
+
+```{r}
+#| label: map_example
+#| eval: true
+# The map function always returns it's result as a list
+library(purrr)
+map(1:3, sqrt)
+```
+
+## More complex situations
+
+What if it's not so simple, e.g. my iterator is not the first argument?
+
+```{r}
+#| eval: true
+# draw 1 random number from a normal distribution with mean 1, 2 and 3
+rnorm(n = 1, mean = 1)
+rnorm(n = 1, mean = 2)
+rnorm(n = 1, mean = 3)
+```
+
+Just using `map` with `rnorm` does not work
+
+```{r}
+# iterator is passed to the n argument, not the mean argument
+map(1:3, rnorm)
+```
+
+## Solution: Anonymous function
+
+Solution: Write an anonymous function on the spot:
+
+```{r}
+map(1:3, \(x) rnorm(n = 1, mean = x))
+# same as
+map(1:3, function(x) rnorm(n = 1, mean = x))
+```
+
+
+## The `map_*()` variants
+
+The suffix says what is the output of the function:
+
+::: nonincremental
+
+- `map()` returns a list
+- `map_dbl()` returns a numeric vector
+- `map_chr()` returns a character vector
+- `map_lgl()` returns a logical vector 
+- `map_int()` returns an integer vector
+:::
+
+For example:
+
+```{r}
+# return result as list (always works)
+map(1:3, sqrt)
+# return results as double vector (only works if results are single numbers)
+map_dbl(1:3, sqrt)
 ```
 
 ## Live demo {.inverse}
