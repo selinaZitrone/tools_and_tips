@@ -16,7 +16,7 @@ format:
     auto-stretch: false
 editor: source
 execute:
-  echo: false
+  echo: true
   eval: false
 from: markdown+emoji
 ---
@@ -37,79 +37,75 @@ from: markdown+emoji
 
 :::
 
-## Today: two skills, one idea
+## The problem: copy-paste code
 
-Sooner or later you need to do the same thing many times — for each species, each group, each file.
+:::{.columns}
 
-. . .
+:::{.column width="45%"}
 
-The usual answer is **copy-paste**. It's slow, and it's easy to get wrong.
+- Copy paste code violates the **DRY** (do not repeat yourself) principle
 
-. . .
+- **Fragile** and hard to **maintain**
+  - Copy-paste errors
+  - Change logic in multiple places
 
-Today, two skills that fix that:
+:::{.fragment}
 
-1. **Writing your own functions**
-2. **Iterating** with the **`purrr`** package (part of the tidyverse)
+:::{.nonincremental}
 
-. . .
-
-Closely linked — we iterate the functions we write — but each stands on its own.
-
-## Functions are worth it on their own
-
-Functions aren't just a setup for iteration.
-
-::: nonincremental
-
-- A fundamental programming skill
-- More **modular**, more **readable** code
-- **Reuse** logic instead of rewriting it
-- The building blocks of your own R packages
+**Solution**: Write a **function** to capture the logic, then **iterate** over different inputs
 
 :::
 
-. . .
-
-Today we focus on one big payoff: **not repeating yourself**.
-
-## Don't Repeat Yourself (DRY)
-
-The same logic should live in **exactly one place**.
-
-. . .
-
-Copy-paste breaks that:
-
-::: nonincremental
-
-- Tedious
-- **Fragile** — change one thing, change it *everywhere*
-- Easy to miss a spot
+:::
 
 :::
 
-## The kind of script we all write
+:::{.column width="55%"}
 
-```r
+```{r}
+#| label: messy_script
+library(tidyverse)
+library(palmerpenguins)
+
+# Adelie species
 adelie <- filter(penguins, species == "Adelie")
 ggplot(adelie, aes(flipper_length_mm, body_mass_g)) +
-  geom_point() + geom_smooth(method = "lm") + labs(title = "Adelie")
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal()
 
+# Chinstrap species
 chinstrap <- filter(penguins, species == "Chinstrap")
 ggplot(chinstrap, aes(flipper_length_mm, body_mass_g)) +
-  geom_point() + geom_smooth(method = "lm") + labs(title = "Chinstrap")
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal()
 
-gentoo <- filter(penguins, species == "Chinstrap")   # ...spot the problem?
+# Gentoo species
+gentoo <- filter(penguins, species == "Chinstrap")
 ggplot(gentoo, aes(flipper_length_mm, body_mass_g)) +
-  geom_point() + geom_smooth(method = "lm") + labs(title = "Gentoo")
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal()
 ```
+
+:::
+
+:::
+
+## Today: Functions and iterations
+
+:::{.nonincremental}
+
+- How to write your own **functions**
+- How to **iterate** using the `purrr` package from the `tidyverse`
+
+:::
 
 . . .
 
-The "Gentoo" plot is **Chinstrap data** — a paste where I forgot to change the filter. Looks fine, silently wrong.
-
-## How it works
+#### How it works
 
 :::{.nonincremental}
 
@@ -127,56 +123,121 @@ The "Gentoo" plot is **Chinstrap data** — a paste where I forgot to change the
 1. Click the green **Code** button → **Download ZIP**
 2. Unzip it somewhere you can find it
 3. Double-click the `.Rproj` file → opens in RStudio
-   - *(Positron / VS Code users: open the folder)*
-4. Install today's packages:
+   - *(Positron/VS code users: open the folder)*
+4. Run `install_packages.R` to install today's packages
 
 ```r
 install.packages(c("tidyverse", "palmerpenguins", "here"))
 ```
 
-Repo: https://github.com/selinaZitrone/functions-iteration-workshop
+Repo: [https://github.com/selinaZitrone/functions-iteration-workshop](https://github.com/selinaZitrone/functions-iteration-workshop)
 
 :::
 
-# 1. Writing your own functions {.inverse}
+# Writing your own functions in R {.inverse}
 
 ## Anatomy of a function
 
-A function has a **name**, **arguments** (its inputs), a **body**, and a **return value**.
+A function has
+
+- a **name**: Choose something descriptive that starts with a verb
+- **arguments** (its inputs)
+- a **body**: All the code that is run using the input
+- a **return value**: the output of the function (the last line of the body)
+
+:::{.columns}
+
+:::{.column}
 
 ```r
 name <- function(arguments) {
   body
-  return(return_value)
 }
 ```
+:::
 
-. . .
+:::{.column}
 
-```r
-add <- function(x, y) {
-  x + y          # R returns the last line
+:::{.fragment}
+
+```{r}
+#| label: function_example
+#| eval: true
+add_numbers <- function(x, y) {
+  x + y
 }
 
-add(1, 1)        # 2
+add_numbers(1, 1)
+add_numbers(x = 1, y = 1)
 ```
 
-## What changes vs. what stays
+:::
+:::
+:::
 
-Back to the messy script. Between the three blocks:
+## Turn code into functions
 
-. . .
+- What **changes** becomes an **argument** (the data)
+- What **stays the same** becomes the **body** (the ggplot)
 
-- What **changes** → becomes an **argument** (the data)
-- What **stays the same** → becomes the **body** (the ggplot)
+::: {.columns}
 
-. . .
+::: {.column}
 
-That's the whole move.
+```{r}
+adelie <- filter(penguins, species == "Adelie")
+ggplot(adelie, aes(flipper_length_mm, body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal()
+```
+
+:::
+
+::: {.column}
+
+```{r}
+# generic penguin function
+plot_penguins <- function(data) {
+  ggplot(data, aes(flipper_length_mm, body_mass_g)) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    theme_minimal()
+}
+# apply the function to the Adelie data
+adelie <- filter(penguins, species == "Adelie")
+plot_penguins(adelie)
+```
+
+
+:::
+
+:::
+
+## Default arguments
+
+- Arguments with default values don't have to be specified when calling the function
+- They can be used for things that usually stay the same, but sometimes are changed
+- Default arguments are defined in the function body with `arg = default`
+
+```{r}
+# Define a default color for penguin data points
+plot_penguins <- function(data, point_color = "blue") {
+  ggplot(data, aes(flipper_length_mm, body_mass_g)) +
+    geom_point(color = point_color) +
+    geom_smooth(method = "lm") +
+    theme_minimal()
+}
+# Call the function with the default blue color
+plot_penguins(adelie)
+# Call the function with a custom color
+plot_penguins(adelie, point_color = "red")
+```
+
 
 ## Live demo {.inverse}
 
-Build `plot_penguins()` — and let it grow, one argument at a time.
+Build `plot_penguins()`
 
 `demo/01_functions.R`
 
