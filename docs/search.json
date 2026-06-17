@@ -2475,14 +2475,14 @@
     "href": "index.html",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n \n\n\nFrom default to publication-ready: advanced ggplot2\n\n\n\n\n\n\n2026-06-18\n\n\nStop repeating yourself: functions and iteration in R\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#lecture-series",
     "href": "index.html#lecture-series",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n \n\n\nFrom default to publication-ready: advanced ggplot2\n\n\n\n\n\n\n2026-06-18\n\n\nStop repeating yourself: functions and iteration in R\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "sessions/02_quarto.html",
@@ -4757,14 +4757,14 @@
     "href": "slides/2026_06_18_functions-iteration.html#get-set-up",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "Get set up",
-    "text": "Get set up\n\nClick the green Code button → Download ZIP\nUnzip it somewhere you can find it\nDouble-click the .Rproj file → opens in RStudio\n\n(Positron/VS code users: open the folder)\n\nRun install_packages.R to install today’s packages\n\ninstall.packages(c(\"tidyverse\", \"palmerpenguins\", \"here\"))\nRepo: https://github.com/selinaZitrone/functions-iteration-workshop"
+    "text": "Get set up\n\nClick the green Code button → Download ZIP\nUnzip it somewhere you can find it\nDouble-click the .Rproj file → opens in RStudio\n\n(Positron/VS code users: open the folder)\n\nInstall today’s packages (if you don’t have them yet)\n\ninstall.packages(c(\"tidyverse\", \"palmerpenguins\"))\nRepo: https://github.com/selinaZitrone/functions-iteration-workshop"
   },
   {
     "objectID": "slides/2026_06_18_functions-iteration.html#anatomy-of-a-function",
     "href": "slides/2026_06_18_functions-iteration.html#anatomy-of-a-function",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "Anatomy of a function",
-    "text": "Anatomy of a function\nA function has\n\na name: Choose something descriptive that starts with a verb\narguments (its inputs)\na body: All the code that is run using the input\na return value: the output of the function (the last line of the body)\n\n\n\nname &lt;- function(arguments) {\n  body\n}\n\n\n\nadd_numbers &lt;- function(x, y) {\n  x + y\n}\n\nadd_numbers(1, 1)\n\n[1] 2\n\nadd_numbers(x = 1, y = 1)\n\n[1] 2"
+    "text": "Anatomy of a function\nA function has\n\na name: Choose something descriptive that starts with a verb\narguments (its inputs)\na body: All the code that is run using the input\na return value: the output of the function (the last line of the body)\n\n\n\n\nname &lt;- function(arguments) {\n  body\n}\n\n\n\n\nadd_numbers &lt;- function(x, y) {\n  x + y\n}\n\nadd_numbers(1, 1)\n\n[1] 2\n\nadd_numbers(x = 1, y = 1)\n\n[1] 2"
   },
   {
     "objectID": "slides/2026_06_18_functions-iteration.html#what-changes-vs.-what-stays",
@@ -4834,14 +4834,14 @@
     "href": "slides/2026_06_18_functions-iteration.html#put-the-two-skills-together",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "Put the two skills together",
-    "text": "Put the two skills together\nWe can plot one species:\nplot_penguins(filter(penguins, species == \"Adelie\"))\n\nWe want this for every species — that’s map. But map needs a list: one data frame per species."
+    "text": "Put the two skills together\nWe can plot one species with our function from earlier:\nplot_penguins(filter(penguins, species == \"Adelie\"))\nBut how do we do this for all three species? -&gt; Map needs a list of data frames, one per species."
   },
   {
     "objectID": "slides/2026_06_18_functions-iteration.html#split-into-a-named-list",
     "href": "slides/2026_06_18_functions-iteration.html#split-into-a-named-list",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "split() into a named list",
-    "text": "split() into a named list\nby_species &lt;- split(penguins, penguins$species)\n\nnames(by_species)        # \"Adelie\" \"Chinstrap\" \"Gentoo\"\nby_species[[\"Adelie\"]]   # each element is a data frame\n\nA named list of data frames — exactly what map walks over."
+    "text": "split() into a named list\nThe base R function split() does exactly that:\n\n# split the penguins data into a named list of data frames, one per species\nby_species &lt;- split(penguins, penguins$species)\n\nnames(by_species)        # \"Adelie\" \"Chinstrap\" \"Gentoo\"\n\n[1] \"Adelie\"    \"Chinstrap\" \"Gentoo\"   \n\nby_species[[\"Adelie\"]]   # each element is a data frame\n\n# A tibble: 152 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 142 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "slides/2026_06_18_functions-iteration.html#the-payoff",
@@ -4876,7 +4876,7 @@
     "href": "slides/2026_06_18_functions-iteration.html#map-vs-walk",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "map vs walk",
-    "text": "map vs walk\n\nmap() → you want the results back\nwalk() → you want a side effect (print, save a file); the return value isn’t the point\n\n\nSame iteration idea, two purposes."
+    "text": "map vs walk\nBoth functions work in the same way, but they have different purposes:\n\nmap() → you want the results back\nwalk() → you want a side effect (print a plot, save a file)"
   },
   {
     "objectID": "slides/2026_06_18_functions-iteration.html#show-them-all-then-save-them-all",
@@ -4911,7 +4911,7 @@
     "href": "slides/2026_06_18_functions-iteration.html#where-next",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "Where next",
-    "text": "Where next\n\nMore inputs at once: map2(), pmap()\nWhen some iterations fail: safely(), possibly()\nGoing parallel: purrr’s in_parallel() (≥ 1.1.0) or the furrr package\nBare column names in your functions: tidy-eval { }"
+    "text": "Where next\n\nMore inputs at once: map2(), pmap()\nWhen some iterations fail: safely(), possibly()\nGoing parallel: purrr’s in_parallel() or the furrr package\n\nResources: purrr cheatsheet and purrr documentation"
   },
   {
     "objectID": "slides/2026_06_18_functions-iteration.html#thank-you",
@@ -4960,13 +4960,146 @@
     "href": "slides/2026_06_18_functions-iteration.html#turn-code-into-functions",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "Turn code into functions",
-    "text": "Turn code into functions\n\nWhat changes becomes an argument (the data)\nWhat stays the same becomes the body (the ggplot)\n\n\n\n\nadelie &lt;- filter(penguins, species == \"Adelie\")\nggplot(adelie, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  theme_minimal()\n\n\n\n# generic penguin function\nplot_penguins &lt;- function(data) {\n  ggplot(data, aes(flipper_length_mm, body_mass_g)) +\n    geom_point() +\n    geom_smooth(method = \"lm\") +\n    theme_minimal()\n}\n# apply the function to the Adelie data\nadelie &lt;- filter(penguins, species == \"Adelie\")\nplot_penguins(adelie)"
+    "text": "Turn code into functions\n\nWhat changes becomes an argument (the data)\nWhat stays the same becomes the body (the ggplot)\n\n\nadelie &lt;- filter(penguins, species == \"Adelie\")\nggplot(adelie, aes(flipper_length_mm, body_mass_g)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  theme_minimal()\n\n\nThe function version:\n\n# generic penguin function\nplot_penguins &lt;- function(data) {\n  ggplot(data, aes(flipper_length_mm, body_mass_g)) +\n    geom_point() +\n    geom_smooth(method = \"lm\") +\n    theme_minimal()\n}\n# apply the function to the Adelie data\nadelie &lt;- filter(penguins, species == \"Adelie\")\nplot_penguins(adelie)"
   },
   {
     "objectID": "slides/2026_06_18_functions-iteration.html#default-arguments",
     "href": "slides/2026_06_18_functions-iteration.html#default-arguments",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "Default arguments",
-    "text": "Default arguments\n\nArguments with default values don’t have to be specified when calling the function\nThey can be used for things that usually stay the same, but sometimes are changed\nDefault arguments are defined in the function body with arg = default\n\n\n# Define a default color for penguin data points\nplot_penguins &lt;- function(data, point_color = \"blue\") {\n  ggplot(data, aes(flipper_length_mm, body_mass_g)) +\n    geom_point(color = point_color) +\n    geom_smooth(method = \"lm\") +\n    theme_minimal()\n}\n# Call the function with the default blue color\nplot_penguins(adelie)\n# Call the function with a custom color\nplot_penguins(adelie, point_color = \"red\")"
+    "text": "Default arguments\n\nArguments with default values don’t have to be specified when calling the function\nThey can be used for things that usually stay the same, but sometimes are changed\nDefault arguments are defined in the function body with arg = default\n\n\n\n# Define a default color for penguin data points\nplot_penguins &lt;- function(data, color = \"black\") {\n  ggplot(data, aes(flipper_length_mm, body_mass_g)) +\n    geom_point(color = color) +\n    geom_smooth(method = \"lm\") +\n    theme_minimal()\n}\n# Call the function with the default black color\nplot_penguins(adelie)\n# Call the function with a custom color\nplot_penguins(adelie, color = \"red\")"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#base-r-iteration-for-loops-and-apply",
+    "href": "slides/2026_06_18_functions-iteration.html#base-r-iteration-for-loops-and-apply",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Base R iteration: for-loops and apply()",
+    "text": "Base R iteration: for-loops and apply()\nRun the same function for multiple inputs, e.g.\n\nsqrt(1)\nsqrt(2)\nsqrt(3)\n\n\nBase R iteration options:\n\n# for loop\nfor (x in 1:3) {\n  sqrt(x)\n}\n\n# Functions from the apply family\nlapply(1:3, sqrt) # a list\nsapply(1:3, sqrt) # a vector"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-purrr-package",
+    "href": "slides/2026_06_18_functions-iteration.html#the-purrr-package",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The purrr package",
+    "text": "The purrr package\n\nPart of the tidyverse packages\nProvides functions for functional programming and iteration\nWhy use it?\n\nMore consistent than base R apply functions\nMore flexible than base R iteration\nIntegrates well in a tidyverse workflow"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-main-function-map",
+    "href": "slides/2026_06_18_functions-iteration.html#the-main-function-map",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The main function: map",
+    "text": "The main function: map\nmap(x, f) calls f once per element of x and gives back one result per element.\n\n# x: a list or vector to iterate over\n# f: a function to apply to each element of x\nmap(x, f)\n\n . . .\n\n# The map function always returns its result as a list\nlibrary(purrr)\nmap(1:3, sqrt)\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 1.414214\n\n[[3]]\n[1] 1.732051"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#more-complex-situations",
+    "href": "slides/2026_06_18_functions-iteration.html#more-complex-situations",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "More complex situations",
+    "text": "More complex situations\nWhat if it’s not so simple, e.g. my iterator is not the first argument?\n\n# round the number pi to a different number of digits\nround(pi, digits = 1)\nround(pi, digits = 2)\nround(pi, digits = 3)\n\nJust using map with round does not work -&gt; Where does pi go?\n\n# iterator is passed to the first argument not as `digits`\nmap(1:3, round)"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#solution-anonymous-function",
+    "href": "slides/2026_06_18_functions-iteration.html#solution-anonymous-function",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Solution: Anonymous function",
+    "text": "Solution: Anonymous function\nSolution: Write an anonymous function on the spot:\n\nmap(1:3, \\(x) round(pi, digits = x))\n# same as\nmap(1:3, function(x) round(pi, digits = x))\n\n\n\\(x) syntax is a shortcut for function(x)\nx is the argument that takes the value of each element of the iterator"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-map_-variants",
+    "href": "slides/2026_06_18_functions-iteration.html#the-map_-variants",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The map_*() variants",
+    "text": "The map_*() variants\nThe suffix says what is the output of the function:\n\nmap() returns a list\nmap_dbl() returns a numeric vector\nmap_chr() returns a character vector\nmap_lgl() returns a logical vector\nmap_int() returns an integer vector\n\nFor example:\n\n# return result as list (always works)\nmap(1:3, sqrt)\n# return results as double vector (only works if results are single numbers)\nmap_dbl(1:3, sqrt)"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#your-turn",
+    "href": "slides/2026_06_18_functions-iteration.html#your-turn",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 1 (~7 min):\nOpen exercises/01_functions_exercise.R"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#your-turn-1",
+    "href": "slides/2026_06_18_functions-iteration.html#your-turn-1",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 2 (~7 min):\nOpen exercises/02_map_exercise.R"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#map-over-the-list-of-data-frames",
+    "href": "slides/2026_06_18_functions-iteration.html#map-over-the-list-of-data-frames",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "map() over the list of data frames",
+    "text": "map() over the list of data frames\n\nplots &lt;- map(by_species, plot_penguins)\n# Look at one individual plot\nplots[[\"Adelie\"]]\n\n\nmap works very well with the pipe operator, so we can do everything in one chain:\n\nplots &lt;- penguins |&gt;\n  split(penguins$species) |&gt;\n  map(plot_penguins)"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#the-same-structure-anything-per-group",
+    "href": "slides/2026_06_18_functions-iteration.html#the-same-structure-anything-per-group",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "The same structure, anything per group",
+    "text": "The same structure, anything per group\nRun a linear model for each species and pull out the R² values:\npenguins |&gt;\n  split(penguins$species) |&gt;\n  map(\\(df) lm(body_mass_g ~ flipper_length_mm, data = df)) |&gt;\n  map(summary) |&gt;\n  map_dbl(\\(x) x$r.squared)"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#your-turn-2",
+    "href": "slides/2026_06_18_functions-iteration.html#your-turn-2",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 3 (~7 min):\nOpen exercises/03_map_functions_exercise.R"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#example-print-all-the-plots",
+    "href": "slides/2026_06_18_functions-iteration.html#example-print-all-the-plots",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Example: print all the plots",
+    "text": "Example: print all the plots\n\n# Create all plots and save them in a list -&gt; results we want back\nplots &lt;- penguins |&gt;\n  split(penguins$species) |&gt;\n  map(plot_penguins)\n\n# Take the list of plots and print them -&gt; side effect we want (the printing)\nwalk(plots, print)              # draw each plot"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#example-save-all-the-plots",
+    "href": "slides/2026_06_18_functions-iteration.html#example-save-all-the-plots",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Example: save all the plots",
+    "text": "Example: save all the plots\nWe can also walk() over two inputs at the same time with walk2(): the list of plots (x) and their names (y).\n\n# Walk 2 iterates over 2 inputs (x, y) in parallel\nwalk2(plots, names(plots), function(x, y) {ggsave(\n  paste0(\"plots/\", y, \".png\"), x\n)})"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#next-lectureworkshop",
+    "href": "slides/2026_06_18_functions-iteration.html#next-lectureworkshop",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Next lecture/workshop",
+    "text": "Next lecture/workshop\nTopic: Code sharing and reproducible repositories\n\n📅 16.07.2026 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#function",
+    "href": "slides/2026_06_18_functions-iteration.html#function",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Function",
+    "text": "Function\n\nFunctions are reusable pieces of code that take inputs and return outputs\nDefault arguments are defined with arg = value in the function body\n\nFor example\n# y is optional and defaults to 1\nadd_numbers &lt;- function(x, y = 1) {\n  x + y\n}"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#iteration-with-the-purrr-package-1",
+    "href": "slides/2026_06_18_functions-iteration.html#iteration-with-the-purrr-package-1",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Iteration with the purrr package",
+    "text": "Iteration with the purrr package\nmap(x, f) applies function f to each element of x and returns a list\nmap(1:3, sqrt) # returns a list of square roots\nmap_dbl(1:3, sqrt) # returns a numeric vector of square roots\n You can use map with your own functions, and you can write anonymous functions on the spot if needed.\nmap(1:3, \\(x) round(pi, digits = x))\n The walk() function is the same as map but for side effects (printing, saving files) instead of returning results.\nwalk(plots, print) # prints each plot"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#your-turn-3",
+    "href": "slides/2026_06_18_functions-iteration.html#your-turn-3",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 4 (~7 min, optional / take-home):\nOpen exercises/04_walk_exercise.R"
+  },
+  {
+    "objectID": "sessions/19_functions-iteration.html",
+    "href": "sessions/19_functions-iteration.html",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "",
+    "text": "Sooner or later every R user hits the same wall: you need to do the same thing many times — an analysis for each species, a plot for each group, the same cleaning for every file. The usual answer is copy-paste, which is slow and easy to get wrong.\nIn this hands-on workshop you’ll learn the two skills that fix this:\n\nWriting your own functions — wrapping repeated code into a function with arguments, defaults, and a return value\nIterating with purrr — using map() and friends to run a function over many inputs at once, instead of copy-pasting or looping\n\nWe work through practical examples together, and you’ll refactor repetitive code into a function you can apply across many inputs.\n\nSlides in full screen     Download PDF slides"
+  },
+  {
+    "objectID": "sessions/19_functions-iteration.html#resources",
+    "href": "sessions/19_functions-iteration.html#resources",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "Resources",
+    "text": "Resources\n\nWorkshop materials\nThe workshop repo has all demo scripts, exercises, and solutions:\ngithub.com/selinaZitrone/functions-iteration-workshop\n\n\nWriting functions\n\nR for Data Science on Functions: a practical introduction to functions\nAdvanced R, Functions: a deeper dive once you’re comfortable\n\n\n\nIteration with purrr\n\npurrr website: full reference and articles\npurrr cheatsheet: the whole family on one page\nR for Data Science on Iteration: map() and other iteration iteration tools\n\nMore purrr tools:\n\nmap2() / pmap(): iterate over two or more inputs at once\nsafely() / possibly(): keep going when one element throws an error\nParallel processing in purrr 1.1.0 and furrr: run a map across multiple CPU cores"
   }
 ]
