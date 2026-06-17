@@ -32,18 +32,17 @@ The workshop repo has all demo scripts, exercises, and solutions:
 
 ### Writing functions
 
-- [R for Data Science (2e) — Functions](https://r4ds.hadley.nz/functions): the practical introduction
-- [Advanced R — Functions](https://adv-r.hadley.nz/functions.html): a deeper dive once you're comfortable
+- [R for Data Science on Functions](https://r4ds.hadley.nz/functions): a practical introduction to functions
+- [Advanced R, Functions](https://adv-r.hadley.nz/functions.html): a deeper dive once you're comfortable
 
 ### Iteration with purrr
 
-- [R for Data Science (2e) — Iteration](https://r4ds.hadley.nz/iteration): `map()` and friends, with examples
 - [purrr website](https://purrr.tidyverse.org/): full reference and articles
 - [purrr cheatsheet](https://rstudio.github.io/cheatsheets/purrr.pdf): the whole family on one page
+- [R for Data Science on Iteration](https://r4ds.hadley.nz/iteration): `map()` and other iteration iteration tools
 
-### Going further
+**More purrr tools:**
 
 - [`map2()` / `pmap()`](https://purrr.tidyverse.org/reference/map2.html): iterate over two or more inputs at once
-- [`safely()` / `possibly()`](https://purrr.tidyverse.org/reference/safely.html): keep going when one element errors
-- [Parallel processing in purrr 1.1.0](https://tidyverse.org/blog/2025/07/purrr-1-1-0-parallel/) and [`furrr`](https://furrr.futureverse.org/): run a map across CPU cores
-- [Programming with dplyr](https://dplyr.tidyverse.org/articles/programming.html): tidy-eval (`{{ }}`) for functions that take bare column names
+- [`safely()` / `possibly()`](https://purrr.tidyverse.org/reference/safely.html): keep going when one element throws an error
+- [Parallel processing in purrr 1.1.0](https://tidyverse.org/blog/2025/07/purrr-1-1-0-parallel/) and [`furrr`](https://furrr.futureverse.org/): run a map across multiple CPU cores
