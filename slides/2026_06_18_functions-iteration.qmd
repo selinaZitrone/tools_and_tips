@@ -45,6 +45,46 @@ library(palmerpenguins)
 
 :::
 
+## Today: Functions and iterations
+
+:::{.nonincremental}
+
+- How to write your own **functions**
+- How to **iterate** using the `purrr` package from the `tidyverse`
+
+:::
+
+. . .
+
+#### How it works
+
+:::{.nonincremental}
+
+- There's a **GitHub repo** you download and open in your IDE
+- I demonstrate each topic: **follow along or just watch**
+- Each module has a short **exercise** to try it yourself
+- **Questions** anytime: in the chat or just unmute
+
+:::
+
+## Get set up
+
+:::{.nonincremental}
+
+1. Click the green **Code** button → **Download ZIP**
+2. Unzip it somewhere you can find it
+3. Double-click the `.Rproj` file → opens in RStudio
+   - *(Positron/VS code users: open the folder)*
+4. Install today's packages (if you don't have them yet)
+
+```r
+install.packages(c("tidyverse", "palmerpenguins"))
+```
+
+Repo: [https://github.com/selinaZitrone/functions-iteration-workshop](https://github.com/selinaZitrone/functions-iteration-workshop)
+
+:::
+
 ## The problem: copy-paste code
 
 :::{.columns}
@@ -102,49 +142,16 @@ ggplot(gentoo, aes(flipper_length_mm, body_mass_g)) +
 
 :::
 
-## Today: Functions and iterations
-
-:::{.nonincremental}
-
-- How to write your own **functions**
-- How to **iterate** using the `purrr` package from the `tidyverse`
-
-:::
-
-. . .
-
-#### How it works
-
-:::{.nonincremental}
-
-- There's a **GitHub repo** you download and open in your IDE
-- I demonstrate each topic: **follow along or just watch**
-- Each module has a short **exercise** to try it yourself
-- **Questions** anytime: in the chat or just unmute
-
-:::
-
-## Get set up
-
-:::{.nonincremental}
-
-1. Click the green **Code** button → **Download ZIP**
-2. Unzip it somewhere you can find it
-3. Double-click the `.Rproj` file → opens in RStudio
-   - *(Positron/VS code users: open the folder)*
-4. Install today's packages (if you don't have them yet)
-
-```r
-install.packages(c("tidyverse", "palmerpenguins"))
-```
-
-Repo: [https://github.com/selinaZitrone/functions-iteration-workshop](https://github.com/selinaZitrone/functions-iteration-workshop)
-
-:::
-
 # Writing your own functions in R {.inverse}
 
 ## Anatomy of a function
+
+
+```r
+name <- function(arguments) {
+  body
+}
+```
 
 A function has
 
@@ -153,18 +160,19 @@ A function has
 - a **body**: All the code that is run using the input
 - a **return value**: the output of the function (the last line of the body)
 
+## A simple example
+
+A function has
+
 :::{.columns}
 
 :::{.column}
-
-:::{.fragment}
 
 ```r
 name <- function(arguments) {
   body
 }
 ```
-:::
 :::
 
 :::{.column}
@@ -185,6 +193,7 @@ add_numbers(x = 1, y = 1)
 :::
 :::
 :::
+
 
 ## Turn code into functions
 
@@ -292,6 +301,7 @@ sapply(1:3, sqrt) # a vector
   - Integrates well in a tidyverse workflow
 
 ## The main function: `map`
+
 `map(x, f)` calls `f` **once per element** of `x` and gives back **one result per element**.
 
 ```{r}
@@ -300,6 +310,7 @@ sapply(1:3, sqrt) # a vector
 map(x, f)
 ```
 <br>
+
 . . .
 
 ```{r}
@@ -309,6 +320,29 @@ map(x, f)
 library(purrr)
 map(1:3, sqrt)
 ```
+
+## The `map_*()` variants
+
+The suffix says what is the output of the function:
+
+::: nonincremental
+
+- `map()` returns a list
+- `map_dbl()` returns a numeric vector
+- `map_chr()` returns a character vector
+- `map_lgl()` returns a logical vector 
+- `map_int()` returns an integer vector
+:::
+
+For example:
+
+```{r}
+# return result as list (always works)
+map(1:3, sqrt)
+# return results as double vector (only works if results are single numbers)
+map_dbl(1:3, sqrt)
+```
+
 
 ## More complex situations
 
@@ -344,28 +378,6 @@ map(1:3, function(x) round(pi, digits = x))
 - `x` is the argument that takes the value of each element of the iterator
 
 :::
-
-## The `map_*()` variants
-
-The suffix says what is the output of the function:
-
-::: nonincremental
-
-- `map()` returns a list
-- `map_dbl()` returns a numeric vector
-- `map_chr()` returns a character vector
-- `map_lgl()` returns a logical vector 
-- `map_int()` returns an integer vector
-:::
-
-For example:
-
-```{r}
-# return result as list (always works)
-map(1:3, sqrt)
-# return results as double vector (only works if results are single numbers)
-map_dbl(1:3, sqrt)
-```
 
 ## Live demo {.inverse}
 
@@ -491,8 +503,10 @@ walk2(plots, names(plots), function(x, y) {ggsave(
 
 ## Function
 
+:::{.nonincremental}
 - Functions are reusable pieces of code that take inputs and return outputs
 - Default arguments are defined with `arg = value` in the function body
+:::
 
 For example
 
@@ -512,12 +526,19 @@ map(1:3, sqrt) # returns a list of square roots
 map_dbl(1:3, sqrt) # returns a numeric vector of square roots
 ```
 <br>
+
+. . .
+
+
 You can use `map` with your own functions, and you can write anonymous functions on the spot if needed.
 
 ```r
 map(1:3, \(x) round(pi, digits = x))
 ```
 <br>
+
+. . .
+
 The `walk()` function is the same as map but for side effects (printing, saving files) instead of returning results.
 
 ```r
