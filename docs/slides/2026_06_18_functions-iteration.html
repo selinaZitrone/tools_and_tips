@@ -1075,49 +1075,6 @@ margin-right: 0; }
 <li>For credit points: Send me a short message (Email or Webex)</li>
 </ul>
 </section>
-<section id="the-problem-copy-paste-code" class="slide level2">
-<h2>The problem: copy-paste code</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<ul>
-<li class="fragment"><p>Copy paste code violates the <strong>DRY</strong> (do not repeat yourself) principle</p></li>
-<li class="fragment"><p>Fragile and hard to maintain</p>
-<ul>
-<li class="fragment">Copy-paste errors</li>
-<li class="fragment">Change logic in multiple places</li>
-</ul></li>
-</ul>
-<div class="fragment">
-<p><strong>Solution</strong>: Write a <strong>function</strong> to capture the logic, then <strong>iterate</strong> over different inputs</p>
-</div>
-</div><div class="column" style="width:55%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Adelie species</span></span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adelie, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
-<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Chinstrap species</span></span>
-<span id="cb1-12"><a aria-hidden="true" tabindex="-1"></a>chinstrap <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Chinstrap&quot;</span>)</span>
-<span id="cb1-13"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(chinstrap, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
-<span id="cb1-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb1-17"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Gentoo species</span></span>
-<span id="cb1-19"><a aria-hidden="true" tabindex="-1"></a>gentoo <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Chinstrap&quot;</span>)</span>
-<span id="cb1-20"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gentoo, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
-<span id="cb1-21"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-22"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1-23"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div></div>
-</section>
 <section id="today-functions-and-iterations" class="slide level2">
 <h2>Today: Functions and iterations</h2>
 <ul>
@@ -1145,8 +1102,51 @@ margin-right: 0; }
 </ul></li>
 <li>Install today’s packages (if you don’t have them yet)</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;palmerpenguins&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;palmerpenguins&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Repo: <a href="https://github.com/selinaZitrone/functions-iteration-workshop">https://github.com/selinaZitrone/functions-iteration-workshop</a></p>
+</section>
+<section id="the-problem-copy-paste-code" class="slide level2">
+<h2>The problem: copy-paste code</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li class="fragment"><p>Copy paste code violates the <strong>DRY</strong> (do not repeat yourself) principle</p></li>
+<li class="fragment"><p>Fragile and hard to maintain</p>
+<ul>
+<li class="fragment">Copy-paste errors</li>
+<li class="fragment">Change logic in multiple places</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p><strong>Solution</strong>: Write a <strong>function</strong> to capture the logic, then <strong>iterate</strong> over different inputs</p>
+</div>
+</div><div class="column" style="width:55%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Adelie species</span></span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span>
+<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adelie, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
+<span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb2-10"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Chinstrap species</span></span>
+<span id="cb2-12"><a aria-hidden="true" tabindex="-1"></a>chinstrap <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Chinstrap&quot;</span>)</span>
+<span id="cb2-13"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(chinstrap, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
+<span id="cb2-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb2-17"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Gentoo species</span></span>
+<span id="cb2-19"><a aria-hidden="true" tabindex="-1"></a>gentoo <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Chinstrap&quot;</span>)</span>
+<span id="cb2-20"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gentoo, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
+<span id="cb2-21"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-22"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-23"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
 </section>
 <section>
 <section id="writing-your-own-functions-in-r" class="title-slide slide level1 inverse center">
@@ -1155,6 +1155,9 @@ margin-right: 0; }
 </section>
 <section id="anatomy-of-a-function" class="slide level2">
 <h2>Anatomy of a function</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="cf">function</span>(arguments) {</span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>  body</span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>A function has</p>
 <ul>
 <li class="fragment">a <strong>name</strong>: Choose something descriptive that starts with a verb</li>
@@ -1162,25 +1165,27 @@ margin-right: 0; }
 <li class="fragment">a <strong>body</strong>: All the code that is run using the input</li>
 <li class="fragment">a <strong>return value</strong>: the output of the function (the last line of the body)</li>
 </ul>
+</section>
+<section id="a-simple-example" class="slide level2">
+<h2>A simple example</h2>
+<p>A function has</p>
 <div class="columns">
 <div class="column">
-<div class="fragment">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="cf">function</span>(arguments) {</span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>  body</span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="cf">function</span>(arguments) {</span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>  body</span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>add_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
-<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">add_numbers</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>add_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">add_numbers</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">add_numbers</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">add_numbers</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
@@ -1195,25 +1200,25 @@ margin-right: 0; }
 <li>What <strong>stays the same</strong> becomes the <strong>body</strong> (the ggplot)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span>
-<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adelie, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
-<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adelie, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
+<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>The function version:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># generic penguin function</span></span>
-<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>plot_penguins <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
-<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># apply the function to the Adelie data</span></span>
-<span id="cb9-9"><a aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span>
-<span id="cb9-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot_penguins</span>(adelie)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># generic penguin function</span></span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>plot_penguins <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># apply the function to the Adelie data</span></span>
+<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)</span>
+<span id="cb10-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot_penguins</span>(adelie)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1226,17 +1231,17 @@ margin-right: 0; }
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Define a default color for penguin data points</span></span>
-<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>plot_penguins <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) {</span>
-<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
-<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> color) <span class="sc">+</span></span>
-<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function with the default black color</span></span>
-<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot_penguins</span>(adelie)</span>
-<span id="cb10-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function with a custom color</span></span>
-<span id="cb10-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot_penguins</span>(adelie, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Define a default color for penguin data points</span></span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>plot_penguins <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) {</span>
+<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(flipper_length_mm, body_mass_g)) <span class="sc">+</span></span>
+<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> color) <span class="sc">+</span></span>
+<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-7"><a aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function with the default black color</span></span>
+<span id="cb11-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot_penguins</span>(adelie)</span>
+<span id="cb11-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function with a custom color</span></span>
+<span id="cb11-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot_penguins</span>(adelie, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1261,21 +1266,21 @@ margin-right: 0; }
 <h2>Base R iteration: for-loops and <code>apply()</code></h2>
 <p>Run the same function for multiple inputs, e.g.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1</span>)</span>
-<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)</span>
-<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1</span>)</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)</span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>Base R iteration options:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># for loop</span></span>
-<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
-<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(x)</span>
-<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Functions from the apply family</span></span>
-<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt) <span class="co"># a list</span></span>
-<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt) <span class="co"># a vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># for loop</span></span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(x)</span>
+<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Functions from the apply family</span></span>
+<span id="cb13-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt) <span class="co"># a list</span></span>
+<span id="cb13-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt) <span class="co"># a vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1296,15 +1301,16 @@ margin-right: 0; }
 <h2>The main function: <code>map</code></h2>
 <p><code>map(x, f)</code> calls <code>f</code> <strong>once per element</strong> of <code>x</code> and gives back <strong>one result per element</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># x: a list or vector to iterate over</span></span>
-<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># f: a function to apply to each element of x</span></span>
-<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(x, f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># x: a list or vector to iterate over</span></span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># f: a function to apply to each element of x</span></span>
+<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(x, f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><br> . . .</p>
+<p><br></p>
+<div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># The map function always returns its result as a list</span></span>
-<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># The map function always returns its result as a list</span></span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 1
@@ -1316,34 +1322,7 @@ margin-right: 0; }
 [1] 1.732051</code></pre>
 </div>
 </div>
-</section>
-<section id="more-complex-situations" class="slide level2">
-<h2>More complex situations</h2>
-<p>What if it’s not so simple, e.g. my iterator is not the first argument?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># round the number pi to a different number of digits</span></span>
-<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="at">digits =</span> <span class="dv">1</span>)</span>
-<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Just using <code>map</code> with <code>round</code> does not work -&gt; Where does <code>pi</code> go?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># iterator is passed to the first argument not as `digits`</span></span>
-<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, round)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="solution-anonymous-function" class="slide level2">
-<h2>Solution: Anonymous function</h2>
-<p>Solution: Write an anonymous function on the spot:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, \(x) <span class="fu">round</span>(pi, <span class="at">digits =</span> x))</span>
-<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># same as</span></span>
-<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(x) <span class="fu">round</span>(pi, <span class="at">digits =</span> x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li><code>\(x)</code> syntax is a shortcut for <code>function(x)</code></li>
-<li><code>x</code> is the argument that takes the value of each element of the iterator</li>
-</ul>
 </section>
 <section id="the-map_-variants" class="slide level2">
 <h2>The <code>map_*()</code> variants</h2>
@@ -1357,11 +1336,39 @@ margin-right: 0; }
 </ul>
 <p>For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># return result as list (always works)</span></span>
-<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt)</span>
-<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># return results as double vector (only works if results are single numbers)</span></span>
-<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># return result as list (always works)</span></span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt)</span>
+<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># return results as double vector (only works if results are single numbers)</span></span>
+<span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="more-complex-situations" class="slide level2">
+<h2>More complex situations</h2>
+<p>What if it’s not so simple, e.g. my iterator is not the first argument?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># round the number pi to a different number of digits</span></span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Just using <code>map</code> with <code>round</code> does not work -&gt; Where does <code>pi</code> go?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># iterator is passed to the first argument not as `digits`</span></span>
+<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, round)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="solution-anonymous-function" class="slide level2">
+<h2>Solution: Anonymous function</h2>
+<p>Solution: Write an anonymous function on the spot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, \(x) <span class="fu">round</span>(pi, <span class="at">digits =</span> x))</span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># same as</span></span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(x) <span class="fu">round</span>(pi, <span class="at">digits =</span> x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>\(x)</code> syntax is a shortcut for <code>function(x)</code></li>
+<li><code>x</code> is the argument that takes the value of each element of the iterator</li>
+</ul>
 </section>
 <section id="live-demo-1" class="slide level2 inverse">
 <h2>Live demo</h2>
@@ -1383,21 +1390,21 @@ margin-right: 0; }
 <section id="put-the-two-skills-together" class="slide level2">
 <h2>Put the two skills together</h2>
 <p>We can plot one species with our function from earlier:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot_penguins</span>(<span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot_penguins</span>(<span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>But how do we do this for all three species? -&gt; Map needs a list of data frames, one per species.</p>
 </section>
 <section id="split-into-a-named-list" class="slide level2">
 <h2><code>split()</code> into a named list</h2>
 <p>The base R function <code>split()</code> does exactly that:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># split the penguins data into a named list of data frames, one per species</span></span>
-<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a>by_species <span class="ot">&lt;-</span> <span class="fu">split</span>(penguins, penguins<span class="sc">$</span>species)</span>
-<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(by_species)        <span class="co"># &quot;Adelie&quot; &quot;Chinstrap&quot; &quot;Gentoo&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># split the penguins data into a named list of data frames, one per species</span></span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a>by_species <span class="ot">&lt;-</span> <span class="fu">split</span>(penguins, penguins<span class="sc">$</span>species)</span>
+<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(by_species)        <span class="co"># &quot;Adelie&quot; &quot;Chinstrap&quot; &quot;Gentoo&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Adelie&quot;    &quot;Chinstrap&quot; &quot;Gentoo&quot;   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>by_species[[<span class="st">&quot;Adelie&quot;</span>]]   <span class="co"># each element is a data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>by_species[[<span class="st">&quot;Adelie&quot;</span>]]   <span class="co"># each element is a data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 152 × 8
    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -1420,27 +1427,27 @@ margin-right: 0; }
 <section id="map-over-the-list-of-data-frames" class="slide level2">
 <h2><code>map()</code> over the list of data frames</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(by_species, plot_penguins)</span>
-<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Look at one individual plot</span></span>
-<span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a>plots[[<span class="st">&quot;Adelie&quot;</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(by_species, plot_penguins)</span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Look at one individual plot</span></span>
+<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>plots[[<span class="st">&quot;Adelie&quot;</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><code>map</code> works very well with the pipe operator, so we can do everything in one chain:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
-<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(penguins<span class="sc">$</span>species) <span class="sc">|&gt;</span></span>
-<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(plot_penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(penguins<span class="sc">$</span>species) <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(plot_penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="the-same-structure-anything-per-group" class="slide level2">
 <h2>The same structure, anything per group</h2>
 <p>Run a linear model for each species and pull out the R² values:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(penguins<span class="sc">$</span>species) <span class="sc">|&gt;</span></span>
-<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(\(df) <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> df)) <span class="sc">|&gt;</span></span>
-<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(summary) <span class="sc">|&gt;</span></span>
-<span id="cb27-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(\(x) x<span class="sc">$</span>r.squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(penguins<span class="sc">$</span>species) <span class="sc">|&gt;</span></span>
+<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(\(df) <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> df)) <span class="sc">|&gt;</span></span>
+<span id="cb28-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(summary) <span class="sc">|&gt;</span></span>
+<span id="cb28-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(\(x) x<span class="sc">$</span>r.squared)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="live-demo-2" class="slide level2 inverse">
 <h2>Live demo</h2>
@@ -1469,23 +1476,23 @@ margin-right: 0; }
 <section id="example-print-all-the-plots" class="slide level2">
 <h2>Example: print all the plots</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Create all plots and save them in a list -&gt; results we want back</span></span>
-<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
-<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(penguins<span class="sc">$</span>species) <span class="sc">|&gt;</span></span>
-<span id="cb28-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(plot_penguins)</span>
-<span id="cb28-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Take the list of plots and print them -&gt; side effect we want (the printing)</span></span>
-<span id="cb28-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(plots, print)              <span class="co"># draw each plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Create all plots and save them in a list -&gt; results we want back</span></span>
+<span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(penguins<span class="sc">$</span>species) <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(plot_penguins)</span>
+<span id="cb29-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Take the list of plots and print them -&gt; side effect we want (the printing)</span></span>
+<span id="cb29-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(plots, print)              <span class="co"># draw each plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-save-all-the-plots" class="slide level2">
 <h2>Example: save all the plots</h2>
 <p>We can also <code>walk()</code> over two inputs at the same time with <code>walk2()</code>: the list of plots (x) and their names (y).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Walk 2 iterates over 2 inputs (x, y) in parallel</span></span>
-<span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">walk2</span>(plots, <span class="fu">names</span>(plots), <span class="cf">function</span>(x, y) {<span class="fu">ggsave</span>(</span>
-<span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">&quot;plots/&quot;</span>, y, <span class="st">&quot;.png&quot;</span>), x</span>
-<span id="cb29-4"><a aria-hidden="true" tabindex="-1"></a>)})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Walk 2 iterates over 2 inputs (x, y) in parallel</span></span>
+<span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">walk2</span>(plots, <span class="fu">names</span>(plots), <span class="cf">function</span>(x, y) {<span class="fu">ggsave</span>(</span>
+<span id="cb30-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">&quot;plots/&quot;</span>, y, <span class="st">&quot;.png&quot;</span>), x</span>
+<span id="cb30-4"><a aria-hidden="true" tabindex="-1"></a>)})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="live-demo-3" class="slide level2 inverse">
@@ -1507,24 +1514,30 @@ margin-right: 0; }
 <section id="function" class="slide level2">
 <h2>Function</h2>
 <ul>
-<li class="fragment">Functions are reusable pieces of code that take inputs and return outputs</li>
-<li class="fragment">Default arguments are defined with <code>arg = value</code> in the function body</li>
+<li>Functions are reusable pieces of code that take inputs and return outputs</li>
+<li>Default arguments are defined with <code>arg = value</code> in the function body</li>
 </ul>
 <p>For example</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># y is optional and defaults to 1</span></span>
-<span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a>add_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">y =</span> <span class="dv">1</span>) {</span>
-<span id="cb30-3"><a aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
-<span id="cb30-4"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># y is optional and defaults to 1</span></span>
+<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a>add_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">y =</span> <span class="dv">1</span>) {</span>
+<span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb31-4"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="iteration-with-the-purrr-package-1" class="slide level2">
 <h2>Iteration with the <code>purrr</code> package</h2>
 <p><code>map(x, f)</code> applies function <code>f</code> to each element of <code>x</code> and returns a list</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt) <span class="co"># returns a list of square roots</span></span>
-<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt) <span class="co"># returns a numeric vector of square roots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br> You can use <code>map</code> with your own functions, and you can write anonymous functions on the spot if needed.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, \(x) <span class="fu">round</span>(pi, <span class="at">digits =</span> x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br> The <code>walk()</code> function is the same as map but for side effects (printing, saving files) instead of returning results.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(plots, print) <span class="co"># prints each plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt) <span class="co"># returns a list of square roots</span></span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, sqrt) <span class="co"># returns a numeric vector of square roots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<div class="fragment">
+<p>You can use <code>map</code> with your own functions, and you can write anonymous functions on the spot if needed.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, \(x) <span class="fu">round</span>(pi, <span class="at">digits =</span> x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+</div>
+<div class="fragment">
+<p>The <code>walk()</code> function is the same as map but for side effects (printing, saving files) instead of returning results.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(plots, print) <span class="co"># prints each plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="where-next" class="slide level2">
 <h2>Where next</h2>

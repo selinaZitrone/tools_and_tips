@@ -32,7 +32,7 @@
     "href": "slides/2026_06_18_functions-iteration.html#anatomy-of-a-function",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "Anatomy of a function",
-    "text": "Anatomy of a function\nA function has\n\na name: Choose something descriptive that starts with a verb\narguments (its inputs)\na body: All the code that is run using the input\na return value: the output of the function (the last line of the body)\n\n\n\n\nname &lt;- function(arguments) {\n  body\n}\n\n\n\n\nadd_numbers &lt;- function(x, y) {\n  x + y\n}\n\nadd_numbers(1, 1)\n\n[1] 2\n\nadd_numbers(x = 1, y = 1)\n\n[1] 2"
+    "text": "Anatomy of a function\nname &lt;- function(arguments) {\n  body\n}\nA function has\n\na name: Choose something descriptive that starts with a verb\narguments (its inputs)\na body: All the code that is run using the input\na return value: the output of the function (the last line of the body)"
   },
   {
     "objectID": "slides/2026_06_18_functions-iteration.html#turn-code-into-functions",
@@ -81,7 +81,7 @@
     "href": "slides/2026_06_18_functions-iteration.html#the-main-function-map",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "The main function: map",
-    "text": "The main function: map\nmap(x, f) calls f once per element of x and gives back one result per element.\n\n# x: a list or vector to iterate over\n# f: a function to apply to each element of x\nmap(x, f)\n\n . . .\n\n# The map function always returns its result as a list\nlibrary(purrr)\nmap(1:3, sqrt)\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 1.414214\n\n[[3]]\n[1] 1.732051"
+    "text": "The main function: map\nmap(x, f) calls f once per element of x and gives back one result per element.\n\n# x: a list or vector to iterate over\n# f: a function to apply to each element of x\nmap(x, f)\n\n\n\n\n# The map function always returns its result as a list\nlibrary(purrr)\nmap(1:3, sqrt)\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 1.414214\n\n[[3]]\n[1] 1.732051"
   },
   {
     "objectID": "slides/2026_06_18_functions-iteration.html#more-complex-situations",
@@ -207,7 +207,7 @@
     "href": "slides/2026_06_18_functions-iteration.html#iteration-with-the-purrr-package-1",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "Iteration with the purrr package",
-    "text": "Iteration with the purrr package\nmap(x, f) applies function f to each element of x and returns a list\nmap(1:3, sqrt) # returns a list of square roots\nmap_dbl(1:3, sqrt) # returns a numeric vector of square roots\n You can use map with your own functions, and you can write anonymous functions on the spot if needed.\nmap(1:3, \\(x) round(pi, digits = x))\n The walk() function is the same as map but for side effects (printing, saving files) instead of returning results.\nwalk(plots, print) # prints each plot"
+    "text": "Iteration with the purrr package\nmap(x, f) applies function f to each element of x and returns a list\nmap(1:3, sqrt) # returns a list of square roots\nmap_dbl(1:3, sqrt) # returns a numeric vector of square roots\n\n\nYou can use map with your own functions, and you can write anonymous functions on the spot if needed.\nmap(1:3, \\(x) round(pi, digits = x))\n\n\n\nThe walk() function is the same as map but for side effects (printing, saving files) instead of returning results.\nwalk(plots, print) # prints each plot"
   },
   {
     "objectID": "slides/2026_06_18_functions-iteration.html#where-next",
@@ -2195,7 +2195,7 @@
     "href": "sessions/19_functions-iteration.html",
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "",
-    "text": "Sooner or later every R user hits the same wall: you need to do the same thing many times — an analysis for each species, a plot for each group, the same cleaning for every file. The usual answer is copy-paste, which is slow and easy to get wrong.\nIn this hands-on workshop you’ll learn the two skills that fix this:\n\nWriting your own functions — wrapping repeated code into a function with arguments, defaults, and a return value\nIterating with purrr — using map() and friends to run a function over many inputs at once, instead of copy-pasting or looping\n\nWe work through practical examples together, and you’ll refactor repetitive code into a function you can apply across many inputs.\n\nSlides in full screen     Download PDF slides"
+    "text": "Sooner or later most R users need to do the same thing many times, like run an analysis for each species, read in every file in a folder, fit a model to each treatment group. Writing functions is one of the more useful habits in day-to-day data analysis, and this workshop covers the two tools that handle repetition cleanly:\n\nWriting your own functions: wrapping repeated code into reusable functions with arguments, defaults, and return values\nIterating with the purrr package: using map() and friends to apply a function across many inputs, replacing copy-paste or for-loops\n\nWe will work through practical examples together and you will learn how to take repetitive code of your own and refactor it into a function you apply across many inputs.\n\nSlides in full screen     Download PDF slides"
   },
   {
     "objectID": "sessions/19_functions-iteration.html#resources",
@@ -4947,5 +4947,12 @@
     "title": "Publication-ready ggplot2",
     "section": "Next lecture/workshop",
     "text": "Next lecture/workshop\nTopic tba\n\n📅 18.06.2026 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
+    "objectID": "slides/2026_06_18_functions-iteration.html#a-simple-example",
+    "href": "slides/2026_06_18_functions-iteration.html#a-simple-example",
+    "title": "Stop repeating yourself: functions and iteration in R",
+    "section": "A simple example",
+    "text": "A simple example\nA function has\n\n\nname &lt;- function(arguments) {\n  body\n}\n\n\n\nadd_numbers &lt;- function(x, y) {\n  x + y\n}\n\nadd_numbers(1, 1)\n\n[1] 2\n\nadd_numbers(x = 1, y = 1)\n\n[1] 2"
   }
 ]
