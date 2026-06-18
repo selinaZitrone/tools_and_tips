@@ -29,7 +29,6 @@ Imports:
     ggdist,
     ggExtra,
     ggh4x,
-    gghalves,
     gghighlight,
     ggplot2,
     ggrepel,
