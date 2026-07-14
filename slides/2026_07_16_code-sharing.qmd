@@ -21,29 +21,6 @@ execute:
 from: markdown+emoji
 ---
 
-<!--
-DRAFT STATUS: full deck, drafted from PLAN.md revision 4 (2026-07-14).
-
-RED THREAD = BUILDING the repo (not cleaning it). One example project,
-"temperature-resistance", starts as a plain working folder and GROWS into a
-publishable repository. Each section ends on the recurring tree slide with the
-new lines marked "<- new". Slides only, no live building.
-
-Checklist is NOT built up section by section: it is shown once near the end and
-lives on the session page. Speaker notes live with Selina, so slides stay sparse.
-
-IMAGES NEEDED (slides/images/2026_07_16_code-sharing/), Selina to add later:
-- cooper-2026-figure.png  : Figure 1 of Cooper et al. 2026. Take it from the
-  CC-BY preprint (EcoEvoRxiv) so it is reusable; credit line is in the aside.
-- readme-good-example.png : a real published repo's README on GitHub, annotated.
-- github-cite-button.png  : a repo with the "Cite this repository" button open.
-- zenodo-github-toggle.png + github-release-form.png : the two archive steps.
-- zenodo-record-doi.png + readme-doi-badge.png : the DOI result.
-- reviewer-report.png     : repo-reviewer output (or recording stills).
-- prompt-in-chat.png      : the portable prompt running in a plain AI chat.
-- qr-session-page.png     : QR to the session page.
--->
-
 ## What is this lecture series?
 
 ### Scientific workflows: Tools and Tips :hammer_and_wrench:
@@ -59,116 +36,66 @@ IMAGES NEEDED (slides/images/2026_07_16_code-sharing/), Selina to add later:
 
 :::
 
+## Code sharing in Ecology
+
+![](images/2026_07_16_code-sharing/cooper-2026-cover.png){fig-alt="Cover of Cooper et al. 2026, Methods in Ecology and Evolution, with the title 'Data- and code-archiving in the British Ecological Society journals: Present status and recommendations for future improvements'."}
+
+1861 ecology papers from 7 journals (2017-2024)
+
 ## Sharing code is still the exception
 
-::: {.columns}
+![[Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-figure.png){fig-alt="Bar chart from Cooper et al. 2026: nearly all papers that used data archived it, but only about a third of papers that used code archived the code."}
 
-::: {.column width="55%"}
+## Readmes are often insufficient
 
-![](images/2026_07_16_code-sharing/cooper-2026-figure.png){fig-alt="Bar chart from Cooper et al. 2026: nearly all papers that used data archived it, but only about a third of papers that used code archived the code."}
+Only 61% of archived code had a README and quality was often low.
 
-:::
+![1 = very brief and incomplete; 10 = all information about script functionality, outputs, software, packages, workflows comprehensively documented. [Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-figure-readme.png){fig-alt="Bar chart from Cooper et al. 2026: the quality of READMEs in archived code, rated on a scale from 1 to 10."}
 
-::: {.column width="45%"}
+## Why isn't code sharing the standard?
 
-::: {.fragment}
+- Time pressure
+- Not sure how to do it properly
+- Journals often don't require it
+- Code is not part of peer review
 
-1861 papers, 7 journals, 2017-2024:
+## Why code sharing is worth it
 
-::: {.nonincremental}
+- Open science creates trust
+- Reproducibility: Results can be verified
+- Reusability: Others (including future you) can build on your work
+- Visibility: Credit, collaborations
+- A portfolio of your coding skills
 
--   Data gets archived almost every time
--   Code, by **only 35%** of the papers that used it
+## Today
 
-:::
-
-:::
-
-:::
-
-:::
-
-::: aside
-[Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution* (figure CC BY 4.0)
-:::
-
-## You have probably been on the other side
-
-You download someone's code to build on it, and:
+Shareable ≠ perfect: checklist for most important practices.
 
 ::: {.nonincremental}
 
--   it doesn't run
--   you can't tell which file is the real analysis
--   it's too chaotic to follow
+1.  **Structure & orientation** - Can someone understand it?
+2.  **Running the code** - Can someone rerun it?
+3.  **Data** - Can someone understand the data situation?
+4.  **Licence & citation** - Can someone legally reuse and cite it?
+5.  **Archive & publish** - Can someone find the exact version you used?
 
 :::
 
-. . .
++ How AI tool can help
 
-<br>
+## Today
 
-And often that someone is **future you**, two years later.
+- Focus on data analysis projects, not research software
+- **Language-agnostic**, with short R and Python hints
+- More about project structure not about code 
 
-## And when code *is* shared, it is often not enough
+## Our example project
 
-Of the papers that did archive their code:
+Your paper is submitted: *"Temperature and antibiotic resistance in soil bacteria"*. This is the analysis folder:
 
-::: {.nonincremental}
-
--   about **a third** had no README
--   many had no licence, and no permanent version to point to
-
+:::{.callout-note}
+Adapt this to the final version
 :::
-
-. . .
-
-<br>
-
-These gaps are exactly the five questions we work through today.
-
-## Why doesn't everyone do it already?
-
-::: {.nonincremental}
-
--   Time pressure
--   Not sure how to do it properly
--   Journals often don't require it
--   Code is rarely part of peer review
-
-:::
-
-. . .
-
-<br>
-
-Every reason is *"it's hard"*, not *"it's not worth it"*. Today is about making it easy.
-
-## Why it is worth it
-
-. . .
-
-:arrows_counterclockwise: **Reproducibility.** Others can redo your analysis and trust the result.
-
-. . .
-
-:gear: **Reuse.** Others, and future you, build on it instead of starting over.
-
-. . .
-
-:mag: **Visibility.** Credit, collaborations, a citable output of its own.
-
-. . .
-
-:crystal_ball: **Continuity.** You can pick the project up again after two years.
-
-::: aside
-Sharing *data* is linked to more citations; for code the evidence is thinner, but reuse and visibility are real.
-:::
-
-## Meet our example project
-
-Your paper is submitted: *"Temperature and antibiotic resistance in soil bacteria"*. This is the folder behind it:
 
 ::: {.fragment}
 
@@ -183,78 +110,22 @@ temperature-resistance/
 
 :::
 
-. . .
+# Structure & orientation {.inverse}
+> Can someone understand it?
 
-It runs on your laptop. But nothing here tells anyone else what it is, how to run it, or whether they may.
-
-## We will build it up, step by step
-
-Now the journal asks for a **code availability statement**.
-
-. . .
-
-<br>
-
-Instead of cleaning up a mess, we **add** the few things that make this repository shareable. You watch the folder grow, section by section, until it has a DOI.
-
-## The plan: five questions
-
-Shareable ≠ perfect. We aim for the **minimum publishable repository**.
-
-::: {.nonincremental}
-
-1.  **Structure & orientation** · Can someone understand it?
-2.  **Running it** · Can someone rerun it?
-3.  **Data** · Can someone understand the data situation?
-4.  **Licence & citation** · Can someone legally reuse and cite it?
-5.  **Archive & publish** · Can someone find the exact version you used?
-
-:::
-
-. . .
-
-At the very end: a **checklist** to take home, and **AI tools** that run it for you.
-
-## What this lecture is (and is not)
-
-::: nonincremental
-
--   About **data-analysis projects**, not research software
--   **Language-agnostic**, with short R and Python pointers
--   About the **project around the code**, not code polish
-
-:::
-
-. . .
-
-<br>
-
-One reassurance up front:
-
-**"I can't share my data" ≠ "I can't share."** Restricted or sensitive data is normal in your fields, and there is an accepted way to publish anyway (section 3).
-
-# 1. Structure & orientation {background-color="#2c3e50"}
-
-### Can someone understand what this is?
-
-## A conventional structure
-
-Separate **data**, **code**, and **output**. That is the whole rule.
+## Use a conventional folder structure
 
 ::: {.columns}
 
 ::: {.column width="50%"}
 
-#### Now
+- Separate your files into folders
+- Most important: separate data, code, and output
+- You can follow templates or use your own structure as long as it is clear and consistent
 
-```
-temperature-resistance/
-├── clean_data.R
-├── fit_models.R
-├── make_figures.R
-├── growth_assay.csv
-└── figures/
-```
+:::{callout-note}
+Add some links to templates
+:::
 
 :::
 
@@ -262,10 +133,93 @@ temperature-resistance/
 
 ::: {.fragment}
 
-#### Better
+```
+temperature-resistance/
+├── data/
+│   └── growth_assay.csv
+├── analysis/
+│   ├── 01_clean-data.R
+│   ├── 02_fit-models.R
+│   └── 03_make-figures.R
+└── output/
+    ├── figures/
+    └── tables/
+```
+
+:::
+
+:::
+
+:::
+
+## Use informative file names
+
+- Human readable: reveal the content
+- Machine readable: no spaces, no special characters
+- Work with default ordering: left-padded numbers or YYYY-MM-DD dates first
+
+. . .
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+#### Bad names
+
+::: {.nonincremental}
+
+:page_facing_up: `temp.R`
+:page_facing_up: `analysis final.R`
+:page_facing_up: `data.csv`
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+
+#### Good names
+
+::: {.nonincremental}
+
+:page_facing_up: `01_clean-data.R`
+:page_facing_up: `02_fit-models.R`
+:page_facing_up: `2024-03-11_growth-assay.csv`
+
+:::
+
+:::
+
+:::
+
+:::
+
+::: aside
+More on naming: [Jenny Bryan's talk](https://speakerdeck.com/jennybc/how-to-name-files) on how to name files
+:::
+
+## Add a thorough README
+
+
+
+::: {.columns}
+
+::: {.column}
+
+- README's are the entry point to your project
+- A README should be a simple text format (plain text or Markdown)
+
+
+
+:::
+
+::: {.column}
 
 ```
 temperature-resistance/
+├── README.md          <- new
 ├── data/
 │   └── growth_assay.csv
 ├── R/
@@ -281,90 +235,24 @@ temperature-resistance/
 
 :::
 
-:::
+## What a README should do
 
-. . .
-
-It does not have to be *these* names. It has to be **obvious from the outside**.
-
-## File names that explain themselves
-
-::: {.columns}
-
-::: {.column width="50%"}
-
-#### Harder to use
+At minimum, a README should answer:
 
 ::: {.nonincremental}
 
--   :page_facing_up: `temp.R`
--   :page_facing_up: `analysis final.R`
--   :page_facing_up: `data (new).xlsx`
+- **What** the project is, and which **paper** it belongs to
+- **How to run it** (how to install, which order to run the scripts)
+- **What the scripts are** (what they do, what is the input and output)
+- **What the data are** (format, columns, etc.)
+- **How to cite** it
+- **Who to ask** when it breaks
 
 :::
 
+:::{callout-note}
+work on this
 :::
-
-::: {.column width="50%"}
-
-::: {.fragment}
-
-#### Easier to use
-
-::: {.nonincremental}
-
--   :page_facing_up: `01_clean-data.R`
--   :page_facing_up: `02_fit-models.R`
--   :page_facing_up: `2024-03-11_growth-assay.csv`
-
-:::
-
-:::
-
-:::
-
-:::
-
-. . .
-
-::: {.nonincremental}
-
--   No spaces, no special characters
--   Say what the file does or contains
--   Numbers or ISO dates first, so sorting matches the reading order
-
-:::
-
-::: aside
-More on naming: [Jenny Bryan's talk](https://speakerdeck.com/jennybc/how-to-name-files) and the [*Write R code that lasts*](https://selinazitrone.github.io/tools_and_tips/) session
-:::
-
-## The README is the front door
-
-::: {.callout-tip}
-## Remember the number
-
-**A third** of archived papers had **no README**. This one file is the highest-value thing you do today.
-
-:::
-
-. . .
-
-A stranger should read it in two minutes and know:
-
-::: {.nonincremental}
-
--   **What** this is, and which **paper** it belongs to
--   **How to run it** (section 2)
--   **Where the data is** and what they may do with it (section 3)
--   **How to cite** it, and under which **licence** (section 4)
--   **Who to ask** when it breaks
-
-:::
-
-. . .
-
-The README is a container. Every section today adds one line to it.
 
 ## A README skeleton you can copy
 
@@ -389,11 +277,7 @@ See `data/README.md`. Code: MIT. Data: CC-BY-4.0. Cite via `CITATION.cff`.
 selina.baldauf@fu-berlin.de
 ```
 
-. . .
-
-Answer just one question, *which script makes Figure 2?*, and you are ahead of most papers.
-
-## What a good README looks like in the wild
+## Some examples of good README files
 
 ::: {.callout-note}
 ## IMAGE PLACEHOLDER: `readme-good-example.png`
@@ -404,77 +288,53 @@ Sources for a real example: the [CODECHECK register](https://codecheck.org.uk/re
 
 :::
 
-## Where our repository stands
+## Write good code
 
-```
-temperature-resistance/
-├── README.md          <- new
-├── data/
-│   └── growth_assay.csv
-├── R/
-│   ├── 01_clean-data.R
-│   ├── 02_fit-models.R
-│   └── 03_make-figures.R
-└── output/
-    ├── figures/
-    └── tables/
-```
+Well written and organized code is essential:
 
-. . .
+- Comment your code well
+- Name your variables properly
+- Split large scripts
+- Use automatic code formatting for consistent style
 
-Already more usable than a third of published repositories.
+Not the focus of today. Have a look at the lecture [R code that lasts](https://selinazitrone.github.io/tools_and_tips/sessions/10_r-code-that-lasts.html) for tips on good practice R.
 
-# 2. Running it {background-color="#2c3e50"}
-
-### Can someone rerun it?
-
-## It reads well. Can they run it?
-
-Our reviewer opens `01_clean-data.R`:
-
-```r
-setwd("C:/Users/selina/PhD/final_analysis/")
-data <- read.csv("C:/Users/selina/PhD/growth_assay.csv")
-```
-
-. . .
-
-Three ways this fails on any other machine:
-
-::: {.nonincremental}
-
--   the paths exist only on your laptop
--   nothing says which script to run first
--   nothing says which packages, and versions, are needed
-
-:::
+# Running it {.inverse}
+> Can someone rerun it?
 
 ## Make the run order obvious
 
-Pick the level that fits. Every level counts.
+**Level 1**: Number your scripts `01_`, `02_`, etc. and add this to the "How to run" section in the README.
 
-| | Solution |
-|---|---------------------------------------------|
-| Minimum | Numbered scripts `01_`, `02_` and a "How to run" section in the README |
-| Better | One main script that runs everything in order |
-| If you outgrow it | Workflow tools: `targets` (R), `snakemake` (Python) |
+## Make the run order obvious
 
-. . .
+**Level 2**: Create a main script that runs everything in order, so this is the only file someone needs to open.
 
-One main script, so a stranger only opens one file:
+
+::: {.columns}
+
+::: {.column}
 
 ::: {.panel-tabset}
 
-### R
+### main.R
 
 ```r
-# 00_main.R: reproduces all results and figures
-source("R/01_clean-data.R")
-source("R/02_fit-models.R")
-source("R/03_make-figures.R")
+# main.R: reproduces all results and figures
+
+# Step 1: Clean the data
+source("analysis/01_clean-data.R")
+# Step 2: Fit the models and produce table 1
+source("analysis/02_fit-models.R")
+# Step 3: Make all manuscript figures
+source("analysis/03_make-figures.R")
 ```
 
-### Python
+### main.py
+
+:::{.callout-note}
+Check if this is good practice and correct
+:::
 
 ```python
 # main.py: reproduces all results and figures
@@ -484,6 +344,102 @@ import make_figures
 ```
 
 :::
+
+:::
+
+::: {.column}
+
+```
+temperature-resistance/
+├── README.md          
+├── main.R          
+├── data/
+│   └── growth_assay.csv
+├── analysis/
+│   ├── 01_clean-data.R
+│   ├── 02_fit-models.R
+│   └── 03_make-figures.R
+└── output/
+    ├── figures/
+    └── tables/
+```
+
+
+:::
+
+:::
+
+## Make the run order obvious
+
+**Level 3**: Use workflow tools like [targets](https://books.ropensci.org/targets/) (R) or [snakemake](https://snakemake.readthedocs.io/en/stable/)
+(Python and more) to define complex workflows and automatically run the scripts in the right order and only rerun what changed.
+
+![An example workflow from the [targets package](https://books.ropensci.org/targets/walkthrough.html)](images/2026_07_16_code-sharing/targets-workflow.png){fig-alt="A workflow diagram from the targets package, showing how the scripts depend on each other and which outputs they produce."}
+
+:::{.callout-note}
+Check if snakemake is only for python or also other languages. Also check if the text I wrote on the slide is correct
+:::
+
+## Record all dependencies and versions
+
+**Level 1**: Paste dependencies into the README. Easy, but less convenient for people who need to install the software.
+
+How to get a list of all dependencies
+
+::: {.panel-tabset}
+
+### R
+
+Run `devtools::session_info()` and paste the output into the README. Double-check the list and also include the R version.
+
+:::{.callout-note}
+Should I really leave all this in there? I wanted to demo the output, but session info also gives path to quarto etc. These should be removed right
+:::
+
+```{r}
+#| echo: true
+# Note: Delete irrelevant rows (e.g. Quarto path) before pasting to the readme
+devtools::session_info()
+```
+
+### Python
+
+Run `pip freeze` and paste the output into the README. Double check the list and also include the Python version.
+
+:::
+
+## Record all dependencies and versions
+
+**Level 2**: Record dependencies in an installable way so users can install them automatically into a project library.
+
+::: {.panel-tabset}
+
+### R
+
+::: {.nonincremental}
+
+-   **What you need:** a `DESCRIPTION` file. Add packages with
+    `usethis::use_package("dplyr")`, install them with `pak::local_install_deps()`.
+-   **Exact versions:** `renv::snapshot()` writes an `renv.lock`; a collaborator
+    runs `renv::restore()`.
+
+renv videos
+- https://www.youtube.com/watch?v=Oen9xhEh8PY
+
+:::
+
+### Python
+
+::: {.nonincremental}
+
+-   **What you need:** `requirements.txt`, install with `pip install -r requirements.txt`.
+-   **Exact versions:** a pinned `requirements.txt` or an `environment.yml`
+    (`conda env create -f environment.yml`).
+
+:::
+
+:::
+
 
 ## Paths that work on other machines
 
