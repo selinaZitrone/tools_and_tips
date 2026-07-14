@@ -1,9 +1,9 @@
 # Lecture plan: Good practices for sharing research code
 
-> Working plan for the 1-hour lecture (~46 min content + Q&A) in the
-> *Scientific Workflows: Tools and Tips* series. Feeds the Fable drafting prompt.
+> Working plan for the 1-hour lecture (~45 min content + Q&A) in the
+> *Scientific Workflows: Tools and Tips* series. Single source for slide drafting.
+> Revision 4: merged with Selina's Obsidian canvas review (2026-07-14).
 > Companion to the fixed workshop description in `Lecture - Code sharing.md`.
-> Revision 3: structure merged from Selina's item inventory (2026-07-13).
 
 ## Context & constraints
 
@@ -16,374 +16,457 @@
 - **Style rules (user):** NO em-dashes anywhere (use commas, colons, parentheses, or a new
   sentence). Emojis sparingly: keep the standard series-intro icons and established recurring
   icons from earlier decks; no emoji decoration on ordinary bullets, headings, or lists.
+  **Slides: less text than the first draft.** Every slide carries one idea plus an artifact,
+  not a paragraph.
 - **Scope:** language-agnostic, about **data-analysis repositories** (not scientific
-  software). Concrete tips; R / Python / IDE pointers stay *one-liners*, no deep-dives.
-  Focus is the project around the code (structure, data, licence, archive), not code polish.
-- **Overlap with earlier decks is fine and often useful**: the last relevant lecture was
-  ~1 year ago and the audience has largely turned over. Re-use good existing material
-  where it serves the talk; the fresh publication-readiness content still gets the bulk
-  of the time.
+  software). Concrete tips; R / Python / IDE pointers stay *one-liners or tabs*, no
+  deep-dives. Focus is the project around the code (structure, data, licence, archive),
+  not code polish.
+- **Overlap with earlier decks is fine and often useful**: the audience has largely
+  turned over since the related lectures ran.
 - **Keep everything practical and actionable, not theoretical.** Every point should give the
   audience something they can *do* to their own repository: a concrete step, a file to add,
-  a command, a setting to change, a before/after. Prefer showing a real example over
-  explaining a concept. If a point can't be turned into an action, it probably doesn't belong.
+  a command, a setting to change. If a point can't be turned into an action, it probably
+  doesn't belong.
+- **First goal: a working first version of the lecture.** Details (exact close, demo form,
+  next-lecture slide) are deliberately left open and marked as such.
 
 ## Through-line
 
-**Minimum publishable repository: what to have in place before you share.** Five sections,
-each a category with a reuser question as its subtitle, each ending by adding items to a
-growing checklist. The audience leaves knowing *how much is enough*, not a long list of
-best practices.
+**Building the publishable repository, step by step.** The story: the analysis for a
+fictional paper (*"Temperature and antibiotic resistance in soil bacteria"*) is done and
+the paper is submitted; now the repository gets assembled for publication. Five sections,
+each a category with a reuser question as its subtitle. Each section ends with the
+recurring **file-tree slide**: the same repo tree, with that section's additions marked
+`<- new`. The tree completes in section 5 with the DOI badge (the climax of the build).
+
+This is a **build, not a cleanup**: the repo is never framed as a disaster, it is just not
+built yet. Bad examples (file names, `setwd()`) stay local to their slide.
 
 Two reassurances stated early and kept in view:
 - **Shareable ≠ perfect.** Published code needs to be understandable, rerunnable enough,
   documented, and safe to release: not elegant or package-quality.
 - **"No shareable data" ≠ failure.** There is an acceptable path for restricted/sensitive
-  data (see section 3).
+  data (section 3).
 
 ## Relationship to existing lectures (what's new here)
 
-Already covered in earlier lectures (re-use what's good; the audience has largely changed since):
+Already covered earlier (re-use what's good; audience has changed):
 - `2025_05_15_r-code-that-lasts`: project structure, file naming, `here`/paths, script
-  structure, style/`lintr`, modularization, DRY/functions, `renv`.
+  structure, style, modularization, `renv`.
 - `2023_07_20_research_compendia`: the compendium concept; data/methods/output separation;
-  licence/DOI/version-control at a high level.
+  licence/DOI at a high level.
 
-**Fresh contribution of this lecture:** the *publication-readiness* lens + data availability
-& codebooks (incl. the sensitive-data reality), code + data **licensing**, citation
-(README minimum + **`CITATION.cff`** upgrade), the concrete **GitHub → Zenodo-switch →
-release → DOI** workflow, the **portable audit prompt**, and the **AI repository
-reviewer** demo.
+**Fresh contribution:** the publication-readiness lens, the data-situation statements
+(incl. the sensitive-data reality), code + data **licensing**, citation (README minimum +
+**`CITATION.cff`** upgrade), the concrete **GitHub → Zenodo → release → DOI** workflow,
+and the **AI help** section (README drafting + repo audit + the in-development reviewer).
 
-## Deliverables (produced by Fable as the plan is executed)
+## Deliverables
 
 1. Slide deck `.qmd` (revealjs, series template).
-2. Session landing page `sessions/##_code-sharing.qmd`.
-3. One-page **repository checklist** handout: its spine is the 5 sections below.
-4. **Portable audit prompt**: a *generic, tool-independent* copy-paste prompt the audience
-   can run with any AI tool. **Must not depend on the in-development tool being ready** (the
-   description promises it). If the tool's own prompt-path ships too, great; this generic one
-   is the guarantee.
-5. **Resources/tools list**: a real planned resource slide + handout section (not a
-   takeaways afterthought). Note: `rigor.me` / `reproai.org` are in the *private notes*,
-   not the published description text; optional includes, not promises. `reproai.org`
-   verified live ("plugin for reproducible replication packages"); **`rigor.me` must be
-   verified manually** before it goes on a slide (403 to automated fetch).
+2. Session landing page `sessions/17_code-sharing.qmd` (hosts all extra material).
+3. **Repository checklist** on the website (NOT built up on slides; shown once at the
+   close and linked). Its spine is the 5 sections. **Includes the "last look" items**
+   (scan file names / column headers for patient IDs, stray confidential files, junk)
+   as checklist entries only, no slide beat.
+4. **Two take-home prompts** on the website:
+   a. README-drafting prompt (paste into any AI tool with repo access),
+   b. portable repo-audit prompt (generic, tool-independent; must not depend on the
+      in-development tool being ready).
+5. **Resources/tools list** (real planned slide + handout section).
 
----
-
-## Section-by-section outline (~46 min)
+## Section-by-section outline (~45 min)
 
 Section headers on slides: **noun + question subtitle**, e.g.
-`# Data · Can someone understand the data situation?`. The noun gives the category feel
-(consistent with the repo_reviewer taxonomy), the question carries the "why".
+`# Data · Can someone understand the data situation?`
 
-### 0. Intro (~6 min: 1.5 series slide + 4.5 motivation)
-- **Series-intro slide** (standard opener, explicitly budgeted).
-- **Evidence hook:** code sharing and archiving is still not the norm, at least in ecology
-  and evolution: Cooper et al. 2026 (BES journals, data 2017-2024) + figure from the paper.
-  Exact citation, the stat to quote, and the figure licence: see Open items.
-- **Messy-folder beat, fast (~30 s):** the organically grown folder tree; the day you must
-  share it (journal, collaborator, new lab member, future you).
-- **Why share, max 4 bullets** (collapsed from the draft's five overlapping ones):
-  reproducibility and greater faith in the research · others can build on it instead of
-  starting over · credit, collaboration, visibility · future you can pick the project up
-  again.
-- **Today + scope slide(s):** shareable ≠ perfect, so we focus on minimum requirements;
-  the growing checklist you take home; roadmap of the 5 sections; scope lines (data-analysis
-  repos, language-agnostic with one-line R/Python pointers, the project not the code);
-  one reassurance line: "can't share your data? there is an accepted path (Data section)";
-  name the three take-homes.
-- **FAIR is cut from the talk** (the published description never promises it). Optional:
-  one name-drop line at the take-aways ("this is FAIR4RS in practice"); citations only on
-  the resource list if that line stays.
+### 0. Intro (~6.5 min)
+- **Series-intro slide** (standard opener, 1.5 budgeted).
+- **Evidence hook:** Cooper et al. (2026), *Methods in Ecology and Evolution*,
+  doi:10.1111/2041-210X.70338 (1861 papers, 7 BES journals, 2017-2024): code sharing is
+  still not the norm. Headline stat: **only 35% of papers that used code archived it.**
+  Paper screenshot + Figure 1 (figure licence/credit line: todo).
+- **Second beat: shared is often not sufficient.** Sub-stats from the same paper: of
+  papers with archived code, only 61% had a README, 74% a licence, 79% a DOI (94% / 93% /
+  86% could be located / downloaded / opened). **Map these gaps onto the five questions**
+  on the roadmap slide: the gaps in this figure are exactly today's five sections.
+- **Own-experience beat** (1 slide): you download someone's code and it doesn't run, the
+  structure is opaque, it's chaotic. Often that someone is **future you**.
+- **Blockers** (1 slide): time pressure, lack of knowledge, not required by journals, code
+  not part of peer review. Framing line: every blocker is "it's hard", none is "it's not
+  worth it"; today fixes "it's hard".
+- **Benefits** (1 slide, max 4 bullets): transparency and greater faith in the research ·
+  reproducibility, results can be verified · credit, collaboration, visibility ·
+  future you can pick it up or hand it over.
+  **Citation-advantage claim (RESOLVED 2026-07-14): phrase it honestly, do NOT promise
+  citations for code.** The evidence: sharing *data* has a well-replicated citation
+  advantage (Colavizza et al. 2020, ~25% across 531,889 PLOS/BMC articles), but for
+  *code* the evidence is weaker and field-dependent (an astrophysics study finds ~+16%;
+  Colavizza et al. found no significant code effect). Safe slide wording: "data sharing
+  is linked to more citations; for code the evidence is thinner, but reuse, collaboration
+  and visibility are real." Speaker note carries the references.
+- **Today + scope:** shareable ≠ perfect, minimum requirements and high-impact changes;
+  the 5 questions as roadmap; scope lines (data-analysis repos, language-agnostic with
+  R/Python examples, the project not the code); reassurance line: "can't share your data?
+  there is an accepted path (Data section)"; **introduce the example repo and the build
+  thread** ("we assemble this repository as we go"); teasers: checklist on the website at
+  the end, AI ideas at the end.
+- FAIR stays cut; optional single name-drop at the close.
 
-### The body: 5 sections (~29 min), each ending by adding its items to the growing checklist
+### 1. Structure & orientation · Can someone understand it? (~6 min)
+- **Folder structure:** clear conventional structure, not one flat folder; separate data,
+  analysis/methods, output. Example tree (= the repo's first build step; "does not need
+  to be exactly this, but similarly intuitive").
+- **File names** (2 slides max, re-used material + Jenny Bryan pointer):
+  human readable (informative, reveal content) and machine readable (no spaces, special
+  characters, umlauts); work with default ordering (left-padded numbers, ISO dates
+  YYYY-MM-DD; date-ordering example: todo).
+- **README** (the container artifact): the entry point into the project. Minimum
+  questions it answers: what this is and which paper it belongs to · how to run it ·
+  where the data is and what you may do with it · how to cite and under which licence ·
+  who to ask when it breaks. Format: plain text/markdown, no docx.
+  Show the **README skeleton** (canvas draft is the base) + **one real annotated README
+  screenshot** (pick from CODECHECK register etc.: todo).
+  Echo line: these minimum questions are the five lecture questions in miniature.
+- **Code quality, exactly 1 slide, reassurance framing:** explicitly NOT a requirement
+  for sharing (shareable ≠ perfect). If you want to go further: comments, split large
+  scripts, follow a style. Link to *R code that lasts* session page.
+- **Tree recap:** + folders, + README.
 
-**1. Structure & orientation · Can someone understand it? (~5 min)**
-- **Bad → good folder tree** (beat 1 of 3): separate data, analysis/methods, output;
-  clear conventional structure; README at top level.
-- **Informative file names**: brief re-use from earlier deck.
-- **README contents** (the container artifact; expanded list from Selina's draft):
-  purpose + link to the manuscript · contact details · how to cite (minimum citation home) ·
-  which data/code files reproduce which figures/tables · list of scripts and what they do ·
-  what to run in which order (pointer, taught in section 2) · software used.
-  Show a **README skeleton** block + an **annotated real README screenshot**.
-- Rule stated once: the README is a container; later sections add lines to it.
+### 2. Running it · Can someone rerun it and get the same result? (~6 min)
+- **Run-order ladder** (tabset R/Python):
+  Level 1 = numbered scripts (`01_`, `02_`) + order described in the README.
+  Level 2 = one main script that runs everything in order; users open one file.
+  R: `main.R` with `source("analysis/01_clean-data.R")` etc (example in canvas).
+  **Python (RESOLVED): a `main.py` / `run_analysis.py` / `runall.py` orchestrator**, the
+  same idea, one entry point run with `python main.py`. There is no single blessed name;
+  `main.py` is fine and mirrors `main.R` on the slide. Import the step functions, or call
+  the scripts with `subprocess`; keep the slide at the "one file runs everything" level.
+  Level 3 = one-liner: workflow tools (`targets` for R, `snakemake` for Python) when you
+  outgrow this.
+- **No absolute paths:** `setwd()` / hard-coded paths bad → paths relative to project
+  root.
+  R: RStudio projects + the `here` package.
+  **Python (RESOLVED): build paths with `pathlib` and anchor them at the project root.**
+  Cheapest habit: always run from the project root so relative paths just work. The
+  direct `here` equivalents are **`pyprojroot`** (`from pyprojroot import here;
+  pd.read_csv(here("data/raw/growth-assay.csv"))`, finds the root via `.git`/`.here`) and
+  `pyhere`. Slide: show `pathlib` + one line naming `pyprojroot` as the `here` analogue.
+- **Seed** for anything stochastic (one line, tabset).
+  R: `set.seed(54315)`.
+  **Python (RESOLVED): `rng = np.random.default_rng(54315)`**, then use `rng` (this is
+  NumPy's current recommendation; the legacy `np.random.seed()` sets fragile global state
+  that any imported code can overwrite). Plain-Python: `random.seed(54315)`. Slide: show
+  `default_rng`, one speaker note on why not `np.random.seed`.
+- **Dependencies ladder:** record what your code needs and how to install it (language
+  version + packages with versions).
+  Level 1 = paste into the README: `sessionInfo()` (or `devtools::session_info()`) /
+  `pip freeze` (screenshot exists).
+  Level 2 = a dedicated file. Frame the two R options as **different jobs, not rivals**
+  (decision 2026-07-14):
+  - **record *what* you need:** R `DESCRIPTION` (add packages with
+    `usethis::use_package()`, install them with **`pak::local_install_deps()`** (VERIFIED:
+    installs the dependencies of the package tree at `root = "."`; `local_install_dev_deps()`
+    if Suggests should come too)). Python: `requirements.txt`, install with
+    `pip install -r requirements.txt`.
+  - **record the *exact versions*:** R `renv.lock` (`renv::snapshot()` /
+    `renv::restore()`). Python: `environment.yml` (`conda env create -f environment.yml`)
+    or a pinned `requirements.txt`.
+  Level 3 = one-liner only: containers (Docker) exist; pointer to the **Rocker project**
+  (rocker-project.org: ready-made R images, `rocker/rstudio`, `rocker/tidyverse`, version
+  tags; the common pattern is a Dockerfile that calls `renv::restore()`). Name it, move on.
+- **Tree recap:** numbered scripts, + `main.R`, + `DESCRIPTION`/`renv.lock`.
 
-**2. Running it · Can someone rerun it? (~5 min)**
-- **Run-order ladder (levels of fancy, from Selina's draft):** numbered file names →
-  "How to run" section in the README → `main.R` / `run.py` that calls everything →
-  one-liner: workflow tools (`targets`, snakemake) exist when you outgrow this.
-- **No absolute paths**: `setwd()` / hard-coded paths bad → relative paths; one-liner for
-  RStudio projects / `here`.
-- **Dependencies ladder:** minimum = versions listed in the README (`sessionInfo()` /
-  `pip freeze`) → better = `renv.lock` / `requirements.txt` / `environment.yml` + language
-  version → one-liner: containers exist, not today's topic.
-- **Seeds** for anything stochastic (one line).
-- Code *quality* (style, modularity, DRY) is **not a sharing gate**: one line + link to the
-  *R code that lasts* session page.
+### 3. Data · Can someone understand the data situation? (~4.5 min)
 
-**3. Data · Can someone understand the data situation? (~5 min)**
+**SCOPE RULE (standing):** this is a code-sharing lecture; section 3 is NOT "how to share
+data". It is one narrow thing: **the repository states what the data situation is**,
+because the first question any code-downloader asks is "where do I get the data?".
+Filter: does the item produce a line/file in the repo? If not, cut. (Repository choice,
+metadata standards, embargoes, GDPR: out. Closing aside teases "data sharing is its own
+lecture".)
 
-**SCOPE RULE (decided 2026-07-13):** this is a *code*-sharing lecture and the fixed
-description never promises data sharing. Section 3 is therefore NOT "how to share data".
-It is one narrow thing: **the repository states what the data situation is**, because the
-first question any code-downloader asks is "where do I get the data?". Filter for every
-item: *does it produce a line in the repo?* If not, cut it. (Repository choice, metadata
-standards, embargoes, GDPR: all out. One closing aside teases "data sharing is its own
-lecture", a future-topic hook.) Trimmed from 7 to 5 min; **the 2 min are banked as buffer**,
-not reassigned, taking planned content to ~44 min.
+- **Three honest paths** (decision tree, e.g. Mermaid): **open** (data in the repo, or in
+  a data repository like Dryad if needed) / **restricted** (state clearly in the README
+  where and how to request it) / **cannot be shared** (include synthetic data + the
+  script that produced it). Punchline: "I can't share my data" is not a dead end; path 3
+  is a valid publishable repository (the reassurance beat for medicine/pharmacy).
+- **Each path as a concrete README statement**: show all three as real sentence text,
+  the **restricted** one fullest (it is the one nobody knows how to write).
+- **Raw vs processed:** `data-raw/` (read-only) vs `data/` (processed, used in analysis);
+  folder-structure slide.
+- **Codebook = the README for your data:** describes each variable; can be a README in
+  the data folder; small example table (image exists). Open-format line folded in:
+  csv/txt, not xlsx; a PDF is not data.
+- One-liner: where to put data (Zenodo/Dryad; GitHub's 100 MB file limit).
+- Last-look items (patient IDs, stray files) live on the website checklist ONLY.
+- **Tree recap:** + `data-raw/`, + `data/`, + codebook.
 
-- **Why-a-data-slide-in-a-code-lecture opener** (one slide, ties back to the Cooper figure:
-  data archiving is already near-universal; the gap is connecting code to it).
-- **Three honest paths (beat 2 of 3), as a Mermaid decision tree:** open / restricted /
-  cannot be shared. Punchline: "I can't share my data" is not a dead end; path 3 is a valid
-  publishable repository (the reassurance beat for medicine/pharmacy).
-- **Each path as a README line**: show all three as concrete statement text, with the
-  **restricted** one the fullest (it is the one nobody knows how to write).
-- **Codebook, pitched as "the README for your data"**: small example table; the open-format
-  line (`.csv` not `.xlsx`; a PDF is not data) folded in here, not a separate beat.
-- **Last look**: file names + column headers scan (patient IDs, stray confidential files),
-  plus junk removal. Carries the realistic remnant of the dropped secrets topic.
-- **Cut to one line / resource list:** where to put data (Zenodo/Dryad, the 100 MB GitHub
-  limit, the 50 GB Zenodo limit). Raw vs. processed: checklist line only.
-
-**4. Licence & citation · Can someone legally reuse and cite it? (~6 min)**
-- **Code licence**: "no licence = all rights reserved = nobody may legally reuse it."
-  Be decisive for beginners: **if unsure, MIT** ("unless your group/funder says otherwise");
-  choosealicense.com for the rest. (No licence-taxonomy lecture.)
+### 4. Licence & citation · Can someone legally reuse and cite it? (~6 min)
+- **No licence = all rights reserved**: even public on GitHub, nobody may legally reuse it.
+- **Which licence for code (RESOLVED 2026-07-14, see Open items 8):** teach the ONE
+  decision that matters, permissive vs copyleft, in two lines, then give a default.
+  - **Permissive (MIT, BSD, Apache-2.0):** anyone may reuse, including in closed or
+    commercial work; they must keep your copyright notice. **MIT does require
+    attribution.**
+  - **Copyleft (GPL-3):** derivatives must stay open under the same licence.
+  - **Default for a data-analysis repo: MIT** (unless your group, funder, or institution
+    says otherwise). This matches the consensus in research-code guidance: permissive
+    licences are recommended for academic code because they lower the barrier to reuse,
+    and the big scientific ecosystems (NumPy, SciPy, pandas, matplotlib) are BSD/MIT.
+  - **Say out loud, it pre-empts the most common misconception:** NO licence, MIT or GPL
+    alike, can force anyone to *cite* you. Licences govern legal reuse; citation is a
+    scholarly norm, which is exactly why the citation beat below exists. If people pick
+    GPL hoping to be cited, they picked the wrong tool.
+  - choosealicense.com for anything beyond this. No licence-taxonomy lecture.
 - **The common trap, explicit:** CC licences are for **data/text/figures**, not code;
-  MIT/Apache are for **code**. One repo with code + data usually needs **two licences**.
-  Data licence: CC0 / CC-BY.
-- **Citation, taught as minimum → upgrade** (user decision): minimum = a "How to cite"
-  section in the README (fully legitimate); upgrade = **`CITATION.cff`** (~5 min effort:
-  `cffinit` generates it, GitHub renders a "Cite this repository" button, Zenodo picks up
-  the metadata when archiving a release). One-line ORCID mention.
-  *First candidate to compress to one line if rehearsal runs long.*
-- **VERIFIED 2026-07-13:** Zenodo does parse `CITATION.cff` on GitHub-release archiving
-  (fields: title, authors, licence, abstract, keywords). Speaker-note caveat only, NOT on
-  the slide: if a `.zenodo.json` is also present it takes precedence and the `.cff` is
-  ignored. Source: help.zenodo.org/docs/github/describe-software/citation-file/
-- **Full MIT licence text shown on one slide** (it is short: that is the point) + the
-  GitHub "Choose a license template" path, so the action is concrete.
+  code licences (MIT/GPL/Apache) are for **code**. **Creative Commons itself says so:**
+  "We recommend against using Creative Commons licenses for software." One repo with
+  code + data usually needs **two licences**. Data licence: CC0 or CC-BY (CC 4.0 covers
+  database rights).
+  **This answers the canvas question ("GPL repo with data inside, how do I license the
+  data?") (RESOLVED 2026-07-14):** you do not put data under GPL. The code licence covers
+  the code; the data gets its own CC licence. State both in the README (e.g. "Code: MIT.
+  Data: CC-BY-4.0"), optionally with a `LICENSE-data` file or a licence note in `data/`.
+- **How to add it:** a LICENSE file in the project root: `usethis::use_mit_license()` (or
+  `use_gpl3_license()`), or the GitHub licence template, or download the text. Plus a line
+  in the README. Optionally show the full MIT text on one slide (it is short: the point).
+- **Citation ladder:** minimum = a "How to cite" section in the README (fully legitimate).
+  Upgrade (~5 min): **`CITATION.cff`**, generated with the cffinit web form; GitHub shows
+  a "Cite this repository" button; Zenodo reads it when archiving a release (VERIFIED:
+  help.zenodo.org; speaker-note caveat only: a `.zenodo.json` takes precedence).
+  One-line ORCID mention optional. *First candidate to compress if rehearsal runs long.*
+- **Tree recap:** + `LICENSE`, + `CITATION.cff`.
 
-**5. Archive & publish · Can someone find the exact version you used? (~6 min)**
-- **GitHub alone is not archiving**: repos are mutable and deletable; great for living
-  code, not a frozen citable record. (Merged from the draft's duplicate "Archiving" item
-  and "Where and how to share it" section.)
-- Learning Git is encouraged; the web "upload files" button is a valid low-barrier entry.
-  *No Git tutorial.*
-- **The concrete workflow (beat 3 of 3), as screenshots. ORDER MATTERS (Zenodo only
-  archives releases made *after* the switch is on; the DOI is minted automatically):**
-  repo on GitHub with metadata files in (LICENSE, README, `CITATION.cff`) →
-  **enable the repo on Zenodo (GitHub integration toggle)** → **create a release/tag** →
-  DOI appears automatically → put the DOI / citation in the README + manuscript.
-- One line: **all-versions (concept) DOI in the README; version DOI in the paper.**
-- **No-GitHub path**: upload code+data directly to Zenodo (or a domain repository).
+### 5. Archive & publish · Can someone find the exact version you used? (~6 min)
+- **Why GitHub** (1 quick slide): findable and accessible, version control, renders the
+  README, acts as a portfolio. Git encouraged but no tutorial; the web "upload files"
+  button is a valid low-barrier entry.
+- **GitHub alone is not archiving:** repos are mutable and deletable; great for living
+  code, not a frozen citable record.
+- **The workflow: NO theoretical click-by-click walkthrough** (decision 2026-07-14).
+  One slide showing the four steps in order, plus a link to the official how-to.
+  **ORDER MATTERS: Zenodo only archives releases made *after* the switch is on, and the
+  DOI is minted automatically.** Steps:
+  1. repo on GitHub with LICENSE, README, `CITATION.cff` in it,
+  2. **enable the repo on Zenodo** (log in to Zenodo with GitHub, toggle the repo to On),
+  3. **create a GitHub release**,
+  4. the DOI appears automatically; paste the badge into the README.
+  **Link (VERIFIED 2026-07-14, official GitHub Docs, exactly this order):**
+  <https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content>
+  (section "Issuing a persistent identifier for your repository with Zenodo"). Note: the
+  page does NOT cover `CITATION.cff`; for that link GitHub's "About CITATION files" page
+  or cffinit in section 4. Zenodo requires the repo to be **public**.
+- Where the DOI goes: README (Zenodo badge) + the manuscript ("Code and data are archived
+  at https://doi.org/10.5281/zenodo.xxxxx (v1.0)."). One line: **all-versions (concept)
+  DOI in the README; version DOI in the paper.**
+- **No-GitHub path:** upload a ZIP directly to Zenodo (or a domain repository): same DOI.
+  (Zenodo is free up to 50 GB, per the BES guide.)
+- **Tree recap, final:** + DOI badge. The build is complete.
 
-### 6. Before you hit publish: colleague test + full checklist (~2 min)
-- NOTE: the sensitive-data/junk **last look moved INTO section 3** during drafting (it fit
-  the data flow); §6 no longer repeats it, just references it. (Secrets topic cut entirely,
-  user decision.)
-- **Ask a colleague to run it from scratch, README only** ("it costs you a coffee").
-  Citation RESOLVED: editorial "But is the code (re)usable?", *Nature Computational
-  Science* (2021), doi:10.1038/s43588-021-00109-9.
-- **The complete checklist on one slide** (two columns, small font, 18 items incl. the
-  colleague test): the payoff of the growing-checklist thread, and a 1:1 preview of the
-  handout.
+### 6. Last checks (~1.5 min)
+- **Colleague test:** send it to a colleague (or run it on a different computer) and see
+  if it runs from the README alone ("it costs you a coffee"). Citation: editorial "But is
+  the code (re)usable?", *Nature Computational Science* (2021),
+  doi:10.1038/s43588-021-00109-9 (aside).
 
-### 7. AI help: repository reviewer + portable prompt (sidecar, not climax) (~6 min)
-- Framing: "a helper that runs this checklist *for* you; it does not replace judgment."
-- **Audience-facing only, no builder-speak.** Four things: what it does (reads your repo,
-  writes a plain-language prioritised report of what to fix before publishing), **one real
-  finding with evidence** (path/line), **one limitation**, one honest in-progress caveat.
-- **Recording / screenshot walkthrough is the plan of record**; live demo only as a bonus.
-- **Portable prompt beat (~1 min):** "whatever AI tool you use, paste this": show the
-  generic prompt + a screenshot of it running in a plain chat window.
-- **Do not end the lecture on the tool.**
+### 7. AI help (~6 min)
+- Framing: **AI helps in two ways** when preparing a repo for publication; it does not
+  replace judgment.
+- **Requirement first:** the AI needs access to your repository. IDE-integrated agents
+  (Claude Code, GitHub Copilot), ChatGPT/Codex, or browser upload.
+- **Way 1: draft the README.** AI easily lists files, what they do, inputs/outputs; you
+  need a good prompt saying what the README should look like. Take-home: the
+  README-drafting prompt (slide shows it running or the prompt itself).
+- **Way 2: audit the repo against the criteria of this lecture.** Honest limits: AI is
+  not good at deterministic checks (licence there or not); it is good at "is this README
+  sufficient", "is anything missing". Use with the checklist + your judgment.
+- **The in-development tool:** reads your repo, writes a prioritised, actionable report
+  of what to fix before publishing; usable as a copy-paste prompt or an agent skill.
+  Audience-facing language only, no builder-speak. One honest in-progress caveat.
+  **Demo form OPEN (decide after testing the repo reviewer): screenshots vs recording;
+  live demo only as a bonus. Slides must not depend on the tool being ready.**
 
-### 8. Checklist & take-aways (~3 min, the lecture ENDS here)
-- Progress over perfection; the **minimum publishable repo** target.
-- Full checklist on screen (the audience watched it grow).
-- The three take-homes: the **checklist**, the **portable audit prompt**, the
-  **resources/tools list**; link/QR to the session page hosting all three.
-- Optional single FAIR name-drop line here.
+### 8. Close (~2.5 min, the lecture ENDS here, not on the AI section)
+- Progress over perfection; the **minimum publishable repo** target; final tree once more.
+- **The checklist, shown once** (not built up during the talk): "everything we did today
+  as a checklist you can cross off", on the session page, link/QR.
+- Take-homes on the website: checklist · README prompt · audit prompt · resources list.
+- Optional single FAIR name-drop line.
+- Next-lecture slide (date/topic or summer-break note: todo) + thanks.
 
----
+## Timing summary
+
+Intro 6.5 · S1 structure 6 · S2 rerun 6 · S3 data 4.5 · S4 licence+citation 6 ·
+S5 archive 6 · Last checks 1.5 · AI 6 · Close 2.5 = **~45 including the opener.**
+At the safe end of the 44-46 target for a slow online pace, before Q&A.
+First candidates to compress at rehearsal: `CITATION.cff` beat, second file-name slide.
 
 ## Teaching pattern
 
-**THE RED THREAD: one repository, fixed live across the whole lecture.**
-The messy folder introduced in the intro (`phd_analysis/`, the code behind the fictional
-paper *"Temperature and antibiotic resistance in soil bacteria"*) is the SAME repository
-that every section improves, and it ends the talk with a DOI. Two artifacts accumulate in
-parallel and carry the narrative:
-- **the repo tree** grows section by section (structure + README → run order + `renv.lock`
-  → `data/` + codebook → LICENSE + `CITATION.cff` → release + DOI badge),
-- **the checklist** grows alongside it (see below).
-Every "after" tree is a text block, so this costs no images. The messy-vs-final tree
-contrast lands at the END OF SECTION 5 (where the repo work completes: the natural climax
-of the fix journey); section 8 closes on the full checklist + take-homes instead.
-Name/topic of the example repo is easy to swap if a different field fits the audience better.
-
-**Red-thread execution decisions (2026-07-13, user confirmed):**
-- **Slides only, NO live cleaning during the talk** (10-15 min of screen fiddling for the
-  toy repo alone; online + beginners + Webex; same reasoning that made the AI demo a
-  recording). Intro framing softened accordingly ("watch it improve", not "we fix it
-  together").
-- New lines in each after-tree carry a `<- new` marker so the delta is visible at a glance.
+- **THE RED THREAD: building the repo.** One fictional example repo assembled across the
+  whole lecture; recurring tree slide per section with `<- new` markers; DOI badge as the
+  final build step. A build, not a cleanup. (Decision 2026-07-14, replaces the earlier
+  messy-repo-cleaning thread.)
+- **Checklist policy (decision 2026-07-14):** NOT built up on slides. It lives on the
+  website as extra material, includes the last-look items, and is shown once + linked at
+  the close. (Replaces the earlier growing-checklist mechanic.)
+- **Ladders (levels of fancy):** run order, dependencies, citation: teach minimum →
+  better → one-line pointer to the fancy option. Reassures beginners that the minimum
+  counts, gives advanced listeners a next step.
+- **Tabs (panel-tabset) for R/Python examples where applicable** (run order, paths,
+  seeds, dependencies). Fits the series style.
+- **Bad → good contrasts stay local** (file names, `setwd()`, the three data statements,
+  the release-flow screenshots). Everywhere else, concise slides.
+- **Items vs artifacts rule:** an item lives in exactly one section; an artifact (the
+  README) can host items from several. Tie-break for placement: permission/credit → §4;
+  data → §3; archiving/access → §5; else "what is this" → §1, "how do I run it" → §2.
+- **Slides only, NO live cleaning/building during the talk** (online + beginners + Webex).
 - **Optional upgrade (2-3 h at home, zero lecture minutes):** build the example repo for
-  real (before state as a tag, cleaned state as main), archive it to Zenodo. Double-pays:
-  it IS the source for the four section-5 screenshots, the DOI on the slide becomes real,
-  and "browse the before/after" becomes a fourth take-home link. Skip without guilt if the
-  week fills up.
-
-- **Growing checklist:** each section ends by adding its 2-4 items to a recurring
-  "your checklist so far" slide. The §6 completion is an assembly the audience watched
-  grow, and it matches the handout 1:1.
-- **Ladders (levels of fancy):** for run order, dependencies, and citation, teach
-  minimum → better → one-line pointer to the fancy option. Reassures beginners that the
-  minimum counts, gives advanced listeners a next step.
-- **Bad → good contrast only for the 3 highest-value beats:** folder tree / README
-  (section 1), data decision tree + restricted-data statement (section 3), the release
-  flow screenshots (section 5). Everywhere else, a concise checklist slide.
-- **Items vs. artifacts rule:** an item lives in exactly one section; an artifact (the
-  README) can host items from several. Tie-break order for placement: permission/credit →
-  section 4; data → section 3; archiving/access → section 5; else "what is this" →
-  section 1, "how do I run it" → section 2.
+  real (GitHub + Zenodo). Double-pays: source for the section-5 screenshots, the DOI on
+  the slide becomes real, "browse the repo" becomes a take-home link. Skip without guilt.
 
 ## Slide visuals & assets
 
 **Design rule: every content slide carries at least one of** (a) a real artifact (file
 tree, file content, UI screenshot), (b) a before/after contrast, (c) a small
-diagram/decision tree, or (d) the growing checklist. No decorative images.
+diagram/decision tree, or (d) the recurring repo tree. No decorative images. **Less text
+than the first draft: one idea per slide.**
 
 In the deck, every missing image is a visible `::: {.callout-note}` **IMAGE PLACEHOLDER**
-block that states exactly what to capture and what to annotate. They render, so nothing
-breaks; swap each for the real `![](...)` when the screenshot exists.
+block stating exactly what to capture. They render; swap for real `![](...)` later.
 
-**Example-repo policy (decided 2026-07-13):**
-- **Bad examples: always invented.** Never show a real, nameable researcher's weak repo.
-  The red-thread `phd_analysis/` folder is fictional, which is what makes it safe to mock.
-- **Good examples: always real.** A real published compendium proves this happens in
-  practice, and naming it is a compliment. Sources to pick from:
-  [CODECHECK register](https://codecheck.org.uk/register) (60+ papers whose code was
-  independently executed: strongest "verified good" signal),
-  [ReproHack Hub](https://www.reprohack.org/) (author-submitted papers WITH reproducibility
-  scores from participants),
-  [BES *Guide to Reproducible Code*](https://assets.britishecologicalsociety.org/2025/12/BES-Reproducible-code-guide_2025.pdf)
-  (same society as the Cooper hook),
-  `annakrystalli/rrcompendium-complete` (teaching-grade compendium),
-  FRB-CESAB / `rdatatoolbox`, or a repo from the repo_reviewer corpus
-  (`corneliushennch/prethod_data_wrangling`, `MICA-MNI/micaflow`).
+**Images that already exist in Selina's Obsidian vault** (export to
+`slides/images/2026_07_16_code-sharing/` before rendering):
+1. Screenshot of the Cooper et al. paper (title/abstract)
+2. Screenshot of Cooper et al. Figure 1
+3. Screenshot of `sessionInfo()` / `devtools::session_info()` output
+4. Codebook example table
 
-**Screenshots for Selina to capture** → `slides/images/2026_07_16_code-sharing/`:
+**Still to capture (placeholders in deck):** annotated real README example (§1) ·
+choosealicense.com (§4) · cffinit form (§4) · GitHub "Cite this repository" button (§4) ·
+Zenodo GitHub toggle, release form, Zenodo record with DOI, README DOI badge (§5, capture
+all four in one session by archiving a small real repo) · AI screenshots (§7, form open).
 
-| File | Content | Used in |
-|---|---|---|
-| `cooper-2026-figure.png` | Figure from Cooper et al. 2026 | Intro hook (DONE, in place) |
-| `readme-good-example.png` | A REAL published repo's README on GitHub, annotated: purpose+paper link, how-to-run, data note, citation/licence | Section 1 |
-| `choosealicense.png` | choosealicense.com front page | Section 4 |
-| `cffinit-form.png` | cffinit web form filled in | Section 4 |
-| `github-cite-button.png` | Repo with "Cite this repository" open | Section 4 |
-| `zenodo-github-toggle.png` | Zenodo GitHub-sync page, switch ON | Section 5 |
-| `github-release-form.png` | "Draft a new release" form | Section 5 |
-| `zenodo-record-doi.png` | Archived Zenodo record with DOI | Section 5 |
-| `readme-doi-badge.png` | README with DOI badge | Section 5 |
-| `reviewer-report.png` | repo_reviewer report (or recording stills) | Section 7 |
-| `prompt-in-chat.png` | Portable prompt running in a plain AI chat | Section 7 |
+**Built in-deck (no image files):** the recurring repo tree (text blocks), README
+skeleton, the three data statements, codebook table (if not image), licence table (code
+vs data), ladders, Mermaid data decision tree, MIT full text.
 
-Tip: capture the four section-5 screenshots in one session by actually archiving a small
-real repo end-to-end; the screenshots stay consistent and the DOI is real.
+**On-slide links (max 1-2 per section):** choosealicense.com · cffinit · Zenodo
+GitHub-integration guide · one-liner pointers (`here`, `renv`, `targets`) · session-page
+link/QR at the close.
 
-**Built in-deck (no image files needed):** text folder trees (bad/good), README skeleton
-code block, codebook example table, licence table (code vs. data), run-order ladder,
-data decision tree (Mermaid, native in Quarto), `renv.lock` vs `requirements.txt`
-side-by-side snippet, the full MIT licence text on one slide (shows how short it is),
-growing checklist.
+**Resource slide / handout** (links verified 2026-07-14 unless noted):
+- Cooper et al. (2026), *Methods in Ecology and Evolution*, doi:10.1111/2041-210X.70338
+  (the evidence hook; preprint CC BY 4.0 on EcoEvoRxiv).
+- **BES Guide to Reproducible Code**, 2nd edition, now a Quarto book:
+  <https://bes-guide.github.io/reproducible-code/> (chapters: organising projects,
+  programming, code review, notebooks, version control, publishing and archiving).
+  Perfect audience fit, same society as the hook.
+- The Turing Way: <https://book.the-turing-way.org/> (licensing chapters).
+- choosealicense.com · cffinit (`https://citation-file-format.github.io/cff-initializer-javascript/`)
+- GitHub Docs, Zenodo integration:
+  <https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content>
+- Rocker project (Docker for R): <https://rocker-project.org/>
+- `pyprojroot` (the Python `here`) · `here` · `renv` · `targets` · snakemake
+- Jenny Bryan, file naming talk.
+- "But is the code (re)usable?", *Nature Computational Science* (2021),
+  doi:10.1038/s43588-021-00109-9 (colleague test).
+- fair-software.eu ("a simple starting point") · reproai.org (verified live) ·
+  rigor.me (ONLY if Selina's manual check passes).
+- Citation-advantage evidence (speaker notes): Colavizza et al. (2020), PLOS/BMC data
+  sharing ~25%; code-sharing evidence thinner and field-dependent.
 
-**On-slide links (max 1-2 per section):** choosealicense.com · cffinit ·
-Zenodo GitHub-integration guide · one-liner pointers (`here`, `renv`, `targets`) ·
-session-page QR at the end.
+## Standing decisions (compressed log, revisions 1-4)
 
-**Resource slide / handout:** Cooper et al. 2026 · BES *Guide to Reproducible Code in
-Ecology and Evolution* (same society as the hook, perfect audience fit) · The Turing Way ·
-fair-software.eu (framed as "a simple 5-step starting point") · reproai.org · rigor.me
-(only if manually verified) · J. Bryan file-naming talk · Nature colleague-test source ·
-Wilkinson 2016 / Barker 2022 only if the FAIR name-drop stays.
+- Time target ~45 (was ~54 raw); online-with-beginners pace.
+- **Lecture ends on the close (checklist + take-homes), never on the AI section.**
+- **Red thread = building the repo** (2026-07-14; replaces cleaning-a-messy-repo).
+- **Checklist on the website only, shown once at the close** (2026-07-14; replaces the
+  per-section growing checklist).
+- **Zenodo workflow order corrected:** enable integration BEFORE the release; DOI minted
+  automatically. Must survive into the slides.
+- **Code quality = one reassurance slide** ("not a gate") + link to *R code that lasts*.
+- **Secrets topic cut**; sensitive-data last look = **checklist items only, no slide**
+  (2026-07-14).
+- **Dependencies Level 2 lists both flavours:** DESCRIPTION ("record what", Selina's own
+  workflow) and `renv.lock` ("record exact versions") (2026-07-14).
+- **Containers stay a one-liner** + resource-list pointer (2026-07-14 confirmed).
+- **Licence default = MIT** (permissive), GPL-3 named as the copyleft alternative;
+  resolved from the literature 2026-07-14. Slide must say MIT requires attribution and
+  that no licence compels citation.
+- **Zenodo: link the official how-to, do not walk through it theoretically**
+  (2026-07-14). One slide with the four steps in the correct order + the GitHub Docs link.
+- FAIR cut from the talk; optional name-drop at the close only.
+- AI section: two-ways framing (canvas version adopted, better than the old tool-centric
+  plan); demo form open; portable prompt tool-independent; no builder-speak.
+- Tabs (panel-tabset) for R/Python examples adopted (2026-07-14).
+- Bad examples always invented; good examples always real (CODECHECK register etc.).
+- Example-repo real build = optional upgrade, zero lecture minutes.
 
-## Timing summary
-Intro 6 · S1 structure 5 · S2 rerun 5 · S3 data 5 · S4 licence+citation 6 ·
-S5 archive 6 · Last look 2 · AI + prompt 6 · Take-aways 3 = **~44 including the opener**.
-The 2 min freed by the section-3 scope cut are **deliberately banked as buffer** (not
-reassigned): ~44 is the safe end of the 44-46 target for a slow online pace, before Q&A.
+## Open items: RESOLVED in the check pass (2026-07-14)
 
-## Design decisions (from the first critical review, GPT)
-- **5-question spine** replaced the earlier 4-questions-plus-bolted-on-extras.
-- **Time target cut to ~46** (was ~54 raw: unrealistic live/online).
-- **FAIR compressed to one slide** (later cut entirely, see revision 3).
-- **AI tool de-climaxed**, recording-first; lecture ends on the checklist/takeaways.
-- **Portable prompt made tool-independent** so the published promise holds regardless of
-  the tool's readiness.
-- **Resources list is a planned deliverable**, not an afterthought.
-- **Sensitive/unshareable-data handled concretely (3 paths)**: a real concern for this
-  audience, weighted as one section among five, not a centrepiece.
-- **Re-using good material from earlier decks is welcome** (audience largely turned over).
+1. **Python paths:** `pathlib` + run from the project root; `pyprojroot` (or `pyhere`) is
+   the direct `here` equivalent. → folded into §2.
+2. **Python run-everything script:** `main.py` (or `run_analysis.py` / `runall.py`); no
+   single blessed name, `main.py` mirrors `main.R` nicely. → §2.
+3. **Python seeds:** `np.random.default_rng(seed)` is the current NumPy recommendation;
+   `np.random.seed()` is legacy global state. `random.seed()` for plain Python. → §2.
+4. **Install commands:** `pip install -r requirements.txt`;
+   `conda env create -f environment.yml`. → §2.
+5. **Docker for R:** the **Rocker project** (rocker-project.org) is still the reference
+   (ready-made images, version tags; Dockerfile usually calls `renv::restore()`). No
+   newer standard package found; `containerit` exists but is not needed at one-liner
+   depth. → resource list + §2 Level 3.
+6. **pak command:** `pak::local_install_deps()` (VERIFIED: installs the hard deps of the
+   package tree at `root = "."`; `local_install_dev_deps()` also installs Suggests). → §2.
+7. **Typos to fix when drafting** (from the canvas): `dev::session_info()` →
+   `sessionInfo()` or `devtools::session_info()`; `usethis::use_licence()` →
+   `usethis::use_mit_license()`; "analyiss" → "analysis"; "requirments.txt" →
+   `requirements.txt`; "envrionment.yml" → `environment.yml`; "choosealicence.com" →
+   choosealicense.com.
+8. **Licence default: MIT** (permissive), with GPL-3 named as the copyleft alternative.
+   Consensus in research-code guidance is permissive-by-default for academic code (lowest
+   barrier to reuse; NumPy/SciPy/pandas/matplotlib are BSD/MIT). Note the BES guide itself
+   names NO default, it defers to the Software Sustainability Institute and The Turing Way,
+   so "MIT unless your group says otherwise" is a defensible teaching default rather than a
+   quotable rule. **Key correction to state on the slide: MIT DOES require attribution;
+   no licence can compel citation.** → §4.
+9. **GPL + data:** data never goes under GPL. Code licence for code, CC licence (CC0 /
+   CC-BY) for data, stated in the README. Creative Commons explicitly recommends against
+   CC licences for software. → §4.
+13. **Benefits/citation claim:** honest phrasing, data-sharing citation advantage is
+    well-replicated (Colavizza et al. 2020, ~25%), code-sharing evidence is thin and
+    field-dependent. Do not promise citations for code. → intro.
+14. **Cooper et al. figure:** the **preprint on EcoEvoRxiv is CC-BY 4.0**, so Figure 1 is
+    reusable with attribution. Safest: take the figure from the CC-BY preprint version and
+    put a credit line in the slide `aside` ("Figure from Cooper et al. (2026),
+    doi:10.1111/2041-210X.70338, CC BY 4.0"). Headline stat confirmed: **only 35% of
+    papers that used code archived it** (vs 97% for data); about a third of papers with
+    archived data/code had no README; >85% of archived material could be located,
+    downloaded and opened.
+15. **Zenodo how-to link (per Selina's decision, no theoretical walkthrough):** GitHub
+    Docs, "Referencing and citing content", section "Issuing a persistent identifier for
+    your repository with Zenodo". VERIFIED to give exactly the right order (authorize
+    Zenodo with GitHub → toggle the repo On → then create the release). Repo must be
+    public. Does NOT cover `CITATION.cff` (link cffinit / GitHub's "About CITATION files"
+    for that). → §5.
 
-## Design decisions (from the second critical review, Fable, 2026-07-13)
-- **Zenodo workflow order corrected** (was factually wrong): enable the integration
-  *before* creating the release; Zenodo does not retro-archive, and the DOI is minted
-  automatically. The old order (release → enable → "mint") would leave beginners with a
-  release and no DOI.
-- **Code-quality material (style/modularity/DRY) cut from the rerun section**: it
-  contradicted "shareable ≠ perfect" and re-taught *R code that lasts*; now one line +
-  session-page link.
-- **Secrets topic removed entirely** (user decision): rare in this audience's repos,
-  unfamiliar jargon. The sensitive-data last look covers the realistic risk.
-- **Portable prompt got ~1 min of slide time** in §7: a published take-home shouldn't
-  exist only as a handout link; it also hedges the demo.
-- **Licensing trap made explicit** (CC for data/text/figures, MIT/Apache for code) and a
-  decisive default named (MIT).
-- **Series-intro slide explicitly budgeted**; timings rebalanced to ~46 incl. opener.
-- **Data-size reality added** (GitHub 100 MB file limit → Zenodo/Dryad).
-- **Growing-checklist teaching mechanic adopted** (assembly, not reveal).
-- **AI-tool section stripped of builder-speak**; recording is the plan of record.
-- **fair-software.eu correction:** its five one-action steps do NOT map onto the five
-  sections (no README, no data); demoted to the resource list as "a simple starting point".
+## Open items: STILL OPEN
 
-## Design decisions (revision 3: structure merge, 2026-07-13)
-- **Selina's flat item inventory adopted as the content source**; it self-sorted onto the
-  five groups. **Noun + question section headers** adopted: category feel of the
-  repo_reviewer taxonomy, question pedagogy of the checks.
-- **Cooper et al. 2026 evidence hook** opens the talk (code archiving still rare in
-  EcoEvo); **FAIR slide cut** (never promised in the description), optional name-drop at
-  take-aways only.
-- **Restored items the draft had dropped** (all promised or audience-critical): the three
-  data paths + "can't share ≠ can't publish" reassurance, `CITATION.cff`, the concrete
-  Zenodo workflow, codebook, seeds.
-- **Citation taught as minimum → upgrade** (user question resolved): README "How to cite"
-  section is the legitimate minimum; `CITATION.cff` is the cheap upgrade (GitHub button +
-  Zenodo metadata). First candidate to compress if long.
-- **Draft's duplicate "Archiving" item and "Where and how to share it" section merged**
-  into one Archive & publish section.
-- **Ending re-fixed**: the draft ended on AI tools, violating the firm constraint; the
-  checklist/take-aways close the lecture.
-- **Run order, dependencies, citation taught as ladders** (levels of fancy), per the draft.
-- **Slide-visuals rule + asset list added** (see "Slide visuals & assets").
-
-## Open items
-- ~~Exact Cooper citation + stat~~ DONE: Cooper et al. (2026), *Methods in Ecology and
-  Evolution*, doi:10.1111/2041-210X.70338. 1861 papers, 7 BES journals, 2017-2024.
-  **Only 35% of papers that used code archived it**; **about a third had no README**.
-  Figure is in place. Still to confirm: the **figure licence** for re-use (BES journals are
-  usually CC-BY; check and add the credit line to the slide's `aside`).
-- ~~Nature colleague citation~~ DONE: *Nature Computational Science* editorial (2021),
-  doi:10.1038/s43588-021-00109-9 (on the slide's aside).
-- Confirm the **next-lecture slide** (date/topic or summer-break note): TODO marker in deck.
-- **Manually verify `rigor.me`** before the resource slide (`reproai.org` verified live).
-- Confirm Zenodo's `CITATION.cff` metadata pickup at drafting (one-line claim in section 4).
-- Confirm whether the tool's own prompt-path ships by the lecture (independent of
-  deliverable 4).
-- **Pick the real README example repo** for section 1 from the sources listed above
-  (CODECHECK register is the best starting point).
+10. **Pick the real README example repo** for §1. The CODECHECK register is verified-good
+    but currently engineering-heavy (control systems, UAVs), so it may not resonate with a
+    bio/pharma audience. Candidates to look at when drafting: ReproHack Hub,
+    `annakrystalli/rrcompendium-complete` (teaching-grade compendium), the repo_reviewer
+    corpus (`corneliushennch/prethod_data_wrangling`, `MICA-MNI/micaflow`). **Any decent
+    real README works; do not over-optimise.** Slide carries a placeholder until picked.
+11. **Polish the README skeleton** (canvas draft is a good base): done at drafting.
+12. **Date-ordering file-name example:** trivial, written at drafting
+    (`2023-04-20_temperature_almeria.csv` sorts correctly; `20.4.2023 temp.csv` does not).
+16. **Next-lecture slide** content (date/topic or summer-break note): Selina.
+17. **AI demo form** (screenshots vs recording vs live) and whether the tool's own
+    prompt-path ships: decide after testing the repo reviewer. Slides carry a placeholder
+    and must not depend on the tool being ready.
+18. **rigor.me:** manual check by Selina (403 to automated fetch). Include on the resource
+    list only if it checks out. (`reproai.org` verified live earlier.)
