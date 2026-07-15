@@ -93,22 +93,24 @@ Shareable ≠ perfect: checklist for most important practices.
 
 Your paper is submitted: *"Temperature and antibiotic resistance in soil bacteria"*. This is the analysis folder:
 
-:::{.callout-note}
-Adapt this to the final version
-:::
-
 ::: {.fragment}
 
 ```
 temperature-resistance/
-├── clean_data.R
-├── fit_models.R
-├── make_figures.R
+├── clean.R
+├── analysis_final.R
+├── makeplots.R
 ├── growth_assay.csv
-└── figures/
+├── growth_assay_clean.csv
+├── results.csv
+└── Rplot01.png
 ```
 
 :::
+
+. . .
+
+Flat, vague names, raw and cleaned data mixed together. This is the repo we fix all hour.
 
 # Structure & orientation {.inverse}
 > Can someone understand it?
@@ -121,11 +123,9 @@ temperature-resistance/
 
 - Separate your files into folders
 - Most important: separate data, code, and output
-- You can follow templates or use your own structure as long as it is clear and consistent
-
-:::{.callout-note}
-Add some links to templates
-:::
+- Even inside `data/`, keep raw data separate from what your scripts produce (more when we get to data)
+- You can follow a template or use your own structure, as long as it is clear and consistent
+- Templates: [rrtools](https://github.com/benmarwick/rrtools) (R), [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) (Python)
 
 :::
 
@@ -136,14 +136,19 @@ Add some links to templates
 ```
 temperature-resistance/
 ├── data/
-│   └── growth_assay.csv
+│   ├── raw/
+│   │   └── growth_assay.csv
+│   └── clean/
+│       └── cleaned_data.csv
 ├── analysis/
 │   ├── 01_clean-data.R
 │   ├── 02_fit-models.R
 │   └── 03_make-figures.R
 └── output/
     ├── figures/
+    │   └── linear-model-fit.png
     └── tables/
+        └── model-results.csv
 ```
 
 :::
@@ -273,10 +278,10 @@ Cite as: Baldauf, et al. (2026). Data for Temperature and antibiotic resistance 
 ### `analysis/`
 
 - `01_clean-data.R`: cleans the raw data and saves it
-    - Input: `data/growth_assay.csv`
-    - Output: `data/cleaned_data.csv`
+    - Input: `data/raw/growth_assay.csv`
+    - Output: `data/clean/cleaned_data.csv`
 - `02_fit-models.R`: fits the models and saves the results
-    - Input: `data/cleaned_data.csv`
+    - Input: `data/clean/cleaned_data.csv`
     - Output: `output/figures/linear-model-fit.png` (Figure 2)
 
 ### `data/`
@@ -371,15 +376,15 @@ Not the focus of today. Have a look at the lecture [R code that lasts](https://s
 # Run the whole analysis pipeline
 
 # Step 1: Clean the data
-# Input: `data/growth_assay.csv`
-# Output: `data/cleaned_data.csv`
+# Input: `data/raw/growth_assay.csv`
+# Output: `data/clean/cleaned_data.csv`
 source("analysis/01_clean-data.R")
 # Step 2: Fit the models and produce table 1
-# Input: `data/cleaned_data.csv`
+# Input: `data/clean/cleaned_data.csv`
 # Output: `output/tables/model-results.csv`
 source("analysis/02_fit-models.R")
 # Step 3: Make all manuscript figures
-# Input: `data/cleaned_data.csv`, `output/tables/model-results.csv`
+# Input: `data/clean/cleaned_data.csv`, `output/tables/model-results.csv`
 # Output: `output/figures/linear-model-fit.png` (Figure 2)
 source("analysis/03_make-figures.R")
 ```
@@ -394,15 +399,15 @@ from make_figures import main as make_figures
 
 if __name__ == "__main__":
     # Step 1: Clean the data
-    # Input: `data/growth_assay.csv`
-    # Output: `data/cleaned_data.csv`
+    # Input: `data/raw/growth_assay.csv`
+    # Output: `data/clean/cleaned_data.csv`
     clean_data()
     # Step 2: Fit the models and produce table 1
-    # Input: `data/cleaned_data.csv`
+    # Input: `data/clean/cleaned_data.csv`
     # Output: `output/tables/model-results.csv`
     fit_models()
     # Step 3: Make all manuscript figures
-    # Input: `data/cleaned_data.csv`, `output/tables/model-results.csv`
+    # Input: `data/clean/cleaned_data.csv`, `output/tables/model-results.csv`
     # Output: `output/figures/linear-model-fit.png` (Figure 2)
     make_figures()
 ```
@@ -594,7 +599,7 @@ Works once, on one computer.
 
 ```r
 read.csv(
-  "data/growth_assay.csv"
+  "data/raw/growth_assay.csv"
 )
 ```
 
@@ -619,7 +624,7 @@ Use an RStudio Project, and the `here` package for paths:
 
 Run from the project root and build paths with `pathlib`. For the same
 project-root anchoring as R's `here`, use `pyprojroot`:
-`here("data/growth_assay.csv")`.
+`here("data/raw/growth_assay.csv")`.
 
 :::
 
@@ -1309,6 +1314,7 @@ Questions?
 -   ["But is the code (re)usable?"](https://www.nature.com/articles/s43588-021-00109-9) *Nature Computational Science* editorial (2021)
 -   [BES Guide to Reproducible Code](https://bes-guide.github.io/reproducible-code/), same society as the opening figure
 -   [The Turing Way](https://book.the-turing-way.org/): community handbook for reproducible research
+-   [Wilson et al. (2017)](https://doi.org/10.1371/journal.pcbi.1005510) Good enough practices in scientific computing. *PLOS Computational Biology*
 -   [choosealicense.com](https://choosealicense.com) · [cffinit](https://citation-file-format.github.io/cff-initializer-javascript/) · [GitHub → Zenodo guide](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)
 -   [CODECHECK register](https://codecheck.org.uk/register) and [ReproHack Hub](https://www.reprohack.org/): repositories whose code someone else actually ran
 -   [Rocker project](https://rocker-project.org/) (Docker for R) · [pyprojroot](https://pypi.org/project/pyprojroot/) (the Python `here`)
