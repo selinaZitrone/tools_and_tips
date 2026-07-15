@@ -338,19 +338,20 @@ Not the focus of today. Have a look at the lecture [R code that lasts](https://s
 
 :page_facing_up: `01_clean-data.R`<br>
 :page_facing_up: `02_fit-models.R`<br>
+:page_facing_up: `03_make-figures.R`
 
 :::
 
 ::: {.column}
 
 ```md
-
 ## How to run
 
-1. Install dependencies by running `renv::restore()`
+1. Install dependencies with `renv::restore()`
 2. Run the scripts in numerical order:
     1. `01_clean-data.R`
     2. `02_fit-models.R`
+    3. `03_make-figures.R`
 
 ```
 
@@ -392,7 +393,7 @@ source("analysis/03_make-figures.R")
 ### main.py
 
 ```python
-# main.py: reproduces all results and figures
+# Run the whole analysis pipeline
 from clean_data import main as clean_data
 from fit_models import main as fit_models
 from make_figures import main as make_figures
@@ -421,7 +422,7 @@ if __name__ == "__main__":
 ```
 temperature-resistance/
 ├── README.md          
-├── main.R          
+├── main.R          <- new
 ├── data/
 │   └── growth_assay.csv
 ├── analysis/
@@ -441,7 +442,7 @@ temperature-resistance/
 ## Make the run order obvious
 
 **Level 3**: Use **workflow management tools** like [targets](https://books.ropensci.org/targets/) (R) or [Snakemake](https://snakemake.readthedocs.io/en/stable/)
-(any language, popular in bioinformatics). Define workflows, automatically run the steps in the right order and only rerun what changed.
+(any language). Define workflows, automatically run the steps in the right order and only rerun what changed.
 
 ![An example workflow from the [targets package](https://books.ropensci.org/targets/walkthrough.html)](images/2026_07_16_code-sharing/targets-workflow.png){fig-alt="A workflow diagram from the targets package, showing how the scripts depend on each other and which outputs they produce."}
 
@@ -488,7 +489,7 @@ sessionInfo()
 
 - Run `pip freeze` inside your project's **virtual environment**, then paste the list into the README.
 - Outside a virtual environment it lists every package on your system, so always use one.
-- `pipreqs` lists only the packages your code imports (the closer match to `renv::dependencies()`).
+- `pipreqs` (install with `pip install pipreqs`) scans your code for the packages you actually import, like `renv::dependencies()`.
 
 :::
 
@@ -537,13 +538,15 @@ Use [`uv`](https://docs.astral.sh/uv/) to:
 
 **Level 3**: Package the whole environment in a **container** so the code runs identically on any machine.
 
+- [Docker](https://www.docker.com/) bundles your code, packages, and system libraries into one image
+- Powerful, but more to learn and maintain
+
 ::: {.panel-tabset}
 
 ### R
 
 ::: {.nonincremental}
 
-- [Docker](https://www.docker.com/) bundles your code, packages, and system libraries into one image.
 - The [Rocker project](https://rocker-project.org/) gives you ready-made R images (pinned R versions, RStudio, tidyverse) to build on.
 
 :::
@@ -552,188 +555,76 @@ Use [`uv`](https://docs.astral.sh/uv/) to:
 
 ::: {.nonincremental}
 
-- Docker works the same way: start from an official [`python`](https://hub.docker.com/_/python) base image (e.g. `python:3.12-slim`) and install your locked dependencies inside it.
-- [`uv`'s Docker images and guide](https://docs.astral.sh/uv/guides/integration/docker/) make this straightforward.
+- Start from an official [`python`](https://hub.docker.com/_/python) base image (e.g. `python:3.12-slim`) and install your locked dependencies inside it.
+- [`uv`](https://docs.astral.sh/uv/guides/integration/docker/) also provides Docker images
+- **No Dockerfile needed:** [repo2docker](https://repo2docker.readthedocs.io/) builds the image from your `requirements.txt` or `environment.yml`
 
 :::
 
 :::
 
-. . .
+## Use paths relative to project root
 
-Powerful, but more to learn and maintain. Reach for it when pinned versions are not enough (system libraries, compiled tools, a specific OS).
-
-. . .
-
-**Don't want to write a Dockerfile?** [repo2docker](https://repo2docker.readthedocs.io/) builds the container for you from files you already have (`renv.lock`, `requirements.txt`, ...), and [Binder](https://mybinder.org/) can run it in the browser for free.
-
-
-## Paths that work on other machines
-
-::: {.columns}
-
-::: {.column width="50%"}
-
-#### Bad
-
-```r
-setwd("C:/Users/selina/PhD/")
-read.csv(
-  "C:/Users/selina/PhD/data.csv"
-)
-```
-
-Works once, on one computer.
-
-:::
-
-::: {.column width="50%"}
-
-::: {.fragment}
-
-#### Good
-
-```r
-read.csv(
-  "data/raw/growth_assay.csv"
-)
-```
-
-Relative to the project root: works everywhere.
-
-:::
-
-:::
-
-:::
-
-. . .
+- Paths anchored to the project root work on any machine, from any working directory
+- Absolute paths (`C:/Users/selina/PhD/...`) will break the project
 
 ::: {.panel-tabset}
 
 ### R
 
-Use an RStudio Project, and the `here` package for paths:
-`here("data", "growth_assay.csv")`.
+Use an R project (`.Rproj`, in RStudio or Positron) and the [`here` package](https://here.r-lib.org/). `here()` finds the root by searching upward for a marker (`.Rproj`, `.git`, `.here`), independent of the working directory:
+
+```r
+library(here)
+read.csv(here("data", "raw", "growth_assay.csv"))
+```
 
 ### Python
 
-Run from the project root and build paths with `pathlib`. For the same
-project-root anchoring as R's `here`, use `pyprojroot`:
-`here("data/raw/growth_assay.csv")`.
+Use the [`pyprojroot` package](https://pypi.org/project/pyprojroot/), the equivalent of R's `here`. It also has a `here()` function that finds the root, so paths resolve correctly from everywhere:
+
+```py
+from pyprojroot.here import here
+import pandas as pd
+pd.read_csv(here("data/raw/growth_assay.csv"))
+```
 
 :::
 
-## Two quick ones before we move on
+# Data {.inverse}
+> Can someone understand the data situation?
 
-::: {.panel-tabset}
+## Separate raw and processed data
 
-### Seeds
+::: {.columns}
 
-Anything random (bootstrap, permutation, simulation) needs a fixed seed:
+::: {.column}
 
-```r
-# R
-set.seed(42)
-```
-
-```python
-# Python: use this, not np.random.seed()
-rng = np.random.default_rng(42)
-```
-
-### Code quality
-
-Refactoring is **not** a sharing gate. You do not need clean code to publish.
-
-If you want cleaner code anyway, that is a separate topic:
-[*Write R code that lasts*](https://selinazitrone.github.io/tools_and_tips/).
+- We already did that: `data/raw/` vs `data/clean/` or `data/processed/`
+- Main idea: **raw data is read-only**, processed data is generated by the code
 
 :::
 
-## Where our repository stands
+::: {.column}
 
-```
-temperature-resistance/
-├── README.md          (+ how to run)   <- new
-├── DESCRIPTION                         <- new
-├── renv.lock                           <- new
-├── data/
-│   └── growth_assay.csv
-├── R/
-│   ├── 00_main.R                       <- new
-│   ├── 01_clean-data.R  (relative paths now)
-│   ├── 02_fit-models.R
-│   └── 03_make-figures.R
-└── output/
-```
-
-::: {.callout-tip}
-## Practical check
-
-Copy the repo to a different folder, or a different computer, and run it from scratch. Whatever breaks is what a stranger hits first.
+:::{.callout-note}
+add file structure here
 :::
-
-# 3. Data {background-color="#2c3e50"}
-
-### Can someone understand the data situation?
-
-## A code lecture. Why talk about data?
-
-Because the first thing anyone who downloads your code asks is:
-
-. . .
-
-<br>
-
-> "Where do I get the data to run this?"
-
-<br>
-
-. . .
-
-The goal is not to teach data sharing. It is one narrow thing:
-
-**your repository states, in one place, what the data situation is.**
-
-## Three honest paths
-
-Whatever your situation, one of these fits. Each becomes a line in your README.
-
-```{mermaid}
-%%| echo: false
-flowchart TD
-    Q{Can the data be shared?}
-    Q -->|Yes, freely| A[Open]
-    Q -->|Only under conditions| B[Restricted]
-    Q -->|No| C[Cannot be shared]
-    A --> A1[Data in the repo, or in a<br>data repository with a DOI]
-    B --> B1[A statement: where and how<br>to request access]
-    C --> C1[Synthetic example data<br>+ the code that made it]
-```
-
-. . .
-
-**"I can't share my data" is not a dead end.** Path 3 is a valid, publishable repository.
-
-## What each path looks like in the README
-
-::: {.nonincremental}
-
--   **Open**
-    > Raw data is in `data/`. It is also archived at https://doi.org/10.xxxx/xxxxx.
-
--   **Restricted** (the one people struggle to write)
-    > The clinical measurements cannot be shared publicly. Qualified researchers can request access from the X Data Access Committee at [link]. `data/README.md` describes the variables so the code is reviewable without the data.
-
--   **Cannot be shared**
-    > Real patient data cannot be published. `data/synthetic/` holds simulated data with the same structure, made by `R/00_make-synthetic-data.R`, so the pipeline runs end to end.
 
 :::
 
-## A codebook: the README for your data
+:::
 
-Even a reviewer who cannot get your data can judge the analysis if they know what the columns mean.
+## Save your data in open formats
+
+- Save data in **open formats**: `.csv`, `.tsv`, `.txt`, `.json`, `.parquet`, etc.
+- Avoid proprietary formats: `.xlsx`, `.sav`, `.dta`, etc.
+
+## Document your data files
+
+Describe all your data files: Variable names, units, missing data codes, and other relevant information.
+
+E.g. one table per file:
 
 ::: {.fragment}
 
@@ -746,128 +637,142 @@ Even a reviewer who cannot get your data can judge the analysis if they know wha
 
 :::
 
-. . .
+## Document your data files
 
-::: {.nonincremental}
+- Add this to the main README
+- Or create a separate codebook `data/README.md` for all data files
 
--   A small table in `data/README.md` is enough
--   Save data in **open formats**: `.csv`, not `.xlsx`; a PDF is not data
--   Keep **raw data separate and read-only**; processed data is regenerated by the code
+::: {.columns}
 
-:::
+::: {.column}
 
-## Where our repository stands
+Main README:
+
+```md
+
+### `data/`
+
+The `data/` folder contains the raw and cleaned growth assay measurements. See `data/README.md` for a codebook of all variables.
 
 ```
-temperature-resistance/
-├── README.md          (+ data statement)   <- new
-├── DESCRIPTION
-├── renv.lock
-├── data-raw/          (read-only)          <- new
-│   └── growth_assay.csv
-├── data/
-│   └── README.md      (codebook)           <- new
-├── R/
-└── output/
-```
-
-::: aside
-Sharing data *well* (repositories, metadata, embargoes) is its own lecture. Maybe a future one.
-:::
-
-# 4. Licence & citation {background-color="#2c3e50"}
-
-### Can someone legally reuse and cite it?
-
-## Readable, runnable, data is clear. Done?
-
-A colleague finds the repo, it runs, they want to build on it. Two questions they still cannot answer:
-
-::: {.nonincremental}
-
--   **Am I allowed to use this?**
--   **How do I give you credit?**
 
 :::
 
-. . .
+::: {.column}
 
-<br>
-
-Both are fixed by two small files in the repo root.
-
-## No licence means "all rights reserved"
-
-::: {.callout-important}
-## The most common mistake
-
-A public repo with **no LICENSE file** is *not* free to use. By default nobody may legally reuse your code, even though they can see it.
+:::{.callout-note}
+Add folder structure with data readme here
 :::
-
-. . .
-
-The fix is one file. Two things worth knowing:
-
-::: {.nonincremental}
-
--   Even the permissive **MIT** licence requires people to **keep your name** on it (attribution).
--   No licence can force anyone to *cite* you. That is a scholarly norm, and it is what the citation part below is for.
 
 :::
 
-## Which licence?
+:::
 
-The one choice that matters:
+## What if you cannot share the data?
 
-| Type | Means | Examples |
-|------|-------|----------|
-| **Permissive** | anyone may reuse, must keep your notice | **MIT**, BSD, Apache-2.0 |
-| **Copyleft** | derivatives must stay open under the same licence | GPL-3 |
+- Data too big: Use a separate data repository (Zenodo, Dryad, Figshare, etc.) and link to it in the README. If you can: include a sample with the code so the pipeline runs end to end
+- **Restricted data**: Include a statement about where and how to request access in the README. Add a codebook in `data/README.md` so the code can be reviewed even without data
+- **Closed data**: Include synthetic example data along with the code that generated it, so the pipeline runs end to end. Include a statement in the README that the real data cannot be shared. 
 
-. . .
+# Licence & citation {.inverse}
+> Can someone legally reuse and cite it?
 
-**If unsure, MIT** (unless your group, funder, or institution says otherwise). It is the default across scientific tooling (NumPy, pandas, ...). Browse the rest at [choosealicense.com](https://choosealicense.com).
+## Add a license
 
-## Code and data need different licences
+::: {.columns}
 
-A common trap: one `CC-BY` on the whole repo. Creative Commons themselves say CC licences are **not for software**.
+::: {.column}
 
-::: {.fragment}
+- Without a license file, people can not reuse your code
+- Most popular licenses in ecology are:
+    - Creative commons licenses (CC0, CC-BY)
+    - MIT
+    - GNU General Public License (GPL)
 
-| What | Licence |
-|------|---------|
-| **Code** (scripts, functions) | MIT, Apache-2.0, GPL |
-| **Data, text, figures** | CC0, CC-BY |
 
 :::
 
-. . .
+::: {.column}
 
-So a repo with both usually carries **two** licences. State each in the README (e.g. *Code: MIT. Data: CC-BY-4.0*).
+![Number of licenses used for code and data in BES ecology papers. [Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-license.png){fig-alt="Bar chart from Cooper et al. 2026: the licenses used in archived code and data, showing that CC is very common."}
 
-## The whole MIT licence fits on one slide
+:::
 
-```text
-MIT License
+:::
 
-Copyright (c) 2026 Selina Baldauf
+## Which license to choose?
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software ...
+::: {.columns}
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND ...
-```
+::: {.column}
 
-. . .
 
-That is the whole thing. GitHub adds it for you: **Add file → Create new file → name it `LICENSE` → "Choose a license template".**
+:::
+
+::: {.column}
+
+![Number of licenses used for code and data in BES ecology papers. [Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-license.png){fig-alt="Bar chart from Cooper et al. 2026: the licenses used in archived code and data, showing that CC is very common."}
+
+:::
+
+:::
+
+
+## Which licence to choose?
+
+- Are there specific requirements for your project?
+- Checkout [choosealicense.com](https://choosealicense.com) to guide through license choice
+
+Standard open licenses
+
+For data
+
+- [CC0](https://choosealicense.com/licenses/cc0-1.0/): public domain, no restrictions, no attribution required (more a waiver than a licence)
+- [CC BY](https://choosealicense.com/licenses/cc-by-4.0/): public domain, no restrictions, but attribution required
+
+For code
+
+- [MIT](https://choosealicense.com/licenses/mit/): permissive, anyone may reuse, must keep your notice
+- [GNU GPL v3](https://choosealicense.com/licenses/gpl-3.0/): copyleft, derivatives must stay open under the same licence
+
+:::{.aside}
+
+Further reading:
+- [Turing way book](https://book.the-turing-way.org/reproducible-research/licensing/) on licensing
+- [A case for CC0](https://blog.datadryad.org/2023/05/30/good-data-practices-removing-barriers-to-data-reuse-with-cc0-licensing/) by the DRYAD repository
+
+:::
+
+## How to add a license
+
+
+::: {.columns}
+
+::: {.column}
+
+- Add a license file to your repository (e.g. `LICENSE` or `LICENSE.txt`) containing
+the license text  (add your name and year to the copyright notice)
+- Automatic ways to add a license:
+    - GitHub: Add file → Create new file → name it `LICENSE` → "Choose a license template"
+    - R: `usethis::use_mit_license("Your Name")` or `usethis::use_gpl3_license()`
+- If applicable: Add a second license for the data
+- State the license in the README (e.g. *Code: MIT. Data: CC-BY-4.0*).
+
+:::
+
+::: {.column}
+
+:::{.callout-note}
+Here a note on how to add a license
+:::
+
+:::
+
+:::
 
 ## Make your code citable
 
-**Minimum** (always fine): a "How to cite" section in the README.
+**Level 1**: a "How to cite" section in the README (always good to have).
 
 ```markdown
 ## Citation
@@ -875,15 +780,15 @@ Baldauf, S. (2026). Temperature and antibiotic resistance in
 soil bacteria [Software]. https://doi.org/10.xxxx/xxxxx
 ```
 
-. . .
+## Make your code citable
 
-**Upgrade** (5 minutes): a `CITATION.cff` file.
+**Level 2**: add a `CITATION.cff` file
 
 ::: {.nonincremental}
 
--   A small YAML file; fill in the [`cffinit`](https://citation-file-format.github.io/cff-initializer-javascript/) web form, no YAML by hand
+-   A small YAML file that you can create with [`cffinit`](https://citation-file-format.github.io/cff-initializer-javascript/) and add to your project
 -   GitHub then shows a **"Cite this repository"** button with ready-made APA / BibTeX
--   Zenodo reads it when it archives your release (section 5), so the credit is correct automatically
+-   Zenodo reads it when it archives your release, so the credit is correct automatically
 -   Add your **ORCID** so the credit points at *you*, not just your name
 
 :::
@@ -914,173 +819,43 @@ temperature-resistance/
 └── output/
 ```
 
-# 5. Archive & publish {background-color="#2c3e50"}
+# Archive & publish {.inverse}
+> Can someone find the exact version you used?
 
-### Can someone find the exact version you used?
+## Archive your data and get a DOI
 
-## Isn't GitHub enough?
+- Archiving your data means freezing a specific version of it
+- You will get a DOI (Digital Object Identifier) for that version, which you can cite in your paper
+- You can get them by publishing your project on different repositories, e.g. [Zenodo](https://zenodo.org), [Dryad](https://datadryad.org/), [Figshare](https://figshare.com/), or a domain-specific repository
 
-GitHub is where your code **lives**. An archive is where it is **frozen**.
+## Isn't GitHub (or similar) enough?
 
-::: {.fragment}
+- Github is a standard place to develop and share code
+- The benefit of Github: Easy to find, collaborate, and share
+- BUT: It is not an archive where a specific version of the code is frozen
+- The solution: Use GitHub for development, and archive a **release** of your repo on Zenodo (or another repository) to get a DOI.
 
-| | GitHub | Archive (Zenodo) |
-|---|--------|------------------|
-| The code | keeps changing | exact snapshot, forever |
-| The link | breaks if you rename or delete | a DOI, permanent by design |
-| Journals | usually not accepted as "archived" | this is what they mean |
+## Add your DOI to the README and the paper
 
-:::
+Once you have a DOI, add it in two places:
 
-. . .
+- the code README (Zenodo gives you a nice copy-paste badge)
+- the manuscript: "Code and data are archived at https://doi.org/10.5281/zenodo.xxxxx (v1.0)."
 
-[Zenodo](https://zenodo.org) is free, run by CERN, and made exactly for this.
+## Our published repository
 
-. . .
 
-No Git skills required: uploading files through the GitHub **web browser** is a fine start. (Git is still worth learning: see the Git sessions on the series website.)
+:::{.callout-note}
 
-## From repo to DOI: four steps, in this order
+here a link to the published demo-repository
 
-::: {.callout-important}
-## The order matters
-
-Turn the Zenodo switch **on before** you create the release. Zenodo only archives releases made **after** the switch is on; it does not go back for old ones.
-:::
-
-. . .
-
-::: {.nonincremental}
-
-1.  Metadata files are in the repo: `README`, `LICENSE`, `CITATION.cff` (done)
-2.  On Zenodo: log in with GitHub, then flip the switch for your repo to **ON**
-3.  On GitHub: **Releases → Draft a new release**, tag it `v1.0`, publish
-4.  Done. Zenodo archives the snapshot and **mints the DOI automatically**
-
-:::
-
-. . .
-
-::: aside
-Step-by-step with screenshots: [GitHub Docs, "Referencing and citing content"](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content). Your repo must be public.
-:::
-
-## Steps 2 and 3, as you will see them
-
-::: {.callout-note}
-## IMAGE PLACEHOLDER: `zenodo-github-toggle.png` + `github-release-form.png`
-
-Two screenshots:
-
-1. The Zenodo **GitHub page** with the toggle for the example repo switched **ON**. Annotate: "before the release!"
-2. GitHub's **"Draft a new release"** form with tag `v1.0` and the green "Publish release" button.
-
-Best captured while actually archiving the companion repo, so the DOI on the next slide is real.
-:::
-
-## What you get, and where to put it
-
-::: {.callout-note}
-## IMAGE PLACEHOLDER: `zenodo-record-doi.png` + `readme-doi-badge.png`
-
-1. The **Zenodo record**: title and authors (from `CITATION.cff`), the version, and the DOI badge.
-2. The repo README with the **DOI badge** at the top.
-:::
-
-. . .
-
-Put the DOI in two places:
-
-::: {.nonincremental}
-
--   the **README** (Zenodo gives you a copy-paste badge)
--   the **manuscript**: "Code and data are archived at https://doi.org/10.5281/zenodo.xxxxx (v1.0)."
-
-:::
-
-. . .
-
-Zenodo gives you an **all-versions DOI** (put it in the README) and a **version DOI** (put it in the paper, so reviewers see exactly what you saw).
-
-## No GitHub? No problem
-
-::: {.nonincremental}
-
--   You can **upload a zip directly to Zenodo**, or to a domain repository your field uses.
--   Same result: a frozen snapshot, a DOI, citable.
-
-:::
-
-## Our repository, publishable
-
-::: {.columns}
-
-::: {.column width="46%"}
-
-Where we started:
-
-```
-temperature-resistance/
-├── clean_data.R
-├── fit_models.R
-├── make_figures.R
-├── growth_assay.csv
-└── figures/
-```
-
-:::
-
-::: {.column width="54%"}
-
-::: {.fragment}
-
-Archived as `v1.0`, with a DOI:
-
-```
-temperature-resistance/
-├── README.md      (+ DOI badge)  <- new
-├── LICENSE
-├── CITATION.cff
-├── DESCRIPTION
-├── renv.lock
-├── data-raw/
-├── data/
-│   └── README.md
-├── R/
-│   ├── 00_main.R
-│   ├── 01_clean-data.R
-│   ├── 02_fit-models.R
-│   └── 03_make-figures.R
-└── output/
-```
-
-:::
-
-:::
-
-:::
-
-# Before you hit publish {background-color="#2c3e50"}
-
-## The one test that catches everything
-
-::: {.callout-tip}
-## Ask a colleague
-
-Send the repo link to a colleague and ask them to **run it from scratch on their machine**, using only the README.
-
-Whatever they stumble over, a reviewer and a stranger will stumble over too.
-:::
-
-. . .
-
-This is not just my advice, it is what *Nature* recommends before you submit. And it costs you a coffee.
-
-::: aside
-Editorial: "But is the code (re)usable?", *Nature Computational Science* (2021), doi:10.1038/s43588-021-00109-9
 :::
 
 ## The whole thing, as a checklist
+
+Have a look at the checklist on the website for your own repos.
+
+There is a **one-page version** you can print and cross off, and a **longer version** with explanations and examples.
 
 ::: {style="font-size: 65%;"}
 
@@ -1146,84 +921,65 @@ Editorial: "But is the code (re)usable?", *Nature Computational Science* (2021),
 
 :::
 
-. . .
+# AI can help you in 2 ways {.inverse}
+> 1. Create READMEs
+> 2. Audit your repo against the checklist
 
-You do not have to memorise this. It is on the session page to download and cross off.
+## The ground rules
 
-# AI can run this checklist for you {background-color="#2c3e50"}
 
-## A helper, not a replacement
+- The AI needs **access to your repo**
+    - an IDE assistant (e.g. Claude Code, GitHub Copilot) - I use Claude Code in Positron
+    - ChatGPT via Codex
+    - a browser upload
+- Use it as a helper, not an authority (revise drafts, think whether suggestions are plausible)
 
-AI tools are genuinely good at this kind of work: **reading a whole repository and spotting what is missing**. Two ways it helps.
+## AI help to draft the README
 
-. . .
+- AI is good at the tedious part: listing files, what they do, inputs/outputs, ...
+- Use a good prompt that describes how the README should look like
+- Let AI generate a draft that you review
 
-First, the ground rules:
+## Example prompt for a README draft
 
-::: {.nonincremental}
+Read it and adjust the parts you don't like
 
--   The AI needs **access to your repo**: an IDE assistant (Claude Code, Copilot), ChatGPT via Codex, or a browser upload.
--   Treat every finding as a **suggestion**, not a verdict. You know your project; the AI does not.
-
+:::{.callout-note}
+Here a good prompt for a README draft, ready to copy-paste into your AI tool.
 :::
 
-## Way 1: draft the README
+## Example prompt for a data codebook
 
-AI is good at the tedious part: listing your files, what each does, their inputs and outputs.
+Read it and adjust the parts you don't like
 
-. . .
-
-You supply a good prompt describing how the README should look. It supplies the first draft, which you then correct.
-
-. . .
-
-::: {.callout-note}
-## IMAGE PLACEHOLDER (optional): a README draft being generated
-
-A still of an AI assistant producing a README from a repo. The ready-to-use prompt is on the session page.
+:::{.callout-note}
+Here a good prompt for a README draft, ready to copy-paste into your AI tool.
 :::
 
-## Way 2: audit the repo against the checklist
+## AI audit of your repo against the checklist
 
-Point the AI at your repo and ask it to check today's five questions.
+- Finalize your repository with the help of the checklist
+- Before you publish: Point the AI at your repo and ask it for an audit
+- Limitations: Might come up with false positives or false negatives, so **always check the findings yourself**
+- How to mitigate: Use a good prompt 
 
-. . .
+## Example prompt to audit your repo
 
-Honest about the limits:
+:::{.callout-note}
 
-::: {.nonincremental}
-
--   **Not** great at deterministic checks ("is a licence file present?"): a script does that better.
--   **Good** at judgement calls: "is this README enough?", "what is missing before I publish?"
-
+Here a good prompt for an AI audit of your repo, ready to copy-paste into your AI tool.
 :::
 
-. . .
+## The repo reviewer tool
 
-Use it **together with the checklist and your own judgement**.
+- Project output from code sharing workshop
+- Developed with Tessa and Rebecca
+- Work in progress
+- Usable as a copy-paste prompt or an AI agent skill.
 
-## A tool we are building for exactly this
+
 
 Point it at your repository. It checks against criteria like today's checklist and writes a **plain-language, prioritised report**:
-
-::: {.nonincremental}
-
--   what is missing or unclear, sorted by what to fix first
--   every finding points at the **file or line** it came from
-
-:::
-
-. . .
-
-Usable as a copy-paste prompt or an AI agent skill.
-
-Honest caveat: **work in progress**. It will be linked on the session page when it is ready to try.
-
-::: {.callout-note}
-## IMAGE PLACEHOLDER: `reviewer-report.png` (or stills from a screen recording)
-
-One real run showing: the input repo, **one finding with its evidence**, **one recommendation**, and **one limitation** (something it could not verify), so it clearly does not bluff.
-:::
 
 ## You do not need our tool to start
 
@@ -1245,49 +1001,19 @@ and the smallest fix. Sort by priority. Do not invent files you have not seen.
 
 This is the short version. The **full prompt** is on the session page, ready to copy.
 
-# Take-aways {background-color="#2c3e50"}
+# Conclusion {.inverse}
 
-## If you remember three things
+## Summary
 
-. . .
-
-**1. Shareable ≠ perfect.** Understandable, rerunnable, documented, safe. That is the bar.
-
-. . .
-
-**2. The README is the front door.** One file, two minutes to read, missing from a third of papers. Start there.
-
-. . .
-
-**3. Progress over perfection.** Pick three checklist items and do them this week. The rest can come with the next paper.
-
-## Your take-homes
-
-All on the session page:
-
-::: {.nonincremental}
-
-1.  The **one-page checklist**
-2.  A **README-drafting prompt** and a **portable audit prompt** (any AI tool)
-3.  A **resources list**: guides, tools, and everything cited today
-
-:::
-
-::: {.callout-note}
-## IMAGE PLACEHOLDER: `qr-session-page.png`
-
-QR code to the session page (generate once the page URL exists).
-:::
-
-. . .
-
-By the way, what you did today has a name: **FAIR for research software**. If a reviewer asks, you are already doing it.
+- Shareable ≠ perfect: Start with one thing
+- Follow checklist
+- Use AI tools
 
 ## Next lecture
 
-<!-- TODO Selina: confirm date/topic of the next session (3rd Thursday), or a summer-break note -->
+Summer/Conference break in August & September!
 
-:date: Topic and date t.b.a. :clock4: 4-5 p.m. :round_pushpin: Webex
+:date: 15.10.2026  t.b.a. :clock4: 4-5 p.m. :round_pushpin: Webex
 
 ::: {.nonincremental}
 
@@ -1315,7 +1041,7 @@ Questions?
 -   [CODECHECK register](https://codecheck.org.uk/register) and [ReproHack Hub](https://www.reprohack.org/): repositories whose code someone else actually ran
 -   [Rocker project](https://rocker-project.org/) (Docker for R) · [pyprojroot](https://pypi.org/project/pyprojroot/) (the Python `here`)
 -   [fair-software.eu](https://fair-software.eu): five simple first steps towards FAIR software
--   [reproai.org](https://reproai.org) <!-- TODO Selina: verify rigor.me manually, then add it here or drop it -->
+-   [reproai.org](https://reproai.org)
 -   [How to name files](https://speakerdeck.com/jennybc/how-to-name-files), talk by Jenny Bryan
 
 :::
