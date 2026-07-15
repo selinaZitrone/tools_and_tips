@@ -386,15 +386,25 @@ source("analysis/03_make-figures.R")
 
 ### main.py
 
-:::{.callout-note}
-Check if this is good practice and correct
-:::
-
 ```python
 # main.py: reproduces all results and figures
-import clean_data
-import fit_models
-import make_figures
+from clean_data import main as clean_data
+from fit_models import main as fit_models
+from make_figures import main as make_figures
+
+if __name__ == "__main__":
+    # Step 1: Clean the data
+    # Input: `data/growth_assay.csv`
+    # Output: `data/cleaned_data.csv`
+    clean_data()
+    # Step 2: Fit the models and produce table 1
+    # Input: `data/cleaned_data.csv`
+    # Output: `output/tables/model-results.csv`
+    fit_models()
+    # Step 3: Make all manuscript figures
+    # Input: `data/cleaned_data.csv`, `output/tables/model-results.csv`
+    # Output: `output/figures/linear-model-fit.png` (Figure 2)
+    make_figures()
 ```
 
 :::
@@ -440,8 +450,9 @@ Let people know what they need to install to make the code work.
 
 :::{.nonincremental}
 
-- Programs and their versions
+- The language itself and its version (e.g. R 4.4.1, Python 3.12)
 - All libraries/packages and their versions
+- Any other programs your code calls
 
 :::
 
@@ -455,27 +466,37 @@ Let people know what they need to install to make the code work.
 
 ### R
 
-- `renv::dependencies()` gives you a list of all packages your code uses and specifies the file where it
-is used. But it gives you dependencies without versions.
-- `devtools::session_info()` gives you a list of all loaded packages and your system info. Run this after you ran the entire pipeline to get the versions of the packages you are using
+::: {.nonincremental}
 
-:::{.callout-note}
-Should I really leave all this in there? I wanted to demo the output, but session info also gives path to quarto etc. These should be removed right. Also, session_info() would only give the packages that are loaded, not all dependencies. Should I use `renv::dependencies()` instead?
+- Run `sessionInfo()` at the **end** of your pipeline (so every package is loaded), then paste the package list into the README.
+- `renv::dependencies()` also lists the packages your code uses, but without versions.
+
 :::
 
-```{r}
-#| echo: true
-# Note: Delete irrelevant rows (e.g. Quarto path) before pasting to the readme
-devtools::session_info()
+```r
+sessionInfo()
+#> R version 4.4.1 (2024-06-14)
+#> ...
+#> other attached packages:
+#> [1] ggplot2_3.5.1 dplyr_1.1.4   readr_2.1.5
 ```
 
 ### Python
 
-- `pip freeze` gives you a list of all loaded libraries
+::: {.nonincremental}
 
-:::{.callout-note}
-- Check if this is correct and good practice
+- Run `pip freeze` inside your project's **virtual environment**, then paste the list into the README.
+- Outside a virtual environment it lists every package on your system, so always use one.
+- `pipreqs` lists only the packages your code imports (the closer match to `renv::dependencies()`).
+
 :::
+
+```bash
+$ pip freeze
+pandas==2.2.2
+numpy==1.26.4
+matplotlib==3.9.0
+```
 
 :::
 
@@ -489,10 +510,10 @@ devtools::session_info()
 
 ::: {.nonincremental}
 
-Use the [`renv` package](https://rstudio.github.io/renv/) package to:
+Use the [`renv` package](https://rstudio.github.io/renv/) to:
 
 - `renv::init()`: set up a project library and record all packages in a `renv.lock` file
-- `renv::snapshot()`: update your lockfile with new  packages
+- `renv::snapshot()`: update your lockfile with new packages
 - `renv::restore()`: recreate the environment on another machine
 
 :::
@@ -510,6 +531,40 @@ Use [`uv`](https://docs.astral.sh/uv/) to:
 :::
 
 :::
+
+## Record all dependencies and versions
+
+**Level 3**: Package the whole environment in a **container** so the code runs identically on any machine.
+
+::: {.panel-tabset}
+
+### R
+
+::: {.nonincremental}
+
+- [Docker](https://www.docker.com/) bundles your code, packages, and system libraries into one image.
+- The [Rocker project](https://rocker-project.org/) gives you ready-made R images (pinned R versions, RStudio, tidyverse) to build on.
+
+:::
+
+### Python
+
+::: {.nonincremental}
+
+- Docker works the same way: start from an official [`python`](https://hub.docker.com/_/python) base image (e.g. `python:3.12-slim`) and install your locked dependencies inside it.
+- [`uv`'s Docker images and guide](https://docs.astral.sh/uv/guides/integration/docker/) make this straightforward.
+
+:::
+
+:::
+
+. . .
+
+Powerful, but more to learn and maintain. Reach for it when pinned versions are not enough (system libraries, compiled tools, a specific OS).
+
+. . .
+
+**Don't want to write a Dockerfile?** [repo2docker](https://repo2docker.readthedocs.io/) builds the container for you from files you already have (`renv.lock`, `requirements.txt`, ...), and [Binder](https://mybinder.org/) can run it in the browser for free.
 
 
 ## Paths that work on other machines
