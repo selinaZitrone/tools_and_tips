@@ -257,10 +257,6 @@ At minimum, a README should answer:
 
 :::
 
-:::{.callout-note}
-work on this
-:::
-
 ## A README skeleton you can copy
 
 ```markdown
@@ -444,14 +440,10 @@ temperature-resistance/
 
 ## Make the run order obvious
 
-**Level 3**: Use **workflow management tools** like [targets](https://books.ropensci.org/targets/) (R) or [snakemake](https://snakemake.readthedocs.io/en/stable/)
-(Python and more). Define workflows, automatically run the scripts in the right order and only rerun what changed.
+**Level 3**: Use **workflow management tools** like [targets](https://books.ropensci.org/targets/) (R) or [Snakemake](https://snakemake.readthedocs.io/en/stable/)
+(any language, popular in bioinformatics). Define workflows, automatically run the steps in the right order and only rerun what changed.
 
 ![An example workflow from the [targets package](https://books.ropensci.org/targets/walkthrough.html)](images/2026_07_16_code-sharing/targets-workflow.png){fig-alt="A workflow diagram from the targets package, showing how the scripts depend on each other and which outputs they produce."}
-
-:::{.callout-note}
-Check if snakemake is only for python or also other languages. Also check if the text I wrote on the slide is correct
-:::
 
 ## Record all dependencies and versions
 
