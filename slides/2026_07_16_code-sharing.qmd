@@ -42,24 +42,40 @@ from: markdown+emoji
 
 1861 ecology papers from 7 journals (2017-2024)
 
-## Sharing code is still the exception
+## Sharing code is still the exception (?)
+
+::: {.columns}
+
+::: {.column}
+
+- Data is always shared, code not
+- Shared code is often not sufficient
+    - missing a README (39%)
+    - low-quality READMEs
+    - missing license (26%) or wrong license
+    - ...
+
+:::
+
+::: {.column}
+
 
 ![[Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-figure.png){fig-alt="Bar chart from Cooper et al. 2026: nearly all papers that used data archived it, but only about a third of papers that used code archived the code."}
 
-## Readmes are often insufficient
+:::
 
-Only 61% of archived code had a README and quality was often low.
+:::
 
-![1 = very brief and incomplete; 10 = all information about script functionality, outputs, software, packages, workflows comprehensively documented. [Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-figure-readme.png){fig-alt="Bar chart from Cooper et al. 2026: the quality of READMEs in archived code, rated on a scale from 1 to 10."}
 
-## Why isn't code sharing the standard?
 
-- Time pressure
-- Not sure how to do it properly
-- Journals often don't require it
+## Why?
+
+- Time pressure - not a priority
+- Journals still often don't require it
 - Code is not part of peer review
+- Not sure how to do it properly
 
-## Why code sharing is worth it
+## Code sharing is worth it
 
 - Open science creates trust
 - Reproducibility: Results can be verified
@@ -69,29 +85,27 @@ Only 61% of archived code had a README and quality was often low.
 
 ## Today
 
-Shareable ≠ perfect: checklist for most important practices.
+- How to build and publish a good practice repository: the most important things to do
+- Focus on data analysis projects
+- Where AI tools can help
 
-::: {.nonincremental}
+. . .
 
-1.  **Structure & orientation** - Can someone understand it?
-2.  **Running the code** - Can someone rerun it?
-3.  **Data** - Can someone understand the data situation?
-4.  **Licence & citation** - Can someone legally reuse and cite it?
-5.  **Archive & publish** - Can someone find the exact version you used?
+At the end you will have:
 
-:::
+- Checklist to prepare your own repo for publication
+- Some AI prompts to use for building and auditing your project
 
-+ How AI tool can help
+## What we will not talk about
 
-## Today
-
-- Focus on data analysis projects, not research software
-- **Language-agnostic**, with short R and Python hints
-- More about project structure not about code 
+- Research software (packages, libraries, tools)
+- Writing code (Good coding practices, style, functions, testing, etc ...)
+    - For this check out the lecture [R code that lasts](https://selinazitrone.github.io/tools_and_tips/sessions/10_r-code-that-lasts.html) and some other resources linked on the website
+- Too many language specific details (but some R and Python hints)
 
 ## Our example project
 
-Your paper is submitted: *"Temperature and antibiotic resistance in soil bacteria"*. This is the analysis folder:
+My paper is accepted: *"Temperature and antibiotic resistance in soil bacteria"*. Now I need to publish code and data. My project looks like this:
 
 ::: {.fragment}
 
@@ -110,7 +124,7 @@ temperature-resistance/
 
 . . .
 
-Flat, vague names, raw and cleaned data mixed together. This is the repo we fix all hour.
+Let's make this repo publishable!
 
 # Structure & orientation {.inverse}
 > Can someone understand it?
@@ -123,15 +137,13 @@ Flat, vague names, raw and cleaned data mixed together. This is the repo we fix 
 
 - Separate your files into folders
 - Most important: separate data, code, and output
-- Even inside `data/`, keep raw data separate from what your scripts produce (more when we get to data)
-- You can follow a template or use your own structure, as long as it is clear and consistent
-- Templates: [rrtools](https://github.com/benmarwick/rrtools) (R), [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) (Python)
+- Separate raw data (read-only) from processed data (produced by scripts)
+- Follow a template or use your own structure, as long as it is clear and consistent
+    - [rrtools](https://github.com/benmarwick/rrtools) (R), [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) (Python)
 
 :::
 
 ::: {.column width="50%"}
-
-::: {.fragment}
 
 ```
 temperature-resistance/
@@ -150,8 +162,9 @@ temperature-resistance/
     └── tables/
         └── model-results.csv
 ```
+Our messy project, sorted into folders
 
-:::
+<!-- TODO: This folder should still have the messy file names. File names will only be cleaned in the next step -->
 
 :::
 
@@ -159,25 +172,13 @@ temperature-resistance/
 
 ## Use informative file names
 
-- Human readable: reveal the content
-- Machine readable: no spaces, no special characters
-- Work with default ordering: left-padded numbers or YYYY-MM-DD dates first
-
-. . .
-
 ::: {.columns}
 
 ::: {.column width="50%"}
 
-#### Bad names
-
-::: {.nonincremental}
-
-:page_facing_up: `temp.R`<br>
-:page_facing_up: `analysis final.R`<br>
-:page_facing_up: `data.csv`
-
-:::
+- Human readable: reveal the content
+- Machine readable: no spaces, no special characters
+- Work with default ordering: left-padded numbers or YYYY-MM-DD dates first
 
 :::
 
@@ -185,13 +186,26 @@ temperature-resistance/
 
 ::: {.fragment}
 
-#### Good names
-
 ::: {.nonincremental}
 
-:page_facing_up: `01_clean-data.R`<br>
-:page_facing_up: `02_fit-models.R`<br>
-:page_facing_up: `2024-03-11_growth-assay.csv`
+```
+temperature-resistance/
+├── data/
+│   ├── raw/
+│   │   └── growth_assay.csv
+│   └── clean/
+│       └── cleaned_data.csv
+├── analysis/
+│   ├── 01_clean-data.R
+│   ├── 02_fit-models.R
+│   └── 03_make-figures.R
+└── output/
+    ├── figures/
+    │   └── linear-model-fit.png
+    └── tables/
+        └── model-results.csv
+```
+Our project with nicer file names
 
 :::
 
@@ -214,15 +228,13 @@ More on naming: [Jenny Bryan's talk](https://speakerdeck.com/jennybc/how-to-name
 - README's are the entry point to your project
 - A README should be a simple text format (plain text or Markdown)
 
-
-
 :::
 
 ::: {.column}
 
 ```
 temperature-resistance/
-├── README.md          <- new
+├── README.md
 ├── data/
 │   ├── raw/
 │   │   └── growth_assay.csv
@@ -252,23 +264,30 @@ At minimum, a README should answer:
 - **What** the project is, and which **paper** it belongs to
 - **How to run it** (how to install, which order to run the scripts)
 - **How the files are structured** (what is in each folder, what the files are)
-- **How to cite** it
+- **How to cite** the project
 - **Who to ask** when it breaks
 
 :::
 
-## A README skeleton you can copy
+## A README skeleton
 
 ```markdown
 # Temperature and antibiotic resistance in soil bacteria
 
 Code and data for: Baldauf et al. (2026), *Journal*, doi:10.xxxx/xxxxx
 
-Cite as: Baldauf et al. (2026). Data for Temperature and antibiotic resistance in soil bacteria. *Journal*, doi:10.xxxx/xxxxx
+Cite as: Baldauf et al. (2026). Data and code for "Temperature and antibiotic resistance in soil bacteria". doi:10.xxxx/xxxxx
+
+Code is licensed under MIT, data under CC-BY-4.0. See `LICENSE` and `data/LICENSE` for details.
 
 ## How to run
-1. Restore the environment: `renv::restore()`
-2. Run `main.R`, which runs everything in order.
+
+Download or clone the repository to run it locally.
+
+The project needs R version 4.0.0 or higher.
+
+1. Restore the environment: `renv::restore()` - This will create a project library and install all required packages.
+2. Run `main.R`, which runs all analysis scripts in order
 
 ## Project structure
 
@@ -308,21 +327,6 @@ Sources for a real example: the [CODECHECK register](https://codecheck.org.uk/re
 
 :::
 
-## Write good code
-
-Well written and organized code is essential:
-
-:::{.nonincremental}
-
-- Comment your code well
-- Name your variables properly
-- Split large scripts
-- Use automatic code formatting for consistent style
-
-:::
-
-Not the focus of today. Have a look at the lecture [R code that lasts](https://selinazitrone.github.io/tools_and_tips/sessions/10_r-code-that-lasts.html) for tips on good practice R.
-
 # Running it {.inverse}
 > Can someone rerun it?
 
@@ -336,14 +340,6 @@ Not the focus of today. Have a look at the lecture [R code that lasts](https://s
 
 ::: {.column}
 
-:page_facing_up: `01_clean-data.R`<br>
-:page_facing_up: `02_fit-models.R`<br>
-:page_facing_up: `03_make-figures.R`
-
-:::
-
-::: {.column}
-
 ```md
 ## How to run
 
@@ -353,6 +349,29 @@ Not the focus of today. Have a look at the lecture [R code that lasts](https://s
     2. `02_fit-models.R`
     3. `03_make-figures.R`
 
+```
+
+:::
+
+::: {.column}
+
+```
+temperature-resistance/
+├── README.md
+├── data/
+│   ├── raw/
+│   │   └── growth_assay.csv
+│   └── clean/
+│       └── cleaned_data.csv
+├── analysis/
+│   ├── 01_clean-data.R
+│   ├── 02_fit-models.R
+│   └── 03_make-figures.R
+└── output/
+    ├── figures/
+    │   └── linear-model-fit.png
+    └── tables/
+        └── model-results.csv
 ```
 
 :::
@@ -422,7 +441,7 @@ if __name__ == "__main__":
 ```
 temperature-resistance/
 ├── README.md          
-├── main.R          <- new
+├── main.R
 ├── data/
 │   ├── raw/
 │   │   └── growth_assay.csv
@@ -492,8 +511,7 @@ sessionInfo()
 
 ::: {.nonincremental}
 
-- Run `pip freeze` inside your project's **virtual environment**, then paste the list into the README.
-- Outside a virtual environment it lists every package on your system, so always use one.
+- Run `pip freeze` **inside** your project's **virtual environment**, then paste the list into the README.
 - `pipreqs` (install with `pip install pipreqs`) scans your code for the packages you actually import, like `renv::dependencies()`.
 
 :::
@@ -541,10 +559,7 @@ Use [`uv`](https://docs.astral.sh/uv/) to:
 
 ## Record all dependencies and versions
 
-**Level 3**: Package the whole environment in a **container** so the code runs identically on any machine.
-
-- [Docker](https://www.docker.com/) bundles your code, packages, and system libraries into one image
-- Powerful, but more to learn and maintain
+**Level 3**: Package the whole environment in a **container** (e.g. [Docker](https://www.docker.com/)) so the code runs identically on any machine. Powerful but also more to learn and maintain.
 
 ::: {.panel-tabset}
 
@@ -552,7 +567,7 @@ Use [`uv`](https://docs.astral.sh/uv/) to:
 
 ::: {.nonincremental}
 
-- The [Rocker project](https://rocker-project.org/) gives you ready-made R images (pinned R versions, RStudio, tidyverse) to build on.
+- The [Rocker project](https://rocker-project.org/) gives you different R images to build on.
 
 :::
 
@@ -560,9 +575,9 @@ Use [`uv`](https://docs.astral.sh/uv/) to:
 
 ::: {.nonincremental}
 
-- Start from an official [`python`](https://hub.docker.com/_/python) base image (e.g. `python:3.12-slim`) and install your locked dependencies inside it.
+- Start from an official [`python` base image](https://hub.docker.com/_/python) (e.g. `python:3.12-slim`) and install your dependencies in it
 - [`uv`](https://docs.astral.sh/uv/guides/integration/docker/) also provides Docker images
-- **No Dockerfile needed:** [repo2docker](https://repo2docker.readthedocs.io/) builds the image from your `requirements.txt` or `environment.yml`
+- **No Dockerfile needed:** [repo2docker](https://repo2docker.readthedocs.io/) builds the image from a `requirements.txt` or `environment.yml`
 
 :::
 
@@ -598,7 +613,8 @@ pd.read_csv(here("data/raw/growth_assay.csv"))
 
 ## Set a seed for anything random
 
-Sampling, bootstrapping, permutation tests, simulations: all give different results each run. Fix the seed so anyone (including future you) reproduces your exact numbers.
+- Many random processes like sampling, bootstrapping, simulations, even plots with jittering
+- Don't forget to set a random seed so that the results are reproducible
 
 ::: {.panel-tabset}
 
@@ -612,7 +628,6 @@ set.seed(42)
 
 ```python
 import numpy as np
-# modern NumPy: make a seeded generator, not np.random.seed()
 rng = np.random.default_rng(42)
 ```
 
@@ -621,31 +636,44 @@ rng = np.random.default_rng(42)
 # Data {.inverse}
 > Can someone understand the data situation?
 
-## Separate raw and processed data
+## Save your data in open formats
+
 
 ::: {.columns}
 
 ::: {.column}
 
-- We already did that: `data/raw/` vs `data/clean/` or `data/processed/`
-- Main idea: **raw data is read-only**, processed data is generated by the code
+- Save data in **open formats**: `.csv`, `.tsv`, `.txt`, `.json`, `.parquet`, etc.
+- Avoid proprietary formats: `.xlsx`, `.sav`, `.dta`, etc.
 
 :::
 
 ::: {.column}
 
-:::{.callout-note}
-add file structure here
-:::
+```
+temperature-resistance/
+├── README.md          
+├── main.R
+├── data/
+│   ├── raw/
+│   │   └── growth_assay.csv
+│   └── clean/
+│       └── cleaned_data.csv
+├── analysis/
+│   ├── 01_clean-data.R
+│   ├── 02_fit-models.R
+│   └── 03_make-figures.R
+└── output/
+    ├── figures/
+    │   └── linear-model-fit.png
+    └── tables/
+        └── model-results.csv
+```
 
 :::
 
 :::
 
-## Save your data in open formats
-
-- Save data in **open formats**: `.csv`, `.tsv`, `.txt`, `.json`, `.parquet`, etc.
-- Avoid proprietary formats: `.xlsx`, `.sav`, `.dta`, etc.
 
 ## Document your data files
 
@@ -666,8 +694,8 @@ E.g. one table per file:
 
 ## Document your data files
 
-- Add this to the main README
-- Or create a separate codebook `data/README.md` for all data files
+- Add documentation to the main README
+- Or create a separate `data/README.md` for all data files
 
 ::: {.columns}
 
@@ -679,7 +707,7 @@ Main README:
 
 ### `data/`
 
-The `data/` folder contains the raw and cleaned growth assay measurements. See `data/README.md` for a codebook of all variables.
+The `data/` folder contains the raw and cleaned growth assay measurements. See `data/README.md` for all variables.
 
 ```
 
@@ -687,9 +715,26 @@ The `data/` folder contains the raw and cleaned growth assay measurements. See `
 
 ::: {.column}
 
-:::{.callout-note}
-Add folder structure with data readme here
-:::
+```
+temperature-resistance/
+├── README.md          
+├── main.R
+├── data/
+│   ├── README.md
+│   ├── raw/
+│   │   └── growth_assay.csv
+│   └── clean/
+│       └── cleaned_data.csv
+├── analysis/
+│   ├── 01_clean-data.R
+│   ├── 02_fit-models.R
+│   └── 03_make-figures.R
+└── output/
+    ├── figures/
+    │   └── linear-model-fit.png
+    └── tables/
+        └── model-results.csv
+```
 
 :::
 
@@ -697,7 +742,7 @@ Add folder structure with data readme here
 
 ## What if you cannot share the data?
 
-- Data too big: Use a separate data repository (Zenodo, Dryad, Figshare, etc.) and link to it in the README. If you can: include a sample with the code so the pipeline runs end to end
+- **Data too big**: Use a separate data repository (Zenodo, Dryad, Figshare, etc.) and link to it in the README. If you can: include a download script in your code to get the data.
 - **Restricted data**: Include a statement about where and how to request access in the README. Add a codebook in `data/README.md` so the code can be reviewed even without data
 - **Closed data**: Include synthetic example data along with the code that generated it, so the pipeline runs end to end. Include a statement in the README that the real data cannot be shared. 
 
@@ -713,15 +758,15 @@ Add folder structure with data readme here
 - Without a licence file, people can not reuse your code
 - Most popular licences in ecology are:
     - Creative commons licences (CC0, CC-BY)
-    - MIT
-    - GNU General Public License (GPL)
+    - MIT & GNU General Public License (GPL)
+- Careful: CC licenses are NOT for code, only data & text
 
 
 :::
 
 ::: {.column}
 
-![Number of licences used for code and data in BES ecology papers. [Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-license.png){fig-alt="Bar chart from Cooper et al. 2026: the licences used in archived code and data, showing that CC is very common."}
+![Number of licences used for code and data in BES ecology papers. [Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-license-no-cc.png){fig-alt="Bar chart from Cooper et al. 2026: the licences used in archived code and data, showing that CC is very common."}
 
 :::
 
@@ -732,48 +777,66 @@ Add folder structure with data readme here
 - Are there specific requirements for your project?
 - Checkout [choosealicense.com](https://choosealicense.com) to guide through licence choice
 
-Standard open licences
+. . .
 
-For data
+Standard open licences:
 
-- [CC0](https://choosealicense.com/licenses/cc0-1.0/): public domain, no restrictions, no attribution required (more a waiver than a licence)
-- [CC BY](https://choosealicense.com/licenses/cc-by-4.0/): reuse for any purpose, as long as you give attribution (a licence, not public domain)
-
-For code
-
-- [MIT](https://choosealicense.com/licenses/mit/): permissive, anyone may reuse, must keep your notice
-- [GNU GPL v3](https://choosealicense.com/licenses/gpl-3.0/): copyleft, derivatives must stay open under the same licence
+| Licence | What it does | For |
+|---------|--------------|-----|
+| [CC0](https://choosealicense.com/licenses/cc0-1.0/) | Public-domain waiver, no attribution required | Data |
+| [CC BY](https://choosealicense.com/licenses/cc-by-4.0/) | Reuse for any purpose, attribution required | Data |
+| [MIT](https://choosealicense.com/licenses/mit/) | Permissive: reuse freely, keep the notice | Code |
+| [GNU GPL v3](https://choosealicense.com/licenses/gpl-3.0/) | Copyleft: derivatives stay open, same licence | Code |
 
 :::{.aside}
 
-Further reading:
-- [Turing way book](https://book.the-turing-way.org/reproducible-research/licensing/) on licensing
-- [A case for CC0](https://blog.datadryad.org/2023/05/30/good-data-practices-removing-barriers-to-data-reuse-with-cc0-licensing/) by the DRYAD repository
+Further reading: The [Turing way book](https://book.the-turing-way.org/reproducible-research/licensing/) on licensing; [A case for CC0](https://blog.datadryad.org/2023/05/30/good-data-practices-removing-barriers-to-data-reuse-with-cc0-licensing/) by theDRYAD repository
 
 :::
 
 ## How to add a licence
 
+Many different ways. In general: Add a `LICENSE` file containing the licence text
+into the repository.
 
 ::: {.columns}
 
-::: {.column}
+::: {.column width="50%"}
 
-- Add a licence file to your repository (e.g. `LICENSE` or `LICENSE.txt`) containing
-the licence text  (add your name and year to the copyright notice)
-- Automatic ways to add a licence:
-    - GitHub: Add file → Create new file → name it `LICENSE` → "Choose a license template"
-    - R: `usethis::use_mit_license("Your Name")` or `usethis::use_gpl3_license()`
-- If applicable: Add a second licence for the data
-- State the licence in the README (e.g. *Code: MIT. Data: CC-BY-4.0*).
+::: {.panel-tabset}
+
+### R
+
+```r
+# writes a LICENSE file for you
+usethis::use_mit_license("Your Name")
+# or:
+usethis::use_gpl3_license()
+```
+
+### GitHub
+
+Add file → Create new file → name it `LICENSE` → **"Choose a license template"**
 
 :::
 
-::: {.column}
-
-:::{.callout-note}
-Here a note on how to add a licence
 :::
+
+::: {.column width="50%"}
+
+```
+temperature-resistance/
+├── README.md
+├── LICENSE
+├── main.R
+├── data/
+│   ├── README.md
+│   ├── LICENSE
+│   ├── raw/
+│   └── clean/
+├── analysis/
+└── output/
+```
 
 :::
 
@@ -785,8 +848,8 @@ Here a note on how to add a licence
 
 ```markdown
 ## Citation
-Baldauf et al. (2026). Temperature and antibiotic resistance in
-soil bacteria [Software]. https://doi.org/10.xxxx/xxxxx
+Baldauf et al. (2026). Code and data for "Temperature and antibiotic resistance in
+soil bacteria". https://doi.org/10.xxxx/xxxxx
 ```
 
 ## Make your code citable
@@ -795,7 +858,7 @@ soil bacteria [Software]. https://doi.org/10.xxxx/xxxxx
 
 ::: {.nonincremental}
 
--   A small YAML file that you can create with [`cffinit`](https://citation-file-format.github.io/cff-initializer-javascript/) and add to your project
+-   A small YAML file that you can create with [`cffinit` website](https://citation-file-format.github.io/cff-initializer-javascript/) and add to your project
 -   GitHub then shows a **"Cite this repository"** button with ready-made APA / BibTeX
 -   Zenodo reads it when it archives your release, so the credit is correct automatically
 -   Add your **ORCID** so the credit points at *you*, not just your name
@@ -812,39 +875,67 @@ Screenshot of a GitHub repo with the **"Cite this repository"** button open (rig
 Optional: `cffinit-form.png`, the cffinit web form partly filled in, to show it is just a form.
 :::
 
-## Where our repository stands
+## Ready to publish?
+
+
+::: {.columns}
+
+::: {.column}
+
+Some final checks before you publish:
+
+- Leave any junk files? Any `_DS store`, ...
+- Do a practical reproducibility check:
+  - Send it to a friend
+  - Test the project on another machine
+
+:::
+
+::: {.column}
 
 ```
 temperature-resistance/
-├── README.md          (+ how to cite)      <- new
-├── LICENSE            (MIT, for the code)   <- new
-├── CITATION.cff       (+ ORCID)            <- new
+├── README.md          
+├── LICENSE            
+├── CITATION.cff       
 ├── main.R
 ├── DESCRIPTION
 ├── renv.lock
 ├── data/
 │   ├── raw/
 │   ├── clean/
-│   └── README.md      (+ CC-BY note)        <- new
+│   └── README.md  
 ├── analysis/
 └── output/
 ```
 
+:::
+
+:::
+
 # Archive & publish {.inverse}
 > Can someone find the exact version you used?
+
+## Can I just publish it on Github?
+
+- Github is a standard place to develop and share code
+- The benefit of Github: 
+    - Easy to find and share
+    - Nice display of README, LICENCE, etc.
+- BUT: It is not an archive where a specific version of the code is frozen
 
 ## Archive your data and get a DOI
 
 - Archiving your data means freezing a specific version of it
-- You will get a DOI (Digital Object Identifier) for that version, which you can cite in your paper
-- You can get them by publishing your project on different repositories, e.g. [Zenodo](https://zenodo.org), [Dryad](https://datadryad.org/), [Figshare](https://figshare.com/), or a domain-specific repository
+- Upload your project to a repository like [Zenodo](https://zenodo.org), [Dryad](https://datadryad.org/), [Figshare](https://figshare.com/), or a domain-specific repository
+- You will get a DOI (Digital Object Identifier) for that version of your project
 
-## Isn't GitHub (or similar) enough?
+:::{.callout-tip}
 
-- Github is a standard place to develop and share code
-- The benefit of Github: Easy to find, collaborate, and share
-- BUT: It is not an archive where a specific version of the code is frozen
-- The solution: Use GitHub for development, and archive a **release** of your repo on Zenodo (or another repository) to get a DOI.
+You can link your GitHub repo to Zenodo to archive your project directly.
+
+:::
+
 
 ## Add your DOI to the README and the paper
 
@@ -852,15 +943,6 @@ Once you have a DOI, add it in two places:
 
 - the code README (Zenodo gives you a nice copy-paste badge)
 - the manuscript: "Code and data are archived at https://doi.org/10.5281/zenodo.xxxxx (v1.0)."
-
-## Our published repository
-
-
-:::{.callout-note}
-
-here a link to the published demo-repository
-
-:::
 
 ## The whole thing, as a checklist
 
@@ -955,17 +1037,27 @@ There is a **one-page version** you can print and cross off, and a **longer vers
 
 Read it and adjust the parts you don't like
 
-:::{.callout-note}
-Here a good prompt for a README draft, ready to copy-paste into your AI tool.
-:::
+```text
+Read every file in this repository. Draft a README.md with these sections:
+- Title, a one-sentence description, and the paper it belongs to
+- How to run: dependencies (with install commands) and the order to run the scripts
+- Project structure: what each folder and script does, with inputs and outputs
+- How to cite, and who to contact
+Use only what you find in the files. If something is missing (no licence, no
+citation, ...), say so instead of inventing it. Keep it concise and in Markdown.
+```
 
 ## Example prompt for a data codebook
 
 Read it and adjust the parts you don't like
 
-:::{.callout-note}
-Here a good prompt for a data codebook, ready to copy-paste into your AI tool.
-:::
+```text
+For every data file in `data/`, produce a codebook as a Markdown table with one
+row per variable: name, meaning, unit or coding, and type. Note any missing-value
+codes. Infer this from the data files and the code that creates them, but do not
+guess meanings you cannot support: mark those "TODO". Output one table per file,
+under a heading with the file name.
+```
 
 ## AI audit of your repo against the checklist
 
