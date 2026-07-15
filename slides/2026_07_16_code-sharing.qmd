@@ -224,14 +224,19 @@ More on naming: [Jenny Bryan's talk](https://speakerdeck.com/jennybc/how-to-name
 temperature-resistance/
 ├── README.md          <- new
 ├── data/
-│   └── growth_assay.csv
-├── R/
+│   ├── raw/
+│   │   └── growth_assay.csv
+│   └── clean/
+│       └── cleaned_data.csv
+├── analysis/
 │   ├── 01_clean-data.R
 │   ├── 02_fit-models.R
 │   └── 03_make-figures.R
 └── output/
     ├── figures/
+    │   └── linear-model-fit.png
     └── tables/
+        └── model-results.csv
 ```
 
 :::
@@ -267,12 +272,13 @@ Cite as: Baldauf, et al. (2026). Data for Temperature and antibiotic resistance 
 
 ## How to run
 1. Restore the environment: `renv::restore()`
-2. Run `R/00_main.R`, which runs everything in order.
+2. Run `main.R`, which runs everything in order.
 
 ## Project structure
 
 - `analysis/`      analysis scripts, run in numerical order
-- `data/`   the growth-assay measurements
+- `data/raw/` the original growth-assay measurements (read-only)
+- `data/clean/` cleaned data produced by the scripts
 - `output/` figures and tables produced by the scripts
 
 ### `analysis/`
@@ -280,8 +286,11 @@ Cite as: Baldauf, et al. (2026). Data for Temperature and antibiotic resistance 
 - `01_clean-data.R`: cleans the raw data and saves it
     - Input: `data/raw/growth_assay.csv`
     - Output: `data/clean/cleaned_data.csv`
-- `02_fit-models.R`: fits the models and saves the results
+- `02_fit-models.R`: fits the models and saves the results table
     - Input: `data/clean/cleaned_data.csv`
+    - Output: `output/tables/model-results.csv`
+- `03_make-figures.R`: makes the manuscript figures
+    - Input: `data/clean/cleaned_data.csv`, `output/tables/model-results.csv`
     - Output: `output/figures/linear-model-fit.png` (Figure 2)
 
 ### `data/`
@@ -291,11 +300,6 @@ See `data/README.md` for a codebook of all variables.
 ## Contact
 selina.baldauf@fu-berlin.de
 ```
-
-:::{.callout-note}
-Check if this is a good structure
-:::
-
 
 ## Some examples of good README files
 
