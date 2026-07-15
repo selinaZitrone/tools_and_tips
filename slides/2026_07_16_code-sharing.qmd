@@ -264,7 +264,7 @@ At minimum, a README should answer:
 
 Code and data for: Baldauf et al. (2026), *Journal*, doi:10.xxxx/xxxxx
 
-Cite as: Baldauf, et al. (2026). Data for Temperature and antibiotic resistance in soil bacteria. *Journal*, doi:10.xxxx/xxxxx
+Cite as: Baldauf et al. (2026). Data for Temperature and antibiotic resistance in soil bacteria. *Journal*, doi:10.xxxx/xxxxx
 
 ## How to run
 1. Restore the environment: `renv::restore()`
@@ -424,14 +424,19 @@ temperature-resistance/
 ├── README.md          
 ├── main.R          <- new
 ├── data/
-│   └── growth_assay.csv
+│   ├── raw/
+│   │   └── growth_assay.csv
+│   └── clean/
+│       └── cleaned_data.csv
 ├── analysis/
 │   ├── 01_clean-data.R
 │   ├── 02_fit-models.R
 │   └── 03_make-figures.R
 └── output/
     ├── figures/
+    │   └── linear-model-fit.png
     └── tables/
+        └── model-results.csv
 ```
 
 
@@ -591,6 +596,28 @@ pd.read_csv(here("data/raw/growth_assay.csv"))
 
 :::
 
+## Set a seed for anything random
+
+Sampling, bootstrapping, permutation tests, simulations: all give different results each run. Fix the seed so anyone (including future you) reproduces your exact numbers.
+
+::: {.panel-tabset}
+
+### R
+
+```r
+set.seed(42)
+```
+
+### Python
+
+```python
+import numpy as np
+# modern NumPy: make a seeded generator, not np.random.seed()
+rng = np.random.default_rng(42)
+```
+
+:::
+
 # Data {.inverse}
 > Can someone understand the data situation?
 
@@ -677,15 +704,15 @@ Add folder structure with data readme here
 # Licence & citation {.inverse}
 > Can someone legally reuse and cite it?
 
-## Add a license
+## Add a licence
 
 ::: {.columns}
 
 ::: {.column}
 
-- Without a license file, people can not reuse your code
-- Most popular licenses in ecology are:
-    - Creative commons licenses (CC0, CC-BY)
+- Without a licence file, people can not reuse your code
+- Most popular licences in ecology are:
+    - Creative commons licences (CC0, CC-BY)
     - MIT
     - GNU General Public License (GPL)
 
@@ -694,41 +721,23 @@ Add folder structure with data readme here
 
 ::: {.column}
 
-![Number of licenses used for code and data in BES ecology papers. [Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-license.png){fig-alt="Bar chart from Cooper et al. 2026: the licenses used in archived code and data, showing that CC is very common."}
+![Number of licences used for code and data in BES ecology papers. [Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-license.png){fig-alt="Bar chart from Cooper et al. 2026: the licences used in archived code and data, showing that CC is very common."}
 
 :::
 
 :::
-
-## Which license to choose?
-
-::: {.columns}
-
-::: {.column}
-
-
-:::
-
-::: {.column}
-
-![Number of licenses used for code and data in BES ecology papers. [Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*](images/2026_07_16_code-sharing/cooper-2026-license.png){fig-alt="Bar chart from Cooper et al. 2026: the licenses used in archived code and data, showing that CC is very common."}
-
-:::
-
-:::
-
 
 ## Which licence to choose?
 
 - Are there specific requirements for your project?
-- Checkout [choosealicense.com](https://choosealicense.com) to guide through license choice
+- Checkout [choosealicense.com](https://choosealicense.com) to guide through licence choice
 
-Standard open licenses
+Standard open licences
 
 For data
 
 - [CC0](https://choosealicense.com/licenses/cc0-1.0/): public domain, no restrictions, no attribution required (more a waiver than a licence)
-- [CC BY](https://choosealicense.com/licenses/cc-by-4.0/): public domain, no restrictions, but attribution required
+- [CC BY](https://choosealicense.com/licenses/cc-by-4.0/): reuse for any purpose, as long as you give attribution (a licence, not public domain)
 
 For code
 
@@ -743,27 +752,27 @@ Further reading:
 
 :::
 
-## How to add a license
+## How to add a licence
 
 
 ::: {.columns}
 
 ::: {.column}
 
-- Add a license file to your repository (e.g. `LICENSE` or `LICENSE.txt`) containing
-the license text  (add your name and year to the copyright notice)
-- Automatic ways to add a license:
+- Add a licence file to your repository (e.g. `LICENSE` or `LICENSE.txt`) containing
+the licence text  (add your name and year to the copyright notice)
+- Automatic ways to add a licence:
     - GitHub: Add file → Create new file → name it `LICENSE` → "Choose a license template"
     - R: `usethis::use_mit_license("Your Name")` or `usethis::use_gpl3_license()`
-- If applicable: Add a second license for the data
-- State the license in the README (e.g. *Code: MIT. Data: CC-BY-4.0*).
+- If applicable: Add a second licence for the data
+- State the licence in the README (e.g. *Code: MIT. Data: CC-BY-4.0*).
 
 :::
 
 ::: {.column}
 
 :::{.callout-note}
-Here a note on how to add a license
+Here a note on how to add a licence
 :::
 
 :::
@@ -776,7 +785,7 @@ Here a note on how to add a license
 
 ```markdown
 ## Citation
-Baldauf, S. (2026). Temperature and antibiotic resistance in
+Baldauf et al. (2026). Temperature and antibiotic resistance in
 soil bacteria [Software]. https://doi.org/10.xxxx/xxxxx
 ```
 
@@ -810,12 +819,14 @@ temperature-resistance/
 ├── README.md          (+ how to cite)      <- new
 ├── LICENSE            (MIT, for the code)   <- new
 ├── CITATION.cff       (+ ORCID)            <- new
+├── main.R
 ├── DESCRIPTION
 ├── renv.lock
-├── data-raw/
 ├── data/
+│   ├── raw/
+│   ├── clean/
 │   └── README.md      (+ CC-BY note)        <- new
-├── R/
+├── analysis/
 └── output/
 ```
 
@@ -953,7 +964,7 @@ Here a good prompt for a README draft, ready to copy-paste into your AI tool.
 Read it and adjust the parts you don't like
 
 :::{.callout-note}
-Here a good prompt for a README draft, ready to copy-paste into your AI tool.
+Here a good prompt for a data codebook, ready to copy-paste into your AI tool.
 :::
 
 ## AI audit of your repo against the checklist
