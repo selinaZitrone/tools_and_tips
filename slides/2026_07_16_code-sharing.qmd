@@ -48,12 +48,21 @@ from: markdown+emoji
 
 ::: {.column}
 
-- Data is always shared, code not
+- Data is often shared, code not
+
+:::{.fragment}
+
+:::{.nonincremental}
+
 - Shared code is often not sufficient
+    - low reproducibility 
     - missing a README (39%)
     - low-quality READMEs
     - missing license (26%) or wrong license
     - ...
+:::
+
+:::
 
 :::
 
@@ -66,7 +75,10 @@ from: markdown+emoji
 
 :::
 
+:::{.aside}
+[Cooper et al. (2026)](https://doi.org/10.1111/2041-210X.70338), *Methods in Ecology and Evolution*; [Culina et al. (2020)](https://doi.org/10.1371/journal.pbio.3000763), *Plos Biology*
 
+:::
 
 ## Why?
 
@@ -85,7 +97,8 @@ from: markdown+emoji
 
 ## Today
 
-- How to build and publish a good practice repository: the most important things to do
+- How to build and publish a good practice repository
+- Checklist with the most important things to do
 - Focus on data analysis projects
 - Where AI tools can help
 
@@ -93,7 +106,7 @@ from: markdown+emoji
 
 At the end you will have:
 
-- Checklist to prepare your own repo for publication
+- Checklist to prepare your own project for publication
 - Some AI prompts to use for building and auditing your project
 
 ## What we will not talk about
@@ -105,7 +118,19 @@ At the end you will have:
 
 ## Our example project
 
-My paper is accepted: *"Temperature and antibiotic resistance in soil bacteria"*. Now I need to publish code and data. My project looks like this:
+
+::: {.columns}
+
+::: {.column}
+
+My paper is accepted: *"Temperature and antibiotic resistance in soil bacteria"*.
+
+
+Now I need to publish code and data
+
+:::
+
+::: {.column}
 
 ::: {.fragment}
 
@@ -122,6 +147,11 @@ temperature-resistance/
 
 :::
 
+
+:::
+
+:::
+
 . . .
 
 Let's make this repo publishable!
@@ -129,18 +159,15 @@ Let's make this repo publishable!
 # Structure & orientation {.inverse}
 > Can someone understand it?
 
-## Use a conventional folder structure
+## Separate your files into folders
 
 ::: {.columns}
 
 ::: {.column width="50%"}
 
-- Separate your files into folders
 - Most important: separate data, code, and output
 - Separate raw data (read-only) from processed data (produced by scripts)
-- Follow a template or use your own structure, as long as it is clear and consistent
-    - [rrtools](https://github.com/benmarwick/rrtools) (R), [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) (Python)
-
+- Follow a template or use your own structure, as long as it is clear and consistent (keyword: research compendium)
 :::
 
 ::: {.column width="50%"}
@@ -151,22 +178,26 @@ temperature-resistance/
 │   ├── raw/
 │   │   └── growth_assay.csv
 │   └── clean/
-│       └── cleaned_data.csv
+│       └── growth_assay_clean.csv
 ├── analysis/
-│   ├── 01_clean-data.R
-│   ├── 02_fit-models.R
-│   └── 03_make-figures.R
+│   ├── clean.R
+│   ├── analysis_final.R
+│   └── makeplots.R
 └── output/
     ├── figures/
-    │   └── linear-model-fit.png
+    │   └── Rplot01.png
     └── tables/
-        └── model-results.csv
+        └── results.csv
 ```
 Our messy project, sorted into folders
 
-<!-- TODO: This folder should still have the messy file names. File names will only be cleaned in the next step -->
+:::
 
 :::
+
+:::{.aside}
+
+Further reading: [rrtools](https://github.com/benmarwick/rrtools) (R), [research compendia with computational notebooks](https://github.com/FellowsFreiesWissen/computational_notebooks) (R),  [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) (Python)
 
 :::
 
@@ -310,7 +341,7 @@ The project needs R version 4.0.0 or higher.
 
 ### `data/`
 
-See `data/README.md` for a codebook of all variables.
+See `data/README.md` for a description of all data variables.
 
 ## Contact
 selina.baldauf@fu-berlin.de
@@ -318,16 +349,15 @@ selina.baldauf@fu-berlin.de
 
 ## Some examples of good README files
 
-::: {.callout-note}
-## IMAGE PLACEHOLDER: `readme-good-example.png`
+:::{.nonincremental}
 
-Screenshot of a **real, published** repository's README on GitHub, with a few annotations pointing to: the one-line purpose and paper link, the "how to run" section, the data note, and the citation/licence block.
-
-Sources for a real example: the [CODECHECK register](https://codecheck.org.uk/register), the [ReproHack Hub](https://www.reprohack.org/), or a compendium from your own field.
+- [https://github.com/lciernik/attentive-layer-fusion](https://github.com/lciernik/attentive-layer-fusion)
+- [https://github.com/openplantpathology/Reproducibility_in_Plant_Pathology](https://github.com/openplantpathology/Reproducibility_in_Plant_Pathology)
+- [https://github.com/paocorrales/t-drop-trends](https://github.com/paocorrales/t-drop-trends)
 
 :::
 
-# Running it {.inverse}
+# Running the code {.inverse}
 > Can someone rerun it?
 
 ## Make the run order obvious
@@ -335,6 +365,8 @@ Sources for a real example: the [CODECHECK register](https://codecheck.org.uk/re
 . . .
 
 **Level 1**: Number your scripts `01_`, `02_`, etc. and add this to the "How to run" section in the README.
+
+. . .
 
 ::: {.columns}
 
@@ -383,6 +415,7 @@ temperature-resistance/
 
 **Level 2**: Create a **main script** that calls all scripts in order, so this is the only file someone needs to open.
 
+. . .
 
 ::: {.columns}
 
@@ -529,6 +562,8 @@ matplotlib==3.9.0
 
 **Level 2**: Snapshot your local environment so users can recreate them easily.
 
+. . .
+
 ::: {.panel-tabset}
 
 ### R
@@ -561,6 +596,8 @@ Use [`uv`](https://docs.astral.sh/uv/) to:
 
 **Level 3**: Package the whole environment in a **container** (e.g. [Docker](https://www.docker.com/)) so the code runs identically on any machine. Powerful but also more to learn and maintain.
 
+. . .
+
 ::: {.panel-tabset}
 
 ### R
@@ -587,6 +624,8 @@ Use [`uv`](https://docs.astral.sh/uv/) to:
 
 - Paths anchored to the project root work on any machine, from any working directory
 - Absolute paths (`C:/Users/selina/PhD/...`) will break the project
+
+. . .
 
 ::: {.panel-tabset}
 
@@ -697,6 +736,8 @@ E.g. one table per file:
 - Add documentation to the main README
 - Or create a separate `data/README.md` for all data files
 
+. . .
+
 ::: {.columns}
 
 ::: {.column}
@@ -704,10 +745,11 @@ E.g. one table per file:
 Main README:
 
 ```md
-
 ### `data/`
 
-The `data/` folder contains the raw and cleaned growth assay measurements. See `data/README.md` for all variables.
+The `data/` folder contains the raw and cleaned 
+growth assay measurements. 
+See `data/README.md` for all variables.
 
 ```
 
@@ -743,8 +785,8 @@ temperature-resistance/
 ## What if you cannot share the data?
 
 - **Data too big**: Use a separate data repository (Zenodo, Dryad, Figshare, etc.) and link to it in the README. If you can: include a download script in your code to get the data.
-- **Restricted data**: Include a statement about where and how to request access in the README. Add a codebook in `data/README.md` so the code can be reviewed even without data
-- **Closed data**: Include synthetic example data along with the code that generated it, so the pipeline runs end to end. Include a statement in the README that the real data cannot be shared. 
+- **Restricted data**: Include a statement about where and how to request access in the README. Add a `data/README.md` so the code can be reviewed even without data
+- **Closed data**: Include synthetic example data + the code that generated it, so the pipeline runs. Include a statement in the README that the real data cannot be shared. 
 
 # Licence & citation {.inverse}
 > Can someone legally reuse and cite it?
@@ -756,9 +798,20 @@ temperature-resistance/
 ::: {.column}
 
 - Without a licence file, people can not reuse your code
+
+:::{.nonincremental}
+
+::: {.fragment}
+
 - Most popular licences in ecology are:
     - Creative commons licences (CC0, CC-BY)
     - MIT & GNU General Public License (GPL)
+
+
+:::
+
+:::
+
 - Careful: CC licenses are NOT for code, only data & text
 
 
@@ -805,14 +858,15 @@ into the repository.
 
 ::: {.panel-tabset}
 
-### R
+### Manual
 
-```r
-# writes a LICENSE file for you
-usethis::use_mit_license("Your Name")
-# or:
-usethis::use_gpl3_license()
-```
+:::{.nonincremental}
+
+1. Create a `LICENSE` file
+2. Go to [choosealicense.com](https://choosealicense.com) and copy the text of your chosen licence into the file
+3. Add your name and the year to the licence text (if needed, e.g. for MIT license)
+
+:::
 
 ### GitHub
 
@@ -844,7 +898,7 @@ temperature-resistance/
 
 ## Make your code citable
 
-**Level 1**: a "How to cite" section in the README (always good to have).
+**Level 1**: add a "How to cite" section in the README.
 
 ```markdown
 ## Citation
@@ -858,25 +912,15 @@ soil bacteria". https://doi.org/10.xxxx/xxxxx
 
 ::: {.nonincremental}
 
--   A small YAML file that you can create with [`cffinit` website](https://citation-file-format.github.io/cff-initializer-javascript/) and add to your project
--   GitHub then shows a **"Cite this repository"** button with ready-made APA / BibTeX
--   Zenodo reads it when it archives your release, so the credit is correct automatically
--   Add your **ORCID** so the credit points at *you*, not just your name
+- small YAML file (create with [`cffinit` website](https://citation-file-format.github.io/cff-initializer-javascript/) and add to project)
+- Also add your Orcid ID
+- this cff file holds all citation information
+    - GitHub shows a "Cite this repository" button
+    - Zenodo reads it when you archives your project, so the credit is correct automatically
 
-:::
-
-## The "Cite this repository" button
-
-::: {.callout-note}
-## IMAGE PLACEHOLDER: `github-cite-button.png`
-
-Screenshot of a GitHub repo with the **"Cite this repository"** button open (right sidebar), showing the APA / BibTeX dropdown. Ideally the same real repo used for the README screenshot in section 1.
-
-Optional: `cffinit-form.png`, the cffinit web form partly filled in, to show it is just a form.
 :::
 
 ## Ready to publish?
-
 
 ::: {.columns}
 
@@ -884,10 +928,9 @@ Optional: `cffinit-form.png`, the cffinit web form partly filled in, to show it 
 
 Some final checks before you publish:
 
-- Leave any junk files? Any `_DS store`, ...
-- Do a practical reproducibility check:
-  - Send it to a friend
-  - Test the project on another machine
+- No junk files: `.DS_Store`, `.Rhistory`, `__pycache__/`, ... (use a `.gitignore`)
+- No secrets or sensitive data: keys, passwords, personal/patient data
+- Reproducibility check: send to a friend, or run on another machine
 
 :::
 
@@ -899,7 +942,6 @@ temperature-resistance/
 ├── LICENSE            
 ├── CITATION.cff       
 ├── main.R
-├── DESCRIPTION
 ├── renv.lock
 ├── data/
 │   ├── raw/
@@ -930,96 +972,37 @@ temperature-resistance/
 - Upload your project to a repository like [Zenodo](https://zenodo.org), [Dryad](https://datadryad.org/), [Figshare](https://figshare.com/), or a domain-specific repository
 - You will get a DOI (Digital Object Identifier) for that version of your project
 
+. . .
+
 :::{.callout-tip}
 
-You can link your GitHub repo to Zenodo to archive your project directly.
+You can link your GitHub repo to Zenodo/Figshare to archive your project directly.
+
+:::{.nonincremental}
+
+- [Connecting the repo with Zenodo to get a DOI](https://emilio-berti.github.io/idiv-git-introduction/21-github_zenodo/index.html)
+- [Import from Github to Figshare](https://info.figshare.com/user-guide/how-to-connect-figshare-with-your-github-account/)
+
+:::
 
 :::
 
 
-## Add your DOI to the README and the paper
+## Add the DOI to the README and the paper
 
 Once you have a DOI, add it in two places:
 
 - the code README (Zenodo gives you a nice copy-paste badge)
 - the manuscript: "Code and data are archived at https://doi.org/10.5281/zenodo.xxxxx (v1.0)."
 
-## The whole thing, as a checklist
+# We're done :tada: {.inverse}
+> Code is successfully shared and published!
 
-Have a look at the checklist on the website for your own repos.
+# How can AI help? {.inverse}
+> 1. Create README drafts
+> 2. Audit the project against the checklist
 
-There is a **one-page version** you can print and cross off, and a **longer version** with explanations and examples.
-
-::: {style="font-size: 65%;"}
-
-::: {.columns}
-
-::: {.column width="50%"}
-
-**1. Structure & orientation**
-
-::: {.nonincremental}
--   [ ] Data, code, output in separate folders
--   [ ] File names say what files do or contain
--   [ ] README: what, how to run, who to ask
-:::
-
-**2. Running it**
-
-::: {.nonincremental}
--   [ ] Run order obvious (numbers, README, or main script)
--   [ ] No absolute paths, no `setwd()`
--   [ ] Dependencies + versions recorded (incl. language)
--   [ ] Seeds set for anything random
-:::
-
-**3. Data**
-
-::: {.nonincremental}
--   [ ] README states the situation (open / restricted / synthetic)
--   [ ] Codebook: variables, units, coding
--   [ ] Open formats; raw data separate and read-only
--   [ ] Last look: no unintended sensitive data, no junk
-:::
-
-:::
-
-::: {.column width="50%"}
-
-**4. Licence & citation**
-
-::: {.nonincremental}
--   [ ] A `LICENSE` file exists
--   [ ] Code and data licensed separately
--   [ ] Citable: README section, ideally `CITATION.cff`
-:::
-
-**5. Archive & publish**
-
-::: {.nonincremental}
--   [ ] Release/tag marks the paper's version
--   [ ] Archived with a DOI (switch on **before** the release)
--   [ ] DOI in README and manuscript
-:::
-
-**Final test**
-
-::: {.nonincremental}
--   [ ] A colleague ran it from scratch
-:::
-
-:::
-
-:::
-
-:::
-
-# AI can help you in 2 ways {.inverse}
-> 1. Create READMEs
-> 2. Audit your repo against the checklist
-
-## The ground rules
-
+## The basis
 
 - The AI needs **access to your repo**
     - an IDE assistant (e.g. Claude Code, GitHub Copilot) - I use Claude Code in Positron
@@ -1031,7 +1014,7 @@ There is a **one-page version** you can print and cross off, and a **longer vers
 
 - AI is good at the tedious part: listing files, what they do, inputs/outputs, ...
 - Use a good prompt that describes how the README should look like
-- Let AI generate a draft that you review
+- Let AI generate a README draft that you can review
 
 ## Example prompt for a README draft
 
@@ -1073,50 +1056,22 @@ under a heading with the file name.
 Here a good prompt for an AI audit of your repo, ready to copy-paste into your AI tool.
 :::
 
-## The repo reviewer tool
+# Wrap up {.inverse}
 
-- Project output from code sharing workshop
-- Developed with Tessa and Rebecca
-- Work in progress
-- Usable as a copy-paste prompt or an AI agent skill.
+## Take aways
 
-
-
-Point it at your repository. It checks against criteria like today's checklist and writes a **plain-language, prioritised report**:
-
-## You do not need our tool to start
-
-Any AI assistant that can read files can run a lite version **today**:
-
-```text
-You are reviewing a research code repository for publication readiness.
-Check it against these criteria and nothing else:
-1. Orientation: README with purpose, run instructions, contact?
-2. Rerunnability: clear run order? dependencies with versions? absolute paths?
-3. Data: is the data situation stated? is there a codebook?
-4. Legal: licence file? citation information?
-5. Archive: a release or archived version with a DOI?
-For each problem: name the file (or what is missing), why it matters,
-and the smallest fix. Sort by priority. Do not invent files you have not seen.
-```
-
-. . .
-
-This is the short version. The **full prompt** is on the session page, ready to copy.
-
-# Conclusion {.inverse}
-
-## Summary
-
-- Shareable ≠ perfect: Start with one thing
+- Shareable ≠ perfect: Don't aim for perfection, "just" aim to make your repository understandable and reproducible
 - Follow checklist
-- Use AI tools
+- Implement good practices from the beginning
+- Let AI help you with the annoying parts
 
 ## Next lecture
 
 Summer/Conference break in August & September!
 
-:date: 15.10.2026  t.b.a. :clock4: 4-5 p.m. :round_pushpin: Webex
+#### Topic tba
+<br>
+:date: 15.10.2026 :clock4: 4-5/6 p.m. :round_pushpin: Webex
 
 ::: {.nonincremental}
 
