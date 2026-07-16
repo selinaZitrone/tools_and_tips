@@ -1,0 +1,209 @@
+---
+title: "Code sharing checklist"
+callout-appearance: default
+from: markdown+emoji
+---
+
+Work through this checklist before you publish and share your data-analysis repository. Unfold the info boxes if you need more tips, examples, and links.
+
+:::{.callout-note}
+
+Note: The list below is by no means exhaustive. There are always other solutions and options. So if a proposed solution does not fit for your project, that doesn't mean you are doing something wrong. 
+
+If you have suggestions on other checks that I forgot, or solutions that you think work well, feel free to [edit this page](https://github.com/selinaZitrone/tools_and_tips/edit/main/sessions/additional_material/20_code-sharing/checklist.qmd) on Github.
+
+:::
+
+These are the checks from the ["Good practices for sharing research code"](../../20_code-sharing.qmd) session.
+
+## Structure & orientation
+
+- [ ] **Separate your files into folders** *Most importantly: Separate data, code, and output. Raw data stays read-only in its own folder; your scripts produce the cleaned data and the outputs.*
+
+::: {.callout-note collapse="true"}
+## Details
+
+There is no single "right" structure, the important thing is that it's clear and consistent. A simple example:
+
+```
+temperature-resistance/
+├── data/
+│   ├── raw/      <- read-only
+│   └── clean/    <- made by the code
+├── analysis/
+└── output/
+```
+
+You can also look at the structure of other repositories in your field or check out some templates like Templates: [rrtools](https://github.com/benmarwick/rrtools) (R) or [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) (Python).
+:::
+
+- [ ] **Give files informative names** *File names should reveal the content, have no spaces or special characters, with left-padded numbers or dates (YYYY-MM-DD) as a prefix.*
+
+::: {.callout-note collapse="true"}
+## Examples
+| Avoid | Prefer |
+|---|---|
+| `analysis final.R` | `02_fit-models.R` |
+| `data.csv` | `2024-03-11_growth-assay.csv` |
+| `Rplot01.png` | `linear-model-fit.png` |
+
+More: [Jenny Bryan, *How to name files*](https://speakerdeck.com/jennybc/how-to-name-files).
+:::
+
+- [ ] **Write a thorough plain-text README** *The entry point to your project, in plain text or Markdown.*
+
+::: {.callout-note collapse="true"}
+## What a README should contain
+
+A readme should answer at least the following questions:
+
+- **What** the project is, and which **paper** it belongs to
+- **How to run it**: install steps and the order to run the scripts
+- **How files are structured**: what is in each folder
+- **How to cite** it, and **who to ask** when it breaks
+
+This is a minimal template in Markdown format:
+
+```
+# Project title
+
+Code and data for <paper citation>, doi:...
+
+Cite as: <code citation>, doi:...
+
+Contact: <name> (<email>)
+
+## How to run
+1. Restore the environment (renv / uv)
+2. Run main.R / main.py
+
+## Project structure
+
+Describe the folders and files
+```
+:::
+
+## Running the code
+
+- [ ] **Make the run order obvious** *Number your scripts, or add a `main.R` / `main.py` that runs everything in order.*
+
+::: {.callout-note collapse="true"}
+
+## Options to show the run order
+
+1. Numbered scripts (`01_`, `02_`, ...) plus a "How to run" section in the README
+2. A main script that calls all other scripts in order (put it at the project root). This will the the only script that users have to open.
+3. A workflow tool that reruns only what changed: [targets](https://books.ropensci.org/targets/) (R), [Snakemake](https://snakemake.readthedocs.io/en/stable/) (any language)
+
+For most projects, option 2 is a pragmatic choice.
+
+:::
+
+- [ ] **Record dependencies and versions** *Include the language version and a list of all packages/libraries and soft your code depends on. Use a lockfile so others can recreate the environment.*
+
+::: {.callout-note collapse="true"}
+
+## Tools to record dependencies
+
+- R: [renv](https://rstudio.github.io/renv/) (`init` / `snapshot` / `restore`)
+- Python: [uv](https://docs.astral.sh/uv/) (`uv add`, `uv sync`)
+
+Dont' forget to state the language version too (e.g. R 4.4.1, Python 3.12).
+:::
+
+- [ ] **Use paths relative to the project root** *No absolute paths, no `setwd()`*
+
+::: {.callout-note collapse="true"}
+## How
+Run from the project root and build paths with [here](https://here.r-lib.org/) (R) or `pathlib` / [pyprojroot](https://pypi.org/project/pyprojroot/) (Python). Avoid `setwd("C:/Users/...")`.
+:::
+
+- [ ] **Set a seed for anything random** *Sampling, bootstrap, permutation, simulations, etc. all reproduce only with a fixed seed.*
+
+::: {.callout-note collapse="true"}
+## How
+`set.seed(42)` (R), or `rng = np.random.default_rng(42)` (Python, preferred over `np.random.seed()`).
+:::
+
+## Data
+
+- [ ] **Add a data README** *Document every variable: name, meaning, unit or coding, and missing-value codes.*
+
+::: {.callout-note collapse="true"}
+## Where and how
+
+One `data/README.md` for the data folder, one table per file:
+
+| Variable | Meaning | Unit / coding |
+|---|---|---|
+| `temp` | Incubation temperature | °C |
+| `resistant` | Grew on antibiotic plate | 0 = no, 1 = yes |
+:::
+
+- [ ] **Use open, non-proprietary formats**\ *`.csv`, `.tsv`, `.txt`, `.json`, `.parquet` rather than `.xlsx`, `.sav`, `.dta`.*
+
+## License & citation
+
+- [ ] **Add a license** *Good standars are CC0/CC-BY for data and MIT/GPL for code*
+
+::: {.callout-note collapse="true"}
+## Which license to choose?
+- Code: [MIT](https://choosealicense.com/licenses/mit/) (permissive) or [GPL v3](https://choosealicense.com/licenses/gpl-3.0/) (copyleft)
+- Data: [CC0](https://choosealicense.com/licenses/cc0-1.0/) (public-domain waiver) or [CC BY](https://choosealicense.com/licenses/cc-by-4.0/) (attribution required)
+
+Add a `LICENSE` file at the project root, and use [choosealicense.com](https://choosealicense.com) to copy-paste the text in there. Note that some licenses (e.g. MIT) require you to add a copyright line with your name and the year.
+
+If you need separate licenses for code and data, put the data license in `data/LICENSE` and the code license in `LICENSE`. Then add a line in the README that explains which license applies to which files, e.g.:
+
+```md
+All files in `/data` are licensed under CC-BY-4.0, all other files are licensed under MIT. See `data/LICENSE` and `LICENSE` for details.
+```
+:::
+
+- [ ] **Make the project citable** *Add a "How to cite" line in the README, ideally with a `CITATION.cff`.*
+
+::: {.callout-note collapse="true"}
+## How
+
+You can just add a simple "How to cite" section in the README.
+
+But a nice touch is:
+
+Build a `CITATION.cff` with [cffinit](https://citation-file-format.github.io/cff-initializer-javascript/) and add this file to your project root. GitHub then shows a "Cite this repository" button, and Zenodo reads it when archiving.
+
+Don't forget to add your ORCID, this way Zenodo can link your code to your other research outputs.
+:::
+
+## Before you publish
+
+Some last checks before you publish your repository.
+
+- [ ] **Remove all junk files** *Check if there are any file that should be deleted before publishing*
+
+::: {.callout-note collapse="true"}
+## What to look for
+- Junk: `.DS_Store`, `.Rhistory`, `__pycache__/`, ... (a `.gitignore` keeps them out by default)
+- Old scripts or data files that are no longer needed
+- Secrets / sensitive data: API keys, passwords, `.env`, unpublished or personal/patient data
+:::
+
+- [ ] **Run the project on another machine** *Practical reproducibility check: Send it to a colleague or another computer and try to run it from start to finish*
+
+## Archive & publish
+
+- [ ] **Archive a version and get a DOI** *GitHub is not an archive. Release a version and archive it to get a citable DOI.*
+
+::: {.callout-note collapse="true"}
+## How and where
+
+Common archives are [Zenodo](https://zenodo.org), [Dryad](https://datadryad.org/), and [Figshare](https://figshare.com/). Upload your project and get a DOI.
+
+**For GitHub Users:**
+You can archive a specific version of a project on Zenodo directly from GitHub: [GitHub → Zenodo guide](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content). This is a very popular combination, because it allows you to keep your project on GitHub and still get a DOI for a specific version.
+:::
+
+- [ ] **Put the DOI in the README and the manuscript** *So readers can find the exact version behind the paper.*
+
+
+
+
