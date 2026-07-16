@@ -102,13 +102,6 @@ from: markdown+emoji
 - Focus on data analysis projects
 - Where AI tools can help
 
-. . .
-
-At the end you will have:
-
-- Checklist to prepare your own project for publication
-- Some AI prompts to use for building and auditing your project
-
 ## What we will not talk about
 
 - Research software (packages, libraries, tools)
@@ -650,28 +643,6 @@ pd.read_csv(here("data/raw/growth_assay.csv"))
 
 :::
 
-## Set a seed for anything random
-
-- Many random processes like sampling, bootstrapping, simulations, even plots with jittering
-- Don't forget to set a random seed so that the results are reproducible
-
-::: {.panel-tabset}
-
-### R
-
-```r
-set.seed(42)
-```
-
-### Python
-
-```python
-import numpy as np
-rng = np.random.default_rng(42)
-```
-
-:::
-
 # Data {.inverse}
 > Can someone understand the data situation?
 
@@ -693,6 +664,7 @@ rng = np.random.default_rng(42)
 temperature-resistance/
 ├── README.md          
 ├── main.R
+├── renv.lock
 ├── data/
 │   ├── raw/
 │   │   └── growth_assay.csv
@@ -761,6 +733,7 @@ See `data/README.md` for all variables.
 temperature-resistance/
 ├── README.md          
 ├── main.R
+├── renv.lock
 ├── data/
 │   ├── README.md
 │   ├── raw/
@@ -781,12 +754,6 @@ temperature-resistance/
 :::
 
 :::
-
-## What if you cannot share the data?
-
-- **Data too big**: Use a separate data repository (Zenodo, Dryad, Figshare, etc.) and link to it in the README. If you can: include a download script in your code to get the data.
-- **Restricted data**: Include a statement about where and how to request access in the README. Add a `data/README.md` so the code can be reviewed even without data
-- **Closed data**: Include synthetic example data + the code that generated it, so the pipeline runs. Include a statement in the README that the real data cannot be shared. 
 
 # Licence & citation {.inverse}
 > Can someone legally reuse and cite it?
@@ -852,6 +819,8 @@ Further reading: The [Turing way book](https://book.the-turing-way.org/reproduci
 Many different ways. In general: Add a `LICENSE` file containing the licence text
 into the repository.
 
+
+
 ::: {.columns}
 
 ::: {.column width="50%"}
@@ -862,9 +831,13 @@ into the repository.
 
 :::{.nonincremental}
 
+:::{.text-small}
+
 1. Create a `LICENSE` file
 2. Go to [choosealicense.com](https://choosealicense.com) and copy the text of your chosen licence into the file
 3. Add your name and the year to the licence text (if needed, e.g. for MIT license)
+
+:::
 
 :::
 
@@ -883,6 +856,7 @@ temperature-resistance/
 ├── README.md
 ├── LICENSE
 ├── main.R
+├── renv.lock
 ├── data/
 │   ├── README.md
 │   ├── LICENSE
@@ -895,6 +869,15 @@ temperature-resistance/
 :::
 
 :::
+
+. . .
+
+
+Make it clear in the README what is the licence for code and data, e.g.:
+
+```
+All files in `/data` are licensed under CC-BY-4.0, all other files are licensed under MIT. See `data/LICENSE` and `LICENSE` for details.
+```
 
 ## Make your code citable
 
@@ -1009,6 +992,7 @@ Once you have a DOI, add it in two places:
 ## What to do
 
 - **Give it access to your repo**: an IDE assistant (e.g. Claude Code, GitHub Copilot), Codex, or a browser upload
+    - Carful if you have sensitive data!
 - **Write a clear prompt**: say what you want and how the output should look, with an example if you can
 
 :::{.callout-note}
@@ -1070,9 +1054,38 @@ Questions?
 -   [CODECHECK register](https://codecheck.org.uk/register) and [ReproHack Hub](https://www.reprohack.org/): repositories whose code someone else actually ran
 -   [Rocker project](https://rocker-project.org/) (Docker for R) · [pyprojroot](https://pypi.org/project/pyprojroot/) (the Python `here`)
 -   [fair-software.eu](https://fair-software.eu): five simple first steps towards FAIR software
--   [reproai.org](https://reproai.org)
 -   [How to name files](https://speakerdeck.com/jennybc/how-to-name-files), talk by Jenny Bryan
 
 :::
+
+:::
+
+# Appendix
+
+## What if you cannot share the data?
+
+- **Data too big**: Use a separate data repository (Zenodo, Dryad, Figshare, etc.) and link to it in the README. If you can: include a download script in your code to get the data.
+- **Restricted data**: Include a statement about where and how to request access in the README. Add a `data/README.md` so the code can be reviewed even without data
+- **Closed data**: Include synthetic example data + the code that generated it, so the pipeline runs. Include a statement in the README that the real data cannot be shared.
+
+## Set a seed for anything random
+
+- Many random processes like sampling, bootstrapping, simulations, even plots with jittering
+- Don't forget to set a random seed so that the results are reproducible
+
+::: {.panel-tabset}
+
+### R
+
+```r
+set.seed(42)
+```
+
+### Python
+
+```python
+import numpy as np
+rng = np.random.default_rng(42)
+```
 
 :::
