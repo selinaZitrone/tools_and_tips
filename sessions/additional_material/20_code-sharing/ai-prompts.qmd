@@ -1,0 +1,56 @@
+---
+title: "AI prompts for preparing a research repository"
+callout-appearance: default
+from: markdown+emoji
+---
+
+::: {.callout-warning}
+Draft page. The prompts below are starting points to review and adapt, the audit prompt in particular is not finished yet.
+:::
+
+These are the copy-paste prompts from the ["Good practices for sharing research code"](../../20_code-sharing.qmd) session. Point your AI tool (Claude, ChatGPT, Copilot, ...) at your repository, paste a prompt, and **always check the output yourself**: AI can miss things or invent them.
+
+## 1. Draft a README
+
+Generates a first README from what is actually in your repository.
+
+```text
+Read every file in this repository. Draft a README.md with these sections:
+- Title, a one-sentence description, and the paper it belongs to
+- How to run: dependencies (with install commands) and the order to run the scripts
+- Project structure: what each folder and script does, with inputs and outputs
+- How to cite, and who to contact
+Use only what you find in the files. If something is missing (no licence, no
+citation, ...), say so instead of inventing it. Keep it concise and in Markdown.
+```
+
+## 2. Draft a data codebook
+
+Documents the variables in your data files.
+
+```text
+For every data file in `data/`, produce a codebook as a Markdown table with one
+row per variable: name, meaning, unit or coding, and type. Note any missing-value
+codes. Infer this from the data files and the code that creates them, but do not
+guess meanings you cannot support: mark those "TODO". Output one table per file,
+under a heading with the file name.
+```
+
+## 3. Audit a repo before publishing
+
+Checks your repository against the session checklist and lists what to fix.
+
+```text
+[ PLACEHOLDER: audit prompt still to be finalised.
+
+  Draft to build on:
+  Review this repository for publication readiness. Check it against these
+  criteria and nothing else:
+  1. Orientation: README with purpose, run instructions, contact?
+  2. Rerunnability: clear run order? dependencies with versions? no absolute paths?
+  3. Data: is the data situation stated? is there a codebook?
+  4. Legal: licence file? citation information?
+  5. Archive: a release or archived version with a DOI?
+  For each problem: name the file (or what is missing), why it matters, and the
+  smallest fix. Sort by priority. Do not invent files you have not seen. ]
+```

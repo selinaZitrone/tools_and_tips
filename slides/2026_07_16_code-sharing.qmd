@@ -998,62 +998,33 @@ Once you have a DOI, add it in two places:
 # We're done :tada: {.inverse}
 > Code is successfully shared and published!
 
-# How can AI help? {.inverse}
-> 1. Create README drafts
-> 2. Audit the project against the checklist
+## How can AI help
 
-## The basis
+- **Good at the tedious parts**: listing files and their inputs/outputs, checking the README covers everything
+- Useful for preparing projects
+    - Draft READMES
+    - Audit your project against the checklist before publishing
+- AI is **not reliable**: expect false positives and negatives -> so use it as a helper, not an authority
 
-- The AI needs **access to your repo**
-    - an IDE assistant (e.g. Claude Code, GitHub Copilot) - I use Claude Code in Positron
-    - ChatGPT via Codex
-    - a browser upload
-- Use it as a helper, not an authority (revise drafts, think whether suggestions are plausible)
+## What to do
 
-## AI help to draft the README
-
-- AI is good at the tedious part: listing files, what they do, inputs/outputs, ...
-- Use a good prompt that describes how the README should look like
-- Let AI generate a README draft that you can review
-
-## Example prompt for a README draft
-
-Read it and adjust the parts you don't like
-
-```text
-Read every file in this repository. Draft a README.md with these sections:
-- Title, a one-sentence description, and the paper it belongs to
-- How to run: dependencies (with install commands) and the order to run the scripts
-- Project structure: what each folder and script does, with inputs and outputs
-- How to cite, and who to contact
-Use only what you find in the files. If something is missing (no licence, no
-citation, ...), say so instead of inventing it. Keep it concise and in Markdown.
-```
-
-## Example prompt for a data codebook
-
-Read it and adjust the parts you don't like
-
-```text
-For every data file in `data/`, produce a codebook as a Markdown table with one
-row per variable: name, meaning, unit or coding, and type. Note any missing-value
-codes. Infer this from the data files and the code that creates them, but do not
-guess meanings you cannot support: mark those "TODO". Output one table per file,
-under a heading with the file name.
-```
-
-## AI audit of your repo against the checklist
-
-- Finalize your repository with the help of the checklist
-- Before you publish: Point the AI at your repo and ask it for an audit
-- Limitations: Might come up with false positives or false negatives, so **always check the findings yourself**
-- How to mitigate: Use a good prompt 
-
-## Example prompt to audit your repo
+- **Give it access to your repo**: an IDE assistant (e.g. Claude Code, GitHub Copilot), Codex, or a browser upload
+- **Write a clear prompt**: say what you want and how the output should look, with an example if you can
 
 :::{.callout-note}
+Find example prompts to create READMEs and to audit your projects based on the criteria we discussed today on the [lecture website](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/20_code-sharing/ai-prompts.html)
+:::
 
-Here a good prompt for an AI audit of your repo, ready to copy-paste into your AI tool.
+## Coming soon
+
+A **repo-reviewer AI tool**: Review your repository and get a prioritized report on what to improve before publishing
+
+:::{.nonincremental}
+
+- Based on clear criteria
+- Actionable: tells you what to do and how to fix it
+- Usable in different ways (Claude Code skill, GitHub Action, copy-paste prompt, ...)
+
 :::
 
 # Wrap up {.inverse}
