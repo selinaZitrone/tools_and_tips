@@ -34,7 +34,7 @@ temperature-resistance/
 └── output/
 ```
 
-You can also look at the structure of other repositories in your field or check out some templates like Templates: [rrtools](https://github.com/benmarwick/rrtools) (R) or [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) (Python).
+You can also look at the structure of other repositories in your field or check out some templates like [rrtools](https://github.com/benmarwick/rrtools) (R) or [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) (Python).
 :::
 
 - [ ] **Give files informative names** *File names should reveal the content, have no spaces or special characters, with left-padded numbers or dates (YYYY-MM-DD) as a prefix.*
@@ -92,14 +92,14 @@ Describe the folders and files
 ## Options to show the run order
 
 1. Numbered scripts (`01_`, `02_`, ...) plus a "How to run" section in the README
-2. A main script that calls all other scripts in order (put it at the project root). This will the the only script that users have to open.
+2. A main script that calls all other scripts in order (put it at the project root). This will be the only script that users have to open.
 3. A workflow tool that reruns only what changed: [targets](https://books.ropensci.org/targets/) (R), [Snakemake](https://snakemake.readthedocs.io/en/stable/) (any language)
 
 For most projects, option 2 is a pragmatic choice.
 
 :::
 
-- [ ] **Record dependencies and versions** *Include the language version and a list of all packages/libraries and soft your code depends on. Use a lockfile so others can recreate the environment.*
+- [ ] **Record dependencies and versions** *Include the language version and a list of all packages/libraries and software your code depends on. Use a lockfile so others can recreate the environment.*
 
 ::: {.callout-note collapse="true"}
 
@@ -108,7 +108,7 @@ For most projects, option 2 is a pragmatic choice.
 - R: [renv](https://rstudio.github.io/renv/) (`init` / `snapshot` / `restore`)
 - Python: [uv](https://docs.astral.sh/uv/) (`uv add`, `uv sync`)
 
-Dont' forget to state the language version too (e.g. R 4.4.1, Python 3.12).
+Don't forget to state the language version too (e.g. R 4.4.1, Python 3.12).
 :::
 
 - [ ] **Use paths relative to the project root** *No absolute paths, no `setwd()`*
@@ -127,6 +127,15 @@ Run from the project root and build paths with [here](https://here.r-lib.org/) (
 
 ## Data
 
+- [ ] **State the data situation in the README** *Open, restricted, or synthetic: say which, and how to get the real data if it is not included.*
+
+::: {.callout-note collapse="true"}
+## Three honest paths
+- **Too big**: link to a data repository; include a small sample so the pipeline runs
+- **Restricted**: say how to request access; keep a codebook so the code can be reviewed
+- **Closed**: ship synthetic data plus the code that generated it
+:::
+
 - [ ] **Add a data README** *Document every variable: name, meaning, unit or coding, and missing-value codes.*
 
 ::: {.callout-note collapse="true"}
@@ -140,11 +149,11 @@ One `data/README.md` for the data folder, one table per file:
 | `resistant` | Grew on antibiotic plate | 0 = no, 1 = yes |
 :::
 
-- [ ] **Use open, non-proprietary formats**\ *`.csv`, `.tsv`, `.txt`, `.json`, `.parquet` rather than `.xlsx`, `.sav`, `.dta`.*
+- [ ] **Use open, non-proprietary formats** *`.csv`, `.tsv`, `.txt`, `.json`, `.parquet` rather than `.xlsx`, `.sav`, `.dta`.*
 
 ## License & citation
 
-- [ ] **Add a license** *Good standars are CC0/CC-BY for data and MIT/GPL for code*
+- [ ] **Add a license** *Good standards are CC0/CC-BY for data and MIT/GPL for code*
 
 ::: {.callout-note collapse="true"}
 ## Which license to choose?
