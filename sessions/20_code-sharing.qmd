@@ -1,0 +1,67 @@
+---
+title: "Good practices for sharing research code"
+date: "2026-07-16"
+callout-appearance: default
+from: markdown+emoji
+---
+
+## Description
+
+Most research code lives on our laptops in a folder that grows organically over months or years. When the time comes to share it (for a paper, a collaboration, or just our future selves), the folder is hard to clean up and maybe the code does not run anymore.
+In this one-hour lecture we look at good practices for reproducible and reusable research code and learn how to improve our own repositories.
+
+We will cover three things:
+
+- **What makes a good repository:** README, license, structure, dependencies, reproducibility, citation metadata.
+- **Where and how to publish:** GitHub, Zenodo for archiving and DOI, and the integration between the two.
+- **A demo of an AI-assisted repository reviewer** that reads a repository and writes a plain-language report of what to fix before publishing.
+
+The lecture is language agnostic and focuses on data analysis repositories rather than scientific software.
+
+You'll take home a checklist for your own repository, a portable prompt to run a similar audit with your AI tool of choice, and a list of existing tools and references to consult.
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2026_07_16_code-sharing.html"></iframe>
+```
+
+[Slides in full screen](../slides/2026_07_16_code-sharing.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2026_07_16_code-sharing.pdf" download>Download PDF slides</a>
+
+## Resources
+
+### Background: the state of code sharing
+
+### General
+
+- [Data- and code-archiving in the British Ecological Society journals](https://doi.org/10.1111/2041-210X.70338): Overview of the state of code sharing, tips on how to structure projects and readmes
+- [An overview of publications and practical guides](https://research-compendium.science/) to create a research compendium
+- [The Turing Way](https://book.the-turing-way.org/): community handbook for reproducible research
+- [BES Guide to Reproducible Code](https://bes-guide.github.io/reproducible-code/)
+- [Good enough practices in scientific computing](https://doi.org/10.1371/journal.pcbi.1005510)
+- [Ten principles for reliable, efficient, and adaptable coding in psychology and cognitive neuroscience](https://www.nature.com/articles/s44271-025-00236-3)
+
+
+### Project structure & file naming
+
+- [rrtools](https://github.com/benmarwick/rrtools) (R) and [computational notebooks](https://github.com/FellowsFreiesWissen/computational_notebooks) (R): research-compendium templates
+- [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/) (Python): a project-structure template
+- [How to name files](https://speakerdeck.com/jennybc/how-to-name-files): talk by Jenny Bryan
+
+### Running the code: dependencies, workflows, paths
+
+- [renv](https://rstudio.github.io/renv/) (R) and [uv](https://docs.astral.sh/uv/) (Python): record and restore project dependencies
+- [pipreqs](https://pypi.org/project/pipreqs/): list the packages a Python project actually imports
+- [Rocker](https://rocker-project.org/) (Docker images for R) and [repo2docker](https://repo2docker.readthedocs.io/): containers, the last resort when versions alone are not enough
+- [targets](https://books.ropensci.org/targets/) (R) and [Snakemake](https://snakemake.readthedocs.io/en/stable/) (any language): workflow tools that run steps in the right order and rerun only what changed
+- [here](https://here.r-lib.org/) (R) and [pyprojroot](https://pypi.org/project/pyprojroot/) (Python): project-root paths that work on any machine
+
+### Licence & citation
+
+- [choosealicense.com](https://choosealicense.com): pick a licence and copy its text
+- [The Turing Way on licensing](https://book.the-turing-way.org/reproducible-research/licensing/)
+- [A case for CC0](https://blog.datadryad.org/2023/05/30/good-data-practices-removing-barriers-to-data-reuse-with-cc0-licensing/): by the Dryad repository
+- [cffinit](https://citation-file-format.github.io/cff-initializer-javascript/): build a `CITATION.cff` file through a web form
+
+### Archiving & DOIs
+
+- [Zenodo](https://zenodo.org), [Dryad](https://datadryad.org/), [Figshare](https://figshare.com/): repositories that freeze a version and give you a DOI
+- [GitHub → Zenodo guide](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content): archive a release and get a DOI
