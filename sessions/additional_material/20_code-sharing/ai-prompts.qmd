@@ -4,53 +4,130 @@ callout-appearance: default
 from: markdown+emoji
 ---
 
-::: {.callout-warning}
-Draft page. The prompts below are starting points to review and adapt, the audit prompt in particular is not finished yet.
+Below are some useful prompts for you to copy-paste and edit.
+All you need is an AI tool that can read your repository. There are different options for that, the easiest being an IDE-integrated AI tool like GitHub Copilot or Claude Code. They can be easily integrated into IDEs such as Positron or VS Code. But a simple web interface like ChatGPT or Claude can also work, if you upload your repository as a zip file and point the AI to it.
+
+:::{.callout-warning}
+
+## Sensitive data
+
+Make sure the repository does not contain any sensitive data before you upload it to an AI tool. Only include data that you can also legally share and publish with your project online.
+
 :::
 
-These are the copy-paste prompts from the ["Good practices for sharing research code"](../../20_code-sharing.qmd) session. Point your AI tool (Claude, ChatGPT, Copilot, ...) at your repository, paste a prompt, and **always check the output yourself**: AI can miss things or invent them.
+:::{.callout-warning}
 
-## 1. Draft a README
+## AI is not reliable
 
-Generates a first README from what is actually in your repository.
+Although AI can be a great help, it is not reliable. If you use the prompts below, always revise and double check the result. Also note that the AI can flag false positives or miss things. So don't treat the result as authoritative.
+:::
 
-```text
-Read every file in this repository. Draft a README.md with these sections:
+## Draft a README
+
+Generates a first README draft from what is actually in your repository. Adapt the prompt to your own needs if you want to include more or less information.
+
+```markdown
+You are helping me write a README for a data-analysis project that I want to publish and archive on a repository site. Write it in Markdown.
+
+Step 1: Read the files in the repository first, so you understand the scripts,
+the data, and how they fit together.
+
+Step 2: Draft a README.md with these sections, in this order:
 - Title, a one-sentence description, and the paper it belongs to
-- How to run: dependencies (with install commands) and the order to run the scripts
-- Project structure: what each folder and script does, with inputs and outputs
-- How to cite, and who to contact
-Use only what you find in the files. If something is missing (no licence, no
-citation, ...), say so instead of inventing it. Keep it concise and in Markdown.
+- How to run: how to install dependencies, and the order to run the scripts
+- Project structure: what each folder and key file is, with inputs and outputs
+- How to cite the project
+- Licence: which licence applies to the code and to the data
+- Contact: who to ask when something breaks
+
+Rules:
+- Base "How to run" and "Project structure" on the actual code: infer the run
+  order and each script's inputs and outputs from what you find.
+- Do not invent anything. Use only information that is in the files.
+- For details you cannot know from the files (paper, author, contact, DOI, ...),
+  put a placeholder in square brackets, e.g. [ your name and email ], for me to fill in.
+- If something important is missing entirely (e.g. no licence, no dependency
+  information), do not make it up. List it under a short "Still missing" note at the end.
+- If anything is unclear, ask me instead of guessing.
+- Keep it concise, skimmable, and in plain language.
+- Give the README as a single Markdown code block I can copy.
+
+If a README already exists, do not edit it. Use the useful information from it,
+but propose a fresh README following the structure above.
 ```
 
-## 2. Draft a data codebook
+## Draft a data README
 
-Documents the variables in your data files.
+Documents the variables in your data files. Adapt the prompt to your own needs if you want to include more or less information.
 
-```text
-For every data file in `data/`, produce a codebook as a Markdown table with one
-row per variable: name, meaning, unit or coding, and type. Note any missing-value
-codes. Infer this from the data files and the code that creates them, but do not
-guess meanings you cannot support: mark those "TODO". Output one table per file,
-under a heading with the file name.
+```markdown
+You are helping me write a data README (a codebook) for a data-analysis project
+that I want to publish and archive on a repository site. Write it in Markdown.
+
+Step 1: Read the data files, and the code that creates or uses them, so you
+understand what each variable means.
+
+Step 2: Draft a data/README.md with one section per data file. Under a heading
+with the file name, add a table with one row per variable and these columns:
+- Variable: the column name
+- Meaning: what it records
+- Unit or coding: units (e.g. °C) or category codes (e.g. 0 = no, 1 = yes)
+- Type: text, integer, decimal, date, ...
+
+Note any missing-value codes (e.g. NA, -99) as well.
+
+Rules:
+- Infer meanings from the data and the code that produces it. Do not invent or guess.
+- For a variable whose meaning you cannot work out, put a placeholder [ ? ] in the
+  Meaning column for me to fill in.
+- If something important is missing (e.g. no units anywhere, undocumented codes),
+  do not make it up. List it under a short "Still missing" note at the end.
+- If anything is unclear, ask me instead of guessing.
+- Keep the descriptions concise and in plain language.
+- Give the data README as a single Markdown code block I can copy.
+
+If a data README already exists, do not edit it. Use the useful information from it,
+but propose a fresh one following the structure above.
 ```
 
-## 3. Audit a repo before publishing
+## Audit a repo before publishing
 
-Checks your repository against the session checklist and lists what to fix.
+Checks your repository against the session checklist and lists what to fix. Adapt the prompt to your own needs if you want to include more or less information.
 
-```text
-[ PLACEHOLDER: audit prompt still to be finalised.
+```markdown
+You are auditing a data-analysis repository before I publish it. You are an
+auditor, not a co-author: report what to fix, do not change any files.
 
-  Draft to build on:
-  Review this repository for publication readiness. Check it against these
-  criteria and nothing else:
-  1. Orientation: README with purpose, run instructions, contact?
-  2. Rerunnability: clear run order? dependencies with versions? no absolute paths?
-  3. Data: is the data situation stated? is there a codebook?
-  4. Legal: licence file? citation information?
-  5. Archive: a release or archived version with a DOI?
-  For each problem: name the file (or what is missing), why it matters, and the
-  smallest fix. Sort by priority. Do not invent files you have not seen. ]
+Step 1: Read the repository, but do not run it. First work out what kind of
+project it is and what it does, so you check the right things.
+
+Step 2: Check it against these areas (the same checklist I am working from):
+- Structure: data / code / output separated, informative names, a thorough README
+- Running it: clear run order, dependencies and versions recorded, no absolute
+  paths, a seed for anything random
+- Data: the data situation stated (open / restricted / synthetic), a codebook,
+  open formats, no junk or sensitive data committed
+- Licence & citation: a LICENSE file, code and data licensed, a way to cite it
+- Archive: a release and a DOI in the README (also see "Can't verify" below)
+
+Report in this format:
+
+**What I read this repo to be:** one sentence, so I can check you got the scope right.
+
+**Already good:** a short list of the checks it clearly passes.
+
+**Must-fix** (don't publish without these), then **Should-fix**, then **Polish**.
+For each finding, one line: the file or the specific gap, why it matters, and the
+smallest fix.
+
+**Can't verify from here:** things you cannot tell from the repo alone (e.g. whether
+it is really archived with a DOI, or whether a colleague can run it). List these as a
+short to-do rather than guessing.
+
+Rules:
+- No evidence, no finding. Name the actual file or the specific missing thing, and
+  never invent a file or an issue you did not see.
+- For possibly sensitive data, look only at file names and column headers, never at
+  the values. If something looks sensitive, flag it for me to check, do not judge it.
+- If the repo is already in good shape, say so. Do not invent problems to fill the report.
 ```

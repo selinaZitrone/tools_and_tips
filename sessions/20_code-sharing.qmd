@@ -40,8 +40,6 @@ The three prompts from the talk (draft a README, draft a data codebook, audit yo
 
 ## Resources
 
-### Background: the state of code sharing
-
 ### General
 
 - [Data- and code-archiving in the British Ecological Society journals](https://doi.org/10.1111/2041-210X.70338): Overview of the state of code sharing, tips on how to structure projects and readmes
