@@ -27,6 +27,12 @@ You'll take home a checklist for your own repository, a portable prompt to run a
 [Slides in full screen](../slides/2026_07_16_code-sharing.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2026_07_16_code-sharing.pdf" download>Download PDF slides</a>
 
 ::: {.callout-tip}
+## Publication checklist
+
+The checklist from the talk, with examples and links for each item: **[Publication checklist](additional_material/20_code-sharing/checklist.qmd)**.
+:::
+
+::: {.callout-tip}
 ## Copy-paste AI prompts
 
 The three prompts from the talk (draft a README, draft a data codebook, audit your repo) are on a separate page: **[AI prompts for your repository](additional_material/20_code-sharing/ai-prompts.qmd)**.
