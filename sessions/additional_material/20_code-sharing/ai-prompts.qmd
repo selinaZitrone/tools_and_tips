@@ -27,7 +27,7 @@ Although AI can be a great help, it is not reliable. If you use the prompts belo
 Generates a first README draft from what is actually in your repository. Adapt the prompt to your own needs if you want to include more or less information.
 
 ```markdown
-You are helping me write a README for a data-analysis project that I want to publish and archive on a repository site. Write it in Markdown.
+You are helping me write a README for a data-analysis project that I want to publish and archive on a repository site. Write it in Markdown and give it to me in a code block that I can copy paste into my repository. This code block should be wrapped in 4 backticks, otherwise it gets messed up if there is any code block in the README document.
 
 Step 1: Read the files in the repository first, so you understand the scripts,
 the data, and how they fit together.
@@ -62,7 +62,7 @@ Documents the variables in your data files. Adapt the prompt to your own needs i
 
 ```markdown
 You are helping me write a data README (a codebook) for a data-analysis project
-that I want to publish and archive on a repository site. Write it in Markdown.
+that I want to publish and archive on a repository site. Write it in Markdown and give it to me in a code block that I can copy paste into my repository. This code block should be wrapped in 4 backticks, otherwise it gets messed up if there is any code block in the README document.
 
 Step 1: Read the data files, and the code that creates or uses them, so you
 understand what each variable means.
