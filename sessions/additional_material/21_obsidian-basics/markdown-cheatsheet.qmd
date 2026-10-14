@@ -1,0 +1,194 @@
+---
+title: "Markdown cheatsheet"
+callout-appearance: default
+from: markdown+emoji
+---
+
+Below, you find an overview of basic and advanced Markdown formatting styles you can use in Obsidian.
+
+You don't need to know all of this. Use this page as a reference and come back to it when needed.
+
+## Basics
+
+### Headers
+
+```markdown
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+```
+
+### Emphasis
+
+```markdown
+**Bold text**
+
+*Italic text*
+
+***Bold and italic text***
+
+==Highlighted text==
+```
+
+Hotkeys: Ctrl/Cmd + B for bold and Ctrl/Cmd + I for italic.
+
+### Lists
+
+```markdown
+- this is
+- an unordered
+- list
+```
+
+```markdown
+1. this is
+2. an ordered
+3. list
+```
+
+### Task lists (checkboxes)
+
+```markdown
+- [ ] An open task
+- [x] A completed task
+```
+
+Hotkey: Ctrl/Cmd + L turns a line into a task.
+
+### External links
+
+```markdown
+[A link to Google](https://google.com)
+```
+
+Hotkey: Ctrl/Cmd + K.
+
+You can embed links by putting an `!` before the link. This works for some web content but is especially helpful for videos, e.g.
+
+```markdown
+![](https://www.youtube.com/watch?v=E6ySG7xYgjY)
+```
+
+### Internal links
+
+Internal links are links that link to other files in your Obsidian vault. As soon as you start typing `[[]]`, Obsidian will suggest files you can link to.
+
+```markdown
+[[Markdown cheatsheet]]
+[[Markdown cheatsheet|A different display name for the link]]
+```
+
+Also here, you can add `!` to embed the content. This is useful to embed PDFs, images, but also other note content, e.g.
+
+```markdown
+![[Markdown cheatsheet]]
+```
+
+You can also link to specific sections of another file using `#`:
+
+```markdown
+[[Markdown cheatsheet#Headers|Check the header section]]
+```
+
+## Advanced
+
+### Formulas
+
+You can use the LaTeX syntax for formulas. Use `$` to enclose inline equations and `$$` for blocked equations.
+
+```markdown
+This $\pi = \pi$ is an inline equation
+```
+
+```markdown
+$$
+\frac{\pi}{2} = \frac{\pi}{2}
+$$
+```
+
+### Horizontal lines
+
+```markdown
+I add a horizontal line
+
+---
+
+between these two paragraphs
+```
+
+### Quotes
+
+```markdown
+> A wise woman said this thing
+```
+
+### Footnotes
+
+```markdown
+This is a sentence with a footnote. [^1]
+[^1]: This is the footnote text
+```
+
+### Callouts
+
+There are different types of callout boxes, the default is a note:
+
+```markdown
+> [!note]
+> Lorem ipsum dolor sit amet
+```
+
+You can **change the title**:
+
+```markdown
+> [!note] This has a custom title
+> Lorem ipsum dolor sit amet
+```
+
+You can make the callout **foldable** by adding a `+` (unfolded by default) or `-` (folded by default) after the type:
+
+```markdown
+> [!note]- This has a folded callout
+> Lorem ipsum dolor sit amet
+```
+
+Depending on what you put in the `[]`, the callout will look differently. Other types are:
+
+```markdown
+> [!abstract]
+> [!info]
+> [!todo]
+> [!tip]
+> [!success]
+> [!help]
+> [!warning]
+> [!failure]
+> [!danger]
+> [!bug]
+> [!example]
+> [!quote]
+```
+
+### Inline code
+
+```markdown
+This `word` is formatted like code because of the backticks.
+```
+
+### Code blocks
+
+Code blocks start and end with 3 backticks. After the 3 backticks in the first line, add the language (e.g. R, python, cpp, ...)
+
+````markdown
+```R
+# This is an R code block
+library(tidyverse)
+my_data <- read_csv("my_data.csv")
+```
+````
+
+---
+
+Back to [Exercise 1](exercise-1-basics.qmd) · Back to the [workshop page](../../21_obsidian-basics.qmd)

@@ -1,0 +1,96 @@
+---
+title: "Exercise 2: Set up your daily notes workflow"
+callout-appearance: default
+from: markdown+emoji
+---
+
+In this exercise, you will set up a **simple daily notes workflow** that you can keep using after the workshop.
+
+## Step 1: Create the required folders
+
+Create the following folders in your vault:
+
+1. A folder for your daily notes (for example: `log` or `daily`)
+2. A folder for templates (`templates` or `zzz_templates` if you want it at the bottom of your folder list)
+
+## Step 2: Create a daily note template
+
+- In the `templates` folder, create a new note called `daily_template`
+- Add the following basic content to the file (use the copy button in the top-right corner)
+
+```markdown
+# {{date}}
+
+## Tasks
+- [ ] Check mails
+
+## Log
+```
+
+The value `{{date}}` will always be replaced with the date of note creation.
+
+## Step 3: Configure daily notes
+
+Now we tell Obsidian to use the template for each new daily note:
+
+- Open **Settings** (gear icon bottom left)
+- Go to **Daily notes** (under "Core plugins")
+- Set:
+    - **New file location** → your daily notes folder (`log` / `daily` or whatever you called it)
+    - **Template file location** → `templates/daily_template` or `zzz_templates/daily_template` depending on your folder name
+
+::: {.callout-note collapse="true"}
+## I don't see the Daily notes plugin
+
+Double check that the plugin is enabled. Go to Settings → Core plugins, scroll through the list and check if the Daily notes are turned on.
+:::
+
+## Step 4: Install the Calendar plugin
+
+The Calendar plugin makes it easier to create and navigate daily notes.
+
+- Open **Settings → Community plugins**
+- Enable community plugins (if not already enabled)
+- Click **Browse**
+- Search for **Calendar** (it should be on the very top of the list, created by Liam Cain)
+- Install and enable it
+
+The Calendar should now appear in the right sidebar (if not, unfold the sidebar in the top right).
+
+## Step 5: Create 2-3 daily notes
+
+Now let's test your setup:
+
+- Use the **Calendar** to create today's daily note
+- Add at least **one task** (checkbox) for today
+
+Then:
+
+- Create daily files for other days of the upcoming week
+- Add some tasks or other things that are coming up to the respective daily notes (can be real or invented tasks/meetings)
+
+---
+
+## Optional tasks (for the fast ones)
+
+You can do these in any order or skip them and take a break.
+
+### Customize your daily template
+
+The daily note should reflect your own workflow and needs. Keep it as simple or complex as you want.
+
+1. Think about your own work routine:
+   - Do you have recurring tasks you do every day?
+   - What information would be useful to see in the morning when you create your daily note?
+2. Modify the daily template accordingly:
+   - Add new sections that fit your workflow (examples could be "Meetings", "Notes to self", "Reading", ...)
+   - Add recurring tasks (if you have them)
+   - Delete sections you don't need
+
+### Test your updated template
+
+Use the Calendar to create a new daily note. Does the template insert what you expected? Is it useful? Adjust the template if needed and test again.
+
+---
+
+Next: [Exercise 3: The Tasks plugin](exercise-3-tasks.qmd) · Back to the [workshop page](../../21_obsidian-basics.qmd)
