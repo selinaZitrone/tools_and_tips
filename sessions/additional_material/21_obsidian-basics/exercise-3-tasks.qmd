@@ -16,7 +16,7 @@ In this exercise, you will collect tasks from all over your vault in your daily 
 
 ## Step 2: Add some tasks to your notes
 
-Now add **2–3 example tasks** to your notes (not the daily notes, you can e.g. use your project note from [Exercise 1](exercise-1-basics.qmd)).
+Now add **2–3 example tasks** to your notes (not the daily notes, you can e.g. use one of your notes from [Exercise 1](exercise-1-basics.qmd)).
 
 Any tasks are fine, you can just invent some.
 
@@ -47,10 +47,10 @@ due on {{date}}
 ```
 ````
 
-`{{date}}` will be replaced automatically with the date of each daily note.
+`{{{date}}}` will be replaced automatically with the date of each daily note.
 
 ::: {.callout-tip collapse="true"}
-## Finding backticks ` (for the query)
+## How to find the backtick `` ` `` on your keyboard
 
 This depends on your keyboard layout. Common options:
 
@@ -63,7 +63,7 @@ If it still doesn't work: Search online for: **"backtick key" + your keyboard la
 
 Test it:
 
-- Check the due dates in your project note again → Find a due date for which you don't have a daily note yet. If all tasks already have a daily note, just add a new task with a future due date
+- Check the due dates of your tasks again → Find a due date for which you don't have a daily note yet. If all tasks already have a daily note, just add a new task with a future due date
 - Create the daily note for that due date
 
 If all worked well, the task should now automatically appear in the newly created daily note.
@@ -71,17 +71,16 @@ If all worked well, the task should now automatically appear in the newly create
 ::: {.callout-note collapse="true"}
 ## Help: My tasks do not appear
 
-To troubleshoot, check
+Check if
 
-- Corresponding due dates: Click into the Task query block in the daily note. Check the date there. Does it correspond exactly to one of the due dates of your tasks?
-- If you get an error message: Click into the Task query block in the daily note and check if there is a typo. The text should be exactly `due on 2026-02-01` (or another date depending on the daily note you opened)
+- the daily note was created after you added the query to the template. Older notes don't have the query.
+- the due date of the task is the same as the date of the daily note
+- the query says exactly `due on 2026-02-01` (with the date of the daily note). Click into the query block to see it.
 :::
 
 ---
 
-## Optional tasks (for the fast ones)
-
-You can do these in any order or skip them and take a break.
+## Optional tasks (if you finish early)
 
 ### Modify the tasks query
 
@@ -89,11 +88,11 @@ The Tasks plugin allows you to change how tasks are displayed and filtered.
 
 For these exercises:
 
-- Modify the Tasks query in **one daily note**
+- Modify the Tasks query in **one daily note** (not in the template)
 - Observe what changes
 - Keep what you like by adding it to your daily template
 
-You may need to create a few extra example tasks or adjust due dates.
+Pick one or two queries below that sound useful to you. You may need to create a few extra example tasks or adjust due dates.
 
 #### Compact display mode
 
@@ -143,7 +142,7 @@ Examples to try:
 
 - Overdue tasks in short mode
 - Tasks due today that are not done
-- Tasks from your project folder that are due today
+- Tasks from a specific folder that are due today
 
 ### Update your template
 

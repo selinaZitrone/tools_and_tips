@@ -27,7 +27,7 @@ Create the following folders in your vault:
 ## Log
 ```
 
-The value `{{date}}` will always be replaced with the date of note creation.
+The value `{{{date}}}` will always be replaced with the date of note creation.
 
 ## Step 3: Configure daily notes
 
@@ -71,25 +71,18 @@ Then:
 
 ---
 
-## Optional tasks (for the fast ones)
+## Optional tasks (if you finish early)
 
-You can do these in any order or skip them and take a break.
+Pick the one you find most interesting. You don't need to do all of them.
 
 ### Customize your daily template
 
-The daily note should reflect your own workflow and needs. Keep it as simple or complex as you want.
+Add a section or a recurring task that fits your work, e.g. `## Meetings`, `## Reading` or `- [ ] Check lab book`. Then create a new daily note to test it.
 
-1. Think about your own work routine:
-   - Do you have recurring tasks you do every day?
-   - What information would be useful to see in the morning when you create your daily note?
-2. Modify the daily template accordingly:
-   - Add new sections that fit your workflow (examples could be "Meetings", "Notes to self", "Reading", ...)
-   - Add recurring tasks (if you have them)
-   - Delete sections you don't need
+### Open today's note with a hotkey
 
-### Test your updated template
-
-Use the Calendar to create a new daily note. Does the template insert what you expected? Is it useful? Adjust the template if needed and test again.
+- Open **Settings → Hotkeys**
+- Search for "Open today's daily note" and set a hotkey you like (Obsidian shows you if it is already in use)
 
 ---
 

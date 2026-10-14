@@ -33,18 +33,19 @@ For reference: [Markdown cheatsheet](additional_material/21_obsidian-basics/mark
 
 ## Demo vault
 
-The demo vault is a template Obsidian vault for academic note-taking. It contains the workflows from the workshop and more:
+The demo vault contains the examples, templates, and workflow guides from the workshop and more:
 
-- Daily and weekly notes that collect all tasks and meetings
-- Project management with tasks and meeting notes
+- Daily notes and tasks
+- Project hubs with tasks and meetings
+- Zettelkasten
 - Literature notes from Zotero
-- Knowledge management with a Zettelkasten
+- Web clippings
 
-[Download demo vault (ZIP)](https://github.com/selinaZitrone/notebook_demo/archive/refs/heads/main.zip){.btn .btn-primary role="button"} &nbsp;&nbsp;&nbsp; [Demo vault on GitHub](https://github.com/selinaZitrone/notebook_demo)
+[Download demo vault](https://box.fu-berlin.de/s/9qZJQ6Dyx4RJFge){.btn .btn-primary role="button"}
 
 ### Open the demo vault in Obsidian
 
-1. Download the ZIP file and unzip it (Right-click → Extract / Unzip). You should now see a normal folder called `notebook_demo-main`.
+1. Download the ZIP file and unzip it (Right-click → Extract / Unzip). You should now see a normal folder called `notebook_demo`.
 2. Open **Obsidian**.
 3. In the bottom left corner, click on the vault name and then **Manage vaults**.
 
@@ -52,11 +53,11 @@ The demo vault is a template Obsidian vault for academic note-taking. It contain
 
 4. Click **Open folder as vault**.
 5. Select the unzipped demo vault folder and click **Open**.
-6. Obsidian asks if you trust the plugins in the vault. Enable them, they are needed for the workflows.
+6. Obsidian may ask whether you trust the vault. Confirm to enable the plugins (Calendar, Tasks, Zotero Integration), they are needed for the workflows.
 
 ### How to use the demo vault
 
-- Start with the folder `00_GetStarted`. It explains Obsidian, the vault setup and each workflow.
+- Start with the **README** note. It links to all workflow guides in the folder `Workflow guides`.
 - Use the vault as a reference and a toolbox meant for inspiration:
   - Open it next to your own vault
   - Copy templates or small parts you like
@@ -97,8 +98,3 @@ The demo vault is a template Obsidian vault for academic note-taking. It contain
 - A good [tutorial video for Obsidian beginners](https://www.youtube.com/watch?v=OUrOfIqvGS4)
 - [Step-by-Step guide](https://elizabethbutlermd.com/obsidian-notes/) on how to get started with Obsidian in written form
 - [Blogpost: Note Taking System For Success in Academia](https://ilyashabanov.substack.com/p/note-taking-system-for-success-in) using Obsidian
-
-### Previous Obsidian sessions in this series
-
-- [Effective digital notetaking with Obsidian (2025)](14_obsidian-2.qmd)
-- [Effective digital notetaking with Obsidian (2023)](05_obsidian.qmd)

@@ -43,23 +43,27 @@ from: markdown+emoji
 - Set up a *daily notes* and *tasks* workflow
 - Know if Obsidian is the *tool for you*
 
-## Today
+## Overview
 
-::: nonincremental
+1. **Introduction to Obsidian**
+    - Basic functionality
+    - Set up your own notebook
+    - Organize your notes in folders
+2. **Practical workflows** for PhD students
+    - Plan your days with daily notes
+    - Manage your tasks
+    - What else you can do
 
-1. **Obsidian basics** + Exercise 1
-2. **Organize your notes** in folders
-3. **Daily notes** + Exercise 2
-4. **Tasks** + Exercise 3
-5. **What else** you can do
-
-:::
-
-. . .
+## Organization
 
 - Live demo + Hands-on
 - Questions anytime
-- All exercises and material on the [workshop page](https://selinazitrone.github.io/tools_and_tips/sessions/21_obsidian-basics.html)
+
+::: {.callout-note}
+## Important links
+
+Find all workshop material and links here: [workshop page](https://selinazitrone.github.io/tools_and_tips/sessions/21_obsidian-basics.html)
+:::
 
 ## What makes notes useful?
 
@@ -255,14 +259,15 @@ a.k.a. second brain
 
 ## The demo vault
 
-A template vault for academic note-taking with all workflows from today and more:
+Examples, templates, and workflow guides from today and more:
 
 ::: nonincremental
 
-- Daily and weekly notes
-- Projects and meetings
-- Literature notes from Zotero
+- Daily notes and tasks
+- Project hubs with tasks and meetings
 - Zettelkasten
+- Literature notes from Zotero
+- Web clippings
 
 :::
 
@@ -270,7 +275,7 @@ Download and instructions on the [workshop page](https://selinazitrone.github.io
 
 . . .
 
-Start with the folder `00_GetStarted`
+Start with the **README** note
 
 ## Wrap-up
 

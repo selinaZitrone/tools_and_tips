@@ -6,8 +6,6 @@ from: markdown+emoji
 
 In this exercise you will create a **new Obsidian vault** (a notebook) and learn the basics: creating notes, writing in Markdown, and linking notes together.
 
-You will write notes about your own work, so you can keep using this vault after the workshop.
-
 ## Part 1: Create your first Obsidian vault
 
 - Open the Obsidian app
@@ -25,9 +23,9 @@ If you already have a vault, you can use it or create a new one just for this wo
 
 ## Part 2: Add your first note
 
-- Create a new note named **Obsidian** (If you need help: <https://help.obsidian.md/create-note>)
-- Copy the content below into the note (use the copy button in the top-right corner)
-- Take a moment to look at the formatting (especially if you are new to Markdown)
+- Create a note named **Obsidian**
+- Copy the content below into the note
+- Look at the formatting
 
 ```markdown
 # Advantages
@@ -55,29 +53,23 @@ If you already have a vault, you can use it or create a new one just for this wo
 - [ ] Try the command palette
 ```
 
-## Part 3: Add notes about your own work
+## Part 3: Add your own notes
 
-Now create **2–3 notes about your own work**. Some ideas:
+Create **2 short notes** on any topic, e.g. a paper you read, a method you use, or your favourite recipe.
 
-- A **project** you are currently working on (what it is about, collaborators, next steps)
-- A **paper** you are reading (main findings, what is relevant for you)
-- A **method or tool** you use (how it works, useful links)
+The content doesn't matter, the goal is to try out Markdown formatting:
 
-One of your notes should be about a project. You will need it again in [Exercise 3](exercise-3-tasks.qmd).
+- a heading
+- a list
+- **bold** or *italic* text
 
-Add basic Markdown formatting like headings, bold text, lists. Your notes don't need to be perfect, just experiment with basic formatting.
-
-::: {.callout-tip}
-## Markdown reference
-
-Use the Obsidian note as a reference, or check the "Basics" section of the [Markdown cheatsheet](markdown-cheatsheet.qmd).
-:::
+Use the Obsidian note or the [Markdown cheatsheet](markdown-cheatsheet.qmd){target="_blank"} as reference.
 
 ## Part 4: Link your notes
 
 Link your notes to each other:
 
-- In your project note, add a link to one of your other notes:
+- In one of your notes, add a link to another note:
   - Type `[[` and select a note from the suggestions
 - Click the link to make sure it works
 
@@ -93,24 +85,7 @@ This depends on your keyboard layout. Common options:
 If it still doesn't work, search online for: "square brackets" + your keyboard layout + Windows/Mac.
 :::
 
-### Try different ways of opening a note
-
-- **Click:** open the note
-- **Ctrl/Cmd + click:** open in a new tab
-- **Ctrl/Cmd + hover:** open a preview (and you can edit from there)
-
-Try each option once.
-
 ## Part 5: Set up an attachments folder
-
-You can add attachments like images by:
-
-- drag and drop
-- copy/paste
-
-Add an image or screenshot to one of your notes. Then look at the file explorer: by default, the image is saved in the main folder of your vault. With more attachments, this gets messy quickly.
-
-To keep things tidy, create a dedicated folder and tell Obsidian to put new attachments there:
 
 - Create a folder for attachments (e.g. `attachments` or `zzz_attachments` if you want it at the bottom of your folder list)
 - Open **Settings** (gear icon bottom left) → **Files and links**
@@ -121,7 +96,7 @@ The setting should look like this:
 
 ![](images/attachments-setting.png){fig-alt="Obsidian settings under Files and links. Default location for new attachments is set to In the folder specified below, and the attachment folder path is zzz_Attachments."}
 
-Now add a second image and check that it ends up in the attachments folder. You can also move the first image there. Obsidian updates the links automatically.
+Now add an image or screenshot to one of your notes (drag and drop or copy/paste) and check that it ends up in the attachments folder.
 
 ## Part 6: Use the command palette
 
@@ -135,15 +110,17 @@ The command palette lets you do everything in Obsidian from your keyboard.
 
 ## Optional tasks (if you finish early)
 
-You can do these in any order or skip them and take a break.
+Pick the one you find most interesting. You don't need to do all of them.
+
+### Try different ways of opening a note
+
+- **Click:** open the note
+- **Ctrl/Cmd + click:** open in a new tab
+- **Ctrl/Cmd + hover:** open a preview (and you can edit from there)
 
 ### Try more Markdown
 
-- Experiment with additional formatting from the [Markdown cheatsheet](markdown-cheatsheet.qmd)
-- For example:
-  - Embed a note using an embedded link
-  - Add external links to websites
-- You can also check the [Advanced section](markdown-cheatsheet.qmd#advanced)
+Try something new from the [Markdown cheatsheet](markdown-cheatsheet.qmd){target="_blank"}, e.g. embed a note or add a callout.
 
 ### Add tags and try search
 
@@ -159,12 +136,12 @@ Obsidian comes with many different editor themes you can choose from. Change the
 - Under **Themes**, click **Manage**
 - Browse and install a theme (you can always switch back)
 
-### Create a Canvas
+### Create a mind map
 
-A Canvas is a digital whiteboard for brainstorming and getting an overview.
+Obsidian has a digital whiteboard called **Canvas**. You can use it for mind maps, brainstorming or to get an overview.
 
 - Create a new Canvas (icon in the left ribbon or via the command palette)
-- Add nodes, connect them, color and group them
+- Add cards, connect them with arrows, color and group them
 - Drag and drop one of your notes onto the Canvas
 
 ---
