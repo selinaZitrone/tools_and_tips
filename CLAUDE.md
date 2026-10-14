@@ -24,7 +24,7 @@ Between casual and academic. Approachable and practical, but technically accurat
 
 ## Existing Sessions
 
-The following 16 sessions have already been created (do not suggest these as new topics):
+The following 21 sessions have already been created (do not suggest these as new topics):
 
 | # | Title |
 |---|-------|
@@ -44,6 +44,11 @@ The following 16 sessions have already been created (do not suggest these as new
 | 14 | Effective digital notetaking with Obsidian (update) |
 | 15 | GitHub Copilot |
 | 16 | Version control with Git (advanced) |
+| 17 | Build and publish your personal academic website with Quarto (2 h workshop) |
+| 18 | From default to publication-ready ggplot2 |
+| 19 | Stop repeating yourself: functions and iteration in R (2 h workshop) |
+| 20 | Good practices for sharing research code |
+| 21 | Digital note taking with Obsidian for scientists: Basics (2 h workshop) |
 
 ## Repository Structure
 

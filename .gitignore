@@ -30,3 +30,6 @@ _extensions/*
 .peer-review/tmp/
 ai-peer-review/
 .claude/settings.json
+
+# Speaker notes (moved to Obsidian later)
+speaker_notes/

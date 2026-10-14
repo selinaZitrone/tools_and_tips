@@ -45,9 +45,9 @@ from: markdown+emoji
 
 ## Workshop goals
 
-- Get started with *your own notebook*
-- Set up a *daily notes* and *tasks* workflow
-- Know if Obsidian is the *tool for you*
+- **Overview** of Obsidian and its possibilities
+- Get started with **your own notebook**
+- Know if Obsidian is the **tool for you**
 
 ## Overview
 
@@ -56,10 +56,10 @@ from: markdown+emoji
 1. **Introduction to Obsidian**
     - Basic functionality
     - Set up your own notebook
-    - Organize your notes in folders
+    - Organize your notes
 :::
 :::{.fragment}
-2. **Practical workflows** for PhD students
+2. **Practical workflows** for scientists
     - Plan your days with daily notes
     - Manage your tasks
     - What else you can do
@@ -78,6 +78,10 @@ from: markdown+emoji
 
 Find all workshop material and links here: [workshop page](https://selinazitrone.github.io/tools_and_tips/sessions/21_obsidian-basics.html)
 :::
+
+. . .
+
+If you didn't install Obsidian yet, you can do so now from [https://obsidian.md/](https://obsidian.md/)
 
 ## What makes notes useful?
 
@@ -250,6 +254,13 @@ Plan your day and capture what comes up
 >
 > [Daily notes](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html)
 
+::: nonincremental
+
+- Stay in this meeting
+- Questions: In the chat or just unmute yourself and share your screen if needed
+
+:::
+
 # Tasks {.inverse}
 
 Collect tasks from your whole vault
@@ -260,7 +271,16 @@ Collect tasks from your whole vault
 >
 > [The Tasks plugin](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html)
 
+::: nonincremental
+
+- Stay in this meeting
+- Questions: In the chat or just unmute yourself and share your screen if needed
+
+:::
+
 ## What else you can do
+
+. . .
 
 ::: nonincremental
 

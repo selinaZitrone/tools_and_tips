@@ -2832,14 +2832,14 @@
     "href": "index.html",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n2026-07-16\n\n\nGood practices for sharing research code\n\n\n\n\n\n\n2026-06-18\n\n\nStop repeating yourself: functions and iteration in R\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n2026-10-15\n\n\nDigital note taking with Obsidian for scientists: Basics\n\n\n\n\n\n\n2026-07-16\n\n\nGood practices for sharing research code\n\n\n\n\n\n\n2026-06-18\n\n\nStop repeating yourself: functions and iteration in R\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#lecture-series",
     "href": "index.html#lecture-series",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n2026-07-16\n\n\nGood practices for sharing research code\n\n\n\n\n\n\n2026-06-18\n\n\nStop repeating yourself: functions and iteration in R\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n2026-10-15\n\n\nDigital note taking with Obsidian for scientists: Basics\n\n\n\n\n\n\n2026-07-16\n\n\nGood practices for sharing research code\n\n\n\n\n\n\n2026-06-18\n\n\nStop repeating yourself: functions and iteration in R\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "sessions/02_quarto.html",
@@ -5360,5 +5360,432 @@
     "title": "Stop repeating yourself: functions and iteration in R",
     "section": "Next lecture/workshop",
     "text": "Next lecture/workshop\nTopic: Code sharing and reproducible repositories\n\n📅 16.07.2026 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#what-is-this-lecture-series",
+    "href": "slides/2026_10_15_obsidian-basics.html#what-is-this-lecture-series",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "What is this lecture series?",
+    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nMaterial provided online\nIf you don’t want to miss a lecture\n\nSubscribe to the mailing list\n\nFor credit points: Send me a short message (Email or Webex)"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#today",
+    "href": "slides/2026_10_15_obsidian-basics.html#today",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Today",
+    "text": "Today\n\nObsidian basics + Exercise 1\nOrganize your notes in folders\nDaily notes + Exercise 2\nTasks + Exercise 3\nWhat else you can do\n\n\n\nLive demo + Hands-on\nQuestions anytime\nAll exercises and material on the workshop page"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#todo",
+    "href": "slides/2026_10_15_obsidian-basics.html#todo",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "TODO",
+    "text": "TODO"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#todo-1",
+    "href": "slides/2026_10_15_obsidian-basics.html#todo-1",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "TODO",
+    "text": "TODO"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#todo-2",
+    "href": "slides/2026_10_15_obsidian-basics.html#todo-2",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "TODO",
+    "text": "TODO"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#todo-3",
+    "href": "slides/2026_10_15_obsidian-basics.html#todo-3",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "TODO",
+    "text": "TODO"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#where-next",
+    "href": "slides/2026_10_15_obsidian-basics.html#where-next",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Where next",
+    "text": "Where next"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#next-lectureworkshop",
+    "href": "slides/2026_10_15_obsidian-basics.html#next-lectureworkshop",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Next lecture/workshop",
+    "text": "Next lecture/workshop\nTopic: tba\n\n📅 26.11.2026 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
+    "objectID": "sessions/21_obsidian-basics.html",
+    "href": "sessions/21_obsidian-basics.html",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "",
+    "text": "Notes, paper summaries, ideas and to-do lists tend to pile up across scattered files, hard to search and harder to connect. Obsidian is a free note-taking app that keeps them in one linked, searchable place, stored as plain text files on your own computer.\nIn this hands-on workshop for researchers (no prior experience needed), you learn to set up and structure your own notebook and link related notes, ideas and papers so they’re easy to find again. You also build a daily-note workflow to plan your days and track tasks, and use templates for notes you write often. You leave with a starter setup and materials to build on.\n\nSlides in full screen     Download PDF slides\n\n\n\n\n\n\nTipExercises\n\n\n\nStep-by-step guides for the hands-on parts of the workshop:\n\nExercise 1: Obsidian basics: Create your first vault, write and link notes\nExercise 2: Daily notes: Set up a daily notes workflow with templates and the Calendar plugin\nExercise 3: The Tasks plugin: Collect tasks automatically in your daily notes\n\nFor reference: Markdown cheatsheet"
+  },
+  {
+    "objectID": "sessions/21_obsidian-basics.html#basic-markdown-syntax",
+    "href": "sessions/21_obsidian-basics.html#basic-markdown-syntax",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Basic markdown syntax",
+    "text": "Basic markdown syntax\nYou can use the following basic formatting syntax to format the text in your Obsidian notes\n# Heading 1\n## Heading 2\n### Heading 3\n\n**bold** and *italic*   -&gt; Hotkeys: Ctrl/Cmd + B and Ctrl/Cmd + I\n\n- list item\n- list item\n\n1. numbered list item\n2. numbered list item\n\n- [ ] A task\n\n[A link to a website](https://google.com) -&gt; Hotkey: Ctrl/Cmd + K\n\n[[Another note]] -&gt; A link to another note in your vault\n\n```r\n# An R code snippet\nmean(1:3)\n```"
+  },
+  {
+    "objectID": "sessions/21_obsidian-basics.html#resources",
+    "href": "sessions/21_obsidian-basics.html#resources",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Resources",
+    "text": "Resources\n\nObsidian\n\nObsidian documentation: One of the best documentations out there. It shows you how to do everything in Obsidian.\nOfficial Obsidian website: Download Obsidian and find more information about its features\nDaily notes and Templates in the Obsidian documentation\nTasks plugin documentation: Helps you get started setting up your own tasks queries\nCalendar plugin: The calendar widget we used for the daily notes workflow\nPlugin recommendations: A short list of plugins I find particularly useful\n\n\n\nSynchronization and import\n\nOfficial Obsidian sync: Paid service to sync your notes across devices. As a student or scientist, you get a 40% discount (find out here how)\nIf you just connect two computers and not mobile devices, you can also put your vault into a cloud storage like Google Drive\nImporter plugin: Import notes from other apps like Notion, Microsoft OneNote, Google Keep, Apple Notes, …\n\n\n\nOrganize your notes\n\nTiago Forte: The PARA method: A book explaining how you can organize your notebooks into folders that make sense using the PARA method\nTiago Forte: Building a Second Brain: A book about taking useful notes in general. Easy and quick read to get inspiration for your note-taking\n\n\n\nZettelkasten and literature notes\n\nZettelkasten idea: Video explaining the idea behind the Zettelkasten and why it is useful for your thinking and writing\nZettelkasten in Obsidian step by step: Video explaining a simple but powerful Zettelkasten workflow in Obsidian\nSönke Ahrens: How to take smart notes: Deep dive into the Zettelkasten method, its history and how we can use it today\nZotero integration plugin: Create literature notes automatically from your Zotero library including all annotations\nStep by step guide for the setup of Zotero and the plugin, with a lot of screenshots\n\n\n\nMore guides\n\nA good tutorial video for Obsidian beginners\nStep-by-Step guide on how to get started with Obsidian in written form\nBlogpost: Note Taking System For Success in Academia using Obsidian"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#workshop-goals",
+    "href": "slides/2026_10_15_obsidian-basics.html#workshop-goals",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Workshop goals",
+    "text": "Workshop goals\n\nOverview of Obsidian and its possibilities\nGet started with your own notebook\nKnow if Obsidian is the tool for you"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#what-makes-notes-useful",
+    "href": "slides/2026_10_15_obsidian-basics.html#what-makes-notes-useful",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "What makes notes useful?",
+    "text": "What makes notes useful?\n\n🔎 Searchable → digital\n📆 Sustainable\n\nCan you understand them in years?\nDoes the software still exist?\n\n🧱 Open and simple formats\n🔗 Connected\n😃 Easy and enjoyable to write"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#obsidian",
+    "href": "slides/2026_10_15_obsidian-basics.html#obsidian",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Obsidian",
+    "text": "Obsidian\n\nFree for personal use\nAll major OS and mobile devices\nNotes are simple Markdown files\nLocal first: Keeps your notes private\nVery simple at its core\nExtend and customize with plugins"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#the-two-most-important-shortcuts",
+    "href": "slides/2026_10_15_obsidian-basics.html#the-two-most-important-shortcuts",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "The two most important shortcuts",
+    "text": "The two most important shortcuts\n\nCtrl/Cmd + O: Find or create a note\n\nGood to avoid duplicate notes\n\nCtrl/Cmd + P: Command palette\n\nEverything you can do in your vault, e.g. insert a table, export as PDF"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#your-turn",
+    "href": "slides/2026_10_15_obsidian-basics.html#your-turn",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 1 (15 min):\nObsidian basics\n\n\nStay in this meeting\nQuestions: In the chat or just unmute yourself and share your screen if needed"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#organize-your-notes-in-folders",
+    "href": "slides/2026_10_15_obsidian-basics.html#organize-your-notes-in-folders",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Organize your notes in folders",
+    "text": "Organize your notes in folders\n\n\n\nGoal: Easily store and find your notes again\nThe crucial questions: Which folders/categories?\n\nOne option: the PARA system"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#the-para-system",
+    "href": "slides/2026_10_15_obsidian-basics.html#the-para-system",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "The PARA system",
+    "text": "The PARA system\n\n\nBy Tiago Forte: 4 core categories (= main folders) to sort your notes"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#para-in-practice",
+    "href": "slides/2026_10_15_obsidian-basics.html#para-in-practice",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "PARA in practice",
+    "text": "PARA in practice\n\n\n\nAdd more folders as you need, e.g.\n\nMeetings\nDaily notes\nTemplates\nAttachments\n\nNumber prefixes sort your folders (like zzz_)\n\n\nMy vault:\n000_Zettelkasten\n100_Laborbuch\n200_Projekte\n300_Areas\n400_Resources\n500_Meetings\n700_Archive\n900_Literature\nAttachments\nTemplates"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#your-turn-1",
+    "href": "slides/2026_10_15_obsidian-basics.html#your-turn-1",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 2 (15 min):\nDaily notes"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#your-turn-2",
+    "href": "slides/2026_10_15_obsidian-basics.html#your-turn-2",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 3 (10 min):\nThe Tasks plugin"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#how-we-organize-notes",
+    "href": "slides/2026_10_15_obsidian-basics.html#how-we-organize-notes",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "How we organize notes",
+    "text": "How we organize notes\nThese approaches are complementary, not alternatives!\n\n\nStorage\ne.g. PARA\n\nPredefined structure through categories\nPerfect for most notes\n\n\nZettelkasten\na.k.a. second brain\n\nEmergent structure through interconnections\nPerfect for knowledge notes"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#knowledge-management",
+    "href": "slides/2026_10_15_obsidian-basics.html#knowledge-management",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Knowledge management",
+    "text": "Knowledge management\n\n\nLiterature notes from Zotero\n\nZotero integration plugin\n\nZettelkasten\n\nSmall notes, each focused on one idea\nWritten in your own words\nLinked to related ideas"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#the-demo-vault",
+    "href": "slides/2026_10_15_obsidian-basics.html#the-demo-vault",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "The demo vault",
+    "text": "The demo vault\nExamples, templates, and workflow guides from today and more:\n\nDaily notes and tasks\nProject hubs with tasks and meetings\nZettelkasten\nLiterature notes from Zotero\nWeb clippings\n\nDownload and instructions on the workshop page"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#wrap-up",
+    "href": "slides/2026_10_15_obsidian-basics.html#wrap-up",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Wrap-up",
+    "text": "Wrap-up\n\nObsidian is not one system\n\nImplement only what you find useful\n\nThe most important: actually writing notes\nStart simple, add workflows later\nFor more checkout the exercises, demo vault and resources on the workshop page"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#resources-1",
+    "href": "slides/2026_10_15_obsidian-basics.html#resources-1",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Resources",
+    "text": "Resources\nFind everything on the workshop page:\n\nExercises and Markdown cheatsheet\nDemo vault\nDocumentation, plugin recommendations, books and videos"
+  },
+  {
+    "objectID": "sessions/21_obsidian-basics.html#demo-vault",
+    "href": "sessions/21_obsidian-basics.html#demo-vault",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Demo vault",
+    "text": "Demo vault\nThe demo vault contains the examples, templates, and workflow guides from the workshop and more:\n\nDaily notes and tasks\nProject hubs with tasks and meetings\nZettelkasten\nLiterature notes from Zotero\nWeb clippings\n\nDownload demo vault\n\nOpen the demo vault in Obsidian\n\nDownload the ZIP file and unzip it (Right-click → Extract / Unzip). You should now see a normal folder called notebook_demo.\nOpen Obsidian.\nIn the bottom left corner, click on the vault name and then Manage vaults.\n\n\n\nClick Open folder as vault.\nSelect the unzipped demo vault folder and click Open.\nObsidian may ask whether you trust the vault. Confirm to enable the plugins (Calendar, Tasks, Zotero Integration), they are needed for the workflows.\n\n\n\nHow to use the demo vault\n\nStart with the README note. It links to all workflow guides in the folder Workflow guides.\nUse the vault as a reference and a toolbox meant for inspiration:\n\nOpen it next to your own vault\nCopy templates or small parts you like\nIgnore everything that doesn’t fit your workflow"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "",
+    "text": "In this exercise you will create a new Obsidian vault (a notebook) and learn the basics: creating notes, writing in Markdown, and linking notes together."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-1-create-your-first-obsidian-vault",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-1-create-your-first-obsidian-vault",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 1: Create your first Obsidian vault",
+    "text": "Part 1: Create your first Obsidian vault\n\nOpen the Obsidian app\nCreate a new vault\nGive it a name and browse a location (ideally somewhere that is backed up)\nClick Create\n\nYour vault should open automatically.\n\n\n\n\n\n\nNoteWhat if I already have an Obsidian vault?\n\n\n\n\n\nIf you already have a vault, you can use it or create a new one just for this workshop. Both work."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-2-add-your-first-note",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-2-add-your-first-note",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 2: Add your first note",
+    "text": "Part 2: Add your first note\n\nCreate a note named Obsidian\nCopy the content below into the note\nLook at the formatting\n\n# Advantages\n\n- **Free** for personal use\n- All OS and mobile\n- Simple *Markdown* format\n- Notes are stored *locally* on my computer\n\n# Best plugins\n\n## Community plugins\n\n1. Calendar\n2. Tasks\n\n## Core plugins\n\n- Daily notes\n- Templates\n\n# To do\n\n- [ ] Set up an attachments folder\n- [ ] Try the command palette"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-3-add-notes-about-your-own-work",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-3-add-notes-about-your-own-work",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 3: Add notes about your own work",
+    "text": "Part 3: Add notes about your own work\nCreate 2 short notes about your own work:\n\nA project you are currently working on (you need it again in Exercise 3)\nA paper, method or tool you use\n\n\n\n\n\n\n\nImportantKeep it short\n\n\n\nA heading and 2–3 bullet points per note are enough. You can add more content after the workshop.\n\n\nFor formatting, use the Obsidian note or the Markdown cheatsheet as reference."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-4-link-your-notes",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-4-link-your-notes",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 4: Link your notes",
+    "text": "Part 4: Link your notes\nLink your notes to each other:\n\nIn one of your notes, add a link to another note:\n\nType [[ and select a note from the suggestions\n\nClick the link to make sure it works\n\n\n\n\n\n\n\nTipHow to find the square brackets [ ] on your keyboard\n\n\n\n\n\nThis depends on your keyboard layout. Common options:\n\nUS/UK keyboards: keys right of P\nWindows (many non‑US layouts): AltGr + a number key (often 8 or 9)\nMac (many non‑US layouts): Option (⌥) + a number key\n\nIf it still doesn’t work, search online for: “square brackets” + your keyboard layout + Windows/Mac."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-5-set-up-an-attachments-folder",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-5-set-up-an-attachments-folder",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 5: Set up an attachments folder",
+    "text": "Part 5: Set up an attachments folder\n\nCreate a folder for attachments (e.g. attachments or zzz_attachments if you want it at the bottom of your folder list)\nOpen Settings (gear icon bottom left) → Files and links\nSet Default location for new attachments to In the folder specified below\nEnter the attachment folder name (spelling must match exactly)\n\nThe setting should look like this:\n\nNow add an image or screenshot to one of your notes (drag and drop or copy/paste) and check that it ends up in the attachments folder."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-6-use-the-command-palette",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-6-use-the-command-palette",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 6: Use the command palette",
+    "text": "Part 6: Use the command palette\nThe command palette lets you do everything in Obsidian from your keyboard.\n\nOpen the command palette with Ctrl/Cmd + P\nType “table” and select Insert table to add a table to one of your notes\nLook at what else you can do, e.g. type “PDF” to export a note as PDF"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#optional-tasks-if-you-finish-early",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\nPick the one you find most interesting. You don’t need to do all of them.\n\nTry different ways of opening a note\n\nClick: open the note\nCtrl/Cmd + click: open in a new tab\nCtrl/Cmd + hover: open a preview (and you can edit from there)\n\n\n\nTry more Markdown\nTry something new from the Markdown cheatsheet, e.g. embed a note or add a callout.\n\n\nAdd tags and try search\n\nAdd tags to your notes (e.g. tag all paper notes with #paper)\nClick a tag to open search and see all notes with that tag\n\n\n\nChange the editor theme\nObsidian comes with many different editor themes you can choose from. Change the theme like this:\n\nOpen Settings (gear icon bottom left corner)\nGo to Appearance\nUnder Themes, click Manage\nBrowse and install a theme (you can always switch back)\n\n\n\nCreate a mind map\nObsidian has a digital whiteboard called Canvas. You can use it for mind maps, brainstorming or to get an overview.\n\nCreate a new Canvas (icon in the left ribbon or via the command palette)\nAdd cards, connect them with arrows, color and group them\nDrag and drop one of your notes onto the Canvas\n\n\nNext: Exercise 2: Daily notes · Back to the workshop page"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "",
+    "text": "In this exercise, you will set up a simple daily notes workflow that you can keep using after the workshop."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-1-create-the-required-folders",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-1-create-the-required-folders",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Step 1: Create the required folders",
+    "text": "Step 1: Create the required folders\nCreate the following folders in your vault:\n\nA folder for your daily notes (for example: log or daily)\nA folder for templates (templates or zzz_templates if you want it at the bottom of your folder list)"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-2-create-a-daily-note-template",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-2-create-a-daily-note-template",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Step 2: Create a daily note template",
+    "text": "Step 2: Create a daily note template\n\nIn the templates folder, create a new note called daily_template\nAdd the following basic content to the file (use the copy button in the top-right corner)\n\n# {{date}}\n\n## Tasks\n- [ ] Check mails\n\n## Log\nThe value {{date}} will always be replaced with the date of note creation."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-3-configure-daily-notes",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-3-configure-daily-notes",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Step 3: Configure daily notes",
+    "text": "Step 3: Configure daily notes\nNow we tell Obsidian to use the template for each new daily note:\n\nOpen Settings (gear icon bottom left)\nGo to Daily notes (under “Core plugins”)\nSet:\n\nNew file location → your daily notes folder (log / daily or whatever you called it)\nTemplate file location → templates/daily_template or zzz_templates/daily_template depending on your folder name\n\n\n\n\n\n\n\n\nNoteI don’t see the Daily notes plugin\n\n\n\n\n\nDouble check that the plugin is enabled. Go to Settings → Core plugins, scroll through the list and check if the Daily notes are turned on."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-4-install-the-calendar-plugin",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-4-install-the-calendar-plugin",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Step 4: Install the Calendar plugin",
+    "text": "Step 4: Install the Calendar plugin\nThe Calendar plugin makes it easier to create and navigate daily notes.\n\nOpen Settings → Community plugins\nEnable community plugins (if not already enabled)\nClick Browse\nSearch for Calendar (it should be on the very top of the list, created by Liam Cain)\nInstall and enable it\n\nThe Calendar should now appear in the right sidebar (if not, unfold the sidebar in the top right)."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-5-create-2-3-daily-notes",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-5-create-2-3-daily-notes",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Step 5: Create 2-3 daily notes",
+    "text": "Step 5: Create 2-3 daily notes\nNow let’s test your setup:\n\nUse the Calendar to create today’s daily note\nAdd at least one task (checkbox) for today\n\nThen:\n\nCreate daily files for other days of the upcoming week\nAdd some tasks or other things that are coming up to the respective daily notes (can be real or invented tasks/meetings)"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#optional-tasks-for-the-fast-ones",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#optional-tasks-for-the-fast-ones",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Optional tasks (for the fast ones)",
+    "text": "Optional tasks (for the fast ones)\nYou can do these in any order or skip them and take a break.\n\nCustomize your daily template\nThe daily note should reflect your own workflow and needs. Keep it as simple or complex as you want.\n\nThink about your own work routine:\n\nDo you have recurring tasks you do every day?\nWhat information would be useful to see in the morning when you create your daily note?\n\nModify the daily template accordingly:\n\nAdd new sections that fit your workflow (examples could be “Meetings”, “Notes to self”, “Reading”, …)\nAdd recurring tasks (if you have them)\nDelete sections you don’t need\n\n\n\n\nTest your updated template\nUse the Calendar to create a new daily note. Does the template insert what you expected? Is it useful? Adjust the template if needed and test again.\n\nNext: Exercise 3: The Tasks plugin · Back to the workshop page"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "",
+    "text": "In this exercise, you will collect tasks from all over your vault in your daily notes using the Tasks plugin."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-1-install-the-tasks-plugin",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-1-install-the-tasks-plugin",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "Step 1: Install the Tasks plugin",
+    "text": "Step 1: Install the Tasks plugin\n\nOpen Settings (gear icon bottom left)\nGo to Community plugins\nClick Browse\nSearch for Tasks (it should be on the very top of the list, created by Clare Macrae et al.)\nInstall and Enable the Tasks plugin"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-2-add-some-tasks-to-your-notes",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-2-add-some-tasks-to-your-notes",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "Step 2: Add some tasks to your notes",
+    "text": "Step 2: Add some tasks to your notes\nNow add 2–3 example tasks to your notes (not the daily notes, you can e.g. use one of your notes from Exercise 1).\nAny tasks are fine, you can just invent some.\nAdd due dates to the tasks (e.g. today or tomorrow).\n\n\n\n\n\n\nTipAdd due dates with “Tasks”\n\n\n\nYou should see a drop down menu after the task that lets you add a due date like in the image below. You can add a due date by either of these methods:\n\nSelect one of the suggested options\nType a date\nType a natural language date like “next sunday” and see if the plugin suggests the correct date"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-3-add-the-tasks-query-to-your-daily-template",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-3-add-the-tasks-query-to-your-daily-template",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "Step 3: Add the tasks query to your daily template",
+    "text": "Step 3: Add the tasks query to your daily template\n\nOpen your daily note template\nFind the section where your tasks should appear\nAdd the following “Tasks” query block\n\n```tasks\ndue on {{date}}\n```\n{{date}} will be replaced automatically with the date of each daily note.\n\n\n\n\n\n\nTipHow to find the backtick ` on your keyboard\n\n\n\n\n\nThis depends on your keyboard layout. Common options:\n\nUS/UK keyboards: key left of 1 (often shared with ~)\nWindows (many non-US layouts): key near Shift or Enter, or AltGr + key (varies by layout)\nMac (many non-US layouts): Option (⌥) + key (often the same key as ~)\n\nIf it still doesn’t work: Search online for: “backtick key” + your keyboard layout + Windows/Mac\n\n\n\nTest it:\n\nCheck the due dates of your tasks again → Find a due date for which you don’t have a daily note yet. If all tasks already have a daily note, just add a new task with a future due date\nCreate the daily note for that due date\n\nIf all worked well, the task should now automatically appear in the newly created daily note.\n\n\n\n\n\n\nNoteHelp: My tasks do not appear\n\n\n\n\n\nCheck if\n\nthe daily note was created after you added the query to the template. Older notes don’t have the query.\nthe due date of the task is the same as the date of the daily note\nthe query says exactly due on 2026-02-01 (with the date of the daily note). Click into the query block to see it."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#optional-tasks-for-the-fast-ones",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#optional-tasks-for-the-fast-ones",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "Optional tasks (for the fast ones)",
+    "text": "Optional tasks (for the fast ones)\nYou can do these in any order or skip them and take a break.\n\nModify the tasks query\nThe Tasks plugin allows you to change how tasks are displayed and filtered.\nFor these exercises:\n\nModify the Tasks query in one daily note\nObserve what changes\nKeep what you like by adding it to your daily template\n\nYou may need to create a few extra example tasks or adjust due dates.\n\nCompact display mode\nAdd short mode to your Tasks query (replace the date with a date in your note):\n```tasks\ndue on 2026-02-01\nshort mode\n```\n\n\nList overdue tasks\nList all tasks that are overdue:\n```tasks\ndue before 2026-02-01\n```\n\n\nShow all open tasks\n```tasks\nnot done\n```\n\n\nFilter tasks by folder\nShow only tasks from a specific folder. Replace log with a folder that is in your vault.\n```tasks\npath includes log\n```\n\n\nCombine different queries\nTry combining multiple options above.\nExamples to try:\n\nOverdue tasks in short mode\nTasks due today that are not done\nTasks from your project folder that are due today\n\n\n\n\nUpdate your template\nIf you found task queries that you like from the previous task, modify your daily template accordingly. Then create a few notes to test it.\n\nBack to the workshop page"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html",
+    "href": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html",
+    "title": "Markdown cheatsheet",
+    "section": "",
+    "text": "Below, you find an overview of basic and advanced Markdown formatting styles you can use in Obsidian.\nYou don’t need to know all of this. Use this page as a reference and come back to it when needed."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#basics",
+    "href": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#basics",
+    "title": "Markdown cheatsheet",
+    "section": "Basics",
+    "text": "Basics\n\nHeaders\n# Heading 1\n## Heading 2\n### Heading 3\n#### Heading 4\n##### Heading 5\n\n\nEmphasis\n**Bold text**\n\n*Italic text*\n\n***Bold and italic text***\n\n==Highlighted text==\nHotkeys: Ctrl/Cmd + B for bold and Ctrl/Cmd + I for italic.\n\n\nLists\n- this is\n- an unordered\n- list\n1. this is\n2. an ordered\n3. list\n\n\nTask lists (checkboxes)\n- [ ] An open task\n- [x] A completed task\nHotkey: Ctrl/Cmd + L turns a line into a task.\n\n\nExternal links\n[A link to Google](https://google.com)\nHotkey: Ctrl/Cmd + K.\nYou can embed links by putting an ! before the link. This works for some web content but is especially helpful for videos, e.g.\n![](https://www.youtube.com/watch?v=E6ySG7xYgjY)\n\n\nInternal links\nInternal links are links that link to other files in your Obsidian vault. As soon as you start typing [[]], Obsidian will suggest files you can link to.\n[[Markdown cheatsheet]]\n[[Markdown cheatsheet|A different display name for the link]]\nAlso here, you can add ! to embed the content. This is useful to embed PDFs, images, but also other note content, e.g.\n![[Markdown cheatsheet]]\nYou can also link to specific sections of another file using #:\n[[Markdown cheatsheet#Headers|Check the header section]]"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#advanced",
+    "href": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#advanced",
+    "title": "Markdown cheatsheet",
+    "section": "Advanced",
+    "text": "Advanced\n\nFormulas\nYou can use the LaTeX syntax for formulas. Use $ to enclose inline equations and $$ for blocked equations.\nThis $\\pi = \\pi$ is an inline equation\n$$\n\\frac{\\pi}{2} = \\frac{\\pi}{2}\n$$\n\n\nHorizontal lines\nI add a horizontal line\n\n---\n\nbetween these two paragraphs\n\n\nQuotes\n&gt; A wise woman said this thing\n\n\nFootnotes\nThis is a sentence with a footnote. [^1]\n[^1]: This is the footnote text\n\n\nCallouts\nThere are different types of callout boxes, the default is a note:\n&gt; [!note]\n&gt; Lorem ipsum dolor sit amet\nYou can change the title:\n&gt; [!note] This has a custom title\n&gt; Lorem ipsum dolor sit amet\nYou can make the callout foldable by adding a + (unfolded by default) or - (folded by default) after the type:\n&gt; [!note]- This has a folded callout\n&gt; Lorem ipsum dolor sit amet\nDepending on what you put in the [], the callout will look differently. Other types are:\n&gt; [!abstract]\n&gt; [!info]\n&gt; [!todo]\n&gt; [!tip]\n&gt; [!success]\n&gt; [!help]\n&gt; [!warning]\n&gt; [!failure]\n&gt; [!danger]\n&gt; [!bug]\n&gt; [!example]\n&gt; [!quote]\n\n\nInline code\nThis `word` is formatted like code because of the backticks.\n\n\nCode blocks\nCode blocks start and end with 3 backticks. After the 3 backticks in the first line, add the language (e.g. R, python, cpp, …)\n```R\n# This is an R code block\nlibrary(tidyverse)\nmy_data &lt;- read_csv(\"my_data.csv\")\n```\n\nBack to Exercise 1 · Back to the workshop page"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#overview",
+    "href": "slides/2026_10_15_obsidian-basics.html#overview",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Overview",
+    "text": "Overview\n\n\nIntroduction to Obsidian\n\nBasic functionality\nSet up your own notebook\nOrganize your notes in folders\n\n\n\n\n\nPractical workflows for PhD students\n\nPlan your days with daily notes\nManage your tasks\nWhat else you can do"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#organization",
+    "href": "slides/2026_10_15_obsidian-basics.html#organization",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Organization",
+    "text": "Organization\n\nLive demo + Hands-on\nQuestions anytime\n\n\n\n\n\n\n\nImportant links\n\n\nFind all workshop material and links here: workshop page\n\n\n\n\nIf you didn’t install Obsidian yet, you can do so now from https://obsidian.md/"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#optional-tasks-if-you-finish-early",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\nPick the one you find most interesting. You don’t need to do all of them.\n\nCustomize your daily template\nAdd a section or a recurring task that fits your work, e.g. ## Meetings, ## Reading or - [ ] Check lab book. Then create a new daily note to test it.\n\n\nOpen today’s note with a hotkey\n\nOpen Settings → Hotkeys\nSearch for “Open today’s daily note” and set a hotkey you like (Obsidian shows you if it is already in use)\n\n\nNext: Exercise 3: The Tasks plugin · Back to the workshop page"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#optional-tasks-if-you-finish-early",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\n\nModify the tasks query\nThe Tasks plugin allows you to change how tasks are displayed and filtered.\nFor these exercises:\n\nModify the Tasks query in one daily note (not in the template)\nObserve what changes\nKeep what you like by adding it to your daily template\n\nPick one or two queries below that sound useful to you. You may need to create a few extra example tasks or adjust due dates.\n\nCompact display mode\nAdd short mode to your Tasks query (replace the date with a date in your note):\n```tasks\ndue on 2026-02-01\nshort mode\n```\n\n\nList overdue tasks\nList all tasks that are overdue:\n```tasks\ndue before 2026-02-01\n```\n\n\nShow all open tasks\n```tasks\nnot done\n```\n\n\nFilter tasks by folder\nShow only tasks from a specific folder. Replace log with a folder that is in your vault.\n```tasks\npath includes log\n```\n\n\nCombine different queries\nTry combining multiple options above.\nExamples to try:\n\nOverdue tasks in short mode\nTasks due today that are not done\nTasks from a specific folder that are due today\n\n\n\n\nUpdate your template\nIf you found task queries that you like from the previous task, modify your daily template accordingly. Then create a few notes to test it.\n\nBack to the workshop page"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-3-add-your-own-notes",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-3-add-your-own-notes",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 3: Add your own notes",
+    "text": "Part 3: Add your own notes\nCreate 2 short notes on any topic, e.g. a paper you read, a method you use, or your favourite recipe.\nThe content doesn’t matter, the goal is to try out Markdown formatting:\n\na heading\na list\nbold or italic text\n\nUse the Obsidian note or the Markdown cheatsheet as reference."
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#welcome",
+    "href": "slides/2026_10_15_obsidian-basics.html#welcome",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Welcome",
+    "text": "Welcome\n\n\n\n(Theoretical) Ecology\nScientific programmer at Freie Universität Berlin\nResearch + Coding + Teaching"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#projects",
+    "href": "slides/2026_10_15_obsidian-basics.html#projects",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Projects",
+    "text": "Projects\n\n\n\nThings you work on right now\nThings with a deadline\nExamples\n\nPaper XYZ\nPrepare workshop XYZ\nRenovate my living room\n\nSubfolders for each project"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#areas",
+    "href": "slides/2026_10_15_obsidian-basics.html#areas",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Areas",
+    "text": "Areas\n\n\n\nOngoing responsibilities without a concrete deadline\nExamples\n\nPhD: bureaucratic things, overarching topics\nLab: notes on your research group\nFinances"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#resources",
+    "href": "slides/2026_10_15_obsidian-basics.html#resources",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Resources",
+    "text": "Resources\n\n\n\nReference and learning materials\nTopics you are interested in\nUseful for the future\nExamples\n\nLiterature notes\nTutorials\nDocumentation"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#archive",
+    "href": "slides/2026_10_15_obsidian-basics.html#archive",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Archive",
+    "text": "Archive\n\n\n\nOld, finished work and projects"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#what-else-you-can-do",
+    "href": "slides/2026_10_15_obsidian-basics.html#what-else-you-can-do",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "What else you can do",
+    "text": "What else you can do\n\nZettelkasten: Connect your ideas in small, linked notes\nLiterature notes from Zotero\nProject hubs for tasks, meetings and notes\n…"
   }
 ]
