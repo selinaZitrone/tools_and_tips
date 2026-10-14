@@ -1,0 +1,87 @@
+---
+title: "Digital note taking with Obsidian for scientists: Basics"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+date: "2026-10-15"
+format:
+  revealjs:
+    footer: "Selina Baldauf // Obsidian basics"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute:
+  echo: false
+  eval: true
+from: markdown+emoji
+---
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+::: nonincremental
+
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+- One topic from the world of scientific workflows
+- Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+- If you don't want to miss a lecture
+  - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+- For credit points: Send me a short message (Email or Webex)
+
+:::
+
+<!-- TODO: skeleton only. Sections follow the workshop description; replace in the second pass. -->
+
+## Today
+
+::: nonincremental
+
+- Set up and structure your own notebook
+- Link related notes, ideas and papers
+- A daily-note workflow to plan your days and track tasks
+- Templates for notes you write often
+
+:::
+
+# Set up your notebook {.inverse}
+
+## TODO
+
+# Link your notes {.inverse}
+
+## TODO
+
+# Daily notes and tasks {.inverse}
+
+## TODO
+
+# Templates {.inverse}
+
+## TODO
+
+# Wrap-up {.inverse}
+
+## Where next
+
+## Next lecture/workshop
+
+#### Topic: TODO
+
+<br>
+
+:date: 19.11.2026 :clock4: 4-5 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+# The end :) {background-color="#2c2c2c"}
+
+Questions?
