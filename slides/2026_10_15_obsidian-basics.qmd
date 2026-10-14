@@ -37,38 +37,261 @@ from: markdown+emoji
 
 :::
 
-<!-- TODO: skeleton only. Sections follow the workshop description; replace in the second pass. -->
+## Workshop goals
+
+- Get started with *your own notebook*
+- Set up a *daily notes* and *tasks* workflow
+- Know if Obsidian is the *tool for you*
 
 ## Today
 
 ::: nonincremental
 
-- Set up and structure your own notebook
-- Link related notes, ideas and papers
-- A daily-note workflow to plan your days and track tasks
-- Templates for notes you write often
+1. **Obsidian basics** + Exercise 1
+2. **Organize your notes** in folders
+3. **Daily notes** + Exercise 2
+4. **Tasks** + Exercise 3
+5. **What else** you can do
 
 :::
 
-# Set up your notebook {.inverse}
+. . .
 
-## TODO
+- Live demo + Hands-on
+- Questions anytime
+- All exercises and material on the [workshop page](https://selinazitrone.github.io/tools_and_tips/sessions/21_obsidian-basics.html)
 
-# Link your notes {.inverse}
+## What makes notes useful?
 
-## TODO
+- 🔎 **Searchable** → digital
+- 📆 **Sustainable**
+  - Can you understand them in years?
+  - Does the software still exist?
+- 🧱 **Open** and **simple formats**
+- 🔗 **Connected**
+- 😃 **Easy** and **enjoyable** to write
 
-# Daily notes and tasks {.inverse}
+## Obsidian
 
-## TODO
+- **Free** for personal use
+- **All major OS** and mobile devices
+- Notes are **simple Markdown** files
+- Local first: Keeps your notes **private**
+- Very **simple** at its core
+- **Extend** and **customize** with plugins
 
-# Templates {.inverse}
+# Obsidian basics {.inverse}
 
-## TODO
+How to get started with your first notebook
 
-# Wrap-up {.inverse}
+## The two most important shortcuts
 
-## Where next
+- `Ctrl/Cmd + O`: **Find or create** a note
+  - Good to avoid duplicate notes
+- `Ctrl/Cmd + P`: **Command palette**
+  - Everything you can do in your vault, e.g. insert a table, export as PDF
+
+## Your turn {.inverse}
+
+> :pencil2: **Exercise 1 (15 min):**
+>
+> [Obsidian basics](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/21_obsidian-basics/exercise-1-basics.html)
+
+::: nonincremental
+
+- Stay in this meeting
+- Questions: Unmute yourself and share your screen if needed
+- Back at **hh:mm**
+
+:::
+
+# Organize your notes {.inverse}
+
+## Organize your notes in folders
+
+- Goal: Easily **store** and **find** your notes again
+- Idea: A system of **labelled drawers** (folders)
+- Sort your notes into the drawers
+- The crucial part: Which categories?
+
+## The PARA system
+
+By Tiago Forte: 4 core categories (= main folders) to sort your notes
+
+::: {.columns}
+
+::: {.column .fragment width="25%"}
+### Projects
+
+Things you work on right now, with a deadline
+
+::: text-small
+e.g. Paper XYZ, Prepare workshop XYZ
+:::
+:::
+
+::: {.column .fragment width="25%"}
+### Areas
+
+Ongoing responsibilities without a deadline
+
+::: text-small
+e.g. PhD, Lab, Finances
+:::
+:::
+
+::: {.column .fragment width="25%"}
+### Resources
+
+Reference and learning materials
+
+::: text-small
+e.g. Literature notes, Tutorials
+:::
+:::
+
+::: {.column .fragment width="25%"}
+### Archive
+
+Old, finished work and projects
+:::
+
+:::
+
+## PARA in practice
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+- Add more folders as you need, e.g.
+  - Meetings
+  - Daily notes
+  - Templates
+  - Attachments
+- Number prefixes sort your folders (like `zzz_`)
+
+:::
+
+::: {.column .fragment width="50%"}
+
+My vault:
+
+```
+000_Zettelkasten
+100_Laborbuch
+200_Projekte
+300_Areas
+400_Resources
+500_Meetings
+700_Archive
+900_Literature
+Attachments
+Templates
+```
+
+:::
+
+:::
+
+# Daily notes {.inverse}
+
+Plan your day and capture what comes up
+
+## Your turn {.inverse}
+
+> :pencil2: **Exercise 2 (15 min):**
+>
+> [Daily notes](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html)
+
+# Tasks {.inverse}
+
+Collect tasks from your whole vault
+
+## Your turn {.inverse}
+
+> :pencil2: **Exercise 3 (10 min):**
+>
+> [The Tasks plugin](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html)
+
+# What else you can do {.inverse}
+
+## How we organize notes
+
+These approaches are complementary, not alternatives!
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Storage
+
+e.g. PARA
+
+- Predefined structure through categories
+- Perfect for most notes
+:::
+
+::: {.column .fragment width="50%"}
+### Zettelkasten
+
+a.k.a. second brain
+
+- Emergent structure through interconnections
+- Perfect for knowledge notes
+:::
+
+:::
+
+## Knowledge management
+
+<!-- TODO: screenshots of Zotero literature note and Zettelkasten graph view, or show live in the demo vault -->
+
+- **Literature notes** from Zotero
+  - Zotero integration plugin
+- **Zettelkasten**
+  - Small notes, each focused on one idea
+  - Written in your own words
+  - Linked to related ideas
+
+## The demo vault
+
+A template vault for academic note-taking with all workflows from today and more:
+
+::: nonincremental
+
+- Daily and weekly notes
+- Projects and meetings
+- Literature notes from Zotero
+- Zettelkasten
+
+:::
+
+Download and instructions on the [workshop page](https://selinazitrone.github.io/tools_and_tips/sessions/21_obsidian-basics.html#demo-vault)
+
+. . .
+
+Start with the folder `00_GetStarted`
+
+## Wrap-up
+
+- Obsidian is not *one* system
+  - Implement only what you find useful
+- The most important: *actually writing notes*
+- Start simple
+  - First week: Just use daily notes
+  - Add workflows later
+
+## Resources
+
+Find everything on the [workshop page](https://selinazitrone.github.io/tools_and_tips/sessions/21_obsidian-basics.html):
+
+::: nonincremental
+
+- Exercises and Markdown cheatsheet
+- Demo vault
+- Documentation, plugin recommendations, books and videos
+
+:::
 
 ## Next lecture/workshop
 
