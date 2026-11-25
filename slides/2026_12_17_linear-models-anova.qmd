@@ -1,0 +1,692 @@
+---
+title: "Linear models and ANOVA in R"
+subtitle: "Scientific workflows: Tools and Tips 🛠️"
+date: "2026-12-17"
+format:
+  revealjs:
+    footer: "Selina Baldauf // Linear models and ANOVA in R"
+    highlight-style: printing
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    theme: slides.scss
+    auto-stretch: false
+editor: source
+execute:
+  echo: false
+  eval: true
+  warning: false
+  message: false
+from: markdown+emoji
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(broom)
+library(palmerpenguins)
+library(patchwork)
+
+# no white box around the plots
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
+
+theme_set(theme_minimal(base_size = 20))
+theme_update(plot.background = element_blank())
+
+# colors for model and error
+col_model <- "#1F7A5C"
+col_error <- "#C8553D"
+
+# penguins without missing values, for the model plots
+penguins_complete <- drop_na(penguins, body_mass_g, flipper_length_mm)
+m_reg <- lm(body_mass_g ~ flipper_length_mm, data = penguins_complete)
+
+# small white icons for the section slides
+set.seed(1)
+icon_reg <- tibble(x = runif(18, 0, 10), y = 1 + 0.5 * x + rnorm(18, sd = 0.7))
+icon_anova <- tibble(
+  group = rep(1:3, each = 6),
+  x = group + runif(18, -0.15, 0.15),
+  y = rep(c(3, 3.3, 5.5), each = 6) + rnorm(18, sd = 0.6)
+)
+icon_ancova <- tibble(
+  group = rep(c("a", "b", "c"), each = 6),
+  x = c(seq(1, 6, length.out = 6), seq(2, 7, length.out = 6), seq(5, 10, length.out = 6)),
+  y = case_match(group, "a" ~ 1 + 0.5 * x, "b" ~ 0.4 + 0.5 * x, "c" ~ 1.6 + 0.7 * x) +
+    rnorm(18, sd = 0.3)
+)
+
+section_icon <- function(type) {
+  p <- switch(
+    type,
+    regression = ggplot(icon_reg, aes(x = x, y = y)) +
+      geom_point(color = "white", size = 3) +
+      geom_smooth(method = "lm", se = FALSE, color = "white", linewidth = 1.5),
+    anova = ggplot(icon_anova, aes(x = x, y = y)) +
+      geom_point(color = "white", size = 3, alpha = 0.6) +
+      stat_summary(
+        aes(x = group),
+        fun = mean,
+        geom = "point",
+        color = "white",
+        size = 6
+      ) +
+      expand_limits(x = c(0.4, 3.6)),
+    ancova = ggplot(icon_ancova, aes(x = x, y = y, group = group)) +
+      geom_point(color = "white", size = 3, alpha = 0.6) +
+      geom_smooth(method = "lm", se = FALSE, color = "white", linewidth = 1.5)
+  )
+  p +
+    theme_void() +
+    theme(
+      axis.line = element_line(color = "white", linewidth = 1),
+      plot.margin = margin(10, 10, 10, 10)
+    )
+}
+```
+
+## What is this lecture series?
+
+### Scientific workflows: Tools and Tips :hammer_and_wrench:
+
+::: nonincremental
+
+:date: Every 3rd Thursday :clock4: 4-5 p.m. :round_pushpin: Webex
+
+- One topic from the world of scientific workflows
+- Material provided [online](https://selinazitrone.github.io/tools_and_tips/)
+- If you don't want to miss a lecture
+  - [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+- For credit points: Send me a short message (Email or Webex)
+
+:::
+
+## Today: Linear models
+
+#### How it works
+
+:::{.nonincremental}
+
+- There's a **GitHub repo** you download and open in your IDE
+- I demonstrate each topic: **follow along in the scripts**
+  - I will focus on explaining the statical code and concepts
+  - I will assume you know R basics (data frames, pipes, ggplot2, ...)
+- Each part has a short **exercise** to try it yourself
+- **Questions** anytime: in the chat or just unmute
+
+:::
+
+## Get set up
+
+:::{.nonincremental}
+
+1. Click the green **Code** button → **Download ZIP**
+2. Unzip it somewhere you can find it
+3. Double-click the `.Rproj` file → opens in RStudio
+   - *(Positron/VS code users: open the folder)*
+4. Run `install_packages.R` to install today's packages (if you don't have them yet)
+
+Repo: [https://github.com/selinaZitrone/lm-anova-workshop](https://github.com/selinaZitrone/lm-anova-workshop)
+
+:::
+
+# Statistical modelling {.inverse}
+
+## An example
+
+```{r}
+#| label: simulate-bp
+#| include: false
+set.seed(12)
+bp <- tibble(
+  dose = round(runif(24, 0, 40)),
+  reduction = round(2 + 0.4 * dose + rnorm(24, sd = 4), 1)
+)
+m_bp <- lm(reduction ~ dose, data = bp)
+
+# predictions of three models: mean, line, curve
+m_curve <- lm(reduction ~ I((dose - 8)^2), data = bp) # U-shape
+bp <- bp |>
+  mutate(
+    mean = mean(reduction),
+    line = fitted(m_bp),
+    curve = fitted(m_curve)
+  )
+
+bp_labs <- labs(x = "Dose (mg)", y = "Reduction in\nblood pressure (mmHg)",
+caption = "Simulated data")
+```
+
+```{r}
+#| label: bp-data
+#| fig-width: 8
+#| fig-height: 4.6
+ggplot(bp, aes(x = dose, y = reduction)) +
+  geom_point(size = 3) +
+  bp_labs
+```
+
+- Patients take **different doses** of a medication
+- We measure **how much their blood pressure drops**
+
+## Why do we model?
+
+:::{.columns}
+
+:::{.column .fragment width="32%"}
+
+### Description
+
+What is the **pattern** in our data?
+
+::: {.text-small}
+*How much more did blood pressure drop per mg in our patients?*
+:::
+
+:::
+
+:::{.column width="2%"}
+:::
+
+:::{.column .fragment width="32%"}
+
+### Inference
+
+Is it **more than chance**, and how certain are we?
+
+::: {.text-small}
+*Does a higher dose lower blood pressure more in patients in general?*
+:::
+
+:::
+
+:::{.column width="2%"}
+:::
+
+:::{.column .fragment width="32%"}
+
+### Prediction
+
+What do we **expect** for **new values**?
+
+::: {.text-small}
+*How much will blood pressure drop for a new patient with 25 mg?*
+:::
+
+:::
+
+:::
+
+## What is a model?
+
+:::{.columns}
+
+:::{.column width="45%"}
+
+:::{.nonincremental}
+
+**Data = [Model]{style="color:#1F7A5C"} + [Error]{style="color:#C8553D"}**
+
+:::{.fragment fragment-index=1}
+- [**Model**]{style="color:#1F7A5C"}: describes the main pattern in the data
+:::
+
+:::{.fragment fragment-index=2}
+- [**Error**]{style="color:#C8553D"}: what the model doesn't explain
+:::
+
+:::
+
+:::
+
+:::{.column width="55%"}
+
+:::{.r-stack}
+
+:::{.fragment .fade-out fragment-index=1}
+
+```{r}
+#| label: bp-model-data
+#| fig-width: 7
+#| fig-height: 5.6
+p_bp <- ggplot(bp, aes(x = dose, y = reduction)) +
+  bp_labs
+
+p_bp +
+  geom_point(size = 3)
+```
+
+:::
+
+:::{.fragment .fade-in-then-out fragment-index=1}
+
+```{r}
+#| label: bp-model-line
+#| fig-width: 7
+#| fig-height: 5.6
+p_bp +
+  geom_line(aes(y = line), color = col_model, linewidth = 1.5) +
+  geom_point(size = 3)
+```
+
+:::
+
+:::{.fragment fragment-index=2}
+
+```{r}
+#| label: bp-model-error
+#| fig-width: 7
+#| fig-height: 5.6
+p_bp +
+  geom_segment(aes(yend = line), color = col_error, linewidth = 1) +
+  geom_line(aes(y = line), color = col_model, linewidth = 1.5) +
+  geom_point(size = 3)
+```
+
+:::
+
+:::
+
+:::
+
+:::
+
+## Many models are possible
+
+```{r}
+#| label: bp-three-models
+#| fig-width: 12
+#| fig-height: 4.6
+curve_grid <- tibble(dose = seq(min(bp$dose), max(bp$dose), length.out = 100))
+curve_grid$curve <- predict(m_curve, newdata = curve_grid)
+
+plot_bp_model <- function(model, title) {
+  ggplot(bp, aes(x = dose, y = reduction)) +
+    geom_segment(aes(yend = .data[[model]]), color = col_error) +
+    geom_point(size = 2) +
+    labs(x = "Dose (mg)", y = "Reduction (mmHg)", title = title) +
+    theme_minimal(base_size = 17) +
+    theme(
+      plot.background = element_blank(),
+      plot.title = element_text(face = "bold")
+    )
+}
+
+p_mean <- plot_bp_model("mean", "The mean") +
+  geom_line(aes(y = mean), color = col_model, linewidth = 1.5)
+p_line <- plot_bp_model("line", "A line") +
+  geom_line(aes(y = line), color = col_model, linewidth = 1.5)
+p_curve <- plot_bp_model("curve", "A curve") +
+  geom_line(data = curve_grid, aes(y = curve), color = col_model, linewidth = 1.5)
+
+p_mean + p_line + p_curve
+```
+
+Which one do we choose?
+
+- It depends on our **question** and what we **know** about the data
+- As simple as possible, but it should describe the main pattern
+
+
+# Linear models {.inverse}
+
+## The `palmerpenguins` dataset
+
+Data on 3 penguin species from Antarctica
+
+```{r}
+#| label: setup-penguins
+#| echo: true
+# install.packages("palmerpenguins")
+library(palmerpenguins)
+```
+
+![R package [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/index.html), artwork by Allison Horst](images/2026_12_17_linear-models-anova/lter_penguins.png){fig-alt="Drawing of a Chinstrap, a Gentoo and an Adelie penguin"}
+
+## The `palmerpenguins` dataset
+
+:::{.nonincremental}
+- 344 penguins from **three species**
+- Each row is **one penguin**
+:::
+
+```{r}
+#| label: penguins-data
+#| echo: true
+penguins
+```
+
+## What we do today
+
+```{r}
+#| label: preview-setup
+#| include: false
+preview_theme <- theme_minimal(base_size = 13) +
+  theme(
+    plot.background = element_blank(),
+    legend.position = "none"
+  )
+
+species_means <- summarise(
+  penguins_complete,
+  body_mass_g = mean(body_mass_g),
+  .by = species
+)
+```
+
+:::{.columns}
+
+:::{.column width="60%"}
+
+**Linear regression**
+
+:::{.text-small}
+*Does flipper length predict body mass?*<br>
+[continuous predictor]{style="color:#7b8a8b"}
+:::
+
+:::
+
+:::{.column width="40%"}
+
+```{r}
+#| label: preview-regression
+#| fig-width: 4.4
+#| fig-height: 2
+ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(alpha = 0.3, size = 1) +
+  geom_smooth(method = "lm", se = FALSE, color = "black") +
+  labs(x = "Flipper length (mm)", y = "Body mass (g)") +
+  preview_theme
+```
+
+:::
+
+:::
+
+:::{.columns}
+
+:::{.column width="60%"}
+
+**ANOVA**
+
+:::{.text-small}
+*Does body mass differ between species?*<br>
+[categorical predictor]{style="color:#7b8a8b"}
+:::
+
+:::
+
+:::{.column width="40%"}
+
+```{r}
+#| label: preview-anova
+#| fig-width: 4.4
+#| fig-height: 2
+ggplot(penguins_complete, aes(x = species, y = body_mass_g, color = species)) +
+  geom_jitter(width = 0.15, height = 0, alpha = 0.4, size = 1) +
+  geom_point(data = species_means, color = "black", size = 3) +
+  scale_color_viridis_d(end = 0.8) +
+  labs(x = "Species", y = "Body mass (g)") +
+  preview_theme
+```
+
+:::
+
+:::
+
+:::{.columns}
+
+:::{.column width="60%"}
+
+**ANCOVA**
+
+:::{.text-small}
+*Does the relationship differ between species?*<br>
+[continuous and categorical predictor]{style="color:#7b8a8b"}
+:::
+
+:::
+
+:::{.column width="40%"}
+
+```{r}
+#| label: preview-ancova
+#| fig-width: 4.4
+#| fig-height: 2
+ggplot(
+  penguins_complete,
+  aes(x = flipper_length_mm, y = body_mass_g, color = species)
+) +
+  geom_point(alpha = 0.3, size = 1) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_color_viridis_d(end = 0.8) +
+  labs(x = "Flipper length (mm)", y = "Body mass (g)") +
+  preview_theme
+```
+
+:::
+
+:::
+
+# Linear regression {.inverse}
+
+> continuous predictor
+
+:::{.absolute bottom="-300" right="0"}
+
+```{r}
+#| label: icon-regression
+#| fig-width: 3
+#| fig-height: 2.2
+section_icon("regression")
+```
+
+:::
+
+## Does flipper length predict body mass?
+
+:::{.columns}
+
+:::{.column width="48%"}
+
+- **Hypothesis:** Penguins with longer flippers are heavier
+- **Are the rows independent?**
+  - We treat each penguin as independent
+
+:::{.fragment .text-small}
+*Not independent: several wells from one mouse, repeated measurements of the same patient*
+:::
+
+:::
+
+:::{.column width="52%"}
+
+```{r}
+#| label: reg-data
+#| fig-width: 6.6
+#| fig-height: 5.6
+peng_labs <- labs(x = "Flipper length (mm)", y = "Body mass (g)")
+peng_coord <- coord_cartesian(xlim = c(170, 233), ylim = c(2600, 6400))
+
+ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(alpha = 0.4) +
+  peng_labs +
+  peng_coord
+```
+
+:::
+
+:::
+
+## The model
+
+:::{.columns}
+
+:::{.column width="48%"}
+
+:::{.nonincremental}
+
+**Data = [Model]{style="color:#1F7A5C"} + [Error]{style="color:#C8553D"}**
+
+:::{.fragment fragment-index=1}
+y = [b~0~ + b~1~ · x]{style="color:#1F7A5C"} + [e]{style="color:#C8553D"}
+:::
+
+:::{.fragment fragment-index=2}
+body mass = [b~0~ + b~1~ · flipper length]{style="color:#1F7A5C"} + [e]{style="color:#C8553D"}
+:::
+
+:::{.fragment .text-small fragment-index=3}
+- [**b~0~**]{style="color:#1F7A5C"}: intercept, body mass at a flipper length of 0
+- [**b~1~**]{style="color:#1F7A5C"}: slope, change in body mass per mm
+:::
+
+:::{.fragment .text-small fragment-index=4}
+- [**e**]{style="color:#C8553D"}: error, what the model doesn't explain
+:::
+
+:::
+
+:::
+
+:::{.column width="52%"}
+
+:::{.r-stack}
+
+```{r}
+#| label: model-data
+#| fig-width: 6.6
+#| fig-height: 5.6
+ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(alpha = 0.3) +
+  peng_labs +
+  peng_coord
+```
+
+:::{.fragment fragment-index=1}
+
+```{r}
+#| label: model-line
+#| fig-width: 6.6
+#| fig-height: 5.6
+# the same plot with invisible axes, to add one layer per click
+pred <- augment(m_reg, data = penguins_complete)
+
+p_layer <- ggplot(pred, aes(x = flipper_length_mm, y = body_mass_g)) +
+  peng_labs +
+  peng_coord +
+  theme(
+    axis.text = element_text(color = "transparent"),
+    axis.title = element_text(color = "transparent"),
+    panel.grid = element_blank()
+  )
+
+p_layer +
+  geom_line(aes(y = .fitted), color = col_model, linewidth = 1.8)
+```
+
+:::
+
+:::{.fragment fragment-index=3}
+
+```{r}
+#| label: model-slope
+#| fig-width: 6.6
+#| fig-height: 5.6
+slope_x <- c(185, 205)
+slope_y <- predict(m_reg, tibble(flipper_length_mm = slope_x))
+
+p_layer +
+  annotate(
+    "segment",
+    x = c(slope_x[1], slope_x[2]),
+    xend = c(slope_x[2], slope_x[2]),
+    y = c(slope_y[1], slope_y[1]),
+    yend = c(slope_y[1], slope_y[2]),
+    color = col_model,
+    linewidth = 1.2,
+    linetype = "dashed"
+  ) +
+  annotate(
+    "text",
+    x = slope_x[2] + 1,
+    y = mean(slope_y) - 250,
+    label = "slope~b[1]",
+    parse = TRUE,
+    color = col_model,
+    size = 8,
+    hjust = 0
+  )
+```
+
+:::
+
+:::{.fragment fragment-index=4}
+
+```{r}
+#| label: model-error
+#| fig-width: 6.6
+#| fig-height: 5.6
+# one penguin to show the error
+one_penguin <- slice_max(
+  filter(pred, flipper_length_mm == 221),
+  body_mass_g,
+  n = 1
+)
+
+p_layer +
+  geom_segment(
+    data = one_penguin,
+    aes(yend = .fitted),
+    color = col_error,
+    linewidth = 1.4
+  ) +
+  geom_point(data = one_penguin, color = col_error, size = 4) +
+  annotate(
+    "text",
+    x = 219,
+    y = 6200,
+    label = "e",
+    color = col_error,
+    size = 9,
+    hjust = 1
+  )
+```
+
+:::
+
+:::
+
+:::
+
+:::
+
+# Wrap-up {.inverse}
+
+## What makes all these models linear?
+
+:::{.text-small}
+
+| Model | Formula |
+|:------|:--------|
+| Regression | body mass = b~0~ + b~1~ · flipper length + e |
+| ANOVA | body mass = b~0~ + b~1~ · Chinstrap + b~2~ · Gentoo + e |
+| ANCOVA | body mass = b~0~ + b~1~ · flipper length + b~2~ · Chinstrap + b~3~ · Gentoo + e |
+
+: {tbl-colwidths="[16,84]"}
+
+:::
+
+<br>
+
+:::{.fragment}
+A [linear combination]{.highlight-ylw}: each predictor is multiplied with a parameter, and everything is added up
+:::
+
+- In R, we fit all of them with `lm()`
+- Even the U-shaped curve from the beginning is a linear model
