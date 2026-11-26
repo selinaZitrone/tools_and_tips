@@ -1,5 +1,467 @@
 [
   {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#what-is-this-lecture-series",
+    "href": "slides/2026_12_17_linear-models-anova.html#what-is-this-lecture-series",
+    "title": "Linear models and ANOVA in R",
+    "section": "What is this lecture series?",
+    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nMaterial provided online\nIf you don’t want to miss a lecture\n\nSubscribe to the mailing list\n\nFor credit points: Send me a short message (Email or Webex)"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#today-linear-models",
+    "href": "slides/2026_12_17_linear-models-anova.html#today-linear-models",
+    "title": "Linear models and ANOVA in R",
+    "section": "Today: Linear models",
+    "text": "Today: Linear models\nHow it works\n\nThere’s a GitHub repo you download and open in your IDE\nI demonstrate each topic: follow along in the scripts\n\nI will focus on explaining the statical code and concepts\nI will assume you know R basics (data frames, pipes, ggplot2, …)\n\nEach part has a short exercise to try it yourself\nQuestions anytime: in the chat or just unmute"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#get-set-up",
+    "href": "slides/2026_12_17_linear-models-anova.html#get-set-up",
+    "title": "Linear models and ANOVA in R",
+    "section": "Get set up",
+    "text": "Get set up\n\nClick the green Code button → Download ZIP\nUnzip it somewhere you can find it\nDouble-click the .Rproj file → opens in RStudio\n\n(Positron/VS code users: open the folder)\n\nRun install_packages.R to install today’s packages (if you don’t have them yet)\n\nRepo: https://github.com/selinaZitrone/lm-anova-workshop"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#an-example",
+    "href": "slides/2026_12_17_linear-models-anova.html#an-example",
+    "title": "Linear models and ANOVA in R",
+    "section": "An example",
+    "text": "An example\n\n\n\n\n\n\n\n\n\n\nPatients take different doses of a medication\nWe measure how much their blood pressure drops"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#why-do-we-model",
+    "href": "slides/2026_12_17_linear-models-anova.html#why-do-we-model",
+    "title": "Linear models and ANOVA in R",
+    "section": "Why do we model?",
+    "text": "Why do we model?\n\n\nDescription\nWhat is the pattern in our data?\n\nHow much more did blood pressure drop per mg in our patients?\n\n\n\n\nInference\nIs it more than chance, and how certain are we?\n\nDoes a higher dose lower blood pressure more in patients in general?\n\n\n\n\nPrediction\nWhat do we expect for new values?\n\nHow much will blood pressure drop for a new patient with 25 mg?"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#what-is-a-model",
+    "href": "slides/2026_12_17_linear-models-anova.html#what-is-a-model",
+    "title": "Linear models and ANOVA in R",
+    "section": "What is a model?",
+    "text": "What is a model?\n\n\nData = Model + Error\n\n\nModel: describes the main pattern in the data\n\n\n\n\nError: what the model doesn’t explain"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#many-models-are-possible",
+    "href": "slides/2026_12_17_linear-models-anova.html#many-models-are-possible",
+    "title": "Linear models and ANOVA in R",
+    "section": "Many models are possible",
+    "text": "Many models are possible\n\n\n\n\n\n\n\n\n\nWhich one do we choose?\n\nIt depends on our question and what we know about the data\nAs simple as possible, but it should describe the main pattern"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#the-palmerpenguins-dataset",
+    "href": "slides/2026_12_17_linear-models-anova.html#the-palmerpenguins-dataset",
+    "title": "Linear models and ANOVA in R",
+    "section": "The palmerpenguins dataset",
+    "text": "The palmerpenguins dataset\nData on 3 penguin species from Antarctica\n\n# install.packages(\"palmerpenguins\")\nlibrary(palmerpenguins)\n\n\n\n\nR package palmerpenguins, artwork by Allison Horst"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#the-palmerpenguins-dataset-1",
+    "href": "slides/2026_12_17_linear-models-anova.html#the-palmerpenguins-dataset-1",
+    "title": "Linear models and ANOVA in R",
+    "section": "The palmerpenguins dataset",
+    "text": "The palmerpenguins dataset\n\n344 penguins from three species\nEach row is one penguin\n\n\npenguins\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#what-we-do-today",
+    "href": "slides/2026_12_17_linear-models-anova.html#what-we-do-today",
+    "title": "Linear models and ANOVA in R",
+    "section": "What we do today",
+    "text": "What we do today\n\n\nLinear regression\n\nHow much heavier are penguins with longer flippers? continuous predictor\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nANOVA\n\nHow much does body mass differ between species? categorical predictor\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nANCOVA\n\nDoes the relationship differ between species? continuous and categorical predictor"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#how-much-heavier-are-penguins-with-longer-flippers",
+    "href": "slides/2026_12_17_linear-models-anova.html#how-much-heavier-are-penguins-with-longer-flippers",
+    "title": "Linear models and ANOVA in R",
+    "section": "How much heavier are penguins with longer flippers?",
+    "text": "How much heavier are penguins with longer flippers?\n\n\n\nExpectation: Penguins with longer flippers are heavier\nQuestion: By how much, and how certain are we?"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#the-model",
+    "href": "slides/2026_12_17_linear-models-anova.html#the-model",
+    "title": "Linear models and ANOVA in R",
+    "section": "The model",
+    "text": "The model\n\n\nData = Model + Error\n\ny = β0 + β1 · x + ε\n\n\nbody mass = β0 + β1 · flipper length + ε\n\n\n\nβ0: intercept, body mass at a flipper length of 0\nβ1: slope, change in body mass per mm\n\n\n\n\nε: error, what the model doesn’t explain"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#which-model-is-best",
+    "href": "slides/2026_12_17_linear-models-anova.html#which-model-is-best",
+    "title": "Linear models and ANOVA in R",
+    "section": "Which model is best?",
+    "text": "Which model is best?\n\n\nMany lines are possible\n\nSo how do we find the best one?"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#the-best-line-has-the-smallest-residuals",
+    "href": "slides/2026_12_17_linear-models-anova.html#the-best-line-has-the-smallest-residuals",
+    "title": "Linear models and ANOVA in R",
+    "section": "The best line has the smallest residuals",
+    "text": "The best line has the smallest residuals\n\n\nModel residuals\n\\(Y_i - \\hat{Y}_i\\)\n\nResidual sum of squares (RSS)\n\\(RSS = \\sum_{i=1}^{n} (Y_i - \\hat{Y}_i)^2\\)\n\n\nAim of model fitting: Find model coefficients that lead to the lowest RSS (ordinary least squares, OLS)"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#when-can-we-trust-the-results",
+    "href": "slides/2026_12_17_linear-models-anova.html#when-can-we-trust-the-results",
+    "title": "Linear models and ANOVA in R",
+    "section": "When can we trust the results?",
+    "text": "When can we trust the results?\n\n\nThe model makes assumptions:\n\n\nThe relationship is linear\nResiduals are normally distributed around the line\nResidual variance is constant along the line\nNo strong outliers\nObservations are independent (study design!)"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#linear-regression-in-r",
+    "href": "slides/2026_12_17_linear-models-anova.html#linear-regression-in-r",
+    "title": "Linear models and ANOVA in R",
+    "section": "Linear regression in R",
+    "text": "Linear regression in R\n\n\nFit a linear model with lm():\nlm(\n  formula = response ~ predictor,\n  data = data\n)\n\n\nFor our penguins:\n\nm_reg &lt;- lm(\n  body_mass_g ~ flipper_length_mm, \n  data = penguins\n  )"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#check-the-model-assumptions",
+    "href": "slides/2026_12_17_linear-models-anova.html#check-the-model-assumptions",
+    "title": "Linear models and ANOVA in R",
+    "section": "Check the model assumptions",
+    "text": "Check the model assumptions\n\nperformance::check_model(m_reg)"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#check-the-model-assumptions-output",
+    "href": "slides/2026_12_17_linear-models-anova.html#check-the-model-assumptions-output",
+    "title": "Linear models and ANOVA in R",
+    "section": "Check the model assumptions",
+    "text": "Check the model assumptions"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#check-the-model-assumptions-1",
+    "href": "slides/2026_12_17_linear-models-anova.html#check-the-model-assumptions-1",
+    "title": "Linear models and ANOVA in R",
+    "section": "Check the model assumptions",
+    "text": "Check the model assumptions\nLook for clear patterns, not perfection"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#how-big-is-the-effect",
+    "href": "slides/2026_12_17_linear-models-anova.html#how-big-is-the-effect",
+    "title": "Linear models and ANOVA in R",
+    "section": "How big is the effect?",
+    "text": "How big is the effect?\n\nsummary(m_reg)\n\n\nCall:\nlm(formula = body_mass_g ~ flipper_length_mm, data = penguins)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-1058.80  -259.27   -26.88   247.33  1288.69 \n\nCoefficients:\n                   Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)       -5780.831    305.815  -18.90   &lt;2e-16 ***\nflipper_length_mm    49.686      1.518   32.72   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 394.3 on 340 degrees of freedom\n  (2 observations deleted due to missingness)\nMultiple R-squared:  0.759, Adjusted R-squared:  0.7583 \nF-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#summary-table",
+    "href": "slides/2026_12_17_linear-models-anova.html#summary-table",
+    "title": "Linear models and ANOVA in R",
+    "section": "Summary table",
+    "text": "Summary table"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#summary-table-coefficients-and-effect-size",
+    "href": "slides/2026_12_17_linear-models-anova.html#summary-table-coefficients-and-effect-size",
+    "title": "Linear models and ANOVA in R",
+    "section": "Summary table: coefficients and effect size",
+    "text": "Summary table: coefficients and effect size\n\n\nPer mm of flipper length, penguins are on average 49.7 g heavier"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#how-precise-is-the-estimate",
+    "href": "slides/2026_12_17_linear-models-anova.html#how-precise-is-the-estimate",
+    "title": "Linear models and ANOVA in R",
+    "section": "How precise is the estimate?",
+    "text": "How precise is the estimate?\n\n\n\nconfint(m_reg)\n\n                        2.5 %      97.5 %\n(Intercept)       -6382.35801 -5179.30471\nflipper_length_mm    46.69892    52.67221\n\n\n\nOther samples would give slightly different slopes\nThe 95% confidence interval (CI) shows range of plausible values\nSlope: 46.7 to 52.7 g per mm\nIntercept: not interesting here"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#how-much-evidence-is-there-for-an-effect",
+    "href": "slides/2026_12_17_linear-models-anova.html#how-much-evidence-is-there-for-an-effect",
+    "title": "Linear models and ANOVA in R",
+    "section": "How much evidence is there for an effect?",
+    "text": "How much evidence is there for an effect?\nIs the effect we observe real or could it be due to chance?\n\nCompare the null model (mean) with our model (line):"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#how-much-evidence-is-there-for-an-effect-1",
+    "href": "slides/2026_12_17_linear-models-anova.html#how-much-evidence-is-there-for-an-effect-1",
+    "title": "Linear models and ANOVA in R",
+    "section": "How much evidence is there for an effect?",
+    "text": "How much evidence is there for an effect?\n\ncar::Anova(m_reg)\n\nAnova Table (Type II tests)\n\nResponse: body_mass_g\n                     Sum Sq  Df F value    Pr(&gt;F)    \nflipper_length_mm 166452902   1  1070.7 &lt; 2.2e-16 ***\nResiduals          52854796 340                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\nflipper_length_mm: how much the regression reduces the RSS compared to the mean\n\nif p &lt; 0.05, the effect is significant\n\nResiduals: what’s left over, the RSS of our model\n\n\nResult: Strong evidence of an effect (F = 1071, p &lt; 0.001)."
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#how-much-variance-does-the-model-explain",
+    "href": "slides/2026_12_17_linear-models-anova.html#how-much-variance-does-the-model-explain",
+    "title": "Linear models and ANOVA in R",
+    "section": "How much variance does the model explain?",
+    "text": "How much variance does the model explain?\nGet the R-squared values from the summary table (bottom)\n\n\nR² = 1 − RSS(model) / RSS(null model)\n\nshare of variation explained by the model (0 = no better than mean, 1 = perfect fit)\n\nAdjusted R²: corrected for the number of predictors. Use it to compare models.\n\n\nResult: Flipper length explains 76% of the variation in body mass (R² = 0.76)."
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#show-the-model",
+    "href": "slides/2026_12_17_linear-models-anova.html#show-the-model",
+    "title": "Linear models and ANOVA in R",
+    "section": "Show the model",
+    "text": "Show the model\n\n\nggplot(\n  penguins,\n  aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\n\n\n\ngeom_smooth(method = \"lm\") fits the same model and shows the 95% CI of the line"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#plot-the-model-with-augment",
+    "href": "slides/2026_12_17_linear-models-anova.html#plot-the-model-with-augment",
+    "title": "Linear models and ANOVA in R",
+    "section": "Plot the model with augment()",
+    "text": "Plot the model with augment()\nbroom::augment() adds fitted values and confidence intervals to the data:\n\n# step 1: add fitted values and confidence intervals to the data\npred &lt;- augment(m_reg, interval = \"confidence\")\npred\n\n# A tibble: 342 × 11\n   .rownames body_mass_g flipper_length_mm .fitted .lower .upper  .resid    .hat\n   &lt;chr&gt;           &lt;int&gt;             &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n 1 1                3750               181   3212.  3139.  3285.  538.   0.00881\n 2 2                3800               186   3461.  3400.  3522.  339.   0.00622\n 3 3                3250               195   3908.  3862.  3953. -658.   0.00344\n 4 5                3450               193   3808.  3760.  3857. -358.   0.00385\n 5 6                3650               190   3659.  3606.  3713.   -9.43 0.00469\n 6 7                3625               181   3212.  3139.  3285.  413.   0.00881\n 7 8                4675               195   3908.  3862.  3953.  767.   0.00344\n 8 9                3475               193   3808.  3760.  3857. -333.   0.00385\n 9 10               4250               190   3659.  3606.  3713.  591.   0.00469\n10 11               3300               186   3461.  3400.  3522. -161.   0.00622\n# ℹ 332 more rows\n# ℹ 3 more variables: .sigma &lt;dbl&gt;, .cooksd &lt;dbl&gt;, .std.resid &lt;dbl&gt;\n\n\n\n.fitted: fitted values (on the line)\n.lower and .upper: 95% CI of the fitted values"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#plot-the-model-with-augment-1",
+    "href": "slides/2026_12_17_linear-models-anova.html#plot-the-model-with-augment-1",
+    "title": "Linear models and ANOVA in R",
+    "section": "Plot the model with augment()",
+    "text": "Plot the model with augment()\n\n\n# step 2: plot the data, fitted values and CI\nggplot(\n  pred,\n  aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point() +\n  geom_ribbon(\n    aes(ymin = .lower, ymax = .upper),\n    alpha = 0.3\n  ) +\n  geom_line(aes(y = .fitted))\n\n\n\n\n\n\n\n\n\n\nAdvantage: Always plot your model, even if geom_smooth() does not work"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#predict-new-values-with-augment",
+    "href": "slides/2026_12_17_linear-models-anova.html#predict-new-values-with-augment",
+    "title": "Linear models and ANOVA in R",
+    "section": "Predict new values with augment()",
+    "text": "Predict new values with augment()\n\n# Create a new data frame with the values you want to predict\nnew_data &lt;- tibble(flipper_length_mm = 200)\n# predict using the model (convidence interval)\naugment(m_reg, newdata = new_data, interval = \"confidence\")\n\n# A tibble: 1 × 4\n  flipper_length_mm .fitted .lower .upper\n              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1               200   4156.  4114.  4198.\n\n# predict using the model (prediction interval)\naugment(m_reg, newdata = new_data, interval = \"prediction\")\n\n# A tibble: 1 × 4\n  flipper_length_mm .fitted .lower .upper\n              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1               200   4156.  3380.  4933.\n\n\n\nConfidence interval: mean body mass of all penguins with 200 mm flippers\nPrediction interval: body mass of one new penguin. Wider, because it includes individual variation between penguins\nNote: Only predict within the range of the data (172–231 mm)"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#report-the-results",
+    "href": "slides/2026_12_17_linear-models-anova.html#report-the-results",
+    "title": "Linear models and ANOVA in R",
+    "section": "Report the results",
+    "text": "Report the results\n\n\nA result in a paper could look like this:\n\nBody mass increased by 49.7 g per mm of flipper length (95% CI 46.7–52.7; F1,340 = 1070.7, p &lt; 0.001, R² = 0.76).\n\n\n\n\n\n\n\n\n\n\n\n\n\nAlways report the size of the effect and its uncertainty, not only the p-value"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#linear-model-step-by-step",
+    "href": "slides/2026_12_17_linear-models-anova.html#linear-model-step-by-step",
+    "title": "Linear models and ANOVA in R",
+    "section": "Linear model step by step",
+    "text": "Linear model step by step\n\n\n\n\n\n\n\n\nStep\nLinear regression\n\n\n\n\nQuestion\nHow much heavier are penguins with longer flippers?\n\n\nFit model\nlm(body_mass_g ~ flipper_length_mm, data = penguins)\n\n\nCheck assumptions\nperformance::check_model()\n\n\nAnswer\nEffect size? summary(); How precise? confint(); How much evidence? car::Anova(); How much variation? summary() R²\n\n\nShow\ngeom_smooth(method = \"lm\") or augment()\n\n\nReport\nEffect, 95% CI, F, p, R²"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#your-turn",
+    "href": "slides/2026_12_17_linear-models-anova.html#your-turn",
+    "title": "Linear models and ANOVA in R",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 1 (~10 min):\nOpen exercises/01_regression_exercise.R"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#how-much-does-body-mass-differ-between-species",
+    "href": "slides/2026_12_17_linear-models-anova.html#how-much-does-body-mass-differ-between-species",
+    "title": "Linear models and ANOVA in R",
+    "section": "How much does body mass differ between species?",
+    "text": "How much does body mass differ between species?\n\n\n\nExpectation: Gentoo penguins are heavier\nQuestion: Which species differ, and by how much?"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#the-model-1",
+    "href": "slides/2026_12_17_linear-models-anova.html#the-model-1",
+    "title": "Linear models and ANOVA in R",
+    "section": "The model",
+    "text": "The model\n\n\nData = Model + Error\n\nbody mass = β0 + β1 · Chinstrap + β2 · Gentoo + ε\n\n\nChinstrap = 1 for Chinstrap penguins, 0 for all others (same for Gentoo)\n\n\n\nβ0: mean of Adelie, the reference group\n\n\n\n\nβ1, β2: differences to Adelie"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#fit-the-model",
+    "href": "slides/2026_12_17_linear-models-anova.html#fit-the-model",
+    "title": "Linear models and ANOVA in R",
+    "section": "Fit the model",
+    "text": "Fit the model\nFirst check the levels. The first level (Adelie) is the reference group.\n\nlevels(penguins$species)\n\n[1] \"Adelie\"    \"Chinstrap\" \"Gentoo\"   \n\n\n\n\n\n\n\n\nNote\n\n\nIf your groups are coded as numbers (1, 2, 3), convert them to factor() first, otherwise R fits a line instead of comparing groups.\n\n\n\n\nFit the model\n\nm_anova &lt;- lm(body_mass_g ~ species, data = penguins)"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#check-model-assumptions",
+    "href": "slides/2026_12_17_linear-models-anova.html#check-model-assumptions",
+    "title": "Linear models and ANOVA in R",
+    "section": "Check model assumptions",
+    "text": "Check model assumptions\n\nperformance::check_model(m_anova)"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#check-model-assumptions-output",
+    "href": "slides/2026_12_17_linear-models-anova.html#check-model-assumptions-output",
+    "title": "Linear models and ANOVA in R",
+    "section": "Check model assumptions",
+    "text": "Check model assumptions"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#how-big-are-the-differences",
+    "href": "slides/2026_12_17_linear-models-anova.html#how-big-are-the-differences",
+    "title": "Linear models and ANOVA in R",
+    "section": "How big are the differences?",
+    "text": "How big are the differences?\n\nsummary(m_anova)\n\n\nCall:\nlm(formula = body_mass_g ~ species, data = penguins)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-1126.02  -333.09   -33.09   316.91  1223.98 \n\nCoefficients:\n                 Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)       3700.66      37.62   98.37   &lt;2e-16 ***\nspeciesChinstrap    32.43      67.51    0.48    0.631    \nspeciesGentoo     1375.35      56.15   24.50   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 462.3 on 339 degrees of freedom\n  (2 observations deleted due to missingness)\nMultiple R-squared:  0.6697,    Adjusted R-squared:  0.6677 \nF-statistic: 343.6 on 2 and 339 DF,  p-value: &lt; 2.2e-16\n\n\n\n\n(Intercept): mean of Adelie, the reference (3701 g)\nspeciesChinstrap, speciesGentoo: differences to Adelie (+32 g, +1375 g)"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#how-much-evidence-is-there-for-an-effect-2",
+    "href": "slides/2026_12_17_linear-models-anova.html#how-much-evidence-is-there-for-an-effect-2",
+    "title": "Linear models and ANOVA in R",
+    "section": "How much evidence is there for an effect?",
+    "text": "How much evidence is there for an effect?\n\ncar::Anova(m_anova)\n\nAnova Table (Type II tests)\n\nResponse: body_mass_g\n             Sum Sq  Df F value    Pr(&gt;F)    \nspecies   146864214   2  343.63 &lt; 2.2e-16 ***\nResiduals  72443483 339                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\nspecies: does species matter as a whole factor?\nResiduals: error that’s left after accounting for the effect of species\n\n\nResult: Strong evidence that body mass differs between species (F2,339 = 343.6, p &lt; 0.001)."
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#mean-body-mass-per-species",
+    "href": "slides/2026_12_17_linear-models-anova.html#mean-body-mass-per-species",
+    "title": "Linear models and ANOVA in R",
+    "section": "Mean body mass per species",
+    "text": "Mean body mass per species\n\nlibrary(emmeans)\nemm &lt;- emmeans(m_anova, ~species)\nemm\n\n species   emmean   SE  df lower.CL upper.CL\n Adelie      3701 37.6 339     3627     3775\n Chinstrap   3733 56.1 339     3623     3843\n Gentoo      5076 41.7 339     4994     5158\n\nConfidence level used: 0.95 \n\n\n\nemmeans() (package emmeans): mean and 95% CI for each group, from the model"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#which-species-differ",
+    "href": "slides/2026_12_17_linear-models-anova.html#which-species-differ",
+    "title": "Linear models and ANOVA in R",
+    "section": "Which species differ?",
+    "text": "Which species differ?\n\npairs(emm, reverse = TRUE, infer = TRUE)\n\n contrast           estimate   SE  df lower.CL upper.CL t.ratio p.value\n Chinstrap - Adelie     32.4 67.5 339     -127      191   0.480  0.8807\n Gentoo - Adelie      1375.4 56.1 339     1243     1508  24.495 &lt;0.0001\n Gentoo - Chinstrap   1342.9 69.9 339     1178     1507  19.224 &lt;0.0001\n\nConfidence level used: 0.95 \nConf-level adjustment: tukey method for comparing a family of 3 estimates \nP value adjustment: tukey method for comparing a family of 3 estimates \n\n\n\nOne row per pair: difference (how big?), CI (how precise?), p-value (how much evidence?)\nP-values and CIs are Tukey-adjusted for multiple comparisons"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#show-the-model-1",
+    "href": "slides/2026_12_17_linear-models-anova.html#show-the-model-1",
+    "title": "Linear models and ANOVA in R",
+    "section": "Show the model",
+    "text": "Show the model\nUse the results from emmeans() to show the means and 95% CI of the means on top of the data.\n\n\nggplot(penguins, aes(x = species, y = body_mass_g)) +\n  geom_jitter(\n    aes(color = species),\n    width = 0.15,\n    height = 0,\n    alpha = 0.4\n  ) +\n  geom_pointrange(\n    data = as_tibble(emm),\n    aes(y = emmean, ymin = lower.CL, ymax = upper.CL),\n    size = 0.7,\n    linewidth = 1\n  ) +\n  scale_color_viridis_d(end = 0.8) +\n  labs(x = \"Species\", y = \"Body mass (g)\") +\n  theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#report-the-results-1",
+    "href": "slides/2026_12_17_linear-models-anova.html#report-the-results-1",
+    "title": "Linear models and ANOVA in R",
+    "section": "Report the results",
+    "text": "Report the results\n\nBody mass differed between species (F2,339 = 343.6, p &lt; 0.001). Gentoo were heavier than Adelie (1375 g, 95% CI 1243–1508, p &lt; 0.001) and Chinstrap (1343 g, 95% CI 1178–1507, p &lt; 0.001), whereas we found no evidence of a difference between Chinstrap and Adelie (32 g, 95% CI −127 to 191, p = 0.88). P-values and CIs are Tukey-adjusted."
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#linear-model-step-by-step-1",
+    "href": "slides/2026_12_17_linear-models-anova.html#linear-model-step-by-step-1",
+    "title": "Linear models and ANOVA in R",
+    "section": "Linear model step by step",
+    "text": "Linear model step by step\n\n\n\n\n\n\n\n\n\nStep\nLinear regression\nANOVA\n\n\n\n\nQuestion\nHow much heavier are penguins with longer flippers?\nHow much does body mass differ between species?\n\n\nFit model\nlm(body_mass_g ~ flipper_length_mm)\nlm(body_mass_g ~ species)\n\n\nCheck assumptions\nperformance::check_model()\nperformance::check_model()\n\n\nAnswer\nsummary(), confint(), car::Anova()\ncar::Anova(), emmeans(), pairs()\n\n\nShow\ngeom_smooth(method = \"lm\") or augment()\nData + means and 95% CI from emmeans()\n\n\nReport\nEffect, 95% CI, F, p, R²\nF, p, and each difference with 95% CI and p"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#your-turn-1",
+    "href": "slides/2026_12_17_linear-models-anova.html#your-turn-1",
+    "title": "Linear models and ANOVA in R",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 2 (~10 min):\nOpen exercises/02_anova_exercise.R"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#does-the-relationship-differ-between-species",
+    "href": "slides/2026_12_17_linear-models-anova.html#does-the-relationship-differ-between-species",
+    "title": "Linear models and ANOVA in R",
+    "section": "Does the relationship differ between species?",
+    "text": "Does the relationship differ between species?\n\n\n\nExpectation: Body mass increases with flipper length in all species\nQuestion: Is the increase the same for all species?"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#two-possible-models",
+    "href": "slides/2026_12_17_linear-models-anova.html#two-possible-models",
+    "title": "Linear models and ANOVA in R",
+    "section": "Two possible models",
+    "text": "Two possible models\n\n\nWithout interaction: parallel lines\nFlipper length and species have an effect\nbody mass = β0 + β1 · flipper + β2 · Chinstrap + β3 · Gentoo + ε\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWith interaction: different slopes\nEffect of flipper length differs between species\nbody mass = β0 + β1 · flipper + β2 · Chinstrap + β3 · Gentoo + β4 · flipper · Chinstrap + β5 · flipper · Gentoo + ε"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#fit-the-models",
+    "href": "slides/2026_12_17_linear-models-anova.html#fit-the-models",
+    "title": "Linear models and ANOVA in R",
+    "section": "Fit the models",
+    "text": "Fit the models\nWithout interaction\n\nm_add &lt;- lm(\n  body_mass_g ~ flipper_length_mm + species, \n  data = penguins\n)\n\nWith interaction\n\nm_int &lt;- lm(\n  body_mass_g ~ flipper_length_mm + species + flipper_length_mm:species,\n  data = penguins\n)\n\n\nflipper_length_mm:species is the interaction.\n\nShort version: flipper_length_mm * species (R expands it to main effects + all interactions)\n\nNever fit an interaction without its main effects"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#check-the-assumptions",
+    "href": "slides/2026_12_17_linear-models-anova.html#check-the-assumptions",
+    "title": "Linear models and ANOVA in R",
+    "section": "Check the assumptions",
+    "text": "Check the assumptions\n\nperformance::check_model(m_int)\n\n\n\nSame checks as before\nHigh collinearity is expected with an interaction"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#check-the-assumptions-output",
+    "href": "slides/2026_12_17_linear-models-anova.html#check-the-assumptions-output",
+    "title": "Linear models and ANOVA in R",
+    "section": "Check the assumptions",
+    "text": "Check the assumptions"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#how-much-evidence-for-an-interaction",
+    "href": "slides/2026_12_17_linear-models-anova.html#how-much-evidence-for-an-interaction",
+    "title": "Linear models and ANOVA in R",
+    "section": "How much evidence for an interaction?",
+    "text": "How much evidence for an interaction?\n\ncar::Anova(m_int)\n\nAnova Table (Type II tests)\n\nResponse: body_mass_g\n                            Sum Sq  Df F value    Pr(&gt;F)    \nflipper_length_mm         24776495   1 180.398 &lt; 2.2e-16 ***\nspecies                    5187807   2  18.886 1.686e-08 ***\nflipper_length_mm:species  1519564   2   5.532  0.004327 ** \nResiduals                 46147424 336                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\nflipper_length_mm:species: do the slopes differ between species? Compares the models with and without the interaction\nIf the interaction matters, don’t interpret the main effects on their own\n\n\nResult: Evidence that the relationship differs between species (F2,336 = 5.5, p = 0.004)."
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#which-slopes-differ",
+    "href": "slides/2026_12_17_linear-models-anova.html#which-slopes-differ",
+    "title": "Linear models and ANOVA in R",
+    "section": "Which slopes differ?",
+    "text": "Which slopes differ?\n\nslopes &lt;- emtrends(m_int, ~species, var = \"flipper_length_mm\")\nslopes\n\n species   flipper_length_mm.trend   SE  df lower.CL upper.CL\n Adelie                       32.8 4.63 336     23.7     41.9\n Chinstrap                    34.6 6.35 336     22.1     47.1\n Gentoo                       54.6 5.17 336     44.4     64.8\n\nConfidence level used: 0.95 \n\npairs(slopes, reverse = TRUE, infer = TRUE)\n\n contrast           estimate   SE  df lower.CL upper.CL t.ratio p.value\n Chinstrap - Adelie     1.74 7.86 336  -16.752     20.2   0.222  0.9733\n Gentoo - Adelie       21.79 6.94 336    5.450     38.1   3.139  0.0052\n Gentoo - Chinstrap    20.05 8.19 336    0.769     39.3   2.448  0.0394\n\nConfidence level used: 0.95 \nConf-level adjustment: tukey method for comparing a family of 3 estimates \nP value adjustment: tukey method for comparing a family of 3 estimates \n\n\n\nSame as in ANOVA, but with slopes instead of means"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#show-the-model-2",
+    "href": "slides/2026_12_17_linear-models-anova.html#show-the-model-2",
+    "title": "Linear models and ANOVA in R",
+    "section": "Show the model",
+    "text": "Show the model\n\n\nggplot(\n  penguins,\n  aes(\n    x = flipper_length_mm,\n    y = body_mass_g,\n    color = species\n  )\n) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  scale_color_viridis_d(end = 0.8)\n\n\n\n\n\n\n\n\n\n\nWith color = species, geom_smooth() fits one line per species: the interaction model"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#report-the-results-2",
+    "href": "slides/2026_12_17_linear-models-anova.html#report-the-results-2",
+    "title": "Linear models and ANOVA in R",
+    "section": "Report the results",
+    "text": "Report the results\n\nThe relationship between flipper length and body mass differed between species (interaction: F2,336 = 5.5, p = 0.004). The slope was steeper in Gentoo than in Adelie (21.8 g per mm, 95% CI 5.5–38.1, p = 0.005) and Chinstrap (20.1 g per mm, 95% CI 0.8–39.3, p = 0.04), whereas we found no evidence of a difference between Chinstrap and Adelie (1.7 g per mm, 95% CI −16.8 to 20.2, p = 0.97)."
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#little-evidence-for-an-interaction",
+    "href": "slides/2026_12_17_linear-models-anova.html#little-evidence-for-an-interaction",
+    "title": "Linear models and ANOVA in R",
+    "section": "Little evidence for an interaction?",
+    "text": "Little evidence for an interaction?\n\nReport the interaction test\nUse the model without interaction (m_add), same steps as before\n\n\n\n\npred_add &lt;- augment(m_add, interval = \"confidence\")\n\nggplot(\n  pred_add,\n  aes(\n    x = flipper_length_mm,\n    y = body_mass_g,\n    color = species\n  )\n) +\n  geom_point() +\n  geom_line(aes(y = .fitted)) +\n  scale_color_viridis_d(end = 0.8)"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#linear-model-step-by-step-2",
+    "href": "slides/2026_12_17_linear-models-anova.html#linear-model-step-by-step-2",
+    "title": "Linear models and ANOVA in R",
+    "section": "Linear model step by step",
+    "text": "Linear model step by step\n\n\n\n\n\n\n\n\n\n\nStep\nLinear regression\nANOVA\nANCOVA\n\n\n\n\nFit model\n~ flipper_length_mm\n~ species\n~ flipper_length_mm * species\n\n\nCheck\ncheck_model()\ncheck_model()\ncheck_model()\n\n\nAnswer\nsummary(), confint(), car::Anova()\ncar::Anova(), emmeans(), pairs()\ncar::Anova(), emtrends(), pairs()\n\n\nShow\ngeom_smooth() or augment()\nData + means from emmeans()\ngeom_smooth(), or augment() for the additive model\n\n\nReport\nEffect, 95% CI, F, p, R²\nF, p, differences (95% CI, p)\nInteraction F, p, slope differences (95% CI, p)"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#your-turn-2",
+    "href": "slides/2026_12_17_linear-models-anova.html#your-turn-2",
+    "title": "Linear models and ANOVA in R",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 3 (~10 min):\nOpen exercises/03_ancova_exercise.R"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#what-makes-all-these-models-linear",
+    "href": "slides/2026_12_17_linear-models-anova.html#what-makes-all-these-models-linear",
+    "title": "Linear models and ANOVA in R",
+    "section": "What makes all these models linear?",
+    "text": "What makes all these models linear?\n\n\n\n\n\n\n\n\nModel\nFormula\n\n\n\n\nRegression\nbody mass = β0 + β1 · flipper length + ε\n\n\nANOVA\nbody mass = β0 + β1 · Chinstrap + β2 · Gentoo + ε\n\n\nANCOVA\nbody mass = β0 + β1 · flipper length + β2 · Chinstrap + β3 · Gentoo + ε\n\n\n\n\n\n\nA linear combination: each predictor is multiplied with a parameter, and everything is added up\n\n\nNot linear would e.g. be:\n\n\nA parameter in the exponent (e.g. exponential decay): y = β0 · exp(β1 · x) + ε\nA parameter in the denominator (e.g. saturation curves): y = β0 · x / (β1 + x) + ε"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#correlation-is-not-causation",
+    "href": "slides/2026_12_17_linear-models-anova.html#correlation-is-not-causation",
+    "title": "Linear models and ANOVA in R",
+    "section": "Correlation is not causation",
+    "text": "Correlation is not causation\n\n\n\nWe often use causal langauge (“A causes B”, “A has an effect on B”) but it’s not always a cause\nChoose your words carefully: “association” or “is related to” instead of “causes” might be more appropriate\nControlled experiments make causal claims easier than field observations\n\n\n\n\n\nImage: 9gag"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#choose-your-predictors-carefully",
+    "href": "slides/2026_12_17_linear-models-anova.html#choose-your-predictors-carefully",
+    "title": "Linear models and ANOVA in R",
+    "section": "Choose your predictors carefully",
+    "text": "Choose your predictors carefully\n\n\n\n\n\n\n\n\n\n\nLeaving out a predictor can change the answer a lot\nChoose the model structure and predictors from your research question and what you know about the data"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#the-p-value-is-not-everything",
+    "href": "slides/2026_12_17_linear-models-anova.html#the-p-value-is-not-everything",
+    "title": "Linear models and ANOVA in R",
+    "section": "The p-value is not everything",
+    "text": "The p-value is not everything\n\nReport the effect size and its CI, not only the p-value\nSignificant does not mean relevant\nNot significant does not mean no effect"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#where-next-more-complex-models",
+    "href": "slides/2026_12_17_linear-models-anova.html#where-next-more-complex-models",
+    "title": "Linear models and ANOVA in R",
+    "section": "Where next: more complex models",
+    "text": "Where next: more complex models\nYou can combine as many predictors in your models as your data allows.\n\n# two-way ANOVA\nlm(body_mass_g ~ species + sex + species:sex, data = penguins)\n\n# even more predictors\nlm(\n  body_mass_g ~ flipper_length_mm + bill_length_mm + species + sex,\n  data = penguins\n)\n\n\nThe workflow stays the same: fit, check, answer, show, report\nCoefficients are harder to interpret: use emmeans(), emtrends() and plots"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#when-model-assumptions-are-violated",
+    "href": "slides/2026_12_17_linear-models-anova.html#when-model-assumptions-are-violated",
+    "title": "Linear models and ANOVA in R",
+    "section": "When model assumptions are violated",
+    "text": "When model assumptions are violated\n\nExponential relationships: you can often log-transform the response and use lm()\nData not independent (repeated measures, several measurements per animal or site) → mixed models with random effects (lme4)\nCounts, proportions, yes/no → GLM (glm()): a different distribution instead of the normal distribution"
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#resources",
+    "href": "slides/2026_12_17_linear-models-anova.html#resources",
+    "title": "Linear models and ANOVA in R",
+    "section": "Resources",
+    "text": "Resources\n\nR packages: palmerpenguins, performance, car, emmeans, broom\nBook: Statistical Modelling: Lecture Notes for From Data to Evidence by Benjamin T. Martin\n\n\nThanks to Felix May and Felix Nößler for sharing their course materials."
+  },
+  {
+    "objectID": "slides/2026_12_17_linear-models-anova.html#next-lectureworkshop",
+    "href": "slides/2026_12_17_linear-models-anova.html#next-lectureworkshop",
+    "title": "Linear models and ANOVA in R",
+    "section": "Next lecture/workshop",
+    "text": "Next lecture/workshop\nTopic: tba\n\n📅 21.01.2027 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+  },
+  {
     "objectID": "slides/2026_07_16_code-sharing.html#what-is-this-lecture-series",
     "href": "slides/2026_07_16_code-sharing.html#what-is-this-lecture-series",
     "title": "Good practices for sharing research code",
@@ -2468,7 +2930,7 @@
     "href": "slides/2023_05_11_quarto.html#next-lecture",
     "title": "Reproducible documents with Quarto",
     "section": "Next lecture",
-    "text": "Next lecture\n\nVersion control with Git\nGit is an essential skill if you use any programming language. It allows you to keep track of changes over time, collaborate with others, and maintain a clear and organized file structure. This can save time, improve research efficiency, and makes it easy to publish your code.\n\n. . .\n📅 15th June 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+    "text": "Next lecture\n\nVersion control with Git\nGit is an essential skill if you use any programming language. It allows you to keep track of changes over time, collaborate with others, and maintain a clear and organized file structure. This can save time, improve research efficiency, and makes it easy to publish your code.\n\n\n📅 15th June 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
   },
   {
     "objectID": "slides/2023_05_11_quarto.html#thank-you-for-your-attention",
@@ -2476,6 +2938,76 @@
     "title": "Reproducible documents with Quarto",
     "section": "Thank you for your attention :)",
     "text": "Thank you for your attention :)\nQuestions?\n\n\n “Artwork from”Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by Allison Horst.”"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html",
+    "href": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html",
+    "title": "Markdown cheatsheet",
+    "section": "",
+    "text": "Below, you find an overview of basic and advanced Markdown formatting styles you can use in Obsidian.\nYou don’t need to know all of this. Use this page as a reference and come back to it when needed."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#basics",
+    "href": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#basics",
+    "title": "Markdown cheatsheet",
+    "section": "Basics",
+    "text": "Basics\n\nHeaders\n# Heading 1\n## Heading 2\n### Heading 3\n#### Heading 4\n##### Heading 5\n\n\nEmphasis\n**Bold text**\n\n*Italic text*\n\n***Bold and italic text***\n\n==Highlighted text==\nHotkeys: Ctrl/Cmd + B for bold and Ctrl/Cmd + I for italic.\n\n\nLists\n- this is\n- an unordered\n- list\n1. this is\n2. an ordered\n3. list\n\n\nTask lists (checkboxes)\n- [ ] An open task\n- [x] A completed task\nHotkey: Ctrl/Cmd + L turns a line into a task.\n\n\nExternal links\n[A link to Google](https://google.com)\nHotkey: Ctrl/Cmd + K.\nYou can embed links by putting an ! before the link. This works for some web content but is especially helpful for videos, e.g.\n![](https://www.youtube.com/watch?v=E6ySG7xYgjY)\n\n\nInternal links\nInternal links are links that link to other files in your Obsidian vault. As soon as you start typing [[]], Obsidian will suggest files you can link to.\n[[Markdown cheatsheet]]\n[[Markdown cheatsheet|A different display name for the link]]\nAlso here, you can add ! to embed the content. This is useful to embed PDFs, images, but also other note content, e.g.\n![[Markdown cheatsheet]]\nYou can also link to specific sections of another file using #:\n[[Markdown cheatsheet#Headers|Check the header section]]"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#advanced",
+    "href": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#advanced",
+    "title": "Markdown cheatsheet",
+    "section": "Advanced",
+    "text": "Advanced\n\nFormulas\nYou can use the LaTeX syntax for formulas. Use $ to enclose inline equations and $$ for blocked equations.\nThis $\\pi = \\pi$ is an inline equation\n$$\n\\frac{\\pi}{2} = \\frac{\\pi}{2}\n$$\n\n\nHorizontal lines\nI add a horizontal line\n\n---\n\nbetween these two paragraphs\n\n\nQuotes\n&gt; A wise woman said this thing\n\n\nFootnotes\nThis is a sentence with a footnote. [^1]\n[^1]: This is the footnote text\n\n\nCallouts\nThere are different types of callout boxes, the default is a note:\n&gt; [!note]\n&gt; Lorem ipsum dolor sit amet\nYou can change the title:\n&gt; [!note] This has a custom title\n&gt; Lorem ipsum dolor sit amet\nYou can make the callout foldable by adding a + (unfolded by default) or - (folded by default) after the type:\n&gt; [!note]- This has a folded callout\n&gt; Lorem ipsum dolor sit amet\nDepending on what you put in the [], the callout will look differently. Other types are:\n&gt; [!abstract]\n&gt; [!info]\n&gt; [!todo]\n&gt; [!tip]\n&gt; [!success]\n&gt; [!help]\n&gt; [!warning]\n&gt; [!failure]\n&gt; [!danger]\n&gt; [!bug]\n&gt; [!example]\n&gt; [!quote]\n\n\nInline code\nThis `word` is formatted like code because of the backticks.\n\n\nCode blocks\nCode blocks start and end with 3 backticks. After the 3 backticks in the first line, add the language (e.g. R, python, cpp, …)\n```R\n# This is an R code block\nlibrary(tidyverse)\nmy_data &lt;- read_csv(\"my_data.csv\")\n```\n\nBack to Exercise 1 · Back to the workshop page"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "",
+    "text": "In this exercise, you will set up a simple daily notes workflow that you can keep using after the workshop."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-1-create-the-required-folders",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-1-create-the-required-folders",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Step 1: Create the required folders",
+    "text": "Step 1: Create the required folders\nCreate the following folders in your vault:\n\nA folder for your daily notes (for example: log or daily)\nA folder for templates (templates or zzz_templates if you want it at the bottom of your folder list)"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-2-create-a-daily-note-template",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-2-create-a-daily-note-template",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Step 2: Create a daily note template",
+    "text": "Step 2: Create a daily note template\n\nIn the templates folder, create a new note called daily_template\nAdd the following basic content to the file (use the copy button in the top-right corner)\n\n# {{date}}\n\n## Tasks\n- [ ] Check mails\n\n## Log\nThe value {{date}} will always be replaced with the date of note creation."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-3-configure-daily-notes",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-3-configure-daily-notes",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Step 3: Configure daily notes",
+    "text": "Step 3: Configure daily notes\nNow we tell Obsidian to use the template for each new daily note:\n\nOpen Settings (gear icon bottom left)\nGo to Daily notes (under “Core plugins”)\nSet:\n\nNew file location → your daily notes folder (log / daily or whatever you called it)\nTemplate file location → templates/daily_template or zzz_templates/daily_template depending on your folder name\n\n\n\n\n\n\n\n\nNoteI don’t see the Daily notes plugin\n\n\n\n\n\nDouble check that the plugin is enabled. Go to Settings → Core plugins, scroll through the list and check if the Daily notes are turned on."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-4-install-the-calendar-plugin",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-4-install-the-calendar-plugin",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Step 4: Install the Calendar plugin",
+    "text": "Step 4: Install the Calendar plugin\nThe Calendar plugin makes it easier to create and navigate daily notes.\n\nOpen Settings → Community plugins\nEnable community plugins (if not already enabled)\nClick Browse\nSearch for Calendar (it should be on the very top of the list, created by Liam Cain)\nInstall and enable it\n\nThe Calendar should now appear in the right sidebar (if not, unfold the sidebar in the top right)."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-5-create-2-3-daily-notes",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-5-create-2-3-daily-notes",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Step 5: Create 2-3 daily notes",
+    "text": "Step 5: Create 2-3 daily notes\nNow let’s test your setup:\n\nUse the Calendar to create today’s daily note\nAdd at least one task (checkbox) for today\n\nThen:\n\nCreate daily files for other days of the upcoming week\nAdd some tasks or other things that are coming up to the respective daily notes (can be real or invented tasks/meetings)"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#optional-tasks-if-you-finish-early",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 2: Set up your daily notes workflow",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\nPick the one you find most interesting. You don’t need to do all of them.\n\nCustomize your daily template\nAdd a section or a recurring task that fits your work, e.g. ## Meetings, ## Reading or - [ ] Check lab book. Then create a new daily note to test it.\n\n\nOpen today’s note with a hotkey\n\nOpen Settings → Hotkeys\nSearch for “Open today’s daily note” and set a hotkey you like (Obsidian shows you if it is already in use)\n\n\nNext: Exercise 3: The Tasks plugin · Back to the workshop page"
   },
   {
     "objectID": "sessions/additional_material/20_code-sharing/checklist.html",
@@ -2489,42 +3021,42 @@
     "href": "sessions/additional_material/20_code-sharing/checklist.html#structure-orientation",
     "title": "Code sharing checklist",
     "section": "Structure & orientation",
-    "text": "Structure & orientation\n\nSeparate your files into folders Most importantly: Separate data, code, and output. Raw data stays read-only in its own folder; your scripts produce the cleaned data and the outputs.\n\n\n\n\n\n\n\nDetails\n\n\n\n\n\nThere is no single “right” structure, the important thing is that it’s clear and consistent. A simple example:\ntemperature-resistance/\n├── data/\n│   ├── raw/      &lt;- read-only\n│   └── clean/    &lt;- made by the code\n├── analysis/\n└── output/\nYou can also look at the structure of other repositories in your field or check out some templates like rrtools (R) or Cookiecutter Data Science (Python).\n\n\n\n\nGive files informative names File names should reveal the content, have no spaces or special characters, with left-padded numbers or dates (YYYY-MM-DD) as a prefix.\n\n\n\n\n\n\n\nExamples\n\n\n\n\n\n\n\n\nAvoid\nPrefer\n\n\n\n\nanalysis final.R\n02_fit-models.R\n\n\ndata.csv\n2024-03-11_growth-assay.csv\n\n\nRplot01.png\nlinear-model-fit.png\n\n\n\nMore: Jenny Bryan, How to name files.\n\n\n\n\nWrite a thorough plain-text README The entry point to your project, in plain text or Markdown.\n\n\n\n\n\n\n\nWhat a README should contain\n\n\n\n\n\nA readme should answer at least the following questions:\n\nWhat the project is, and which paper it belongs to\nHow to run it: install steps and the order to run the scripts\nHow files are structured: what is in each folder\nHow to cite it, and who to ask when it breaks\n\nThis is a minimal template in Markdown format:\n# Project title\n\nCode and data for &lt;paper citation&gt;, doi:...\n\nCite as: &lt;code citation&gt;, doi:...\n\nContact: &lt;name&gt; (&lt;email&gt;)\n\n## How to run\n1. Restore the environment (renv / uv)\n2. Run main.R / main.py\n\n## Project structure\n\nDescribe the folders and files"
+    "text": "Structure & orientation\n\nSeparate your files into folders Most importantly: Separate data, code, and output. Raw data stays read-only in its own folder; your scripts produce the cleaned data and the outputs.\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\nThere is no single “right” structure, the important thing is that it’s clear and consistent. A simple example:\ntemperature-resistance/\n├── data/\n│   ├── raw/      &lt;- read-only\n│   └── clean/    &lt;- made by the code\n├── analysis/\n└── output/\nYou can also look at the structure of other repositories in your field or check out some templates like rrtools (R) or Cookiecutter Data Science (Python).\n\n\n\n\nGive files informative names File names should reveal the content, have no spaces or special characters, with left-padded numbers or dates (YYYY-MM-DD) as a prefix.\n\n\n\n\n\n\n\nNoteExamples\n\n\n\n\n\n\n\n\nAvoid\nPrefer\n\n\n\n\nanalysis final.R\n02_fit-models.R\n\n\ndata.csv\n2024-03-11_growth-assay.csv\n\n\nRplot01.png\nlinear-model-fit.png\n\n\n\nMore: Jenny Bryan, How to name files.\n\n\n\n\nWrite a thorough plain-text README The entry point to your project, in plain text or Markdown.\n\n\n\n\n\n\n\nNoteWhat a README should contain\n\n\n\n\n\nA readme should answer at least the following questions:\n\nWhat the project is, and which paper it belongs to\nHow to run it: install steps and the order to run the scripts\nHow files are structured: what is in each folder\nHow to cite it, and who to ask when it breaks\n\nThis is a minimal template in Markdown format:\n# Project title\n\nCode and data for &lt;paper citation&gt;, doi:...\n\nCite as: &lt;code citation&gt;, doi:...\n\nContact: &lt;name&gt; (&lt;email&gt;)\n\n## How to run\n1. Restore the environment (renv / uv)\n2. Run main.R / main.py\n\n## Project structure\n\nDescribe the folders and files"
   },
   {
     "objectID": "sessions/additional_material/20_code-sharing/checklist.html#running-the-code",
     "href": "sessions/additional_material/20_code-sharing/checklist.html#running-the-code",
     "title": "Code sharing checklist",
     "section": "Running the code",
-    "text": "Running the code\n\nMake the run order obvious Number your scripts, or add a main.R / main.py that runs everything in order.\n\n\n\n\n\n\n\nOptions to show the run order\n\n\n\n\n\n\nNumbered scripts (01_, 02_, …) plus a “How to run” section in the README\nA main script that calls all other scripts in order (put it at the project root). This will be the only script that users have to open.\nA workflow tool that reruns only what changed: targets (R), Snakemake (any language)\n\nFor most projects, option 2 is a pragmatic choice.\n\n\n\n\nRecord dependencies and versions Include the language version and a list of all packages/libraries and software your code depends on. Use a lockfile so others can recreate the environment.\n\n\n\n\n\n\n\nTools to record dependencies\n\n\n\n\n\n\nR: renv (init / snapshot / restore)\nPython: uv (uv add, uv sync)\n\nDon’t forget to state the language version too (e.g. R 4.4.1, Python 3.12).\n\n\n\n\nUse paths relative to the project root No absolute paths, no setwd()\n\n\n\n\n\n\n\nHow\n\n\n\n\n\nRun from the project root and build paths with here (R) or pathlib / pyprojroot (Python). Avoid setwd(\"C:/Users/...\").\n\n\n\n\nSet a seed for anything random Sampling, bootstrap, permutation, simulations, etc. all reproduce only with a fixed seed.\n\n\n\n\n\n\n\nHow\n\n\n\n\n\nset.seed(42) (R), or rng = np.random.default_rng(42) (Python, preferred over np.random.seed())."
+    "text": "Running the code\n\nMake the run order obvious Number your scripts, or add a main.R / main.py that runs everything in order.\n\n\n\n\n\n\n\nNoteOptions to show the run order\n\n\n\n\n\n\nNumbered scripts (01_, 02_, …) plus a “How to run” section in the README\nA main script that calls all other scripts in order (put it at the project root). This will be the only script that users have to open.\nA workflow tool that reruns only what changed: targets (R), Snakemake (any language)\n\nFor most projects, option 2 is a pragmatic choice.\n\n\n\n\nRecord dependencies and versions Include the language version and a list of all packages/libraries and software your code depends on. Use a lockfile so others can recreate the environment.\n\n\n\n\n\n\n\nNoteTools to record dependencies\n\n\n\n\n\n\nR: renv (init / snapshot / restore)\nPython: uv (uv add, uv sync)\n\nDon’t forget to state the language version too (e.g. R 4.4.1, Python 3.12).\n\n\n\n\nUse paths relative to the project root No absolute paths, no setwd()\n\n\n\n\n\n\n\nNoteHow\n\n\n\n\n\nRun from the project root and build paths with here (R) or pathlib / pyprojroot (Python). Avoid setwd(\"C:/Users/...\").\n\n\n\n\nSet a seed for anything random Sampling, bootstrap, permutation, simulations, etc. all reproduce only with a fixed seed.\n\n\n\n\n\n\n\nNoteHow\n\n\n\n\n\nset.seed(42) (R), or rng = np.random.default_rng(42) (Python, preferred over np.random.seed())."
   },
   {
     "objectID": "sessions/additional_material/20_code-sharing/checklist.html#data",
     "href": "sessions/additional_material/20_code-sharing/checklist.html#data",
     "title": "Code sharing checklist",
     "section": "Data",
-    "text": "Data\n\nState the data situation in the README Open, restricted, or synthetic: say which, and how to get the real data if it is not included.\n\n\n\n\n\n\n\nThree honest paths\n\n\n\n\n\n\nToo big: link to a data repository; include a small sample so the pipeline runs\nRestricted: say how to request access; keep a codebook so the code can be reviewed\nClosed: ship synthetic data plus the code that generated it\n\n\n\n\n\nAdd a data README Document every variable: name, meaning, unit or coding, and missing-value codes.\n\n\n\n\n\n\n\nWhere and how\n\n\n\n\n\nOne data/README.md for the data folder, one table per file:\n\n\n\nVariable\nMeaning\nUnit / coding\n\n\n\n\ntemp\nIncubation temperature\n°C\n\n\nresistant\nGrew on antibiotic plate\n0 = no, 1 = yes\n\n\n\n\n\n\n\nUse open, non-proprietary formats .csv, .tsv, .txt, .json, .parquet rather than .xlsx, .sav, .dta."
+    "text": "Data\n\nState the data situation in the README Open, restricted, or synthetic: say which, and how to get the real data if it is not included.\n\n\n\n\n\n\n\nNoteThree honest paths\n\n\n\n\n\n\nToo big: link to a data repository; include a small sample so the pipeline runs\nRestricted: say how to request access; keep a codebook so the code can be reviewed\nClosed: ship synthetic data plus the code that generated it\n\n\n\n\n\nAdd a data README Document every variable: name, meaning, unit or coding, and missing-value codes.\n\n\n\n\n\n\n\nNoteWhere and how\n\n\n\n\n\nOne data/README.md for the data folder, one table per file:\n\n\n\nVariable\nMeaning\nUnit / coding\n\n\n\n\ntemp\nIncubation temperature\n°C\n\n\nresistant\nGrew on antibiotic plate\n0 = no, 1 = yes\n\n\n\n\n\n\n\nUse open, non-proprietary formats .csv, .tsv, .txt, .json, .parquet rather than .xlsx, .sav, .dta."
   },
   {
     "objectID": "sessions/additional_material/20_code-sharing/checklist.html#license-citation",
     "href": "sessions/additional_material/20_code-sharing/checklist.html#license-citation",
     "title": "Code sharing checklist",
     "section": "License & citation",
-    "text": "License & citation\n\nAdd a license Good standards are CC0/CC-BY for data and MIT/GPL for code\n\n\n\n\n\n\n\nWhich license to choose?\n\n\n\n\n\n\nCode: MIT (permissive) or GPL v3 (copyleft)\nData: CC0 (public-domain waiver) or CC BY (attribution required)\n\nAdd a LICENSE file at the project root, and use choosealicense.com to copy-paste the text in there. Note that some licenses (e.g. MIT) require you to add a copyright line with your name and the year.\nIf you need separate licenses for code and data, put the data license in data/LICENSE and the code license in LICENSE. Then add a line in the README that explains which license applies to which files, e.g.:\nAll files in `/data` are licensed under CC-BY-4.0, all other files are licensed under MIT. See `data/LICENSE` and `LICENSE` for details.\n\n\n\n\nMake the project citable Add a “How to cite” line in the README, ideally with a CITATION.cff.\n\n\n\n\n\n\n\nHow\n\n\n\n\n\nYou can just add a simple “How to cite” section in the README.\nBut a nice touch is:\nBuild a CITATION.cff with cffinit and add this file to your project root. GitHub then shows a “Cite this repository” button, and Zenodo reads it when archiving.\nDon’t forget to add your ORCID, this way Zenodo can link your code to your other research outputs."
+    "text": "License & citation\n\nAdd a license Good standards are CC0/CC-BY for data and MIT/GPL for code\n\n\n\n\n\n\n\nNoteWhich license to choose?\n\n\n\n\n\n\nCode: MIT (permissive) or GPL v3 (copyleft)\nData: CC0 (public-domain waiver) or CC BY (attribution required)\n\nAdd a LICENSE file at the project root, and use choosealicense.com to copy-paste the text in there. Note that some licenses (e.g. MIT) require you to add a copyright line with your name and the year.\nIf you need separate licenses for code and data, put the data license in data/LICENSE and the code license in LICENSE. Then add a line in the README that explains which license applies to which files, e.g.:\nAll files in `/data` are licensed under CC-BY-4.0, all other files are licensed under MIT. See `data/LICENSE` and `LICENSE` for details.\n\n\n\n\nMake the project citable Add a “How to cite” line in the README, ideally with a CITATION.cff.\n\n\n\n\n\n\n\nNoteHow\n\n\n\n\n\nYou can just add a simple “How to cite” section in the README.\nBut a nice touch is:\nBuild a CITATION.cff with cffinit and add this file to your project root. GitHub then shows a “Cite this repository” button, and Zenodo reads it when archiving.\nDon’t forget to add your ORCID, this way Zenodo can link your code to your other research outputs."
   },
   {
     "objectID": "sessions/additional_material/20_code-sharing/checklist.html#before-you-publish",
     "href": "sessions/additional_material/20_code-sharing/checklist.html#before-you-publish",
     "title": "Code sharing checklist",
     "section": "Before you publish",
-    "text": "Before you publish\nSome last checks before you publish your repository.\n\nRemove all junk files Check if there are any file that should be deleted before publishing\n\n\n\n\n\n\n\nWhat to look for\n\n\n\n\n\n\nJunk: .DS_Store, .Rhistory, __pycache__/, … (a .gitignore keeps them out by default)\nOld scripts or data files that are no longer needed\nSecrets / sensitive data: API keys, passwords, .env, unpublished or personal/patient data\n\n\n\n\n\nRun the project on another machine Practical reproducibility check: Send it to a colleague or another computer and try to run it from start to finish"
+    "text": "Before you publish\nSome last checks before you publish your repository.\n\nRemove all junk files Check if there are any file that should be deleted before publishing\n\n\n\n\n\n\n\nNoteWhat to look for\n\n\n\n\n\n\nJunk: .DS_Store, .Rhistory, __pycache__/, … (a .gitignore keeps them out by default)\nOld scripts or data files that are no longer needed\nSecrets / sensitive data: API keys, passwords, .env, unpublished or personal/patient data\n\n\n\n\n\nRun the project on another machine Practical reproducibility check: Send it to a colleague or another computer and try to run it from start to finish"
   },
   {
     "objectID": "sessions/additional_material/20_code-sharing/checklist.html#archive-publish",
     "href": "sessions/additional_material/20_code-sharing/checklist.html#archive-publish",
     "title": "Code sharing checklist",
     "section": "Archive & publish",
-    "text": "Archive & publish\n\nArchive a version and get a DOI GitHub is not an archive. Release a version and archive it to get a citable DOI.\n\n\n\n\n\n\n\nHow and where\n\n\n\n\n\nCommon archives are Zenodo, Dryad, and Figshare. Upload your project and get a DOI.\nFor GitHub Users: You can archive a specific version of a project on Zenodo directly from GitHub: GitHub → Zenodo guide. This is a very popular combination, because it allows you to keep your project on GitHub and still get a DOI for a specific version.\n\n\n\n\nPut the DOI in the README and the manuscript So readers can find the exact version behind the paper."
+    "text": "Archive & publish\n\nArchive a version and get a DOI GitHub is not an archive. Release a version and archive it to get a citable DOI.\n\n\n\n\n\n\n\nNoteHow and where\n\n\n\n\n\nCommon archives are Zenodo, Dryad, and Figshare. Upload your project and get a DOI.\nFor GitHub Users: You can archive a specific version of a project on Zenodo directly from GitHub: GitHub → Zenodo guide. This is a very popular combination, because it allows you to keep your project on GitHub and still get a DOI for a specific version.\n\n\n\n\nPut the DOI in the README and the manuscript So readers can find the exact version behind the paper."
   },
   {
     "objectID": "sessions/additional_material/17_quarto-website/publish-quarto-website.html",
@@ -2552,28 +3084,28 @@
     "href": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-2-initialize-a-git-repository",
     "title": "Publish a Quarto website on GitHub Pages",
     "section": "Step 2: Initialize a Git repository",
-    "text": "Step 2: Initialize a Git repository\nIf your project is already a Git repository, skip to Step 3.\nOpen GitHub Desktop and go to File &gt; Add local repository.\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nBrowse to your website project folder using the Choose… button. GitHub Desktop will show a warning that the folder is not a Git repository yet. Click the create a repository link.\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nIn the dialog that opens:\n\nDouble-check that the Local path at the bottom points to your website project folder\nOptionally select a License (e.g. MIT License)\nClick Create repository\n\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nYour project is now a local Git repository."
+    "text": "Step 2: Initialize a Git repository\nIf your project is already a Git repository, skip to Step 3.\nOpen GitHub Desktop and go to File &gt; Add local repository.\n\n\n\n\n\n\nTipScreenshot\n\n\n\n\n\n\n\n\n\nBrowse to your website project folder using the Choose… button. GitHub Desktop will show a warning that the folder is not a Git repository yet. Click the create a repository link.\n\n\n\n\n\n\nTipScreenshot\n\n\n\n\n\n\n\n\n\nIn the dialog that opens:\n\nDouble-check that the Local path at the bottom points to your website project folder\nOptionally select a License (e.g. MIT License)\nClick Create repository\n\n\n\n\n\n\n\nTipScreenshot\n\n\n\n\n\n\n\n\n\nYour project is now a local Git repository."
   },
   {
     "objectID": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-3-publish-to-github",
     "href": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-3-publish-to-github",
     "title": "Publish a Quarto website on GitHub Pages",
     "section": "Step 3: Publish to GitHub",
-    "text": "Step 3: Publish to GitHub\nIf your project is already on GitHub, skip to Step 4.\nBack in GitHub Desktop, make sure the correct repository is selected in the top left. Then click the Publish repository button.\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nIn the dialog, choose a name for your repository and decide whether it should be public or private.\n\n\n\n\n\n\nGitHub Pages and private repositories\n\n\n\nOn a free GitHub account, GitHub Pages only works with public repositories. If you want to keep your repository private and still use GitHub Pages, you need a paid GitHub plan (GitHub Pro or GitHub Team). For most use cases, a public repository works just fine.\n\n\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nClick Publish repository. Your project is now on GitHub. To verify, go to Repository &gt; View on GitHub in the menu bar.\n\n\n\n\n\n\nScreenshot"
+    "text": "Step 3: Publish to GitHub\nIf your project is already on GitHub, skip to Step 4.\nBack in GitHub Desktop, make sure the correct repository is selected in the top left. Then click the Publish repository button.\n\n\n\n\n\n\nTipScreenshot\n\n\n\n\n\n\n\n\n\nIn the dialog, choose a name for your repository and decide whether it should be public or private.\n\n\n\n\n\n\nNoteGitHub Pages and private repositories\n\n\n\nOn a free GitHub account, GitHub Pages only works with public repositories. If you want to keep your repository private and still use GitHub Pages, you need a paid GitHub plan (GitHub Pro or GitHub Team). For most use cases, a public repository works just fine.\n\n\n\n\n\n\n\n\nTipScreenshot\n\n\n\n\n\n\n\n\n\nClick Publish repository. Your project is now on GitHub. To verify, go to Repository &gt; View on GitHub in the menu bar.\n\n\n\n\n\n\nTipScreenshot"
   },
   {
     "objectID": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-4-enable-github-pages",
     "href": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-4-enable-github-pages",
     "title": "Publish a Quarto website on GitHub Pages",
     "section": "Step 4: Enable GitHub Pages",
-    "text": "Step 4: Enable GitHub Pages\nOpen your repository on GitHub in your browser. Check that the docs folder is there, then click on Settings in the top menu bar.\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nIn the left sidebar, click Pages. Under “Build and deployment”, configure the following:\n\nSet Branch to main\nSet the folder to /docs\nClick Save\n\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nGitHub will now build and deploy your site. Navigate back to the main page of your repository by clicking the repository name at the top.\nAfter a minute or two, your website will be live at:\nhttps://yourusername.github.io/your-repo-name/\nYou can also find the link in the Deployments section in the right sidebar of your repository page.\n\n\n\n\n\n\nScreenshot"
+    "text": "Step 4: Enable GitHub Pages\nOpen your repository on GitHub in your browser. Check that the docs folder is there, then click on Settings in the top menu bar.\n\n\n\n\n\n\nTipScreenshot\n\n\n\n\n\n\n\n\n\nIn the left sidebar, click Pages. Under “Build and deployment”, configure the following:\n\nSet Branch to main\nSet the folder to /docs\nClick Save\n\n\n\n\n\n\n\nTipScreenshot\n\n\n\n\n\n\n\n\n\nGitHub will now build and deploy your site. Navigate back to the main page of your repository by clicking the repository name at the top.\nAfter a minute or two, your website will be live at:\nhttps://yourusername.github.io/your-repo-name/\nYou can also find the link in the Deployments section in the right sidebar of your repository page.\n\n\n\n\n\n\nTipScreenshot"
   },
   {
     "objectID": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-5-update-your-website",
     "href": "sessions/additional_material/17_quarto-website/publish-quarto-website.html#step-5-update-your-website",
     "title": "Publish a Quarto website on GitHub Pages",
     "section": "Step 5: Update your website",
-    "text": "Step 5: Update your website\nWhenever you make changes to your website, the workflow is:\n\nEdit your .qmd files locally\nRe-render the website in Quarto\nOpen GitHub Desktop - you should see the changed files in the Changes tab\nWrite a short summary describing what you changed and click Commit to main\n\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\n\nClick Push origin to push the changes to GitHub\n\n\n\n\n\n\n\nScreenshot\n\n\n\n\n\n\n\n\n\nGitHub Pages will automatically pick up the new files and update your website. This usually takes 1-2 minutes."
+    "text": "Step 5: Update your website\nWhenever you make changes to your website, the workflow is:\n\nEdit your .qmd files locally\nRe-render the website in Quarto\nOpen GitHub Desktop - you should see the changed files in the Changes tab\nWrite a short summary describing what you changed and click Commit to main\n\n\n\n\n\n\n\nTipScreenshot\n\n\n\n\n\n\n\n\n\n\nClick Push origin to push the changes to GitHub\n\n\n\n\n\n\n\nTipScreenshot\n\n\n\n\n\n\n\n\n\nGitHub Pages will automatically pick up the new files and update your website. This usually takes 1-2 minutes."
   },
   {
     "objectID": "sessions/additional_material/02_quarto/penguins_paper.html",
@@ -2587,7 +3119,7 @@
     "href": "sessions/additional_material/02_quarto/penguins_paper.html#the-data",
     "title": "The penguins of Antarctica",
     "section": "2.1 The data",
-    "text": "2.1 The data\nThe data was collected on islands in Antarctica and published by Gorman, Williams, and Fraser (2014). You can find the original paper with the title “Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis)” (Gorman, Williams, and Fraser 2014) in PLoS ONE1\nThe data is published via the palmerpenguins R package (Horst, Hill, and Gorman 2020) which you can find on this website.\nThe data contains (among others) the following measurements:\n\nbill length\nbill depth\nbody mass\nsex\n\nmale\nfemale"
+    "text": "2.1 The data\nThe data was collected on islands in Antarctica and published by Gorman et al. (2014). You can find the original paper with the title “Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis)” (Gorman et al. 2014) in PLoS ONE1\nThe data is published via the palmerpenguins R package (Horst et al. 2020) which you can find on this website.\nThe data contains (among others) the following measurements:\n\nbill length\nbill depth\nbody mass\nsex\n\nmale\nfemale"
   },
   {
     "objectID": "sessions/additional_material/02_quarto/penguins_paper.html#the-analysis",
@@ -2602,6 +3134,27 @@
     "title": "The penguins of Antarctica",
     "section": "Footnotes",
     "text": "Footnotes\n\n\npaper available here.↩︎"
+  },
+  {
+    "objectID": "sessions/21_obsidian-basics.html",
+    "href": "sessions/21_obsidian-basics.html",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "",
+    "text": "Notes, paper summaries, ideas and to-do lists tend to pile up across scattered files, hard to search and harder to connect. Obsidian is a free note-taking app that keeps them in one linked, searchable place, stored as plain text files on your own computer.\nIn this hands-on workshop for researchers (no prior experience needed), you learn to set up and structure your own notebook and link related notes, ideas and papers so they’re easy to find again. You also build a daily-note workflow to plan your days and track tasks, and use templates for notes you write often. You leave with a starter setup and materials to build on.\n\nSlides in full screen     Download PDF slides\n\n\n\n\n\n\nTipExercises\n\n\n\nStep-by-step guides for the hands-on parts of the workshop:\n\nExercise 1: Obsidian basics: Create your first vault, write and link notes\nExercise 2: Daily notes: Set up a daily notes workflow with templates and the Calendar plugin\nExercise 3: The Tasks plugin: Collect tasks automatically in your daily notes\n\nFor reference: Markdown cheatsheet"
+  },
+  {
+    "objectID": "sessions/21_obsidian-basics.html#demo-vault",
+    "href": "sessions/21_obsidian-basics.html#demo-vault",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Demo vault",
+    "text": "Demo vault\nThe demo vault contains the examples, templates, and workflow guides from the workshop and more:\n\nDaily notes and tasks\nProject hubs with tasks and meetings\nZettelkasten\nLiterature notes from Zotero\nWeb clippings\n\nDownload demo vault\n\nOpen the demo vault in Obsidian\n\nDownload the ZIP file and unzip it (Right-click → Extract / Unzip). You should now see a normal folder called notebook_demo.\nOpen Obsidian.\nIn the bottom left corner, click on the vault name and then Manage vaults.\n\n\n\nClick Open folder as vault.\nSelect the unzipped demo vault folder and click Open.\nObsidian may ask whether you trust the vault. Confirm to enable the plugins (Calendar, Tasks, Zotero Integration), they are needed for the workflows.\n\n\n\nHow to use the demo vault\n\nStart with the README note. It links to all workflow guides in the folder Workflow guides.\nUse the vault as a reference and a toolbox meant for inspiration:\n\nOpen it next to your own vault\nCopy templates or small parts you like\nIgnore everything that doesn’t fit your workflow"
+  },
+  {
+    "objectID": "sessions/21_obsidian-basics.html#resources",
+    "href": "sessions/21_obsidian-basics.html#resources",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Resources",
+    "text": "Resources\n\nObsidian\n\nObsidian documentation: One of the best documentations out there. It shows you how to do everything in Obsidian.\nOfficial Obsidian website: Download Obsidian and find more information about its features\nDaily notes and Templates in the Obsidian documentation\nTasks plugin documentation: Helps you get started setting up your own tasks queries\nCalendar plugin: The calendar widget we used for the daily notes workflow\nPlugin recommendations: A short list of plugins I find particularly useful\n\n\n\nSynchronization and import\n\nOfficial Obsidian sync: Paid service to sync your notes across devices. As a student or scientist, you get a 40% discount (find out here how)\nIf you just connect two computers and not mobile devices, you can also put your vault into a cloud storage like Google Drive\nImporter plugin: Import notes from other apps like Notion, Microsoft OneNote, Google Keep, Apple Notes, …\n\n\n\nOrganize your notes\n\nTiago Forte: The PARA method: A book explaining how you can organize your notebooks into folders that make sense using the PARA method\nTiago Forte: Building a Second Brain: A book about taking useful notes in general. Easy and quick read to get inspiration for your note-taking\n\n\n\nZettelkasten and literature notes\n\nZettelkasten idea: Video explaining the idea behind the Zettelkasten and why it is useful for your thinking and writing\nZettelkasten in Obsidian step by step: Video explaining a simple but powerful Zettelkasten workflow in Obsidian\nSönke Ahrens: How to take smart notes: Deep dive into the Zettelkasten method, its history and how we can use it today\nZotero integration plugin: Create literature notes automatically from your Zotero library including all annotations\nStep by step guide for the setup of Zotero and the plugin, with a lot of screenshots\n\n\n\nMore guides\n\nA good tutorial video for Obsidian beginners\nStep-by-Step guide on how to get started with Obsidian in written form\nBlogpost: Note Taking System For Success in Academia using Obsidian"
   },
   {
     "objectID": "sessions/19_functions-iteration.html",
@@ -2832,14 +3385,14 @@
     "href": "index.html",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n2026-10-15\n\n\nDigital note taking with Obsidian for scientists: Basics\n\n\n\n\n\n\n2026-07-16\n\n\nGood practices for sharing research code\n\n\n\n\n\n\n2026-06-18\n\n\nStop repeating yourself: functions and iteration in R\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n2026-12-17\n\n\nLinear models and ANOVA in R\n\n\n\n\n\n\n2026-10-15\n\n\nDigital note taking with Obsidian for scientists: Basics\n\n\n\n\n\n\n2026-07-16\n\n\nGood practices for sharing research code\n\n\n\n\n\n\n2026-06-18\n\n\nStop repeating yourself: functions and iteration in R\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#lecture-series",
     "href": "index.html#lecture-series",
     "title": "Scientific workflows: Tools and Tips 🛠️",
     "section": "",
-    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n2026-10-15\n\n\nDigital note taking with Obsidian for scientists: Basics\n\n\n\n\n\n\n2026-07-16\n\n\nGood practices for sharing research code\n\n\n\n\n\n\n2026-06-18\n\n\nStop repeating yourself: functions and iteration in R\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
+    "text": "Early-career researchers understand the importance of digital tools for processing data, managing workflows, and enhancing efficiency. However, they often lack time to discover new tools and improve their workflows. In this lecture series we will explore a diverse range of topics, including R code quality and efficiency, reproducible document creation, version control with Git, literature management, and academic note taking. You’ll learn practical tips and tricks that can help you optimize your research workflow and increase your productivity.\n\n\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\nIf you don’t want to miss a lecture, check out the official lecture website and subscribe below to get the link to each meeting:\n✉️ Subscribe to the mailing list\nFor any questions, feedback or topic suggestions send me an email\n\n\n\nOn this website, you can find all slides and additional resources for lectures:\n\n\n\n\n\n\nDate\n\n\n\nSession\n\n\n\n\n\n\n\n\n2026-12-17\n\n\nLinear models and ANOVA in R\n\n\n\n\n\n\n2026-10-15\n\n\nDigital note taking with Obsidian for scientists: Basics\n\n\n\n\n\n\n2026-07-16\n\n\nGood practices for sharing research code\n\n\n\n\n\n\n2026-06-18\n\n\nStop repeating yourself: functions and iteration in R\n\n\n\n\n\n\n2026-05-21\n\n\nFrom default to publication-ready ggplot2\n\n\n\n\n\n\n2026-04-16\n\n\nBuild and publish your personal academic website with Quarto\n\n\n\n\n\n\n2026-01-15\n\n\nIntroduction to version control with Git (2026)\n\n\n\n\n\n\n2025-12-18\n\n\nApplied AI Tools for Scientific Programming\n\n\n\n\n\n\n2025-11-20\n\n\nEffective digital notetaking with Obsidian (2025)\n\n\n\n\n\n\n2025-10-16\n\n\nReproducible documents with Quarto (2025)\n\n\n\n\n\n\n2025-07-17\n\n\nIntroduction to version control with Git (2025)\n\n\n\n\n\n\n2025-06-19\n\n\nEfficient R - How to write faster code\n\n\n\n\n\n\n2025-05-15\n\n\nWrite R code that lasts: Practical tips for reproducible data analysis\n\n\n\n\n\n\n2025-04-17\n\n\nClear figures, stronger stories: Fundamentals of Data Visualization\n\n\n\n\n\n\n2024-02-15\n\n\nIntroduction to the tidyverse\n\n\n\n\n\n\n2024-01-18\n\n\nAI Tools in Programming\n\n\n\n\n\n\n2023-11-16\n\n\nEfficient R\n\n\n\n\n\n\n2023-10-19\n\n\nEffective digital notetaking with Obsidian\n\n\n\n\n\n\n2023-07-20\n\n\nResearch compendia as R packages\n\n\n\n\n\n\n2023-06-15\n\n\nIntroduction to version control with Git\n\n\n\n\n\n\n2023-05-11\n\n\nReproducible documents with Quarto\n\n\n\n\n\n\n2023-04-20\n\n\nWhat they forgot to teach you about R\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "sessions/02_quarto.html",
@@ -3105,14 +3658,14 @@
     "href": "sessions/20_code-sharing.html",
     "title": "Good practices for sharing research code",
     "section": "",
-    "text": "Most research code lives on our laptops in a folder that grows organically over months or years. When the time comes to share it (for a paper, a collaboration, or just our future selves), the folder is hard to clean up and maybe the code does not run anymore. In this one-hour lecture we look at good practices for reproducible and reusable research code and learn how to improve our own repositories.\nWe will cover three things:\n\nWhat makes a good repository: README, license, structure, dependencies, reproducibility, citation metadata.\nWhere and how to publish: GitHub, Zenodo for archiving and DOI, and the integration between the two.\nA demo of an AI-assisted repository reviewer that reads a repository and writes a plain-language report of what to fix before publishing.\n\nThe lecture is language agnostic and focuses on data analysis repositories rather than scientific software.\nYou’ll take home a checklist for your own repository, a portable prompt to run a similar audit with your AI tool of choice, and a list of existing tools and references to consult.\n\nSlides in full screen     Download PDF slides\n\n\n\n\n\n\nPublication checklist\n\n\n\nThe checklist from the talk, with examples and links for each item: Publication checklist.\n\n\n\n\n\n\n\n\nCopy-paste AI prompts\n\n\n\nThe three prompts from the talk (draft a README, draft a data codebook, audit your repo) are on a separate page: AI prompts for your repository."
+    "text": "Most research code lives on our laptops in a folder that grows organically over months or years. When the time comes to share it (for a paper, a collaboration, or just our future selves), the folder is hard to clean up and maybe the code does not run anymore. In this one-hour lecture we look at good practices for reproducible and reusable research code and learn how to improve our own repositories.\nWe will cover three things:\n\nWhat makes a good repository: README, license, structure, dependencies, reproducibility, citation metadata.\nWhere and how to publish: GitHub, Zenodo for archiving and DOI, and the integration between the two.\nA demo of an AI-assisted repository reviewer that reads a repository and writes a plain-language report of what to fix before publishing.\n\nThe lecture is language agnostic and focuses on data analysis repositories rather than scientific software.\nYou’ll take home a checklist for your own repository, a portable prompt to run a similar audit with your AI tool of choice, and a list of existing tools and references to consult.\n\nSlides in full screen     Download PDF slides\n\n\n\n\n\n\nTipPublication checklist\n\n\n\nThe checklist from the talk, with examples and links for each item: Publication checklist.\n\n\n\n\n\n\n\n\nTipCopy-paste AI prompts\n\n\n\nThe three prompts from the talk (draft a README, draft a data codebook, audit your repo) are on a separate page: AI prompts for your repository."
   },
   {
     "objectID": "sessions/20_code-sharing.html#description",
     "href": "sessions/20_code-sharing.html#description",
     "title": "Good practices for sharing research code",
     "section": "",
-    "text": "Most research code lives on our laptops in a folder that grows organically over months or years. When the time comes to share it (for a paper, a collaboration, or just our future selves), the folder is hard to clean up and maybe the code does not run anymore. In this one-hour lecture we look at good practices for reproducible and reusable research code and learn how to improve our own repositories.\nWe will cover three things:\n\nWhat makes a good repository: README, license, structure, dependencies, reproducibility, citation metadata.\nWhere and how to publish: GitHub, Zenodo for archiving and DOI, and the integration between the two.\nA demo of an AI-assisted repository reviewer that reads a repository and writes a plain-language report of what to fix before publishing.\n\nThe lecture is language agnostic and focuses on data analysis repositories rather than scientific software.\nYou’ll take home a checklist for your own repository, a portable prompt to run a similar audit with your AI tool of choice, and a list of existing tools and references to consult.\n\nSlides in full screen     Download PDF slides\n\n\n\n\n\n\nPublication checklist\n\n\n\nThe checklist from the talk, with examples and links for each item: Publication checklist.\n\n\n\n\n\n\n\n\nCopy-paste AI prompts\n\n\n\nThe three prompts from the talk (draft a README, draft a data codebook, audit your repo) are on a separate page: AI prompts for your repository."
+    "text": "Most research code lives on our laptops in a folder that grows organically over months or years. When the time comes to share it (for a paper, a collaboration, or just our future selves), the folder is hard to clean up and maybe the code does not run anymore. In this one-hour lecture we look at good practices for reproducible and reusable research code and learn how to improve our own repositories.\nWe will cover three things:\n\nWhat makes a good repository: README, license, structure, dependencies, reproducibility, citation metadata.\nWhere and how to publish: GitHub, Zenodo for archiving and DOI, and the integration between the two.\nA demo of an AI-assisted repository reviewer that reads a repository and writes a plain-language report of what to fix before publishing.\n\nThe lecture is language agnostic and focuses on data analysis repositories rather than scientific software.\nYou’ll take home a checklist for your own repository, a portable prompt to run a similar audit with your AI tool of choice, and a list of existing tools and references to consult.\n\nSlides in full screen     Download PDF slides\n\n\n\n\n\n\nTipPublication checklist\n\n\n\nThe checklist from the talk, with examples and links for each item: Publication checklist.\n\n\n\n\n\n\n\n\nTipCopy-paste AI prompts\n\n\n\nThe three prompts from the talk (draft a README, draft a data codebook, audit your repo) are on a separate page: AI prompts for your repository."
   },
   {
     "objectID": "sessions/20_code-sharing.html#resources",
@@ -3120,6 +3673,20 @@
     "title": "Good practices for sharing research code",
     "section": "Resources",
     "text": "Resources\n\nGeneral\n\nData- and code-archiving in the British Ecological Society journals: Overview of the state of code sharing, tips on how to structure projects and readmes\nAn overview of publications and practical guides to create a research compendium\nThe Turing Way: community handbook for reproducible research\nBES Guide to Reproducible Code\nGood enough practices in scientific computing\nTen principles for reliable, efficient, and adaptable coding in psychology and cognitive neuroscience\n\n\n\nProject structure & file naming\n\nrrtools (R) and computational notebooks (R): research-compendium templates\nCookiecutter Data Science (Python): a project-structure template\nHow to name files: talk by Jenny Bryan\n\n\n\nRunning the code: dependencies, workflows, paths\n\nrenv (R) and uv (Python): record and restore project dependencies\npipreqs: list the packages a Python project actually imports\nRocker (Docker images for R) and repo2docker: containers, the last resort when versions alone are not enough\ntargets (R) and Snakemake (any language): workflow tools that run steps in the right order and rerun only what changed\nhere (R) and pyprojroot (Python): project-root paths that work on any machine\n\n\n\nLicence & citation\n\nchoosealicense.com: pick a licence and copy its text\nThe Turing Way on licensing\nA case for CC0: by the Dryad repository\ncffinit: build a CITATION.cff file through a web form\n\n\n\nArchiving & DOIs\n\nZenodo, Dryad, Figshare: repositories that freeze a version and give you a DOI\nGitHub → Zenodo guide: archive a release and get a DOI"
+  },
+  {
+    "objectID": "sessions/22_linear-models-anova.html",
+    "href": "sessions/22_linear-models-anova.html",
+    "title": "Linear models and ANOVA in R",
+    "section": "",
+    "text": "Do treatment groups differ from each other? How does one variable change with another? Linear models are widely used tools for answering these questions. In this hands-on workshop, we’ll learn how to use linear models in R, from simple linear regression to models combining numeric and categorical predictors. Along the way, we’ll see how ANOVA fits into the same framework. We will cover:\n\nFitting models with lm() using different combinations of predictors\nInterpreting the results, including comparisons between groups\nChecking model assumptions\nReporting and plotting the results\n\nNo prior experience with statistical models is needed. You’ll leave with practical examples and code you can apply to your own data.\nRequirements: Please have R and your preferred editor (e.g. RStudio or Positron) installed before the workshop so you can open the provided R project, edit the example code, and run it.\n\nSlides in full screen     Download PDF slides"
+  },
+  {
+    "objectID": "sessions/22_linear-models-anova.html#resources",
+    "href": "sessions/22_linear-models-anova.html#resources",
+    "title": "Linear models and ANOVA in R",
+    "section": "Resources",
+    "text": "Resources\n\nWorkshop materials\nThe workshop repo has all demo scripts, exercises, and solutions:\ngithub.com/selinaZitrone/lm-anova-workshop\n\n\nR packages\n\npalmerpenguins: the penguin data used in all examples\nperformance: check model assumptions with check_model() (the plots need the see package)\ncar: F-tests with Anova()\nemmeans: group means, slopes and pairwise comparisons\nbroom: model results as tables with tidy(), glance() and augment()\n\n\n\nBook\n\nStatistical Modelling: Lecture Notes for From Data to Evidence by Benjamin T. Martin"
   },
   {
     "objectID": "sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html",
@@ -3171,20 +3738,6 @@
     "text": "Below are some useful prompts for you to copy-paste and edit. All you need is an AI tool that can read your repository. There are different options for that, the easiest being an IDE-integrated AI tool like GitHub Copilot or Claude Code. They can be easily integrated into IDEs such as Positron or VS Code. But a simple web interface like ChatGPT or Claude can also work, if you upload your repository as a zip file and point the AI to it."
   },
   {
-    "objectID": "sessions/additional_material/20_code-sharing/ai-prompts.html#sensitive-data",
-    "href": "sessions/additional_material/20_code-sharing/ai-prompts.html#sensitive-data",
-    "title": "AI prompts for preparing a research repository",
-    "section": "Sensitive data",
-    "text": "Sensitive data\nMake sure the repository does not contain any sensitive data before you upload it to an AI tool. Only include data that you can also legally share and publish with your project online."
-  },
-  {
-    "objectID": "sessions/additional_material/20_code-sharing/ai-prompts.html#ai-is-not-reliable",
-    "href": "sessions/additional_material/20_code-sharing/ai-prompts.html#ai-is-not-reliable",
-    "title": "AI prompts for preparing a research repository",
-    "section": "AI is not reliable",
-    "text": "AI is not reliable\nAlthough AI can be a great help, it is not reliable. If you use the prompts below, always revise and double check the result. Also note that the AI can flag false positives or miss things. So don’t treat the result as authoritative."
-  },
-  {
     "objectID": "sessions/additional_material/20_code-sharing/ai-prompts.html#draft-a-readme",
     "href": "sessions/additional_material/20_code-sharing/ai-prompts.html#draft-a-readme",
     "title": "AI prompts for preparing a research repository",
@@ -3206,6 +3759,97 @@
     "text": "Audit a repo before publishing\nChecks your repository against the session checklist and lists what to fix. Adapt the prompt to your own needs if you want to include more or less information.\nYou are auditing a data-analysis repository before I publish it. You are an\nauditor, not a co-author: report what to fix, do not change any files.\n\nStep 1: Read the repository, but do not run it. First work out what kind of\nproject it is and what it does, so you check the right things.\n\nStep 2: Check it against these areas (the same checklist I am working from):\n- Structure: data / code / output separated, informative names, a thorough README\n- Running it: clear run order, dependencies and versions recorded, no absolute\n  paths, a seed for anything random\n- Data: the data situation stated (open / restricted / synthetic), a codebook,\n  open formats, no junk or sensitive data committed\n- Licence & citation: a LICENSE file, code and data licensed, a way to cite it\n- Archive: a release and a DOI in the README (also see \"Can't verify\" below)\n\nReport in this format:\n\n**What I read this repo to be:** one sentence, so I can check you got the scope right.\n\n**Already good:** a short list of the checks it clearly passes.\n\n**Must-fix** (don't publish without these), then **Should-fix**, then **Polish**.\nFor each finding, one line: the file or the specific gap, why it matters, and the\nsmallest fix.\n\n**Can't verify from here:** things you cannot tell from the repo alone (e.g. whether\nit is really archived with a DOI, or whether a colleague can run it). List these as a\nshort to-do rather than guessing.\n\nRules:\n- No evidence, no finding. Name the actual file or the specific missing thing, and\n  never invent a file or an issue you did not see.\n- For possibly sensitive data, look only at file names and column headers, never at\n  the values. If something looks sensitive, flag it for me to check, do not judge it.\n- If the repo is already in good shape, say so. Do not invent problems to fill the report."
   },
   {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "",
+    "text": "In this exercise you will create a new Obsidian vault (a notebook) and learn the basics: creating notes, writing in Markdown, and linking notes together."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-1-create-your-first-obsidian-vault",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-1-create-your-first-obsidian-vault",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 1: Create your first Obsidian vault",
+    "text": "Part 1: Create your first Obsidian vault\n\nOpen the Obsidian app\nCreate a new vault\nGive it a name and browse a location (ideally somewhere that is backed up)\nClick Create\n\nYour vault should open automatically.\n\n\n\n\n\n\nNoteWhat if I already have an Obsidian vault?\n\n\n\n\n\nIf you already have a vault, you can use it or create a new one just for this workshop. Both work."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-2-add-your-first-note",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-2-add-your-first-note",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 2: Add your first note",
+    "text": "Part 2: Add your first note\n\nCreate a note named Obsidian\nCopy the content below into the note\nLook at the formatting\n\n# Advantages\n\n- **Free** for personal use\n- All OS and mobile\n- Simple *Markdown* format\n- Notes are stored *locally* on my computer\n\n# Best plugins\n\n## Community plugins\n\n1. Calendar\n2. Tasks\n\n## Core plugins\n\n- Daily notes\n- Templates\n\n# To do\n\n- [ ] Set up an attachments folder\n- [ ] Try the command palette"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-3-add-your-own-notes",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-3-add-your-own-notes",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 3: Add your own notes",
+    "text": "Part 3: Add your own notes\nCreate 2 short notes on any topic, e.g. a paper you read, a method you use, or your favourite recipe.\nThe content doesn’t matter, the goal is to try out Markdown formatting:\n\na heading\na list\nbold or italic text\n\nUse the Obsidian note or the Markdown cheatsheet as reference."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-4-link-your-notes",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-4-link-your-notes",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 4: Link your notes",
+    "text": "Part 4: Link your notes\nLink your notes to each other:\n\nIn one of your notes, add a link to another note:\n\nType [[ and select a note from the suggestions\n\nClick the link to make sure it works\n\n\n\n\n\n\n\nTipHow to find the square brackets [ ] on your keyboard\n\n\n\n\n\nThis depends on your keyboard layout. Common options:\n\nUS/UK keyboards: keys right of P\nWindows (many non‑US layouts): AltGr + a number key (often 8 or 9)\nMac (many non‑US layouts): Option (⌥) + a number key\n\nIf it still doesn’t work, search online for: “square brackets” + your keyboard layout + Windows/Mac."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-5-set-up-an-attachments-folder",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-5-set-up-an-attachments-folder",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 5: Set up an attachments folder",
+    "text": "Part 5: Set up an attachments folder\n\nCreate a folder for attachments (e.g. attachments or zzz_attachments if you want it at the bottom of your folder list)\nOpen Settings (gear icon bottom left) → Files and links\nSet Default location for new attachments to In the folder specified below\nEnter the attachment folder name (spelling must match exactly)\n\nThe setting should look like this:\n\nNow add an image or screenshot to one of your notes (drag and drop or copy/paste) and check that it ends up in the attachments folder."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-6-use-the-command-palette",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-6-use-the-command-palette",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Part 6: Use the command palette",
+    "text": "Part 6: Use the command palette\nThe command palette lets you do everything in Obsidian from your keyboard.\n\nOpen the command palette with Ctrl/Cmd + P\nType “table” and select Insert table to add a table to one of your notes\nLook at what else you can do, e.g. type “PDF” to export a note as PDF"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#optional-tasks-if-you-finish-early",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 1: Obsidian basics",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\nPick the one you find most interesting. You don’t need to do all of them.\n\nTry different ways of opening a note\n\nClick: open the note\nCtrl/Cmd + click: open in a new tab\nCtrl/Cmd + hover: open a preview (and you can edit from there)\n\n\n\nTry more Markdown\nTry something new from the Markdown cheatsheet, e.g. embed a note or add a callout.\n\n\nAdd tags and try search\n\nAdd tags to your notes (e.g. tag all paper notes with #paper)\nClick a tag to open search and see all notes with that tag\n\n\n\nChange the editor theme\nObsidian comes with many different editor themes you can choose from. Change the theme like this:\n\nOpen Settings (gear icon bottom left corner)\nGo to Appearance\nUnder Themes, click Manage\nBrowse and install a theme (you can always switch back)\n\n\n\nCreate a mind map\nObsidian has a digital whiteboard called Canvas. You can use it for mind maps, brainstorming or to get an overview.\n\nCreate a new Canvas (icon in the left ribbon or via the command palette)\nAdd cards, connect them with arrows, color and group them\nDrag and drop one of your notes onto the Canvas\n\n\nNext: Exercise 2: Daily notes · Back to the workshop page"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "",
+    "text": "In this exercise, you will collect tasks from all over your vault in your daily notes using the Tasks plugin."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-1-install-the-tasks-plugin",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-1-install-the-tasks-plugin",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "Step 1: Install the Tasks plugin",
+    "text": "Step 1: Install the Tasks plugin\n\nOpen Settings (gear icon bottom left)\nGo to Community plugins\nClick Browse\nSearch for Tasks (it should be on the very top of the list, created by Clare Macrae et al.)\nInstall and Enable the Tasks plugin"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-2-add-some-tasks-to-your-notes",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-2-add-some-tasks-to-your-notes",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "Step 2: Add some tasks to your notes",
+    "text": "Step 2: Add some tasks to your notes\nNow add 2–3 example tasks to your notes (not the daily notes, you can e.g. use one of your notes from Exercise 1).\nAny tasks are fine, you can just invent some.\nAdd due dates to the tasks (e.g. today or tomorrow).\n\n\n\n\n\n\nTipAdd due dates with “Tasks”\n\n\n\nYou should see a drop down menu after the task that lets you add a due date like in the image below. You can add a due date by either of these methods:\n\nSelect one of the suggested options\nType a date\nType a natural language date like “next sunday” and see if the plugin suggests the correct date"
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-3-add-the-tasks-query-to-your-daily-template",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-3-add-the-tasks-query-to-your-daily-template",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "Step 3: Add the tasks query to your daily template",
+    "text": "Step 3: Add the tasks query to your daily template\n\nOpen your daily note template\nFind the section where your tasks should appear\nAdd the following “Tasks” query block\n\n```tasks\ndue on {{date}}\n```\n{{date}} will be replaced automatically with the date of each daily note.\n\n\n\n\n\n\nTipHow to find the backtick ` on your keyboard\n\n\n\n\n\nThis depends on your keyboard layout. Common options:\n\nUS/UK keyboards: key left of 1 (often shared with ~)\nWindows (many non-US layouts): key near Shift or Enter, or AltGr + key (varies by layout)\nMac (many non-US layouts): Option (⌥) + key (often the same key as ~)\n\nIf it still doesn’t work: Search online for: “backtick key” + your keyboard layout + Windows/Mac\n\n\n\nTest it:\n\nCheck the due dates of your tasks again → Find a due date for which you don’t have a daily note yet. If all tasks already have a daily note, just add a new task with a future due date\nCreate the daily note for that due date\n\nIf all worked well, the task should now automatically appear in the newly created daily note.\n\n\n\n\n\n\nNoteHelp: My tasks do not appear\n\n\n\n\n\nCheck if\n\nthe daily note was created after you added the query to the template. Older notes don’t have the query.\nthe due date of the task is the same as the date of the daily note\nthe query says exactly due on 2026-02-01 (with the date of the daily note). Click into the query block to see it."
+  },
+  {
+    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#optional-tasks-if-you-finish-early",
+    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 3: The Tasks plugin",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\n\nModify the tasks query\nThe Tasks plugin allows you to change how tasks are displayed and filtered.\nFor these exercises:\n\nModify the Tasks query in one daily note (not in the template)\nObserve what changes\nKeep what you like by adding it to your daily template\n\nPick one or two queries below that sound useful to you. You may need to create a few extra example tasks or adjust due dates.\n\nCompact display mode\nAdd short mode to your Tasks query (replace the date with a date in your note):\n```tasks\ndue on 2026-02-01\nshort mode\n```\n\n\nList overdue tasks\nList all tasks that are overdue:\n```tasks\ndue before 2026-02-01\n```\n\n\nShow all open tasks\n```tasks\nnot done\n```\n\n\nFilter tasks by folder\nShow only tasks from a specific folder. Replace log with a folder that is in your vault.\n```tasks\npath includes log\n```\n\n\nCombine different queries\nTry combining multiple options above.\nExamples to try:\n\nOverdue tasks in short mode\nTasks due today that are not done\nTasks from a specific folder that are due today\n\n\n\n\nUpdate your template\nIf you found task queries that you like from the previous task, modify your daily template accordingly. Then create a few notes to test it.\n\nBack to the workshop page"
+  },
+  {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#who-am-i",
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#who-am-i",
     "title": "What they forgot to teach you about R",
@@ -3217,7 +3861,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#what-is-this-lecture-series",
     "title": "What they forgot to teach you about R",
     "section": "What is this lecture series?",
-    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n. . .\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nTopics range from R programming over notetaking, literature management tools and more\nFor topic suggestions send me an email\nIf you don’t want to miss a lecture\n\nCheck out the lecture website\nSubscribe to the mailing list\n\nSlides provided on Github"
+    "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nTopics range from R programming over notetaking, literature management tools and more\nFor topic suggestions send me an email\nIf you don’t want to miss a lecture\n\nCheck out the lecture website\nSubscribe to the mailing list\n\nSlides provided on Github"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#what-they-forgot-to-teach-you-about-r",
@@ -3336,7 +3980,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#use-save-paths",
     "title": "What they forgot to teach you about R",
     "section": "Use save paths",
-    "text": "Use save paths\nTo read and write files, you need to tell R where to find them.\n\nCommon workflow: set working directory with setwd(), then read files from there. But to this Jenny Bryan said:\n\n\n\nIf the first line of your R script is  setwd(\"C:\\Users\\jenny\\path\\that\\only\\I\\have\")  I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.\n\n\n\nWhy?\nThis is 100% not reproducible: Your computer at exactly this time is (probably) the only one in the world that has this working directory\n. . .\nAvoid setwd() if it is possible in any way!"
+    "text": "Use save paths\nTo read and write files, you need to tell R where to find them.\n\nCommon workflow: set working directory with setwd(), then read files from there. But to this Jenny Bryan said:\n\n\n\nIf the first line of your R script is  setwd(\"C:\\Users\\jenny\\path\\that\\only\\I\\have\")  I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.\n\n\n\nWhy?\nThis is 100% not reproducible: Your computer at exactly this time is (probably) the only one in the world that has this working directory\n\nAvoid setwd() if it is possible in any way!"
   },
   {
     "objectID": "slides/2023_04_20_what_they_forgot_to_teach_you.html#avoid-setwd",
@@ -3476,7 +4120,7 @@
     "href": "slides/2023_04_20_what_they_forgot_to_teach_you.html#next-lecture",
     "title": "What they forgot to teach you about R",
     "section": "Next lecture",
-    "text": "Next lecture\n\nWrite reproducible documents with Quarto\nQuarto (the successor of rmarkdown) is a powerful tool that enables the seamless integration of code (R, Python, and more) and its output into a variety of formats such as reports, research papers, presentations, and more. This tool streamlines the process of creating reproducible workflows by eliminating the need to copy and paste figures, tables, or numbers. During this lecture, you’ll learn the fundamentals of Quarto and explore practical use cases that you can implement in your data analysis workflow.\n. . .\n📅 11th May 🕓 4-5 p.m. 📍 Webex\n\nFor topic suggestions and/or feedback send me an email\nSubscribe to the mailing list"
+    "text": "Next lecture\n\nWrite reproducible documents with Quarto\nQuarto (the successor of rmarkdown) is a powerful tool that enables the seamless integration of code (R, Python, and more) and its output into a variety of formats such as reports, research papers, presentations, and more. This tool streamlines the process of creating reproducible workflows by eliminating the need to copy and paste figures, tables, or numbers. During this lecture, you’ll learn the fundamentals of Quarto and explore practical use cases that you can implement in your data analysis workflow.\n\n📅 11th May 🕓 4-5 p.m. 📍 Webex\n\nFor topic suggestions and/or feedback send me an email\nSubscribe to the mailing list"
   },
   {
     "objectID": "slides/2023_06_15_git.html#what-is-this-lecture-series",
@@ -3672,14 +4316,14 @@
     "href": "slides/2023_06_15_git.html#get-started",
     "title": "Introduction to version control with Git",
     "section": "Get started",
-    "text": "Get started\nCommand line\nFollow this Git training for learning the Git concepts in the command line.\n. . .\nR and R Studio\nThere is a whole book on using Git with R that explains the setup in detail but also goes into more advanced topics.\nFollow this step by step guide to set up Git and a Github connection in R and R Studio\n. . .\nGithub Desktop\nThere are detailed step by step guides on how to set up Github Desktop and how to work with in the Github Desktop Documentation"
+    "text": "Get started\nCommand line\nFollow this Git training for learning the Git concepts in the command line.\nR and R Studio\nThere is a whole book on using Git with R that explains the setup in detail but also goes into more advanced topics.\nFollow this step by step guide to set up Git and a Github connection in R and R Studio\nGithub Desktop\nThere are detailed step by step guides on how to set up Github Desktop and how to work with in the Github Desktop Documentation"
   },
   {
     "objectID": "slides/2023_06_15_git.html#next-lecture",
     "href": "slides/2023_06_15_git.html#next-lecture",
     "title": "Introduction to version control with Git",
     "section": "Next lecture",
-    "text": "Next lecture\n\nResearch compendia with R\nA research compendium is a collection of all the digital parts of your research projects (data, code, documents) with the goal of your results being reproducible. You can do this in R by building an R 📦 which makes it easy to publish a fully reproducible version of your project.\n\n. . .\n📅 20th July 🕓 1-2 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
+    "text": "Next lecture\n\nResearch compendia with R\nA research compendium is a collection of all the digital parts of your research projects (data, code, documents) with the goal of your results being reproducible. You can do this in R by building an R 📦 which makes it easy to publish a fully reproducible version of your project.\n\n\n📅 20th July 🕓 1-2 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
   },
   {
     "objectID": "slides/2023_06_15_git.html#thank-you-for-your-attention",
@@ -5369,81 +6013,25 @@
     "text": "What is this lecture series?\nScientific workflows: Tools and Tips 🛠️\n📅 Every 3rd Thursday 🕓 4-5 p.m. 📍 Webex\n\nOne topic from the world of scientific workflows\nMaterial provided online\nIf you don’t want to miss a lecture\n\nSubscribe to the mailing list\n\nFor credit points: Send me a short message (Email or Webex)"
   },
   {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#today",
-    "href": "slides/2026_10_15_obsidian-basics.html#today",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Today",
-    "text": "Today\n\nObsidian basics + Exercise 1\nOrganize your notes in folders\nDaily notes + Exercise 2\nTasks + Exercise 3\nWhat else you can do\n\n\n\nLive demo + Hands-on\nQuestions anytime\nAll exercises and material on the workshop page"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#todo",
-    "href": "slides/2026_10_15_obsidian-basics.html#todo",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "TODO",
-    "text": "TODO"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#todo-1",
-    "href": "slides/2026_10_15_obsidian-basics.html#todo-1",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "TODO",
-    "text": "TODO"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#todo-2",
-    "href": "slides/2026_10_15_obsidian-basics.html#todo-2",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "TODO",
-    "text": "TODO"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#todo-3",
-    "href": "slides/2026_10_15_obsidian-basics.html#todo-3",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "TODO",
-    "text": "TODO"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#where-next",
-    "href": "slides/2026_10_15_obsidian-basics.html#where-next",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Where next",
-    "text": "Where next"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#next-lectureworkshop",
-    "href": "slides/2026_10_15_obsidian-basics.html#next-lectureworkshop",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Next lecture/workshop",
-    "text": "Next lecture/workshop\nTopic: tba\n\n📅 26.11.2026 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
-  },
-  {
-    "objectID": "sessions/21_obsidian-basics.html",
-    "href": "sessions/21_obsidian-basics.html",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "",
-    "text": "Notes, paper summaries, ideas and to-do lists tend to pile up across scattered files, hard to search and harder to connect. Obsidian is a free note-taking app that keeps them in one linked, searchable place, stored as plain text files on your own computer.\nIn this hands-on workshop for researchers (no prior experience needed), you learn to set up and structure your own notebook and link related notes, ideas and papers so they’re easy to find again. You also build a daily-note workflow to plan your days and track tasks, and use templates for notes you write often. You leave with a starter setup and materials to build on.\n\nSlides in full screen     Download PDF slides\n\n\n\n\n\n\nTipExercises\n\n\n\nStep-by-step guides for the hands-on parts of the workshop:\n\nExercise 1: Obsidian basics: Create your first vault, write and link notes\nExercise 2: Daily notes: Set up a daily notes workflow with templates and the Calendar plugin\nExercise 3: The Tasks plugin: Collect tasks automatically in your daily notes\n\nFor reference: Markdown cheatsheet"
-  },
-  {
-    "objectID": "sessions/21_obsidian-basics.html#basic-markdown-syntax",
-    "href": "sessions/21_obsidian-basics.html#basic-markdown-syntax",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Basic markdown syntax",
-    "text": "Basic markdown syntax\nYou can use the following basic formatting syntax to format the text in your Obsidian notes\n# Heading 1\n## Heading 2\n### Heading 3\n\n**bold** and *italic*   -&gt; Hotkeys: Ctrl/Cmd + B and Ctrl/Cmd + I\n\n- list item\n- list item\n\n1. numbered list item\n2. numbered list item\n\n- [ ] A task\n\n[A link to a website](https://google.com) -&gt; Hotkey: Ctrl/Cmd + K\n\n[[Another note]] -&gt; A link to another note in your vault\n\n```r\n# An R code snippet\nmean(1:3)\n```"
-  },
-  {
-    "objectID": "sessions/21_obsidian-basics.html#resources",
-    "href": "sessions/21_obsidian-basics.html#resources",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Resources",
-    "text": "Resources\n\nObsidian\n\nObsidian documentation: One of the best documentations out there. It shows you how to do everything in Obsidian.\nOfficial Obsidian website: Download Obsidian and find more information about its features\nDaily notes and Templates in the Obsidian documentation\nTasks plugin documentation: Helps you get started setting up your own tasks queries\nCalendar plugin: The calendar widget we used for the daily notes workflow\nPlugin recommendations: A short list of plugins I find particularly useful\n\n\n\nSynchronization and import\n\nOfficial Obsidian sync: Paid service to sync your notes across devices. As a student or scientist, you get a 40% discount (find out here how)\nIf you just connect two computers and not mobile devices, you can also put your vault into a cloud storage like Google Drive\nImporter plugin: Import notes from other apps like Notion, Microsoft OneNote, Google Keep, Apple Notes, …\n\n\n\nOrganize your notes\n\nTiago Forte: The PARA method: A book explaining how you can organize your notebooks into folders that make sense using the PARA method\nTiago Forte: Building a Second Brain: A book about taking useful notes in general. Easy and quick read to get inspiration for your note-taking\n\n\n\nZettelkasten and literature notes\n\nZettelkasten idea: Video explaining the idea behind the Zettelkasten and why it is useful for your thinking and writing\nZettelkasten in Obsidian step by step: Video explaining a simple but powerful Zettelkasten workflow in Obsidian\nSönke Ahrens: How to take smart notes: Deep dive into the Zettelkasten method, its history and how we can use it today\nZotero integration plugin: Create literature notes automatically from your Zotero library including all annotations\nStep by step guide for the setup of Zotero and the plugin, with a lot of screenshots\n\n\n\nMore guides\n\nA good tutorial video for Obsidian beginners\nStep-by-Step guide on how to get started with Obsidian in written form\nBlogpost: Note Taking System For Success in Academia using Obsidian"
-  },
-  {
     "objectID": "slides/2026_10_15_obsidian-basics.html#workshop-goals",
     "href": "slides/2026_10_15_obsidian-basics.html#workshop-goals",
     "title": "Digital note taking with Obsidian for scientists: Basics",
     "section": "Workshop goals",
     "text": "Workshop goals\n\nOverview of Obsidian and its possibilities\nGet started with your own notebook\nKnow if Obsidian is the tool for you"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#overview",
+    "href": "slides/2026_10_15_obsidian-basics.html#overview",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Overview",
+    "text": "Overview\n\n\nIntroduction to Obsidian\n\nBasic functionality\nSet up your own notebook\nOrganize your notes\n\n\n\n\n\nPractical workflows for scientists\n\nPlan your days with daily notes\nManage your tasks\nWhat else you can do"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#organization",
+    "href": "slides/2026_10_15_obsidian-basics.html#organization",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Organization",
+    "text": "Organization\n\nLive demo + Hands-on\nQuestions anytime\n\n\n\n\n\n\n\nImportant links\n\n\nFind all workshop material and links here: workshop page\n\n\n\n\nIf you didn’t install Obsidian yet, you can do so now from https://obsidian.md/"
   },
   {
     "objectID": "slides/2026_10_15_obsidian-basics.html#what-makes-notes-useful",
@@ -5488,272 +6076,6 @@
     "text": "The PARA system\n\n\nBy Tiago Forte: 4 core categories (= main folders) to sort your notes"
   },
   {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#para-in-practice",
-    "href": "slides/2026_10_15_obsidian-basics.html#para-in-practice",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "PARA in practice",
-    "text": "PARA in practice\n\n\n\nAdd more folders as you need, e.g.\n\nMeetings\nDaily notes\nTemplates\nAttachments\n\nNumber prefixes sort your folders (like zzz_)\n\n\nMy vault:\n000_Zettelkasten\n100_Laborbuch\n200_Projekte\n300_Areas\n400_Resources\n500_Meetings\n700_Archive\n900_Literature\nAttachments\nTemplates"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#your-turn-1",
-    "href": "slides/2026_10_15_obsidian-basics.html#your-turn-1",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Your turn",
-    "text": "Your turn\n\n✏️ Exercise 2 (15 min):\nDaily notes"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#your-turn-2",
-    "href": "slides/2026_10_15_obsidian-basics.html#your-turn-2",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Your turn",
-    "text": "Your turn\n\n✏️ Exercise 3 (10 min):\nThe Tasks plugin"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#how-we-organize-notes",
-    "href": "slides/2026_10_15_obsidian-basics.html#how-we-organize-notes",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "How we organize notes",
-    "text": "How we organize notes\nThese approaches are complementary, not alternatives!\n\n\nStorage\ne.g. PARA\n\nPredefined structure through categories\nPerfect for most notes\n\n\nZettelkasten\na.k.a. second brain\n\nEmergent structure through interconnections\nPerfect for knowledge notes"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#knowledge-management",
-    "href": "slides/2026_10_15_obsidian-basics.html#knowledge-management",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Knowledge management",
-    "text": "Knowledge management\n\n\nLiterature notes from Zotero\n\nZotero integration plugin\n\nZettelkasten\n\nSmall notes, each focused on one idea\nWritten in your own words\nLinked to related ideas"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#the-demo-vault",
-    "href": "slides/2026_10_15_obsidian-basics.html#the-demo-vault",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "The demo vault",
-    "text": "The demo vault\nExamples, templates, and workflow guides from today and more:\n\nDaily notes and tasks\nProject hubs with tasks and meetings\nZettelkasten\nLiterature notes from Zotero\nWeb clippings\n\nDownload and instructions on the workshop page"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#wrap-up",
-    "href": "slides/2026_10_15_obsidian-basics.html#wrap-up",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Wrap-up",
-    "text": "Wrap-up\n\nObsidian is not one system\n\nImplement only what you find useful\n\nThe most important: actually writing notes\nStart simple, add workflows later\nFor more checkout the exercises, demo vault and resources on the workshop page"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#resources-1",
-    "href": "slides/2026_10_15_obsidian-basics.html#resources-1",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Resources",
-    "text": "Resources\nFind everything on the workshop page:\n\nExercises and Markdown cheatsheet\nDemo vault\nDocumentation, plugin recommendations, books and videos"
-  },
-  {
-    "objectID": "sessions/21_obsidian-basics.html#demo-vault",
-    "href": "sessions/21_obsidian-basics.html#demo-vault",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Demo vault",
-    "text": "Demo vault\nThe demo vault contains the examples, templates, and workflow guides from the workshop and more:\n\nDaily notes and tasks\nProject hubs with tasks and meetings\nZettelkasten\nLiterature notes from Zotero\nWeb clippings\n\nDownload demo vault\n\nOpen the demo vault in Obsidian\n\nDownload the ZIP file and unzip it (Right-click → Extract / Unzip). You should now see a normal folder called notebook_demo.\nOpen Obsidian.\nIn the bottom left corner, click on the vault name and then Manage vaults.\n\n\n\nClick Open folder as vault.\nSelect the unzipped demo vault folder and click Open.\nObsidian may ask whether you trust the vault. Confirm to enable the plugins (Calendar, Tasks, Zotero Integration), they are needed for the workflows.\n\n\n\nHow to use the demo vault\n\nStart with the README note. It links to all workflow guides in the folder Workflow guides.\nUse the vault as a reference and a toolbox meant for inspiration:\n\nOpen it next to your own vault\nCopy templates or small parts you like\nIgnore everything that doesn’t fit your workflow"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html",
-    "title": "Exercise 1: Obsidian basics",
-    "section": "",
-    "text": "In this exercise you will create a new Obsidian vault (a notebook) and learn the basics: creating notes, writing in Markdown, and linking notes together."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-1-create-your-first-obsidian-vault",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-1-create-your-first-obsidian-vault",
-    "title": "Exercise 1: Obsidian basics",
-    "section": "Part 1: Create your first Obsidian vault",
-    "text": "Part 1: Create your first Obsidian vault\n\nOpen the Obsidian app\nCreate a new vault\nGive it a name and browse a location (ideally somewhere that is backed up)\nClick Create\n\nYour vault should open automatically.\n\n\n\n\n\n\nNoteWhat if I already have an Obsidian vault?\n\n\n\n\n\nIf you already have a vault, you can use it or create a new one just for this workshop. Both work."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-2-add-your-first-note",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-2-add-your-first-note",
-    "title": "Exercise 1: Obsidian basics",
-    "section": "Part 2: Add your first note",
-    "text": "Part 2: Add your first note\n\nCreate a note named Obsidian\nCopy the content below into the note\nLook at the formatting\n\n# Advantages\n\n- **Free** for personal use\n- All OS and mobile\n- Simple *Markdown* format\n- Notes are stored *locally* on my computer\n\n# Best plugins\n\n## Community plugins\n\n1. Calendar\n2. Tasks\n\n## Core plugins\n\n- Daily notes\n- Templates\n\n# To do\n\n- [ ] Set up an attachments folder\n- [ ] Try the command palette"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-3-add-notes-about-your-own-work",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-3-add-notes-about-your-own-work",
-    "title": "Exercise 1: Obsidian basics",
-    "section": "Part 3: Add notes about your own work",
-    "text": "Part 3: Add notes about your own work\nCreate 2 short notes about your own work:\n\nA project you are currently working on (you need it again in Exercise 3)\nA paper, method or tool you use\n\n\n\n\n\n\n\nImportantKeep it short\n\n\n\nA heading and 2–3 bullet points per note are enough. You can add more content after the workshop.\n\n\nFor formatting, use the Obsidian note or the Markdown cheatsheet as reference."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-4-link-your-notes",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-4-link-your-notes",
-    "title": "Exercise 1: Obsidian basics",
-    "section": "Part 4: Link your notes",
-    "text": "Part 4: Link your notes\nLink your notes to each other:\n\nIn one of your notes, add a link to another note:\n\nType [[ and select a note from the suggestions\n\nClick the link to make sure it works\n\n\n\n\n\n\n\nTipHow to find the square brackets [ ] on your keyboard\n\n\n\n\n\nThis depends on your keyboard layout. Common options:\n\nUS/UK keyboards: keys right of P\nWindows (many non‑US layouts): AltGr + a number key (often 8 or 9)\nMac (many non‑US layouts): Option (⌥) + a number key\n\nIf it still doesn’t work, search online for: “square brackets” + your keyboard layout + Windows/Mac."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-5-set-up-an-attachments-folder",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-5-set-up-an-attachments-folder",
-    "title": "Exercise 1: Obsidian basics",
-    "section": "Part 5: Set up an attachments folder",
-    "text": "Part 5: Set up an attachments folder\n\nCreate a folder for attachments (e.g. attachments or zzz_attachments if you want it at the bottom of your folder list)\nOpen Settings (gear icon bottom left) → Files and links\nSet Default location for new attachments to In the folder specified below\nEnter the attachment folder name (spelling must match exactly)\n\nThe setting should look like this:\n\nNow add an image or screenshot to one of your notes (drag and drop or copy/paste) and check that it ends up in the attachments folder."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-6-use-the-command-palette",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-6-use-the-command-palette",
-    "title": "Exercise 1: Obsidian basics",
-    "section": "Part 6: Use the command palette",
-    "text": "Part 6: Use the command palette\nThe command palette lets you do everything in Obsidian from your keyboard.\n\nOpen the command palette with Ctrl/Cmd + P\nType “table” and select Insert table to add a table to one of your notes\nLook at what else you can do, e.g. type “PDF” to export a note as PDF"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#optional-tasks-if-you-finish-early",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#optional-tasks-if-you-finish-early",
-    "title": "Exercise 1: Obsidian basics",
-    "section": "Optional tasks (if you finish early)",
-    "text": "Optional tasks (if you finish early)\nPick the one you find most interesting. You don’t need to do all of them.\n\nTry different ways of opening a note\n\nClick: open the note\nCtrl/Cmd + click: open in a new tab\nCtrl/Cmd + hover: open a preview (and you can edit from there)\n\n\n\nTry more Markdown\nTry something new from the Markdown cheatsheet, e.g. embed a note or add a callout.\n\n\nAdd tags and try search\n\nAdd tags to your notes (e.g. tag all paper notes with #paper)\nClick a tag to open search and see all notes with that tag\n\n\n\nChange the editor theme\nObsidian comes with many different editor themes you can choose from. Change the theme like this:\n\nOpen Settings (gear icon bottom left corner)\nGo to Appearance\nUnder Themes, click Manage\nBrowse and install a theme (you can always switch back)\n\n\n\nCreate a mind map\nObsidian has a digital whiteboard called Canvas. You can use it for mind maps, brainstorming or to get an overview.\n\nCreate a new Canvas (icon in the left ribbon or via the command palette)\nAdd cards, connect them with arrows, color and group them\nDrag and drop one of your notes onto the Canvas\n\n\nNext: Exercise 2: Daily notes · Back to the workshop page"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html",
-    "title": "Exercise 2: Set up your daily notes workflow",
-    "section": "",
-    "text": "In this exercise, you will set up a simple daily notes workflow that you can keep using after the workshop."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-1-create-the-required-folders",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-1-create-the-required-folders",
-    "title": "Exercise 2: Set up your daily notes workflow",
-    "section": "Step 1: Create the required folders",
-    "text": "Step 1: Create the required folders\nCreate the following folders in your vault:\n\nA folder for your daily notes (for example: log or daily)\nA folder for templates (templates or zzz_templates if you want it at the bottom of your folder list)"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-2-create-a-daily-note-template",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-2-create-a-daily-note-template",
-    "title": "Exercise 2: Set up your daily notes workflow",
-    "section": "Step 2: Create a daily note template",
-    "text": "Step 2: Create a daily note template\n\nIn the templates folder, create a new note called daily_template\nAdd the following basic content to the file (use the copy button in the top-right corner)\n\n# {{date}}\n\n## Tasks\n- [ ] Check mails\n\n## Log\nThe value {{date}} will always be replaced with the date of note creation."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-3-configure-daily-notes",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-3-configure-daily-notes",
-    "title": "Exercise 2: Set up your daily notes workflow",
-    "section": "Step 3: Configure daily notes",
-    "text": "Step 3: Configure daily notes\nNow we tell Obsidian to use the template for each new daily note:\n\nOpen Settings (gear icon bottom left)\nGo to Daily notes (under “Core plugins”)\nSet:\n\nNew file location → your daily notes folder (log / daily or whatever you called it)\nTemplate file location → templates/daily_template or zzz_templates/daily_template depending on your folder name\n\n\n\n\n\n\n\n\nNoteI don’t see the Daily notes plugin\n\n\n\n\n\nDouble check that the plugin is enabled. Go to Settings → Core plugins, scroll through the list and check if the Daily notes are turned on."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-4-install-the-calendar-plugin",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-4-install-the-calendar-plugin",
-    "title": "Exercise 2: Set up your daily notes workflow",
-    "section": "Step 4: Install the Calendar plugin",
-    "text": "Step 4: Install the Calendar plugin\nThe Calendar plugin makes it easier to create and navigate daily notes.\n\nOpen Settings → Community plugins\nEnable community plugins (if not already enabled)\nClick Browse\nSearch for Calendar (it should be on the very top of the list, created by Liam Cain)\nInstall and enable it\n\nThe Calendar should now appear in the right sidebar (if not, unfold the sidebar in the top right)."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-5-create-2-3-daily-notes",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#step-5-create-2-3-daily-notes",
-    "title": "Exercise 2: Set up your daily notes workflow",
-    "section": "Step 5: Create 2-3 daily notes",
-    "text": "Step 5: Create 2-3 daily notes\nNow let’s test your setup:\n\nUse the Calendar to create today’s daily note\nAdd at least one task (checkbox) for today\n\nThen:\n\nCreate daily files for other days of the upcoming week\nAdd some tasks or other things that are coming up to the respective daily notes (can be real or invented tasks/meetings)"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#optional-tasks-for-the-fast-ones",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#optional-tasks-for-the-fast-ones",
-    "title": "Exercise 2: Set up your daily notes workflow",
-    "section": "Optional tasks (for the fast ones)",
-    "text": "Optional tasks (for the fast ones)\nYou can do these in any order or skip them and take a break.\n\nCustomize your daily template\nThe daily note should reflect your own workflow and needs. Keep it as simple or complex as you want.\n\nThink about your own work routine:\n\nDo you have recurring tasks you do every day?\nWhat information would be useful to see in the morning when you create your daily note?\n\nModify the daily template accordingly:\n\nAdd new sections that fit your workflow (examples could be “Meetings”, “Notes to self”, “Reading”, …)\nAdd recurring tasks (if you have them)\nDelete sections you don’t need\n\n\n\n\nTest your updated template\nUse the Calendar to create a new daily note. Does the template insert what you expected? Is it useful? Adjust the template if needed and test again.\n\nNext: Exercise 3: The Tasks plugin · Back to the workshop page"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html",
-    "title": "Exercise 3: The Tasks plugin",
-    "section": "",
-    "text": "In this exercise, you will collect tasks from all over your vault in your daily notes using the Tasks plugin."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-1-install-the-tasks-plugin",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-1-install-the-tasks-plugin",
-    "title": "Exercise 3: The Tasks plugin",
-    "section": "Step 1: Install the Tasks plugin",
-    "text": "Step 1: Install the Tasks plugin\n\nOpen Settings (gear icon bottom left)\nGo to Community plugins\nClick Browse\nSearch for Tasks (it should be on the very top of the list, created by Clare Macrae et al.)\nInstall and Enable the Tasks plugin"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-2-add-some-tasks-to-your-notes",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-2-add-some-tasks-to-your-notes",
-    "title": "Exercise 3: The Tasks plugin",
-    "section": "Step 2: Add some tasks to your notes",
-    "text": "Step 2: Add some tasks to your notes\nNow add 2–3 example tasks to your notes (not the daily notes, you can e.g. use one of your notes from Exercise 1).\nAny tasks are fine, you can just invent some.\nAdd due dates to the tasks (e.g. today or tomorrow).\n\n\n\n\n\n\nTipAdd due dates with “Tasks”\n\n\n\nYou should see a drop down menu after the task that lets you add a due date like in the image below. You can add a due date by either of these methods:\n\nSelect one of the suggested options\nType a date\nType a natural language date like “next sunday” and see if the plugin suggests the correct date"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-3-add-the-tasks-query-to-your-daily-template",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#step-3-add-the-tasks-query-to-your-daily-template",
-    "title": "Exercise 3: The Tasks plugin",
-    "section": "Step 3: Add the tasks query to your daily template",
-    "text": "Step 3: Add the tasks query to your daily template\n\nOpen your daily note template\nFind the section where your tasks should appear\nAdd the following “Tasks” query block\n\n```tasks\ndue on {{date}}\n```\n{{date}} will be replaced automatically with the date of each daily note.\n\n\n\n\n\n\nTipHow to find the backtick ` on your keyboard\n\n\n\n\n\nThis depends on your keyboard layout. Common options:\n\nUS/UK keyboards: key left of 1 (often shared with ~)\nWindows (many non-US layouts): key near Shift or Enter, or AltGr + key (varies by layout)\nMac (many non-US layouts): Option (⌥) + key (often the same key as ~)\n\nIf it still doesn’t work: Search online for: “backtick key” + your keyboard layout + Windows/Mac\n\n\n\nTest it:\n\nCheck the due dates of your tasks again → Find a due date for which you don’t have a daily note yet. If all tasks already have a daily note, just add a new task with a future due date\nCreate the daily note for that due date\n\nIf all worked well, the task should now automatically appear in the newly created daily note.\n\n\n\n\n\n\nNoteHelp: My tasks do not appear\n\n\n\n\n\nCheck if\n\nthe daily note was created after you added the query to the template. Older notes don’t have the query.\nthe due date of the task is the same as the date of the daily note\nthe query says exactly due on 2026-02-01 (with the date of the daily note). Click into the query block to see it."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#optional-tasks-for-the-fast-ones",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#optional-tasks-for-the-fast-ones",
-    "title": "Exercise 3: The Tasks plugin",
-    "section": "Optional tasks (for the fast ones)",
-    "text": "Optional tasks (for the fast ones)\nYou can do these in any order or skip them and take a break.\n\nModify the tasks query\nThe Tasks plugin allows you to change how tasks are displayed and filtered.\nFor these exercises:\n\nModify the Tasks query in one daily note\nObserve what changes\nKeep what you like by adding it to your daily template\n\nYou may need to create a few extra example tasks or adjust due dates.\n\nCompact display mode\nAdd short mode to your Tasks query (replace the date with a date in your note):\n```tasks\ndue on 2026-02-01\nshort mode\n```\n\n\nList overdue tasks\nList all tasks that are overdue:\n```tasks\ndue before 2026-02-01\n```\n\n\nShow all open tasks\n```tasks\nnot done\n```\n\n\nFilter tasks by folder\nShow only tasks from a specific folder. Replace log with a folder that is in your vault.\n```tasks\npath includes log\n```\n\n\nCombine different queries\nTry combining multiple options above.\nExamples to try:\n\nOverdue tasks in short mode\nTasks due today that are not done\nTasks from your project folder that are due today\n\n\n\n\nUpdate your template\nIf you found task queries that you like from the previous task, modify your daily template accordingly. Then create a few notes to test it.\n\nBack to the workshop page"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html",
-    "href": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html",
-    "title": "Markdown cheatsheet",
-    "section": "",
-    "text": "Below, you find an overview of basic and advanced Markdown formatting styles you can use in Obsidian.\nYou don’t need to know all of this. Use this page as a reference and come back to it when needed."
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#basics",
-    "href": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#basics",
-    "title": "Markdown cheatsheet",
-    "section": "Basics",
-    "text": "Basics\n\nHeaders\n# Heading 1\n## Heading 2\n### Heading 3\n#### Heading 4\n##### Heading 5\n\n\nEmphasis\n**Bold text**\n\n*Italic text*\n\n***Bold and italic text***\n\n==Highlighted text==\nHotkeys: Ctrl/Cmd + B for bold and Ctrl/Cmd + I for italic.\n\n\nLists\n- this is\n- an unordered\n- list\n1. this is\n2. an ordered\n3. list\n\n\nTask lists (checkboxes)\n- [ ] An open task\n- [x] A completed task\nHotkey: Ctrl/Cmd + L turns a line into a task.\n\n\nExternal links\n[A link to Google](https://google.com)\nHotkey: Ctrl/Cmd + K.\nYou can embed links by putting an ! before the link. This works for some web content but is especially helpful for videos, e.g.\n![](https://www.youtube.com/watch?v=E6ySG7xYgjY)\n\n\nInternal links\nInternal links are links that link to other files in your Obsidian vault. As soon as you start typing [[]], Obsidian will suggest files you can link to.\n[[Markdown cheatsheet]]\n[[Markdown cheatsheet|A different display name for the link]]\nAlso here, you can add ! to embed the content. This is useful to embed PDFs, images, but also other note content, e.g.\n![[Markdown cheatsheet]]\nYou can also link to specific sections of another file using #:\n[[Markdown cheatsheet#Headers|Check the header section]]"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#advanced",
-    "href": "sessions/additional_material/21_obsidian-basics/markdown-cheatsheet.html#advanced",
-    "title": "Markdown cheatsheet",
-    "section": "Advanced",
-    "text": "Advanced\n\nFormulas\nYou can use the LaTeX syntax for formulas. Use $ to enclose inline equations and $$ for blocked equations.\nThis $\\pi = \\pi$ is an inline equation\n$$\n\\frac{\\pi}{2} = \\frac{\\pi}{2}\n$$\n\n\nHorizontal lines\nI add a horizontal line\n\n---\n\nbetween these two paragraphs\n\n\nQuotes\n&gt; A wise woman said this thing\n\n\nFootnotes\nThis is a sentence with a footnote. [^1]\n[^1]: This is the footnote text\n\n\nCallouts\nThere are different types of callout boxes, the default is a note:\n&gt; [!note]\n&gt; Lorem ipsum dolor sit amet\nYou can change the title:\n&gt; [!note] This has a custom title\n&gt; Lorem ipsum dolor sit amet\nYou can make the callout foldable by adding a + (unfolded by default) or - (folded by default) after the type:\n&gt; [!note]- This has a folded callout\n&gt; Lorem ipsum dolor sit amet\nDepending on what you put in the [], the callout will look differently. Other types are:\n&gt; [!abstract]\n&gt; [!info]\n&gt; [!todo]\n&gt; [!tip]\n&gt; [!success]\n&gt; [!help]\n&gt; [!warning]\n&gt; [!failure]\n&gt; [!danger]\n&gt; [!bug]\n&gt; [!example]\n&gt; [!quote]\n\n\nInline code\nThis `word` is formatted like code because of the backticks.\n\n\nCode blocks\nCode blocks start and end with 3 backticks. After the 3 backticks in the first line, add the language (e.g. R, python, cpp, …)\n```R\n# This is an R code block\nlibrary(tidyverse)\nmy_data &lt;- read_csv(\"my_data.csv\")\n```\n\nBack to Exercise 1 · Back to the workshop page"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#overview",
-    "href": "slides/2026_10_15_obsidian-basics.html#overview",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Overview",
-    "text": "Overview\n\n\nIntroduction to Obsidian\n\nBasic functionality\nSet up your own notebook\nOrganize your notes in folders\n\n\n\n\n\nPractical workflows for PhD students\n\nPlan your days with daily notes\nManage your tasks\nWhat else you can do"
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#organization",
-    "href": "slides/2026_10_15_obsidian-basics.html#organization",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Organization",
-    "text": "Organization\n\nLive demo + Hands-on\nQuestions anytime\n\n\n\n\n\n\n\nImportant links\n\n\nFind all workshop material and links here: workshop page\n\n\n\n\nIf you didn’t install Obsidian yet, you can do so now from https://obsidian.md/"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#optional-tasks-if-you-finish-early",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-2-daily-notes.html#optional-tasks-if-you-finish-early",
-    "title": "Exercise 2: Set up your daily notes workflow",
-    "section": "Optional tasks (if you finish early)",
-    "text": "Optional tasks (if you finish early)\nPick the one you find most interesting. You don’t need to do all of them.\n\nCustomize your daily template\nAdd a section or a recurring task that fits your work, e.g. ## Meetings, ## Reading or - [ ] Check lab book. Then create a new daily note to test it.\n\n\nOpen today’s note with a hotkey\n\nOpen Settings → Hotkeys\nSearch for “Open today’s daily note” and set a hotkey you like (Obsidian shows you if it is already in use)\n\n\nNext: Exercise 3: The Tasks plugin · Back to the workshop page"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#optional-tasks-if-you-finish-early",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-3-tasks.html#optional-tasks-if-you-finish-early",
-    "title": "Exercise 3: The Tasks plugin",
-    "section": "Optional tasks (if you finish early)",
-    "text": "Optional tasks (if you finish early)\n\nModify the tasks query\nThe Tasks plugin allows you to change how tasks are displayed and filtered.\nFor these exercises:\n\nModify the Tasks query in one daily note (not in the template)\nObserve what changes\nKeep what you like by adding it to your daily template\n\nPick one or two queries below that sound useful to you. You may need to create a few extra example tasks or adjust due dates.\n\nCompact display mode\nAdd short mode to your Tasks query (replace the date with a date in your note):\n```tasks\ndue on 2026-02-01\nshort mode\n```\n\n\nList overdue tasks\nList all tasks that are overdue:\n```tasks\ndue before 2026-02-01\n```\n\n\nShow all open tasks\n```tasks\nnot done\n```\n\n\nFilter tasks by folder\nShow only tasks from a specific folder. Replace log with a folder that is in your vault.\n```tasks\npath includes log\n```\n\n\nCombine different queries\nTry combining multiple options above.\nExamples to try:\n\nOverdue tasks in short mode\nTasks due today that are not done\nTasks from a specific folder that are due today\n\n\n\n\nUpdate your template\nIf you found task queries that you like from the previous task, modify your daily template accordingly. Then create a few notes to test it.\n\nBack to the workshop page"
-  },
-  {
-    "objectID": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-3-add-your-own-notes",
-    "href": "sessions/additional_material/21_obsidian-basics/exercise-1-basics.html#part-3-add-your-own-notes",
-    "title": "Exercise 1: Obsidian basics",
-    "section": "Part 3: Add your own notes",
-    "text": "Part 3: Add your own notes\nCreate 2 short notes on any topic, e.g. a paper you read, a method you use, or your favourite recipe.\nThe content doesn’t matter, the goal is to try out Markdown formatting:\n\na heading\na list\nbold or italic text\n\nUse the Obsidian note or the Markdown cheatsheet as reference."
-  },
-  {
-    "objectID": "slides/2026_10_15_obsidian-basics.html#welcome",
-    "href": "slides/2026_10_15_obsidian-basics.html#welcome",
-    "title": "Digital note taking with Obsidian for scientists: Basics",
-    "section": "Welcome",
-    "text": "Welcome\n\n\n\n(Theoretical) Ecology\nScientific programmer at Freie Universität Berlin\nResearch + Coding + Teaching"
-  },
-  {
     "objectID": "slides/2026_10_15_obsidian-basics.html#projects",
     "href": "slides/2026_10_15_obsidian-basics.html#projects",
     "title": "Digital note taking with Obsidian for scientists: Basics",
@@ -5782,10 +6104,45 @@
     "text": "Archive\n\n\n\nOld, finished work and projects"
   },
   {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#your-turn-1",
+    "href": "slides/2026_10_15_obsidian-basics.html#your-turn-1",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 2 (15 min):\nDaily notes\n\n\nStay in this meeting\nQuestions: In the chat or just unmute yourself and share your screen if needed"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#your-turn-2",
+    "href": "slides/2026_10_15_obsidian-basics.html#your-turn-2",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Your turn",
+    "text": "Your turn\n\n✏️ Exercise 3 (10 min):\nThe Tasks plugin\n\n\nStay in this meeting\nQuestions: In the chat or just unmute yourself and share your screen if needed"
+  },
+  {
     "objectID": "slides/2026_10_15_obsidian-basics.html#what-else-you-can-do",
     "href": "slides/2026_10_15_obsidian-basics.html#what-else-you-can-do",
     "title": "Digital note taking with Obsidian for scientists: Basics",
     "section": "What else you can do",
-    "text": "What else you can do\n\nZettelkasten: Connect your ideas in small, linked notes\nLiterature notes from Zotero\nProject hubs for tasks, meetings and notes\n…"
+    "text": "What else you can do\n\n\nZettelkasten: Connect your ideas in small, linked notes\nLiterature notes from Zotero\nProject hubs for tasks, meetings and notes\n…"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#the-demo-vault",
+    "href": "slides/2026_10_15_obsidian-basics.html#the-demo-vault",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "The demo vault",
+    "text": "The demo vault\nExamples, templates, and workflow guides from today and more:\n\nDaily notes and tasks\nProject hubs with tasks and meetings\nZettelkasten\nLiterature notes from Zotero\nWeb clippings\n\nDownload and instructions on the workshop page"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#wrap-up",
+    "href": "slides/2026_10_15_obsidian-basics.html#wrap-up",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Wrap-up",
+    "text": "Wrap-up\n\nObsidian is not one system\n\nImplement only what you find useful\n\nThe most important: actually writing notes\nStart simple, add workflows later\nFor more checkout the exercises, demo vault and resources on the workshop page"
+  },
+  {
+    "objectID": "slides/2026_10_15_obsidian-basics.html#next-lectureworkshop",
+    "href": "slides/2026_10_15_obsidian-basics.html#next-lectureworkshop",
+    "title": "Digital note taking with Obsidian for scientists: Basics",
+    "section": "Next lecture/workshop",
+    "text": "Next lecture/workshop\nTopic: tba\n\n📅 26.11.2026 🕓 4-5 p.m. 📍 Webex\n🔔 Subscribe to the mailing list\n📧 For topic suggestions and/or feedback send me an email"
   }
 ]
