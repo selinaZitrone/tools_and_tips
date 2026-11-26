@@ -347,7 +347,7 @@ Data on 3 penguin species from Antarctica
 library(palmerpenguins)
 ```
 
-![R package [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/index.html), artwork by Allison Horst](images/2026_12_17_linear-models-anova/lter_penguins.png){fig-alt="Drawing of a Chinstrap, a Gentoo and an Adelie penguin"}
+![R package [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/index.html), artwork by Allison Horst](images/2026_12_17_linear-models-anova/lter_penguins.png){width="60%" fig-align="center" fig-alt="Drawing of a Chinstrap, a Gentoo and an Adelie penguin"}
 
 ## The `palmerpenguins` dataset
 
@@ -1218,7 +1218,7 @@ augment(m_reg, newdata = new_data, interval = "confidence")
 augment(m_reg, newdata = new_data, interval = "prediction")
 ```
 
-- **Confidence interval**: mean body mass of all penguins with 200 mm flippers
+- **Confidence interval**: mean of all penguins with 200 mm flippers
 - **Prediction interval**: body mass of one new penguin. Wider, because it includes individual variation between penguins
 - Note: Only predict within the range of the data (172–231 mm)
 
@@ -1446,24 +1446,6 @@ p_anova_layer +
 
 ## Fit the model
 
-First check the levels. The first level (Adelie) is the **reference** group.
-
-```{r}
-#| label: anova-levels
-#| echo: true
-levels(penguins$species)
-```
-
-:::{.callout-note}
-
-If your groups are coded as numbers (1, 2, 3), convert them to `factor()` first, otherwise R fits a line instead of comparing groups.
-
-:::
-
-. . .
-
-Fit the model
-
 ```{r}
 #| label: anova-fit
 #| echo: true
@@ -1515,6 +1497,7 @@ Result: Strong evidence that body mass differs between species (F~2,339~ = 343.6
 #| label: anova-emmeans
 #| echo: true
 library(emmeans)
+# mean estimate separately for each species
 emm <- emmeans(m_anova, ~species)
 emm
 ```
@@ -1522,6 +1505,8 @@ emm
 - `emmeans()` (package `emmeans`): mean and 95% CI for each group, from the model
 
 ## Which species differ?
+
+Use the `pairs()` function to compare all species pairs.
 
 ```{r}
 #| label: anova-pairs
@@ -1560,8 +1545,7 @@ ggplot(penguins, aes(x = species, y = body_mass_g)) +
 
 ## Report the results
 
-> Body mass differed between species (F~2,339~ = 343.6, p < 0.001). Gentoo were heavier than Adelie (1375 g, 95% CI 1243–1508, p < 0.001) and Chinstrap (1343 g, 95% CI 1178–1507, p < 0.001), whereas we found no evidence of a difference between Chinstrap and Adelie (32 g, 95% CI −127 to 191, p = 0.88). P-values and CIs are Tukey-adjusted.
-
+> Body mass differed between species (F~2,339~ = 343.6, p < 0.001). Gentoo were heavier than Adelie (1375 g, 95% CI 1243–1508, p < 0.001) and Chinstrap (1343 g, 95% CI 1178–1507, p < 0.001), whereas we found no evidence of a difference between Chinstrap and Adelie (32 g, 95% CI −127 to 191, p = 0.88).
 ## Linear model step by step
 
 :::{.text-small}
@@ -1770,6 +1754,7 @@ Result: Evidence that the relationship differs between species (F~2,336~ = 5.5, 
 ```{r}
 #| label: ancova-slopes
 #| echo: true
+# slope estimates for flipper length separate per species
 slopes <- emtrends(m_int, ~species, var = "flipper_length_mm")
 slopes
 pairs(slopes, reverse = TRUE, infer = TRUE)

@@ -207,7 +207,7 @@
     "href": "slides/2026_12_17_linear-models-anova.html#predict-new-values-with-augment",
     "title": "Linear models and ANOVA in R",
     "section": "Predict new values with augment()",
-    "text": "Predict new values with augment()\n\n# Create a new data frame with the values you want to predict\nnew_data &lt;- tibble(flipper_length_mm = 200)\n# predict using the model (convidence interval)\naugment(m_reg, newdata = new_data, interval = \"confidence\")\n\n# A tibble: 1 × 4\n  flipper_length_mm .fitted .lower .upper\n              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1               200   4156.  4114.  4198.\n\n# predict using the model (prediction interval)\naugment(m_reg, newdata = new_data, interval = \"prediction\")\n\n# A tibble: 1 × 4\n  flipper_length_mm .fitted .lower .upper\n              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1               200   4156.  3380.  4933.\n\n\n\nConfidence interval: mean body mass of all penguins with 200 mm flippers\nPrediction interval: body mass of one new penguin. Wider, because it includes individual variation between penguins\nNote: Only predict within the range of the data (172–231 mm)"
+    "text": "Predict new values with augment()\n\n# Create a new data frame with the values you want to predict\nnew_data &lt;- tibble(flipper_length_mm = 200)\n# predict using the model (convidence interval)\naugment(m_reg, newdata = new_data, interval = \"confidence\")\n\n# A tibble: 1 × 4\n  flipper_length_mm .fitted .lower .upper\n              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1               200   4156.  4114.  4198.\n\n# predict using the model (prediction interval)\naugment(m_reg, newdata = new_data, interval = \"prediction\")\n\n# A tibble: 1 × 4\n  flipper_length_mm .fitted .lower .upper\n              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1               200   4156.  3380.  4933.\n\n\n\nConfidence interval: mean of all penguins with 200 mm flippers\nPrediction interval: body mass of one new penguin. Wider, because it includes individual variation between penguins\nNote: Only predict within the range of the data (172–231 mm)"
   },
   {
     "objectID": "slides/2026_12_17_linear-models-anova.html#report-the-results",
@@ -249,7 +249,7 @@
     "href": "slides/2026_12_17_linear-models-anova.html#fit-the-model",
     "title": "Linear models and ANOVA in R",
     "section": "Fit the model",
-    "text": "Fit the model\nFirst check the levels. The first level (Adelie) is the reference group.\n\nlevels(penguins$species)\n\n[1] \"Adelie\"    \"Chinstrap\" \"Gentoo\"   \n\n\n\n\n\n\n\n\nNote\n\n\nIf your groups are coded as numbers (1, 2, 3), convert them to factor() first, otherwise R fits a line instead of comparing groups.\n\n\n\n\nFit the model\n\nm_anova &lt;- lm(body_mass_g ~ species, data = penguins)"
+    "text": "Fit the model\n\nm_anova &lt;- lm(body_mass_g ~ species, data = penguins)"
   },
   {
     "objectID": "slides/2026_12_17_linear-models-anova.html#check-model-assumptions",
@@ -284,14 +284,14 @@
     "href": "slides/2026_12_17_linear-models-anova.html#mean-body-mass-per-species",
     "title": "Linear models and ANOVA in R",
     "section": "Mean body mass per species",
-    "text": "Mean body mass per species\n\nlibrary(emmeans)\nemm &lt;- emmeans(m_anova, ~species)\nemm\n\n species   emmean   SE  df lower.CL upper.CL\n Adelie      3701 37.6 339     3627     3775\n Chinstrap   3733 56.1 339     3623     3843\n Gentoo      5076 41.7 339     4994     5158\n\nConfidence level used: 0.95 \n\n\n\nemmeans() (package emmeans): mean and 95% CI for each group, from the model"
+    "text": "Mean body mass per species\n\nlibrary(emmeans)\n# mean estimate separately for each species\nemm &lt;- emmeans(m_anova, ~species)\nemm\n\n species   emmean   SE  df lower.CL upper.CL\n Adelie      3701 37.6 339     3627     3775\n Chinstrap   3733 56.1 339     3623     3843\n Gentoo      5076 41.7 339     4994     5158\n\nConfidence level used: 0.95 \n\n\n\nemmeans() (package emmeans): mean and 95% CI for each group, from the model"
   },
   {
     "objectID": "slides/2026_12_17_linear-models-anova.html#which-species-differ",
     "href": "slides/2026_12_17_linear-models-anova.html#which-species-differ",
     "title": "Linear models and ANOVA in R",
     "section": "Which species differ?",
-    "text": "Which species differ?\n\npairs(emm, reverse = TRUE, infer = TRUE)\n\n contrast           estimate   SE  df lower.CL upper.CL t.ratio p.value\n Chinstrap - Adelie     32.4 67.5 339     -127      191   0.480  0.8807\n Gentoo - Adelie      1375.4 56.1 339     1243     1508  24.495 &lt;0.0001\n Gentoo - Chinstrap   1342.9 69.9 339     1178     1507  19.224 &lt;0.0001\n\nConfidence level used: 0.95 \nConf-level adjustment: tukey method for comparing a family of 3 estimates \nP value adjustment: tukey method for comparing a family of 3 estimates \n\n\n\nOne row per pair: difference (how big?), CI (how precise?), p-value (how much evidence?)\nP-values and CIs are Tukey-adjusted for multiple comparisons"
+    "text": "Which species differ?\nUse the pairs() function to compare all species pairs.\n\npairs(emm, reverse = TRUE, infer = TRUE)\n\n contrast           estimate   SE  df lower.CL upper.CL t.ratio p.value\n Chinstrap - Adelie     32.4 67.5 339     -127      191   0.480  0.8807\n Gentoo - Adelie      1375.4 56.1 339     1243     1508  24.495 &lt;0.0001\n Gentoo - Chinstrap   1342.9 69.9 339     1178     1507  19.224 &lt;0.0001\n\nConfidence level used: 0.95 \nConf-level adjustment: tukey method for comparing a family of 3 estimates \nP value adjustment: tukey method for comparing a family of 3 estimates \n\n\n\nOne row per pair: difference (how big?), CI (how precise?), p-value (how much evidence?)\nP-values and CIs are Tukey-adjusted for multiple comparisons"
   },
   {
     "objectID": "slides/2026_12_17_linear-models-anova.html#show-the-model-1",
@@ -305,14 +305,14 @@
     "href": "slides/2026_12_17_linear-models-anova.html#report-the-results-1",
     "title": "Linear models and ANOVA in R",
     "section": "Report the results",
-    "text": "Report the results\n\nBody mass differed between species (F2,339 = 343.6, p &lt; 0.001). Gentoo were heavier than Adelie (1375 g, 95% CI 1243–1508, p &lt; 0.001) and Chinstrap (1343 g, 95% CI 1178–1507, p &lt; 0.001), whereas we found no evidence of a difference between Chinstrap and Adelie (32 g, 95% CI −127 to 191, p = 0.88). P-values and CIs are Tukey-adjusted."
+    "text": "Report the results\n\nBody mass differed between species (F2,339 = 343.6, p &lt; 0.001). Gentoo were heavier than Adelie (1375 g, 95% CI 1243–1508, p &lt; 0.001) and Chinstrap (1343 g, 95% CI 1178–1507, p &lt; 0.001), whereas we found no evidence of a difference between Chinstrap and Adelie (32 g, 95% CI −127 to 191, p = 0.88). ## Linear model step by step\n\n\n\n\n\n\n\n\n\n\nStep\nLinear regression\nANOVA\n\n\n\n\nQuestion\nHow much heavier are penguins with longer flippers?\nHow much does body mass differ between species?\n\n\nFit model\nlm(body_mass_g ~ flipper_length_mm)\nlm(body_mass_g ~ species)\n\n\nCheck assumptions\nperformance::check_model()\nperformance::check_model()\n\n\nAnswer\nsummary(), confint(), car::Anova()\ncar::Anova(), emmeans(), pairs()\n\n\nShow\ngeom_smooth(method = \"lm\") or augment()\nData + means and 95% CI from emmeans()\n\n\nReport\nEffect, 95% CI, F, p, R²\nF, p, and each difference with 95% CI and p"
   },
   {
     "objectID": "slides/2026_12_17_linear-models-anova.html#linear-model-step-by-step-1",
     "href": "slides/2026_12_17_linear-models-anova.html#linear-model-step-by-step-1",
     "title": "Linear models and ANOVA in R",
     "section": "Linear model step by step",
-    "text": "Linear model step by step\n\n\n\n\n\n\n\n\n\nStep\nLinear regression\nANOVA\n\n\n\n\nQuestion\nHow much heavier are penguins with longer flippers?\nHow much does body mass differ between species?\n\n\nFit model\nlm(body_mass_g ~ flipper_length_mm)\nlm(body_mass_g ~ species)\n\n\nCheck assumptions\nperformance::check_model()\nperformance::check_model()\n\n\nAnswer\nsummary(), confint(), car::Anova()\ncar::Anova(), emmeans(), pairs()\n\n\nShow\ngeom_smooth(method = \"lm\") or augment()\nData + means and 95% CI from emmeans()\n\n\nReport\nEffect, 95% CI, F, p, R²\nF, p, and each difference with 95% CI and p"
+    "text": "Linear model step by step\n\n\n\n\n\n\n\n\n\n\nStep\nLinear regression\nANOVA\nANCOVA\n\n\n\n\nFit model\n~ flipper_length_mm\n~ species\n~ flipper_length_mm * species\n\n\nCheck\ncheck_model()\ncheck_model()\ncheck_model()\n\n\nAnswer\nsummary(), confint(), car::Anova()\ncar::Anova(), emmeans(), pairs()\ncar::Anova(), emtrends(), pairs()\n\n\nShow\ngeom_smooth() or augment()\nData + means from emmeans()\ngeom_smooth(), or augment() for the additive model\n\n\nReport\nEffect, 95% CI, F, p, R²\nF, p, differences (95% CI, p)\nInteraction F, p, slope differences (95% CI, p)"
   },
   {
     "objectID": "slides/2026_12_17_linear-models-anova.html#your-turn-1",
@@ -368,7 +368,7 @@
     "href": "slides/2026_12_17_linear-models-anova.html#which-slopes-differ",
     "title": "Linear models and ANOVA in R",
     "section": "Which slopes differ?",
-    "text": "Which slopes differ?\n\nslopes &lt;- emtrends(m_int, ~species, var = \"flipper_length_mm\")\nslopes\n\n species   flipper_length_mm.trend   SE  df lower.CL upper.CL\n Adelie                       32.8 4.63 336     23.7     41.9\n Chinstrap                    34.6 6.35 336     22.1     47.1\n Gentoo                       54.6 5.17 336     44.4     64.8\n\nConfidence level used: 0.95 \n\npairs(slopes, reverse = TRUE, infer = TRUE)\n\n contrast           estimate   SE  df lower.CL upper.CL t.ratio p.value\n Chinstrap - Adelie     1.74 7.86 336  -16.752     20.2   0.222  0.9733\n Gentoo - Adelie       21.79 6.94 336    5.450     38.1   3.139  0.0052\n Gentoo - Chinstrap    20.05 8.19 336    0.769     39.3   2.448  0.0394\n\nConfidence level used: 0.95 \nConf-level adjustment: tukey method for comparing a family of 3 estimates \nP value adjustment: tukey method for comparing a family of 3 estimates \n\n\n\nSame as in ANOVA, but with slopes instead of means"
+    "text": "Which slopes differ?\n\n# slope estimates for flipper length separate per species\nslopes &lt;- emtrends(m_int, ~species, var = \"flipper_length_mm\")\nslopes\n\n species   flipper_length_mm.trend   SE  df lower.CL upper.CL\n Adelie                       32.8 4.63 336     23.7     41.9\n Chinstrap                    34.6 6.35 336     22.1     47.1\n Gentoo                       54.6 5.17 336     44.4     64.8\n\nConfidence level used: 0.95 \n\npairs(slopes, reverse = TRUE, infer = TRUE)\n\n contrast           estimate   SE  df lower.CL upper.CL t.ratio p.value\n Chinstrap - Adelie     1.74 7.86 336  -16.752     20.2   0.222  0.9733\n Gentoo - Adelie       21.79 6.94 336    5.450     38.1   3.139  0.0052\n Gentoo - Chinstrap    20.05 8.19 336    0.769     39.3   2.448  0.0394\n\nConfidence level used: 0.95 \nConf-level adjustment: tukey method for comparing a family of 3 estimates \nP value adjustment: tukey method for comparing a family of 3 estimates \n\n\n\nSame as in ANOVA, but with slopes instead of means"
   },
   {
     "objectID": "slides/2026_12_17_linear-models-anova.html#show-the-model-2",
