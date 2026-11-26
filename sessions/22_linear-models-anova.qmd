@@ -1,0 +1,45 @@
+---
+title: "Linear models and ANOVA in R"
+date: "2026-12-17"
+callout-appearance: default
+from: markdown+emoji
+---
+
+### Description
+
+Do treatment groups differ from each other? How does one variable change with another? Linear models are widely used tools for answering these questions. In this hands-on workshop, we'll learn how to use linear models in R, from simple linear regression to models combining numeric and categorical predictors. Along the way, we'll see how ANOVA fits into the same framework. We will cover:
+
+- **Fitting models** with `lm()` using different combinations of predictors
+- **Interpreting the results**, including comparisons between groups
+- **Checking model assumptions**
+- **Reporting and plotting** the results
+
+No prior experience with statistical models is needed. You'll leave with practical examples and code you can apply to your own data.
+
+**Requirements:** Please have R and your preferred editor (e.g. RStudio or Positron) installed before the workshop so you can open the provided R project, edit the example code, and run it.
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="../slides/2026_12_17_linear-models-anova.html"></iframe>
+```
+
+[Slides in full screen](../slides/2026_12_17_linear-models-anova.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="../slides/slides_pdf/2026_12_17_linear-models-anova.pdf" download>Download PDF slides</a>
+
+## Resources
+
+### Workshop materials
+
+The workshop repo has all demo scripts, exercises, and solutions:
+
+[github.com/selinaZitrone/lm-anova-workshop](https://github.com/selinaZitrone/lm-anova-workshop)
+
+### R packages
+
+- [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/): the penguin data used in all examples
+- [`performance`](https://easystats.github.io/performance/): check model assumptions with `check_model()` (the plots need the [`see`](https://easystats.github.io/see/) package)
+- [`car`](https://cran.r-project.org/package=car): F-tests with `Anova()`
+- [`emmeans`](https://rvlenth.github.io/emmeans/): group means, slopes and pairwise comparisons
+- [`broom`](https://broom.tidymodels.org/): model results as tables with `tidy()`, `glance()` and `augment()`
+
+### Book
+
+- [Statistical Modelling: Lecture Notes for From Data to Evidence](https://bookdown.org/btmarti25/FD2E/) by Benjamin T. Martin
