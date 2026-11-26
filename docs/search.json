@@ -305,14 +305,14 @@
     "href": "slides/2026_12_17_linear-models-anova.html#report-the-results-1",
     "title": "Linear models and ANOVA in R",
     "section": "Report the results",
-    "text": "Report the results\n\nBody mass differed between species (F2,339 = 343.6, p &lt; 0.001). Gentoo were heavier than Adelie (1375 g, 95% CI 1243–1508, p &lt; 0.001) and Chinstrap (1343 g, 95% CI 1178–1507, p &lt; 0.001), whereas we found no evidence of a difference between Chinstrap and Adelie (32 g, 95% CI −127 to 191, p = 0.88). ## Linear model step by step\n\n\n\n\n\n\n\n\n\n\nStep\nLinear regression\nANOVA\n\n\n\n\nQuestion\nHow much heavier are penguins with longer flippers?\nHow much does body mass differ between species?\n\n\nFit model\nlm(body_mass_g ~ flipper_length_mm)\nlm(body_mass_g ~ species)\n\n\nCheck assumptions\nperformance::check_model()\nperformance::check_model()\n\n\nAnswer\nsummary(), confint(), car::Anova()\ncar::Anova(), emmeans(), pairs()\n\n\nShow\ngeom_smooth(method = \"lm\") or augment()\nData + means and 95% CI from emmeans()\n\n\nReport\nEffect, 95% CI, F, p, R²\nF, p, and each difference with 95% CI and p"
+    "text": "Report the results\n\nBody mass differed between species (F2,339 = 343.6, p &lt; 0.001). Gentoo were heavier than Adelie (1375 g, 95% CI 1243–1508, p &lt; 0.001) and Chinstrap (1343 g, 95% CI 1178–1507, p &lt; 0.001), whereas we found no evidence of a difference between Chinstrap and Adelie (32 g, 95% CI −127 to 191, p = 0.88)."
   },
   {
     "objectID": "slides/2026_12_17_linear-models-anova.html#linear-model-step-by-step-1",
     "href": "slides/2026_12_17_linear-models-anova.html#linear-model-step-by-step-1",
     "title": "Linear models and ANOVA in R",
     "section": "Linear model step by step",
-    "text": "Linear model step by step\n\n\n\n\n\n\n\n\n\n\nStep\nLinear regression\nANOVA\nANCOVA\n\n\n\n\nFit model\n~ flipper_length_mm\n~ species\n~ flipper_length_mm * species\n\n\nCheck\ncheck_model()\ncheck_model()\ncheck_model()\n\n\nAnswer\nsummary(), confint(), car::Anova()\ncar::Anova(), emmeans(), pairs()\ncar::Anova(), emtrends(), pairs()\n\n\nShow\ngeom_smooth() or augment()\nData + means from emmeans()\ngeom_smooth(), or augment() for the additive model\n\n\nReport\nEffect, 95% CI, F, p, R²\nF, p, differences (95% CI, p)\nInteraction F, p, slope differences (95% CI, p)"
+    "text": "Linear model step by step\n\n\n\n\n\n\n\n\n\nStep\nLinear regression\nANOVA\n\n\n\n\nQuestion\nHow much heavier are penguins with longer flippers?\nHow much does body mass differ between species?\n\n\nFit model\nlm(body_mass_g ~ flipper_length_mm)\nlm(body_mass_g ~ species)\n\n\nCheck assumptions\nperformance::check_model()\nperformance::check_model()\n\n\nAnswer\nsummary(), confint(), car::Anova()\ncar::Anova(), emmeans(), pairs()\n\n\nShow\ngeom_smooth(method = \"lm\") or augment()\nData + means and 95% CI from emmeans()\n\n\nReport\nEffect, 95% CI, F, p, R²\nF, p, and each difference with 95% CI and p"
   },
   {
     "objectID": "slides/2026_12_17_linear-models-anova.html#your-turn-1",

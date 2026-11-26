@@ -1546,6 +1546,7 @@ ggplot(penguins, aes(x = species, y = body_mass_g)) +
 ## Report the results
 
 > Body mass differed between species (F~2,339~ = 343.6, p < 0.001). Gentoo were heavier than Adelie (1375 g, 95% CI 1243–1508, p < 0.001) and Chinstrap (1343 g, 95% CI 1178–1507, p < 0.001), whereas we found no evidence of a difference between Chinstrap and Adelie (32 g, 95% CI −127 to 191, p = 0.88).
+
 ## Linear model step by step
 
 :::{.text-small}
