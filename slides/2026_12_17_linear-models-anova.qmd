@@ -385,7 +385,7 @@ species_means <- summarise(
 **Linear regression**
 
 :::{.text-small}
-*Does flipper length predict body mass?*<br>
+*How much heavier are penguins with longer flippers?*<br>
 [continuous predictor]{style="color:#7b8a8b"}
 :::
 
@@ -415,7 +415,7 @@ ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
 **ANOVA**
 
 :::{.text-small}
-*Does body mass differ between species?*<br>
+*How much does body mass differ between species?*<br>
 [categorical predictor]{style="color:#7b8a8b"}
 :::
 
@@ -488,19 +488,14 @@ section_icon("regression")
 
 :::
 
-## Does flipper length predict body mass?
+## How much heavier are penguins with longer flippers?
 
 :::{.columns}
 
 :::{.column width="48%"}
 
-- **Hypothesis:** Penguins with longer flippers are heavier
-- **Are the rows independent?**
-  - We treat each penguin as independent
-
-:::{.fragment .text-small}
-*Not independent: several wells from one mouse, repeated measurements of the same patient*
-:::
+- **Expectation:** Penguins with longer flippers are heavier
+- **Question:** By how much, and how certain are we?
 
 :::
 
@@ -534,20 +529,20 @@ ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
 **Data = [Model]{style="color:#1F7A5C"} + [Error]{style="color:#C8553D"}**
 
 :::{.fragment fragment-index=1}
-y = [b~0~ + b~1~ · x]{style="color:#1F7A5C"} + [e]{style="color:#C8553D"}
+y = [β~0~ + β~1~ · x]{style="color:#1F7A5C"} + [ε]{style="color:#C8553D"}
 :::
 
 :::{.fragment fragment-index=2}
-body mass = [b~0~ + b~1~ · flipper length]{style="color:#1F7A5C"} + [e]{style="color:#C8553D"}
+body mass = [β~0~ + β~1~ · flipper length]{style="color:#1F7A5C"} + [ε]{style="color:#C8553D"}
 :::
 
 :::{.fragment .text-small fragment-index=3}
-- [**b~0~**]{style="color:#1F7A5C"}: intercept, body mass at a flipper length of 0
-- [**b~1~**]{style="color:#1F7A5C"}: slope, change in body mass per mm
+- [**β~0~**]{style="color:#1F7A5C"}: intercept, body mass at a flipper length of 0
+- [**β~1~**]{style="color:#1F7A5C"}: slope, change in body mass per mm
 :::
 
 :::{.fragment .text-small fragment-index=4}
-- [**e**]{style="color:#C8553D"}: error, what the model doesn't explain
+- [**ε**]{style="color:#C8553D"}: error, what the model doesn't explain
 :::
 
 :::
@@ -601,7 +596,8 @@ p_layer +
 slope_x <- c(185, 205)
 slope_y <- predict(m_reg, tibble(flipper_length_mm = slope_x))
 
-p_layer +
+# stored as a list to reuse it on the terminology slide
+slope_layers <- list(
   annotate(
     "segment",
     x = c(slope_x[1], slope_x[2]),
@@ -611,17 +607,41 @@ p_layer +
     color = col_model,
     linewidth = 1.2,
     linetype = "dashed"
-  ) +
+  ),
   annotate(
     "text",
     x = slope_x[2] + 1,
     y = mean(slope_y) - 250,
-    label = "slope~b[1]",
+    label = "slope~beta[1]",
     parse = TRUE,
     color = col_model,
     size = 8,
     hjust = 0
+  ),
+  # the intercept is far below the plot
+  annotate(
+    "segment",
+    x = 196,
+    xend = 171,
+    y = 2780,
+    yend = 2640,
+    color = col_model,
+    linewidth = 1,
+    arrow = arrow(length = unit(0.3, "cm"))
+  ),
+  annotate(
+    "text",
+    x = 197,
+    y = 2780,
+    label = paste0("beta[0]~'= ", round(coef(m_reg)[[1]]), " g at 0 mm'"),
+    parse = TRUE,
+    color = col_model,
+    size = 6,
+    hjust = 0
   )
+)
+
+p_layer + slope_layers
 ```
 
 :::
@@ -639,23 +659,27 @@ one_penguin <- slice_max(
   n = 1
 )
 
-p_layer +
+error_layers <- list(
   geom_segment(
     data = one_penguin,
     aes(yend = .fitted),
     color = col_error,
     linewidth = 1.4
-  ) +
-  geom_point(data = one_penguin, color = col_error, size = 4) +
+  ),
+  geom_point(data = one_penguin, color = col_error, size = 4),
   annotate(
     "text",
     x = 219,
     y = 6200,
-    label = "e",
+    label = "epsilon",
+    parse = TRUE,
     color = col_error,
     size = 9,
     hjust = 1
   )
+)
+
+p_layer + error_layers
 ```
 
 :::
@@ -666,6 +690,388 @@ p_layer +
 
 :::
 
+## Terminology {visibility="hidden"}
+
+:::{.columns}
+
+:::{.column width="56%"}
+
+y = [β~0~ + β~1~ · x]{style="color:#1F7A5C"} + [ε]{style="color:#C8553D"}<br>
+ŷ = [β~0~ + β~1~ · x]{style="color:#1F7A5C"}
+
+:::{.text-small}
+
+| Term | | In our example |
+|:-----|:-|:---------------|
+| Response | y | body mass |
+| Predictor | x | flipper length |
+| Parameters | β~0~, β~1~ | intercept, slope |
+| Fitted value | ŷ | value on the line |
+| Residual | y − ŷ | observed − fitted |
+
+: {tbl-colwidths="[36,20,44]"}
+
+:::
+
+:::{.fragment .text-small}
+The residuals are our estimate of the error ε
+:::
+
+:::
+
+:::{.column width="44%"}
+
+```{r}
+#| label: terminology
+#| fig-width: 5.6
+#| fig-height: 5.2
+# the full figure from the model slide, plus fitted value and residual
+ggplot(pred, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(alpha = 0.3) +
+  geom_line(aes(y = .fitted), color = col_model, linewidth = 1.8) +
+  slope_layers +
+  error_layers +
+  geom_point(data = one_penguin, aes(y = .fitted), color = col_model, size = 4) +
+  annotate(
+    "label",
+    x = c(219, 223),
+    y = c(mean(c(one_penguin$body_mass_g, one_penguin$.fitted)), one_penguin$.fitted),
+    label = c("residual", "fitted~hat(y)"),
+    parse = TRUE,
+    color = c(col_error, col_model),
+    hjust = c(1, 0),
+    size = 6,
+    fill = "#F1F1F1",
+    linewidth = 0
+  ) +
+  peng_labs +
+  peng_coord
+```
+
+:::
+
+:::
+
+## Which model is best?
+
+:::{.columns}
+
+:::{.column width="48%"}
+
+Many lines are possible
+
+. . .
+
+So how do we find the best one?
+
+:::
+
+:::{.column width="52%"}
+
+```{r}
+#| label: candidate-lines
+#| fig-width: 6.6
+#| fig-height: 5.6
+# many random lines around the center of the data
+center <- summarise(
+  penguins_complete,
+  x = mean(flipper_length_mm),
+  y = mean(body_mass_g)
+)
+
+set.seed(5)
+many_lines <- tibble(
+  slope = runif(40, 10, 90),
+  intercept = center$y + rnorm(40, sd = 250) - slope * center$x
+)
+
+ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(alpha = 0.3) +
+  geom_abline(
+    data = many_lines,
+    aes(slope = slope, intercept = intercept),
+    color = col_model,
+    linewidth = 0.4,
+    alpha = 0.7
+  ) +
+  peng_labs +
+  peng_coord
+```
+
+:::
+
+:::
+
+## The best line has the smallest residuals
+
+:::{.columns}
+
+:::{.column width="48%"}
+
+:::{.nonincremental}
+
+**Model residuals**
+
+$Y_i - \hat{Y}_i$
+
+:::{.fragment fragment-index=1}
+**Residual sum of squares (RSS)**
+
+$RSS = \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2$
+:::
+
+:::{.fragment fragment-index=2}
+**Aim of model fitting:**<br>
+Find model coefficients that lead to the lowest RSS<br>
+[(ordinary least squares, OLS)]{.text-small}
+:::
+
+:::
+
+:::
+
+:::{.column width="52%"}
+
+:::{.r-stack}
+
+```{r}
+#| label: residual-one
+#| fig-width: 6.6
+#| fig-height: 5.6
+# one penguin with observed and fitted value
+ggplot(pred, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(alpha = 0.3) +
+  geom_line(aes(y = .fitted), color = col_model, linewidth = 1.8) +
+  geom_segment(
+    data = one_penguin,
+    aes(yend = .fitted),
+    color = col_error,
+    linewidth = 1.4
+  ) +
+  geom_point(data = one_penguin, color = col_error, size = 4) +
+  geom_point(data = one_penguin, aes(y = .fitted), color = col_model, size = 4) +
+  annotate(
+    "label",
+    x = c(219, 223),
+    y = c(one_penguin$body_mass_g, one_penguin$.fitted),
+    label = c("y[i]", "hat(y)[i]"),
+    parse = TRUE,
+    color = c(col_error, col_model),
+    hjust = c(1, 0),
+    size = 8,
+    fill = "#F1F1F1",
+    linewidth = 0
+  ) +
+  peng_labs +
+  peng_coord
+```
+
+:::{.fragment fragment-index=1}
+
+```{r}
+#| label: residual-all
+#| fig-width: 6.6
+#| fig-height: 5.6
+# all residuals, with the line drawn again on top
+p_layer +
+  geom_segment(aes(yend = .fitted), color = col_error, alpha = 0.5) +
+  geom_line(aes(y = .fitted), color = col_model, linewidth = 1.8)
+```
+
+:::
+
+:::
+
+:::
+
+:::
+
+## When can we trust the results?
+
+:::{.columns}
+
+:::{.column width="48%"}
+
+The model makes **assumptions**:
+
+:::{.text-small}
+- The relationship is **linear**
+- Residuals are **normally distributed** around the line
+- Residual **variance is constant** along the line
+- No strong **outliers**
+- Observations are **independent** (study design!)
+:::
+
+:::
+
+:::{.column width="52%"}
+
+```{r}
+#| label: assumptions
+#| fig-width: 6.6
+#| fig-height: 5.6
+# normal distributions around the line at three flipper lengths,
+# drawn on both sides so that the widest part sits on the line
+sigma_reg <- sigma(m_reg)
+
+z <- seq(-2.5, 2.5, length.out = 100)
+curves <- tibble(x0 = c(185, 205, 225)) |>
+  mutate(fitted = predict(m_reg, tibble(flipper_length_mm = x0))) |>
+  reframe(
+    y = fitted + c(z, rev(z)) * sigma_reg,
+    x = x0 + c(1, -1)[rep(1:2, each = 100)] * 4 * dnorm(c(z, rev(z))) / dnorm(0),
+    .by = c(x0, fitted)
+  )
+
+ggplot(pred, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(alpha = 0.2) +
+  geom_polygon(
+    data = curves,
+    aes(x = x, y = y, group = x0),
+    color = col_error,
+    fill = col_error,
+    alpha = 0.15,
+    linewidth = 1
+  ) +
+  geom_line(aes(y = .fitted), color = col_model, linewidth = 1.5) +
+  geom_segment(
+    data = distinct(curves, x0, fitted),
+    aes(x = x0, xend = x0, y = fitted - 2.5 * sigma_reg, yend = fitted + 2.5 * sigma_reg),
+    color = col_error,
+    linetype = "dotted"
+  ) +
+  peng_labs +
+  coord_cartesian(xlim = c(170, 233), ylim = c(2200, 6800))
+```
+
+:::
+
+:::
+
+## Linear regression in R
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+Fit a linear model with `lm()`:
+
+<pre><code>lm(
+  formula = <span style="color:#2E6F9E;font-weight:bold">response</span> ~ <span style="color:#B8860B;font-weight:bold">predictor</span>,
+  data = <span style="color:#7b8a8b;font-weight:bold">data</span>
+)</code></pre>
+
+:::
+
+:::{.fragment}
+
+<br>
+
+For our penguins:
+
+<pre><code>m_reg &lt;- lm(
+  <span style="color:#2E6F9E;font-weight:bold">body_mass_g</span> ~ <span style="color:#B8860B;font-weight:bold">flipper_length_mm</span>,
+  data = <span style="color:#7b8a8b;font-weight:bold">penguins</span>
+)</code></pre>
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: lm-syntax
+#| fig-width: 4.6
+#| fig-height: 4.6
+ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm", se = FALSE, color = col_model, linewidth = 1.5) +
+  labs(x = "flipper_length_mm", y = "body_mass_g") +
+  theme(
+    axis.title.y = element_text(color = "#2E6F9E", face = "bold"),
+    axis.title.x = element_text(color = "#B8860B", face = "bold")
+  )
+```
+
+:::
+
+:::
+
+## Checking the residuals
+
+:::{.columns}
+
+:::{.column width="35%"}
+
+:::{.text-small}
+- Look for **clear patterns**, not perfection
+- `check_model()` from the package `performance` makes these plots for you
+- If something looks wrong: transform the response, add a predictor, or use another model
+:::
+
+:::
+
+:::{.column width="65%"}
+
+```{r}
+#| label: residual-examples
+#| fig-width: 8
+#| fig-height: 6
+# simulated residuals: one good case and three problems
+set.seed(3)
+n <- 150
+x_fitted <- runif(n)
+
+resid_examples <- tibble(
+  problem = rep(c("Looks good", "Not linear", "Spread not constant"), each = n),
+  fitted = rep(x_fitted, 3),
+  residual = c(
+    rnorm(n, sd = 0.2),
+    3 * (x_fitted - 0.5)^2 - 0.25 + rnorm(n, sd = 0.1),
+    rnorm(n, sd = 0.05 + 0.4 * x_fitted)
+  )
+)
+
+p_resid <- ggplot(resid_examples, aes(x = fitted, y = residual)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point(alpha = 0.5) +
+  facet_wrap(~problem) +
+  labs(x = "Fitted values", y = "Residuals")
+
+p_qq <- tibble(problem = "Not normal", residual = rexp(n) - 1) |>
+  ggplot(aes(sample = residual)) +
+  stat_qq_line(linetype = "dashed") +
+  stat_qq(alpha = 0.5) +
+  facet_wrap(~problem) +
+  labs(x = "Theoretical quantiles", y = "Sample quantiles")
+
+p_good <- p_resid %+% filter(resid_examples, problem == "Looks good")
+p_curve <- p_resid %+% filter(resid_examples, problem == "Not linear")
+p_spread <- p_resid %+% filter(resid_examples, problem == "Spread not constant")
+
+wrap_plots(p_good, p_curve, p_spread, p_qq, ncol = 2) &
+  theme(
+    axis.text = element_blank(),
+    text = element_text(size = 16),
+    strip.text = element_text(size = 18, face = "bold")
+  )
+```
+
+:::
+
+:::
+
+
+
+## Live demo {.inverse}
+
+Fit and check the model
+
+`demo/01_regression.R`
+
 # Wrap-up {.inverse}
 
 ## What makes all these models linear?
@@ -674,9 +1080,9 @@ p_layer +
 
 | Model | Formula |
 |:------|:--------|
-| Regression | body mass = b~0~ + b~1~ · flipper length + e |
-| ANOVA | body mass = b~0~ + b~1~ · Chinstrap + b~2~ · Gentoo + e |
-| ANCOVA | body mass = b~0~ + b~1~ · flipper length + b~2~ · Chinstrap + b~3~ · Gentoo + e |
+| Regression | body mass = β~0~ + β~1~ · flipper length + ε |
+| ANOVA | body mass = β~0~ + β~1~ · Chinstrap + β~2~ · Gentoo + ε |
+| ANCOVA | body mass = β~0~ + β~1~ · flipper length + β~2~ · Chinstrap + β~3~ · Gentoo + ε |
 
 : {tbl-colwidths="[16,84]"}
 
