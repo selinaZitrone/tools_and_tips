@@ -30,9 +30,14 @@ library(tidyverse)
 library(broom)
 library(palmerpenguins)
 library(patchwork)
+library(emmeans)
 
-# no white box around the plots
-knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
+# same size for all figures (for a 50/50 column) and no white box around them
+knitr::opts_chunk$set(
+  fig.width = 6.4,
+  fig.height = 5.4,
+  dev.args = list(bg = "transparent")
+)
 
 theme_set(theme_minimal(base_size = 20))
 theme_update(plot.background = element_blank())
@@ -170,8 +175,11 @@ ggplot(bp, aes(x = dose, y = reduction)) +
   bp_labs
 ```
 
+
+:::{.nonincremental}
 - Patients take **different doses** of a medication
 - We measure **how much their blood pressure drops**
+:::
 
 ## Why do we model?
 
@@ -225,7 +233,7 @@ What do we **expect** for **new values**?
 
 :::{.columns}
 
-:::{.column width="45%"}
+:::{.column width="50%"}
 
 :::{.nonincremental}
 
@@ -243,7 +251,7 @@ What do we **expect** for **new values**?
 
 :::
 
-:::{.column width="55%"}
+:::{.column width="50%"}
 
 :::{.r-stack}
 
@@ -251,8 +259,6 @@ What do we **expect** for **new values**?
 
 ```{r}
 #| label: bp-model-data
-#| fig-width: 7
-#| fig-height: 5.6
 p_bp <- ggplot(bp, aes(x = dose, y = reduction)) +
   bp_labs
 
@@ -266,8 +272,6 @@ p_bp +
 
 ```{r}
 #| label: bp-model-line
-#| fig-width: 7
-#| fig-height: 5.6
 p_bp +
   geom_line(aes(y = line), color = col_model, linewidth = 1.5) +
   geom_point(size = 3)
@@ -279,8 +283,6 @@ p_bp +
 
 ```{r}
 #| label: bp-model-error
-#| fig-width: 7
-#| fig-height: 5.6
 p_bp +
   geom_segment(aes(yend = line), color = col_error, linewidth = 1) +
   geom_line(aes(y = line), color = col_model, linewidth = 1.5) +
@@ -380,7 +382,7 @@ species_means <- summarise(
 
 :::{.columns}
 
-:::{.column width="60%"}
+:::{.column width="50%"}
 
 **Linear regression**
 
@@ -391,7 +393,7 @@ species_means <- summarise(
 
 :::
 
-:::{.column width="40%"}
+:::{.column width="50%"}
 
 ```{r}
 #| label: preview-regression
@@ -410,7 +412,7 @@ ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 :::{.columns}
 
-:::{.column width="60%"}
+:::{.column width="50%"}
 
 **ANOVA**
 
@@ -421,7 +423,7 @@ ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 :::
 
-:::{.column width="40%"}
+:::{.column width="50%"}
 
 ```{r}
 #| label: preview-anova
@@ -441,7 +443,7 @@ ggplot(penguins_complete, aes(x = species, y = body_mass_g, color = species)) +
 
 :::{.columns}
 
-:::{.column width="60%"}
+:::{.column width="50%"}
 
 **ANCOVA**
 
@@ -452,7 +454,7 @@ ggplot(penguins_complete, aes(x = species, y = body_mass_g, color = species)) +
 
 :::
 
-:::{.column width="40%"}
+:::{.column width="50%"}
 
 ```{r}
 #| label: preview-ancova
@@ -492,19 +494,17 @@ section_icon("regression")
 
 :::{.columns}
 
-:::{.column width="48%"}
+:::{.column width="50%"}
 
 - **Expectation:** Penguins with longer flippers are heavier
 - **Question:** By how much, and how certain are we?
 
 :::
 
-:::{.column width="52%"}
+:::{.column width="50%"}
 
 ```{r}
 #| label: reg-data
-#| fig-width: 6.6
-#| fig-height: 5.6
 peng_labs <- labs(x = "Flipper length (mm)", y = "Body mass (g)")
 peng_coord <- coord_cartesian(xlim = c(170, 233), ylim = c(2600, 6400))
 
@@ -522,7 +522,7 @@ ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 :::{.columns}
 
-:::{.column width="48%"}
+:::{.column width="50%"}
 
 :::{.nonincremental}
 
@@ -549,14 +549,12 @@ body mass = [β~0~ + β~1~ · flipper length]{style="color:#1F7A5C"} + [ε]{styl
 
 :::
 
-:::{.column width="52%"}
+:::{.column width="50%"}
 
 :::{.r-stack}
 
 ```{r}
 #| label: model-data
-#| fig-width: 6.6
-#| fig-height: 5.6
 ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(alpha = 0.3) +
   peng_labs +
@@ -567,8 +565,6 @@ ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 ```{r}
 #| label: model-line
-#| fig-width: 6.6
-#| fig-height: 5.6
 # the same plot with invisible axes, to add one layer per click
 pred <- augment(m_reg, data = penguins_complete)
 
@@ -591,8 +587,6 @@ p_layer +
 
 ```{r}
 #| label: model-slope
-#| fig-width: 6.6
-#| fig-height: 5.6
 slope_x <- c(185, 205)
 slope_y <- predict(m_reg, tibble(flipper_length_mm = slope_x))
 
@@ -650,8 +644,6 @@ p_layer + slope_layers
 
 ```{r}
 #| label: model-error
-#| fig-width: 6.6
-#| fig-height: 5.6
 # one penguin to show the error
 one_penguin <- slice_max(
   filter(pred, flipper_length_mm == 221),
@@ -694,7 +686,7 @@ p_layer + error_layers
 
 :::{.columns}
 
-:::{.column width="56%"}
+:::{.column width="50%"}
 
 y = [β~0~ + β~1~ · x]{style="color:#1F7A5C"} + [ε]{style="color:#C8553D"}<br>
 ŷ = [β~0~ + β~1~ · x]{style="color:#1F7A5C"}
@@ -719,12 +711,10 @@ The residuals are our estimate of the error ε
 
 :::
 
-:::{.column width="44%"}
+:::{.column width="50%"}
 
 ```{r}
 #| label: terminology
-#| fig-width: 5.6
-#| fig-height: 5.2
 # the full figure from the model slide, plus fitted value and residual
 ggplot(pred, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(alpha = 0.3) +
@@ -756,7 +746,7 @@ ggplot(pred, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 :::{.columns}
 
-:::{.column width="48%"}
+:::{.column width="50%"}
 
 Many lines are possible
 
@@ -766,12 +756,10 @@ So how do we find the best one?
 
 :::
 
-:::{.column width="52%"}
+:::{.column width="50%"}
 
 ```{r}
 #| label: candidate-lines
-#| fig-width: 6.6
-#| fig-height: 5.6
 # many random lines around the center of the data
 center <- summarise(
   penguins_complete,
@@ -806,7 +794,7 @@ ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 :::{.columns}
 
-:::{.column width="48%"}
+:::{.column width="50%"}
 
 :::{.nonincremental}
 
@@ -830,14 +818,12 @@ Find model coefficients that lead to the lowest RSS<br>
 
 :::
 
-:::{.column width="52%"}
+:::{.column width="50%"}
 
 :::{.r-stack}
 
 ```{r}
 #| label: residual-one
-#| fig-width: 6.6
-#| fig-height: 5.6
 # one penguin with observed and fitted value
 ggplot(pred, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(alpha = 0.3) +
@@ -870,8 +856,6 @@ ggplot(pred, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 ```{r}
 #| label: residual-all
-#| fig-width: 6.6
-#| fig-height: 5.6
 # all residuals, with the line drawn again on top
 p_layer +
   geom_segment(aes(yend = .fitted), color = col_error, alpha = 0.5) +
@@ -890,7 +874,7 @@ p_layer +
 
 :::{.columns}
 
-:::{.column width="48%"}
+:::{.column width="50%"}
 
 The model makes **assumptions**:
 
@@ -904,12 +888,10 @@ The model makes **assumptions**:
 
 :::
 
-:::{.column width="52%"}
+:::{.column width="50%"}
 
 ```{r}
 #| label: assumptions
-#| fig-width: 6.6
-#| fig-height: 5.6
 # normal distributions around the line at three flipper lengths,
 # drawn on both sides so that the widest part sits on the line
 sigma_reg <- sigma(m_reg)
@@ -971,10 +953,14 @@ Fit a linear model with `lm()`:
 
 For our penguins:
 
-<pre><code>m_reg &lt;- lm(
-  <span style="color:#2E6F9E;font-weight:bold">body_mass_g</span> ~ <span style="color:#B8860B;font-weight:bold">flipper_length_mm</span>,
-  data = <span style="color:#7b8a8b;font-weight:bold">penguins</span>
-)</code></pre>
+```{r}
+#| label: lm-penguins
+#| echo: true
+m_reg <- lm(
+  body_mass_g ~ flipper_length_mm, 
+  data = penguins
+  )
+```
 
 :::
 
@@ -984,8 +970,6 @@ For our penguins:
 
 ```{r}
 #| label: lm-syntax
-#| fig-width: 4.6
-#| fig-height: 4.6
 ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm", se = FALSE, color = col_model, linewidth = 1.5) +
@@ -1000,26 +984,25 @@ ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 :::
 
-## Checking the residuals
+## Check the model assumptions
 
-:::{.columns}
+```{r}
+#| label: check-model
+#| echo: true
+#| fig-width: 10
+#| fig-height: 7.5
+#| output-location: slide
+performance::check_model(m_reg)
+```
 
-:::{.column width="35%"}
+## Check the model assumptions
 
-:::{.text-small}
-- Look for **clear patterns**, not perfection
-- `check_model()` from the package `performance` makes these plots for you
-- If something looks wrong: transform the response, add a predictor, or use another model
-:::
-
-:::
-
-:::{.column width="65%"}
+Look for **clear patterns**, not perfection
 
 ```{r}
 #| label: residual-examples
-#| fig-width: 8
-#| fig-height: 6
+#| fig-width: 12
+#| fig-height: 3.6
 # simulated residuals: one good case and three problems
 set.seed(3)
 n <- 150
@@ -1052,7 +1035,7 @@ p_good <- p_resid %+% filter(resid_examples, problem == "Looks good")
 p_curve <- p_resid %+% filter(resid_examples, problem == "Not linear")
 p_spread <- p_resid %+% filter(resid_examples, problem == "Spread not constant")
 
-wrap_plots(p_good, p_curve, p_spread, p_qq, ncol = 2) &
+wrap_plots(p_good, p_curve, p_spread, p_qq, nrow = 1) &
   theme(
     axis.text = element_blank(),
     text = element_text(size = 16),
@@ -1060,17 +1043,812 @@ wrap_plots(p_good, p_curve, p_spread, p_qq, ncol = 2) &
   )
 ```
 
+
+## How big is the effect?
+
+```{r}
+#| label: summary
+#| echo: true
+summary(m_reg)
+```
+
+## Summary table
+
+![](images/2026_12_17_linear-models-anova/summary_top.png){fig-alt="Top part of the summary table, showing the model formula, residuals "}
+
+## Summary table: coefficients and effect size
+
+![](images/2026_12_17_linear-models-anova/summary_middle.png){fig-alt="Middle part of the summary table, showing the coefficients, their standard errors, t-values and p-values"}
+
+- Per mm of flipper length, penguins are on average **49.7 g heavier**
+
+## How precise is the estimate?
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| label: confint
+#| echo: true
+confint(m_reg)
+```
+- Other samples would give slightly different slopes 
+- The **95% confidence interval (CI)** shows range of plausible values
+- Slope: **46.7 to 52.7 g** per mm
+- Intercept: not interesting here
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: confint-band
+ggplot(penguins_complete, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm", color = col_model, fill = col_model, alpha = 0.6) +
+  peng_labs +
+  peng_coord
+```
+
 :::
 
 :::
 
+## How much evidence is there for an effect?
 
+Is the effect we observe real or could it be due to chance?
 
-## Live demo {.inverse}
+. . .
 
-Fit and check the model
+Compare the **null model** (mean) with our **model** (line):
 
-`demo/01_regression.R`
+```{r}
+#| label: null-vs-line
+#| fig-width: 12
+#| fig-height: 3.8
+# the null model (mean) and our model (line) with their residuals
+null_vs_line <- bind_rows(
+  mutate(pred, model = "Null model: the mean", fitted = mean(body_mass_g)),
+  mutate(pred, model = "Our model: the line", fitted = .fitted)
+)
+
+ggplot(null_vs_line, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_segment(aes(yend = fitted), color = col_error, alpha = 0.5) +
+  geom_point(alpha = 0.3) +
+  geom_line(aes(y = fitted), color = col_model, linewidth = 1.5) +
+  facet_wrap(~model) +
+  peng_labs +
+  peng_coord
+```
+
+## How much evidence is there for an effect?
+
+```{r}
+#| label: anova
+#| echo: true
+car::Anova(m_reg)
+```
+
+- `flipper_length_mm`: how much the regression reduces the RSS compared to the mean
+  - if p < 0.05, the effect is significant
+- `Residuals`: what's left over, the RSS of our model
+
+. . .
+
+Result: Strong evidence of an effect (F = 1071, p < 0.001).
+
+## How much variance does the model explain?
+
+Get the R-squared values from the summary table (bottom)
+
+![](images/2026_12_17_linear-models-anova/summary_r2.png){fig-alt="Bottom part of the summary table, showing the R-squared and adjusted R-squared values"}
+
+- R² = 1 − RSS(model) / RSS(null model)
+  - share of variation explained by the model (0 = no better than mean, 1 = perfect fit)
+- Adjusted R²: corrected for the number of predictors. Use it to compare models.
+
+. . .
+
+Result: Flipper length explains 76% of the variation in body mass (R² = 0.76).
+
+## Show the model
+
+```{r}
+#| label: plot-model
+#| echo: true
+#| output-location: column
+ggplot(
+  penguins,
+  aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+- `geom_smooth(method = "lm")` fits the same model and shows the 95% CI of the line
+
+## Plot the model with `augment()`
+
+`broom::augment()` adds fitted values and confidence intervals to the data:
+
+```{r}
+#| label: augment
+#| echo: true
+# step 1: add fitted values and confidence intervals to the data
+pred <- augment(m_reg, interval = "confidence")
+pred
+```
+
+- `.fitted`: fitted values (on the line)
+- `.lower` and `.upper`: 95% CI of the fitted values
+
+## Plot the model with `augment()`
+
+```{r}
+#| label: plot-augment
+#| echo: true
+#| output-location: column
+
+# step 2: plot the data, fitted values and CI
+ggplot(
+  pred,
+  aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+  geom_ribbon(
+    aes(ymin = .lower, ymax = .upper),
+    alpha = 0.3
+  ) +
+  geom_line(aes(y = .fitted))
+```
+
+- Advantage: Always plot your model, even if `geom_smooth()` does not work
+
+## Predict new values with `augment()`
+
+```{r}
+#| label: predict
+#| echo: true
+# Create a new data frame with the values you want to predict
+new_data <- tibble(flipper_length_mm = 200)
+# predict using the model (convidence interval)
+augment(m_reg, newdata = new_data, interval = "confidence")
+# predict using the model (prediction interval)
+augment(m_reg, newdata = new_data, interval = "prediction")
+```
+
+- **Confidence interval**: mean body mass of all penguins with 200 mm flippers
+- **Prediction interval**: body mass of one new penguin. Wider, because it includes individual variation between penguins
+- Note: Only predict within the range of the data (172–231 mm)
+
+## Report the results
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+A result in a paper could look like this:
+
+> Body mass increased by **49.7 g per mm** of flipper length (95% CI 46.7–52.7; F~1,340~ = 1070.7, p < 0.001, R² = 0.76).
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: plot-augment2
+
+ggplot(
+  pred,
+  aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+geom_smooth(method = "lm")
+```
+
+:::
+
+:::
+
+. . .
+
+Always report the **size** of the effect and its **uncertainty**, not only the p-value
+
+## Linear model step by step
+
+:::{.text-small}
+
+| Step | Linear regression |
+|:-----|:------------------|
+| **Question** | How much heavier are penguins with longer flippers? |
+| **Fit model** | `lm(body_mass_g ~ flipper_length_mm, data = penguins)` |
+| **Check assumptions** | `performance::check_model()` |
+| **Answer** | Effect size? `summary()`; How precise? `confint()`; How much evidence? `car::Anova()`; How much variation? `summary()` R² |
+| **Show** | `geom_smooth(method = "lm")` or `augment()` |
+| **Report** | Effect, 95% CI, F, p, R² |
+
+:::
+
+## Your turn {.inverse}
+
+> :pencil2: **Exercise 1 (~10 min):**
+>
+> Open `exercises/01_regression_exercise.R`
+
+# ANOVA {.inverse}
+
+> categorical predictor
+
+:::{.absolute bottom="-300" right="0"}
+
+```{r}
+#| label: icon-anova
+#| fig-width: 3
+#| fig-height: 2.2
+section_icon("anova")
+```
+
+:::
+
+## How much does body mass differ between species?
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- **Expectation:** Gentoo penguins are heavier
+- **Question:** Which species differ, and by how much?
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: anova-data
+ggplot(penguins_complete, aes(x = species, y = body_mass_g, color = species)) +
+  geom_jitter(width = 0.15, height = 0, alpha = 0.4) +
+  scale_color_viridis_d(end = 0.8) +
+  labs(x = "Species", y = "Body mass (g)") +
+  theme(legend.position = "none")
+```
+
+:::
+
+:::
+
+## The model
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+**Data = [Model]{style="color:#1F7A5C"} + [Error]{style="color:#C8553D"}**
+
+:::{.fragment fragment-index=1}
+body mass = [β~0~ + β~1~ · Chinstrap + β~2~ · Gentoo]{style="color:#1F7A5C"} + [ε]{style="color:#C8553D"}
+:::
+
+:::{.fragment .text-small fragment-index=2}
+Chinstrap = 1 for Chinstrap penguins, 0 for all others (same for Gentoo)
+:::
+
+:::{.fragment .text-small fragment-index=3}
+- [**β~0~**]{style="color:#1F7A5C"}: mean of Adelie, the **reference** group
+:::
+
+:::{.fragment .text-small fragment-index=4}
+- [**β~1~, β~2~**]{style="color:#1F7A5C"}: differences to Adelie
+:::
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: anova-model-setup
+#| include: false
+m_anova <- lm(body_mass_g ~ species, data = penguins_complete)
+b_anova <- coef(m_anova)
+
+# species means and an empty plot with invisible axes, to add one layer per click
+species_means <- summarise(
+  penguins_complete,
+  body_mass_g = mean(body_mass_g),
+  .by = species
+)
+
+p_anova <- ggplot(penguins_complete, aes(x = species, y = body_mass_g)) +
+  labs(x = "Species", y = "Body mass (g)") +
+  coord_cartesian(ylim = c(2600, 6400))
+
+p_anova_layer <- p_anova +
+  geom_blank() +
+  theme(
+    axis.text = element_text(color = "transparent"),
+    axis.title = element_text(color = "transparent"),
+    panel.grid = element_blank()
+  )
+```
+
+:::{.r-stack}
+
+```{r}
+#| label: anova-model-data
+p_anova +
+  geom_jitter(
+    aes(color = species),
+    position = position_jitter(width = 0.15, height = 0, seed = 1),
+    alpha = 0.4
+  ) +
+  geom_point(data = species_means, size = 4) +
+  scale_color_viridis_d(end = 0.8) +
+  theme(legend.position = "none")
+```
+
+:::{.fragment fragment-index=3}
+
+```{r}
+#| label: anova-model-b0
+p_anova_layer +
+  geom_hline(yintercept = b_anova[[1]], color = col_model, linewidth = 1.2, linetype = "dashed") +
+  annotate(
+    "text",
+    x = 0.6,
+    y = b_anova[[1]] - 250,
+    label = "beta[0]",
+    parse = TRUE,
+    color = col_model,
+    size = 8
+  )
+```
+
+:::
+
+:::{.fragment fragment-index=4}
+
+```{r}
+#| label: anova-model-b1-b2
+p_anova_layer +
+  annotate(
+    "segment",
+    x = 2.75,
+    xend = 2.75,
+    y = b_anova[[1]],
+    yend = b_anova[[1]] + b_anova[[3]],
+    color = col_model,
+    linewidth = 1.2,
+    arrow = arrow(length = unit(0.3, "cm"))
+  ) +
+  annotate(
+    "text",
+    x = c(2.2, 2.7),
+    y = c(b_anova[[1]] - 300, b_anova[[1]] + b_anova[[3]] + 300),
+    label = c("beta[1]", "beta[2]"),
+    parse = TRUE,
+    color = col_model,
+    size = 8,
+    hjust = c(0, 1)
+  )
+```
+
+:::
+
+:::
+
+:::
+
+:::
+
+## Fit the model
+
+First check the levels. The first level (Adelie) is the **reference** group.
+
+```{r}
+#| label: anova-levels
+#| echo: true
+levels(penguins$species)
+```
+
+:::{.callout-note}
+
+If your groups are coded as numbers (1, 2, 3), convert them to `factor()` first, otherwise R fits a line instead of comparing groups.
+
+:::
+
+. . .
+
+Fit the model
+
+```{r}
+#| label: anova-fit
+#| echo: true
+m_anova <- lm(body_mass_g ~ species, data = penguins)
+```
+
+## Check model assumptions
+
+```{r}
+#| label: anova-check
+#| echo: true
+#| fig-width: 10
+#| fig-height: 7.5
+#| output-location: slide
+performance::check_model(m_anova)
+```
+
+## How big are the differences?
+
+```{r}
+#| label: anova-summary
+#| echo: true
+summary(m_anova)
+```
+
+:::{.text-small}
+- `(Intercept)`: mean of Adelie, the reference (3701 g)
+- `speciesChinstrap`, `speciesGentoo`: differences to Adelie (+32 g, +1375 g)
+:::
+
+## How much evidence is there for an effect?
+
+```{r}
+#| label: anova-anova
+#| echo: true
+car::Anova(m_anova)
+```
+
+- `species`: does species matter **as a whole** factor?
+- `Residuals`: error that's left after accounting for the effect of species
+
+. . .
+
+Result: Strong evidence that body mass differs between species (F~2,339~ = 343.6, p < 0.001).
+
+## Mean body mass per species
+
+```{r}
+#| label: anova-emmeans
+#| echo: true
+library(emmeans)
+emm <- emmeans(m_anova, ~species)
+emm
+```
+
+- `emmeans()` (package `emmeans`): mean and 95% CI for each group, from the model
+
+## Which species differ?
+
+```{r}
+#| label: anova-pairs
+#| echo: true
+pairs(emm, reverse = TRUE, infer = TRUE)
+```
+
+- One row per pair: difference (how big?), CI (how precise?), p-value (how much evidence?)
+- P-values and CIs are **Tukey-adjusted** for multiple comparisons
+
+## Show the model
+
+Use the results from `emmeans()` to show the means and 95% CI of the means on top of the data.
+
+```{r}
+#| label: anova-plot
+#| echo: true
+#| output-location: column
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_jitter(
+    aes(color = species),
+    width = 0.15,
+    height = 0,
+    alpha = 0.4
+  ) +
+  geom_pointrange(
+    data = as_tibble(emm),
+    aes(y = emmean, ymin = lower.CL, ymax = upper.CL),
+    size = 0.7,
+    linewidth = 1
+  ) +
+  scale_color_viridis_d(end = 0.8) +
+  labs(x = "Species", y = "Body mass (g)") +
+  theme(legend.position = "none")
+```
+
+## Report the results
+
+> Body mass differed between species (F~2,339~ = 343.6, p < 0.001). Gentoo were heavier than Adelie (1375 g, 95% CI 1243–1508, p < 0.001) and Chinstrap (1343 g, 95% CI 1178–1507, p < 0.001), whereas we found no evidence of a difference between Chinstrap and Adelie (32 g, 95% CI −127 to 191, p = 0.88). P-values and CIs are Tukey-adjusted.
+
+## Linear model step by step
+
+:::{.text-small}
+
+| Step | Linear regression | ANOVA |
+|:-----|:------------------|:------|
+| **Question** | How much heavier are penguins with longer flippers? | How much does body mass differ between species? |
+| **Fit model** | `lm(body_mass_g ~ flipper_length_mm)` | `lm(body_mass_g ~ species)` |
+| **Check assumptions** | `performance::check_model()` | `performance::check_model()` |
+| **Answer** | `summary()`, `confint()`, `car::Anova()` | `car::Anova()`, [`emmeans()`, `pairs()`]{.highlight-ylw} |
+| **Show** | `geom_smooth(method = "lm")` or `augment()` | Data + means and 95% CI from `emmeans()` |
+| **Report** | Effect, 95% CI, F, p, R² | F, p, and each difference with 95% CI and p |
+
+:::
+
+## Your turn {.inverse}
+
+> :pencil2: **Exercise 2 (~10 min):**
+>
+> Open `exercises/02_anova_exercise.R`
+
+# ANCOVA {.inverse}
+
+> continuous and categorical predictor
+
+:::{.absolute bottom="-300" right="0"}
+
+```{r}
+#| label: icon-ancova
+#| fig-width: 3
+#| fig-height: 2.2
+section_icon("ancova")
+```
+
+:::
+
+## Does the relationship differ between species?
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- **Expectation:** Body mass increases with flipper length in all species
+- **Question:** Is the increase the same for all species?
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: ancova-data
+ggplot(
+  penguins_complete,
+  aes(x = flipper_length_mm, y = body_mass_g, color = species)
+) +
+  geom_point(alpha = 0.5) +
+  scale_color_viridis_d(end = 0.8) +
+  peng_labs +
+  peng_coord +
+  theme(legend.position = "top", legend.title = element_blank())
+```
+
+:::
+
+:::
+
+## Two possible models
+
+```{r}
+#| label: two-models-setup
+#| include: false
+# schematic lines for the three species
+plot_schematic <- function(slopes) {
+  tibble(
+    species = rep(c("Adelie", "Chinstrap", "Gentoo"), each = 2),
+    x = rep(c(0, 10), 3),
+    y = rep(c(1, 2.5, 4), each = 2) + rep(slopes, each = 2) * x
+  ) |>
+    ggplot(aes(x = x, y = y, color = species)) +
+    geom_line(linewidth = 1.5) +
+    scale_color_viridis_d(end = 0.8) +
+    expand_limits(y = c(0, 13)) +
+    labs(x = "Flipper length", y = "Body mass") +
+    theme_minimal(base_size = 14) +
+    theme(
+      plot.background = element_blank(),
+      axis.text = element_blank(),
+      legend.title = element_blank()
+    )
+}
+```
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+**Without interaction:** parallel lines
+
+[Flipper length and species have an effect]{.text-small}
+
+[body mass = β~0~ + β~1~ · flipper + β~2~ · Chinstrap + β~3~ · Gentoo + ε]{.text-small}
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: two-models-additive
+#| fig-width: 5
+#| fig-height: 2.4
+plot_schematic(c(0.5, 0.5, 0.5))
+```
+
+:::
+
+:::
+
+:::{.fragment}
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+**With interaction:** different slopes
+
+[Effect of flipper length differs between species]{.text-small}
+
+[body mass = β~0~ + β~1~ · flipper + β~2~ · Chinstrap + β~3~ · Gentoo + [β~4~ · flipper · Chinstrap + β~5~ · flipper · Gentoo]{.highlight-ylw} + ε]{.text-small}
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: two-models-interaction
+#| fig-width: 5
+#| fig-height: 2.4
+plot_schematic(c(0.2, 0.5, 0.9))
+```
+
+:::
+
+:::
+
+:::
+
+## Fit the models
+
+Without interaction
+
+```{r}
+#| label: ancova-fit-add
+#| echo: true
+m_add <- lm(
+  body_mass_g ~ flipper_length_mm + species, 
+  data = penguins
+)
+```
+
+With interaction
+
+```{r}
+#| label: ancova-fit-int
+#| echo: true
+m_int <- lm(
+  body_mass_g ~ flipper_length_mm + species + flipper_length_mm:species,
+  data = penguins
+)
+```
+
+- `flipper_length_mm:species` is the interaction.
+  - Short version: `flipper_length_mm * species` (R expands it to main effects + all interactions)
+- Never fit an interaction without its main effects
+
+## Check the assumptions
+
+```{r}
+#| label: ancova-check
+#| echo: true
+#| fig-width: 10
+#| fig-height: 7.5
+#| output-location: slide
+performance::check_model(m_int)
+```
+
+- Same checks as before
+- High collinearity is expected with an interaction
+
+## How much evidence for an interaction?
+
+```{r}
+#| label: ancova-anova
+#| echo: true
+car::Anova(m_int)
+```
+
+- `flipper_length_mm:species`: do the slopes differ between species? Compares the models with and without the interaction
+- If the interaction matters, don't interpret the main effects on their own
+
+. . .
+
+Result: Evidence that the relationship differs between species (F~2,336~ = 5.5, p = 0.004).
+
+## Which slopes differ?
+
+```{r}
+#| label: ancova-slopes
+#| echo: true
+slopes <- emtrends(m_int, ~species, var = "flipper_length_mm")
+slopes
+pairs(slopes, reverse = TRUE, infer = TRUE)
+```
+
+- Same as in ANOVA, but with slopes instead of means
+
+## Show the model
+
+```{r}
+#| label: ancova-plot
+#| echo: true
+#| output-location: column
+ggplot(
+  penguins,
+  aes(
+    x = flipper_length_mm,
+    y = body_mass_g,
+    color = species
+  )
+) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  scale_color_viridis_d(end = 0.8)
+```
+
+- With `color = species`, `geom_smooth()` fits one line per species: the interaction model
+
+## Report the results
+
+> The relationship between flipper length and body mass differed between species (interaction: F~2,336~ = 5.5, p = 0.004). The slope was steeper in Gentoo than in Adelie (21.8 g per mm, 95% CI 5.5–38.1, p = 0.005) and Chinstrap (20.1 g per mm, 95% CI 0.8–39.3, p = 0.04), whereas we found no evidence of a difference between Chinstrap and Adelie (1.7 g per mm, 95% CI −16.8 to 20.2, p = 0.97).
+
+## Little evidence for an interaction?
+
+- Report the interaction test
+- Use the model without interaction (`m_add`), same steps as before
+
+. . .
+
+```{r}
+#| label: ancova-additive-plot
+#| echo: true
+#| output-location: column
+pred_add <- augment(m_add, interval = "confidence")
+
+ggplot(
+  pred_add,
+  aes(
+    x = flipper_length_mm,
+    y = body_mass_g,
+    color = species
+  )
+) +
+  geom_point() +
+  geom_line(aes(y = .fitted)) +
+  scale_color_viridis_d(end = 0.8)
+```
+
+## Linear model step by step
+
+:::{.text-small}
+
+| Step | Linear regression | ANOVA | ANCOVA |
+|:-----|:------------------|:------|:-------|
+| **Fit model** | `~ flipper_length_mm` | `~ species` | `~ flipper_length_mm * species` |
+| **Check** | `check_model()` | `check_model()` | `check_model()` |
+| **Answer** | `summary()`, `confint()`, `car::Anova()` | `car::Anova()`, `emmeans()`, `pairs()` | `car::Anova()`, [`emtrends()`]{.highlight-ylw}, `pairs()` |
+| **Show** | `geom_smooth()` or `augment()` | Data + means from `emmeans()` | `geom_smooth()`, or `augment()` for the additive model |
+| **Report** | Effect, 95% CI, F, p, R² | F, p, differences (95% CI, p) | Interaction F, p, slope differences (95% CI, p) |
+
+: {tbl-colwidths="[13,29,26,32]"}
+
+:::
+
+## Your turn {.inverse}
+
+> :pencil2: **Exercise 3 (~10 min):**
+>
+> Open `exercises/03_ancova_exercise.R`
 
 # Wrap-up {.inverse}
 
@@ -1091,8 +1869,118 @@ Fit and check the model
 <br>
 
 :::{.fragment}
-A [linear combination]{.highlight-ylw}: each predictor is multiplied with a parameter, and everything is added up
+A **linear combination**: each predictor is multiplied with a parameter, and everything is added up
 :::
 
-- In R, we fit all of them with `lm()`
-- Even the U-shaped curve from the beginning is a linear model
+. . .
+
+Not linear would e.g. be:
+
+:::{.text-small}
+- A parameter in the exponent (e.g. exponential decay): y = β~0~ · exp(β~1~ · x) + ε
+- A parameter in the denominator (e.g. saturation curves): y = β~0~ · x / (β~1~ + x) + ε
+:::
+
+## Correlation is not causation
+
+:::{.columns}
+:::{.column width="50%"}
+
+- We often use causal langauge ("A causes B", "A has an effect on B") but it's not always a cause
+- Choose your words carefully: "association" or "is related to" instead of "causes" might be more appropriate
+- Controlled experiments make causal claims easier than field observations
+
+:::
+
+:::{.column width="50%"}
+
+![Image: 9gag](images/2026_12_17_linear-models-anova/correlation_causation_meme.jpg){fig-alt="Meme titled Correlation vs. Causation: a seagull sits on the bent part of a railing, another seagull sits on a straight part"}
+
+:::
+
+:::
+
+## Choose your predictors carefully
+
+```{r}
+#| label: reversal
+#| fig-width: 12
+#| fig-height: 3.8
+# the same data without and with species
+p_all <- ggplot(penguins_complete, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", color = "black", se = FALSE) +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)")
+
+p_species <- ggplot(
+  penguins_complete,
+  aes(x = bill_length_mm, y = bill_depth_mm, color = species)
+) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_color_viridis_d(end = 0.8) +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)", color = NULL)
+
+p_all + p_species
+```
+
+- Leaving out a predictor can change the answer a lot
+- Choose the model structure and predictors from your research question and what you know about the data
+
+## The p-value is not everything
+
+- Report the **effect size** and its **CI**, not only the p-value
+- Significant does not mean relevant
+- Not significant does not mean no effect
+
+## Where next: more complex models
+
+You can combine as many predictors in your models as your data allows.
+
+```{r}
+#| label: complex-models
+#| echo: true
+#| eval: false
+# two-way ANOVA
+lm(body_mass_g ~ species + sex + species:sex, data = penguins)
+
+# even more predictors
+lm(
+  body_mass_g ~ flipper_length_mm + bill_length_mm + species + sex,
+  data = penguins
+)
+```
+
+- The workflow stays the same: fit, check, answer, show, report
+- Coefficients are harder to interpret: use `emmeans()`, `emtrends()` and plots
+
+## When model assumptions are violated
+
+- Exponential relationships: you can often **log-transform** the response and use `lm()`
+- Data not independent (repeated measures, several measurements per animal or site) → **mixed models** with random effects (`lme4`)
+- Counts, proportions, yes/no → **GLM** (`glm()`): a different distribution instead of the normal distribution
+
+## Resources
+
+:::{.nonincremental}
+- R packages: [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/), [`performance`](https://easystats.github.io/performance/), [`car`](https://cran.r-project.org/package=car), [`emmeans`](https://rvlenth.github.io/emmeans/), [`broom`](https://broom.tidymodels.org/)
+- Book: [Statistical Modelling: Lecture Notes for From Data to Evidence](https://bookdown.org/btmarti25/FD2E/) by Benjamin T. Martin
+:::
+
+<br>
+
+[Thanks to Felix May and Felix Nößler for sharing their course materials.]{.text-small}
+
+## Next lecture/workshop
+
+#### Topic: tba
+
+<br>
+
+:date: 21.01.2027 :clock4: 4-5 p.m. :round_pushpin: Webex
+
+:bell: [Subscribe to the mailing list](https://lists.fu-berlin.de/listinfo/toolsAndTips)
+
+:e-mail: For topic suggestions and/or feedback [send me an email](mailto:selina.baldauf@fu-berlin.de)
+
+# The end :) {background-color="#2c2c2c"}
